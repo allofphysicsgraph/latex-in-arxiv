@@ -13,12 +13,8 @@ list_of_files = glob.glob('2003/*')
 from collections import defaultdict
 results=[]
 from tqdm import tqdm 
-for this_file in tqdm(list_of_files):
+'''for this_file in tqdm(list_of_files):
     try:
-        f = open(this_file)
-        data = f.read()
-        f.close()
-        soup = TexSoup(data)
         d = defaultdict(list)
         toc = tex2py(data)
         for tag in toc.valid_tags:
@@ -29,9 +25,36 @@ for this_file in tqdm(list_of_files):
                 except StopIteration:
                     break
         results.append(d)
-        print(len(results))
-    except Exception as e:
-        pass
-import pandas as pd 
-df = pd.DataFrame(results)
-df.to_csv('latex.csv')
+'''    
+from collections import defaultdict
+d = defaultdict(list)
+from TexSoup import TexSoup
+for this_file in tqdm(list_of_files):
+    f = open(this_file)
+    data = f.read()
+    f.close()
+    soup = TexSoup(data)
+    equations = soup.find_all('equation')
+    tex_copy = data
+    while True:
+        try:
+            resp = next(equations)
+            tex_copy = tex_copy.replace(str(resp),'')
+            d['equations'].append(resp)
+        except StopIteration:
+            break
+        
+    for ix in list(soup.find_all('$')):
+        tex_copy = tex_copy.replace(str(ix),'')
+        d['expressions'].append(ix)
+
+    for line in list(soup.find_all('thebibliography')):
+        tex_copy = tex_copy.replace(str(line),'')
+        d['thebibliography'].append(line)
+        
+        except Exception as e:
+            pass
+
+#import pandas as pd 
+#df = pd.DataFrame(results)
+#df.to_csv('latex.csv')

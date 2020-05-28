@@ -13,7 +13,7 @@ list_of_files = glob.glob('2003/*')
 from collections import defaultdict
 results=[]
 from tqdm import tqdm 
-for this_file in tqd(list_of_files):
+for this_file in tqdm(list_of_files):
     try:
         f = open(this_file)
         data = f.read()

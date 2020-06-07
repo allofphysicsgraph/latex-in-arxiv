@@ -51,10 +51,7 @@ for line in data.splitlines():
                     if count_strings('\\begin',line):
                         begin_word = begin_pattern(line)
                         resp = re.findall(r'\\begin{'+begin_word+r'}.*?\\end{'+begin_word+'}',data,re.DOTALL)
-                        print(resp)
-                    if count_strings('\\begin',line):
-                        print(line)
+                        dct['begin_{}'.format(begin_word)].extend(resp)
 
-
-
+print(dct['begin_figure'])
 

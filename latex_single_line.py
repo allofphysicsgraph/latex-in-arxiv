@@ -29,11 +29,6 @@ def begin_pattern(string):
         return resp
     
 
-regex_patterns = {}
-
-begin_pattern('\\begin{figure}')
-
-
 dct = defaultdict(list)
 for line in data.splitlines():
     ignore_line = False
@@ -53,5 +48,5 @@ for line in data.splitlines():
                         resp = re.findall(r'\\begin{'+begin_word+r'}.*?\\end{'+begin_word+'}',data,re.DOTALL)
                         dct['begin_{}'.format(begin_word)].extend(resp)
 
-print(dct['begin_figure'])
 
+print(dct['begin_figure'])

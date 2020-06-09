@@ -23,12 +23,12 @@ for f_name in tqdm(files):
                             if '\\' in word:
                                 maybe_latex.append(word.strip())
                             else:
-                                if not re.findall('\d+|_|\-',word):
+                                if not re.findall('\d+|_|\-|=|~',word):
                                     d[word] += 1
                                     word_count += 1
     except Exception as e:
         print(e)
 
-common_words = sorted(d.items(),key=lambda x: -x[1])
+common_words = sorted(d.items(),key=lambda x: -x[1])[:500]
 print(common_words)
 print(word_count)

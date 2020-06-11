@@ -13,19 +13,6 @@ list_of_files = glob.glob('2003/*')
 from collections import defaultdict
 results=[]
 from tqdm import tqdm 
-'''for this_file in tqdm(list_of_files):
-    try:
-        d = defaultdict(list)
-        toc = tex2py(data)
-        for tag in toc.valid_tags:
-            resp = soup.find_all(tag)
-            while True:
-                try:
-                    d[tag].append(next(resp))
-                except StopIteration:
-                    break
-        results.append(d)
-'''    
 from collections import defaultdict
 d = defaultdict(list)
 from TexSoup import TexSoup
@@ -55,6 +42,3 @@ for this_file in tqdm(list_of_files):
         except Exception as e:
             pass
 
-#import pandas as pd 
-#df = pd.DataFrame(results)
-#df.to_csv('latex.csv')

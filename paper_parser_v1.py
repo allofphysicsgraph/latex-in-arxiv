@@ -4,12 +4,14 @@ from collections import defaultdict
 import re
 from sys import argv
 
-f = open(argv[1])
-data = f.read()
-f.close()
+if len(argv)<2:
+    print('provide name of file to read as argument')
 
+with open(argv[1],'r') as f:
+    data = f.read()
 
 latex = defaultdict(list)
+
 def find_latex(pattern,data=data,multiline=True,autocommit=False):
     temp = defaultdict(list)
     iterator = re.finditer(r'{}'.format(pattern),data,re.DOTALL)
@@ -32,6 +34,7 @@ def remove_latex(data):
     for k in latex.keys():
         data = data[:k[0]] +' '*(k[1]-k[0])+data[k[1]:]
     return data
+
 find_latex(r'\\subsection{.*?}',autocommit=True)
 find_latex(r'\\begin{quote}',autocommit=True)
 find_latex(r'\\eqn.*?}\n',autocommit=True)

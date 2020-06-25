@@ -10,6 +10,7 @@ if len(argv)<2:
 with open(argv[1],'r') as f:
     data = f.read()
 
+#creates a dictionary with a default value of list
 latex = defaultdict(list)
 
 def find_latex(pattern,data=data,multiline=True,autocommit=False):

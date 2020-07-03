@@ -1,7 +1,14 @@
-import functools
-
-name = None
+import re
+import nltk
+from nltk.tokenize import mwe
+tokenizer = mwe.MWETokenizer(separator='')import functools
 TOKEN_MIN_LENGTH = 3
+
+seen = []
+
+def add_new_token(string):
+    tokenizer.add_mwe(r'{}'.format(string))
+    seen.append(r'{}'.format(string))
 
 with open("arvix_vocab.txt", "r") as f:
     data = f.read()
@@ -48,3 +55,10 @@ def tokenize_words(text):
         for word in nltk.tokenize.word_tokenize(text)
         if valid_token(word)
     ]
+
+
+for ix in set(latex_tokens):
+    if len(ix) > 4:
+        resp = r"{}".format(ix)
+        print(resp)
+        add_new_token(resp)

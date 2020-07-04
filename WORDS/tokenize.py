@@ -1,7 +1,8 @@
 import re
 import nltk
 from nltk.tokenize import mwe
-tokenizer = mwe.MWETokenizer(separator='')import functools
+import functools
+tokenizer = mwe.MWETokenizer(separator='')
 TOKEN_MIN_LENGTH = 3
 
 seen = []

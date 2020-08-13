@@ -1,0 +1,1542 @@
+%grep -i math crib209.tex |grep -oE '" is .*?\('|sed -r 's/ \(|" is //g'|sed -r 's/^\$|\$$//g'|sed 's/\\verb/\n/g'|sed -r 's/^"\\.*?\\/\\/g'|sed 's/$.//g'|sort|uniq|awk '{print length,$0}'|sort -nr|cut -d ' ' -f2-
+
+
+% CRIB209.TEX -- Body of LaTeX Command Summary for v2.09
+
+\thispagestyle{empty}
+
+\noindent
+{\large\bf \LaTeX{} Command Summary}
+\smallskip
+
+\begin{flushleft}
+\hspace*{2em} Lloyd Botway and Chris Biemesderfer\\
+\hspace*{2em} Space Telescope Science Institute\\
+\hspace*{2em} Baltimore, MD\ \ 21218\\[.5ex]
+\hspace*{2em} \today
+\end{flushleft}
+\smallskip
+
+\ifsmallcrib \footnotesize \fi
+
+\noindent
+This listing contains short descriptions of the control sequences that are
+likely to be handy for users of \LaTeX~v2.09 layered on \TeX~v2.0.  Some
+of these commands are \LaTeX{} macros, while others belong to plain \TeX{};
+no attempt to differentiate them is made.  We would
+appreciate hearing about errors in the list.
+\bigskip
+
+\raggedright \parindent -1em
+
+\verb*"\ " --- ordinary space after period.
+
+\verb"\!" --- negative thin space $ = -\frac{1}{6} $ quad;
+	\ifsmallcrib \relax \else \linebreak \fi
+	\verb"xx\!x" yields $xx\!x$ (math mode).
+
+\verb.\". makes an umlaut, as \"o.
+
+\verb"\#" prints a pound sign: \#.
+
+\verb"\$" prints a dollar sign: \$.
+
+\verb"\%" prints a percent sign: \%.
+
+\verb"\&" prints an ampersand: \&.
+
+\verb"\'" in \verb"tabbing" environment moves current column to the right
+	of the previous column. Elsewhere, acute accent, as \'o.
+
+\verb"\(" --- start math mode. Same as \verb"\begin{math}" or \verb"$".
+
+\verb"\)" --- end math mode.  Same as \verb"\end{math}" or \verb"$".
+
+\verb"\*" is a discretionary multiplication sign, at which a line break
+	is allowed.
+
+\verb"\+" moves left margin to the right by one tab stop.
+	Begin tabbed line.
+
+\verb"\," --- thin space $ = \frac{1}{6} $ quad;
+	\verb"xx\,x" yields $xx\,x$.  It is not restricted to math mode.
+
+\verb"\-" in \verb"tabbing" environment, moves left margin to the left
+	by one tab stop. Elsewhere, optional hyphenation.
+
+\verb"\." puts a dot accent over a letter, as \.o.
+
+\verb"\/" inserts italics adjustment space.
+
+\verb"\:" --- medium space $ = \frac{2}{9} $ quad;
+	\verb"xx\:x" yields $xx\:x$ (math mode).
+
+\verb"\;" --- thick space $ = \frac{5}{18} $ quad;
+	\verb"xx\;x" yields $xx\;x$ (math mode).
+
+\verb"\<" in \verb"tabbing" environment, puts text to left of local
+	left margin.
+
+\verb"\=" in \verb"tabbing" environment, sets a tab stop.
+	Elsewhere, makes a macron accent, as \=o.
+
+\verb"\>" in \verb"tabbing" environment is a forward tab. Otherwise,
+	medium space $ = \frac{2}{9}$ quad (math mode).
+
+\verb"\@" declares that the period that follows to be a sentence-ending
+	period.
+
+\verb"\[" --- same as \verb"\begin{displaymath}" or \verb"$$".
+
+\verb"\\" terminates a line.
+
+\verb"\\*" terminates a line, but disallows a pagebreak.
+
+\verb"\]" --- same as \verb"\end{displaymath}" or \verb"$$".
+
+\verb"\^" makes a circumflex, as \^o.
+
+\verb"\_" is an underscore, as in {\em hours\_worked}.
+
+\verb"\`" in \verb"tabbing" environment moves all text which follows (up to
+	\verb"\\") to the right margin. Elsewhere, grave accent
+	, as \`o.
+
+\verb"\{" prints a curly left brace: \{.
+
+\verb"\|" is $\|$ (math mode).
+
+\verb"\}" prints a curly right brace: \}.
+
+\verb"\~" makes a tilde, as \~n.
+
+%aaa
+\verb"\a'" makes an acute accent in \verb"tabbing" environment, as \'o.
+
+\verb"\a`" makes a grave accent in \verb"tabbing" environment, as \`o.
+
+\verb"\a=" makes a macron accent in \verb"tabbing" environment, as \=o.
+
+\verb"\aa" is \aa. \verb"\AA" is \AA.
+
+\verb"\acute" makes an acute accent: $\acute a$ (math mode).
+
+\verb"\addcontentsline{toc}{section}{name}" adds the command
+	\verb"\contentsline{section}{name}" to the \verb".toc" file.
+
+\verb"\address{text}" declares the return address in the \verb"letter"
+	document style.
+
+\verb"\addtocontents{toc}{text}" writes \verb"text" to the \verb".toc" file.
+
+\verb"\addtocounter{name}{amount}" adds \verb"amount" to counter \verb"name".
+
+\verb"\addtolength{\nl}{length}" adds \verb"length" to length command
+	\verb"\nl". See also \verb"\setlength", \verb"\newlength",
+	\verb"\settowidth".
+
+\verb"\ae" is \ae.  \verb"\AE" is \AE.
+
+\verb"\aleph" is $\aleph$ (math mode).
+
+\verb"\alph{counter}" prints \verb"counter" as lower-case letters.
+	\verb"\Alph{counter}" prints upper-case letters.
+
+\verb"\alpha" is $\alpha$ (math mode).
+
+\verb"\amalg" is $\amalg$ (math mode).
+
+\verb"\and" separates multiple authors for the \verb"\maketitle" command.
+
+\verb"\angle" is $\angle$ (math mode).
+
+\verb"\appendix" starts appendices.
+
+\verb"\approx" is $\approx$ (math mode).
+
+\verb"\arabic{counter}" prints \verb"counter" as arabic numerals 1, 2, etc.
+
+\verb"\arccos" is $\arccos$ (math mode).
+
+\verb"\arcsin" is $\arcsin$ (math mode).
+
+\verb"\arctan" is $\arctan$ (math mode).
+
+\verb"\arg" is $\arg$ (math mode).
+
+\verb"\arraycolsep" --- width of the space between columns in an
+	\verb"array" environment.
+
+\verb"\arrayrulewidth" --- width of the rule created in \verb"tabular"
+	or \verb"array" environment by \verb"|", \verb"\hline", or
+	\verb"\vline".
+
+\verb"\arraystretch" --- scale factor for interrow spacing in \verb"array"
+	and \verb"tabular" environments.
+
+\verb"\ast" is $\ast$ (math mode).
+
+\verb"\asymp" is $\asymp$ (math mode).
+
+\verb"\author{names}" declares author(s) for the \verb"\maketitle" command.
+
+%bbb
+\verb"\b" is a ``bar-under'' accent, as \b o.
+
+\verb"\backslash" is $\backslash$ (math mode).
+
+\verb"\bar" puts a macron over a letter: $\bar a$ (math mode).
+
+\verb"\baselineskip" --- distance from bottom of one line of a paragraph to
+	bottom of the next line.
+
+\verb"\baselinestretch" --- factor by which \verb"\baselineskip" is multiplied
+	each time a type size changing command is executed.
+
+\ifamsmath
+\verb"\Bbb" produces blackboard-style letters, as $\Bbb B$ (math mode
+	and \verb"amsmath" substyle).
+\fi
+
+\verb"\begin{"{\it environment\/}\verb"}" --- always paired with
+	\ifsmallcrib \relax \else \linebreak \fi
+	\verb"\end{"{\it environment\/}\verb"}".
+	Following are the assorted environments.
+
+\verb"\begin{abstract}" starts an environment for producing an abstract.
+
+\verb"\begin{array}{lrc}" starts array environment with 3 columns,
+	left-justified, right-justified, and centered. Separate columns
+	with \&, and end lines with \verb"\\". \verb"@{text}" between
+	\verb"l", \verb"r" or \verb"c" arguments puts \verb"text"
+	between columns.
+
+\verb"\begin{center}" starts an environment in which every line is centered.
+	End lines with \verb"\\".
+
+\verb"\begin{description}" starts a labeled list.  Items are
+	indicated by \verb"\item[label]".
+
+\verb"\begin{displaymath}" sets mathematics on lines of its own.
+	Same as \verb"\[" or \verb"$$".
+
+\verb"\begin{document}" starts the actual text of a document.  Required.
+
+\verb"\begin{enumerate}" starts a numbered list.
+
+\verb"\begin{eqnarray}" starts a \verb"displaymath" environment in which
+	more than one equation can be accommodated.  Separate equations 
+	with \verb"\\" or \verb"\\*"; use \verb"\nonumber" to suppress
+	numbering a particular equation.
+
+\verb"\begin{eqnarray*}" begins an environment like the \verb"eqnarray"
+	environment except that the equations aren't numbered.
+
+\verb"\begin{equation}" starts a \verb"displaymath" environment and adds
+	an equation number.
+
+\verb"\begin{figure}[pos]" begins a floating environment, which may be
+	optionally placed at \verb"pos" (see \verb"positions" on
+	page~\pageref{pos-ref}). Document styles \verb"report" and
+	\verb"article" use the default \verb"tbp".
+
+\verb"\begin{figure*}[pos]" begins a two-column-wide figure.
+	See \verb"\begin{figure}".
+
+\verb"\begin{flushleft}" starts environment with ragged right-hand margin.
+	Separate lines with \verb"\\". See \verb"\raggedright".
+
+\verb"\begin{flushright}" starts environment with ragged left-hand margin.
+	Separate lines with \verb"\\". See \verb"\raggedleft".
+
+\verb"\begin{itemize}" starts a ``bulleted'' ($\bullet$) list. 
+        Start each item with \verb"\item".
+
+\verb"\begin{list}{labeling}{spacing}" starts a general list environment.
+	\verb"labeling" specifies how items are labeled when \verb"\item"
+	has no argument.  \verb"spacing" is an optional list of
+	spacing parameters.
+
+\verb"\begin{math}" starts a math display like this: $x^2 + y^2$, within text.
+	Same as \verb"$".
+
+\verb"\begin{minipage}[pos]{vsize}" starts a box of height \verb"vsize".
+	Text will be positioned according to \verb"pos" (see \verb"positions"
+	on page~\pageref{pos-ref}).
+
+\verb"\begin{picture}"$(x,y)(x_l,y_l)$ starts a picture environment whose
+	width is $x$ units, height is $y$ units, and lower-left corner is
+	the point $(x_l,y_l)$.  Set units with \verb"\unitlength".
+
+\verb"\begin{quotation}" starts an environment with wider margins, normal
+	paragraph indenting, and offset from the text at top and bottom.
+
+\verb"\begin{quote}" starts an environment with wider margins, no paragraph
+	indenting, and offset from the text at top and bottom.
+
+\verb"\begin{tabbing}" starts a columnar environment.  Use commands
+	\verb"\=" (set tab), \verb"\>" (tab), \verb"\<" (backtab),
+	\verb"\+" (indent one tab stop), \verb"\-" (outdent one tab stop),
+	\verb"\`" (flush right), \verb"\'" (flush left), \verb"\pushtabs",
+	\verb"\poptabs", \verb"\kill", \verb"\\".
+
+\verb"\begin{table}[pos]" begins a floating environment, which may be
+	optionally placed at \verb"pos" (see \verb"positions" on
+	page~\pageref{pos-ref}). Document styles \verb"report" and
+	\verb"article" use the default \verb"tbp".
+
+\verb"\begin{table*}[pos]" begins a two-column-wide table.
+	See \verb"\begin{table}".
+
+\verb"\begin{tabular}{arg}" starts an array environment which can be used
+	in or out of math mode. \verb"arg" contains column text positioning
+	commands \verb"r", \verb"l", \verb"c",
+	\verb"@{...}", \verb"p{length}" (see \verb"positions" on
+	page~\pageref{pos-ref}). \ifsmallcrib \relax \else \linebreak \fi
+	\verb"|" produces vertical line
+	between columns. \verb"*{7}{r|l|}" repeats that entry 7 times.
+
+\verb"\begin{theorem}" --- see \verb"\newtheorem".
+
+\verb"\begin{titlepage}" is an environment with no page number, and causes
+	following page to be numbered ``1''.
+
+\verb"\begin{verbatim}" starts an environment which will be typeset exactly
+	as you type it, carriage returns and all, usually in \verb"typewriter"
+	font.
+
+\verb"\begin{verse}" starts an environment for poetry with wider margins,
+	no paragraph indenting, and ragged right margin.
+
+\verb"\beta" is $\beta$ (math mode).
+
+\verb"\bf" switches to {\bf bold face} type.
+
+\verb"\bibitem{ref} text" creates a bibliography entry \verb"text",
+	numbers it, and labels it with reference label \verb"ref".
+
+\verb"\bibliography{file}" --- insert bibliography from file \verb"name.bib"
+	at this point in text.
+
+\verb"\bibliographystyle{style}" --- a format specifier, like
+	\verb"\documentstyle".
+
+\verb"\bigcap" is $\bigcap$ (math mode).
+
+\verb"\bigcirc" is $\bigcirc$ (math mode).
+
+\verb"\bigcup" is $\bigcup$ (math mode).
+
+\verb"\bigodot" is $\bigodot$ (math mode).
+
+\verb"\bigoplus" is $\bigoplus$ (math mode).
+
+\verb"\bigotimes" is $\bigotimes$ (math mode).
+
+\verb"\bigtriangledown" is $\bigtriangledown$ (math mode).
+
+\verb"\bigtriangleup" is $\bigtriangleup$ (math mode).
+
+\verb"\bigskip" --- standard ``big'' vertical skip.
+
+\verb"\bigskipamount" --- default length for \verb"\bigskip".
+
+\verb"\bigsqcup" is $\bigsqcup$ (math mode).
+
+\verb"\biguplus" is $\biguplus$ (math mode).
+
+\verb"\bigvee" is $\bigvee$ (math mode).
+
+\verb"\bigwedge" is $\bigwedge$ (math mode).
+
+\verb"\bmod" is binary modulo expression $u \bmod m$ (math mode).
+
+\verb"\boldmath" changes math italics and math symbols to boldface.  Should
+	be used {\em outside} of math mode.
+
+\verb"\bot" is $\bot$ (math mode).
+
+\verb"\bottomfraction" --- maximum fraction of page occupied by floats at
+	the bottom.
+
+\verb"\bowtie" is $\bowtie$ (math mode).
+
+\verb"\Box" is $\Box$ (math mode).
+
+\verb"\breve" makes a breve accent: $\breve a$ (math mode).
+
+\verb"\bullet" is $\bullet$ (math mode).
+
+%ccc
+\verb"\c" is a cedilla, as \c c.
+
+\verb"\cal" produces calligraphic letters, as $\cal B$ (math mode).
+
+\verb"\cap" is $\cap$ (math mode).
+
+\verb"\caption[loftitle]{text}" creates a numbered caption in a \verb"figure"
+	or \verb"table" environment. Optional \verb"loftitle" contains
+	entry for the list of figures if different from \verb"text".
+
+\verb"\cc{text}" declares list of copy recipients for \verb"letter"
+	document style.
+
+\verb"\cdot" is $\cdot$ (math mode).
+
+\verb"\cdots" makes three dots centered on the line: $\cdots$
+	(cf.\ \verb"\ldots") (math mode).
+
+\verb"\centering" declares that all text following is to be centered
+	(cf.\ \verb"\begin{center}").
+
+\verb"\chapter[toctitle]{text}" begins a new section, automatically headed and
+	numbered.  Optional \verb"toctitle" contains entry for the
+	table of contents if different from \verb"text".
+
+\verb"\chapter*{title}" is like \verb"\chapter{title}", but adds no
+	chapter number or table of contents entry.
+
+\verb"\check" makes a h\'a\v cek, as $\check a$ (math mode).
+
+\verb"\chi" is $\chi$ (math mode).
+
+\verb"\circ" is $\circ$ (math mode).
+
+\verb"\circle{diameter}" as a valid argument for \verb"\put" in a
+	\verb"picture" environment, draws a circle.
+
+\verb"\circle*{diameter}" is like \verb"\circle", but draws a solid circle.
+
+\verb"\cite[subcit]{ref}" produces a reference, in square brackets, to a
+	bibliographic item created with \verb"\bibitem{ref}".
+	optional sub-citation \verb"subcit" can be inserted in the entry.
+
+\verb"\cleardoublepage" forces next page to be a right-hand, odd-numbered page.
+
+\verb"\clearpage" ends a page where it is, and puts pending figures or tables
+	on separate float pages with no text.
+
+\verb"\cline{i-j}" draws a horizontal line across columns \verb"i" through
+	\verb"j" inclusive in \verb"array" or \verb"tabular" environments.
+
+\verb"\closing{text}" declares the closing in \verb"letter" document style.
+
+\verb"\clubsuit" is $\clubsuit$ (math mode).
+
+\verb"\columnsep" --- distance between columns in two-column text.
+
+\verb"\columnseprule" --- width of the rule between columns on two-column
+	pages.
+
+\verb"\columnwidth" --- width of the current column.  Equals \verb"\textwidth"
+	in single-column text.
+
+\verb"\cong" is $\cong$ (math mode).
+
+\verb"\coprod" is $\coprod$ (math mode).
+
+\verb"\copyright" is \copyright.
+
+\verb"\cos" is $\cos$ (math mode).
+
+\verb"\cosh" is $\cosh$ (math mode).
+
+\verb"\cot" is $\cot$ (math mode).
+
+\verb"\coth" is $\coth$ (math mode).
+
+\verb"\csc" is $\csc$ (math mode).
+
+\verb"\cup" is $\cup$ (math mode).
+
+%ddd
+\verb"\d" is a ``dot under'' accent, as \d o.
+
+\verb"\dag" is \dag.
+
+\verb"\dagger" is $\dagger$ (math mode).
+
+\verb"\dashbox{dwid}(width,height)[pos]{text}" creates a dashed rectangle
+	around \verb"text" in a \verb"picture" environment. Dashes are
+	\verb"dwid" units wide; dimensions of rectangle are \verb"width"
+	and \verb"height";  text is positioned at optional \verb"pos"
+	(see \verb"positions"\ on page~\pageref{pos-ref}).
+
+\verb"\dashv" is $\dashv$ (math mode).
+
+\verb"\date{adate}" declares the date for the \verb"\maketitle"
+	command.  The default is \verb"\today".
+
+\verb"\day" --- current day of the month.
+
+\verb"\dblfloatpagefraction" --- minimum fraction of a float page that must
+	be occupied by floats, for two-column float pages.
+
+\verb"\dblfloatsep" --- distance between floats at the top or bottom of a
+	two-column float page.
+
+\verb"\dbltextfloatsep" --- distance between double-width floats at the top
+	or bottom of a two-column page and the text on that page.
+	
+\verb"\dbltopfraction" --- maximum fraction at the top of a two-column
+	page that may be occupied by floats.
+
+\verb"\ddag" is \ddag.
+
+\verb"\ddagger" is $\ddagger$ (math mode).
+
+\verb"\ddot" makes a dieresis over a letter: $\ddot a$ (math mode).
+
+\verb"\ddots" produces a diagonal ellipsis $\ddots$ (math mode).
+
+\verb"\deg" is $\deg$ (math mode).
+
+\verb"\delta" is $\delta$. \verb"\Delta" is $\Delta$ (math mode).
+
+\verb"\det" is $\det$ (math mode).
+
+\verb"\diamond" is $\diamond$. \verb"\Diamond" is $\Diamond$ (both math mode).
+
+\verb"\diamondsuit" is $\diamondsuit$ (math mode).
+
+\verb"\dim" is $\dim$ (math mode).
+
+\verb"\displaystyle" switches to \verb"displaymath" or \verb"equation"
+	environment typesetting (math mode).
+
+\verb"\div" is $\div$ (math mode).
+
+\verb"\documentstyle[substy]{sty}" determines default font, headings, etc. for
+	document of style \verb"sty" (and optional substyle \verb"substy")
+	Styles: \verb"article", \verb"book", \verb"letter", \verb"report",
+	\verb"slides".  Substyles: \verb"11pt", \verb"12pt", \verb"acm",
+	\verb"draft", \verb"fleqn", \verb"leqno",
+	\verb"twocolumn", \verb"twoside".
+
+\verb"\dot" makes a dot over a letter: $\dot a$ (math mode).
+
+\verb"\doteq" is $\doteq$ (math mode).
+
+\verb"\dotfill" expands to fill horizontal space with row of dots.
+
+\verb"\doublerulesep" --- horizontal distance between vertical rules created
+	by \verb"||" in \verb"tabular" or \verb"array" environment.
+
+\verb"\downarrow" is $\downarrow$. \verb"\Downarrow" is $\Downarrow$
+	(math mode).
+
+%eee
+\verb"\ell" is $\ell$ (math mode).
+
+\verb"\em" toggles between roman and {\em italic} fonts for {\em emphasis}.
+
+\verb"\emptyset" is $\emptyset$ (math mode).
+
+\verb"\encl{text}" declares a list of enclosures for \verb"letter"
+	document style.
+
+\verb"\end{"{\it environment\/}\verb"}" ends an environment begun by
+	\verb"\begin{"{\it environment\/}\verb"}" (q.v.).
+
+\verb"\epsilon" is $\epsilon$ (math mode).
+
+\verb"\equiv" is $\equiv$ (math mode).
+
+\verb"\eta" is $\eta$ (math mode).
+
+\verb"\evensidemargin" --- distance between left side of page and text's
+	normal left margin, for even-numbered pages in two-sided printing.
+
+\verb"\exists" is $\exists$ (math mode).
+
+\verb"\exp" is $\exp$ (math mode).
+
+%fff
+\verb"\fbox{text}" makes a \fbox{framed box} around \verb"text".
+
+\verb"\fboxrule" --- thickness of ruled frame for \verb"\fbox" and
+	\verb"\framebox".
+
+\verb"\fboxsep" --- space between frame and text for \verb"\fbox" and
+	\verb"\framebox".
+
+\verb"\fill" --- rubber length (glue) that can stretch to arbitrary length.
+	Usually used to justify text a particular way.
+
+\verb"\flat" is $\flat$ (math mode).
+
+\verb"\floatpagefraction" --- minimum fraction of a float page occupied by
+	floats.
+
+\verb"\floatsep" --- distance between floats that appear at the top
+	or bottom of a text page.
+
+\verb"\flushbottom" causes pages to be stretched to \verb"\textheight".
+
+\verb"\fnsymbol{counter}" prints \verb"counter" as one of the set of
+	``footnote symbols''.  \verb"counter" must be less than 10.
+
+\verb"\footheight" --- height of box at bottom of page that holds page number.
+
+\verb"\footnote{text}" creates a footnote of \verb"text".
+
+\verb"\footnotemark" puts a footnote number into the text.
+
+\verb"\footnotesep" --- height of strut placed at beginning of footnote.
+
+\verb"\footnotesize" switches to footnote-sized type.
+
+\verb"\footskip" --- vertical distance between bottom of last line of text
+	and bottom of page footing.
+
+\verb"\footnotetext{text}" specifies the text for a footnote which was
+	indicated by a \verb"\footnotemark".
+
+\verb"\forall" is $\forall$ (math mode).
+
+\verb"\frac{numerator}{denominator}" produces a fraction in \verb"math"
+	environments.
+
+\verb"\frame{text}" makes a framed (outlined) box around \verb"text", with
+	no margin between the text and the frame.
+
+\verb"\framebox[size][pos]{text}" produces a \fbox{framed box} of dimension
+	\verb"size" containing \verb"text", optionally \verb"pos"itioned
+	\verb"l" or \verb"r". \ifsmallcrib \relax \else \linebreak \fi
+	In \verb"picture" environment,
+	\verb"\framebox(width,height)[pos]{text}" creates a rectangle
+	around \verb"text"; dimensions of rectangle are \verb"width"
+	and \verb"height";  text is positioned at optional \verb"pos"
+	(see \verb"positions" on page~\pageref{pos-ref}).
+
+\verb"\frown" is $\frown$ (math mode).
+
+\verb"\fussy" is the default declaration for the line-breaking algorithm
+	(cf. \verb"\sloppy").
+
+%ggg
+\verb"\gamma" is $\gamma$. \verb"\Gamma" is $\Gamma$ (math mode).
+
+\verb"\gcd" is $\gcd$ (math mode).
+
+\verb"\ge" is $\ge$ (math mode).
+
+\verb"\geq" is $\geq$ (math mode).
+
+\verb"\gets" is $\gets$ (math mode).
+
+\verb"\gg" is $\gg$ (math mode).
+
+\verb"\glossary{text}" appends \verb"text" to the \verb".glo" file
+	by writing a \verb"\glossaryentry" command.
+	
+\verb"\glossaryentry{text}{ref}" is written to the \verb".glo" file for
+	\verb"\glossary{text}" occuring at reference \verb"ref".
+
+\verb"\grave" makes a grave accent: $\grave a$ (math mode).
+
+%hhh
+\verb"\H" prints a long Hungarian umlaut, as \H o.
+
+\verb"\hat" makes a circumflex: $\hat a$ (math mode).
+
+\verb"\hbar" is $\hbar$ (math mode).
+
+\verb"\headheight" --- height of box at top of page that holds running head.
+
+\verb"\headsep" --- vertical distance between bottom of head and top of text.
+
+\verb"\heartsuit" is $\heartsuit$ (math mode).
+
+\verb"\hfill" is \verb"\hspace{\fill}" (cf. \verb"\fill").
+
+\verb"\hline" draws a horizontal line across all columns of a \verb"tabular"
+	or \verb"array" environment.
+
+\verb"\hom" is $\hom$ (math mode).
+
+\verb"\hookleftarrow" is $\hookleftarrow$ (math mode).
+
+\verb"\hookrightarrow" is $\hookrightarrow$ (math mode).
+
+\verb"\hrulefill" expands to fill horizontal space with horizontal rule.
+
+\verb"\hspace{len}" leaves a horizontal space of dimension \verb"len".
+
+\verb"\hspace*{len}" is like \verb"\hspace{len}" but space is not removed at the
+	beginning or end of a line.
+
+\verb"\huge" switches to a very large typeface.
+	\verb"\Huge" is even bigger.
+
+\verb"\hyphenation{wordlist}" declares hyphenation as indicated;
+	\verb"wordlist" contains words separated by spaces, with hyphens
+	indicated (e.g. ``\verb"aard-vark cal-i-bra-tion"'').
+
+%iii
+\verb"\i" is \i.
+
+\verb"\iff" is $\iff$ (math mode).
+
+\verb"\Im" is $\Im$ (math mode).
+
+\verb"\imath" is $\imath$ (math mode).
+
+\verb"\in" is $\in$ (math mode).
+
+\verb"\include{filename}" brings in \verb"filename" text at that point.
+
+\verb"\includeonly{file1,file2,...}" limits recognition of \verb"\include"
+	files.
+
+\verb"\index{text}" appends \verb"text" to the \verb".idx" file
+	by writing an \verb"\indexentry" command.
+	
+\verb"\indexentry{text}{ref}" is written to the \verb".idx" file for
+	\verb"\index{text}" occuring at reference \verb"ref".
+
+\verb"\indexspace" puts blank space before first index entry starting with
+	a new letter.
+
+\verb"\inf" is $\inf$ (math mode).
+
+\verb"\infty" is $\infty$ (math mode).
+
+\verb"\input{file}" brings in text from \verb"file.tex" at that point.
+
+\verb"\int" is $\int$ (math mode).
+
+\verb"\intextsep" --- vertical space placed above and below float in middle
+	of text.
+
+\verb"\iota" is $\iota$ (math mode).
+
+\verb"\it" switches to {\it Italic\/} type.
+
+\verb"\item[text]" indicates a list entry.  \verb"text" is optional, used in
+	\verb"description" environment.
+
+\verb"\itemindent" --- extra indentation before label in list item.  Default
+	is \verb"0mm".
+
+\verb"\itemsep" --- vertical space between successive list items.
+
+%jjj
+\verb"\j" is \j.
+
+\verb"\jmath" is $\jmath$ (math mode).
+
+\verb"\Join" is $\Join$ (math mode).
+
+%kkk
+\verb"\kappa" is $\kappa$ (math mode).
+
+\verb"\ker" is $\ker$ (math mode).
+
+\verb"\kill" --- in a \verb"\tabbing" environment, deletes previous line so
+	tabs can be set without outputting text.
+
+%lll
+\verb"\l" is \l.  \verb"\L" is \L.
+
+\verb"\label{text}" provides a reference point that is accessed with
+	\verb"\ref{text}" or \verb"\pageref{text}".
+
+\verb"\labelwidth" --- width of box containing list item label.
+
+\verb"\labelsep" --- space between box containing list item label and text
+	of the item.
+
+\verb"\lambda" is $\lambda$. \verb"\Lambda" is $\Lambda$ (math mode).
+
+\verb"\land" is $\land$ (math mode).
+
+\verb"\langle" is $\langle$ (math mode).
+
+\verb"\large", \verb"\Large", and \verb"\LARGE" switch to successively
+	larger than \verb"\normalsize" type sizes.
+
+\verb"\LaTeX" produces the \LaTeX{} logo.
+
+\verb"\lbrace" is $\lbrace$ (math mode).
+
+\verb"\lbrack" is $\lbrack$ (math mode).
+
+\verb"\lceil" is $\lceil$ (math mode).
+
+\verb"\ldots" makes three dots at the base of the line: \ldots
+	(cf.\ \verb"\cdots").
+
+\verb"\le" is $\le$ (math mode).
+
+\verb"\leadsto" is $\leadsto$ (math mode).
+
+\verb"\left*" (where \verb"*" is a delimiter) must be paired with
+	\verb"\right*" (not necessarily using the same delimiter).
+	`.' acts as a null delimiter (math mode).
+
+\verb"\leftarrow" is $\leftarrow$. \verb"\Leftarrow" is $\Leftarrow$
+	(math mode).
+
+\verb"\lefteqn{formula}" is used in the \verb"eqnarray" environment to
+	break a long \verb"formula" across lines.
+
+\verb"\leftharpoondown" is $\leftharpoondown$ (math mode).
+
+\verb"\leftharpoonup" is $\leftharpoonup$ (math mode).
+
+\verb"\leftmargin", in \verb"list" environment, horizontal distance between left
+	margin of enclosing environment and left margin of list.
+	Settable for nesting levels 1 through 6, as \verb"\leftmargini"
+	through \verb"\leftmarginvi".
+
+\verb"\leftrightarrow" is $\leftrightarrow$. \verb"\Leftrightarrow" is
+	$\Leftrightarrow$ (math mode).
+
+\verb"\leq" is $\leq$ (math mode).
+
+\verb"\lfloor" is $\lfloor$ (math mode).
+
+\verb"\lg" is $\lg$ (math mode).
+
+\verb"\lhd" is $\lhd$ (math mode).
+
+\verb"\lim" is $\lim$ (math mode).
+
+\verb"\liminf" is $\liminf$ (math mode).
+
+\verb"\limsup" is $\limsup$ (math mode).
+
+\verb"\line(x,y){len}" in \verb"picture" environment, in \verb"\put" command,
+	draws line from \verb"\put" argument with length \verb"len" and
+	slope \verb"(x,y)".
+
+\verb"\linebreak[n]" forces a line to break exactly at this point, and
+	adjusts line just terminated (cf.\ \verb"newline"). \verb"n" is
+	optional: 0 is an optional break, 4 is a mandatory
+	break, 1, 2 and 3 are intermediate levels of insistency.
+\label{break-ref}
+
+\verb"\linethickness{dimen}" sets the thickness for all lines in a
+	\verb"picture".
+
+\verb"\linewidth" is the width of the current line in a paragraph.
+
+\verb"\listoffigures" begins a list of figures with heading.
+
+\verb"\listoftables" begins a list of tables with heading.
+
+\verb"\listparindent" --- extra indentation added to first line of every
+	paragraph of an item after the first, in \verb"list" environment.
+
+\verb"\ll" is $\ll$ (math mode).
+
+\verb"\ln" is $\ln$ (math mode).
+
+\verb"\lnot" is $\lnot$ (math mode).
+
+\verb"\log" is $\log$ (math mode).
+
+\verb"\longleftarrow" is $\longleftarrow$.
+	\verb"\Longleftarrow" is $\Longleftarrow$ (math mode).
+
+\verb"\longleftrightarrow" is $\longleftrightarrow$.
+	\verb"\Longleftrightarrow" is $\Longleftrightarrow$ (math mode).
+
+\verb"\longmapsto" is $\longmapsto$ (math mode).
+
+\verb"\longrightarrow" is $\longrightarrow$.
+	\verb"\Longrightarrow" is $\Longrightarrow$ (math mode).
+
+\verb"\lor" is $\lor$ (math mode).
+
+\verb"\lq" is a left-quote: \lq.
+
+%mmm
+\verb"\makebox[size][pos]{text}" creates a box of dimension \verb"size"
+	containing \verb"text" at optional \verb"pos".
+	\verb"\makebox(width,height)[pos]{text}" puts \verb"text" in a box;
+	dimensions of box are \verb"width" and \verb"height";  \verb"text"
+	is positioned at optional \verb"pos"
+	(see \verb"positions" on page~\pageref{pos-ref}).
+
+\verb"\makeglossary" enables writing of \verb"\glossaryentry" commands to
+	a \verb".glo" file.
+
+\verb"\makeindex" enables writing of \verb"\indexentry" commands to a
+	\verb".idx" file.
+
+\verb"\maketitle" produces a title with \verb"\title", \verb"\author",
+	and, optionally, \verb"\date".
+
+\verb"\mapsto" is $\mapsto$ (math mode).
+
+\verb"\marginpar{text}" puts \verb"text" in the margin as a note.
+
+\verb"\marginparpush" --- minimum amount of vertical space between two
+	marginal notes.
+
+\verb"\marginparsep" --- horizontal space between margin and marginal note.
+
+\verb"\marginparwidth" --- width of a marginal note.
+
+\verb"\markboth{lhd}{rhd}" defines the left-hand heading \verb"lhd" and
+	the right-hand heading \verb"rhd" for the \verb"headings" and
+	\verb"myheadings" page styles.
+
+\verb"\markright{rhd}" defines the right-hand heading \verb"rhd" for the
+	\verb"headings" and \verb"myheadings" page styles.
+
+\verb"\max" is $\max$ (math mode).
+
+\verb"\mbox{text}" places \verb"text" into a horizontal box.
+
+\verb"\medskip" --- standard ``medium'' vertical skip.
+
+\verb"\medskipamount" --- default length for \verb"\medskip".
+
+\verb"\mho" is $\mho$ (math mode).
+
+\verb"\mid" is $\mid$ (math mode).
+
+\verb"\min" is $\min$ (math mode).
+
+\verb"\mit" is ``math italic'' as in ${\mit \Pi}$ (math mode).
+
+\verb"\models" is $\models$ (math mode).
+
+\verb"\month" --- current month of the year.
+
+\verb"\mp" is $\mp$ (math mode).
+
+\verb"\mu" is $\mu$ (math mode).
+
+\verb"\multicolumn{noc}{fmt}{text}" in \verb"tabular" environment puts
+	\verb"text" across \verb"noc" columns using positioning format
+	\verb"fmt" (\verb"c", \verb"r", \verb"l", and/or \verb"|").
+
+\verb"\multiput("$x,y$\verb")("$\Delta x,\Delta y$\verb"){n}{obj}" is
+	\ifsmallcrib \relax \else \linebreak \fi
+	\verb"\put("$x,y$\verb"){obj}" \newline
+	\verb"\put("$x+\Delta x,y+\Delta y$\verb"){obj}" \newline
+	$\cdots$\newline
+	\verb"\put("$x+(n-1)\Delta x,y+(n-1)\Delta y$\verb"){obj}".
+
+%nnn
+\verb"\nabla" is $\nabla$ (math mode).
+
+\verb"\natural" is $\natural$ (math mode).
+
+\verb"\ne" is $\ne$ (math mode).
+
+\verb"\nearrow" is $\nearrow$ (math mode).
+
+\verb"\neg" is $\neg$ (math mode).
+
+\verb"\neq" is $\neq$ (math mode).
+
+\verb"\newcommand{\cs}[narg]{def}" defines a new control sequence \verb"\cs"
+	with definition \verb"def". Optionally, \verb"narg" is the number
+	of arguments, indicated in \verb"def" as \verb"#1", \verb"#2",
+	etc.
+
+\verb"\newcounter{counter}[name]" defines a \verb"counter" optionally
+	to be zeroed whenever the \verb"name" counter is incremented.
+
+\verb"\newenvironment{envname}[narg]{def1}{def2}" defines a new environment,
+	optionally with some number of arguments \verb"narg".  \verb"def1"
+	is executed when the environment in entered and \verb"def2" is
+	executed when it is exited.
+
+\verb"\newfont{cs}{name}" defines a control sequence \verb"\cs" that
+	chooses the font \verb"name".
+
+\verb"\newlength{\nl}" sets up \verb"\nl" as a length of \verb"0in". See
+	also \verb"\setlength", \verb"\addtolength", \verb"\settowidth".
+
+\verb"\newline" breaks a line right where it is, with no stretching of
+	terminated line (cf.\ \verb"\linebreak").
+
+\verb"\newpage" ends a page where it appears. (cf.\ \verb"\clearpage").
+
+\verb"\newsavebox{\binname}" declares a new \verb"bin" to hold a
+	\verb"\savebox".
+
+\verb"\newtheorem{env}[env2]{label}[sectyp]" defines a new theorem environment
+	\verb"env" (optionally with the same numbering scheme as environment
+	\verb"env2") with labels \verb"label".  Optionally, theorem numbers
+	can be related to document section \verb"sectyp".
+
+\verb"\ni" is $\ni$ (math mode).
+
+\verb"\nofiles" suppresses writing of auxiliary files \verb".idx",
+	\verb".toc", etc.
+
+\verb"\noindent" suppresses indentation of first line of paragraph.
+
+\verb"\nolinebreak[n]" prevents a line break at that point
+	(cf.\ \verb"\linebreak" on page~\pageref{break-ref}).
+
+\verb"\nonumber" is used in an \verb"eqnarray" environment to suppress
+	equation numbering.
+
+\verb"\nopagebreak[n]" prevents a page break at that point
+	(cf.\ \verb"\linebreak" on page~\pageref{break-ref}).
+
+\verb"\normalmarginpar" is default declaration for placement of marginal
+	notes (cf.\ \verb"\reversemarginpar").
+
+\verb"\normalsize" is the default type size for the document.
+
+\verb"\not" puts a slash through a relational operator:
+	\verb"\not=" is $\not=$ (math mode).
+
+\verb"\notin" is $\notin$ (math mode).
+
+\verb"\nu" is $\nu$ (math mode).
+
+\verb"\nwarrow" is $\nwarrow$ (math mode).
+
+%ooo
+\verb"\o" is \o.  \verb"\O" is \O.
+
+\verb"\obeycr" makes embedded carriage returns act like line terminators.
+
+\verb"\oddsidemargin" --- distance between left side of page and text's normal
+	left margin.
+
+\verb"\odot" is $\odot$ (math mode).
+
+\verb"\oe" is \oe.  \verb"\OE" is \OE.
+
+\verb"\oint" is $\oint$ (math mode).
+
+\verb"\omega" is $\omega$.  \verb"\Omega" is $\Omega$ (math mode).
+
+\verb"\ominus" is $\ominus$ (math mode).
+
+\verb"\onecolumn" sets text in single column (default) (cf.\ \verb"\twocolumn".
+
+\verb"\opening{text}" declares an opening for \verb"letter" document style.
+
+\verb"\oplus" is $\oplus$ (math mode).
+
+\verb"\oslash" is $\oslash$ (math mode).
+
+\verb"\otimes" is $\otimes$ (math mode).
+
+\verb"\oval(x,y)" as an argument to \verb"\put" draws an oval x units
+	wide and y units high.
+
+\verb"\overbrace{text}" gives $\overbrace{text}$ (math mode).
+
+\verb"\overline{text}" gives $\overline{text}$ (math mode).
+
+\verb"\owns" is $\owns$ (math mode).
+
+%ppp
+\verb"\P" is \P.
+
+\verb"\pagebreak[n]" forces a page break at that point
+	(cf.\ \verb"\linebreak" on page~\pageref{break-ref}).
+
+\verb"\pagenumbering{style}" determines page number style; \verb"style" may be
+	\verb"arabic" (3), \verb"roman" (iii), \verb"Roman" (III),
+	\verb"alph" (c), \verb"Alph" (C).
+
+\verb"\pageref{text}" is the page number on which \verb"\label{text}" occurs.
+
+\verb"\pagestyle{sty}" determines characteristics of a page's
+	head and foot.  \verb"sty" may be \verb"plain" (page number only),
+	\verb"empty" (no page number), \verb"headings" (running headings
+	on each page), \verb"myheadings" (user headings).
+
+\verb"\paragraph[toctitle]{text}" begins a new paragraph, automatically headed and
+	numbered.  Optional \verb"toctitle" contains entry for the
+	table of contents if different from \verb"text".
+
+\verb"\paragraph*{text}" begins a paragraph and prints a title, but doesn't include
+	a number or make a table of contents entry.
+
+\verb"\parallel" is $\parallel$ (math mode).
+
+\verb"\parbox[pos]{size}{text}" is a box created in paragraph mode. Text is
+	positioned optionally at \verb"pos" (see \verb"positions" on
+	page~\pageref{pos-ref}). Width is \verb"size".
+
+\verb"\parindent" --- horizontal indentation added at beginning of paragraph.
+
+\verb"\parsep" --- extra vertical space between paragraphs within a list item.
+
+\verb"\parskip" --- extra vertical space between paragraphs, normally.
+
+\verb"\part[toctitle]{text}" begins a new part, automatically headed and
+	numbered.  Optional \verb"toctitle" contains entry for the
+	table of contents if different from \verb"text".
+
+\verb"\part*{text}" begins a part and prints a title, but doesn't include
+	a number or make a table of contents entry.
+
+\verb"\partial" is $\partial$ (math mode).
+
+\verb"\partopsep" --- extra vertical space added before first list item if
+	environment starts a new paragraph.
+
+\verb"\perp" is $\perp$ (math mode).
+
+\verb"\phi" is $\phi$. \verb"\Phi" is $\Phi$ (math mode).
+
+\verb"\pi" is $\pi$. \verb"\Pi" is $\Pi$ (math mode).
+
+\verb"\pm" is $\pm$ (math mode).
+
+\verb"\pmod{modulus}" is ``parenthesized'' modulo expression
+	$u \pmod{2^{e_j}-1}$ (math mode).
+
+\verb"\poptabs" undoes the previous \verb"\pushtabs" command (restore
+	prior tab settings).
+
+\verb"positions", for boxing commands: \verb"t"=top, \verb"b"=bottom,
+	\verb"h"=here, \verb"l"=left, \verb"c"=center, \verb"r"=right,
+	\verb"p"=new page (\verb"figure" environment),
+	\verb"p"=parbox (\verb"tabular" environment), .
+\label{pos-ref}
+
+\verb"\pounds" is \pounds.
+
+\verb"\Pr" is $\Pr$ (math mode).
+
+\verb"\prec" is $\prec$ (math mode).
+
+\verb"\preceq" is $\preceq$ (math mode).
+
+\verb"\prime" is $\prime$ (math mode).
+
+\verb"\prod" is $\prod$ (math mode).
+
+\verb"\propto" is $\propto$ (math mode).
+
+\verb"\protect" permits the use of ``dangerous'' commands in
+	\verb"@"-expressions, or in sectioning command and \verb"\caption"
+	arguments.
+
+\verb"\ps" in \verb"letter" document style permits additional text after
+	\verb"\closing".
+
+\verb"\psi" is $\psi$. \verb"\Psi" is $\Psi$ (math mode).
+
+\verb"\pushtabs" in \verb"tabbing" environment lets you stack tab stop
+	definitions.  Undo with \verb"\poptabs".
+
+\verb"\put(x,y){stuff}" is the basic picture-drawing command.
+	\verb"(x,y)" is the {\em reference point}, whose meaning varies
+	for different \verb"stuff".  \verb"stuff" may be anything
+	that goes in an \verb"\mbox".
+
+%rrr
+\verb"\raggedbottom" causes pages to assume natural height.
+
+\verb"\raggedleft" declares all text that follows is to be flush against
+	the right margin (cf.\ \verb"\begin{flushright}").
+
+\verb"\raggedright" declares all text that follows is to be flush against
+	the left margin (cf.\ \verb"\begin{flushleft}").
+
+\verb"\raisebox{dim}[d2][d3]{text}" moves \verb"text" up by \verb"dim"
+	(which may be negative). Optional \verb"d2" makes system think
+	that \verb"text" extends \verb"d2" above the baseline (and optionally
+	\verb"d3" below it).
+
+\verb"\rangle" is $\rangle$ (math mode).
+
+\verb"\rbrace" is $\rbrace$ (math mode).
+
+\verb"\rbrack" is $\rbrack$ (math mode).
+
+\verb"\rceil" is $\rceil$ (math mode).
+
+\verb"\Re" is $\Re$ (math mode).
+
+\verb"\ref{text}" is the section number in which \verb"\label{text}" occurs.
+
+\verb"\renewcommand{\cs}[narg]{def}" redefines an old control sequence
+	\verb"\cs" with definition \verb"def". Optionally, \verb"narg" is
+	the number of arguments, indicated in \verb"def" as \verb"#1",
+	\verb"#2", etc.
+
+\verb"\renewenvironment{envname}[narg]{def1}{def2}" redefines an old new
+	environment.  See \verb"\newenvironment".
+
+\verb"\restorecr" undoes the \verb"\obeycr" command (makes carriage return
+	a space-producing character).
+
+\verb"\reversemarginpar" causes opposite margin to be used for marginal
+	notes (e.g., left margin on odd-numbered pages).
+
+\verb"\rfloor" is $\rfloor$ (math mode).
+
+\verb"\rhd" is $\rhd$ (math mode).
+
+\verb"\rho" is $\rho$ (math mode).
+
+\verb"\right*" (where \verb"*" is a delimiter) must be paired with
+	\verb"\left*" (not necessarily using the same delimiter).
+	`.' acts as a null delimiter (math mode).
+
+\verb"\rightarrow" is $\rightarrow$.
+	\verb"\Rightarrow" is $\Rightarrow$ (math mode).
+
+\verb"\rightharpoondown" is $\rightharpoondown$ (math mode).
+
+\verb"\rightharpoonup" is $\rightharpoonup$ (math mode).
+
+\verb"\rightleftharpoons" is $\rightleftharpoons$ (math mode).
+
+\verb"\rightmargin" --- in \verb"list" environment, horizontal distance
+	between right margin of enclosing environment and right margin of
+	list. Default \verb"0in".
+
+\verb"\rm" switches to {\rm Roman} type.
+
+\verb"\roman{counter}" prints \verb"counter" in lower-case roman numerals.
+	\verb"\Roman{counter}" prints upper-case roman numerals.
+
+\verb"\rq" is a right-quote: \rq.
+
+\verb"\rule[height]{length}{width}" makes a rectangular blob of ink
+	\verb"length" long, \verb"width" wide, with optional \verb"height"
+	above baseline.
+
+%sss
+\verb"\S" is \S.
+
+\verb"\savebox{\binname}[width][pos]{text}" is exactly like \verb"\makebox"
+	(q.v.), but saves box definition in bin \verb"\binname". Access
+	with \verb"\usebox{\binname}".
+
+\verb"\sbox{\binname}{text}" saves \verb"text" in box \verb"\binname" (see
+	\verb"\savebox", above.).
+
+\verb"\sc" switches to caps and small caps font.
+
+\verb"\scriptsize" switches subscript size type.
+
+\verb"\scriptstyle" switches to sub- or superscript-sized typesetting.
+	\verb"\scriptscriptstyle" switches to second-level (very small)
+	sub- or superscript-sized typesetting (math mode).
+
+\verb"\searrow" is $\searrow$ (math mode).
+
+\verb"\sec" is $\sec$ (math mode).
+
+\verb"\section[toctitle]{text}" begins a new section, automatically headed and
+	numbered.  Optional \verb"toctitle" contains entry for the
+	table of contents if different from \verb"text".
+
+\verb"\section*{text}" begins a section, prints a title, but doesn't include
+	a number or make a table of contents entry.
+
+\verb"\setcounter{counter}{value}" resets the value of \verb"counter".
+
+\verb"\setlength{\nl}{length}" sets value of length command \verb"\nl"
+	to \verb"length".  See also \verb"\addtolength", \verb"\newlength",
+	\verb"\settowidth".
+
+\verb"\setminus" is $\setminus$ (math mode).
+
+\verb"\settowidth{\nl}{text}" sets value of length command \verb"\nl" to the
+	width of \verb"text". See also \verb"\setlength", \verb"\newlength",
+	\verb"\addtolength".
+
+\verb"\sf" switches to {\sf sans serif} font.
+
+\verb"\sharp" is $\sharp$ (math mode).
+
+\verb"\shortstack[pos]{x\\yy\\zzz}" yields \shortstack{x\\yy\\zzz},
+	a one-column tabular arrangement of its arguments.  Optional
+	\verb"pos" can be \verb"l" or \verb"r" for text position.
+
+\verb"\sigma" is $\sigma$. \verb"\Sigma" is $\Sigma$ (math mode).
+
+\verb"\signature{text}" declares a signature for \verb"letter" document style.
+
+\verb"\sim" is $\sim$ (math mode).
+
+\verb"\simeq" is $\simeq$ (math mode).
+
+\verb"\sin" is $\sin$ (math mode).
+
+\verb"\sinh" is $\sinh$ (math mode).
+
+\verb"\sl" switches to {\sl slanted\/} typeface.
+
+\verb"\sloppy" relaxes the line-breaking algorithm to allow more or less
+	distance between words.  Default is \verb"\fussy".
+
+\verb"\small" switches to smaller than \verb"normalsize" typeface.
+
+\verb"\smallint" is $\smallint$ (math mode).
+
+\verb"\smallskip" --- standard ``small'' vertical skip.
+
+\verb"\smallskipamount" --- default length for \verb"\smallskip".
+
+\verb"\smile" is $\smile$ (math mode).
+
+\verb"\spadesuit" is $\spadesuit$ (math mode).
+
+\verb"\sqcap" is $\sqcap$ (math mode).
+
+\verb"\sqcup" is $\sqcup$ (math mode).
+
+\verb"\sqrt[3]{arg}" is $\sqrt[3]{arg}$.  \verb"3" (root) is optional.
+
+\verb"\sqsubset" is $\sqsubset$ (math mode).
+
+\verb"\sqsubseteq" is $\sqsubseteq$ (math mode).
+
+\verb"\sqsupset" is $\sqsupset$ (math mode).
+
+\verb"\sqsupseteq" is $\sqsupseteq$ (math mode).
+
+\verb"\ss" is \ss.
+
+\verb"\stackrel{stuff}{delim}" puts \verb"stuff" above the \verb"delim"iter;
+	\verb"\stackrel{f}{\longrightarrow}"\ yields
+	$\stackrel{f}{\longrightarrow}$ (math mode).
+
+\verb"\star" is $\star$ (math mode).
+
+\verb"\stop" --- type this if \TeX{} stops with a \verb"*" and no error
+	message.
+
+\verb"\subparagraph[toctitle]{text}" begins a subparagraphs, automatically headed and
+	numbered.  Optional \verb"toctitle" contains entry for the
+	table of contents if different from \verb"text".
+
+\verb"\subparagraph*{text}" begins a subparagraph and prints a title, but doesn't include
+	a number or make a table of contents entry.
+
+\verb"\subsection[toctitle]{text}", \verb"\subsubsection[toctitle]{text}" begin new
+	subsections, automatically headed and numbered.  Optional
+	\verb"toctitle" contains entry for the table of contents if
+	different from \verb"text".
+
+\verb"\subsection*{text}", \verb"\subsubsection*{text}" begin subsections,
+	but suppress section number and table of contents entry.
+
+\verb"\subset" is $\subset$ (math mode).
+
+\verb"\subseteq" is $\subseteq$ (math mode).
+
+\verb"\succ" is $\succ$ (math mode).
+
+\verb"\succeq" is $\succeq$ (math mode).
+
+\verb"\sum" is $\sum$ (math mode).
+
+\verb"\sup" is $\sup$ (math mode).
+
+\verb"\supset" is $\supset$ (math mode).
+
+\verb"\supseteq" is $\supseteq$ (math mode).
+
+\verb"\surd" is $\surd$ (math mode).
+
+\verb"\swarrow" is $\swarrow$ (math mode).
+
+\verb"\symbol{cc}" produces the symbol (glyph) character code \verb"cc"
+	in the current font.
+
+%ttt
+\verb"\t" prints a ``tie-after'' accent, as \t oo.
+
+\verb"\tabbingsep" --- distance to left of a tab stop moved by \verb"\'".
+
+\verb"\tabcolsep" --- half the width of the space between columns in
+	\verb"tabular" environment.
+
+\verb"\tableofcontents" produces a table of contents. A \verb".toc" file
+	must have been generated during a previous \LaTeX{} run.
+
+\verb"\tan" is $\tan$ (math mode).
+
+\verb"\tanh" is $\tanh$ (math mode).
+
+\verb"\tau" is $\tau$ (math mode).
+
+\verb"\TeX" produces the \TeX{} logo.
+
+\verb"\textfloatsep" --- distance between floats at the top
+	or bottom of a single-column page and the text on that page.
+
+\verb"\textfraction" --- minimum fraction of a text page that must contain text.
+
+\verb"\textheight" is the normal vertical dimension of the body of the page.
+
+\verb"\textstyle" switches to \verb"math" environment typesetting (math mode).
+
+\verb"\textwidth" is the normal horizontal dimension of the body of the page.
+
+\verb"\thanks{footnote}" adds an acknowledgement footnote to an author's
+	name used in a \verb"\maketitle" command.
+
+\verb"\theta" is $\theta$. \verb"\Theta" is $\Theta$ (math mode).
+
+\verb"\thicklines" is an alternate line thickness for lines in a \verb"picture"
+	environment.  See also \verb"linethickness".
+
+\verb"\thinlines" is the default declaration for line thicknesses in a
+	\verb"picture" environment.  See \verb"\thicklines".
+
+\verb"\thinspace" is the proper space between single and double quotes, as
+	in '\thinspace''.
+
+\verb"\thispagestyle{sty}" determines characteristics of
+	head and foot for the current page only.  Used to
+	override \verb"\pagestyle" (q.v.) temporarily.
+
+\verb"\tilde" makes a tilde, as: $\tilde a$ (math mode).
+
+\verb"\times" is $\times$ (math mode).
+
+\verb"\tiny" switches to a very small typeface.
+
+\verb"\title{text}" declares a document title for the \verb"\maketitle" command.
+
+\verb"\to" is $\to$ (math mode).
+
+\verb"\today" generates today's date.
+
+\verb"\top" is $\top$ (math mode).
+
+\verb"\topfraction" --- maximum fraction at the top of a single-column
+	page that may be occupied by floats.
+
+\verb"\topmargin" --- space between top of \TeX{} page (1 inch from top of
+	paper) and top of header.
+
+\verb"\topsep" --- extra vertical space added before first list item and
+	after last list item.
+
+\verb"\topskip" --- minimum distance between top of page body to bottom
+	of first line of text.
+
+\verb"\triangle" is $\triangle$ (math mode).
+
+\verb"\triangleleft" is $\triangleleft$ (math mode).
+
+\verb"\triangleright" is $\triangleright$ (math mode).
+
+\verb"\tt" switches to {\tt typewriter} type.
+
+\verb"\twocolumn[text]" declares a two-column page, with optional full-page
+	width heading \verb"text".
+
+\verb"\typein[\cs]{text}" displays \verb"text" on the screen and waits for
+	you to enter stuff which will be put in the document at that point.
+	Optional control sequence \verb"\cs" can be assigned the value
+	of your input, to be used later.
+
+\verb"\typeout{text}" displays \verb"text" on the screen and writes it to
+	the \verb".lis" file.
+
+%uuu
+\verb"\u" prints a breve accent, as \u o.
+
+\verb"\unboldmath" unemboldens math italics and math symbols.  Should
+	be used {\em outside} of math mode.
+
+\verb"\underbrace{text}" gives $\underbrace{text}$ (math mode).
+
+\verb"\underline{text}" gives \underline{text} (math mode or not).
+
+\verb"\unitlength" --- length of coordinate units for \verb"picture"
+	environment.
+
+\verb"\unlhd" is $\unlhd$ (math mode).
+
+\verb"\unrhd" is $\unrhd$ (math mode).
+
+\verb"\uparrow" is $\uparrow$. \verb"\Uparrow" is $\Uparrow$ (math mode).
+
+\verb"\updownarrow" is $\updownarrow$. \verb"\Updownarrow" is $\Updownarrow$
+	(math mode).
+
+\verb"\uplus" is $\uplus$ (math mode).
+
+\verb"\upsilon" is $\upsilon$. \verb"\Upsilon" is $\Upsilon$ (math mode).
+
+\verb"\usebox{\binname}" recalls box definition saved in box
+	\verb"\binname".
+
+\verb"\usecounter{counter}" is used in a \verb"list" environment to cause
+	\verb"counter" to be used to number the items.
+
+%vvv
+\verb"\v" prints a h\'a\v cek, as \v o.
+
+\verb"\value{counter}" produces the numeric value of \verb"counter".
+
+\verb"\varepsilon" is $\varepsilon$ (math mode).
+
+\verb"\varphi" is $\varphi$ (math mode).
+
+\verb"\varpi" is $\varpi$ (math mode).
+
+\verb"\varrho" is $\varrho$ (math mode).
+
+\verb"\varsigma" is $\varsigma$ (math mode).
+
+\verb"\vartheta" is $\vartheta$ (math mode).
+
+\verb"\vdash" is $\vdash$ (math mode).
+
+\verb"\vdots" is $\vdots$ (math mode).
+
+\verb"\vec" puts a vector over a letter: $\vec a$ (math mode).
+
+\verb"\vector(x,y){len}" in \verb"picture" environment, in \verb"\put"
+	command, draws vector from \verb"\put" argument with length \verb"len"
+	and slope \verb"(x,y)", with arrowhead.
+
+\verb"\vee" is $\vee$ (math mode).
+
+\verb"\verb/text/" creates a local \verb"verbatim" environment for \verb"text",
+	printed in \verb"typewriter" font. Note that \verb"text"
+	is {\em not} in curly braces; it is between two identical delimiters,
+	neither of which appears in \verb"text".
+
+\verb"\verb*/text/" is like \verb"\verb/text/", but spaces print out
+	as \verb*" ".
+
+\verb"\vert" is $\vert$. \verb"\Vert" is $\Vert$ (math mode).
+
+\verb"\vfill" is \verb"\vspace{\fill}" (cf. \verb"\fill").
+
+\verb"\vspace{len}" leaves a vertical space of dimension \verb"len".
+
+\verb"\vspace*{len}" is like \verb"\vspace{len}" but space is not removed at the
+	beginning or end of a page.
+
+%www
+\verb"\wedge" is $\wedge$ (math mode).
+
+\verb"\widehat{arg}" is $\widehat{arg}$ (math mode).
+
+\verb"\widetilde{arg}" is $\widetilde{arg}$ (math mode).
+
+\verb"\wp" is $\wp$ (math mode).
+
+\verb"\wr" is $\wr$ (math mode).
+
+%xxx
+\verb"\xi" is $\xi$. \verb"\Xi" is $\Xi$ (math mode).
+
+%yyy
+\verb"\year" --- current year (A.D.).
+
+%zzz
+\verb"\zeta" is $\zeta$ (math mode).
+
+\endinput

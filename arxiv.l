@@ -1,7 +1,7 @@
 %{
 
 
-int lineno = 0;
+int lineno = 1;
 int bal_parens = 0;
 %}
 
@@ -31,6 +31,8 @@ int bal_parens = 0;
 
 %%
 
+\\qquad	;
+
 \\documentclass { BEGIN documentclass; }
 <documentclass>.* { BEGIN 0; printf("documentclass:lineno:%d:%s\n",lineno,yytext);}
 
@@ -54,6 +56,7 @@ int bal_parens = 0;
 <author>[^{}]+ {
 	int i = 0;
 	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
 		printf("%c",yytext[i]);
 	}}
 

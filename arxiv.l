@@ -3,6 +3,15 @@
 
 int lineno = 1;
 int bal_parens = 0;
+enum {
+	LOOKUP = 0,
+	COMMENT,
+	AUTHOR
+};
+
+int state;
+int add_match(int type, char *results);
+int lookup(char *results);
 %}
 
 %s appendix
@@ -16,6 +25,8 @@ int bal_parens = 0;
 %s caption
 %s centering
 %s cite
+%s citet
+%s citep
 %s date
 %s documentclass
 %s figref
@@ -85,8 +96,64 @@ int bal_parens = 0;
 \\begin"{figure}"     { BEGIN begin_figure; }
 <begin_figure>.* { BEGIN 0; printf("begin_figure:lineno:%d:%s\n",lineno,yytext);}
 
-\\cite     { BEGIN cite; }
-<cite>.* { BEGIN 0; printf("cite:lineno:%d:%s\n",lineno,yytext);}
+\\citet  { BEGIN citet; printf("citet:lineno:%d",lineno); }
+<citet>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<citet>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<citet>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	}}
+
+\\citep  { BEGIN citet; printf("citep:lineno:%d",lineno); }
+<citep>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<citep>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<citep>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	}}
+
+
+
+\\cite  { BEGIN citet; printf("cite:lineno:%d",lineno); }
+<cite>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<cite>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<cite>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	}}
+
+
+
 	
 \\figref     { BEGIN figref; }
 <figref>.* { BEGIN 0; printf("figref:lineno:%d:%s\n",lineno,yytext);}
@@ -112,8 +179,25 @@ int bal_parens = 0;
 \\centering     { BEGIN centering; }
 <centering>.* { BEGIN 0; printf("centering:lineno:%d:%s\n",lineno,yytext);}
 
-\\footnote     { BEGIN footnote; }
-<footnote>.* { BEGIN 0; printf("footnote:lineno:%d:%s\n",lineno,yytext);}
+
+\\footnote  { BEGIN citet; printf("footnote:lineno:%d",lineno); }
+<footnote>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<footnote>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<footnote>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	}}
+
 
 \\label     { BEGIN label; }
 <label>.* { BEGIN 0; printf("label:lineno:%d:%s\n",lineno,yytext);}
@@ -121,7 +205,40 @@ int bal_parens = 0;
 .	;
 %%
 int main(int argc, char* argv[]){
+	int match_found = 0;
 	yyin = fopen(argv[1],"r");
 	yylex();
+	add_match(10,"hello");
+	match_found = lookup("hello");
+	printf("%d\n",match_found);
 	return 0;
 }
+
+//lexandyacc.pdf///////////////////////////////
+struct results {
+	char *match;
+	int match_type;
+	struct results *next;
+};
+
+struct results *results_list;
+extern void *malloc();
+
+int add_match(int type, char* results){
+	struct results *rp;
+	rp = (struct results *) malloc(sizeof(struct results));
+	rp->next = results_list;
+	rp->match = (char *)malloc(strlen(results)+1);
+	strcpy(rp->match, results);
+	rp->match_type = type;
+	results_list = rp;
+	return 1;
+}
+
+int lookup(char *results){
+	struct results *rp = results_list;
+	for(; rp; rp = rp->next){
+		if(strcmp(rp->match,results) == 0)
+			{ return rp->match_type; }else {
+			return 0;}}}
+///////////////////////////////////////////

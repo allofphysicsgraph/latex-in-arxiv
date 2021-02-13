@@ -41,6 +41,8 @@ int lookup(char *results);
 %s usepackage
 %s comment
 %s ref
+%s emph
+%s url
 
 
 %%
@@ -66,6 +68,48 @@ int lookup(char *results);
 
 \\title     { BEGIN title; }
 <title>.* { BEGIN 0; printf("title:lineno:%d:%s\n",lineno,yytext);}
+
+
+\\url {bal_parens = 0; BEGIN url; printf("url:lineno:%d:%s",lineno,yytext);}
+<url>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<url>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<url>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	} else {printf("%s",yytext);
+}}
+
+
+\\emph {bal_parens = 0; BEGIN emph; printf("emph:lineno:%d:%s",lineno,yytext);}
+<emph>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<emph>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<emph>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	} else {printf("%s",yytext);
+}}
+
+
 
 \\ref {bal_parens = 0; BEGIN ref; printf("ref:lineno:%d:%s",lineno,yytext);}
 <ref>"{"  { bal_parens++;

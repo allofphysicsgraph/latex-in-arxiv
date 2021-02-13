@@ -39,11 +39,17 @@ int lookup(char *results);
 %s subsection
 %s title
 %s usepackage
+%s comment
 
 
 %%
 
 \\qquad	;
+\\vspace"{".*?"}"	;
+
+^"%"	{ BEGIN comment; }
+<comment>.* { printf("commnet:lineno:%d:%s\n",lineno,yytext); BEGIN 0; }
+
 
 \\documentclass { BEGIN documentclass; }
 <documentclass>.* { BEGIN 0; printf("documentclass:lineno:%d:%s\n",lineno,yytext);}

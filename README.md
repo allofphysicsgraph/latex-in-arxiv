@@ -20,3 +20,17 @@ for details, see https://arxiv.org/help/bulk_data_s3
 # mkdir TEX  
 # mv *.tex TEX/  
 ```
+
+## build the parser
+```
+flex arxiv.l
+gcc lex.yy.c -lfl
+a.out your_latex_file.tex
+```
+
+## using the Docker container
+on Mac,
+```
+make docmac
+make parser
+```

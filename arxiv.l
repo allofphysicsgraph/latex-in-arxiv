@@ -40,6 +40,7 @@ int lookup(char *results);
 %s title
 %s usepackage
 
+
 %%
 
 \\qquad	;
@@ -74,8 +75,9 @@ int lookup(char *results);
 <author>"}"	{ bal_parens--; 
 	if(bal_parens == 0 ){
 		BEGIN 0; 
-		printf("%s",yytext);
-	}}
+		printf("%s\n",yytext);
+	} else {printf("%s",yytext);
+}}
 
 
 \\date     { BEGIN date; }
@@ -87,8 +89,24 @@ int lookup(char *results);
 \\maketitle     { BEGIN maketitle; }
 <maketitle>.* { BEGIN 0; printf("maketitle:lineno:%d:%s\n",lineno,yytext);}
 
-\\begin"{abstract}"     { BEGIN begin_abstract; }
-<begin_abstract>.* { BEGIN 0; printf("begin_abstract:lineno:%d:%s\n",lineno,yytext);}
+\\begin"{"abstract"}"     { BEGIN begin_abstract; printf("begin_abstract:lineno:%d\n",lineno,yytext); }
+<begin_abstract>\n	{ printf("\n"); lineno++; }
+<begin_abstract>.*	{ 
+int i = 0 ;
+for(i=0;i<yyleng;i++){
+	if( (yyleng>(i+12)) && (yytext[i]=='\\') && (yytext[i+1]=='e') && 
+	    (yytext[i+4]=='{') && (yytext[i+13]=='}') && (yytext[i+12]=='t') && (yytext[i+11]=='c') && 
+	    (yytext[i+10]=='a')) {
+            printf("\nend_abstract:lineno:%d\n",lineno); BEGIN 0;
+} else {
+	printf("%c",yytext[i]);
+}}}
+
+
+
+
+
+
 
 \\section     { BEGIN section; }
 <section>.* { BEGIN 0; printf("section:lineno:%d:%s\n",lineno,yytext);}

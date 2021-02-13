@@ -40,6 +40,7 @@ int lookup(char *results);
 %s title
 %s usepackage
 %s comment
+%s ref
 
 
 %%
@@ -65,6 +66,26 @@ int lookup(char *results);
 
 \\title     { BEGIN title; }
 <title>.* { BEGIN 0; printf("title:lineno:%d:%s\n",lineno,yytext);}
+
+\\ref {bal_parens = 0; BEGIN ref; printf("ref:lineno:%d:%s",lineno,yytext);}
+<ref>"{"  { bal_parens++;
+	printf("%s",yytext);
+} 
+
+<ref>[^{}]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineno++;}
+		printf("%c",yytext[i]);
+	}}
+
+<ref>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		BEGIN 0; 
+		printf("%s\n",yytext);
+	} else {printf("%s",yytext);
+}}
+
 
 \\author     { BEGIN author; printf("author:lineno:%d:%s",lineno,yytext);}
 <author>"{"  { bal_parens++;

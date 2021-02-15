@@ -160,7 +160,7 @@ int lookup(char *results);
 \\maketitle     { BEGIN maketitle; }
 <maketitle>.* { BEGIN 0; printf("maketitle:lineno:%d:%s\n",lineno,yytext);}
 
-\\begin"{"abstract"}"     { BEGIN begin_abstract; printf("begin_abstract:lineno:%d\n",lineno,yytext); }
+\\begin"{"abstract"}"     { BEGIN begin_abstract; printf("begin_abstract:lineno:%d\n",lineno); }
 <begin_abstract>\n	{ printf("\n"); lineno++; }
 <begin_abstract>.*	{ 
 int i = 0 ;

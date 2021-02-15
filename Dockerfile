@@ -1,6 +1,6 @@
 # docker build . -t 'latex'
-# docker run -it --rm latexml:latest /bin/bash
-# docker run -it --rm -v `pwd`:/scratch latexml:latest /bin/bash
+# docker run -it --rm latex:latest /bin/bash
+# docker run -it --rm -v `pwd`:/scratch latex:latest /bin/bash
 
 # https://hub.docker.com/r/phusion/baseimage/tags
 FROM phusion/baseimage:18.04-1.0.0

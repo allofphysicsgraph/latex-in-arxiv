@@ -261,9 +261,8 @@ main(int argc,char **argv)
 	}
 	yylex();
 
-	lookup_word_by_word_type(2,1);
-
-	//lookup_word(argv[2],1);
+	//lookup_word_by_word_type(2,1);
+	lookup_word(argv[2],1);
 	printf("%s %d %s %d %s %d\n","Char Count: ",charCount, "Word Count: ",wordCount,"Line Count: ",lineCount);
 	return 0;
 }

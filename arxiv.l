@@ -1,22 +1,61 @@
 %{
-
-
-int lineno = 1;
+unsigned charCount = 0, wordCount = 0, lineCount = 1;
 int bal_parens = 0;
-enum {
-	LOOKUP = 0,
-	COMMENT,
-	AUTHOR
-};
+int offset=1;
+int add_word(int type, char *word);
+int lookup_word(char *word,int print);
+void update_word(char *word);
+char* auth;
+int count_chars;
 
-int state;
-int add_match(int type, char *results);
-int lookup(char *results);
+int lookup_word_by_word_type(int type,int print);
+
+enum {
+	LOOKUP = 0, /* default - looking rather than defining. */
+
+/*
+1:[a-zA-Z]+
+2:latex author
+3:latex citet
+4:latex cite
+5:latex citep
+6:latex footnote
+*/
+
+
+/*
+\\documentclass
+\\usepackage
+\\renewcommand
+\\newcommand
+\\title
+\\date
+\\begin"{document}"
+\\maketitle
+\\begin"{abstract}"
+\\section
+\\begin"{figure}"
+\\figref
+\\subsection
+\\appendix
+\\appref
+\\bibliography
+\\bibliographystyle
+\\caption
+\\centering
+\\label
+*/
+
+};
 %}
 
+%s author
+%s citet
+%s cite
+%s citep
+%s footnote
 %s appendix
 %s appref
-%s author
 %s begin_abstract
 %s begin_document
 %s begin_figure
@@ -24,13 +63,9 @@ int lookup(char *results);
 %s bibliographystyle
 %s caption
 %s centering
-%s cite
-%s citet
-%s citep
 %s date
 %s documentclass
 %s figref
-%s footnote
 %s label
 %s maketitle
 %s newcommand
@@ -39,295 +74,297 @@ int lookup(char *results);
 %s subsection
 %s title
 %s usepackage
-%s comment
-%s ref
-%s emph
-%s url
 
 
+word [a-zA-Z]+
+eol  \n
 %%
 
-\\qquad	;
-\\vspace"{".*?"}"	;
-
-^"%"	{ BEGIN comment; }
-<comment>.* { printf("commnet:lineno:%d:%s\n",lineno,yytext); BEGIN 0; }
-
-
-\\documentclass { BEGIN documentclass; }
-<documentclass>.* { BEGIN 0; printf("documentclass:lineno:%d:%s\n",lineno,yytext);}
-
-\\usepackage     { BEGIN usepackage; }
-<usepackage>.* { BEGIN 0; printf("usepackage:lineno:%d:%s\n",lineno,yytext);}
-
-\\renewcommand     { BEGIN renewcommand; }
-<renewcommand>.* { BEGIN 0; printf("renewcommand:lineno:%d:%s\n",lineno,yytext);}
-
-\\newcommand     { BEGIN newcommand; }
-<newcommand>.* { BEGIN 0; printf("newcommand:lineno:%d:%s\n",lineno,yytext);}
-
-\\title     { BEGIN title; }
-<title>.* { BEGIN 0; printf("title:lineno:%d:%s\n",lineno,yytext);}
+{word}	{ 
+	wordCount++; charCount += yyleng; 
+	int match = 0;
+	match = lookup_word(yytext,0);
+	if (match == 0){
+		//printf("adding word:%s\n",yytext);
+		add_word(1,yytext);
+	} else {
+		//printf("updating word:%s\n",yytext);
+		update_word(yytext);
+	}
+	offset+= yyleng;
+}
 
 
-\\url {bal_parens = 0; BEGIN url; printf("url:lineno:%d:%s",lineno,yytext);}
-<url>"{"  { bal_parens++;
-	printf("%s",yytext);
-} 
+\\author     { 
+	count_chars=yyleng; 
+	BEGIN author; 
+	}
 
-<url>[^{}]+ {
-	int i = 0;
-	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
-	}}
-
-<url>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	} else {printf("%s",yytext);
-}}
-
-
-\\emph {bal_parens = 0; BEGIN emph; printf("emph:lineno:%d:%s",lineno,yytext);}
-<emph>"{"  { bal_parens++;
-	printf("%s",yytext);
-} 
-
-<emph>[^{}]+ {
-	int i = 0;
-	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
-	}}
-
-<emph>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	} else {printf("%s",yytext);
-}}
-
-
-
-\\ref {bal_parens = 0; BEGIN ref; printf("ref:lineno:%d:%s",lineno,yytext);}
-<ref>"{"  { bal_parens++;
-	printf("%s",yytext);
-} 
-
-<ref>[^{}]+ {
-	int i = 0;
-	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
-	}}
-
-<ref>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	} else {printf("%s",yytext);
-}}
-
-
-\\author     { BEGIN author; printf("author:lineno:%d:%s",lineno,yytext);}
-<author>"{"  { bal_parens++;
-	printf("%s",yytext);
+<author>"{"  {
+	count_chars++; 
+	bal_parens++;
 } 
 
 <author>[^{}]+ {
+	add_word(2,yytext);
 	int i = 0;
 	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
 	}}
 
 <author>"}"	{ bal_parens--; 
 	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	} else {printf("%s",yytext);
-}}
+		count_chars++;
+		BEGIN 0;
+	}}
 
 
-\\date     { BEGIN date; }
-<date>.* { BEGIN 0; printf("date:lineno:%d:%s\n",lineno,yytext);}
+\\citet  { 
+	count_chars=yyleng; 
+	BEGIN citet; 
+	}
 
-\\begin"{document}"     { BEGIN begin_document; }
-<begin_document>.* { BEGIN 0; printf("begin_document:lineno:%d:%s\n",lineno,yytext);}
-
-\\maketitle     { BEGIN maketitle; }
-<maketitle>.* { BEGIN 0; printf("maketitle:lineno:%d:%s\n",lineno,yytext);}
-
-\\begin"{"abstract"}"     { BEGIN begin_abstract; printf("begin_abstract:lineno:%d\n",lineno); }
-<begin_abstract>\n	{ printf("\n"); lineno++; }
-<begin_abstract>.*	{ 
-int i = 0 ;
-for(i=0;i<yyleng;i++){
-	if( (yyleng>(i+12)) && (yytext[i]=='\\') && (yytext[i+1]=='e') && 
-	    (yytext[i+4]=='{') && (yytext[i+13]=='}') && (yytext[i+12]=='t') && (yytext[i+11]=='c') && 
-	    (yytext[i+10]=='a')) {
-            printf("\nend_abstract:lineno:%d\n",lineno); BEGIN 0;
-} else {
-	printf("%c",yytext[i]);
-}}}
-
-
-
-
-
-
-
-\\section     { BEGIN section; }
-<section>.* { BEGIN 0; printf("section:lineno:%d:%s\n",lineno,yytext);}
-
-\\begin"{figure}"     { BEGIN begin_figure; }
-<begin_figure>.* { BEGIN 0; printf("begin_figure:lineno:%d:%s\n",lineno,yytext);}
-
-\\citet  { BEGIN citet; printf("citet:lineno:%d",lineno); }
-<citet>"{"  { bal_parens++;
-	printf("%s",yytext);
+<citet>"{"   {
+	count_chars++; 
+	bal_parens++;
 } 
 
 <citet>[^{}]+ {
+	add_word(3,yytext);
 	int i = 0;
 	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
 	}}
 
-<citet>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	}}
-
-\\citep  { BEGIN citet; printf("citep:lineno:%d",lineno); }
-<citep>"{"  { bal_parens++;
-	printf("%s",yytext);
-} 
-
-<citep>[^{}]+ {
-	int i = 0;
-	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
-	}}
-
-<citep>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	}}
+<citet>"}" { bal_parens--; 
+		if(bal_parens == 0 ){
+			count_chars++;
+			BEGIN 0;
+		}
+	}
 
 
+\\cite  { 
+	count_chars=yyleng; 
+	BEGIN cite; 
+	}
 
-\\cite  { BEGIN citet; printf("cite:lineno:%d",lineno); }
-<cite>"{"  { bal_parens++;
-	printf("%s",yytext);
+<cite>"{"   {
+	count_chars++; 
+	bal_parens++;
 } 
 
 <cite>[^{}]+ {
+	add_word(4,yytext);
 	int i = 0;
 	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
 	}}
 
-<cite>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
+<cite>"}" { bal_parens--; 
+		if(bal_parens == 0 ){
+			count_chars++;
+			BEGIN 0;
+		}
+	}
+
+
+
+\\citep  { 
+	count_chars=yyleng; 
+	BEGIN citep; 
+	}
+
+<citep>"{"   {
+	count_chars++; 
+	bal_parens++;
+} 
+
+<citep>[^{}]+ {
+	add_word(5,yytext);
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
 	}}
 
+<citep>"}" { bal_parens--; 
+		if(bal_parens == 0 ){
+			count_chars++;
+			BEGIN 0;
+		}
+	}
 
 
-	
-\\figref     { BEGIN figref; }
-<figref>.* { BEGIN 0; printf("figref:lineno:%d:%s\n",lineno,yytext);}
-	
-\\subsection     { BEGIN subsection; }
-<subsection>.* { BEGIN 0; printf("subsection:lineno:%d:%s\n",lineno,yytext);}
-
-\\appendix     { BEGIN appendix; }
-<appendix>.* { BEGIN 0; printf("appendix:lineno:%d:%s\n",lineno,yytext);}
-
-\\appref     { BEGIN appref; }
-<appref>.* { BEGIN 0; printf("appref:lineno:%d:%s\n",lineno,yytext);}
-
-\\bibliography     { BEGIN bibliography; }
-<bibliography>.* { BEGIN 0; printf("bibliography:lineno:%d:%s\n",lineno,yytext);}
-
-\\bibliographystyle     { BEGIN bibliographystyle; }
-<bibliographystyle>.* { BEGIN 0; printf("bibliographystyle:lineno:%d:%s\n",lineno,yytext);}
-
-\\caption     { BEGIN caption; }
-<caption>.* { BEGIN 0; printf("caption:lineno:%d:%s\n",lineno,yytext);}
-
-\\centering     { BEGIN centering; }
-<centering>.* { BEGIN 0; printf("centering:lineno:%d:%s\n",lineno,yytext);}
+\\footnote  {
+	count_chars=yyleng; 
+	BEGIN footnote; 
+	}
 
 
-\\footnote  { BEGIN citet; printf("footnote:lineno:%d",lineno); }
-<footnote>"{"  { bal_parens++;
-	printf("%s",yytext);
+<footnote>"{"  {
+	count_chars++; 
+	bal_parens++;
 } 
 
 <footnote>[^{}]+ {
+	add_word(6,yytext);
 	int i = 0;
 	for(i=0;i<yyleng;i++){
-		if(yytext[i]=='\n'){lineno++;}
-		printf("%c",yytext[i]);
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
 	}}
 
 <footnote>"}"	{ bal_parens--; 
-	if(bal_parens == 0 ){
-		BEGIN 0; 
-		printf("%s\n",yytext);
-	}}
+		if(bal_parens == 0 ){
+			count_chars++;
+			BEGIN 0;
+		}
+	}
 
 
-\\label     { BEGIN label; }
-<label>.* { BEGIN 0; printf("label:lineno:%d:%s\n",lineno,yytext);}
-\n	{ lineno++;}
-.	;
+
+
+{eol}	{ 
+
+	charCount++; lineCount++; offset=1; 
+	
+	}
+.	{ 	
+charCount++; offset++;
+}
+
+
 %%
-int main(int argc, char* argv[]){
-	int match_found = 0;
-	yyin = fopen(argv[1],"r");
+
+int 
+main(int argc,char **argv)
+{
+	if (argc < 3){
+		printf("arg1: filename\narg2: word lookup\n");
+		return 0;
+		}
+
+
+	if (argc > 1) {
+		FILE *file;
+
+		file = fopen(argv[1], "r");
+		if (!file) {
+			fprintf(stderr,"could not open %s\n",argv[1]);
+			exit(1);
+		}
+		yyin = file;
+	}
 	yylex();
-	add_match(10,"hello");
-	match_found = lookup("hello");
-	printf("%d\n",match_found);
+
+	lookup_word_by_word_type(2,1);
+
+	//lookup_word(argv[2],1);
+	printf("%s %d %s %d %s %d\n","Char Count: ",charCount, "Word Count: ",wordCount,"Line Count: ",lineCount);
 	return 0;
 }
 
-//lexandyacc.pdf///////////////////////////////
-struct results {
-	char *match;
-	int match_type;
-	struct results *next;
+
+
+/* define a linked list of words and types */
+struct word {
+	char *word_name;
+	int word_type;
+	int count;
+	// Making the assumption that there are less than 10K instances of the same word.
+	int lineCount[10000];
+	int offset[10000];
+	struct word *next;
 };
 
-struct results *results_list;
+struct word *word_list; /* first element in word list */
 extern void *malloc();
 
-int add_match(int type, char* results){
-	struct results *rp;
-	rp = (struct results *) malloc(sizeof(struct results));
-	rp->next = results_list;
-	rp->match = (char *)malloc(strlen(results)+1);
-	strcpy(rp->match, results);
-	rp->match_type = type;
-	results_list = rp;
-	return 1;
+int
+add_word(int type, char *word)
+{
+	struct word *wp;	
+	/* word not there, allocate a new entry and link it on the list */
+	wp = (struct word *) malloc(sizeof(struct word));
+	wp->next = word_list;
+	/* have to copy the word itself as well */
+	wp->word_name = (char *) malloc(strlen(word)+1);
+	strcpy(wp->word_name, word);
+	wp->word_type = type; //int data type
+	wp->lineCount[0] = lineCount;
+	wp->offset[0] = offset;
+	wp->count = 1;
+	word_list = wp;
+	return 1;	/* it worked */
 }
 
-int lookup(char *results){
-	struct results *rp = results_list;
-	for(; rp; rp = rp->next){
-		if(strcmp(rp->match,results) == 0)
-			{ return rp->match_type; }else {
-			return 0;}}}
-///////////////////////////////////////////
+int
+lookup_word(char *word,int print)
+{
+	struct word *wp = word_list;
+	/* search down the list looking for the word */
+	int i = 0;
+	for(; wp; wp = wp->next) {
+		if(strcmp(wp->word_name, word) == 0){
+			for(i=0;i<(wp->count);i++){
+				//printf("i:%d\n",i);
+				//fixme?? not sure why lineCount is ever less than one
+				if(wp->lineCount[i]>0){
+					if(print != 0){
+						printf("%s:line_no:%d:offset:%d\n",word,wp->lineCount[i],wp->offset[i]);
+					}	
+			}
+			}
+			return 1;
+		}
+	}
+	return LOOKUP;	 /* not found */
+}
+
+
+
+
+int
+lookup_word_by_word_type(int type,int print)
+{
+	struct word *wp = word_list;
+	/* search down the list looking for the word */
+	int i = 0;
+	for(; wp; wp = wp->next) {
+		if( wp->word_type == type){
+			for(i=0;i<(wp->count);i++){
+				//printf("i:%d\n",i);
+				//fixme?? not sure why lineCount is ever less than one
+				if(wp->lineCount[i]>0){
+					if(print != 0){
+						printf("%s:line_no:%d:offset:%d\n",wp->word_name,wp->lineCount[i],wp->offset[i]);
+					}	
+			}
+			}
+			return 1;
+		}
+	}
+	return LOOKUP;	 /* not found */
+}
+
+
+
+
+void
+update_word(char *word)
+{
+	//printf("updating word:%s\n",word);
+	struct word *wp = word_list;
+	/* search down the list looking for the word */
+	for(; wp; wp = wp->next) {
+		if(strcmp(wp->word_name, word) == 0)
+			wp->lineCount[wp->count] = lineCount;
+			wp->offset[wp->count] = offset;
+			wp->count++;
+	}
+}
+

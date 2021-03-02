@@ -7,19 +7,30 @@ int lookup_word(char *word,int print);
 void update_word(char *word);
 char* auth;
 int count_chars;
+int id;
+
+char tmp_buffer[1000000];
+int tmp_buffer_offset=0;
+
 
 int lookup_word_by_word_type(int type,int print);
 
 enum {
 	LOOKUP = 0, /* default - looking rather than defining. */
+};
+
+
 
 /*
 1:[a-zA-Z]+
 2:latex author
-3:latex citet
+3:latex cite
 4:latex cite
 5:latex citep
 6:latex footnote
+7:latex date
+8:latex title
+
 */
 
 
@@ -28,8 +39,6 @@ enum {
 \\usepackage
 \\renewcommand
 \\newcommand
-\\title
-\\date
 \\begin"{document}"
 \\maketitle
 \\begin"{abstract}"
@@ -46,9 +55,11 @@ enum {
 \\label
 */
 
-};
 %}
 
+%option nostdinit noyywrap never-interactive full ecs
+%option 8bit nodefault perf-report perf-report
+%option noinput
 %s author
 %s citet
 %s cite
@@ -74,10 +85,14 @@ enum {
 %s subsection
 %s title
 %s usepackage
+%s greek
 
 
+
+greek \\(alpha|Alpha|beta|Beta|chi|delta|Delta|digamma|eta|Eta|gamma|Gamma|iota|Iota|kappa|Kappa|lambda|Lambda|mho|mu|Mu|nu|Nu|omega|Omega|phi|Phi|pi|Pi|psi|Psi|rho|Rho|sigma|Sigma|tau|Tau|theta|Theta|upsilon|varepsilon|varkappa|varphi|varpi|varrho|varsigma|vartheta|xi|Xi|zeta|Zeta)  
 word [a-zA-Z]+
 eol  \n
+
 %%
 
 {word}	{ 
@@ -93,6 +108,88 @@ eol  \n
 	}
 	offset+= yyleng;
 }
+
+
+\\begin"{"abstract"}"  {
+	count_chars=yyleng; 
+	BEGIN begin_abstract; 
+	}
+
+<begin_abstract>"\\"  {
+	count_chars++; 
+	bal_parens++;
+	tmp_buffer[tmp_buffer_offset]='\\';
+	tmp_buffer_offset++;
+	
+} 
+
+<begin_abstract>[^\\]+ {
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		tmp_buffer[tmp_buffer_offset]=yytext[i];
+		tmp_buffer_offset++;
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
+	}}
+
+<begin_abstract>\\end"{"abstract"}" { 
+	char tmp[tmp_buffer_offset+1];
+	strncpy(tmp,tmp_buffer,tmp_buffer_offset+1);
+	add_word(9,tmp);
+	tmp_buffer_offset=0;
+	BEGIN 0;
+	}
+
+
+
+\\title  { 
+	count_chars=yyleng; 
+	BEGIN title; 
+	}
+
+<title>"{"  {
+	count_chars++; 
+	bal_parens++;
+} 
+
+<title>[^{}]+ {
+	add_word(8,yytext);
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
+	}}
+
+<title>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		count_chars++;
+		BEGIN 0;
+	}}
+
+
+\\date  { 
+	count_chars=yyleng; 
+	BEGIN date; 
+	}
+
+<date>"{"  {
+	count_chars++; 
+	bal_parens++;
+} 
+
+<date>[^{}]+ {
+	add_word(7,yytext);
+	int i = 0;
+	for(i=0;i<yyleng;i++){
+		if(yytext[i]=='\n'){lineCount++;}
+		//printf("%c",yytext[i]);
+	}}
+
+<date>"}"	{ bal_parens--; 
+	if(bal_parens == 0 ){
+		count_chars++;
+		BEGIN 0;
+	}}
 
 
 \\author     { 
@@ -260,10 +357,10 @@ main(int argc,char **argv)
 		yyin = file;
 	}
 	yylex();
+	lookup_word_by_word_type(9,1);
 
-	//lookup_word_by_word_type(2,1);
-	lookup_word(argv[2],1);
-	printf("%s %d %s %d %s %d\n","Char Count: ",charCount, "Word Count: ",wordCount,"Line Count: ",lineCount);
+	//lookup_word(argv[2],1);
+	//printf("%s %d %s %d %s %d\n","Char Count: ",charCount, "Word Count: ",wordCount,"Line Count: ",lineCount);
 	return 0;
 }
 
@@ -273,10 +370,13 @@ main(int argc,char **argv)
 struct word {
 	char *word_name;
 	int word_type;
+	int id;
 	int count;
 	// Making the assumption that there are less than 10K instances of the same word.
 	int lineCount[10000];
 	int offset[10000];
+	int lineStop[10000];
+	int offsetStop[10000];
 	struct word *next;
 };
 
@@ -344,7 +444,6 @@ lookup_word_by_word_type(int type,int print)
 					}	
 			}
 			}
-			return 1;
 		}
 	}
 	return LOOKUP;	 /* not found */

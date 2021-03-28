@@ -20,12 +20,11 @@ dockermac_run:
 	docker run -it --rm -v `pwd`:/scratch latexinarxiv /bin/bash
 
 
-parser:
+lexer:
 	flex arxiv.l
-	gcc lex.yy.c -lfl
+	gcc lex.yy.c words.c -lfl
 
-parse_file:
-	a.out FILENAME
+
 
 clean:
 	rm a.out lex.yy.c

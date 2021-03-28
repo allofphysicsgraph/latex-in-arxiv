@@ -22,7 +22,7 @@ dockermac_run:
 
 lexer:
 	flex arxiv.l
-	gcc lex.yy.c words.c -lfl
+	gcc lex.yy.c words.c file_utils.c -lfl
 
 
 

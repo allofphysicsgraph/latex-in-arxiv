@@ -1,11 +1,10 @@
 %{
-
+#include "words.h"
+#include "file_utils.h"
 int bal_parens=0;
 void consume_until_balanced();
 int wordCount = 0;
 int charCount = 0;
-#include "words.h"
-
 
 %}
 
@@ -41,6 +40,8 @@ word [a-z]+
 int 
 main(int argc,char **argv)
 {
+	//int r = walk_dir(".", "\\.c$", WS_DEFAULT|WS_MATCHDIRS);
+	
 	if (argc < 3){
 		printf("arg1: filename\narg2: word lookup\n");
 		return 0;
@@ -76,6 +77,10 @@ void consume_until_balanced()
 				
 		}
 };
+
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 %{
+
 #include "words.h"
 #include "file_utils.h"
 #include "enum.h"
@@ -8,6 +9,7 @@ void consume_until_balanced();
 int wordCount = 0;
 int charCount = 0;
 
+#define MAX_FILE_COUNT 10000
 %}
 
 word [a-z]+ 
@@ -43,7 +45,12 @@ int
 main(int argc,char **argv)
 {
 	
-	int r = walk_dir(".", "\\.c$", WS_DEFAULT|WS_MATCHDIRS);
+	//Max file count
+	char *array[MAX_FILE_COUNT];
+	int i = 0;
+	int array_index=0;
+	memset(array,0,sizeof(array));
+	int r = walk_dir(".", "\\.c$", WS_DEFAULT|WS_MATCHDIRS,array,array_index);
 	switch(r) {
 	case WALK_OK:		break;
 	case WALK_BADIO:	err(1, "IO error");
@@ -52,7 +59,16 @@ main(int argc,char **argv)
 	default:
 		err(1, "Unknown error?");
 	}
+
 	
+	//print file matches
+	for(i=0;i<MAX_FILE_COUNT;i++){	
+		if(array[i] != 0){
+			printf("\nfile_match:%s\n",array[i]);
+		}
+	}
+	
+
         if (argc < 3){
 		printf("arg1: filename\narg2: word lookup\n");
 		return 0;

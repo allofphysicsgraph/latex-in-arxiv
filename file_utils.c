@@ -56,7 +56,7 @@ char *ReadFile(char *filename)
 
 
 //https://rosettacode.org/wiki/Walk_a_directory/Recursively#C
-int walk_recur(char *dname, regex_t *reg, int spec)
+int walk_recur(char *dname, regex_t *reg, int spec,char *array[],int array_index)
 {
 	struct dirent *dent;
 	DIR *dir;
@@ -97,28 +97,27 @@ int walk_recur(char *dname, regex_t *reg, int spec)
 		if (S_ISDIR(st.st_mode)) {
 			/* recursively follow dirs */
 			if ((spec & WS_RECURSIVE))
-				walk_recur(fn, reg, spec);
+				walk_recur(fn, reg, spec,array,array_index);
 
 			if (!(spec & WS_MATCHDIRS)) continue;
 		}
 
 		/* pattern match */
-		if (!regexec(reg, fn, 0, 0, 0)) puts(fn);
+		if (!regexec(reg, fn, 0, 0, 0)) { array[array_index] = strdup(fn);  array_index++; }
 	}
 
 	if (dir) closedir(dir);
 	return res ? res : errno ? WALK_BADIO : WALK_OK;
 }
 
-int walk_dir(char *dname, char *pattern, int spec)
+int walk_dir(char *dname, char *pattern, int spec, char* array[], int array_index)
 {
 	regex_t r;
 	int res;
 	if (regcomp(&r, pattern, REG_EXTENDED | REG_NOSUB))
 		return WALK_BADPATTERN;
-	res = walk_recur(dname, &r, spec);
+	res = walk_recur(dname, &r, spec, array, array_index);
 	regfree(&r);
-
 	return res;
 }
 

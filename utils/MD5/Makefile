@@ -3,8 +3,8 @@
 #
 #    LD_LIBRARY_PATH=../.. ./EVP_MD_demo
 
-CFLAGS = -I../../include -g
-LDFLAGS = -L../..
+CFLAGS = -I../../openssl/include -g
+LDFLAGS = -L../../openssl/
 LDLIBS = -lcrypto
 
 all: EVP_MD_stdin 

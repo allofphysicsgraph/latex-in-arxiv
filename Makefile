@@ -24,7 +24,9 @@ lexer:
 	flex arxiv.l
 	gcc lex.yy.c words.c file_utils.c -lfl
 
-
+openssl:
+	git clone https://github.com/openssl/openssl.git
+	cd openssl && ./Configure && make
 
 clean:
 	rm a.out lex.yy.c

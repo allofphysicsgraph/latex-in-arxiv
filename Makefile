@@ -26,7 +26,7 @@ lexer:
 
 openssl:
 	git clone https://github.com/openssl/openssl.git
-	cd openssl && ./Configure && make
+	cd openssl && ./Configure && make && sudo cp openssl/libcrypto.so.3 /usr/lib/ && cd utils/MD5 && make
 
 clean:
 	rm a.out lex.yy.c

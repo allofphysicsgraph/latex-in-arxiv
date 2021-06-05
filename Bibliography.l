@@ -17,17 +17,21 @@ YEAR (18|19|20){DIGIT}{2}
 PAGE_NO "pp."{WS}*{DIGIT}+({HYPHEN}{DIGIT}+)?
 HYPHEN "-"
 NOT_WS [^{WS}]
+JRNL "Physical Review"|"Nature Communications"
+PAPER "arXiv:"[0-9]{4}"."[0-9]{4}
 
 %%
-{LBRACKET}{DIGIT}+{RBRACKET} { printf("ID:%s\n",yytext);}
+{LBRACKET}{DIGIT}+{RBRACKET} { printf("\n\nID:%s\n",yytext);}
 {FIRST_INITIAL}{WS}+({MIDDLE_INITIAL}{WS}+)?{LAST_NAME} { printf("NAME:%s\n",yytext);}
-{LPAREN}{YEAR}{RPAREN}	{ printf("year:%s",yytext);}
-\\bibitem { BEGIN bibitem; }
+{LPAREN}{YEAR}{RPAREN}	{ printf("year:%s\n",yytext);}
+{JRNL} { printf("journal:%s\n",yytext);}
+{PAPER} { printf("paper:%s\n",yytext);}
 <bibitem>"["{NOT_WS}+"]""{"{NOT_WS}+"}" { printf("bibitem:%s",yytext);}
 <bibitem>^[^\\]newblock { BEGIN 0; printf("bibitem:%s",yytext);}
 \\newblock.* { printf("%s",yytext);}
-. ;
 
+. ;
+\n	;
 
 
 

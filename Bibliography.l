@@ -3,6 +3,7 @@
 %}
 %s bibitem
 %s newblock
+%s arxiv
 
 LBRACKET "["
 RBRACKET "]"
@@ -26,6 +27,14 @@ PAPER "arXiv:"[0-9]{4}"."[0-9]{4}
 {LPAREN}{YEAR}{RPAREN}	{ printf("year:%s\n",yytext);}
 {JRNL} { printf("journal:%s\n",yytext);}
 {PAPER} { printf("paper:%s\n",yytext);}
+
+[ ]+"arXiv," { BEGIN(arxiv); }
+<arxiv>[ ]+ ; 
+<arxiv>{LPAREN}{YEAR}{RPAREN}{WS}* { printf("year:%s\n",yytext);}
+<arxiv>[0-9]{4}"."[0-9]{4} { printf("paper:arXiv:%s",yytext); BEGIN(0); }
+
+
+
 <bibitem>"["{NOT_WS}+"]""{"{NOT_WS}+"}" { printf("bibitem:%s",yytext);}
 <bibitem>^[^\\]newblock { BEGIN 0; printf("bibitem:%s",yytext);}
 \\newblock.* { printf("%s",yytext);}

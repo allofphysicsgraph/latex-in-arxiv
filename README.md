@@ -13,6 +13,14 @@ for details, see https://arxiv.org/help/bulk_data_s3
 ```
 make lexer
 
+example useage  
+./a.out WORDS/crib209.tex zeta  
+
+file_match:./WORDS/crib209.tex  
+zeta:line_no:1540:offset:8  
+zeta:line_no:1540:offset:19  
+
+
 ```
 
 ## using the Docker container

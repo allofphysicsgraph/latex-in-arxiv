@@ -5,7 +5,7 @@
 #include "enum.h"
 #include <err.h>
 int bal_parens=0;
-void consume_until_balanced();
+void consume_until_balanced(char *buf,int buf_len);
 int wordCount = 0;
 int charCount = 0;
 
@@ -31,6 +31,8 @@ word [a-z]+
 	}
 	offset+= yyleng;
 }
+
+
 
 
 
@@ -197,7 +199,9 @@ word [a-z]+
 
 
 \\hello"{"		{
-			consume_until_balanced();
+			char buf[10000];
+			memset(buf,'\0',10000);
+			consume_until_balanced(buf,10000);
 			}
 		
 
@@ -215,7 +219,7 @@ main(int argc,char **argv)
 	int i = 0;
 	int array_index=0;
 	memset(array,0,sizeof(array));
-	int r = walk_dir(".", "\\.c$", WS_DEFAULT|WS_MATCHDIRS,array,array_index);
+	int r = walk_dir(".", "\\.tex$", WS_DEFAULT|WS_MATCHDIRS,array,array_index);
 	switch(r) {
 	case WALK_OK:		break;
 	case WALK_BADIO:	err(1, "IO error");
@@ -251,16 +255,26 @@ main(int argc,char **argv)
 		yyin = file;
 	}
 	yylex();
-	lookup_word("hello",1);
+	lookup_word(argv[2],1);
 	return 0;
 }
 
-void consume_until_balanced()
+void consume_until_balanced(char *buf,int buf_len)
 {
 		int c;
+		int index=0;
+		memset(buf,'\0',buf_len);
 		bal_parens--;
 		while((c = input()) != 0)
 		{
+
+		if(index<buf_len){
+			buf[index]=c;
+			index++;
+		} else {
+				printf("buffer passed was too small");
+			}
+
 		offset++;
 		if(c == '\n') { ++lineCount;}
 		if(c == '{')  { bal_parens--; }

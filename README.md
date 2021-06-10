@@ -11,7 +11,7 @@ for details, see https://arxiv.org/help/bulk_data_s3
 
 ## build the parser
 ```
-Work in progress
+make lexer
 
 ```
 

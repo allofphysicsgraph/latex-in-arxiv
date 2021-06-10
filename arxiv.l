@@ -34,169 +34,165 @@ word [a-z]+
 
 
 
-\delta:[ ]+    { BEGIN(delta); }
+\\delta:[ ]+    { BEGIN(delta); }
 <delta>.*     { printf("delta:%s\n",yytext); BEGIN(0); }
 
-\epsfig:[ ]+    { BEGIN(epsfig); }
+\\epsfig:[ ]+    { BEGIN(epsfig); }
 <epsfig>.*     { printf("epsfig:%s\n",yytext); BEGIN(0); }
 
-\date:[ ]+    { BEGIN(date); }
+\\date:[ ]+    { BEGIN(date); }
 <date>.*     { printf("date:%s\n",yytext); BEGIN(0); }
 
-\dfrac:[ ]+    { BEGIN(dfrac); }
+\\dfrac:[ ]+    { BEGIN(dfrac); }
 <dfrac>.*     { printf("dfrac:%s\n",yytext); BEGIN(0); }
 
-\email:[ ]+    { BEGIN(email); }
+\\email:[ ]+    { BEGIN(email); }
 <email>.*     { printf("email:%s\n",yytext); BEGIN(0); }
 
-\ion:[ ]+    { BEGIN(ion); }
+\\ion:[ ]+    { BEGIN(ion); }
 <ion>.*     { printf("ion:%s\n",yytext); BEGIN(0); }
 
-\stackrel:[ ]+    { BEGIN(stackrel); }
+\\stackrel:[ ]+    { BEGIN(stackrel); }
 <stackrel>.*     { printf("stackrel:%s\n",yytext); BEGIN(0); }
 
-\providecommand:[ ]+    { BEGIN(providecommand); }
+\\providecommand:[ ]+    { BEGIN(providecommand); }
 <providecommand>.*     { printf("providecommand:%s\n",yytext); BEGIN(0); }
 
 
-\centerline:[ ]+    { BEGIN(centerline); }
+\\centerline:[ ]+    { BEGIN(centerline); }
 <centerline>.*     { printf("centerline:%s\n",yytext); BEGIN(0); }
 
-\mathscr:[ ]+    { BEGIN(mathscr); }
+\\mathscr:[ ]+    { BEGIN(mathscr); }
 <mathscr>.*     { printf("mathscr:%s\n",yytext); BEGIN(0); }
 
-oalign:[ ]+    { BEGIN(oalign); }
-<oalign>.*     { printf("oalign:%s\n",yytext); BEGIN(0); }
 
-\Eqref:[ ]+    { BEGIN(eqref); }
+\\Eqref:[ ]+    { BEGIN(eqref); }
 <eqref>.*     { printf("eqref:%s\n",yytext); BEGIN(0); }
 
 
-\mathit:[ ]+    { BEGIN(mathit); }
+\\mathit:[ ]+    { BEGIN(mathit); }
 <mathit>.*     { printf("mathit:%s\n",yytext); BEGIN(0); }
 
-\mfrak:[ ]+    { BEGIN(mfrak); }
+\\mfrak:[ ]+    { BEGIN(mfrak); }
 <mfrak>.*     { printf("mfrak:%s\n",yytext); BEGIN(0); }
 
-\setlength:[ ]+    { BEGIN(setlength); }
+\\setlength:[ ]+    { BEGIN(setlength); }
 <setlength>.*     { printf("setlength:%s\n",yytext); BEGIN(0); }
 
-\operatorname:[ ]+    { BEGIN(operatorname); }
+\\operatorname:[ ]+    { BEGIN(operatorname); }
 <operatorname>.*     { printf("operatorname:%s\n",yytext); BEGIN(0); }
 
-\subsubsection:[ ]+    { BEGIN(subsubsection); }
+\\subsubsection:[ ]+    { BEGIN(subsubsection); }
 <subsubsection>.*     { printf("subsubsection:%s\n",yytext); BEGIN(0); }
 
-\set:[ ]+    { BEGIN(set); }
+\\set:[ ]+    { BEGIN(set); }
 <set>.*     { printf("set:%s\n",yytext); BEGIN(0); }
 
-\check:[ ]+    { BEGIN(check); }
+\\check:[ ]+    { BEGIN(check); }
 <check>.*     { printf("check:%s\n",yytext); BEGIN(0); }
 
-\includegraphics:[ ]+    { BEGIN(includegraphics); }
+\\includegraphics:[ ]+    { BEGIN(includegraphics); }
 <includegraphics>.*     { printf("includegraphics:%s\n",yytext); BEGIN(0); }
 
-\citeauthoryear:[ ]+    { BEGIN(citeauthoryear); }
+\\citeauthoryear:[ ]+    { BEGIN(citeauthoryear); }
 <citeauthoryear>.*     { printf("citeauthoryear:%s\n",yytext); BEGIN(0); }
 
 
-\mathsf:[ ]+    { BEGIN(mathsf); }
+\\mathsf:[ ]+    { BEGIN(mathsf); }
 <mathsf>.*     { printf("mathsf:%s\n",yytext); BEGIN(0); }
-
-
 
 \mathfrak:[ ]+    { BEGIN(mathfrak); }
 <mathfrak>.*     { printf("mathfrak:%s\n",yytext); BEGIN(0); }
 
-\multicolumn:[ ]+    { BEGIN(multicolumn); }
+\\multicolumn:[ ]+    { BEGIN(multicolumn); }
 <multicolumn>.*     { printf("multicolumn:%s\n",yytext); BEGIN(0); }
 
 
-\cal:[ ]+    { BEGIN(cal); }
+\\cal:[ ]+    { BEGIN(cal); }
 <cal>.*     { printf("cal:%s\n",yytext); BEGIN(0); }
 
 
-\hbox:[ ]+    { BEGIN(hbox); }
+\\hbox:[ ]+    { BEGIN(hbox); }
 <hbox>.*     { printf("hbox:%s\n",yytext); BEGIN(0); }
 
-\colhead:[ ]+    { BEGIN(colhead); }
+\\colhead:[ ]+    { BEGIN(colhead); }
 <colhead>.*     { printf("colhead:%s\n",yytext); BEGIN(0); }
 
-\hspace:[ ]+    { BEGIN(hspace); }
+\\hspace:[ ]+    { BEGIN(hspace); }
 <hspace>.*     { printf("hspace:%s\n",yytext); BEGIN(0); }
 
-\dot:[ ]+    { BEGIN(dot); }
+\\dot:[ ]+    { BEGIN(dot); }
 <dot>.*     { printf("dot:%s\n",yytext); BEGIN(0); }
 
-\citenamefont:[ ]+    { BEGIN(citenamefont); }
+\\citenamefont:[ ]+    { BEGIN(citenamefont); }
 <citenamefont>.*     { printf("citenamefont:%s\n",yytext); BEGIN(0); }
 
-\special:[ ]+    { BEGIN(special); }
+\\special:[ ]+    { BEGIN(special); }
 <special>.*     { printf("special:%s\n",yytext); BEGIN(0); }
 
-\ket:[ ]+    { BEGIN(ket); }
+\\ket:[ ]+    { BEGIN(ket); }
 <ket>.*     { printf("ket:%s\n",yytext); BEGIN(0); }
 
-\ensuremath:[ ]+    { BEGIN(ensuremath); }
+\\ensuremath:[ ]+    { BEGIN(ensuremath); }
 <ensuremath>.*     { printf("ensuremath:%s\n",yytext); BEGIN(0); }
 
-\citep:[ ]+    { BEGIN(citep); }
+\\citep:[ ]+    { BEGIN(citep); }
 <citep>.*     { printf("citep:%s\n",yytext); BEGIN(0); }
 
-\citet:[ ]+    { BEGIN(citet); }
+\\citet:[ ]+    { BEGIN(citet); }
 <citet>.*     { printf("citet:%s\n",yytext); BEGIN(0); }
 
-\widehat:[ ]+    { BEGIN(widehat); }
+\\widehat:[ ]+    { BEGIN(widehat); }
 <widehat>.*     { printf("widehat:%s\n",yytext); BEGIN(0); }
 
 
-\caption:[ ]+    { BEGIN(caption); }
+\\caption:[ ]+    { BEGIN(caption); }
 <caption>.*     { printf("caption:%s\n",yytext); BEGIN(0); }
 
-\subsection:[ ]+    { BEGIN(subsection); }
+\\subsection:[ ]+    { BEGIN(subsection); }
 <subsection>.*     { printf("subsection:%s\n",yytext); BEGIN(0); }
 
 
-\widetilde:[ ]+    { BEGIN(widetilde); }
+\\widetilde:[ ]+    { BEGIN(widetilde); }
 <widetilde>.*     { printf("widetilde:%s\n",yytext); BEGIN(0); }
 
-\mbox:[ ]+    { BEGIN(mbox); }
+\\mbox:[ ]+    { BEGIN(mbox); }
 <mbox>.*     { printf("mbox:%s\n",yytext); BEGIN(0); }
 
-\section:[ ]+    { BEGIN(section); }
+\\section:[ ]+    { BEGIN(section); }
 <section>.*     { printf("section:%s\n",yytext); BEGIN(0); }
 
-\mathbf:[ ]+    { BEGIN(mathbf); }
+\\mathbf:[ ]+    { BEGIN(mathbf); }
 <mathbf>.*     { printf("mathbf:%s\n",yytext); BEGIN(0); }
 
-\overline:[ ]+    { BEGIN(overline); }
+\\overline:[ ]+    { BEGIN(overline); }
 <overline>.*     { printf("overline:%s\n",yytext); BEGIN(0); }
 
-\mathbb:[ ]+    { BEGIN(mathbb); }
+\\mathbb:[ ]+    { BEGIN(mathbb); }
 <mathbb>.*     { printf("mathbb:%s\n",yytext); BEGIN(0); }
 
-\emph:[ ]+    { BEGIN(emph); }
+\\emph:[ ]+    { BEGIN(emph); }
 <emph>.*     { printf("emph:%s\n",yytext); BEGIN(0); }
 
-\hat:[ ]+    { BEGIN(hat); }
+\\hat:[ ]+    { BEGIN(hat); }
 <hat>.*     { printf("hat:%s\n",yytext); BEGIN(0); }
 
-\mathrm:[ ]+    { BEGIN(mathrm); }
+\\mathrm:[ ]+    { BEGIN(mathrm); }
 <mathrm>.*     { printf("mathrm:%s\n",yytext); BEGIN(0); }
 
-\sqrt:[ ]+    { BEGIN(sqrt); }
+\\sqrt:[ ]+    { BEGIN(sqrt); }
 <sqrt>.*     { printf("sqrt:%s\n",yytext); BEGIN(0); }
 
-\mathcal:[ ]+    { BEGIN(mathcal); }
+\\mathcal:[ ]+    { BEGIN(mathcal); }
 <mathcal>.*     { printf("mathcal:%s\n",yytext); BEGIN(0); }
 
-\cite:[ ]+    { BEGIN(cite); }
+\\cite:[ ]+    { BEGIN(cite); }
 <cite>.*     { printf("cite:%s\n",yytext); BEGIN(0); }
 
-\label:[ ]+    { BEGIN(label); }
+\\label:[ ]+    { BEGIN(label); }
 <label>.*     { printf("label:%s\n",yytext); BEGIN(0); }
 
-\end:[ ]+    { BEGIN(end); }
+\\end:[ ]+    { BEGIN(end); }
 <end>.*     { printf("end:%s\n",yytext); BEGIN(0); }
 
 

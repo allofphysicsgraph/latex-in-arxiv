@@ -48,11 +48,11 @@ lookup_word(char *word,int print)
 	struct word *wp = word_list;
 	/* search down the list looking for the word */
 	int i = 0;
-        printf("lookup_word:%s\n",word);
+        //printf("lookup_word:%s\n",word);
 	for(; wp; wp = wp->next) {
 		if(strcmp(wp->word_name, word) == 0){
 			for(i=0;i<(wp->count);i++){
-				printf("i:%d\n",i);
+				//printf("i:%d\n",i);
 				//fixme?? not sure why lineCount is ever less than one
 				if(wp->lineCount[i]>0){
 					if(print != 0){

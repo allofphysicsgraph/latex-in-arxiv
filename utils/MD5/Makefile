@@ -7,7 +7,7 @@ CFLAGS = -I../../openssl/include -g
 LDFLAGS = -L../../openssl/
 LDLIBS = -lcrypto
 
-all: EVP_MD_stdin 
+all: EVP_MD
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<

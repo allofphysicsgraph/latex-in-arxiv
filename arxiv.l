@@ -236,9 +236,9 @@ main(int argc,char **argv)
 	//print file matches
 	for(i=0;i<MAX_FILE_COUNT;i++){	
 		if(array[i] != 0){
-			file_md5(array[i]);
 			fileCount++;
 			printf("\nfile_match:%s\n",array[i]);
+			file_md5(array[i]);
 		}
 	}
 	

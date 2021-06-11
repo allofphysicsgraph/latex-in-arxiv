@@ -8,6 +8,7 @@ int bal_parens=0;
 void consume_until_balanced(char *buf,int buf_len);
 int wordCount = 0;
 int charCount = 0;
+int fileCount = 0;
 
 #define MAX_FILE_COUNT 10000
 %}
@@ -233,6 +234,7 @@ main(int argc,char **argv)
 	//print file matches
 	for(i=0;i<MAX_FILE_COUNT;i++){	
 		if(array[i] != 0){
+			fileCount++;
 			printf("\nfile_match:%s\n",array[i]);
 		}
 	}
@@ -256,6 +258,7 @@ main(int argc,char **argv)
 	}
 	yylex();
 	lookup_word(argv[2],1);
+	printf("\nfileCount:%d:\n",fileCount);
 	return 0;
 }
 

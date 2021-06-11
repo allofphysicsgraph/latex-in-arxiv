@@ -4,6 +4,8 @@
 #include "file_utils.h"
 #include "enum.h"
 #include <err.h>
+#include "EVP_MD.h"
+
 int bal_parens=0;
 void consume_until_balanced(char *buf,int buf_len);
 int wordCount = 0;
@@ -234,6 +236,7 @@ main(int argc,char **argv)
 	//print file matches
 	for(i=0;i<MAX_FILE_COUNT;i++){	
 		if(array[i] != 0){
+			file_md5(array[1]);
 			fileCount++;
 			printf("\nfile_match:%s\n",array[i]);
 		}

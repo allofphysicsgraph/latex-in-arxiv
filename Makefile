@@ -42,5 +42,5 @@ koreio:
 	cd kore-4.1.0
 
 clean:
-	rm a.out lex.yy.c
+	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

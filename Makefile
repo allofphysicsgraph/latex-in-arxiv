@@ -28,5 +28,11 @@ openssl:
 	git clone https://github.com/openssl/openssl.git
 	cd openssl && ./Configure && make && sudo cp openssl/libcrypto.so.3 /usr/lib/ && cd utils/MD5 && make
 
+koreio:
+	wget https://kore.io/releases/kore-4.1.0.tar.gz
+	sha256sum -c kore-4.1.0.tar.gz.sha256
+	tar -xf kore-4.1.0.tar.gz
+	cd kore-4.1.0
+
 clean:
 	rm a.out lex.yy.c

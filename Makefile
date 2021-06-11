@@ -1,3 +1,8 @@
+
+CFLAGS = -Iopenssl/include -g
+LDFLAGS = -Lopenssl/
+LDLIBS = -lcrypto
+
 help:
 	@echo "== outside the container =="
 	@echo "make docker"
@@ -22,7 +27,9 @@ dockermac_run:
 
 lexer:
 	flex arxiv.l
-	gcc lex.yy.c words.c file_utils.c -lfl
+	cc -Iopenssl/include -g -c EVP_MD.c
+	cc -Lopenssl/  EVP_MD.o  lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
+
 
 openssl:
 	git clone https://github.com/openssl/openssl.git
@@ -36,3 +43,4 @@ koreio:
 
 clean:
 	rm a.out lex.yy.c
+	$(RM) *.o EVP_MD

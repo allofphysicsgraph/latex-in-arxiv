@@ -13,19 +13,14 @@
 #include <openssl/err.h>
 #include <openssl/evp.h>
 
-
-int main(int argc, char* argv[])
+//taken from the man pages of BIO
+unsigned char  file_md5(char * file_name)
 {
         BIO *bio, *mdtmp;
         char buf[1024];
         int rdlen;
-	FILE *file;
-	if (argc != 2){
-		printf("requires a file name\n");
-		return -1;
-	}
 
-        bio = BIO_new_file(argv[1], "rb");
+        bio = BIO_new_file(file_name, "rb");
         mdtmp = BIO_new(BIO_f_md());
         BIO_set_md(mdtmp, EVP_md5());
         bio = BIO_push(mdtmp, bio);
@@ -54,6 +49,6 @@ int main(int argc, char* argv[])
         } while (mdtmp);
 
         BIO_free_all(bio);
-
-
+	return *mdbuf;
 }
+

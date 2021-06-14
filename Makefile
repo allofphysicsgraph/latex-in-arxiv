@@ -28,7 +28,7 @@ dockermac_run:
 lexer:
 	flex arxiv.l
 	cc -Iopenssl/include -g -c EVP_MD.c
-	cc -Lopenssl/  EVP_MD.o  lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
+	cc -Lopenssl/ -Wall EVP_MD.o  sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
 
 
 openssl:

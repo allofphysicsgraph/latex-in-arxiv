@@ -39,7 +39,7 @@ lexer:
 
 openssl:
 	git clone https://github.com/openssl/openssl.git
-	cd openssl && ./Configure && make && sudo make install && sudo cp openssl/libcrypto.so.3 /usr/lib/ 
+	cd openssl && ./Configure && make && sudo make install && sudo cp libcrypto.so.3 /usr/lib/ && sudo cp libssl.so.3 /usr/lib/
 
 koreio:
 	wget https://kore.io/releases/kore-4.1.0.tar.gz

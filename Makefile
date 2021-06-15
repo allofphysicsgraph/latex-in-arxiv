@@ -57,6 +57,8 @@ postgres:
 	sudo apt install flex
 	cd postgres/ && ./configure && make 
 	cd postgres && sudo make install
+	sudo cp /usr/local/pgsql/lib/libpq.so.5 /usr/lib
+	gcc postgres_connection_test.c -o pg_connection_test -I/usr/local/pgsql/include/ -L /usr/local/pgsql/lib -lpq
 
 clean:
 	$(RM) lexer lex.yy.c

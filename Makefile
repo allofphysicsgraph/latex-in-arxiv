@@ -45,7 +45,10 @@ koreio:
 	wget https://kore.io/releases/kore-4.1.0.tar.gz
 	sha256sum -c kore-4.1.0.tar.gz.sha256
 	tar -xf kore-4.1.0.tar.gz
-	cd kore-4.1.0
+	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/kodev/Makefile 
+	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
+	cd kore-4.1.0 && make && sudo make install
+
 
 clean:
 	$(RM) lexer lex.yy.c

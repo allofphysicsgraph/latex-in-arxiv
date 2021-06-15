@@ -49,6 +49,14 @@ koreio:
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
 	cd kore-4.1.0 && make && sudo make install
 
+postgres:
+	git clone https://github.com/postgres/postgres.git
+	sudo apt install libreadline-dev
+	sudo apt install zlib1g-dev
+	sudo apt install bison
+	sudo apt install flex
+	cd postgres/ && ./configure && make 
+	cd postgres && sudo make install
 
 clean:
 	$(RM) lexer lex.yy.c

@@ -60,6 +60,13 @@ postgres:
 	sudo cp /usr/local/pgsql/lib/libpq.so.5 /usr/lib
 	gcc postgres_connection_test.c -o pg_connection_test -I/usr/local/pgsql/include/ -L /usr/local/pgsql/lib -lpq
 
+
+nncp:
+	wget https://bellard.org/nncp/nncp-2021-06-01.tar.gz
+	tar -xf nncp-2021-06-01.tar.gz
+	cd nncp-2021-06-01 && make && sudo cp nncp /usr/bin/ && sudo cp libnc.so /usr/lib/
+
+
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

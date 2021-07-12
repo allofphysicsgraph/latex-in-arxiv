@@ -11,13 +11,15 @@ help:
 	@echo "make docmac"
 	@echo "         for Mac"
 	@echo "== inside the container =="
-	@echo "make parser"
+	@echo "make lexer"
 
+# Docker on linux
 docker:
 	sudo service docker start
 	sudo docker build -t latexinarxiv .
 	sudo docker run -it --rm latexinarxiv /bin/bash
 
+# Docker on Mac
 docmac: dockermac_build dockermac_run
 dockermac_build:
 	docker build -t latexinarxiv .
@@ -41,6 +43,7 @@ openssl:
 	git clone https://github.com/openssl/openssl.git
 	cd openssl && ./Configure && make && sudo make install && sudo cp libcrypto.so.3 /usr/lib/ && sudo cp libssl.so.3 /usr/lib/
 
+# Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
 koreio:
 	wget https://kore.io/releases/kore-4.1.0.tar.gz
 	sha256sum -c kore-4.1.0.tar.gz.sha256
@@ -60,7 +63,7 @@ postgres:
 	sudo cp /usr/local/pgsql/lib/libpq.so.5 /usr/lib
 	gcc postgres_connection_test.c -o pg_connection_test -I/usr/local/pgsql/include/ -L /usr/local/pgsql/lib -lpq
 
-
+# NNCP is an experiment to build a practical lossless data compressor with neural networks.
 nncp:
 	wget https://bellard.org/nncp/nncp-2021-06-01.tar.gz
 	tar -xf nncp-2021-06-01.tar.gz
@@ -70,3 +73,4 @@ nncp:
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD
+

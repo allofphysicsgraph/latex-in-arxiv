@@ -1,9 +1,9 @@
 #include <string.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 int lineCount = 1;
 int offset = 1;
-
+int word_count = 0;
 enum {
 	LOOKUP = 0, /* default - looking rather than defining. */
 };
@@ -18,15 +18,17 @@ struct word {
 	int offset[10000];
 	int lineStop[10000];
 	int offsetStop[10000];
+	double tf;
 	struct word *next;
+	
 };
 
 struct word *word_list; /* first element in word list */
-extern void *malloc();
 
 int
 add_word(int type, char *word)
 {
+	word_count++;
 	struct word *wp;	
 	/* word not there, allocate a new entry and link it on the list */
 	wp = (struct word *) malloc(sizeof(struct word));
@@ -38,6 +40,8 @@ add_word(int type, char *word)
 	wp->lineCount[0] = lineCount;
 	wp->offset[0] = offset;
 	wp->count = 1;
+	//printf("%lf",1/(1.0* word_count));
+	wp->tf=1/(1.0*word_count);
 	word_list = wp;
 	return 1;	/* it worked */
 }
@@ -53,10 +57,9 @@ lookup_word(char *word,int print)
 		if(strcmp(wp->word_name, word) == 0){
 			for(i=0;i<(wp->count);i++){
 				//printf("i:%d\n",i);
-				//fixme?? not sure why lineCount is ever less than one
 				if(wp->lineCount[i]>0){
 					if(print != 0){
-						printf("%s:line_no:%d:offset:%d\n",word,wp->lineCount[i],wp->offset[i]);
+						printf("%s:line_no:%d:offset:%d:count:%d:tf:%f\n",word,wp->lineCount[i],wp->offset[i],wp->count,wp->tf);
 					}	
 			}
 			}
@@ -79,7 +82,6 @@ lookup_word_by_word_type(int type,int print)
 		if( wp->word_type == type){
 			for(i=0;i<(wp->count);i++){
 				//printf("i:%d\n",i);
-				//fixme?? not sure why lineCount is ever less than one
 				if(wp->lineCount[i]>0){
 					if(print != 0){
 						printf("%s:line_no:%d:offset:%d\n",wp->word_name,wp->lineCount[i],wp->offset[i]);
@@ -94,7 +96,7 @@ lookup_word_by_word_type(int type,int print)
 
 
 
-void
+int 
 update_word(char *word)
 {
 	//printf("updating word:%s\n",word);
@@ -102,10 +104,15 @@ update_word(char *word)
 	/* search down the list looking for the word */
 	for(; wp; wp = wp->next) {
 		if(strcmp(wp->word_name, word) == 0)
-			wp->lineCount[wp->count] = lineCount;
+		{ wp->lineCount[wp->count] = lineCount;
 			wp->offset[wp->count] = offset;
+			//printf("updating count:%d\n",wp->count);
 			wp->count++;
+			//printf("updating count:%d\n",wp->count);
+			return 0;
+		}
 	}
+	return 1;
 }
 
 

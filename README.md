@@ -10,7 +10,9 @@ for details, see https://arxiv.org/help/bulk_data_s3
 
 
 ## build the parser
-```bash
+```
+make openssl
+make sampledata
 make lexer
 
 example useage  

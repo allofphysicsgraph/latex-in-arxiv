@@ -31,13 +31,21 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
 
-
-lexer:
-	flex arxiv.l
+debug:
+	flex -d arxiv.l
+	rm -rf lexer
 	cc -Iopenssl/include -g -c EVP_MD.c
 	cc -Lopenssl/ -Wall EVP_MD.o  sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
-	sudo cp lexer /usr/bin
-	cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
+	#sudo cp lexer /usr/bin
+	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
+
+lexer:
+	rm -rf lexer
+	flex arxiv.l
+	gcc -Iopenssl/include -g -c EVP_MD.c
+	gcc -Wall -Wextra -Wunused-macros -Lopenssl/ -Wall EVP_MD.o  trie.c sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
+	#sudo cp lexer /usr/bin
+	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
 
 openssl:
 	git clone https://github.com/openssl/openssl.git

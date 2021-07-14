@@ -34,7 +34,7 @@ TrieNode *root = NULL;
 #endif
 #define YY_BUF_SIZE 335544320
 void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char stop_delimiter);
-    // Read the file dictionary
+
 // BINARY OPERATORS
 // \\pm { yyval.str=strdup(yytext); return(pm); }
 // \\cap { yyval.str=strdup(yytext); return(cap); }
@@ -122,6 +122,7 @@ word [a-z]{3,10}
 }
 
 \\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
+<title>\n	{ lineCount++; offset=1; }
 <title>"{" {
                 char buf[1000];
                 memset(buf,'\0',1000);
@@ -157,7 +158,8 @@ word [a-z]{3,10}
         }
         BEGIN(abstract);
 }
-<abstract>[^\\]{1,9} {
+<abstract>\n	{ lineCount++; offset=1; }
+<abstract>[^\\\n]{1,9} {
         temp_str_buffer = sdscat(temp_str_buffer,yytext);
 }
 <abstract>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
@@ -182,7 +184,8 @@ word [a-z]{3,10}
             }
             BEGIN(gather);
     }
-<gather>[^\\]{1,9} {
+<gather>\n	{ lineCount++; offset=1; }
+<gather>[^\\\n]{1,9} {
             temp_str_buffer = sdscat(temp_str_buffer,yytext);
     }
 <gather>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
@@ -207,7 +210,8 @@ word [a-z]{3,10}
             }
             BEGIN(proof);
     }
-<proof>[^\\]{1,10} {
+<proof>\n	{ lineCount++; offset=1; }
+<proof>[^\\\n]{1,10} {
             temp_str_buffer = sdscat(temp_str_buffer,yytext);
     }
 <proof>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
@@ -231,7 +235,8 @@ word [a-z]{3,10}
             }
             BEGIN(eqnarray);
     }
-<eqnarray>[^\\]{1,9} {
+<eqnarray>\n	{ lineCount++; offset=1; }
+<eqnarray>[^\\\n]{1,9} {
             		temp_str_buffer = sdscat(temp_str_buffer,yytext);
     		}
 <eqnarray>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
@@ -256,7 +261,9 @@ word [a-z]{3,10}
             }
             BEGIN(equation);
     }
-<equation>[^\\]{1,9} {
+
+<equation>\n	{ lineCount++; offset=1; }
+<equation>[^\\\n]{1,9} {
             temp_str_buffer = sdscat(temp_str_buffer,yytext);
     }
 <equation>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }

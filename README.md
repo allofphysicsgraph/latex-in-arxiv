@@ -16,11 +16,8 @@ make sampledata
 make lexer
 
 example useage  
-./a.out WORDS/crib209.tex zeta  
+./lexer 2003/0301215 array
 
-file_match:./WORDS/crib209.tex  
-zeta:line_no:1540:offset:8  
-zeta:line_no:1540:offset:19  
 ```
 
 ## using the Docker container

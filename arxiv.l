@@ -35,19 +35,6 @@ TrieNode *root = NULL;
 #define YY_BUF_SIZE 335544320
 void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char stop_delimiter);
     // Read the file dictionary
-
-%}
-
-
-
-%option 8bit 
-%option nounput  
-%option warn stack 
-%option noyy_top_state
-%option noyy_pop_state
-%option noyy_push_state
-%option noyyless
-
 // BINARY OPERATORS
 // \\pm { yyval.str=strdup(yytext); return(pm); }
 // \\cap { yyval.str=strdup(yytext); return(cap); }
@@ -81,6 +68,18 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 // \\amalg { yyval.str=strdup(yytext); return(amalg); }
 // \\div { yyval.str=strdup(yytext); return(div); }
 // \\bigtriangledown { yyval.str=strdup(yytext); return(bigtriangledown); }
+
+%}
+
+
+
+%option 8bit 
+%option nounput  
+%option warn stack 
+%option noyy_top_state
+%option noyy_pop_state
+%option noyy_push_state
+%option noyymore
 
 %s gather abstract proof equation eqnarray
 

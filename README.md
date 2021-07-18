@@ -24,5 +24,5 @@ example useage
 on Mac,
 ```bash
 make docmac
-make parser
+make lexer
 ```

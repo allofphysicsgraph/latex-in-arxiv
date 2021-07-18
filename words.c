@@ -23,8 +23,40 @@ struct word {
 	
 };
 
-struct word *word_list; /* first element in word list */
+struct vocabulary {
+	char *word;
+	struct vocabulary *next;
+};
 
+struct word *word_list; /* first element in word list */
+struct vocabulary *vocabulary_list;
+
+int vocabulary_add_word(char *word){
+	struct vocabulary *wp;
+	wp = (struct vocabulary *) malloc(sizeof(struct vocabulary));
+	wp->next = vocabulary_list;
+	wp->word = (char *) malloc(strlen(word)+1);
+	strcpy(wp->word,word);
+	vocabulary_list = wp;
+	return 0;
+}	
+
+
+int vocabulary_lookup(char *word)
+{
+	struct vocabulary *wp = vocabulary_list;
+	/* search down the list looking for the word */
+	for(; wp; wp = wp->next) {
+		if(strcmp(wp->word, word) == 0){
+			return 1;		
+		}
+	}
+	return 0;
+}
+
+
+
+	
 int
 add_word(int type, char *word)
 {
@@ -116,3 +148,25 @@ update_word(char *word)
 }
 
 
+int read_vocabulary_file() 
+{
+    #define MAX_LEN 256
+    //https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
+    FILE* fp;
+    fp = fopen("dictionary.txt", "r");
+    if (fp == NULL) {
+      perror("Failed: ");
+      return 1;
+    }
+    char buffer[MAX_LEN];
+    // -1 to allow room for NULL terminator for really long string
+    while (fgets(buffer, MAX_LEN - 1, fp))
+    {
+        // Remove trailing newline
+        buffer[strcspn(buffer, "\n")] = 0;
+        vocabulary_add_word(buffer);
+    }
+
+    fclose(fp);
+    return 0;
+}

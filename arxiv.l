@@ -7,15 +7,14 @@
 //#include "EVP_MD.h"
 #include "sdsalloc.h"
 #include "sds.h"
-#include "trie.h"
 
 sds temp_str_buffer ;
 
-int print_abstract=1;
-int print_gather=1;
-int print_equation=1;
-int print_proof=1;
-int print_eqnarray=1;
+int print_abstract=0;
+int print_gather=0;
+int print_equation=0;
+int print_proof=0;
+int print_eqnarray=0;
 
 int bal_parens=0;
 size_t beginbalanced = 0;
@@ -25,7 +24,6 @@ int charCount = 0;
 int fileCount = 0;
 char current_word[10000];
 int print_title=0;
-TrieNode *root = NULL;
 
 #define MAX_FILE_COUNT 10000
 
@@ -84,7 +82,7 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 %s gather abstract proof equation eqnarray
 
 greek \\(alpha|Alpha|beta|Beta|chi|delta|Delta|digamma|eta|Eta|gamma|Gamma|iota|Iota|kappa|Kappa|lambda|Lambda|mho|mu|Mu|nu|Nu|omega|Omega|phi|Phi|pi|Pi|psi|Psi|rho|Rho|sigma|Sigma|tau|Tau|theta|Theta|upsilon|varepsilon|varkappa|varphi|varpi|varrho|varsigma|vartheta|xi|Xi|zeta|Zeta)
-word [a-z]{3,10}
+word [^\\][a-z]{3,10}
 %s title
 
 %%
@@ -92,8 +90,7 @@ word [a-z]{3,10}
 {word} {
 	wordCount++; charCount += yyleng;
 	int test_value= -1;
-	test_value = traverse(yytext, root, yyleng);
-	if(test_value==1){
+	if(vocabulary_lookup(yytext)==1){
 		int match = 0;
 		match = lookup_word(yytext,0);
 		if (match == 0){
@@ -130,7 +127,7 @@ word [a-z]{3,10}
                 consume_until_balanced(buf,1000,'{','}');
 		strcat(current_word,buf);
 		
-	if(print_title==0){
+	if(print_title==1){
 			printf("%s",current_word);	
 		}
         }
@@ -286,33 +283,8 @@ word [a-z]{3,10}
 int 
 main(int argc,char **argv)
 {
-    int word_count = 0;
-    char *words[NUMBER_OF_WORDS];
-    FILE *fp = fopen("dictionary.txt", "r");
-    root = createTrieNode();
-
-    if (fp == 0)
-    {
-        fprintf(stderr, "Error while opening dictionary file");
-        exit(1);
-    }
-
-    words[word_count] = malloc(INPUT_WORD_SIZE);
-
-    while (fgets(words[word_count], INPUT_WORD_SIZE, fp))
-    {
-        word_count++;
-        words[word_count] = malloc(INPUT_WORD_SIZE);
-    }
-
-    // Push the words in to Trie
-    int i;
-    for (i = 0; i < NUMBER_OF_WORDS; i++)
-    {
-            insert(root, words[i]);
-    }
-	
-
+	vocabulary_add_word("hello");
+	read_vocabulary_file();
 	yyin=fopen(argv[1],"r");
 	yylex();
 	lookup_word(argv[2],1);

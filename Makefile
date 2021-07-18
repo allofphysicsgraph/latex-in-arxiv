@@ -11,7 +11,10 @@ help:
 	@echo "make docmac"
 	@echo "         for Mac"
 	@echo "== inside the container =="
+	@echo "make openssl"
+	@echo "make sampledata"
 	@echo "make lexer"
+
 
 # Docker on linux
 docker:
@@ -43,7 +46,7 @@ lexer:
 	rm -rf lexer
 	flex arxiv.l
 	gcc -Iopenssl/include -g -c EVP_MD.c
-	gcc -Wall -Wextra -Wunused-macros -Lopenssl/ -Wall EVP_MD.o  trie.c sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
+	gcc -Wall -Wextra -Wunused-macros -Lopenssl/ -Wall EVP_MD.o sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
 	#sudo cp lexer /usr/bin
 	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
 

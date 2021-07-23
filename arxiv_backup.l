@@ -1,35 +1,3 @@
-%{
-
-#include "words.h"
-#include "file_utils.h"
-#include "enum.h"
-#include <err.h>
-#include "EVP_MD.h"
-
-
-void consume_until_balanced(char *buf,int buf_len, char start_delimiter, char stop_delimiter);
-void consume_until_match(char * stop_word);
-
-int wordCount = 0;
-int charCount = 0;
-int fileCount = 0;
-int stateCount = 0;
-
-int beginbalanced = 0;
-
-int temp_buffer_index=0;
-char temp_buffer[10000];
-
-#define MAX_FILE_COUNT 10000
-%}
-
-
-
-
-int 
-main(int argc,char **argv)
-{
-	
 	//Max file count
 	char *array[MAX_FILE_COUNT];
 	int i = 0;

@@ -148,12 +148,12 @@ update_word(char *word)
 }
 
 
-int read_vocabulary_file() 
+int read_vocabulary_file(char * file_name) 
 {
     #define MAX_LEN 256
     //https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
     FILE* fp;
-    fp = fopen("dictionary.txt", "r");
+    fp = fopen(file_name, "r");
     if (fp == NULL) {
       perror("Failed: ");
       return 1;

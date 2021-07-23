@@ -83,13 +83,35 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 
 greek \\(alpha|Alpha|beta|Beta|chi|delta|Delta|digamma|eta|Eta|gamma|Gamma|iota|Iota|kappa|Kappa|lambda|Lambda|mho|mu|Mu|nu|Nu|omega|Omega|phi|Phi|pi|Pi|psi|Psi|rho|Rho|sigma|Sigma|tau|Tau|theta|Theta|upsilon|varepsilon|varkappa|varphi|varpi|varrho|varsigma|vartheta|xi|Xi|zeta|Zeta)
 word [^\\][a-z]{3,10}
+latex "\\"[a-z]{1,20}
 %s title
 
 %%
 
+
+{latex} {
+	//printf("LATEX:%s\n",yytext);
+	wordCount++; charCount += yyleng;
+	if(vocabulary_lookup(yytext)==1){
+		int match = 0;
+		match = lookup_word(yytext,0);
+		if (match == 0){
+			printf("adding word:%s\n",yytext);
+			add_word(1,yytext);
+		} else {
+			printf("updating word:%s\n",yytext);
+			update_word(yytext);
+		}
+		
+		offset+= yyleng;
+
+	} else {printf("UNKNOWN:%s\n",yytext); }
+
+}
+
+
 {word} {
 	wordCount++; charCount += yyleng;
-	int test_value= -1;
 	if(vocabulary_lookup(yytext)==1){
 		int match = 0;
 		match = lookup_word(yytext,0);
@@ -283,8 +305,21 @@ word [^\\][a-z]{3,10}
 int 
 main(int argc,char **argv)
 {
-	vocabulary_add_word("hello");
-	read_vocabulary_file();
+	int match = -1;
+	vocabulary_add_word("\\begin");
+	/*match = vocabulary_lookup("\\bxegin");
+	if(match){
+		printf("%d",match);
+	}
+	return 0;
+	*/
+	read_vocabulary_file("english_vocab.txt");
+	read_vocabulary_file("latex_math.txt");
+	/*match = vocabulary_lookup("\\begin");
+	if(match){
+		printf("%d",match);
+	}*/
+
 	yyin=fopen(argv[1],"r");
 	yylex();
 	lookup_word(argv[2],1);

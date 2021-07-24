@@ -97,20 +97,23 @@ for line in data.splitlines():
 f =open('unk','w')
 from nltk import word_tokenize
 for line in data.splitlines():
-    
-    tokens = tokenizer.tokenize(line)
-    words =word_tokenize(line)
-    if(words != tokens):
-        if '\\' in line or '$' in line:
-            print(line)
-            print(tokens)
-            print(words)
-            print('\n\n')
-            inp = input("save")
-            if inp == '1':
-                f.write(line)
-                f.write('\n')
-            #sleep(1)
+    test = re.findall('\$.*?\$',line)
+    for math in test:
+        tokens = [x for x in tokenizer.tokenize(math) if x.strip() and x not in symbols]
+        words =[x for x in word_tokenize(math) if x and x not in symbols]
+        if(words != tokens):
+            if '\\' in tokens or '$' in tokens:
+                #print(line)
+                print(math[1:-1])
+                print(tokens[1:-1])
+                #print(words)
+                print('\n\n')
+                #inp = input("save")
+                #if inp == '1':
+                if 1 == 1:
+                    f.write(line)
+                    f.write('\n')
+                #sleep(1)
 
 
 #print_symbols_not_used()

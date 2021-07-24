@@ -1,7 +1,11 @@
 import re
 from collections import defaultdict
 from nltk.tokenize import mwe
+from sys import argv 
 
+if len(argv) != 3:
+    print('expected file path as argv[1], filename as argv[2]')
+    exit(1)
 
 class Trie(dict):
     from collections import defaultdict
@@ -43,6 +47,10 @@ def print_symbols_not_used():
         if v == 0:
             print(k)
 
+def read_file(path,f_name):
+    with open('{}/{}'.format(path,f_name),'r',encoding='ISO-8859-1') as f:
+        data = f.read()
+    return data
 
 def symbols_not_accounted_for(seen_count):
     for item in sorted(dct.items(), key=lambda x: -x[1]):
@@ -58,40 +66,53 @@ path_to_symbol_list = "latex_math.txt"
 with open(path_to_symbol_list) as f:
     symbols = [x.replace("\n", "") for x in f.readlines()]
 
-symbols = sorted(symbols, key=lambda x: -len(x))
+data = [x.replace('\n','') for x in read_file('.',"latex_misc.txt").splitlines()]
+symbols.extend(data)
 
+data = [x.replace('\n','') for x in read_file('.',"english_vocab.txt").splitlines()]
+symbols.extend(data)
+symbols = sorted(symbols, key=lambda x: -len(x))
 for symbol in symbols:
     add_new_token(symbol)
 
+regex_subs = {}
 add_new_token(r"\\ ")
-
-#path_to_expressions_list = "expressions"
-#with open(path_to_expressions_list) as f:
-#    expressions = [x.replace("\n", "").replace("$", "") for x in f.readlines()]
-
-'''for expression in expressions[:]:
-    # >4 is to show only expressions of len > 4
-    if len(expression) > 4:
-        if "\\" in tokenizer.tokenize(expression):
-            #print(expression)
-            lst = tokenizer.tokenize(expression)
-            #print(lst)
-            dct["".join(lst[lst.index("\\") :])] += 1
-        else:
-            # if there is a pattern not matched that should be split on, add the pattern here with manual_entries
-            # I am not sure if you can add regex to the mwe tokenizer without changing it.
-            manual_entries("\d+\.\d+|\d+", expression)
-            lst = tokenizer.tokenize(expression)
-            for x in lst:
-                if x in symbols:
-                    symbols_use_count[x] += 1
-
-for ix in sorted(dct.items(),key=lambda x:-x[-1])[:20]:
-    print(ix)
-#print any word defined in the symbols file that was not seen
-print_symbols_not_used()
-
-# print any symbol that showed up 50 or more times and not accounted for
-symbols_not_accounted_for(50)
+from time import sleep
+data = read_file(argv[1],argv[2])
+#to be used for expanding definitions
 '''
+for line in data.splitlines():
+    if re.findall(r'\\def',line):
+        resp = [x for x in line.split('\\def',1) if x]
+        if resp:
+            resp = resp[0]
+            match = re.findall('(.*?)({.*)',resp)
+            if match:
+                pass
+                key ='asdf'
+                def_key = match[0][0]
+                def_value = match[0][1].strip()[1:-1]
+                #freplace('{def_key}','{def_value}'))
+'''
+f =open('unk','w')
+from nltk import word_tokenize
+for line in data.splitlines():
+    
+    tokens = tokenizer.tokenize(line)
+    words =word_tokenize(line)
+    if(words != tokens):
+        if '\\' in line or '$' in line:
+            print(line)
+            print(tokens)
+            print(words)
+            print('\n\n')
+            inp = input("save")
+            if inp == '1':
+                f.write(line)
+                f.write('\n')
+            #sleep(1)
+
+
+#print_symbols_not_used()
+#symbols_not_accounted_for(50)
 

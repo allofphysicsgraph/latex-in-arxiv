@@ -305,7 +305,7 @@ latex "\\"[a-z]{1,20}
 int 
 main(int argc,char **argv)
 {
-	int match = -1;
+	//int match = -1;
 	vocabulary_add_word("\\begin");
 	/*match = vocabulary_lookup("\\bxegin");
 	if(match){
@@ -315,6 +315,7 @@ main(int argc,char **argv)
 	*/
 	read_vocabulary_file("english_vocab.txt");
 	read_vocabulary_file("latex_math.txt");
+	read_vocabulary_file("latex_misc.txt");
 	/*match = vocabulary_lookup("\\begin");
 	if(match){
 		printf("%d",match);

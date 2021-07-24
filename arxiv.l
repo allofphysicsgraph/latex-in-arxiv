@@ -81,9 +81,9 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 
 %s gather abstract proof equation eqnarray
 
-greek \\(alpha|Alpha|beta|Beta|chi|delta|Delta|digamma|eta|Eta|gamma|Gamma|iota|Iota|kappa|Kappa|lambda|Lambda|mho|mu|Mu|nu|Nu|omega|Omega|phi|Phi|pi|Pi|psi|Psi|rho|Rho|sigma|Sigma|tau|Tau|theta|Theta|upsilon|varepsilon|varkappa|varphi|varpi|varrho|varsigma|vartheta|xi|Xi|zeta|Zeta)
 word [^\\][a-z]{3,10}
 latex "\\"[a-z]{1,20}
+
 %s title
 
 %%
@@ -126,19 +126,6 @@ latex "\\"[a-z]{1,20}
 	offset+= yyleng;
 }
 
-{greek}  {
-        wordCount++; charCount += yyleng;
-        int match = 0;
-        match = lookup_word(yytext,0);
-        if (match == 0){
-                //printf("adding word:%s\n",yytext);
-                add_word(1,yytext);
-        } else {
-                //printf("updating word:%s\n",yytext);
-                update_word(yytext);
-        }
-        offset+= yyleng;
-}
 
 \\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
 <title>\n	{ lineCount++; offset=1; }

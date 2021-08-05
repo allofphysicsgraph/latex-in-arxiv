@@ -6,6 +6,43 @@ import re
 import nltk
 
 
+class Trie(dict):
+    #https://github.com/nltk/nltk/blob/develop/nltk/collections.py
+    """A Trie implementation for strings"""
+
+    LEAF = True
+
+    def __init__(self, strings=None):
+        """Builds a Trie object, which is built around a ``dict``
+
+        If ``strings`` is provided, it will add the ``strings``, which
+        consist of a ``list`` of ``strings``, to the Trie.
+        Otherwise, it'll construct an empty Trie.
+
+        :param strings: List of strings to insert into the trie
+            (Default is ``None``)
+        :type strings: list(str)
+
+        """
+        super(Trie, self).__init__()
+        if strings:
+            for string in strings:
+                self.insert(string)
+
+    def insert(self, string):
+        if len(string):
+            self[string[0]].insert(string[1:])
+        else:
+            if not self[Trie.LEAF]:
+                self[Trie.LEAF] = 1
+            else:
+                self[Trie.LEAF]+=1
+
+
+    def __missing__(self, key):
+        self[key] = Trie()
+        return self[key]
+
 def add_new_token(string):
     tokenizer.add_mwe(r"{}".format(string))
 
@@ -153,11 +190,14 @@ resp = balanced(r"\\begin{equation*}",file_data)
 if resp:
     results.extend(resp)
 
+dct = Trie()
 math_tex = math_mode(file_data)
 for item in math_tex:
     print(item)
     resp = tokenizer.tokenize(item)
     if resp[0] == '$' and resp[-1] == '$':
-        print(resp[1:-1])
-    sleep(2)
-    print('\n\n')
+        resp = resp[1:-1]
+        #dct.insert(resp)
+        print(resp)
+        print('\n\n')
+print(dct)

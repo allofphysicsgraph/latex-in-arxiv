@@ -44,6 +44,12 @@ path = "."
 data = [x.replace("\n", "") for x in read_file(path, "latex_math.txt").splitlines()]
 symbols.extend(data)
 
+#for now only single expressions
+path = "."
+data = [x.replace("\n", "") for x in read_file(path, "user_defined_symbols_expressions.txt").splitlines()]
+symbols.extend(data)
+
+
 data = [x.replace("\n", "") for x in read_file(path, "latex_misc.txt").splitlines()]
 symbols.extend(data)
 
@@ -86,6 +92,7 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
     # the pattern should include one instance of the left symbol so that balanced=-1
     # if left == right then +- counting fails
     # begin syntax handled automatically, so there is no need to include left_right symbols
+    s = re.sub(r'^\\newcommand.*','',re.escape(s))
     if "\\begin" in start:
         match = re.findall(r"\\begin{(.*?)}", start)
         if match:
@@ -129,9 +136,28 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
 #packages = use_package(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
 #print(packages)
 from time import sleep
+results=[]
+resp =balanced(r"\\begin{array}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{eqnarray}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{eqnarray*}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{equation}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{equation*}",file_data)
+if resp:
+    results.extend(resp)
+
 math_tex = math_mode(file_data)
 for item in math_tex:
     print(item)
-    print(tokenizer.tokenize(item))
+    resp = tokenizer.tokenize(item)
+    if resp[0] == '$' and resp[-1] == '$':
+        print(resp[1:-1])
     sleep(2)
     print('\n\n')

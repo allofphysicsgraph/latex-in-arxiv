@@ -54,7 +54,7 @@ symbols = sorted(symbols, key=lambda x: -len(x))
 for symbol in symbols:
     add_new_token(symbol)
 
-file_data = read_file(".", "0301001")
+file_data = read_file(".", argv[1])
 
 
 def use_package(s):
@@ -121,15 +121,17 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
                 start_offset = current_offset
 
 
-balanced(r"\\author{", file_data)
-balanced(r"\\cite{", file_data)
-print()
-print(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
-packages = use_package(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
-print(packages)
-
+#balanced(r"\\author{", file_data)
+#balanced(r"\\cite{", file_data)
+#balanced(r"\\begin{abstract}", file_data)
+#print()
+#print(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
+#packages = use_package(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
+#print(packages)
+from time import sleep
 math_tex = math_mode(file_data)
 for item in math_tex:
     print(item)
-
-balanced(r"\\begin{abstract}", file_data)
+    print(tokenizer.tokenize(item))
+    sleep(2)
+    print('\n\n')

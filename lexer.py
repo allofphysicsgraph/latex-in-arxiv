@@ -4,6 +4,7 @@ from nltk.tokenize import mwe
 from nltk import sent_tokenize
 import re
 import nltk
+from pudb import set_trace
 
 
 class Trie(dict):
@@ -123,13 +124,12 @@ def math_mode(s):
 
 
 def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
-    # set_trace()
     import re
-
+    matched = []
     # the pattern should include one instance of the left symbol so that balanced=-1
     # if left == right then +- counting fails
     # begin syntax handled automatically, so there is no need to include left_right symbols
-    s = re.sub(r'^\\newcommand.*','',re.escape(s))
+    s = re.sub(r'\\newcommand.*','',file_data)
     if "\\begin" in start:
         match = re.findall(r"\\begin{(.*?)}", start)
         if match:
@@ -137,6 +137,7 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
             # print(match)
             left_symbol = f"""\\begin{{{match}}}"""
             right_symbol = f"""\\end{{{match}}}"""
+    print(left_symbol)
     if left_symbol != right_symbol:
         current_offset = 0
         balanced = 0
@@ -161,10 +162,11 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
                         print("-1")
                         balanced -= 1
                     current_offset += 1
-                print(s[start_offset:current_offset])
+                matched.append(s[start_offset:current_offset])
                 start_offset = current_offset
+    return matched
 
-
+#set_trace()
 #balanced(r"\\author{", file_data)
 #balanced(r"\\cite{", file_data)
 #balanced(r"\\begin{abstract}", file_data)
@@ -186,12 +188,62 @@ if resp:
 resp = balanced(r"\\begin{equation}",file_data)
 if resp:
     results.extend(resp)
-resp = balanced(r"\\begin{equation*}",file_data)
+
+resp = balanced(r"\\begin{align}",file_data)
+if resp:
+    results.extend(resp)
+
+resp = balanced(r"\\begin{alignat}",file_data)
+if resp:
+    results.extend(resp)
+
+resp = balanced(r"\\begin{aligned}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{alignedat}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{Bmatrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{bmatrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{gather}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{gathered}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{matrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{multline}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{pmatrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{smallmatrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{split}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{subarray}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{Vmatrix}",file_data)
+if resp:
+    results.extend(resp)
+resp = balanced(r"\\begin{vmatrix}",file_data)
 if resp:
     results.extend(resp)
 
 dct = Trie()
 math_tex = math_mode(file_data)
+math_tex.extend(results)
+
 for item in math_tex:
     print(item)
     resp = tokenizer.tokenize(item)
@@ -200,4 +252,5 @@ for item in math_tex:
         #dct.insert(resp)
         print(resp)
         print('\n\n')
+
 print(dct)

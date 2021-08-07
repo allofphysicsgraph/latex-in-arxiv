@@ -4,7 +4,7 @@ from nltk.tokenize import mwe
 from nltk import sent_tokenize
 import re
 import nltk
-from pudb import set_trace
+#from pudb import set_trace
 
 
 class Trie(dict):
@@ -72,6 +72,16 @@ def symbols_not_accounted_for(seen_count):
         if item[1] > seen_count:
             print(item[0])
 
+#will be used to expand simple new commands when tokens are not recognized.
+def simple_new_command(s):
+    #not working yet
+    import re
+    commands = {}
+    match = [x for x in re.findall(r"\\newcommand{(.*?)}{(.*?)}", s) if len(str(x)) < 30 and  not re.findall('{|}',str(x)) ]
+    for tpl in list(set(match)):
+        if len(str(tpl[0])) < 10 and len(str(tpl[1])) < 10:
+            commands["{}".format(tpl[0])] = lambda x: x.replace("{}".format(tpl[0]),"{}".format(tpl[1]))
+    return commands
 
 symbols = list()
 dct = defaultdict(int)
@@ -99,11 +109,8 @@ for symbol in symbols:
     add_new_token(symbol)
 
 file_data = read_file(".", argv[1])
-
-
 def use_package(s):
     import re
-
     match = re.match(r"(?P<cmd>\\usepackage)(?P<package>{[a-z]+(,[a-z]+)*})?", s)
     if match:
         cmd = match.group("cmd")
@@ -116,7 +123,6 @@ def use_package(s):
 
 def math_mode(s):
     import re
-
     match = re.findall(r"[^\$](\$\$.*?\$\$)[^\$]", s, re.DOTALL)
     single_line = re.findall(r"[^\$](\$.*?\$)[^\$]", s)
     match.extend(single_line)
@@ -165,7 +171,6 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
                 matched.append(s[start_offset:current_offset])
                 start_offset = current_offset
     return matched
-
 #set_trace()
 #balanced(r"\\author{", file_data)
 #balanced(r"\\cite{", file_data)
@@ -174,7 +179,6 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
 #print(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
 #packages = use_package(r"\usepackage{amsmath,amsfonts,amssymb,latexsym,cite}")
 #print(packages)
-from time import sleep
 results=[]
 resp =balanced(r"\\begin{array}",file_data)
 if resp:

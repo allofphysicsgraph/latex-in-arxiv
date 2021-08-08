@@ -73,15 +73,21 @@ def symbols_not_accounted_for(seen_count):
             print(item[0])
 
 #will be used to expand simple new commands when tokens are not recognized.
-def simple_new_command(s):
-    #not working yet
-    import re
+def simple_replace(s):
+    #works, needs more testing
+    match = [x for x in re.findall(r"\\newcommand{(.*?)}{(.*?)}",s)]
     commands = {}
-    match = [x for x in re.findall(r"\\newcommand{(.*?)}{(.*?)}", s) if len(str(x)) < 30 and  not re.findall('{|}',str(x)) ]
-    for tpl in list(set(match)):
-        if len(str(tpl[0])) < 10 and len(str(tpl[1])) < 10:
-            commands["{}".format(tpl[0])] = lambda x: x.replace("{}".format(tpl[0]),"{}".format(tpl[1]))
+    if match:
+        for tpl in match:
+            commands[tpl[0]] = lambda x: x.replace(tpl[0],tpl[1])
     return commands
+
+'''
+for newcmd in re.findall(r'\\newcommand.*',data):
+    dct.update(simple_replace(newcmd))
+'''
+""" \\newcommand{\\ri}{\\right} -> dct['\\ri']('hello \\ri') -> 'hello \\right' """
+
 
 symbols = list()
 dct = defaultdict(int)

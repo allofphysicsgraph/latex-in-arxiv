@@ -80,7 +80,10 @@ nncp:
 	tar -xf nncp-2021-06-01.tar.gz
 	cd nncp-2021-06-01 && make && sudo cp nncp /usr/bin/ && sudo cp libnc.so /usr/lib/
 
-
+new_commands:
+	flex  new_commands.l
+	gcc -lfl lex.yy.c -g
+	./a.out test
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

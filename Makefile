@@ -80,6 +80,10 @@ nncp:
 	tar -xf nncp-2021-06-01.tar.gz
 	cd nncp-2021-06-01 && make && sudo cp nncp /usr/bin/ && sudo cp libnc.so /usr/lib/
 
+md5:
+	gcc -Iopenssl/include -g -c EVP_MD.c
+	gcc -Wall -Wextra  -Lopenssl/ -Wall EVP_MD.o -lcrypto -o md5
+
 
 newcommand:
 	gcc -Wall -Wunused -o newcommand newcommand.c

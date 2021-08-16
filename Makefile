@@ -82,7 +82,12 @@ nncp:
 
 md5:
 	gcc -Iopenssl/include -g -c EVP_MD.c
-	gcc -Wall -Wextra  -Lopenssl/ -Wall EVP_MD.o -lcrypto -o md5
+	gcc -O3 -Wall -Wextra  -Lopenssl/  EVP_MD.o -lcrypto -o md5
+
+delatex:
+	git clone https://github.com/pkubowicz/opendetex.git
+	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
+ 
 
 
 newcommand:

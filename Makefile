@@ -92,7 +92,6 @@ delatex:
 
 newcommand:
 	gcc -Wall -Wunused -o newcommand newcommand.c
-	./newcommand <0301001 >0301001_newcommand_expanded
 
 clean:
 	$(RM) lexer lex.yy.c

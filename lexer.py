@@ -177,7 +177,6 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
                 matched.append(s[start_offset:current_offset])
                 start_offset = current_offset
     return matched
-#set_trace()
 #balanced(r"\\author{", file_data)
 #balanced(r"\\cite{", file_data)
 #balanced(r"\\begin{abstract}", file_data)
@@ -190,7 +189,7 @@ resp =balanced(r"\\begin{array}",file_data)
 if resp:
     results.extend(resp)
 resp = balanced(r"\\begin{eqnarray}",file_data)
-if resp:
+'''if resp:
     results.extend(resp)
 resp = balanced(r"\\begin{eqnarray*}",file_data)
 if resp:
@@ -249,7 +248,7 @@ if resp:
 resp = balanced(r"\\begin{vmatrix}",file_data)
 if resp:
     results.extend(resp)
-
+'''
 dct = Trie()
 math_tex = math_mode(file_data)
 math_tex.extend(results)

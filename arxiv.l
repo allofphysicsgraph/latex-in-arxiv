@@ -30,42 +30,9 @@ int print_title=0;
 #ifdef YY_BUF_SIZE
 #undef YY_BUF_SIZE
 #endif
-#define YY_BUF_SIZE 335544320
+#define YY_BUF_SIZE 3355000
 void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char stop_delimiter);
 
-// BINARY OPERATORS
-// \\pm { yyval.str=strdup(yytext); return(pm); }
-// \\cap { yyval.str=strdup(yytext); return(cap); }
-// \\vee { yyval.str=strdup(yytext); return(vee); }
-// \\mp { yyval.str=strdup(yytext); return(mp); }
-// \\cup { yyval.str=strdup(yytext); return(cup); }
-// \\wedge { yyval.str=strdup(yytext); return(wedge); }
-// \\setminus { yyval.str=strdup(yytext); return(setminus); }
-// \\uplus { yyval.str=strdup(yytext); return(uplus); }
-// \\oplus { yyval.str=strdup(yytext); return(oplus); }
-// \\cdot { yyval.str=strdup(yytext); return(cdot); }
-// \\sqcap { yyval.str=strdup(yytext); return(sqcap); }
-// \\ominus { yyval.str=strdup(yytext); return(ominus); }
-// \\times { yyval.str=strdup(yytext); return(times); }
-// \\sqcup { yyval.str=strdup(yytext); return(sqcup); }
-// \\otimes { yyval.str=strdup(yytext); return(otimes); }
-// \\ast { yyval.str=strdup(yytext); return(ast); }
-// \\triangleleft { yyval.str=strdup(yytext); return(triangleleft); }
-// \\oslash { yyval.str=strdup(yytext); return(oslash); }
-// \\star { yyval.str=strdup(yytext); return(star); }
-// \\triangleright { yyval.str=strdup(yytext); return(triangleright); }
-// \\odot { yyval.str=strdup(yytext); return(odot); }
-// \\diamond { yyval.str=strdup(yytext); return(diamond); }
-// \\wr { yyval.str=strdup(yytext); return(wr); }
-// \\dagger { yyval.str=strdup(yytext); return(dagger); }
-// \\circ { yyval.str=strdup(yytext); return(circ); }
-// \\bigcirc { yyval.str=strdup(yytext); return(bigcirc); }
-// \\ddagger { yyval.str=strdup(yytext); return(ddagger); }
-// \\bullet { yyval.str=strdup(yytext); return(bullet); }
-// \\bigtriangleup { yyval.str=strdup(yytext); return(bigtriangleup); }
-// \\amalg { yyval.str=strdup(yytext); return(amalg); }
-// \\div { yyval.str=strdup(yytext); return(div); }
-// \\bigtriangledown { yyval.str=strdup(yytext); return(bigtriangledown); }
 
 %}
 
@@ -82,32 +49,11 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 %s gather abstract proof equation eqnarray
 
 word [^\\][a-z]{3,10}
-latex "\\"[a-z]{1,20}
 
 %s title
 
 %%
 
-
-{latex} {
-	//printf("LATEX:%s\n",yytext);
-	wordCount++; charCount += yyleng;
-	if(vocabulary_lookup(yytext)==1){
-		int match = 0;
-		match = lookup_word(yytext,0);
-		if (match == 0){
-			printf("adding word:%s\n",yytext);
-			add_word(1,yytext);
-		} else {
-			printf("updating word:%s\n",yytext);
-			update_word(yytext);
-		}
-		
-		offset+= yyleng;
-
-	} else {printf("UNKNOWN:%s\n",yytext); }
-
-}
 
 
 {word} {
@@ -126,14 +72,15 @@ latex "\\"[a-z]{1,20}
 	offset+= yyleng;
 }
 
+\\end"{document}" { yyterminate(); }
 
 \\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
 <title>\n	{ lineCount++; offset=1; }
 <title>"{" {
-                char buf[1000];
-                memset(buf,'\0',1000);
+                char buf[10000];
+                memset(buf,'\0',10000);
                 strcat(buf,"{");
-                consume_until_balanced(buf,1000,'{','}');
+                consume_until_balanced(buf,10000,'{','}');
 		strcat(current_word,buf);
 		
 	if(print_title==1){
@@ -141,10 +88,10 @@ latex "\\"[a-z]{1,20}
 		}
         }
 <title>"[" {
-                char buf[1000];
-                memset(buf,'\0',1000);
+                char buf[10000];
+                memset(buf,'\0',10000);
                 strcat(buf,"[");
-                consume_until_balanced(buf,1000,'[',']');
+                consume_until_balanced(buf,10000,'[',']');
 		strcat(current_word,buf);
 		if(print_title==0){
 			printf("%s",current_word);	
@@ -257,7 +204,8 @@ latex "\\"[a-z]{1,20}
             }}
 
 \\begin"{equation}" {
-            beginbalanced--;
+            printf("hello");
+		beginbalanced--;
             if(temp_str_buffer==NULL){
                     temp_str_buffer=sdsnew(yytext);
             } else {
@@ -310,7 +258,7 @@ main(int argc,char **argv)
 
 	yyin=fopen(argv[1],"r");
 	yylex();
-	lookup_word(argv[2],1);
+	if (argc == 3) lookup_word(argv[2],1);
 	return 0;
 }
 

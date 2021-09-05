@@ -45,8 +45,7 @@ debug:
 lexer:
 	rm -rf lexer
 	flex arxiv.l
-	gcc -Iopenssl/include -g -c EVP_MD.c
-	gcc -Wall -Wextra  -Lopenssl/ -Wall EVP_MD.o sds.c lex.yy.c words.c file_utils.c -lfl -lcrypto -o lexer 
+	gcc -Wall -Wextra  -Wall  sds.c lex.yy.c words.c file_utils.c -lfl  -o lexer 
 	#sudo cp lexer /usr/bin
 	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
 

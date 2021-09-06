@@ -18,6 +18,7 @@ int print_eqnarray=0;
 int print_single_line_math_mode=1;
 int print_ref=1;
 int bal_parens=0;
+int print_file_location=1;
 size_t beginbalanced = 0;
 
 int wordCount = 0;
@@ -73,14 +74,18 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 \\end"{document}" { yyterminate(); }
 
 
-"$"/[^$] { yymore(); BEGIN(single_line_math_mode);}
-<single_line_math_mode>[^$] {  yymore(); }
-<single_line_math_mode>"$" { printf("%s\n",yytext); BEGIN(0); }
+"$"/[^$] { offset++; yymore(); BEGIN(single_line_math_mode);}
+<single_line_math_mode>[^$] {  offset++; yymore(); }
+<single_line_math_mode>"$" { offset++; 
+	if(print_file_location){printf("line#:%d:coloffset:%d:",lineCount,offset-yyleng);} 
+	printf("%s\n",yytext); 
+	BEGIN(0); 
+}
 
 
-\\ref"{" { bal_parens--; yymore(); BEGIN(reference); }
-<reference>[^}] { yymore(); }
-<reference>[}] { bal_parens++; if(bal_parens==0){ if(print_ref==1) {printf("%s\n",yytext);} BEGIN(0); }}
+\\ref"{" { offset+=yyleng; bal_parens--; yymore(); BEGIN(reference); }
+<reference>[^}] { offset++; yymore(); }
+<reference>[}] { offset++; bal_parens++; if(bal_parens==0){ if(print_ref==1) {printf("%s\n",yytext);} BEGIN(0); }}
 
 
 \\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
@@ -226,10 +231,11 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 
 <equation>\n	{ lineCount++; offset=1; }
 <equation>[^\\\n]{1,9} {
-            temp_str_buffer = sdscat(temp_str_buffer,yytext);
+        offset+=yyleng;    
+	temp_str_buffer = sdscat(temp_str_buffer,yytext);
     }
-<equation>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
-<equation>\\end"{equation}" { beginbalanced++;
+<equation>\\ { offset+=yyleng; temp_str_buffer = sdscat(temp_str_buffer,yytext); }
+<equation>\\end"{equation}" { offset+= yyleng; beginbalanced++;
             temp_str_buffer=sdscat(temp_str_buffer,yytext);
             if(beginbalanced==0){
             	if(print_equation==1){
@@ -240,7 +246,6 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
             }}
 
 .	{ offset++; }
-
 \n	{ lineCount++; offset=1; }
 %%
 

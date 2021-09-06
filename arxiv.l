@@ -12,10 +12,11 @@ sds temp_str_buffer ;
 
 int print_abstract=0;
 int print_gather=0;
-int print_equation=0;
+int print_equation=1;
 int print_proof=0;
 int print_eqnarray=0;
-
+int print_single_line_math_mode=1;
+int print_ref=1;
 int bal_parens=0;
 size_t beginbalanced = 0;
 
@@ -44,11 +45,8 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 %option noyy_top_state
 %option noyy_pop_state
 %option noyy_push_state
-%option noyymore
 
-%s gather abstract proof equation eqnarray
-
-word [^\\][a-z]{3,10}
+%x gather abstract proof equation eqnarray single_line_math_mode reference
 
 %s title
 
@@ -56,16 +54,16 @@ word [^\\][a-z]{3,10}
 
 
 
-{word} {
+[^\\][a-z]{3,10} {
 	wordCount++; charCount += yyleng;
 	if(vocabulary_lookup(yytext)==1){
 		int match = 0;
 		match = lookup_word(yytext,0);
 		if (match == 0){
-			printf("adding word:%s\n",yytext);
+			//printf("adding word:%s\n",yytext);
 			add_word(1,yytext);
 		} else {
-			printf("updating word:%s\n",yytext);
+			//printf("updating word:%s\n",yytext);
 			update_word(yytext);
 		}
 	}
@@ -73,6 +71,17 @@ word [^\\][a-z]{3,10}
 }
 
 \\end"{document}" { yyterminate(); }
+
+
+"$"/[^$] { yymore(); BEGIN(single_line_math_mode);}
+<single_line_math_mode>[^$] {  yymore(); }
+<single_line_math_mode>"$" { printf("%s\n",yytext); BEGIN(0); }
+
+
+\\ref"{" { bal_parens--; yymore(); BEGIN(reference); }
+<reference>[^}] { yymore(); }
+<reference>[}] { bal_parens++; if(bal_parens==0){ if(print_ref==1) {printf("%s\n",yytext);} BEGIN(0); }}
+
 
 \\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
 <title>\n	{ lineCount++; offset=1; }
@@ -204,8 +213,7 @@ word [^\\][a-z]{3,10}
             }}
 
 \\begin"{equation}" {
-            printf("hello");
-		beginbalanced--;
+	    beginbalanced--;
             if(temp_str_buffer==NULL){
                     temp_str_buffer=sdsnew(yytext);
             } else {
@@ -225,7 +233,7 @@ word [^\\][a-z]{3,10}
             temp_str_buffer=sdscat(temp_str_buffer,yytext);
             if(beginbalanced==0){
             	if(print_equation==1){
-               		printf("%s",temp_str_buffer);
+               		printf("%s\n",temp_str_buffer);
             }
                     sdsclear(temp_str_buffer);
                     BEGIN(0);

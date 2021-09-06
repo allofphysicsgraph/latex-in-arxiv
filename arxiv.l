@@ -88,160 +88,22 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 <reference>[}] { offset++; bal_parens++; if(bal_parens==0){ if(print_ref==1) {printf("%s\n",yytext);} BEGIN(0); }}
 
 
-\\title { memset(current_word,'\0',10000); strcat(current_word,"\\title"); BEGIN(title); }
-<title>\n	{ lineCount++; offset=1; }
-<title>"{" {
-                char buf[10000];
-                memset(buf,'\0',10000);
-                strcat(buf,"{");
-                consume_until_balanced(buf,10000,'{','}');
-		strcat(current_word,buf);
-		
-	if(print_title==1){
-			printf("%s",current_word);	
-		}
-        }
-<title>"[" {
-                char buf[10000];
-                memset(buf,'\0',10000);
-                strcat(buf,"[");
-                consume_until_balanced(buf,10000,'[',']');
-		strcat(current_word,buf);
-		if(print_title==0){
-			printf("%s",current_word);	
-		
-        }
-}
-<title>. { printf("\n"); BEGIN(0); }
-
-
-\\begin"{abstract}" {
-        beginbalanced--;
-        if(temp_str_buffer==NULL){
-                temp_str_buffer=sdsnew(yytext);
-        } else {
-                temp_str_buffer=sdscat(temp_str_buffer,"\n\n");
-                temp_str_buffer=sdscat(temp_str_buffer,yytext);
-        }
-        BEGIN(abstract);
-}
-<abstract>\n	{ lineCount++; offset=1; }
-<abstract>[^\\\n]{1,9} {
-        temp_str_buffer = sdscat(temp_str_buffer,yytext);
-}
-<abstract>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
-<abstract>\\end"{abstract}" { beginbalanced++;
-        temp_str_buffer=sdscat(temp_str_buffer,yytext);
-        if(beginbalanced==0){
-                if(print_abstract==1){
-			printf("%s",temp_str_buffer);
-		}
-                sdsclear(temp_str_buffer);
-                BEGIN(0);
-        }}
-
-
-\\begin"{gather}" {
-            beginbalanced--;
-            if(temp_str_buffer==NULL){
-                    temp_str_buffer=sdsnew(yytext);
-            } else {
-                    temp_str_buffer=sdscat(temp_str_buffer,"\n\n");
-                    temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            }
-            BEGIN(gather);
-    }
-<gather>\n	{ lineCount++; offset=1; }
-<gather>[^\\\n]{1,9} {
-            temp_str_buffer = sdscat(temp_str_buffer,yytext);
-    }
-<gather>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
-<gather>\\end"{gather}" { beginbalanced++;
-            temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            if(beginbalanced==0){
-                    if(print_gather==1){
-                printf("%s",temp_str_buffer);
-            }
-                    sdsclear(temp_str_buffer);
-                    BEGIN(0);
-            }}
-
-
-\\begin"{proof}" {
-            beginbalanced--;
-            if(temp_str_buffer==NULL){
-                    temp_str_buffer=sdsnew(yytext);
-            } else {
-                    temp_str_buffer=sdscat(temp_str_buffer,"\n\n");
-                    temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            }
-            BEGIN(proof);
-    }
-<proof>\n	{ lineCount++; offset=1; }
-<proof>[^\\\n]{1,10} {
-            temp_str_buffer = sdscat(temp_str_buffer,yytext);
-    }
-<proof>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
-<proof>\\end"{proof}" { beginbalanced++;
-            temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            if(beginbalanced==0){
-                    if(print_proof==1){
-                	printf("%s",temp_str_buffer);
-                    }
-                    sdsclear(temp_str_buffer);
-                    BEGIN(0);
-}}
-
-\\begin"{eqnarray}" {
-            beginbalanced--;
-            if(temp_str_buffer==NULL){
-                    temp_str_buffer=sdsnew(yytext);
-            } else {
-                    temp_str_buffer=sdscat(temp_str_buffer,"\n\n");
-                    temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            }
-            BEGIN(eqnarray);
-    }
-<eqnarray>\n	{ lineCount++; offset=1; }
-<eqnarray>[^\\\n]{1,9} {
-            		temp_str_buffer = sdscat(temp_str_buffer,yytext);
-    		}
-<eqnarray>\\ { temp_str_buffer = sdscat(temp_str_buffer,yytext); }
-<eqnarray>\\end"{eqnarray}" { beginbalanced++;
-            temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            if(beginbalanced==0){
-            	if(print_eqnarray==1){
-                	printf("%s",temp_str_buffer);
-            	}
-                sdsclear(temp_str_buffer);
-                BEGIN(0);
-            }}
-
 \\begin"{equation}" {
 	    beginbalanced--;
-            if(temp_str_buffer==NULL){
-                    temp_str_buffer=sdsnew(yytext);
-            } else {
-                    
-                temp_str_buffer=sdscat(temp_str_buffer,"\n\n");
-		temp_str_buffer=sdscat(temp_str_buffer,yytext);
-            }
-            BEGIN(equation);
+            yymore();
+	    BEGIN(equation);
     }
 
-<equation>\n	{ lineCount++; offset=1; }
+<equation>\n	{ yymore(); lineCount++; offset=1; }
 <equation>[^\\\n]{1,9} {
-        offset+=yyleng;    
-	temp_str_buffer = sdscat(temp_str_buffer,yytext);
+	yymore();
     }
-<equation>\\ { offset+=yyleng; temp_str_buffer = sdscat(temp_str_buffer,yytext); }
+<equation>\\ {  yymore(); }
 <equation>\\end"{equation}" { offset+= yyleng; beginbalanced++;
-            temp_str_buffer=sdscat(temp_str_buffer,yytext);
             if(beginbalanced==0){
             	if(print_equation==1){
-               		printf("%s\n",temp_str_buffer);
+               		printf("%s\n",yytext);
             }
-                    sdsclear(temp_str_buffer);
                     BEGIN(0);
             }}
 

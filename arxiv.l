@@ -73,6 +73,7 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 
 \\end"{document}" { yyterminate(); }
 
+\\noindent	;
 
 "$"/[^$] { offset++; yymore(); BEGIN(single_line_math_mode);}
 <single_line_math_mode>[^$] {  offset++; yymore(); }

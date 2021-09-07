@@ -9,8 +9,8 @@ LBRACKET "["
 RBRACKET "]"
 DIGIT [0-9]
 FIRST_INITIAL [A-Z]"."
-MIDDLE_INITIAL [A-Z]"."
-LAST_NAME [A-Z][a-z]+
+MIDDLE_INITIAL [A-Z]"."(" "[A-Z]".")?
+LAST_NAME ("Mc")?[A-Z][a-z]+([-][a-zA-Z]+)?(" et al,")?
 WS [ \t]
 LPAREN "("
 RPAREN ")"
@@ -20,11 +20,12 @@ HYPHEN "-"
 NOT_WS [^{WS}]
 JRNL "Physical Review"|"Nature Communications"
 PAPER "arXiv:"[0-9]{4}"."[0-9]{4}
-
+TEXT [a-zA-Z :]+
+COMMA ","
 %%
 {LBRACKET}{DIGIT}+{RBRACKET} { printf("\n\nID:%s\n",yytext);}
 {FIRST_INITIAL}{WS}+({MIDDLE_INITIAL}{WS}+)?{LAST_NAME} { printf("NAME:%s\n",yytext);}
-{LPAREN}{YEAR}{RPAREN}	{ printf("year:%s\n",yytext);}
+{LPAREN}({TEXT}{COMMA}{WS}*)?{YEAR}{RPAREN}	{ printf("year:%s\n\n",yytext);}
 {JRNL} { printf("journal:%s\n",yytext);}
 {PAPER} { printf("paper:%s\n",yytext);}
 

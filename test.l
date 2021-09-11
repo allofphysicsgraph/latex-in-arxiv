@@ -5,9 +5,15 @@ int lineno=0;
 
 %%
 
-.	{ int i=-1; if(!isascii(yytext[0])){printf("%d",lineno);} }
+. { int i=-1; 
+    if(isascii(yytext[0]))
+	{printf("%d",lineno);} 
+}
+
 \n { lineno++; }
+
 %%
+
 
 int main(int argc, char** argv){
 

@@ -6,7 +6,7 @@ int lineno=0;
 %%
 
 . { int i=-1; 
-    if(isascii(yytext[0]))
+    if(!isascii(yytext[0]))
 	{printf("%d",lineno);} 
 }
 

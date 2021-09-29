@@ -59,7 +59,7 @@ koreio:
 	tar -xf kore-4.1.0.tar.gz
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/kodev/Makefile 
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
-	cd kore-4.1.0 && make && sudo make install
+	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 PGSQL=1 CURL=1 TASKS=1 && sudo make install
 
 postgres:
 	git clone https://github.com/postgres/postgres.git

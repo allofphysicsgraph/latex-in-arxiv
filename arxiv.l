@@ -7,7 +7,7 @@
 //#include "EVP_MD.h"
 #include "sdsalloc.h"
 #include "sds.h"
-
+#include <ctype.h>
 sds temp_str_buffer ;
 
 int print_abstract=0;
@@ -116,14 +116,20 @@ void consume_until_balanced(char *buf,int buf_len,char start_delimiter, char sto
 int 
 main(int argc,char **argv)
 {
+        YY_BUFFER_STATE buf;
+        //yylex_init( &scanner );
+	char* buffer = ReadFile(argv[1]);
+	size_t i = 0;
+	int unprintable_characters=0;
+	for(i=0;i<strlen(buffer);i++){
+		if(!isascii(buffer[i])){
+			unprintable_characters++;
+			buffer[i]=' ';
+		}
+	}
+	printf("# of unprintable characters:%d\n",unprintable_characters);
 	//int match = -1;
 	vocabulary_add_word("\\begin");
-	/*match = vocabulary_lookup("\\bxegin");
-	if(match){
-		printf("%d",match);
-	}
-	return 0;
-	*/
 	read_vocabulary_file("english_vocab.txt");
 	read_vocabulary_file("latex_math.txt");
 	read_vocabulary_file("latex_misc.txt");
@@ -132,8 +138,12 @@ main(int argc,char **argv)
 		printf("%d",match);
 	}*/
 
-	yyin=fopen(argv[1],"r");
+        buf = yy_scan_string( buffer);
+        yy_switch_to_buffer(buf);
+	//yylex( scanner );
 	yylex();
+        //yy_delete_buffer(buf,scanner);
+        //yylex_destroy( scanner );
 	if (argc == 3) lookup_word(argv[2],1);
 	return 0;
 }

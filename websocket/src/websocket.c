@@ -37,6 +37,8 @@ websocket_connect(struct connection *c)
 void
 websocket_message(struct connection *c, u_int8_t op, void *data, size_t len)
 {
+	char * iptr = data;
+	printf("%s\n",iptr);
 	kore_websocket_broadcast(c, op, data, len, WEBSOCKET_BROADCAST_GLOBAL);
 }
 

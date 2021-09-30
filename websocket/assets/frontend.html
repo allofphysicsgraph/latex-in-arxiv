@@ -6,33 +6,31 @@ var socket = null;
 var sent = 0;
 var recv = 0;
 var length = 65536;
-
+var last_state = "";
+var last_sent = "";
+var last_received = "";
 function open(evt) {
-	var msg = "";
-	var alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-	for (i = 0; i < length; i++)
-		msg += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-
+	var msg = "open";
 	message(msg);
 }
 
 function message(msg) {
+	console.log("message");
 	socket.send(msg);
-	sent = sent + 1;
+	//sent = sent + 1;
 	update();
 }
 
 function update() {
-	var cnt = document.getElementById("counter");
-
-	cnt.innerHTML = "Recv: " + recv + " Sent: " + sent;
+	console.log("update");
+	//var cnt = document.getElementById("counter");
+	//cnt.innerHTML = "Recv: " + recv + " Sent: " + sent;
 }
 
 function onmessage(evt) {
-	recv = recv + 1;
+	console.log("onmessage");
+	//recv = recv + 1;
 	update();
-
 	message(evt.data);
 }
 
@@ -41,7 +39,8 @@ function connect() {
 
 	socket.onopen = function(evt) { open(evt) };
 	socket.onclose = function(evt) { alert("closed"); };
-	socket.onmessage = function(evt) { onmessage(evt) };
+		socket.onmessage = function(evt) { console.log(evt.data); }
+		//onmessage(evt) };
 	socket.onerror = function(evt) { alert("onerror"); };
 }
 </script>
@@ -56,5 +55,18 @@ function connect() {
 <div id="counter">
 </div>
 
+<input id="bob" placeholder="Enter some text" name="name"/>
+<p id="values">jjj</p>
+
 </body>
+
+<script>
+const input = document.querySelector("#bob");
+const log = document.getElementById("values");
+input.addEventListener('input',updateValue);
+function updateValue(e){
+	log.textContent = e.target.value; 
+	message(log.textContent);
+}
+</script>
 </html>

@@ -39,7 +39,7 @@ function connect() {
 
 	socket.onopen = function(evt) { open(evt) };
 	socket.onclose = function(evt) { alert("closed"); };
-		socket.onmessage = function(evt) { console.log(evt.data); }
+	socket.onmessage = function(evt) { testmike(evt.data); }
 		//onmessage(evt) };
 	socket.onerror = function(evt) { alert("onerror"); };
 }
@@ -57,10 +57,14 @@ function connect() {
 
 <input id="bob" placeholder="Enter some text" name="name"/>
 <p id="values">jjj</p>
-
+<div id="message">mike</div>
 </body>
 
 <script>
+	function testmike(e){
+	const message= document.getElementById("message");
+	message.innerHTML = e;
+		}
 const input = document.querySelector("#bob");
 const log = document.getElementById("values");
 input.addEventListener('input',updateValue);

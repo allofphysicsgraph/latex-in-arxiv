@@ -16,8 +16,10 @@
 
 #include <kore/kore.h>
 #include <kore/http.h>
-
+#include "scanner.h"
 #include "assets.h"
+#include "file_utils.h"
+#include <ctype.h>
 
 int		page(struct http_request *);
 int		page_ws_connect(struct http_request *);
@@ -38,8 +40,36 @@ void
 websocket_message(struct connection *c, u_int8_t op, void *data, size_t len)
 {
 	//char * iptr = data;
-	printf("%s\n",(char *) data);
-	kore_websocket_broadcast(c, op, data, len, WEBSOCKET_BROADCAST_GLOBAL);
+	YY_BUFFER_STATE buf;
+        char* buffer = ReadFile("test.txt");
+        size_t i = 0;
+        int unprintable_characters=0;
+        for(i=0;i<strlen(buffer);i++){
+                if(!isascii(buffer[i])){
+                        unprintable_characters++;
+                        buffer[i]=' ';
+                }
+        }
+        char test_buffer[100000];
+	memset(test_buffer,'\0',100000);
+	printf("# of unprintable characters:%d\n",unprintable_characters);
+        buf = yy_scan_string( buffer);
+        yy_switch_to_buffer(buf);
+        FILE *fp;
+	fp = fopen("out_file","w");
+	yyout=fp;
+        yylex();
+	/*
+	read_vocabulary_file("english_vocab.txt");
+        read_vocabulary_file("latex_math.txt");
+        read_vocabulary_file("latex_misc.txt");
+        if (argc == 3) lookup_word(argv[2],1);
+        return 0;
+	yylex();*/
+	//printf("%s\n",(char *) data);
+        fclose(fp);	
+        char* parsed = ReadFile("out_file");
+	kore_websocket_broadcast(c, op, (void *)parsed, strlen(parsed) , WEBSOCKET_BROADCAST_GLOBAL);
 }
 
 void

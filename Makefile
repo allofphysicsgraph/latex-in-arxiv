@@ -61,16 +61,13 @@ koreio:
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
 	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 PGSQL=1 CURL=1 TASKS=1 && sudo make install
 
-postgres:
-	git clone https://github.com/postgres/postgres.git
-	sudo apt install libreadline-dev
-	sudo apt install zlib1g-dev
-	sudo apt install bison
-	sudo apt install flex
-	cd postgres/ && ./configure && make 
-	cd postgres && sudo make install
-	sudo cp /usr/local/pgsql/lib/libpq.so.5 /usr/lib
-	gcc postgres_connection_test.c -o pg_connection_test -I/usr/local/pgsql/include/ -L /usr/local/pgsql/lib -lpq
+
+# CDB - An interface to the Constant Database Library
+# http://cr.yp.to/cdb.html
+cdb:
+	git clone https://github.com/howerj/cdb.git
+	cd cdb && make && sudo make install 
+
 
 # NNCP is an experiment to build a practical lossless data compressor with neural networks.
 nncp:

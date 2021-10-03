@@ -32,8 +32,10 @@ int main(int argc, char** argv){
         default:
                 printf("Unknown error?");
         }
-	for(i=0;i<10;i++){
-		printf("%s",array[i]);
+	i = 0;
+	while (array[i]!=NULL){
+		printf("%s\n",array[i]);
+	i++;
 	}
 	return 0;
 

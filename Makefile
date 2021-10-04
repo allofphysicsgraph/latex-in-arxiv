@@ -66,8 +66,8 @@ koreio:
 # http://cr.yp.to/cdb.html
 cdb:
 	git clone https://github.com/howerj/cdb.git
-	cd cdb && make && sudo make install 
-
+	cd cdb && make && sudo make install && sudo cp cdb /usr/bin/
+	cdb -c test_db.cdb <cdb_file
 
 # NNCP is an experiment to build a practical lossless data compressor with neural networks.
 nncp:

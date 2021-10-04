@@ -1,6 +1,9 @@
 <!DOCTYPE>
 <html>
 <head>
+
+<script src="/js/d3.js"></script>
+
 <script>
 var socket = null;
 var sent = 0;
@@ -47,7 +50,17 @@ function connect() {
 </head>
 
 <body>
+<svg id="circle" height=200 width=450></svg>
 
+<script>
+var svg = d3.select("#circle").append("svg").attr("width", 200).attr("height", 200);
+svg.append('circle')
+  .attr('cx', 100)
+  .attr('cy', 100)
+  .attr('r', 50)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2');
+		</script>
 <form action="/" onsubmit="connect(); return false;">
 <input type="submit" value="connect">
 </form>
@@ -58,6 +71,7 @@ function connect() {
 <input id="bob" placeholder="Enter some text" name="name"/>
 <p id="values">jjj</p>
 <div id="message">mike</div>
+
 </body>
 
 <script>

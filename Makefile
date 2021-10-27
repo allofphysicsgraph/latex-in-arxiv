@@ -37,14 +37,14 @@ sampledata:
 debug:
 	flex -d arxiv.l
 	rm -rf lexer
-	gcc  sds.c lex.yy.c words.c file_utils.c -lfl -o lexer 
+	gcc  sds.c scanner.c words.c file_utils.c -lfl -o lexer 
 	#sudo cp lexer /usr/bin
 	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
 
 lexer:
 	rm -rf lexer
 	flex arxiv.l
-	gcc -Wall -Wextra  -Wall  sds.c lex.yy.c words.c file_utils.c -lfl  -o lexer 
+	gcc -Wall -Wextra  -Wall  sds.c scanner.c words.c file_utils.c -lfl  -o lexer 
 	#sudo cp lexer /usr/bin
 	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
 
@@ -59,7 +59,7 @@ koreio:
 	tar -xf kore-4.1.0.tar.gz
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/kodev/Makefile 
 	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
-	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 PGSQL=1 CURL=1 TASKS=1 && sudo make install
+	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
 
 
 # CDB - An interface to the Constant Database Library
@@ -68,12 +68,6 @@ cdb:
 	git clone https://github.com/howerj/cdb.git
 	cd cdb && make && sudo make install && sudo cp cdb /usr/bin/
 	cdb -c test_db.cdb <cdb_file
-
-# NNCP is an experiment to build a practical lossless data compressor with neural networks.
-nncp:
-	wget https://bellard.org/nncp/nncp-2021-06-01.tar.gz
-	tar -xf nncp-2021-06-01.tar.gz
-	cd nncp-2021-06-01 && make && sudo cp nncp /usr/bin/ && sudo cp libnc.so /usr/lib/
 
 md5:
 	gcc -Iopenssl/include -g -c EVP_MD.c

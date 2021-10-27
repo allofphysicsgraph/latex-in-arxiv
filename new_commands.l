@@ -6,7 +6,7 @@ char cmd[100];
 char replacement[100];
 
 %}
-%x newcommand
+%x newcommand def
 %%
 
 \\newcommand {
@@ -29,6 +29,28 @@ char replacement[100];
 		}
 }
 <newcommand>.	{ yymore();}
+
+\\def {
+	memset(cmd,'\0',100); memset(replacement,'\0',100);  BEGIN(def); }
+<def>"{" {  yymore(); balanced--; lbrace_count++; }
+
+<def>"}" { balanced++; rbrace_count++; 
+		if( (balanced==0) && ( rbrace_count>=2 )){
+			strncpy(replacement,&yytext[1],(yyleng-2));
+			printf("\"%s\"[^a-zA-Z]\t\{ printf\(\"%s\"); }\n",cmd,replacement);
+			lbrace_count=0;
+			rbrace_count=0;
+			BEGIN(0);
+		} else {
+			if ((balanced==0) && (rbrace_count==1)){
+				strncpy(cmd,&yytext[1],(yyleng-2));
+			} else {
+				yymore();
+			  }
+		}
+}
+<def>.	{ yymore();}
+
 .	;
 \n	;
 %%

@@ -20,21 +20,21 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LEN 256
+#define MAX_LINE_COUNT 1000000
 
 typedef struct File {
     char *sha256;
-    int count;
+    int count=0;
     char *filePath;
 } File_type;
 
-File_type *File_create(char *sha256, char* filePath, int count, int *array_idx)
+File_type *File_create(char *sha256, char* filePath, int *array_idx)
 {
-    
     File_type *file = malloc(sizeof(File_type));
     assert(file != NULL);
     file->sha256 = strdup(sha256);
     file->filePath =strdup(filePath);
-    file->count = count;
+    file->count++;
     (*array_idx)++;
     return file;
 }
@@ -55,12 +55,22 @@ void File_print(File_type *file)
     printf("\tcount: %d\n", file->count);
 }
 
+int File_search(File_type * array[],char* sha256,int array_idx){
+	int i = 0;
+	for(i=0;i<array_idx;i++){
+		if(strcmp(sha256,array[i]->sha256)==0){
+			return i;
+		}
+	}
+	return -1;
+}
+
 
 int main(int argc, char *argv[])
 {
     if (argc != 2) return -1;
 
-    File_type *array[10000];
+    File_type *array[MAX_LINE_COUNT];
     FILE* fp;
     int array_idx=0;
     int *ptr = &array_idx;
@@ -69,6 +79,7 @@ int main(int argc, char *argv[])
     char str[] = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./test_data";
     char *sha256, *filePath;
     char buffer[MAX_LEN];
+    int z=-1;
     
     fp = fopen(argv[1], "r");
     if (fp == NULL) {
@@ -84,13 +95,19 @@ int main(int argc, char *argv[])
         buffer[strcspn(buffer, "\n")] = 0;
     	sha256 = strtok( buffer, "  .");
     	filePath = strtok(NULL, "\n");
-       	array[array_idx] = File_create(sha256, &filePath[1],i,ptr);
-   	printf("%s:%s\n",array[array_idx-1]->sha256,array[array_idx-1]->filePath);  //array_idx gets incremented in File_create
+        z = File_search(array,sha256,array_idx);
+        if(z!=-1){
+            array[z]->count++;
+   	    printf("%s:%s:%d\n",array[z]->sha256,array[z]->filePath,array[z]->count);  //array_idx gets incremented in File_create
+        } else {
+       	    array[array_idx] = File_create(sha256, &filePath[1],ptr);
+   	    printf("%s:%s\n",array[array_idx-1]->sha256,array[array_idx-1]->filePath);  //array_idx gets incremented in File_create
+	}
+	z=-1;
     }
 
     fclose(fp);
     File_print(array[0]);
-    
     for(i = 0; i<array_idx;i++){
 	    File_destroy(array[i]);
     }

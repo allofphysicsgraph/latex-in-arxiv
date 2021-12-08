@@ -9,6 +9,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+//https://rosettacode.org/wiki/Read_a_file_line_by_line#Using_mmap.28.29
+//
+//
+
 int balanced_parens(const char * fname, char* start_pattern,char l_delimiter,char r_delimiter,int start_position)
 {
         int fd = open(fname, O_RDONLY);

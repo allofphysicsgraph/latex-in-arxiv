@@ -77,6 +77,8 @@ delatex:
 	git clone https://github.com/pkubowicz/opendetex.git
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
  
+bloom:
+	gcc bloom_filter_test.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm
 
 
 newcommand:

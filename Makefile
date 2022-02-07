@@ -62,12 +62,6 @@ koreio:
 	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
 
 
-# CDB - An interface to the Constant Database Library
-# http://cr.yp.to/cdb.html
-cdb:
-	git clone https://github.com/howerj/cdb.git
-	cd cdb && make && sudo make install && sudo cp cdb /usr/bin/
-	cdb -c test_db.cdb <cdb_file
 
 md5:
 	gcc -Iopenssl/include -g -c EVP_MD.c
@@ -78,7 +72,8 @@ delatex:
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
  
 bloom:
-	gcc bloom_filter_test.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm
+	flex -Cf bloom_filter_test.l
+	gcc -lfl lex.yy.c  -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm -lncurses -o bloom_filter
 
 
 newcommand:

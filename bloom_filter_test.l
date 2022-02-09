@@ -24,6 +24,7 @@ int unknown_word_count=0;
 int counter=1;
 #define initial_size  65536
 #define max_page_size 25000
+#define page_length_line_count 40
 int word_counting[initial_size];
 int current_page_number=0;
 char page_buffer[initial_size][max_page_size];
@@ -125,8 +126,12 @@ YY_BUFFER_STATE flex_page_buffer;
 		printw("%s",yytext,yyleng); refresh(); 
 		attroff(COLOR_PAIR(3));
 	}
-\n	{  line_count++; if(line_count % 40 == 0) { current_page_number++; getch(); clear(); } 
-		printw("%s",yytext,yyleng); refresh(); }
+\n	{ 
+		 strncat(page_buffer[current_page_number],yytext,yyleng);
+		 line_count++; 
+		 if(line_count % page_length_line_count == 0) { current_page_number++; getch(); clear(); } 
+		 printw("%s",yytext,yyleng); refresh(); 
+}
 
 %%
 
@@ -236,9 +241,9 @@ int main(int argc, char **argv)
 	//printf("\n%d",num_entries);
 	
 
-  //printf("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
+  printf("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
   //printf("page 0:%s\n",page_buffer[0]);
-
+  getch();
   endwin();
   exit_curses(EXIT_SUCCESS);
   bloom_free(&eng_bloom);

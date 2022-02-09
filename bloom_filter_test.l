@@ -23,7 +23,11 @@ int known_word_count=0;
 int unknown_word_count=0;
 int counter=1;
 #define initial_size  65536
+#define max_page_size 25000
 int word_counting[initial_size];
+int current_page_number=0;
+char page_buffer[initial_size][max_page_size];
+
 
 static int hashmap_print_all(void *context, struct hashmap_element_s *e);
  
@@ -34,13 +38,17 @@ char  latex_tmp_buffer[100000];
 FILE	*fp;										/* input-file pointer */
 char	*fp_file_name = "english_vocab";		/* input-file name    */
 char  tmp_buffer[100000];
+
+YY_BUFFER_STATE flex_page_buffer;
+
 %}
 
 
 %option 8bit
 %%
 "\\"[a-zA-Z]+	{
-        printw("latex");
+        //printw("latex");
+	strncat(page_buffer[current_page_number],yytext,yyleng);
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){
 	attron(COLOR_PAIR(4));
 	printw("%s",yytext,yyleng);
@@ -68,6 +76,7 @@ char  tmp_buffer[100000];
 
 [a-zA-Z]+	{
  	//printw("eng");
+	strncat(page_buffer[current_page_number],yytext,yyleng);
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){
 	attron(COLOR_PAIR(1));
 	printw("%s",yytext,yyleng);
@@ -111,11 +120,12 @@ char  tmp_buffer[100000];
 }}}	
 
 .	{ 
+		strncat(page_buffer[current_page_number],yytext,yyleng);
 		attron(COLOR_PAIR(3));
 		printw("%s",yytext,yyleng); refresh(); 
 		attroff(COLOR_PAIR(3));
 	}
-\n	{  line_count++; if(line_count %40 == 0) { getch(); clear(); } 
+\n	{  line_count++; if(line_count % 40 == 0) { current_page_number++; getch(); clear(); } 
 		printw("%s",yytext,yyleng); refresh(); }
 
 %%
@@ -124,13 +134,24 @@ char  tmp_buffer[100000];
 int main(int argc, char **argv)
 {
 
+  initscr();
+  start_color();
+  init_pair(1, COLOR_GREEN, COLOR_BLACK);
+  init_pair(2, COLOR_RED, COLOR_BLACK);
+  init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+  init_pair(4, COLOR_BLUE, COLOR_BLACK);
+  init_pair(5, COLOR_CYAN, COLOR_BLACK);
+  cbreak(); 	//ctrl-c to exit
+  noecho(); 
+  assert(bloom_init(&eng_bloom, 100000, 0.00001)==0); 
+  assert(bloom_init(&latex_bloom, 100000, 0.00001)==0); 
 	int i = 0;
 	int total =0; 
 	for(i;i<initial_size;i++){
 		word_counting[i] = i;
 	}
 
-	
+
 	if (0 != hashmap_create(initial_size, &hashmap)) {
 	  puts("failed to create hashmap");
 	  return -1;
@@ -141,8 +162,6 @@ int main(int argc, char **argv)
 	  return -1;
 	}
 	
-  assert(bloom_init(&eng_bloom, 100000, 0.00001)==0); 
-  assert(bloom_init(&latex_bloom, 100000, 0.00001)==0); 
 
 
   
@@ -167,9 +186,6 @@ int main(int argc, char **argv)
 	  exit (EXIT_FAILURE);
   }
 
-
-
-
   
   latex_fp	= fopen( latex_fp_file_name, "r" );
   if ( fp == NULL ) {
@@ -193,21 +209,10 @@ int main(int argc, char **argv)
   }
 
 
-
-
-  initscr();
   if(argc == 2){
   yyin=fopen(argv[1],"r");
-	start_color();
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
-	init_pair(2, COLOR_RED, COLOR_BLACK);
-	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(4, COLOR_BLUE, COLOR_BLACK);
-	init_pair(5, COLOR_CYAN, COLOR_BLACK);
-	cbreak(); 	//ctrl-c to exit
-	noecho(); 
   yylex();
-	refresh();
+  refresh();
   getch();
   }
 
@@ -217,17 +222,27 @@ int main(int argc, char **argv)
   }
 	//hashmap_iterate_pairs(&unknown_hashmap, hashmap_print_all, &total);
 
+
+  clear();
+  flex_page_buffer = yy_scan_string(page_buffer[0]);
+  yy_switch_to_buffer(flex_page_buffer);
+  yylex();
+  getch();
+
+
 	hashmap_destroy(&hashmap);
 	hashmap_destroy(&unknown_hashmap);
 	unsigned num_entries = hashmap_num_entries(&hashmap);
 	//printf("\n%d",num_entries);
 	
 
+  //printf("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
+  //printf("page 0:%s\n",page_buffer[0]);
+
   endwin();
   exit_curses(EXIT_SUCCESS);
   bloom_free(&eng_bloom);
   bloom_free(&latex_bloom);
-  printf("known words:%d\tunknowns:%d",known_word_count,unknown_word_count);
   yylex_destroy();
 
 	return 0;

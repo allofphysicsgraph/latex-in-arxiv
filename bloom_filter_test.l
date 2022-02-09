@@ -17,25 +17,27 @@
 #define MAX_LEN 1024
 struct bloom eng_bloom; 
 struct bloom latex_bloom; 
+int line_count=0;
 %}
 
+
+%option 8bit
 %%
 
 [a-zA-Z]+	{
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){
 	attron(COLOR_PAIR(1));
 	printw("%s",yytext,yyleng);
-	refresh();
 	} else {
 		attron(COLOR_PAIR(2));
 		printw("%s",yytext,yyleng);
-		refresh();
 	}}	
 
 .	{ 
 		attron(COLOR_PAIR(3));
 	printw("%s",yytext,yyleng); refresh(); }
-\n	{ printw("%s",yytext,yyleng); refresh(); }
+\n	{  line_count++; if(line_count %40 == 0) { getch(); clear(); } 
+		printw("%s",yytext,yyleng); refresh(); }
 
 %%
 
@@ -115,6 +117,7 @@ int main(int argc, char **argv)
 	cbreak(); 	//ctrl-c to exit
 	noecho(); 
   yylex();
+	refresh();
   getch();
    endwin();
   }

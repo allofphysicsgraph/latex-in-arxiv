@@ -18,6 +18,9 @@
 struct bloom eng_bloom; 
 struct bloom latex_bloom; 
 int line_count=0;
+int known_word_count=0;
+int unknown_word_count=0;
+
 %}
 
 
@@ -28,10 +31,12 @@ int line_count=0;
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){
 	attron(COLOR_PAIR(1));
 	printw("%s",yytext,yyleng);
+	known_word_count++;
 	} else {
 		attron(COLOR_PAIR(2));
 		printw("%s",yytext,yyleng);
-	}}	
+		unknown_word_count++;
+}}	
 
 .	{ 
 		attron(COLOR_PAIR(3));
@@ -124,7 +129,8 @@ int main(int argc, char **argv)
 
   bloom_free(&eng_bloom);
   bloom_free(&latex_bloom);
-  return 0;
+  printf("known words:%d\tunknowns:%d",known_word_count,unknown_word_count);
+	return 0;
 }
 
 

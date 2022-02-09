@@ -11,15 +11,18 @@
 #include <errno.h>
 #include "bloom.h"
 
-#include <sys/time.h>
-#include <time.h>
+#include "hashmap.h"
 #include <ncurses.h>
 #define MAX_LEN 1024
 struct bloom eng_bloom; 
 struct bloom latex_bloom; 
+struct hashmap_s hashmap;
 int line_count=0;
 int known_word_count=0;
 int unknown_word_count=0;
+int counter=1;
+#define initial_size  65536
+int word_counting[initial_size];
 
 %}
 
@@ -32,6 +35,20 @@ int unknown_word_count=0;
 	attron(COLOR_PAIR(1));
 	printw("%s",yytext,yyleng);
 	known_word_count++;
+	if (NULL == hashmap_get(&hashmap, yytext, yyleng)){
+	if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[1])) {
+	  puts("failed hashmap_put");
+	  return -1;
+	}
+	      
+	} else {
+	counter = *(int *)hashmap_get(&hashmap, yytext, yyleng)+1;
+	if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[counter])) {
+	  puts("failed hashmap_put");
+	  return -1;
+	}
+	
+	}
 	} else {
 		attron(COLOR_PAIR(2));
 		printw("%s",yytext,yyleng);
@@ -49,7 +66,27 @@ int unknown_word_count=0;
 
 int main(int argc, char **argv)
 {
-  int i = -1;
+	int i = 0;
+	for(i;i<initial_size;i++){
+		word_counting[i] = i;
+	}
+
+	
+	if (0 != hashmap_create(initial_size, &hashmap)) {
+	  puts("failed to create hashmap");
+	  return -1;
+	}
+
+
+
+
+
+
+
+
+
+
+	
   assert(bloom_init(&eng_bloom, 100000, 0.00001)==0); 
   assert(bloom_init(&latex_bloom, 100000, 0.00001)==0); 
 
@@ -127,10 +164,23 @@ int main(int argc, char **argv)
    endwin();
   }
 
+  counter = *(int *)hashmap_get(&hashmap, "constants", strlen("constants"));
+  printf("test count:%d\n",counter);
+
+	hashmap_destroy(&hashmap);
+	unsigned num_entries = hashmap_num_entries(&hashmap);
+	printf("\n%d",num_entries);
+	
+
+
   bloom_free(&eng_bloom);
   bloom_free(&latex_bloom);
   printf("known words:%d\tunknowns:%d",known_word_count,unknown_word_count);
 	return 0;
 }
 
+
+
+
+	
 

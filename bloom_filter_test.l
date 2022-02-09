@@ -1,36 +1,42 @@
 %{
 #include <assert.h>
+#include <err.h>
+#include <errno.h>
 #include <fcntl.h>
+#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <errno.h>
-#include "bloom.h"
 
 #include "hashmap.h"
-#include <ncurses.h>
+#include "bloom.h"
+
 #define MAX_LEN 1024
+#define initial_size  65536
+#define max_page_size 25000
+#define page_length_line_count 40
+
 struct bloom eng_bloom; 
 struct bloom latex_bloom; 
 struct hashmap_s hashmap;
 struct hashmap_s unknown_hashmap;
+
 int line_count=0;
 int known_word_count=0;
 int unknown_word_count=0;
 int counter=1;
-#define initial_size  65536
-#define max_page_size 25000
-#define page_length_line_count 40
 int word_counting[initial_size];
 int current_page_number=0;
 char page_buffer[initial_size][max_page_size];
 
-
 static int hashmap_print_all(void *context, struct hashmap_element_s *e);
+int balanced_parens(const char * fname, char * start_pattern, char * l_delimiter, char * r_delimiter, int start_position);
+
  
 FILE	*latex_fp;										/* input-file pointer */
 char	*latex_fp_file_name = "latex_vocab";		/* input-file name    */
@@ -139,6 +145,16 @@ YY_BUFFER_STATE flex_page_buffer;
 int main(int argc, char **argv)
 {
 
+ /*
+  * balanced_parens(argv[1], "\\begin{equation}", "\\begin{equation}", "\\end{equation}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\title", "{", "}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\author", "{", "}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\affiliation", "{", "}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\begin{abstract}", "\\begin{abstract}", "\\end{abstract}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\cite", "{", "}", atoi(argv[2]));
+  * balanced_parens(argv[1], "\\begin{thebibliography}", "\\begin{thebibliography}", "\\end{thebibliography}", atoi(argv[2]));
+  */
+  
   initscr();
   start_color();
   init_pair(1, COLOR_GREEN, COLOR_BLACK);
@@ -263,4 +279,81 @@ static int hashmap_print_all(void *context, struct hashmap_element_s *e) {
 
 
 	
+int balanced_parens(const char * fname, char * start_pattern, char * l_delimiter, char * r_delimiter, int start_position) {
+  //https://rosettacode.org/wiki/Read_a_file_line_by_line#Using_mmap.28.29
+  int fd = open(fname, O_RDONLY);
+  struct stat fs;
+  char * buf;
+  int start_index = 0;
+  int i = start_position;
+
+  int balanced = 0;
+  if (!strcmp(start_pattern, l_delimiter)) {
+    balanced = -1;
+  }
+
+  if (fd == -1) {
+    err(1, "open: %s", fname);
+    return 0;
+  }
+
+  if (fstat(fd, & fs) == -1) {
+    err(1, "stat: %s", fname);
+    return 0;
+  }
+
+  char tmp_data[fs.st_size];
+  char result_data[fs.st_size];
+  memset(tmp_data, '\0', fs.st_size);
+  memset(result_data, '\0', fs.st_size);
+
+  /* fs.st_size could have been 0 actually */
+  buf = mmap(0, fs.st_size, PROT_READ, MAP_SHARED, fd, 0);
+  if (buf == (void * ) - 1) {
+    err(1, "mmap: %s", fname);
+    close(fd);
+    return 0;
+  }
+  for (i; i < fs.st_size; i++) {
+    strncpy(tmp_data, & buf[i], strlen(start_pattern));
+    if (strcmp(tmp_data, start_pattern) == 0) {
+      start_index = i;
+      break;
+    }
+  }
+
+  for (i; i < fs.st_size; i++) {
+    memset(tmp_data, '\0', fs.st_size);
+    strncpy(tmp_data, & buf[i], strlen(r_delimiter));
+    if (!strcmp(tmp_data, r_delimiter)) {
+      balanced++;
+      //printf("++");
+      if (balanced == 0) {
+        strncpy(result_data, & buf[start_index], i - start_index + 1);
+        if (!strcmp(start_pattern, l_delimiter)) {
+          if (r_delimiter[0] == '\\') {
+            strcat(result_data, & r_delimiter[1]);
+          } else {
+            strcat(result_data, r_delimiter);
+          }
+        }
+        printf("(%d,%d):%s\n", start_index, i, result_data);
+        munmap(buf, fs.st_size);
+        close(fd);
+        balanced_parens(fname, start_pattern, l_delimiter, r_delimiter, i + 1);
+        break;
+      }
+    }
+
+    if (!strcmp(tmp_data, l_delimiter)) {
+      //printf("--");
+      balanced--;
+    }
+  }
+
+  munmap(buf, fs.st_size);
+  close(fd);
+  return 1;
+}
+
 

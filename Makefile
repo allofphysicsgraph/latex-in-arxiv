@@ -34,20 +34,6 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
 
-debug:
-	flex -d arxiv.l
-	rm -rf lexer
-	gcc  sds.c scanner.c words.c file_utils.c -lfl -o lexer 
-	#sudo cp lexer /usr/bin
-	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
-
-lexer:
-	rm -rf lexer
-	flex arxiv.l
-	gcc -Wall -Wextra  -Wall  sds.c scanner.c words.c file_utils.c -lfl  -o lexer 
-	#sudo cp lexer /usr/bin
-	#cd 2003 && find . -type f |xargs -i -P0 lexer "{}" 
-
 openssl:
 	git clone https://github.com/openssl/openssl.git
 	cd openssl && ./Configure && make && sudo make install && sudo cp libcrypto.so.3 /usr/lib/ && sudo cp libssl.so.3 /usr/lib/

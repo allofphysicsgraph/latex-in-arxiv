@@ -35,7 +35,11 @@ int current_page_number=0;
 char page_buffer[initial_size][max_page_size];
 
 static int hashmap_print_all(void *context, struct hashmap_element_s *e);
-int balanced_parens(const char * fname, char * start_pattern, char * l_delimiter, char * r_delimiter, int start_position);
+int balanced_parens(const char *data,
+                    char       *start_pattern,
+                    char       *l_delimiter,
+                    char       *r_delimiter,
+                    int         start_position);
 
  
 FILE	*latex_fp;										/* input-file pointer */
@@ -145,15 +149,6 @@ YY_BUFFER_STATE flex_page_buffer;
 int main(int argc, char **argv)
 {
 
- /*
-  * balanced_parens(argv[1], "\\begin{equation}", "\\begin{equation}", "\\end{equation}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\title", "{", "}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\author", "{", "}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\affiliation", "{", "}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\begin{abstract}", "\\begin{abstract}", "\\end{abstract}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\cite", "{", "}", atoi(argv[2]));
-  * balanced_parens(argv[1], "\\begin{thebibliography}", "\\begin{thebibliography}", "\\end{thebibliography}", atoi(argv[2]));
-  */
   
   initscr();
   start_color();
@@ -256,6 +251,11 @@ int main(int argc, char **argv)
 	unsigned num_entries = hashmap_num_entries(&hashmap);
 	//printf("\n%d",num_entries);
 	
+  //balanced parens test
+  char test[128];
+  memset(test, 0, 128);
+  strcpy(test, "abcd\\cite{hello}");
+  balanced_parens(test, "\\cite", "{", "}", 0);
 
   printf("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
   //printf("page 0:%s\n",page_buffer[0]);
@@ -278,82 +278,74 @@ static int hashmap_print_all(void *context, struct hashmap_element_s *e) {
 }
 
 
-	
-int balanced_parens(const char * fname, char * start_pattern, char * l_delimiter, char * r_delimiter, int start_position) {
-  //https://rosettacode.org/wiki/Read_a_file_line_by_line#Using_mmap.28.29
-  int fd = open(fname, O_RDONLY);
-  struct stat fs;
-  char * buf;
-  int start_index = 0;
-  int i = start_position;
 
-  int balanced = 0;
-  if (!strcmp(start_pattern, l_delimiter)) {
+
+int balanced_parens(const char *data,
+                    char       *start_pattern,
+                    char       *l_delimiter,
+                    char       *r_delimiter,
+                    int         start_position) {
+  size_t data_sz = strlen(data);
+  int    start_index = 0;
+  int    i           = start_position;
+  int    balanced = 0;
+  char   tmp_data[data_sz];
+  char   result_data[data_sz];
+
+  memset(tmp_data,    '\0', data_sz);
+  memset(result_data, '\0', data_sz);
+
+  if (strcmp(start_pattern, l_delimiter) == 0) {
     balanced = -1;
+
+    // printf("balanced:%d",balanced);
   }
 
-  if (fd == -1) {
-    err(1, "open: %s", fname);
-    return 0;
-  }
+  for (i; i < (int)data_sz; i++) {
+    strncpy(tmp_data, &data[i], strlen(start_pattern));
 
-  if (fstat(fd, & fs) == -1) {
-    err(1, "stat: %s", fname);
-    return 0;
-  }
-
-  char tmp_data[fs.st_size];
-  char result_data[fs.st_size];
-  memset(tmp_data, '\0', fs.st_size);
-  memset(result_data, '\0', fs.st_size);
-
-  /* fs.st_size could have been 0 actually */
-  buf = mmap(0, fs.st_size, PROT_READ, MAP_SHARED, fd, 0);
-  if (buf == (void * ) - 1) {
-    err(1, "mmap: %s", fname);
-    close(fd);
-    return 0;
-  }
-  for (i; i < fs.st_size; i++) {
-    strncpy(tmp_data, & buf[i], strlen(start_pattern));
     if (strcmp(tmp_data, start_pattern) == 0) {
       start_index = i;
+      strncpy(result_data, &data[start_index], strlen(start_pattern));
       break;
     }
   }
 
-  for (i; i < fs.st_size; i++) {
-    memset(tmp_data, '\0', fs.st_size);
-    strncpy(tmp_data, & buf[i], strlen(r_delimiter));
-    if (!strcmp(tmp_data, r_delimiter)) {
+  for (i = start_index; i < (int)data_sz; i++) {
+    memset(tmp_data, '\0', data_sz);
+    strncpy(tmp_data, &data[i], strlen(r_delimiter));
+
+    if (strcmp(tmp_data, r_delimiter) == 0) {
       balanced++;
-      //printf("++");
+
+      // printf("%d\n",balanced);
       if (balanced == 0) {
-        strncpy(result_data, & buf[start_index], i - start_index + 1);
-        if (!strcmp(start_pattern, l_delimiter)) {
+        strncpy(result_data, &data[start_index], (size_t)(i - start_index +1 ));
+
+        // printf("%s",result_data);
+        if (strcmp(start_pattern, l_delimiter) == 0) {
           if (r_delimiter[0] == '\\') {
-            strcat(result_data, & r_delimiter[1]);
+            strcat(result_data, &r_delimiter[1]);
           } else {
             strcat(result_data, r_delimiter);
           }
         }
         printf("(%d,%d):%s\n", start_index, i, result_data);
-        munmap(buf, fs.st_size);
-        close(fd);
-        balanced_parens(fname, start_pattern, l_delimiter, r_delimiter, i + 1);
         break;
       }
     }
 
-    if (!strcmp(tmp_data, l_delimiter)) {
-      //printf("--");
+    if (strcmp(tmp_data, l_delimiter) == 0) {
+      // printf("--");
       balanced--;
+      strcat(result_data, tmp_data);
+
+      // printf("%s",result_data);
     }
   }
 
-  munmap(buf, fs.st_size);
-  close(fd);
   return 1;
 }
+	
 
 

@@ -26,3 +26,6 @@ RUN apt-get install -y build-essential flex bison
 
 RUN echo "alias python=python3" > /root/.bashrc
 #RUN /bin/bash -l /root/.bashrc
+RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
+RUN tar -xf hep-th-2003.tar.gz
+

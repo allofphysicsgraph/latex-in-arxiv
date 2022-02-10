@@ -22,7 +22,7 @@ RUN apt-get update && \
 	 git \
 	 pkg-config \
 	 swig \
-	 libtoolize
+	 libtool
 
 WORKDIR /opt/
 

@@ -21,8 +21,8 @@ RUN apt-get update && \
 	 help2man \
 	 git \
 	 pkg-config \
-	 swig
-
+	 swig \
+	 libtoolize
 
 WORKDIR /opt/
 

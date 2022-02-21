@@ -31,7 +31,9 @@ int known_word_count=0;
 int unknown_word_count=0;
 int counter=1;
 int word_counting[initial_size];
+int current_offset=0;
 int current_page_number=0;
+int append_offset=0;
 char page_buffer[initial_size][max_page_size];
 
 static int hashmap_print_all(void *context, struct hashmap_element_s *e);
@@ -58,35 +60,38 @@ YY_BUFFER_STATE flex_page_buffer;
 %option 8bit
 %%
 "\\"[a-zA-Z]+	{
-        //printw("latex");
-	strncat(page_buffer[current_page_number],yytext,yyleng);
-	if ( bloom_check(&eng_bloom, yytext, yyleng)){
-	attron(COLOR_PAIR(4));
+
+	current_offset+=append_offset;
+        append_offset=yyleng;
+
+        printw("latex");
+	strncat(page_buffer[current_page_number],yytext,yyleng); //copies match to page_buffer
+	if ( bloom_check(&eng_bloom, yytext, yyleng)){           //verifies word is in the bloom filter
+	attron(COLOR_PAIR(4));											
 	printw("%s",yytext,yyleng);
 	known_word_count++;
 	if (NULL == hashmap_get(&hashmap, yytext, yyleng)){
-	if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[1])) {
-	  //puts("failed hashmap_put");
-	  return -1;
-	}
-	      
+		if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[1])) {
+		  //puts("failed hashmap_put");
+		  return -1;}
 	} else {
 	counter = *(int *)hashmap_get(&hashmap, yytext, yyleng)+1;
-	if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[counter])) {
-	  //puts("failed hashmap_put");
-	  return -1;
-	}
-	
-	}
+		if (0 != hashmap_put(&hashmap, yytext, yyleng, &word_counting[counter])) {
+		  //puts("failed hashmap_put");
+		  return -1;}
+        }
 	} else {
 		attron(COLOR_PAIR(5));
 		printw("%s",yytext,yyleng);
 		attroff(COLOR_PAIR(5));
 		unknown_word_count++;
-}}	
+}
+}	
 
 [a-zA-Z]+	{
- 	//printw("eng");
+	current_offset+=append_offset;
+        append_offset=yyleng;
+		
 	strncat(page_buffer[current_page_number],yytext,yyleng);
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){
 	attron(COLOR_PAIR(1));
@@ -131,12 +136,17 @@ YY_BUFFER_STATE flex_page_buffer;
 }}}	
 
 .	{ 
-		strncat(page_buffer[current_page_number],yytext,yyleng);
+	current_offset+=append_offset;
+        append_offset=yyleng;
+		
+                strncat(page_buffer[current_page_number],yytext,yyleng);
 		attron(COLOR_PAIR(3));
 		printw("%s",yytext,yyleng); refresh(); 
 		attroff(COLOR_PAIR(3));
 	}
 \n	{ 
+	current_offset+=append_offset;
+        append_offset=yyleng;
 		 strncat(page_buffer[current_page_number],yytext,yyleng);
 		 line_count++; 
 		 if(line_count % page_length_line_count == 0) { current_page_number++; getch(); clear(); } 
@@ -149,6 +159,15 @@ YY_BUFFER_STATE flex_page_buffer;
 int main(int argc, char **argv)
 {
 
+  char *file_buffer;
+  struct stat file_s;
+
+  int fd = open(argv[1], O_RDONLY);
+  if (fd < 0 ) return EXIT_FAILURE;
+  fstat(fd, &file_s);
+  /* PROT_READ disallows writing to buffer: will segv */
+  file_buffer = mmap(0, file_s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  //if ( file_buffer != (void*)-1 )
   
   initscr();
   start_color();
@@ -204,7 +223,7 @@ int main(int argc, char **argv)
 
   
   latex_fp	= fopen( latex_fp_file_name, "r" );
-  if ( fp == NULL ) {
+  if ( latex_fp == NULL ) {
 	  fprintf ( stderr, "couldn't open file '%s'; %s\n",
 			  latex_fp_file_name, strerror(errno) );
 	  exit (EXIT_FAILURE);
@@ -240,9 +259,9 @@ int main(int argc, char **argv)
 
 
   clear();
-  flex_page_buffer = yy_scan_string(page_buffer[0]);
-  yy_switch_to_buffer(flex_page_buffer);
-  yylex();
+  //flex_page_buffer = yy_scan_string(page_buffer[0]);
+  //yy_switch_to_buffer(flex_page_buffer);
+  //yylex();
   getch();
 
 
@@ -257,16 +276,18 @@ int main(int argc, char **argv)
   strcpy(test, "abcd\\cite{hello}");
   balanced_parens(test, "\\cite", "{", "}", 0);
 
-  printf("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
-  //printf("page 0:%s\n",page_buffer[0]);
+  printw("known words:%d\tunknowns:%d\n",known_word_count,unknown_word_count);
+  printw("current offset:%d",current_offset);
+ //printf("page 0:%s\n",page_buffer[0]);
   getch();
   endwin();
   exit_curses(EXIT_SUCCESS);
   bloom_free(&eng_bloom);
   bloom_free(&latex_bloom);
   yylex_destroy();
-
-	return 0;
+  munmap(file_buffer, file_s.st_size);
+  close(fd);
+  return 0;
 }
 
 
@@ -330,8 +351,12 @@ int balanced_parens(const char *data,
             strcat(result_data, r_delimiter);
           }
         }
-        printf("(%d,%d):%s\n", start_index, i, result_data);
-        break;
+        
+
+	attron(COLOR_PAIR(4));
+	printw("(%d,%d):%s\n", start_index, i, result_data);
+        attroff(COLOR_PAIR(4));
+	break;
       }
     }
 
@@ -344,8 +369,10 @@ int balanced_parens(const char *data,
     }
   }
 
+  
   return 1;
 }
 	
+
 
 

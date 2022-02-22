@@ -97,10 +97,7 @@ int main(void) {
   switch (menuitem) {
 
   case INSTALL:
-    INSTALL_PTR =
-        popen("sudo apt install -y git vim flex texinfo virtualenv", "r");
-    pclose(INSTALL_PTR);
-    INSTALL_PTR = popen("virtualenv /dev/shm/venv -p python3", "r");
+    INSTALL_PTR = popen("sudo apt install -y git vim flex texinfo virtualenv", "r");
     pclose(INSTALL_PTR);
     INSTALL_PTR = popen("/bin/bash libbloom.sh", "r");
     pclose(INSTALL_PTR);

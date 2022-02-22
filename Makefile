@@ -48,6 +48,14 @@ koreio:
 	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
 
 
+re2:
+	git clone https://github.com/google/re2
+	cd re2 && make && sudo make install
+
+cre2:
+	git clone https://github.com/marcomaggi/cre2.git
+	cd cre2 && mkdir build && cd build && ../configure.sh && make && sudo make install 
+
 delatex:
 	git clone https://github.com/pkubowicz/opendetex.git
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/

@@ -10,6 +10,9 @@
 #define MENUMAX 9
 #define MAX_LEN 1024
 
+int balanced_parens(const char *data, char *start_pattern, char *l_delimiter,
+                    char *r_delimiter, int start_position);
+
 void drawmenu(int item) {
   int c;
   char mainmenu[] = "Main Menu";
@@ -51,6 +54,7 @@ int main(void) {
 
   char latex_tmp_buffer[100000];
   char tmp_buffer[100000];
+  char working_dir[256];
 
   int key, menuitem;
   enum {
@@ -65,7 +69,6 @@ int main(void) {
     COMPILE_TEX_TO_PDF,
     EXIT
   };
-  char working_dir[256];
   menuitem = 0;
 
   initscr();
@@ -97,7 +100,8 @@ int main(void) {
   switch (menuitem) {
 
   case INSTALL:
-    INSTALL_PTR = popen("sudo apt install -y git vim flex texinfo virtualenv", "r");
+    INSTALL_PTR =
+        popen("sudo apt install -y git vim flex texinfo virtualenv", "r");
     pclose(INSTALL_PTR);
     INSTALL_PTR = popen("/bin/bash libbloom.sh", "r");
     pclose(INSTALL_PTR);
@@ -182,4 +186,71 @@ int main(void) {
 
   endwin();
   return 0;
+}
+
+int balanced_parens(const char *data, char *start_pattern, char *l_delimiter,
+                    char *r_delimiter, int start_position) {
+  size_t data_sz = strlen(data);
+  int start_index = 0;
+  int i = start_position;
+  int balanced = 0;
+  char tmp_data[data_sz];
+  char result_data[data_sz];
+
+  memset(tmp_data, '\0', data_sz);
+  memset(result_data, '\0', data_sz);
+
+  if (strcmp(start_pattern, l_delimiter) == 0) {
+    balanced = -1;
+
+    // printf("balanced:%d",balanced);
+  }
+
+  for (i; i < (int)data_sz; i++) {
+    strncpy(tmp_data, &data[i], strlen(start_pattern));
+
+    if (strcmp(tmp_data, start_pattern) == 0) {
+      start_index = i;
+      strncpy(result_data, &data[start_index], strlen(start_pattern));
+      break;
+    }
+  }
+
+  for (i = start_index; i < (int)data_sz; i++) {
+    memset(tmp_data, '\0', data_sz);
+    strncpy(tmp_data, &data[i], strlen(r_delimiter));
+
+    if (strcmp(tmp_data, r_delimiter) == 0) {
+      balanced++;
+
+      // printf("%d\n",balanced);
+      if (balanced == 0) {
+        strncpy(result_data, &data[start_index], (size_t)(i - start_index + 1));
+
+        // printf("%s",result_data);
+        if (strcmp(start_pattern, l_delimiter) == 0) {
+          if (r_delimiter[0] == '\\') {
+            strcat(result_data, &r_delimiter[1]);
+          } else {
+            strcat(result_data, r_delimiter);
+          }
+        }
+
+        attron(COLOR_PAIR(4));
+        printw("(%d,%d):%s\n", start_index, i, result_data);
+        attroff(COLOR_PAIR(4));
+        break;
+      }
+    }
+
+    if (strcmp(tmp_data, l_delimiter) == 0) {
+      // printf("--");
+      balanced--;
+      strcat(result_data, tmp_data);
+
+      // printf("%s",result_data);
+    }
+  }
+
+  return 1;
 }

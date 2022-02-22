@@ -1,6 +1,9 @@
 //https://github.com/wkoszek/ncurses_guide.git
 
 #include <ncurses.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 
 #define MENUMAX 8
 
@@ -28,15 +31,19 @@ void drawmenu(int item)
 		mvaddstr(3+(c*2),20,menu[c]);
 		attroff(A_REVERSE);		/* remove highlight */
 	}
-	mvaddstr(17,25,"Use arrow keys to move; Enter to select:");
+	mvaddstr(24,25,"Use arrow keys to move; Enter to select:");
 	refresh();
 }
 
 int main(void)
 {
 	FILE * FIND_PTR,  * INSTALL_PTR, * FILE_PTR, * LEXER_PTR ;
+	
+	FILE	*english_vocab;/* input-file pointer */
+	char	*english_vocab_file_name = "english_vocab";/* input-file name    */
+	
 	int key,menuitem;
-	enum { INSTALL, WORKING_DIR, FIND, INDEX, LEXER, SENT_TOKENIZE, EXPAND_TEX_MACROS, COMPILE_TEX_TO_PDF, EXIT};	
+	enum { INSTALL, WORKING_DIR, FIND, INIT, INDEX, LEXER, SENT_TOKENIZE, EXPAND_TEX_MACROS, COMPILE_TEX_TO_PDF, EXIT};	
 	char  working_dir[256];
 	menuitem = 0;
 	
@@ -91,10 +98,7 @@ int main(void)
 			pclose(FIND_PTR);
 			break;
 	
-		case INIT: //basic setup 
-						
-			FILE	*english_vocab;										/* input-file pointer */
-			char	*english_vocab_file_name = "";		/* input-file name    */
+		case INIT: 
 
 			english_vocab	= fopen( english_vocab_file_name, "r" );
 			if ( english_vocab == NULL ) {
@@ -102,7 +106,7 @@ int main(void)
 						english_vocab_file_name, strerror(errno) );
 				exit (EXIT_FAILURE);
 			}
-			{-continue_here-}
+			//{-continue_here-}
 			if( fclose(english_vocab) == EOF ) {			/* close input file   */
 				fprintf ( stderr, "couldn't close file '%s'; %s\n",
 						english_vocab_file_name, strerror(errno) );
@@ -114,7 +118,7 @@ int main(void)
 
 
 			FILE	*latex_vocab;										/* input-file pointer */
-			char	*latex_vocab_file_name = "";		/* input-file name    */
+			char	*latex_vocab_file_name = "latex_vocab";		/* input-file name    */
 
 			latex_vocab	= fopen( latex_vocab_file_name, "r" );
 			if ( latex_vocab == NULL ) {
@@ -122,7 +126,7 @@ int main(void)
 						latex_vocab_file_name, strerror(errno) );
 				exit (EXIT_FAILURE);
 			}
-			{-continue_here-}
+			//{-continue_here-}
 			if( fclose(latex_vocab) == EOF ) {			/* close input file   */
 				fprintf ( stderr, "couldn't close file '%s'; %s\n",
 						latex_vocab_file_name, strerror(errno) );

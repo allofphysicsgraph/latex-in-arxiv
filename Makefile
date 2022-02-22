@@ -48,18 +48,13 @@ koreio:
 	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
 
 
-
-md5:
-	gcc -Iopenssl/include -g -c EVP_MD.c
-	gcc -O3 -Wall -Wextra  -Lopenssl/  EVP_MD.o -lcrypto -o md5
-
 delatex:
 	git clone https://github.com/pkubowicz/opendetex.git
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
  
 bloom:
-	flex -Cf bloom_filter_test.l
-	gcc -O3 -g -lfl lex.yy.c  -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm -lncurses -o bloom_filter
+	#flex -Cf bloom_filter_test.l
+	gcc -O3 -g menubar.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm -lncurses -o bloom_filter
 
 
 newcommand:

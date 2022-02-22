@@ -6,8 +6,18 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-#define MENUMAX 9
+
+#define MENUMAX 10
 #define MAX_LEN 1024
 
 int balanced_parens(const char *data, char *start_pattern, char *l_delimiter,
@@ -25,6 +35,7 @@ void drawmenu(int item) {
       "init",                 // read vocab files, setup bloom filters
       "index files",          // codesearch
       "choose lexer",         // mix and match lexers for parsing data
+      "read file",            //
       "sentence tokenizer",   // nltk for sent_tokenize
       "expand TeX Macros",    // expand newcommands in latex files
       "compile latex file"};
@@ -56,6 +67,12 @@ int main(void) {
   char tmp_buffer[100000];
   char working_dir[256];
 
+  char *file_buffer;
+  struct stat file_s;
+
+  char current_file[256];
+  int fd;
+
   int key, menuitem;
   enum {
     INSTALL,
@@ -64,6 +81,7 @@ int main(void) {
     INIT,
     INDEX,
     LEXER,
+    READ_FILE,
     SENT_TOKENIZE,
     EXPAND_TEX_MACROS,
     COMPILE_TEX_TO_PDF,
@@ -171,6 +189,20 @@ int main(void) {
   case LEXER:
     break;
 
+  case READ_FILE:
+    printw("\ninput file name:\n");
+    scanw("%s",&current_file);
+    fd = open(current_file, O_RDONLY);
+    if (fd < 0)
+      return EXIT_FAILURE;
+    fstat(fd, &file_s);
+    /* PROT_READ disallows writing to buffer: will segv */
+    file_buffer = mmap(0, file_s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+    // if ( file_buffer != (void*)-1 )
+    printw("%s",file_buffer);
+    getch();
+    break;
+
   case SENT_TOKENIZE:
     break;
 
@@ -185,6 +217,11 @@ int main(void) {
   } /* -----  end switch  ----- */
 
   endwin();
+  exit_curses(EXIT_SUCCESS);
+  bloom_free(&eng_bloom);
+  bloom_free(&latex_bloom);
+  munmap(file_buffer, file_s.st_size);
+
   return 0;
 }
 

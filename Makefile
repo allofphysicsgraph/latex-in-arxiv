@@ -62,7 +62,7 @@ delatex:
  
 bloom:
 	#flex -Cf bloom_filter_test.l
-	gcc -O3 -g menubar.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -lm -lncurses -o bloom_filter
+	gcc -O3 -g menubar.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -Icdk-5.0-20211216/include/ -lm -lncurses -lcdk -o bloom_filter
 
 
 newcommand:

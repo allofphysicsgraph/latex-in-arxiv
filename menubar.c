@@ -2,27 +2,27 @@
 
 #include "bloom.h"
 #include <assert.h>
+#include <cdk_test.h>
 #include <errno.h>
-#include <ncurses.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
 #include <fcntl.h>
+#include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/mman.h>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
-#include <fcntl.h>
-
 
 #define MENUMAX 10
 #define MAX_LEN 1024
+#define MAX_NUMBER_OF_FILES_SELECTED 10
+#define MAX_FILE_SIZE 1048576
 
 int balanced_parens(const char *data, char *start_pattern, char *l_delimiter,
                     char *r_delimiter, int start_position);
 
+int file_path_len = 0;
 void drawmenu(int item) {
   int c;
   char mainmenu[] = "Main Menu";
@@ -68,10 +68,19 @@ int main(void) {
   char working_dir[256];
 
   char *file_buffer;
+
+  char *file_name_tmp;
+  char *token;
+
+  int fd;
+  char current_file[256];
+  char fileList[MAX_NUMBER_OF_FILES_SELECTED][256];
+  int fd_array[MAX_NUMBER_OF_FILES_SELECTED];
+  char fileData[MAX_NUMBER_OF_FILES_SELECTED][MAX_FILE_SIZE];
+  struct stat file_stat_array[MAX_NUMBER_OF_FILES_SELECTED];
   struct stat file_s;
 
-  char current_file[256];
-  int fd;
+  int mapped_files_count = 0;
 
   int key, menuitem;
   enum {
@@ -88,7 +97,6 @@ int main(void) {
     EXIT
   };
   menuitem = 0;
-
   initscr();
 
   drawmenu(menuitem);
@@ -190,16 +198,181 @@ int main(void) {
     break;
 
   case READ_FILE:
-    printw("\ninput file name:\n");
-    scanw("%s",&current_file);
-    fd = open(current_file, O_RDONLY);
-    if (fd < 0)
-      return EXIT_FAILURE;
-    fstat(fd, &file_s);
+
+#ifdef HAVE_XCURSES
+    char *XCursesProgramName = "menubar";
+#endif
+
+    /*
+     * This program demonstrates the Cdk selection widget.
+     *
+     * Options (in addition to normal CLI parameters):
+     *	-c	create the data after the widget
+     *	-f TEXT title for a footer label
+     *	-h TEXT title for a header label
+     *	-s SPOS	location for the scrollbar
+     *	-t TEXT	title for the widget
+     *
+     */
+    {
+      static const char *choices[] = {"   ", "-->"};
+      /* *INDENT-EQLS* */
+      CDKSCREEN *cdkscreen = 0;
+      CDKSELECTION *selection = 0;
+      const char *title = "<C></5>Pick one or more File.";
+      char *title_string = 0;
+      char **item = 0;
+      char temp[256];
+      const char *mesg[200];
+#if defined(HAVE_PWD_H)
+      struct passwd *ent;
+#endif
+      unsigned x, y;
+      unsigned used = 0;
+      unsigned count = 0;
+
+      CDK_PARAMS params;
+      char **arr;
+      CDKparseParams(1, arr, &params, "cf:h:s:t:" CDK_CLI_PARAMS);
+
+      /* Use the account names to create a list. */
+      FILE *stream;
+      char *line = NULL;
+      ssize_t nread;
+      size_t len = 0;
+
+      stream = popen("find /home/user/latex-in-arxiv -type f -exec file '{}' "
+                     "\\; | grep -i ': LaTeX' |cut -d ':' -f1",
+                     "r");
+
+      count = 0;
+#if defined(HAVE_PWD_H)
+      while ((nread = getline(&line, &len, stream) != -1)) {
+        used = CDKallocStrings(&item, line, count++, used);
+      }
+      free(line);
+      pclose(stream);
+#endif
+      count--;
+
+      cdkscreen = initCDKScreen(NULL);
+
+      /* Set up CDK Colors. */
+      initCDKColor();
+
+      if ((title_string = CDKparamString2(&params, 'h', 0)) != 0) {
+        const char *list[2];
+        CDKLABEL *header;
+
+        list[0] = title_string;
+        list[1] = 0;
+        header =
+            newCDKLabel(cdkscreen, CDKparamValue(&params, 'X', CENTER),
+                        CDKparamValue(&params, 'Y', TOP), (CDK_CSTRING2)list, 1,
+                        CDKparamValue(&params, 'N', TRUE),
+                        CDKparamValue(&params, 'S', TRUE));
+        if (header != 0)
+          activateCDKLabel(header, 0);
+      }
+
+      if ((title_string = CDKparamString2(&params, 'f', 0)) != 0) {
+        const char *list[2];
+        CDKLABEL *footer;
+
+        list[0] = title_string;
+        list[1] = 0;
+        footer =
+            newCDKLabel(cdkscreen, CDKparamValue(&params, 'X', CENTER),
+                        CDKparamValue(&params, 'Y', BOTTOM), (CDK_CSTRING2)list,
+                        1, CDKparamValue(&params, 'N', TRUE),
+                        CDKparamValue(&params, 'S', TRUE));
+        if (footer != 0)
+          activateCDKLabel(footer, 0);
+      }
+      /* Create the selection list. */
+      selection = newCDKSelection(
+          cdkscreen, CDKparamValue(&params, 'X', CENTER),
+          CDKparamValue(&params, 'Y', CENTER),
+          CDKparsePosition(CDKparamString2(&params, 's', "RIGHT")),
+          CDKparamValue(&params, 'H', 10), CDKparamValue(&params, 'W', 50),
+          CDKparamString2(&params, 't', title),
+          (CDKparamNumber(&params, 'c') ? 0 : (CDK_CSTRING2)item),
+          (CDKparamNumber(&params, 'c') ? 0 : (int)count),
+          (CDK_CSTRING2)choices, 2, A_REVERSE,
+          CDKparamValue(&params, 'N', TRUE),
+          CDKparamValue(&params, 'S', FALSE));
+
+      /* Is the selection list null? */
+      if (selection == 0) {
+        /* Exit CDK. */
+        destroyCDKScreen(cdkscreen);
+        endCDK();
+
+        printf("Cannot to create the selection list.\n");
+        printf("Is the window too small?\n");
+        ExitProgram(EXIT_FAILURE);
+      }
+
+      if (CDKparamNumber(&params, 'c')) {
+        setCDKSelectionItems(selection, (CDK_CSTRING2)item, (int)count);
+      }
+
+      /* Activate the selection list. */
+      activateCDKSelection(selection, 0);
+
+      /* Check the exit status of the widget. */
+      if (selection->exitType == vESCAPE_HIT) {
+        mesg[0] = "<C>You hit escape. No items selected.";
+        mesg[1] = "";
+        mesg[2] = "<C>Press any key to continue.";
+        popupLabel(cdkscreen, (CDK_CSTRING2)mesg, 3);
+      } else if (selection->exitType == vNORMAL) {
+        mesg[0] = "<C>Here are the files you selected.";
+        y = 1;
+        for (x = 0; x < count; x++) {
+          if (selection->selections[x] == 1) {
+            sprintf(temp, "<C></5>%.*s", (int)(sizeof(temp) - 20), item[x]);
+            // strncpy(fileList[x],item[x]);
+            file_name_tmp = strdup(item[x]);
+            token = strsep(&file_name_tmp, "\n"); /*  strip newline */
+            strcpy(fileList[x], token);
+
+            mesg[y++] = copyChar(temp);
+          }
+        }
+        popupLabel(cdkscreen, (CDK_CSTRING2)mesg, (int)y);
+        //
+      }
+
+      /* Clean up. */
+      CDKfreeStrings(item);
+      destroyCDKSelection(selection);
+      destroyCDKScreen(cdkscreen);
+      endCDK();
+      // ExitProgram (EXIT_SUCCESS);
+    }
+    printw("%s", fileList[0]);
+    getch();
+    ///  scanw("%s",&current_file);
+
+    char *buffer[2];
+    struct stat s[2];
+    int fd[2];
+    fd[0] = open(fileList[0], O_RDONLY);
+    // if (fd[0] < 0 ) return EXIT_FAILURE;
+    fstat(fd[0], &s[0]);
     /* PROT_READ disallows writing to buffer: will segv */
-    file_buffer = mmap(0, file_s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-    // if ( file_buffer != (void*)-1 )
-    printw("%s",file_buffer);
+    buffer[0] = mmap(0, s[0].st_size, PROT_READ, MAP_PRIVATE, fd[0], 0);
+    printw("%d", 5);
+    if (buffer[0] != (void *)-1) {
+      printw("%d", 5);
+      printw("%s", buffer[0]);
+      getch();
+      // printw(buffer[0], s[0].st_size, 1, stdout);
+      munmap(buffer[0], s[0].st_size);
+    }
+    close(fd[0]);
+
     getch();
     break;
 
@@ -220,8 +393,11 @@ int main(void) {
   exit_curses(EXIT_SUCCESS);
   bloom_free(&eng_bloom);
   bloom_free(&latex_bloom);
-  munmap(file_buffer, file_s.st_size);
-
+  int i = 0;
+  for (i = 0; i < mapped_files_count; i++) {
+    // munmap(fileData[i], file_stat_array[i].st_size);
+  }
+  ExitProgram(EXIT_SUCCESS);
   return 0;
 }
 

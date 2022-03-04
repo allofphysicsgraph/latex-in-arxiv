@@ -61,8 +61,8 @@ delatex:
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
  
 bloom:
-	#flex -Cf bloom_filter_test.l
-	gcc -O3 -g menubar.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -Icdk-5.0-20211216/include/ -lm -lncurses -lcdk -o bloom_filter
+	flex -Cf bloom_filter_test.l
+	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -Icdk-5.0-20211216/include/ -lm -lncurses -lcdk -o bloom_filter
 
 
 newcommand:

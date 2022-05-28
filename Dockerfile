@@ -38,6 +38,8 @@ RUN apt-get install -y autoconf-archive
 
 RUN pip3 install nltk
 
+RUN pip3 install black
+
 RUN git clone https://github.com/opencog/link-grammar.git
 WORKDIR link-grammar
 RUN bash autogen.sh 

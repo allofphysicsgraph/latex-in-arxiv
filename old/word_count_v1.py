@@ -5,28 +5,34 @@ import functools
 from collections import defaultdict
 from os import listdir
 from tqdm import tqdm
-nltk.download('punkt')
-nltk.download('stopwords')
-path ='/media/'
-notseen=defaultdict(int) #default starts at 0
-notseen_latex=defaultdict(int)
-notseen_names=defaultdict(int)
-files =listdir(path)
 
-def read_file(path,f_name):
-    with open('{}/{}'.format(path,f_name),'r',encoding='ISO-8859-1') as f:
+nltk.download("punkt")
+nltk.download("stopwords")
+path = "/media/"
+notseen = defaultdict(int)  # default starts at 0
+notseen_latex = defaultdict(int)
+notseen_names = defaultdict(int)
+files = listdir(path)
+
+
+def read_file(path, f_name):
+    with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
     return data
 
+
 def valid_word(word):
-    if (word not in arxiv_words) \
-        and (word not in regular_words) \
-        and (word not in latex_symbols) \
-        and (word not in stopwords):
+    if (
+        (word not in arxiv_words)
+        and (word not in regular_words)
+        and (word not in latex_symbols)
+        and (word not in stopwords)
+    ):
         return False
     return True
 
-tokenizer = mwe.MWETokenizer(separator='')
+
+tokenizer = mwe.MWETokenizer(separator="")
 TOKEN_MIN_LENGTH = 3
 seen = []
 
@@ -37,45 +43,47 @@ with open("WORDS/arvix_vocab_1.txt", "r") as f:
 with open("WORDS/words_alpha_len_3ge_v1.txt", "r") as f:
     data = f.read()
     regular_words = set(data.splitlines())
-    
+
 with open("WORDS/latex_symbols", "r") as f:
     data = f.read()
     latex_symbols = set(data.splitlines())
-    
-stopwords = set(nltk.corpus.stopwords.words('english'))
+
+stopwords = set(nltk.corpus.stopwords.words("english"))
+
 
 def add_new_token(string):
-    tokenizer.add_mwe(r'{}'.format(string))
-    seen.append(r'{}'.format(string))
+    tokenizer.add_mwe(r"{}".format(string))
+    seen.append(r"{}".format(string))
+
 
 for symbol in latex_symbols:
     add_new_token(symbol)
-    
+
 for word in arxiv_words:
     add_new_token(word)
-    
+
 for word in regular_words:
     add_new_token(word)
-    
+
 for f_name in tqdm(files[:5]):
-    data = read_file(path,f_name)
+    data = read_file(path, f_name)
     word_list = tokenizer.tokenize(data)
-    #print(word_list)
+    # print(word_list)
     for word in word_list:
         word = word.strip()
         if not valid_word(word):
-            if '\\' in word:
+            if "\\" in word:
                 notseen_latex[word] += 1
             else:
                 notseen[word] += 1
 
-for ix in sorted(notseen.items(),key=lambda x: -x[1]):
+for ix in sorted(notseen.items(), key=lambda x: -x[1]):
     if len(ix[0]) > 5:
-        if not re.findall('/|\d+|~|\+|\^|\=|^\-|_|\|',ix[0]):
+        if not re.findall("/|\d+|~|\+|\^|\=|^\-|_|\|", ix[0]):
             if ix[1] > 15:
                 print(ix[0].strip())
 
-'''
+"""
 tokenizer.tokenize('\\frac{2}{3}')
 
 def tokenize_sentences(text):
@@ -111,4 +119,4 @@ for ix in set(latex_tokens):
         resp = r"{}".format(ix)
         print(resp)
         add_new_token(resp)
-'''
+"""

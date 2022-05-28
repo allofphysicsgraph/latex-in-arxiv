@@ -3,31 +3,34 @@
 #!ls -hal 2003/ | wc -l
 import glob
 import re
-list_of_files = glob.glob('2003/*')
+
+list_of_files = glob.glob("2003/*")
 # how many files are in the corpus?
 len(list_of_files)
 
 # load data from the first file
-with open(list_of_files[1], 'r') as f:
+with open(list_of_files[1], "r") as f:
     data = f.read()
 
 from collections import defaultdict
-#dealing with the latex that fills one line or less
-tokens = ['\def','\input','\\tolerance']
+
+# dealing with the latex that fills one line or less
+tokens = ["\def", "\input", "\\tolerance"]
 
 
-def count_strings(match_string,string):
+def count_strings(match_string, string):
     if string.count(match_string):
         return True
     else:
         return False
 
+
 def begin_pattern(string):
-    resp = re.findall(r'\\begin{(.*?)}',string)
+    resp = re.findall(r"\\begin{(.*?)}", string)
     if resp:
         resp = resp[0]
         return resp
-    
+
 
 dct = defaultdict(list)
 for line in data.splitlines():
@@ -38,15 +41,21 @@ for line in data.splitlines():
 
     if not ignore_line:
         if line:
-            if line.count('%') < 10:
+            if line.count("%") < 10:
                 if len(line) > 3:
-                    if count_strings('$',line):
-                        dct['latex_single_dollar'].append(re.findall(r'\$(.*?)\$',line))
+                    if count_strings("$", line):
+                        dct["latex_single_dollar"].append(
+                            re.findall(r"\$(.*?)\$", line)
+                        )
 
-                    if count_strings('\\begin',line):
+                    if count_strings("\\begin", line):
                         begin_word = begin_pattern(line)
-                        resp = re.findall(r'\\begin{'+begin_word+r'}.*?\\end{'+begin_word+'}',data,re.DOTALL)
-                        dct['begin_{}'.format(begin_word)].extend(resp)
+                        resp = re.findall(
+                            r"\\begin{" + begin_word + r"}.*?\\end{" + begin_word + "}",
+                            data,
+                            re.DOTALL,
+                        )
+                        dct["begin_{}".format(begin_word)].extend(resp)
 
 
-print(dct['begin_figure'])
+print(dct["begin_figure"])

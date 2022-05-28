@@ -22,7 +22,7 @@ summarizer = LsaSummarizer(stemmer)
 summarizer.stop_words = stop_words
 
 
-for sent in summarizer(parser.document, len(document.splitlines())/2):
+for sent in summarizer(parser.document, len(document.splitlines()) / 2):
     print(sent)
-    #sleep(5)
+    # sleep(5)
     print()

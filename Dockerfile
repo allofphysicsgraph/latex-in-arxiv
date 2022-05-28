@@ -30,14 +30,21 @@ RUN apt-get install -y build-essential flex bison
 
 RUN echo "alias python=python3" > /root/.bashrc
 #RUN /bin/bash -l /root/.bashrc
-RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
-RUN tar -xf hep-th-2003.tar.gz
+
+#RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
+#RUN tar -xf hep-th-2003.tar.gz
+
+RUN apt-get install -y autoconf-archive
+
+RUN pip3 install nltk
 
 RUN git clone https://github.com/opencog/link-grammar.git
 WORKDIR link-grammar
 RUN bash autogen.sh 
-RUN make
-RUN ./configure 
-RUN make
-RUN make install
-RUN ldconfig
+#RUN make
+#RUN ./configure 
+#RUN make
+#RUN make install
+#RUN ldconfig
+
+

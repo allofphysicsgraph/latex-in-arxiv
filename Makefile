@@ -1,4 +1,6 @@
 
+mytag=latexinarxiv
+
 CFLAGS = -Iopenssl/include -g
 LDFLAGS = -Lopenssl/
 LDLIBS = -lcrypto
@@ -19,15 +21,15 @@ help:
 # Docker on linux
 docker:
 	sudo service docker start
-	sudo docker build -t latexinarxiv .
-	sudo docker run -it --rm latexinarxiv /bin/bash
+	sudo docker build -t $(mytag) .
+	sudo docker run -it --rm $(mytag) /bin/bash
 
 # Docker on Mac
 docmac: dockermac_build dockermac_run
 dockermac_build:
-	docker build -t latexinarxiv .
+	docker build -t $(mytag) .
 dockermac_run:
-	docker run -it --rm -v `pwd`:/scratch latexinarxiv /bin/bash
+	docker run -it --rm -v `pwd`:/scratch $(mytag) /bin/bash
 
 
 sampledata:

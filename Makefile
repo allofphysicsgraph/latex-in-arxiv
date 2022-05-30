@@ -28,6 +28,7 @@ docker:
 docmac: dockermac_build dockermac_run
 dockermac_build:
 	docker build -t $(mytag) .
+
 dockermac_run:
 	docker run -it --rm -v `pwd`:/scratch $(mytag) /bin/bash
 
@@ -40,6 +41,10 @@ openssl:
 	git clone https://github.com/openssl/openssl.git
 	cd openssl && ./Configure && make && sudo make install && sudo cp libcrypto.so.3 /usr/lib/ && sudo cp libssl.so.3 /usr/lib/
 
+md5:
+	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto
+
+
 # Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
 koreio:
 	wget https://kore.io/releases/kore-4.1.0.tar.gz
@@ -50,21 +55,16 @@ koreio:
 	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
 
 
-re2:
-	git clone https://github.com/google/re2
-	cd re2 && make && sudo make install
-
-cre2:
-	git clone https://github.com/marcomaggi/cre2.git
-	cd cre2 && mkdir build && cd build && ../configure.sh && make && sudo make install 
 
 delatex:
 	git clone https://github.com/pkubowicz/opendetex.git
 	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
  
+install_libbloom:
+	bash libbloom.sh
 bloom:
 	flex -Cf bloom_filter_test.l
-	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c -Icdk-5.0-20211216/include/ -lm -lncurses -lcdk -o bloom_filter
+	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter
 
 
 newcommand:

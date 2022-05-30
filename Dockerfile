@@ -64,13 +64,5 @@ RUN make
 RUN make test
 RUN make install
 RUN ldconfig 
-#RUN git clone https://github.com/opencog/link-grammar.git
-#WORKDIR link-grammar
-#RUN bash autogen.sh 
-#RUN make
-#RUN ./configure 
-#RUN make
-#RUN make install
-#RUN ldconfig
 
 

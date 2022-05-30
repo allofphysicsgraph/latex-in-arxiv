@@ -3,11 +3,11 @@
 # docker run -it --rm -v `pwd`:/scratch latex:latest /bin/bash
 
 # https://hub.docker.com/r/phusion/baseimage/tags
-FROM phusion/baseimage:18.04-1.0.0
+FROM phusion/baseimage:master
 
 RUN apt-get update && \
     apt-get install -y \
-         wget \
+	 wget \
          zip \
          vim \
          python3 \
@@ -22,7 +22,22 @@ RUN apt-get update && \
 	 git \
 	 pkg-config \
 	 swig \
-	 libtool
+	 libtool \
+	 build-essential \
+	 cmake \
+	libdeflate-dev \
+	doctest-dev \
+	libavformat-dev \
+	libavutil-dev \
+	libgpm-dev \
+	libncurses-dev \
+	libswscale-dev \
+	libunistring-dev \
+	pandoc \
+	python3-cffi \
+	python3-dev \
+	python3-pypandoc \
+	python3-setuptools 
 
 WORKDIR /opt/
 
@@ -40,9 +55,18 @@ RUN pip3 install nltk
 
 RUN pip3 install black
 
-RUN git clone https://github.com/opencog/link-grammar.git
-WORKDIR link-grammar
-RUN bash autogen.sh 
+RUN git clone https://github.com/dankamongmen/notcurses
+WORKDIR notcurses
+RUN mkdir build
+WORKDIR build
+RUN cmake ..
+RUN make
+RUN make test
+RUN make install
+RUN ldconfig 
+#RUN git clone https://github.com/opencog/link-grammar.git
+#WORKDIR link-grammar
+#RUN bash autogen.sh 
 #RUN make
 #RUN ./configure 
 #RUN make

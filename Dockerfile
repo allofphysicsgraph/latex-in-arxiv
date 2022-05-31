@@ -70,6 +70,12 @@ RUN    perl -MCPAN -e 'install Image::Size'
 RUN    perl -MCPAN -e 'install JSON::XS'
 RUN    perl -MCPAN -e 'install Text::Unidecode'
 RUN    echo install -f Archive::Zip |cpan
+RUN    perl Makefile.PL
+RUN    make
+RUN    make test
+RUN    make install
+
+
 #RUN git clone https://github.com/dankamongmen/notcurses
 #WORKDIR notcurses
 #RUN mkdir build

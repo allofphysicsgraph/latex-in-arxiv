@@ -37,7 +37,9 @@ RUN apt-get update && \
 	python3-cffi \
 	python3-dev \
 	python3-pypandoc \
-	python3-setuptools 
+	python3-setuptools \
+	libxslt1-dev \
+	libmagickcore-dev
 
 WORKDIR /opt/
 
@@ -65,16 +67,18 @@ RUN    perl -MCPAN -e 'install Image::Magick'
 RUN    perl -MCPAN -e 'install Pod::Parser'
 RUN    perl -MCPAN -e 'install IO::String'
 RUN    perl -MCPAN -e 'install Image::Size'
-
-RUN git clone https://github.com/dankamongmen/notcurses
-WORKDIR notcurses
-RUN mkdir build
-WORKDIR build
-RUN cmake ..
-RUN make
-RUN make test
-RUN make install
-RUN ldconfig 
+RUN    perl -MCPAN -e 'install JSON::XS'
+RUN    perl -MCPAN -e 'install Text::Unidecode'
+RUN    echo install -f Archive::Zip |cpan
+#RUN git clone https://github.com/dankamongmen/notcurses
+#WORKDIR notcurses
+#RUN mkdir build
+#WORKDIR build
+#RUN cmake ..
+#RUN make
+#RUN make test
+#RUN make install
+#RUN ldconfig 
 
 
 

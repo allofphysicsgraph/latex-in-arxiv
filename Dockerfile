@@ -55,6 +55,17 @@ RUN pip3 install nltk
 
 RUN pip3 install black
 
+RUN git clone https://github.com/brucemiller/LaTeXML
+WORKDIR LaTeXML
+RUN    perl -MCPAN -e 'install XML::LibXML'
+RUN    perl -MCPAN -e 'install XML::LibXSLT'
+RUN    perl -MCPAN -e 'install XML::LibXSLT'
+RUN    perl -MCPAN -e 'install Parse::RecDescent'
+RUN    perl -MCPAN -e 'install Image::Magick'
+RUN    perl -MCPAN -e 'install Pod::Parser'
+RUN    perl -MCPAN -e 'install IO::String'
+RUN    perl -MCPAN -e 'install Image::Size'
+
 RUN git clone https://github.com/dankamongmen/notcurses
 WORKDIR notcurses
 RUN mkdir build
@@ -64,5 +75,6 @@ RUN make
 RUN make test
 RUN make install
 RUN ldconfig 
+
 
 

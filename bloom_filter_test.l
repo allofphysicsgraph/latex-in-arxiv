@@ -64,7 +64,7 @@ YY_BUFFER_STATE flex_page_buffer;
 	current_offset+=append_offset;
         append_offset=yyleng;
 
-        printw("latex");
+        //printw("latex");
 	strncat(page_buffer[current_page_number],yytext,yyleng); //copies match to page_buffer
 	if ( bloom_check(&eng_bloom, yytext, yyleng)){           //verifies word is in the bloom filter
 	attron(COLOR_PAIR(4));											

@@ -75,6 +75,13 @@ RUN    make
 RUN    make test
 RUN    make install
 
+WORKDIR /opt/
+RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
+WORKDIR /opt/latex-in-arxiv/
+RUN make install_libbloom
+RUN make bloom
+
+#RUN ./bloom_filter sound1.tex
 
 #RUN git clone https://github.com/dankamongmen/notcurses
 #WORKDIR notcurses

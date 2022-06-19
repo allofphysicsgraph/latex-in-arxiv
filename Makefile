@@ -62,6 +62,7 @@ delatex:
  
 install_libbloom:
 	bash libbloom.sh
+
 bloom:
 	flex -Cf bloom_filter_test.l
 	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter

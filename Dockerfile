@@ -76,6 +76,9 @@ RUN    make test
 RUN    make install
 
 WORKDIR /opt/
+RUN git clone https://github.com/wtsnjp/miogatto 
+
+WORKDIR /opt/
 RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN make install_libbloom

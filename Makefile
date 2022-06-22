@@ -37,23 +37,21 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
 
-openssl:
-	git clone https://github.com/openssl/openssl.git
-	cd openssl && ./Configure && make && sudo make install && sudo cp libcrypto.so.3 /usr/lib/ && sudo cp libssl.so.3 /usr/lib/
-
 md5:
 	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto
 
 
+#version change to 1.1.1 for koreio
+openssl:
+	wget https://www.openssl.org/source/openssl-1.1.1p.tar.gz
+	tar -xf openssl-1.1.1p.tar.gz
+	cd openssl-1.1.1p && ./config && make && make install && ldconfig
+
 # Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
 koreio:
-	wget https://kore.io/releases/kore-4.1.0.tar.gz
-	sha256sum -c kore-4.1.0.tar.gz.sha256
-	tar -xf kore-4.1.0.tar.gz
-	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/kodev/Makefile 
-	sed -i 's/CFLAGS+=-Wall -Werror/CFLAGS+=-DOPENSSL_API_COMPAT=0x10100000L -Wall /g' kore-4.1.0/Makefile 
-	cd kore-4.1.0 && make PYTHON=1 ACME=1 DEBUG=1 CURL=1 TASKS=1 && sudo make install
-
+	wget https://kore.io/releases/kore-4.2.2.tar.gz
+	tar -xf kore-4.2.2.tar.gz
+	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  && sudo make install
 
 
 delatex:

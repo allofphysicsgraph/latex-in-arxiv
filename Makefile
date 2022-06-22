@@ -41,6 +41,10 @@ md5:
 	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto
 
 
+curl:
+	git clone https://github.com/curl/curl
+	cd curl && mkdir build && cd build && cmake .. && make && make install
+
 #version change to 1.1.1 for koreio
 openssl:
 	wget https://www.openssl.org/source/openssl-1.1.1p.tar.gz
@@ -49,9 +53,9 @@ openssl:
 
 # Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
 koreio:
-	wget https://kore.io/releases/kore-4.2.2.tar.gz
+	wget https://kore.io/releases/kore-4.2.2.tar.gz --no-check-certificate
 	tar -xf kore-4.2.2.tar.gz
-	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  && sudo make install
+	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  &&  make install
 
 
 delatex:

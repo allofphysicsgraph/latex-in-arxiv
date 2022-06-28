@@ -5,8 +5,10 @@ import re
 import nltk
 from nltk.tokenize import RegexpTokenizer
 
+
 def add_new_token(string):
     tokenizer.add_mwe(r"{}".format(string))
+
 
 def read_file(path, f_name):
     with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
@@ -99,10 +101,10 @@ def symbol_definitions(sentence):
     match = re.findall(r"\$[a-zA-Z]\$ is the.*?(?:and \$|$|, )", sentence, re.DOTALL)
     if match:
         lst.extend(match)
-    match = re.findall(r"and \$.*?\$.*?(?:$)",sentence,re.DOTALL)
+    match = re.findall(r"and \$.*?\$.*?(?:$)", sentence, re.DOTALL)
     if match:
         lst.extend(match)
-    match = re.findall(r"and ([a-zA-Z]+\s){1,3}\$.*?\$\.",sentence,re.DOTALL)
+    match = re.findall(r"and ([a-zA-Z]+\s){1,3}\$.*?\$\.", sentence, re.DOTALL)
     if match:
         lst.extend(match)
 
@@ -115,6 +117,7 @@ def symbol_definitions(sentence):
 if __name__ == "__main__":
     from collections import defaultdict
     from pudb import set_trace
+
     dct = defaultdict(list)
     file_data = read_file(".", argv[1])
 
@@ -123,29 +126,26 @@ if __name__ == "__main__":
     english_tokens = [x.strip() for x in read_file(".", "english_vocab").splitlines()]
 
     tokens = []
-    regexp_tokenizer = RegexpTokenizer('\$.*?\$')
+    regexp_tokenizer = RegexpTokenizer("\$.*?\$")
     regexp_tokens = regexp_tokenizer.tokenize(file_data)
     tokens.extend(list(set(regexp_tokens)))
     tokens.extend(list(set(latex_tokens)))
     tokens.extend(list(set(english_tokens)))
-    tokens = sorted(tokens,key=lambda x: -1*len(x))
+    tokens = sorted(tokens, key=lambda x: -1 * len(x))
     for token in tokens:
         add_new_token(token)
     word_tokens = tokenizer.tokenize(file_data)
     sents = nltk.sent_tokenize(file_data)
-    f = open('training_data','a+')
+    f = open("training_data", "a+")
     for sent in sents:
         for tok in list(set(regexp_tokens)):
             if tok in sent:
-                print('tok:{}'.format(tok),sent)
+                print("tok:{}".format(tok), sent)
                 inp = input()
                 if inp == str(1):
                     f.write(sent)
-                    f.write('\n')
-                    print('file write\n')
-
-
-
+                    f.write("\n")
+                    print("file write\n")
 
     dct["bibliography"].extend(balanced(r"\\begin{thebibliography}", file_data))
     dct["cite"].extend(balanced(r"\\cite", file_data))
@@ -168,7 +168,7 @@ if __name__ == "__main__":
     # print(word_lst(file_data))
     # print(dct['ref'])
     # set_trace()
-    
+
     exit(0)
     for token in dct["math_ctrl_seq"]:
         if len(token) == 1:
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     dct["sentences"] = nltk.sent_tokenize(file_data)
     symbols_set = set()
     for ix, sent in enumerate(dct["sentences"]):
-        #print("sent:", ix, sent)
+        # print("sent:", ix, sent)
 
         # set_trace()
         if len(symbol_definitions(sent)) == 1:
@@ -198,9 +198,9 @@ if __name__ == "__main__":
     print(user_defined)
     mapped = defaultdict(int)
     for line in set(dct["user_defined_symbols_definition"]):
-        for symbol in  user_defined:
-            if '$'+symbol+'$' in line:
-                print(line,symbol)
-                mapped[symbol]+=1
+        for symbol in user_defined:
+            if "$" + symbol + "$" in line:
+                print(line, symbol)
+                mapped[symbol] += 1
     print(mapped)
     print(set(user_defined).difference(set(mapped.keys())))

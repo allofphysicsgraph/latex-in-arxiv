@@ -59,30 +59,4 @@ for ix, sent in enumerate(tagged_sents):
         #    sleep(5)
         # print('*'*50,sents[ix],resp,sent)
 
-"""f = open('training_sents','a+')
-for ix,sent in enumerate(tagged_sents):
-    resp = [x[0] for x in sent if x[0] in regexp_tokens]
-    if resp:
-        print('*'*50,sents[ix],resp,sent)
-        inp=input()
-        if inp == '1':
-            f.write(sents[ix])
-            f.write('\n')
-            f.write(' '.join(resp))
-            f.write('\n')
-            f.write(str(sent))
-            f.write('\n')
-            f.write('*'*50)
-            f.write('\n')
-        if inp=='q':
-            f.close()
-            exit(0)
 f.close()
-"""
-"""    word_tokens = tokenizer.tokenize(file_data)
-    sents = nltk.sent_tokenize(file_data)
-    f = open('training_data','a+')
-    for sent in sents:
-        for tok in list(set(regexp_tokens)):
-            if tok in sent:
-                print('tok:{}'.format(tok),sent)"""

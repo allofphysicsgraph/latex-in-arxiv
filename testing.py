@@ -1,3 +1,4 @@
+import pandas as pd
 from sys import argv
 from nltk.tokenize import mwe
 from time import sleep
@@ -8,9 +9,7 @@ from nltk.tokenize import mwe
 from pudb import set_trace
 from nltk.tag import pos_tag_sents
 
-
-def add_new_token(string):
-    tokenizer.add_mwe(r"{}".format(string))
+pd.set_option("display.max_columns", 50)
 
 
 def read_file(path, f_name):
@@ -19,31 +18,49 @@ def read_file(path, f_name):
     return data
 
 
-tokenizer = mwe.MWETokenizer(separator="")
-latex_tokens = [x.strip() for x in read_file(".", "latex_vocab").splitlines()]
-english_tokens = [x.strip() for x in read_file(".", "english_vocab").splitlines()]
-file_data = read_file(".", "sound1.tex")
+class Tokenizer:
+    def add_new_token(self, tokenizer, string):
+        tokenizer.add_mwe(r"{}".format(string))
 
-tokens = []
-regexp_tokenizer = RegexpTokenizer("\$.*?\$")
-regexp_tokens = regexp_tokenizer.tokenize(file_data)
-tokens.extend(list(set(regexp_tokens)))
-tokens.extend(list(set(latex_tokens)))
-tokens.extend(list(set(english_tokens)))
-tokens = sorted(tokens, key=lambda x: -1 * len(x))
-for token in tokens:
-    add_new_token(token)
+    def __init__(self, file_name):
+        self.tokens = []
+        self.file_data = read_file(".", file_name)
 
-sents = nltk.sent_tokenize("\n".join(file_data.splitlines()))
-tagged_sents = nltk.pos_tag_sents([tokenizer.tokenize(sent) for sent in sents])
-tagged_keys = [x[0] for x in tagged_sents]
-print(tagged_keys)
+        self.mwe = mwe.MWETokenizer(separator="")
+        self.regexp = RegexpTokenizer("\$.*?\$")
+
+        self.latex_tokens = [
+            x.strip() for x in read_file(".", "latex_vocab").splitlines()
+        ]
+        self.english_tokens = [
+            x.strip() for x in read_file(".", "english_vocab").splitlines()
+        ]
+        self.regexp_tokens = self.regexp.tokenize(self.file_data)
+
+        self.tokens.extend(list(set(self.regexp_tokens)))
+        self.tokens.extend(list(set(self.latex_tokens)))
+        self.tokens.extend(list(set(self.english_tokens)))
+        self.tokens = sorted(self.tokens, key=lambda x: -1 * len(x))
+
+        for token in self.tokens:
+            self.add_new_token(self.mwe, token)
 
 
-"""    word_tokens = tokenizer.tokenize(file_data)
-    sents = nltk.sent_tokenize(file_data)
-    f = open('training_data','a+')
-    for sent in sents:
-        for tok in list(set(regexp_tokens)):
-            if tok in sent:
-                print('tok:{}'.format(tok),sent)"""
+tokenizer = Tokenizer("sound1.tex")
+
+
+sents = nltk.sent_tokenize("\n".join(tokenizer.file_data.splitlines()))
+tagged_sents = nltk.pos_tag_sents([tokenizer.mwe.tokenize(sent) for sent in sents])
+for ix, sent in enumerate(sents):
+    resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]
+    if resp:
+        print(sent)
+        inp = input()
+        lst = []
+        if inp == "p":
+            words = [x[0] for x in tagged_sents[ix] if x[0].strip()]
+            tags = [x[1] for x in tagged_sents[ix] if x[0].strip()]
+            lst.append(words)
+            lst.append(tags)
+            df = pd.DataFrame(lst)
+            print(df.head())

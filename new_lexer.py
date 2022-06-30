@@ -1,13 +1,17 @@
 from sys import argv
+from pudb import set_trace
+import pandas as pd
+from sys import argv
 from nltk.tokenize import mwe
 from time import sleep
-import re
-import nltk
 from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import mwe
+from nltk.tag import pos_tag_sents
+from collections import defaultdict
+import nltk
+import re
 
-
-def add_new_token(string):
-    tokenizer.add_mwe(r"{}".format(string))
+pd.set_option("display.max_columns", 50)
 
 
 def read_file(path, f_name):
@@ -16,81 +20,108 @@ def read_file(path, f_name):
     return data
 
 
-def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
-    import re
+class Tokenizer:
+    def add_new_token(self, tokenizer, string):
+        tokenizer.add_mwe(r"{}".format(string))
 
-    matched = []
-    # bad code, but essentially works
-    # the pattern should include one instance of the left symbol so that balanced=-1
-    # if left == right then +- counting fails
-    # begin syntax handled automatically, so there is no need to include left_right symbols
-    s = re.sub(r"\\newcommand.*", "", file_data)
-    if "\\begin" in start:
-        match = re.findall(r"\\begin{(.*?)}", start)
-        if match:
-            match = match[0]
-            # print(match)
-            left_symbol = f"""\\begin{{{match}}}"""
-            right_symbol = f"""\\end{{{match}}}"""
-    # print(left_symbol)
-    if left_symbol != right_symbol:
-        current_offset = 0
-        balanced = 0
-        match = re.finditer(r"{}".format(start), s)
-        # print(match)
-        for m in match:
-            if m:
-                # print(m)
-                start_offset = m.start()
-                current_offset = m.end() + 1
-                balanced = -1
-                while balanced != 0:
-                    if (
-                        s[current_offset : current_offset + len(right_symbol)]
-                        == right_symbol
-                    ):
-                        balanced += 1
-                    if (
-                        s[current_offset : current_offset + len(left_symbol)]
-                        == left_symbol
-                    ):
-                        print("-1")
-                        balanced -= 1
-                    current_offset += 1
-                matched.append(s[start_offset:current_offset])
-                start_offset = current_offset
-    return matched
+    def word_lst(self, data):
+        nltk_word_list = nltk.word_tokenize(data)
+        matched_tokens = set(nltk_word_list).intersection(set(self.tokens))
+        unmatched_tokens = set(nltk_words).difference(set(self.tokens))
+        return matched_words, unmatched_words
 
+    def balanced(self, start, s, left_symbol=r"{", right_symbol=r"}"):
+        matched = []
+        s = re.sub(r"\\newcommand.*", "", self.file_data)
+        if "\\begin" in start:
+            match = re.findall(r"\\begin{(.*?)}", start)
+            if match:
+                match = match[0]
+                left_symbol = f"""\\begin{{{match}}}"""
+                right_symbol = f"""\\end{{{match}}}"""
+        if left_symbol != right_symbol:
+            current_offset = 0
+            balanced = 0
+            match = re.finditer(r"{}".format(start), s)
+            for m in match:
+                if m:
+                    start_offset = m.start()
+                    current_offset = m.end() + 1
+                    balanced = -1
+                    while balanced != 0:
+                        if (
+                            s[current_offset : current_offset + len(right_symbol)]
+                            == right_symbol
+                        ):
+                            balanced += 1
+                        if (
+                            s[current_offset : current_offset + len(left_symbol)]
+                            == left_symbol
+                        ):
+                            balanced -= 1
+                        current_offset += 1
+                    matched.append(s[start_offset:current_offset])
+                    start_offset = current_offset
+        return matched
 
-def math_ctrl_seq(data):
-    # multiline is not matched,    #\[.*?\] is also not matched
-    # likely to be other issues.
-    import re
-    from time import sleep
+    def parse_document(self):
+        file_data = self.file_data
+        self.dct["bibliography"].extend(
+            self.balanced(r"\\begin{thebibliography}", self.file_data)
+        )
+        self.dct["cite"].extend(self.balanced(r"\\cite", self.file_data))
+        self.dct["date"].extend(self.balanced(r"\\date", self.file_data))
+        self.dct["packages"].extend(self.balanced(r"\\usepackage", self.file_data))
+        self.dct["title"].extend(self.balanced(r"\\title", self.file_data))
+        self.dct["authors"].extend(self.balanced(r"\\author", self.file_data))
+        self.dct["affiliations"].extend(self.balanced(r"\\affiliation", self.file_data))
+        self.dct["abstract"].extend(self.balanced(r"\\begin{abstract}", self.file_data))
+        self.dct["subequations"].extend(
+            self.balanced(r"\\begin{subequations}", self.file_data)
+        )
+        self.dct["equations"].extend(
+            self.balanced(r"\\begin{equation}", self.file_data)
+        )
+        self.dct["equationarray"].extend(
+            self.balanced(r"\\begin{eqnarray}", self.file_data)
+        )
+        self.dct["ref"].extend(self.balanced(r"\\ref", self.file_data))
+        self.dct["pacs"].extend(self.balanced(r"\\pacs", self.file_data))
+        self.dct["keywords"].extend(self.balanced(r"\\keywords", self.file_data))
+        self.dct["label"].extend(self.balanced(r"\\label", self.file_data))
+        self.dct["section"].extend(self.balanced(r"\\section", self.file_data))
 
-    lst_errors = [x for x in re.findall(r"\$.*?\$", data) if x.count("$") % 2 != 0]
-    print("error count:{}\n".format(len(lst_errors)))
-    lst = [x for x in re.findall(r"\$(.*?)\$", data) if x.count("$") % 2 == 0]
-    return lst
+    def __init__(self, file_name):
+        self.tokens = []
+        self.dct = defaultdict(list)
+        self.file_data = read_file(".", file_name)
+        self.nltk_word = nltk.word_tokenize
+        self.nltk_sent_tokenize = nltk.sent_tokenize
+        self.mwe = mwe.MWETokenizer(separator="")
 
+        # TODO error checking on what is matched
+        self.regexp = RegexpTokenizer("\$.*?\$")
 
-def word_lst(data):
-    import nltk
+        self.latex_tokens = [
+            x.strip() for x in read_file(".", "latex_vocab").splitlines()
+        ]
+        self.english_tokens = [
+            x.strip() for x in read_file(".", "english_vocab").splitlines()
+        ]
+        self.regexp_tokens = self.regexp.tokenize(self.file_data)
 
-    words = nltk.word_tokenize(data)
-    eng_vocab = [x.strip() for x in read_file(".", "english_vocab").splitlines()]
-    matched_words = set(words).intersection(set(eng_vocab))
-    unmatched_words = set(words).difference(set(eng_vocab))
-    unmatched_words = [x for x in unmatched_words if x not in dct["math_ctrl_seq"]]
-    # print(unmatched_words)
-    return matched_words, unmatched_words
+        self.tokens.extend(list(set(self.regexp_tokens)))
+        self.tokens.extend(list(set(self.latex_tokens)))
+        self.tokens.extend(list(set(self.english_tokens)))
+        self.tokens = sorted(self.tokens, key=lambda x: -1 * len(x))
 
+        for token in self.tokens:
+            self.add_new_token(self.mwe, token)
 
-def comments(data):
-    import re
-
-    lst = re.findall("%.*", data)
-    return lst
+        self.sentences = self.nltk_sent_tokenize(self.file_data)
+        self.tagged_sentences = nltk.pos_tag_sents(
+            [self.mwe.tokenize(sent) for sent in self.sentences]
+        )
 
 
 def symbol_definitions(sentence):
@@ -115,92 +146,29 @@ def symbol_definitions(sentence):
 
 
 if __name__ == "__main__":
-    from collections import defaultdict
-    from pudb import set_trace
+    tokenizer = Tokenizer("sound1.tex")
 
-    dct = defaultdict(list)
-    file_data = read_file(".", argv[1])
+    for ix, sent in enumerate(tokenizer.sentences):
+        resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]
+        if resp:
+            print(sent)
+            inp = input()
+            lst = []
+            if inp == "print":
+                # print current sentence as a pandas dataframe second line in the df is pos tags
+                # this makes it easier to find the relevant patterns in the pos tags that I may care about.
+                words = [x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
+                tags = [x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
+                lst.append(words)
+                lst.append(tags)
+                df = pd.DataFrame(lst)
+                print(df.head())
 
-    tokenizer = mwe.MWETokenizer(separator="")
-    latex_tokens = [x.strip() for x in read_file(".", "latex_vocab").splitlines()]
-    english_tokens = [x.strip() for x in read_file(".", "english_vocab").splitlines()]
+            if inp == "parse":
+                # parse LaTeX document into the defaultdict(list) named dct
+                print(tokenizer.parse_document())
 
-    tokens = []
-    regexp_tokenizer = RegexpTokenizer("\$.*?\$")
-    regexp_tokens = regexp_tokenizer.tokenize(file_data)
-    tokens.extend(list(set(regexp_tokens)))
-    tokens.extend(list(set(latex_tokens)))
-    tokens.extend(list(set(english_tokens)))
-    tokens = sorted(tokens, key=lambda x: -1 * len(x))
-    for token in tokens:
-        add_new_token(token)
-    word_tokens = tokenizer.tokenize(file_data)
-    sents = nltk.sent_tokenize(file_data)
-    f = open("training_data", "a+")
-    for sent in sents:
-        for tok in list(set(regexp_tokens)):
-            if tok in sent:
-                print("tok:{}".format(tok), sent)
-                inp = input()
-                if inp == str(1):
-                    f.write(sent)
-                    f.write("\n")
-                    print("file write\n")
-
-    dct["bibliography"].extend(balanced(r"\\begin{thebibliography}", file_data))
-    dct["cite"].extend(balanced(r"\\cite", file_data))
-    dct["date"].extend(balanced(r"\\date", file_data))
-    dct["packages"].extend(balanced(r"\\usepackage", file_data))
-    dct["title"].extend(balanced(r"\\title", file_data))
-    dct["authors"].extend(balanced(r"\\author", file_data))
-    dct["affiliations"].extend(balanced(r"\\affiliation", file_data))
-    dct["abstract"].extend(balanced(r"\\begin{abstract}", file_data))
-    dct["subequations"].extend(balanced(r"\\begin{subequations}", file_data))
-    dct["equations"].extend(balanced(r"\\begin{equation}", file_data))
-    dct["equationarray"].extend(balanced(r"\\begin{eqnarray}", file_data))
-    dct["ref"].extend(balanced(r"\\ref", file_data))
-    dct["pacs"].extend(balanced(r"\\pacs", file_data))
-    dct["keywords"].extend(balanced(r"\\keywords", file_data))
-    dct["label"].extend(balanced(r"\\label", file_data))
-    dct["section"].extend(balanced(r"\\section", file_data))
-    dct["math_ctrl_seq"].extend(math_ctrl_seq(file_data))
-    dct["comments"].extend(comments(file_data))
-    # print(word_lst(file_data))
-    # print(dct['ref'])
-    # set_trace()
-
-    exit(0)
-    for token in dct["math_ctrl_seq"]:
-        if len(token) == 1:
-            if re.findall("[a-zA-z]", token):
-                if token.strip() not in dct["user_defined_symbols"]:
-                    dct["user_defined_symbols"].append(token.strip())
-                    # print(token)
-        # print(token,tokenizer.tokenize(r'{}'.format(token)))
-        # sleep(1)
-
-    dct["sentences"] = nltk.sent_tokenize(file_data)
-    symbols_set = set()
-    for ix, sent in enumerate(dct["sentences"]):
-        # print("sent:", ix, sent)
-
-        # set_trace()
-        if len(symbol_definitions(sent)) == 1:
-            symbols_set.add(symbol_definitions(sent)[0])
-        else:
-            for iy in symbol_definitions(sent):
-                symbols_set.add(re.sub("^with ", "", iy))
-        # sleep(2)
-    tmp = list(symbols_set)
-    dct["user_defined_symbols_definition"].extend(tmp)
-    # set_trace()
-    user_defined = dct["user_defined_symbols"]
-    print(user_defined)
-    mapped = defaultdict(int)
-    for line in set(dct["user_defined_symbols_definition"]):
-        for symbol in user_defined:
-            if "$" + symbol + "$" in line:
-                print(line, symbol)
-                mapped[symbol] += 1
-    print(mapped)
-    print(set(user_defined).difference(set(mapped.keys())))
+            if inp == "trace":
+                # opens a pudb session where you open an ipython session and explore the data and
+                # see how words/sentences are being split up, and to modify the code accordingly.
+                set_trace()

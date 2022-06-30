@@ -127,6 +127,7 @@ class Tokenizer:
 
         self.tokens.extend(list(set(self.regexp_tokens)))
         self.tokens.extend(list(set(self.regexp_math_tokens)))
+        self.tokens.extend(list(set(self.regexp_fraction_tokens)))
         self.tokens.extend(list(set(self.latex_tokens)))
         self.tokens.extend(list(set(self.english_tokens)))
         self.tokens = sorted(self.tokens, key=lambda x: -1 * len(x))

@@ -164,7 +164,7 @@ def symbol_definitions(sentence):
 
 if __name__ == "__main__":
     tokenizer = Tokenizer("sound1.tex")
-
+    save = []
     for ix, sent in enumerate(tokenizer.sentences):
         resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]
         if resp:
@@ -181,8 +181,16 @@ if __name__ == "__main__":
                 df = pd.DataFrame(lst)
                 print(df.head())
 
+            if inp == "save":
+                words = [x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
+                tags = [x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
+                lst.append(words)
+                lst.append(tags)
+                df = pd.DataFrame(lst)
+                save.append(df)
+
             if inp == "parse":
-                # parse LaTeX document into the defaultdict(list) named dct
+                # parse LaTeX document into the defaultdict(list) named tokenizer.dct
                 print(tokenizer.parse_document())
 
             if inp == "trace":

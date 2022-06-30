@@ -32,6 +32,7 @@ class Tokenizer:
 
     def balanced(self, start, s, left_symbol=r"{", right_symbol=r"}"):
         matched = []
+        lr_match_twice = 0
         s = re.sub(r"\\newcommand.*", "", self.file_data)
         if "\\begin" in start:
             match = re.findall(r"\\begin{(.*?)}", start)
@@ -49,6 +50,7 @@ class Tokenizer:
                     current_offset = m.end() + 1
                     balanced = -1
                     while balanced != 0:
+
                         if (
                             s[current_offset : current_offset + len(right_symbol)]
                             == right_symbol
@@ -66,6 +68,8 @@ class Tokenizer:
 
     def parse_document(self):
         file_data = self.file_data
+        self.dct["fractions"].extend(self.regexp_fraction_tokens)
+
         self.dct["bibliography"].extend(
             self.balanced(r"\\begin{thebibliography}", self.file_data)
         )
@@ -100,7 +104,17 @@ class Tokenizer:
         self.mwe = mwe.MWETokenizer(separator="")
 
         # TODO error checking on what is matched
-        self.regexp = RegexpTokenizer("\$.*?\$")
+        self.regexp = RegexpTokenizer("\$.*?\$")  # to split the latex document
+        self.regexp_math = RegexpTokenizer(
+            "\$(.*?)\$"
+        )  # for tokenizing equations, arrays etc
+        self.regexp_fractions = RegexpTokenizer(r"\\frac{.*?}{.*?}")
+        self.regexp_fraction_tokens = self.regexp_fractions.tokenize(self.file_data)
+        self.regexp_fraction_tokens = [
+            x
+            for x in self.regexp_fraction_tokens
+            if x.count("{") % 2 == 0 and x.count("}") % 2 == 0
+        ]  # TODO cover additional cases
 
         self.latex_tokens = [
             x.strip() for x in read_file(".", "latex_vocab").splitlines()
@@ -109,8 +123,10 @@ class Tokenizer:
             x.strip() for x in read_file(".", "english_vocab").splitlines()
         ]
         self.regexp_tokens = self.regexp.tokenize(self.file_data)
+        self.regexp_math_tokens = self.regexp_math.tokenize(self.file_data)
 
         self.tokens.extend(list(set(self.regexp_tokens)))
+        self.tokens.extend(list(set(self.regexp_math_tokens)))
         self.tokens.extend(list(set(self.latex_tokens)))
         self.tokens.extend(list(set(self.english_tokens)))
         self.tokens = sorted(self.tokens, key=lambda x: -1 * len(x))

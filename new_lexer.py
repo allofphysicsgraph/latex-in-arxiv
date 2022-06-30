@@ -113,7 +113,7 @@ class Tokenizer:
         self.regexp_fraction_tokens = [
             x
             for x in self.regexp_fraction_tokens
-            if x.count("{") % 2 == 0 and x.count("}") % 2 == 0
+            if (x.count("{") + x.count("}")) % 2 == 0 and x.count("{") == x.count("}")
         ]  # TODO cover additional cases
 
         self.latex_tokens = [

@@ -72,6 +72,7 @@ bloom:
 
 newcommand:
 	gcc -Wall -Wunused -o newcommand newcommand.c
+	/bin/bash run_new_command.sh
 
 clean:
 	$(RM) lexer lex.yy.c

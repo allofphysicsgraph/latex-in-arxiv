@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from sys import argv
 from pudb import set_trace
 import pandas as pd
@@ -172,7 +174,7 @@ if __name__ == "__main__":
     from os import listdir
     import shutil
 
-    files = listdir("2003")
+    files = [x for x in listdir("2003") if x.endswith(".tex")]
     file_dct = dict()
     path = "2003/"
     for file in files:
@@ -186,8 +188,6 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             shutil.move(path + file, "2003_errors/")
-
-        # shutil.move(file,path+file)
 
     """for ix, sent in enumerate(tokenizer.sentences):
         resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]

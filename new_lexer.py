@@ -174,6 +174,7 @@ if __name__ == "__main__":
     from os import listdir
     import shutil
 
+    manual_iteration = False  # set to true to review each sentence of each file
     files = [x for x in listdir("2003") if x.endswith(".tex")]
     file_dct = dict()
     path = "2003/"
@@ -188,36 +189,50 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             shutil.move(path + file, "2003_errors/")
+            break
 
-    """for ix, sent in enumerate(tokenizer.sentences):
-        resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]
-        if resp:
-            print(sent)
-            inp = input()
-            lst = []
-            if inp == "print":
-                # print current sentence as a pandas dataframe second line in the df is pos tags
-                # this makes it easier to find the relevant patterns in the pos tags that I may care about.
-                words = [x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
-                tags = [x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
-                lst.append(words)
-                lst.append(tags)
-                df = pd.DataFrame(lst)
-                print(df.head())
+        if manual_iteration:
+            for ix, sent in enumerate(tokenizer.sentences):
+                resp = [
+                    x
+                    for x in tokenizer.mwe.tokenize(sent)
+                    if x in tokenizer.regexp_tokens
+                ]
+                if resp:
+                    print(sent)
+                    inp = input()
+                    lst = []
+                    if inp == "print":
+                        # print current sentence as a pandas dataframe second line in the df is pos tags
+                        # this makes it easier to find the relevant patterns in the pos tags that I may care about.
+                        words = [
+                            x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
+                        ]
+                        tags = [
+                            x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
+                        ]
+                        lst.append(words)
+                        lst.append(tags)
+                        df = pd.DataFrame(lst)
+                        print(df.head())
 
-            if inp == "save":
-                words = [x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
-                tags = [x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()]
-                lst.append(words)
-                lst.append(tags)
-                df = pd.DataFrame(lst)
-                save.append(df)
+                    if inp == "save":
+                        words = [
+                            x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
+                        ]
+                        tags = [
+                            x[1] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
+                        ]
+                        lst.append(words)
+                        lst.append(tags)
+                        df = pd.DataFrame(lst)
+                        save.append(df)
 
-            if inp == "parse":
-                # parse LaTeX document into the defaultdict(list) named dct
-                print(tokenizer.parse_document())
+                    if inp == "parse":
+                        # parse LaTeX document into the defaultdict(list) named dct
+                        print(tokenizer.parse_document())
 
-            if inp == "trace":
-                # opens a pudb session where you open an ipython session and explore the data and
-                # see how words/sentences are being split up, and to modify the code accordingly.
-                set_trace()"""
+                    if inp == "trace":
+                        # opens a pudb session where you open an ipython session and explore the data and
+                        # see how words/sentences are being split up, and to modify the code accordingly.
+                        set_trace()

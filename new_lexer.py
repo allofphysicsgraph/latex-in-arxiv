@@ -26,11 +26,12 @@ class Tokenizer:
 
     def word_lst(self, data):
         nltk_word_list = nltk.word_tokenize(data)
-        matched_tokens = set(nltk_word_list).intersection(set(self.tokens))
-        unmatched_tokens = set(nltk_words).difference(set(self.tokens))
+        matched_words = set(nltk_word_list).intersection(set(self.tokens))
+        unmatched_words = set(nltk_word_list).difference(set(self.tokens))
         return matched_words, unmatched_words
 
     def balanced(self, start, s, left_symbol=r"{", right_symbol=r"}"):
+        counter = 0
         matched = []
         lr_match_twice = 0
         s = re.sub(r"\\newcommand.*", "", self.file_data)
@@ -62,8 +63,13 @@ class Tokenizer:
                         ):
                             balanced -= 1
                         current_offset += 1
+                        counter += 1
+                        if counter > 500000:
+                            print("error on {}".format(start))
+                            return
                     matched.append(s[start_offset:current_offset])
                     start_offset = current_offset
+        counter = 0
         return matched
 
     def parse_document(self):
@@ -163,9 +169,27 @@ def symbol_definitions(sentence):
 
 
 if __name__ == "__main__":
-    tokenizer = Tokenizer("sound1.tex")
-    save = []
-    for ix, sent in enumerate(tokenizer.sentences):
+    from os import listdir
+    import shutil
+
+    files = listdir("2003")
+    file_dct = dict()
+    path = "2003/"
+    for file in files:
+        try:
+            print(file)
+            tokenizer = Tokenizer(path + file)
+            print("read file")
+            tokenizer.parse_document()
+            print("parse doc")
+            file_dct[file] = tokenizer.dct
+        except Exception as e:
+            print(e)
+            shutil.move(path + file, "2003_errors/")
+
+        # shutil.move(file,path+file)
+
+    """for ix, sent in enumerate(tokenizer.sentences):
         resp = [x for x in tokenizer.mwe.tokenize(sent) if x in tokenizer.regexp_tokens]
         if resp:
             print(sent)
@@ -190,10 +214,10 @@ if __name__ == "__main__":
                 save.append(df)
 
             if inp == "parse":
-                # parse LaTeX document into the defaultdict(list) named tokenizer.dct
+                # parse LaTeX document into the defaultdict(list) named dct
                 print(tokenizer.parse_document())
 
             if inp == "trace":
                 # opens a pudb session where you open an ipython session and explore the data and
                 # see how words/sentences are being split up, and to modify the code accordingly.
-                set_trace()
+                set_trace()"""

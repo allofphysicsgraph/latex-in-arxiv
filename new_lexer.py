@@ -174,7 +174,7 @@ if __name__ == "__main__":
     from os import listdir
     import shutil
 
-    manual_iteration = False  # set to true to review each sentence of each file
+    manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
     files = [x for x in listdir("2003") if x.endswith(".tex")]
     file_dct = dict()
     path = "2003/"

@@ -54,8 +54,9 @@ RUN echo "alias python=python3" > /root/.bashrc
 RUN apt-get install -y autoconf-archive
 
 RUN pip3 install nltk
-
+RUN pip3 install pudb
 RUN pip3 install black
+RUN pip3 install pandas
 
 RUN git clone https://github.com/brucemiller/LaTeXML
 WORKDIR LaTeXML

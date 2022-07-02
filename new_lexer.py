@@ -19,6 +19,8 @@ pd.set_option("display.max_columns", 50)
 def read_file(path, f_name):
     with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
+    clean = [x for x in data.splitlines() if not re.findall(r"^\\def", x)]
+    data = "\n".join(clean)
     return data
 
 
@@ -78,30 +80,45 @@ class Tokenizer:
         file_data = self.file_data
         self.dct["fractions"].extend(self.regexp_fraction_tokens)
 
-        self.dct["bibliography"].extend(
-            self.balanced(r"\\begin{thebibliography}", self.file_data)
-        )
-        self.dct["cite"].extend(self.balanced(r"\\cite", self.file_data))
-        self.dct["date"].extend(self.balanced(r"\\date", self.file_data))
-        self.dct["packages"].extend(self.balanced(r"\\usepackage", self.file_data))
-        self.dct["title"].extend(self.balanced(r"\\title", self.file_data))
-        self.dct["authors"].extend(self.balanced(r"\\author", self.file_data))
-        self.dct["affiliations"].extend(self.balanced(r"\\affiliation", self.file_data))
-        self.dct["abstract"].extend(self.balanced(r"\\begin{abstract}", self.file_data))
-        self.dct["subequations"].extend(
-            self.balanced(r"\\begin{subequations}", self.file_data)
-        )
-        self.dct["equations"].extend(
-            self.balanced(r"\\begin{equation}", self.file_data)
-        )
-        self.dct["equationarray"].extend(
-            self.balanced(r"\\begin{eqnarray}", self.file_data)
-        )
-        self.dct["ref"].extend(self.balanced(r"\\ref", self.file_data))
-        self.dct["pacs"].extend(self.balanced(r"\\pacs", self.file_data))
-        self.dct["keywords"].extend(self.balanced(r"\\keywords", self.file_data))
-        self.dct["label"].extend(self.balanced(r"\\label", self.file_data))
-        self.dct["section"].extend(self.balanced(r"\\section", self.file_data))
+        balanced_tokens = [
+            r"\\section\*",
+            r"\\begin{thebibliography}",
+            r"\\cite",
+            r"\\date",
+            r"\\usepackage",
+            r"\\title",
+            r"\\affiliation",
+            r"\\title",
+            r"\\author",
+            r"\\affiliation",
+            r"\\begin{abstract}",
+            r"\\begin{subequations}",
+            r"\\begin{eqnarray}",
+            r"\\begin{equation}",
+            r"\\ref",
+            r"\\pacs",
+            r"\\label",
+            r"\\section",
+        ]
+        print(len(balanced_tokens))
+
+        balanced_tokens = [x for x in balanced_tokens if re.findall(x, self.file_data)]
+        print(len(balanced_tokens))
+        for tok in balanced_tokens:
+            key_name = False
+            if "\\begin" in tok:
+                key_name = re.findall(r"{(.*?)}", tok)
+                if key_name:
+                    key_name = key_name[0]
+                    print(tok, key_name)
+            else:
+                key_name = tok.replace("\\\\", "")
+                print(tok, key_name)
+            if key_name:
+                self.dct[key_name].extend(
+                    self.balanced(r"{}".format(tok), self.file_data)
+                )
+        # set_trace()
 
     def __init__(self, file_name):
         self.tokens = []
@@ -173,11 +190,15 @@ def symbol_definitions(sentence):
 if __name__ == "__main__":
     from os import listdir
     import shutil
+    from random import shuffle
 
-    manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
+    manual_iteration = True  # set to true to review each sentence of each file where there is a regexp_token
     files = [x for x in listdir("2003") if x.endswith(".tex")]
+    shuffle(files)
     file_dct = dict()
     path = "2003/"
+    path = "./"
+    files = ["sound1.tex"]
     for file in files:
         try:
             print(file)
@@ -200,9 +221,10 @@ if __name__ == "__main__":
                 ]
                 if resp:
                     print(sent)
-                    inp = input()
+                    # inp = input()
+                    inp = "XYZ"
                     lst = []
-                    if inp == "print":
+                    if 1 == 1:
                         # print current sentence as a pandas dataframe second line in the df is pos tags
                         # this makes it easier to find the relevant patterns in the pos tags that I may care about.
                         words = [
@@ -214,8 +236,13 @@ if __name__ == "__main__":
                         lst.append(words)
                         lst.append(tags)
                         df = pd.DataFrame(lst)
-                        print(df.head())
-
+                        # print(df.head())
+                        df.to_csv(
+                            "data/training_data/{}_{}_training_sent".format(
+                                file.replace(".tex", ""), ix
+                            ),
+                            index=False,
+                        )
                     if inp == "save":
                         words = [
                             x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()

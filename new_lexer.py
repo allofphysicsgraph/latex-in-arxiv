@@ -197,8 +197,10 @@ if __name__ == "__main__":
     shuffle(files)
     file_dct = dict()
     path = "2003/"
-    path = "./"
-    files = ["sound1.tex"]
+    files = listdir(path)
+    #path = "./"
+    #files = ["sound1.tex"]
+
     for file in files:
         try:
             print(file)
@@ -221,10 +223,15 @@ if __name__ == "__main__":
                 ]
                 if resp:
                     print(sent)
-                    # inp = input()
-                    inp = "XYZ"
+                    inp = input()
                     lst = []
-                    if 1 == 1:
+                    if inp == 'break':
+                        break #will quit the existing file and go to the next file in files
+                    
+                    if inp == 'quit':
+                        exit(0) #will quit the application
+
+                    if inp == 'print':
                         # print current sentence as a pandas dataframe second line in the df is pos tags
                         # this makes it easier to find the relevant patterns in the pos tags that I may care about.
                         words = [
@@ -236,14 +243,9 @@ if __name__ == "__main__":
                         lst.append(words)
                         lst.append(tags)
                         df = pd.DataFrame(lst)
-                        # print(df.head())
-                        df.to_csv(
-                            "data/training_data/{}_{}_training_sent".format(
-                                file.replace(".tex", ""), ix
-                            ),
-                            index=False,
-                        )
-                    if inp == "save":
+                        print(df.head())
+
+                    if inp == "save": #needs more though on how the data should be saved
                         words = [
                             x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
                         ]
@@ -254,6 +256,12 @@ if __name__ == "__main__":
                         lst.append(tags)
                         df = pd.DataFrame(lst)
                         save.append(df)
+                        df.to_csv(
+                            "data/training_data/{}_{}_training_sent".format(
+                                file.replace(".tex", ""), ix
+                            ),
+                            index=False,
+                        )
 
                     if inp == "parse":
                         # parse LaTeX document into the defaultdict(list) named dct

@@ -213,7 +213,7 @@ if __name__ == "__main__":
             print(e)
             shutil.move(path + file, "2003_errors/")
             break
-
+        cont = 0
         if manual_iteration:
             for ix, sent in enumerate(tokenizer.sentences):
                 resp = [
@@ -226,8 +226,8 @@ if __name__ == "__main__":
                     inp = input()
                     lst = []
                     if inp == "break":
-                        break  # skip to the next file
-
+                        cont=1 
+                        continue # skip to the next file
                     if inp == "quit":
                         exit(0)  # quit application
 
@@ -271,3 +271,5 @@ if __name__ == "__main__":
                     if inp == "trace":
                         # opens a pudb session for tracing/viewing results
                         set_trace()
+                if cont == 1:
+                    break

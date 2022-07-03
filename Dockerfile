@@ -86,7 +86,6 @@ WORKDIR /opt/
 RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN make sampledata
-RUN mkdir 2003_errors
 #RUN make install_libbloom
 #RUN make bloom
 

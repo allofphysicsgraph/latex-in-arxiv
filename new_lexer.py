@@ -342,4 +342,4 @@ if __name__ == "__main__":
     for k,v in tokenizer.dct.items():
         df = pd.DataFrame()
         df[k]=v
-        df.to_csv('{}.csv'.format(k))
+        df.to_csv('{}_{}.csv'.format(file.replace('.tex',''),k))

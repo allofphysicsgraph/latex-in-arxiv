@@ -12,6 +12,14 @@ from nltk.tag import pos_tag_sents
 from collections import defaultdict
 import nltk
 import re
+from sumy.summarizers.lsa import LsaSummarizer
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.stemmers import Stemmer
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.nlp.stemmers import Stemmer
+from sumy.utils import get_stop_words
+from sys import argv
+
 
 pd.set_option("display.max_columns", 50)
 
@@ -22,6 +30,19 @@ def read_file(path, f_name):
     clean = [x for x in data.splitlines() if not re.findall(r"^\\def", x)]
     data = "\n".join(clean)
     return data
+
+
+def document_summary(document):
+    sents = []
+    tokenizer = Tokenizer("english")
+    stemmer = Stemmer("english")
+    parser = PlaintextParser(document, tokenizer)
+    stop_words = [x for x in get_stop_words("english") if len(x) > 1]
+    summarizer = LsaSummarizer(stemmer)
+    summarizer.stop_words = stop_words
+    for sent in summarizer(parser.document, len(document.splitlines()) / 2):
+        sents.append(sent)
+    return sents
 
 
 class Tokenizer:

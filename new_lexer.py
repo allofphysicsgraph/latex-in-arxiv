@@ -198,8 +198,8 @@ if __name__ == "__main__":
     file_dct = dict()
     path = "2003/"
     files = listdir(path)
-    #path = "./"
-    #files = ["sound1.tex"]
+    # path = "./"
+    # files = ["sound1.tex"]
 
     for file in files:
         try:
@@ -225,13 +225,13 @@ if __name__ == "__main__":
                     print(sent)
                     inp = input()
                     lst = []
-                    if inp == 'break':
-                        break #will quit the existing file and go to the next file in files
-                    
-                    if inp == 'quit':
-                        exit(0) #will quit the application
+                    if inp == "break":
+                        break  # will quit the existing file and go to the next file in files
 
-                    if inp == 'print':
+                    if inp == "quit":
+                        exit(0)  # will quit the application
+
+                    if inp == "print":
                         # print current sentence as a pandas dataframe second line in the df is pos tags
                         # this makes it easier to find the relevant patterns in the pos tags that I may care about.
                         words = [
@@ -245,7 +245,9 @@ if __name__ == "__main__":
                         df = pd.DataFrame(lst)
                         print(df.head())
 
-                    if inp == "save": #needs more though on how the data should be saved
+                    if (
+                        inp == "save"
+                    ):  # needs more thought on how the data should be saved
                         words = [
                             x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
                         ]
@@ -255,7 +257,7 @@ if __name__ == "__main__":
                         lst.append(words)
                         lst.append(tags)
                         df = pd.DataFrame(lst)
-                        save.append(df)
+                        # save.append(df)
                         df.to_csv(
                             "data/training_data/{}_{}_training_sent".format(
                                 file.replace(".tex", ""), ix

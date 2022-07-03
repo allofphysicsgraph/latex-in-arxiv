@@ -36,6 +36,7 @@ dockermac_run:
 sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
+	mkdir 2003_errors
 
 md5:
 	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto

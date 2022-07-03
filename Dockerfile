@@ -59,7 +59,7 @@ RUN pip3 install black
 RUN pip3 install pandas
 RUN pip3 install ipython 
 RUN python3 -m nltk.downloader punkt
-
+RUN python3 -m nltk.downloader averaged_perceptron_tagger 
 
 RUN git clone https://github.com/brucemiller/LaTeXML
 WORKDIR LaTeXML

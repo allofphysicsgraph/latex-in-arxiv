@@ -257,7 +257,7 @@ if __name__ == "__main__":
     import shutil
     from random import shuffle
 
-    manual_iteration = True  # set to true to review each sentence of each file where there is a regexp_token
+    manual_iteration = False # set to true to review each sentence of each file where there is a regexp_token
     files = [x for x in listdir("2003") if x.endswith(".tex")]
     shuffle(files)
     file_dct = dict()
@@ -288,7 +288,8 @@ if __name__ == "__main__":
                 ]
                 if resp:
                     print(sent)
-                    inp = input()
+                    #inp = input()
+                    inp = False
                     lst = []
                     if inp == "break":
                         cont = 1
@@ -338,3 +339,7 @@ if __name__ == "__main__":
                         set_trace()
                 if cont == 1:
                     break
+    for k,v in tokenizer.dct.items():
+        df = pd.DataFrame()
+        df[k]=v
+        df.to_csv('{}.csv'.format(k))

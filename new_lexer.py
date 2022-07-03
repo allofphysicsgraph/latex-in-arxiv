@@ -102,8 +102,52 @@ class Tokenizer:
         self.dct["fractions"].extend(self.regexp_fraction_tokens)
 
         balanced_tokens = [
-            r"\\section\*",
+            r"\\begin{acknowledgments}",
+            r"\\begin{theorem}",
+            r"\\begin{prop}",
+            r"\\begin{definition}",
+            r"\\begin{quote}",
+            r"\\begin{twomatrix}",
+            r"\\begin{thm}",
+            r"\\begin{small}",
+            r"\\begin{matrix}",
+            r"\\begin{description}",
+            r"\\begin{flushleft}",
+            r"\\begin{cases}",
+            r"\\begin{widetext}",
+            r"\\begin{proof}",
+            r"\\begin{multline}",
+            r"\\begin{align*}",
+            r"\\begin{gather}",
+            r"\\begin{minipage}",
+            r"\\begin{alignat}",
+            r"\\begin{fmfgraph}",
+            r"\\begin{eq}",
+            r"\\begin{titlepage}",
+            r"\\begin{displaymath}",
+            r"\\begin{flushright}",
+            r"\\begin{fmfgraph*}",
+            r"\\begin{aligned}",
+            r"\\begin{enumerate}",
+            r"\\begin{table}",
+            r"\\begin{subequations}",
+            r"\\begin{pmatrix}",
+            r"\\begin{split}",
+            r"\\begin{equation\*}",
+            r"\\begin{itemize}",
+            r"\\begin{eqnarray\*}",
+            r"\\begin{picture}",
+            r"\\begin{abstract}",
+            r"\\begin{tabular}",
             r"\\begin{thebibliography}",
+            r"\\begin{document}",
+            r"\\begin{figure}",
+            r"\\begin{align}",
+            r"\\begin{center}",
+            r"\\begin{array}",
+            r"\\begin{eqnarray}",
+            r"\\begin{equation}",
+            r"\\section\*",
             r"\\cite",
             r"\\date",
             r"\\usepackage",
@@ -219,8 +263,8 @@ if __name__ == "__main__":
     file_dct = dict()
     path = "2003/"
     files = listdir(path)
-    # path = "./"
-    # files = ["sound1.tex"]
+    path = "./"
+    files = ["sound1.tex"]
 
     for file in files:
         try:
@@ -247,8 +291,8 @@ if __name__ == "__main__":
                     inp = input()
                     lst = []
                     if inp == "break":
-                        cont=1 
-                        continue # skip to the next file
+                        cont = 1
+                        continue  # skip to the next file
                     if inp == "quit":
                         exit(0)  # quit application
 

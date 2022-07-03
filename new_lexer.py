@@ -70,7 +70,7 @@ class Tokenizer:
                         counter += 1
                         if counter > 500000:
                             print("error on {}".format(start))
-                            return
+                            shutil.move(path + file, "2003_errors/")
                     matched.append(s[start_offset:current_offset])
                     start_offset = current_offset
         counter = 0
@@ -226,14 +226,13 @@ if __name__ == "__main__":
                     inp = input()
                     lst = []
                     if inp == "break":
-                        break  # will quit the existing file and go to the next file in files
+                        break  # skip to the next file
 
                     if inp == "quit":
-                        exit(0)  # will quit the application
+                        exit(0)  # quit application
 
                     if inp == "print":
-                        # print current sentence as a pandas dataframe second line in the df is pos tags
-                        # this makes it easier to find the relevant patterns in the pos tags that I may care about.
+                        # print current sentence as a pandas dataframe append second line of pos tags
                         words = [
                             x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
                         ]
@@ -270,6 +269,5 @@ if __name__ == "__main__":
                         print(tokenizer.parse_document())
 
                     if inp == "trace":
-                        # opens a pudb session where you open an ipython session and explore the data and
-                        # see how words/sentences are being split up, and to modify the code accordingly.
+                        # opens a pudb session for tracing/viewing results
                         set_trace()

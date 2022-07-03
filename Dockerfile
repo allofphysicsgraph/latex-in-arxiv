@@ -57,6 +57,7 @@ RUN pip3 install nltk
 RUN pip3 install pudb
 RUN pip3 install black
 RUN pip3 install pandas
+RUN pip3 install ipython 
 
 RUN git clone https://github.com/brucemiller/LaTeXML
 WORKDIR LaTeXML
@@ -83,6 +84,7 @@ WORKDIR /opt/
 RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN make sampledata
+RUN mkdir 2003_errors
 #RUN make install_libbloom
 #RUN make bloom
 

@@ -51,12 +51,12 @@ SPhT T03/036\\
 \newpage
 
 
-\renewcommand{\thefootnote}{\arabic{footnote}}
+
 \setcounter{footnote}{0}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sect{Introduction}\label{intro}
+\setcounter{equation}{0}\section{Introduction}\label{intro}
 
 
 Characteristic polynomials are important objects in Random Matrix Theory
@@ -213,7 +213,7 @@ We close with the discussion and open questions in sect. \ref{con}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sect{Definitions}\label{defs}
+\setcounter{equation}{0}\section{Definitions}\label{defs}
 
 
 In this section we introduce the main objects we wish to study in the
@@ -222,11 +222,11 @@ The matrix model partition function with respect to which we calculate
 expectation values is given by the following integral over the
 (unitary invariant) Haar measure
 for matrices $H$:
-\be
+\begin{equation}
 {\cal Z}_N \ \sim\ \int_D [dH]_{N\times N}\  w(H)
-     \ \sim\ \int_D \prod_{k=1}^N d\la_k\  w(\la_k) \Delta_N(\Lambda)^2 \ .
+     \ \sim\ \int_D \prod_{k=1}^N d\lambda_k\  w(\lambda_k) \Delta_N(\Lambda)^2 \ .
 \label{defZN}
-\ee
+\end{equation}
 The matrix $H$ can be either complex Hermitian, representing
 a general unitary invariant ensemble without chiral symmetry,
 or it can be decomposed into a product of complex rectangular
@@ -234,31 +234,31 @@ matrices $W$ of size $N\times (N+\nu)$, $H=W^\dagger W$,
 representing the chUE. In the first case the matrices $H$
 can be diagonalized by a unitary transformation with
 real eigenvalues
-$\Lambda=\mbox{diag}(\la_1,\ldots,\la_N)$ are distributed according to a
-weight function $w(\la)$ with support on ${\mathbb R}$.
+$\Lambda=\mbox{diag}(\lambda_1,\ldots,\lambda_N)$ are distributed according to a
+weight function $w(\lambda)$ with support on ${\mathbb R}$.
 In the second case we deal rather with real positive singular values
 of the matrices $W$ with the support being
 ${\mathbb R}_+$, respectively. We have also employed the
-notation $\Delta_N(\Lambda)\equiv\prod_{i>j}^N(\la_i-\la_j)$
+notation $\Delta_N(\Lambda)\equiv\prod_{i>j}^N(\lambda_i-\lambda_j)$
 for the Vandermonde determinant.
 While the results cited in this section hold
 for general weight functions with convergent moments on some domain
 $D\subseteq \mathbb{R}$,
-we will concentrate mainly on weights of the form $w(\la)=\exp[-NV(\la)]$
+we will concentrate mainly on weights of the form $w(\lambda)=\exp[-NV(\lambda)]$
 in the following sections. The potential $V(x)$ may contain
 both an (even) polynomial part and a logarithmic part.
 
 We will be interested in extracting the large-$N$ universal behavior
 of the correlation functions defined via expectation values of
 arbitrary ratios of characteristic polynomials:
-\be
+\begin{equation}
 {\cal K}_N(M_f,M_b)\ \equiv\
 \left\langle
 \frac{\prod\limits_{j=1}^{L}\det\left(m_j^{f}{\bf 1}_N+H\right)}
 {\prod\limits_{j=1}^{M}\det\left(m_j^{b}{\bf 1}_N+H\right)}
 \right\rangle .
 \label{defKN}
-\ee
+\end{equation}
 
 In the context of QCD the matrices
 $M_f=\mbox{diag}\left(m^{f}_1,...,m^{f}_L\right)\,\,,\,\,
@@ -272,9 +272,9 @@ multi-point resolvent operators.
 In order to give rise to positive definite partition functions in the case
 of the UE the masses have to be chosen purely imaginary and occur in pairs of
 complex conjugates. In this way only positive definite terms
-appear, $\det(im+H)\det(-im+H)=\prod_k^N(m^2+\la_k^2)$. In the chUE each
+appear, $\det(im+H)\det(-im+H)=\prod_k^N(m^2+\lambda_k^2)$. In the chUE each
 determinant factor is positive provided we parameterize
-$\det(m^2+W^\dagger W)=\prod_k^N(m^2+\la_k),\ \la_k\geq0$.
+$\det(m^2+W^\dagger W)=\prod_k^N(m^2+\lambda_k),\ \lambda_k\geq0$.
 At the same time, from the mathematical point of view
 there is no need to impose any restrictions on masses
 in eq. (\ref{defKN}),
@@ -284,31 +284,31 @@ As it has been shown in \cite{FS} for general weight functions and
 finite size $N$ the generating function eq. (\ref{defKN})
 can be written as a determinant of
 size $M+L$ containing polynomials orthogonal with respect to the weight
-$w(\la)$. Let us define the monic orthogonal polynomials
-$\pi_n(\la)=\la^n+{\cal O}(\la^{n-1})$
-\be
-\int_{D}d\la\, w(\la)
-\pi_n(\la)\pi_m(\la)=\delta_{nm}f_n
+$w(\lambda)$. Let us define the monic orthogonal polynomials
+$\pi_n(\lambda)=\lambda^n+{\cal O}(\lambda^{n-1})$
+\begin{equation}
+\int_{D}d\lambda\, w(\lambda)
+\pi_n(\lambda)\pi_m(\lambda)=\delta_{nm}f_n
 \label{defOP}
-\ee
+\end{equation}
 with normalization factors $f_n$ uniquely defined through the Gram-Schmidt
 orthogonalization.\footnote{ For weight functions on $D=\mathbb{R}$
 the corresponding norms can be calculated recursively solving
-$n f_{n-1}=-\int_{-\infty}^{\infty}\! d\la~ w'(\la) \pi_n(\la)\pi_{n-1}(\la)$
+$n f_{n-1}=-\int_{-\infty}^{\infty}\! d\lambda~ w'(\lambda) \pi_n(\lambda)\pi_{n-1}(\lambda)$
 for even potentials plus an additional equation for potentials without parity.}
 The second building block are the Cauchy transforms of those polynomials
 which appear only as long as $M>0$,
-\be
+\begin{equation}
 \vartheta_n(\epsilon)\ \equiv\ \frac{1}{2\pi i}\int_{D}
-d\la\ \frac{w(\la)}{\la-\epsilon}\pi_n(\la)\ ,\ \ \Im m(\epsilon)\neq 0 \ .
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\pi_n(\lambda)\ ,\ \ \Im m(\epsilon)\neq 0 \ .
 \label{Cauchy}
-\ee
+\end{equation}
 The result derived in \cite{FS} then
 reads \footnote{The object eq. (\ref{KN}) can be given a meaning for real
 values of the mass parameters $m_l^b$ as well, by choosing the principle value
 in eq. (\ref{Cauchy}). However, to use it as a generating functional we are
 precisely interested in its discontinuities in the complex plane.}
-\be
+\begin{equation}
  {\cal K}(M_f,M_b)\propto \frac{1}{\Delta(M_b)\triangle(\hat{M}_f)}
 %\\ \nonumber &&\times
 \,\mbox{det}\left|
@@ -326,20 +326,20 @@ precisely interested in its discontinuities in the complex plane.}
 \pi_{N+L-1}\left(-m^{f}_L\right)
 \end{array}\right|.
 \label{KN}
-\ee
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sect{A differential equation for the orthogonal polynomials and their
+\setcounter{equation}{0}\section{A differential equation for the orthogonal polynomials and their
 Cauchy transforms}\label{diff}
 
 As is well known \cite{BZ,KFrev,BI} it is convenient to
 relate to the system of orthogonal polynomials $\pi_n(\lambda)$
 a system of associated objects:
-\be
-\psi_n(\la)\ \equiv\ \exp\left[-\frac{N}{2}V_\al(\la)\right]\
-\frac{\pi_n(\la)}{\sqrt{f_n}}\ .
+\begin{equation}
+\psi_n(\lambda)\ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\lambda)\right]\
+\frac{\pi_n(\lambda)}{\sqrt{f_n}}\ .
 \label{psi}
-\ee
+\end{equation}
 frequently called the ""wave functions"".
 The name has its origin in two properties: (i) the functions
 $\psi_n(\lambda)$ obey a closed second order
@@ -360,7 +360,7 @@ second order differential equation, with the latter being singular at the
 origin.
 
 Due to an intimate relation between the polynomials of the
-UE and the chUE for general weights $w(\la)$
+UE and the chUE for general weights $w(\lambda)$
 we can restrict ourselves to treat only
 the UE in greater detail in the following subsection.
 Once our results are established those for the chUE
@@ -375,125 +375,125 @@ in the subsection \ref{chUE}.
 For the UE the eigenvalues of the complex Hermitian matrix $H$ are
 distributed along the full real line. To be specific let us introduce the
 following parameterization of the weight function
-\be
-w(\la)\ \equiv\ \la^{2\al}\exp[-NV(\la)] \ \equiv\ \exp[-NV_{\al}(\la)]\ .
+\begin{equation}
+w(\lambda)\ \equiv\ \lambda^{2\alpha}\exp[-NV(\lambda)] \ \equiv\ \exp[-NV_{\alpha}(\lambda)]\ .
 \label{weightUE}
-\ee
+\end{equation}
 Here we have introduced the potential
-\be
-V_{\al}(\la) ~\equiv~ V(\la) - \frac{2\al}{N}\ln(\la) ~, \ \
-V(\la)=\sum_{k=1}^{d/2} \frac{g_{2k}}{2k} \la^{2k}\ ,
+\begin{equation}
+V_{\alpha}(\lambda) ~\equiv~ V(\lambda) - \frac{2\alpha}{N}\ln(\lambda) ~, \ \
+V(\lambda)=\sum_{k=1}^{d/2} \frac{g_{2k}}{2k} \lambda^{2k}\ ,
 \label{Valpha}
-\ee
-with an even polynomial part $V(\la)$ of arbitrary but fixed even degree $d$.
+\end{equation}
+with an even polynomial part $V(\lambda)$ of arbitrary but fixed even degree $d$.
 In order to apply the formalism of \cite{KFrev} we switch from monic
 polynomials $\pi_n(x)$ to orthonormal polynomials,
-\be
+\begin{equation}
 \delta_{kl} ~=~
-\int_{-\infty}^{\infty}\! d\la~ w(\la) p_k(\la)
-      p_l(\la) ~, \ \ p_k(\la)= \pi_k(\la)/\sqrt{f_k}\ .
+\int_{-\infty}^{\infty}\! d\lambda~ w(\lambda) p_k(\lambda)
+      p_l(\lambda) ~, \ \ p_k(\lambda)= \pi_k(\lambda)/\sqrt{f_k}\ .
 \label{OP}
-\ee
+\end{equation}
  The potential in eq. (\ref{Valpha}) being even, the polynomials
 possess the following parity property:
-\be
-p_n(-\la)\ =\ (-1)^n \ p_n(\la) \ .
+\begin{equation}
+p_n(-\lambda)\ =\ (-1)^n \ p_n(\lambda) \ .
 \label{parity}
-\ee
+\end{equation}
 As is well known (see e.g. \cite{BI,KFrev} and references therein),
 all orthogonal polynomials on the real line or a subset of it
 satisfy a three-step recursion relation
-\be
-\la p_{n}(\la) ~=~ c_{n+1}p_{n+1}(\la) + c_{n}p_{n-1}(\la) ~,
+\begin{equation}
+\lambda p_{n}(\lambda) ~=~ c_{n+1}p_{n+1}(\lambda) + c_{n}p_{n-1}(\lambda) ~,
 \label{rec}
-\ee
+\end{equation}
 where the middle term vanishes because of the parity.
 The recursion coefficients can be obtained from the normalization
 factors $f_n$ of the polynomials as:
-\be
+\begin{equation}
 c_n\ =\ \sqrt{\frac{f_n}{f_{n-1}}} \ .
 \label{reccoeff}
-\ee
+\end{equation}
 The second operation, which together with  the multiplication
 by $\lambda$ in eq. (\ref{rec}) closes on the ring of orthogonal
 polynomials, is differentiation over $\lambda$.
 Following  \cite{KFrev} it can be most conveniently written as
-\be
-p_n'(\la) ~\equiv~ {A}_n(\la)p_{n-1}(\la) ~-~
-                       {B}_n(\la)p_{n}(\la) ~.
+\begin{equation}
+p_n'(\lambda) ~\equiv~ {A}_n(\lambda)p_{n-1}(\lambda) ~-~
+                       {B}_n(\lambda)p_{n}(\lambda) ~.
 \label{Pprime}
-\ee
-Here, the functions $A_n(\la)$ and $B_n(\la)$ are defined as
-\bea
-{A}_n(\la)&\equiv&N~ c_n\int_{-\infty}^{\infty}\! d\eta~
-\frac{w(\eta)}{\eta-\la}
-     [V_{\al}'(\eta) - V_{\al}'(\la)]\ p_n(\eta)^2  \nn\\
+\end{equation}
+Here, the functions $A_n(\lambda)$ and $B_n(\lambda)$ are defined as
+\begin{eqnarray}
+{A}_n(\lambda)&\equiv&N~ c_n\int_{-\infty}^{\infty}\! d\eta~
+\frac{w(\eta)}{\eta-\lambda}
+     [V_{\alpha}'(\eta) - V_{\alpha}'(\lambda)]\ p_n(\eta)^2  \nonumber\\
 &=&N~ c_n\int_{-\infty}^{\infty}\! d\eta~
-\frac{w(\eta)}{\eta-\la}
-     [V'(\eta) - V'(\la)]\ p_n(\eta)^2 ~,\label{An}\\
-{B}_n(\la)&\equiv&N~ c_n\int_{-\infty}^{\infty}\! d\eta~
-\frac{w(\eta)}{\eta-\la}
-  [V_{\al}'(\eta) - V_{\al}'(\la)]\ p_n(\eta)p_{n-1}(\eta) \nonumber\\
-         &\equiv& {B}_n^{\mbox{\scriptsize reg}}(\la)
-            ~+~ (1-(-1)^n)\frac{\al}{\la} ~.
+\frac{w(\eta)}{\eta-\lambda}
+     [V'(\eta) - V'(\lambda)]\ p_n(\eta)^2 ~,\label{An}\\
+{B}_n(\lambda)&\equiv&N~ c_n\int_{-\infty}^{\infty}\! d\eta~
+\frac{w(\eta)}{\eta-\lambda}
+  [V_{\alpha}'(\eta) - V_{\alpha}'(\lambda)]\ p_n(\eta)p_{n-1}(\eta) \nonumber\\
+         &\equiv& {B}_n^{\mbox{\scriptsize reg}}(\lambda)
+            ~+~ (1-(-1)^n)\frac{\alpha}{\lambda} ~.
 \label{Bn}
-\eea
+\end{eqnarray}
 Because of parity the singular
-$\al$-dependent term drops out in  $A_n(\la)$. Inserting
+$\alpha$-dependent term drops out in  $A_n(\lambda)$. Inserting
 the explicit form of the potential from eq. (\ref{Valpha})
 it can be easily seen that
-$A_n(\la)$ and the regular part $B_n^{\mbox{\scriptsize reg}}(\la)$
-of $B_n(\la)$ are polynomials of degree $d-2$ and $d-3$ respectively.
+$A_n(\lambda)$ and the regular part $B_n^{\mbox{\scriptsize reg}}(\lambda)$
+of $B_n(\lambda)$ are polynomials of degree $d-2$ and $d-3$ respectively.
 From their definition one can easily show
 the following identity to be valid \cite{KF}:
-\be
-{B}_n(\la) + {B}_{n-1}(\la) ~+~  N~ V_{\al}'(\la)
-~=~ \frac{\la}{c_{n-1}}{A}_{n-1}(\la)~.
+\begin{equation}
+{B}_n(\lambda) + {B}_{n-1}(\lambda) ~+~  N~ V_{\alpha}'(\lambda)
+~=~ \frac{\lambda}{c_{n-1}}{A}_{n-1}(\lambda)~.
 \label{ABV}
-\ee
+\end{equation}
 This identity, when combined with the two properties of the
 polynomials - the
 recursion relation eq. (\ref{rec}) and the differentiation eq.
 (\ref{Pprime}) - suffices to show that the following second order differential
 equation is satisfied by the wavefunctions defined in Eq.(\ref{psi}):.
-\be
-\psi_n''(\la) - {F}_n(\la)\psi_n'(\la) + {G}_n(\la)
-\psi_n(\la) ~=~ 0 ~,
+\begin{equation}
+\psi_n''(\lambda) - {F}_n(\lambda)\psi_n'(\lambda) + {G}_n(\lambda)
+\psi_n(\lambda) ~=~ 0 ~,
 \label{psidiff}
-\ee
+\end{equation}
 where
 \begin{eqnarray}
-{F}_n(\la) &\equiv& \frac{{A}_n'(\la)}{{A}_n(\la)} \label{F}\\
-{G}_n(\la) &\equiv& \frac{c_n}{c_{n-1}}{A}_n(\la){A}_{n-1}(\la)
-                -\left({B}_n(\la)+\frac{N}{2}V_{\al}'(\la)\right)^2
+{F}_n(\lambda) &\equiv& \frac{{A}_n'(\lambda)}{{A}_n(\lambda)} \label{F}\\
+{G}_n(\lambda) &\equiv& \frac{c_n}{c_{n-1}}{A}_n(\lambda){A}_{n-1}(\lambda)
+                -\left({B}_n(\lambda)+\frac{N}{2}V_{\alpha}'(\lambda)\right)^2
                \nonumber\\
-                &&+\left({B}_n(\la)+\frac{N}{2}V_{\al}'(\la)\right)'
-                -\frac{{A}_n'(\la)}{{A}_n(\la)}
-                \left({B}_n(\la)+\frac{N}{2}V_{\al}'(\la)\right) \ .
+                &&+\left({B}_n(\lambda)+\frac{N}{2}V_{\alpha}'(\lambda)\right)'
+                -\frac{{A}_n'(\lambda)}{{A}_n(\lambda)}
+                \left({B}_n(\lambda)+\frac{N}{2}V_{\alpha}'(\lambda)\right) \ .
 \label{G}
 \end{eqnarray}
 Here $'$ denotes the derivative with respect to $\lambda$ everywhere.
 The differential equation Eq.(\ref{psidiff}) holds for finite-$N$ and
-arbitrary weight $w(\la)$ corresponding to a given polynomial
-$V(\la)$ of degree $d$ and parameter $\al>-1/2$.
+arbitrary weight $w(\lambda)$ corresponding to a given polynomial
+$V(\lambda)$ of degree $d$ and parameter $\alpha>-1/2$.
 The fact that $\alpha$ can be real will enable us to translate most easily
 the results for the UE obtained below to the chUE in the next subsection.
 
 Our goal is to derive a similar differential
 equation for the Cauchy transform
 at finite-$N$. In terms of the orthonormal polynomials they are given by
-\be
+\begin{equation}
 h_n(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-d\la\ \frac{w(\la)}{\la-\epsilon}\,p_n(\la)\ ,\ \ \im(\epsilon)\neq 0 \ .
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\,p_n(\lambda)\ ,\ \ \im(\epsilon)\neq 0 \ .
 \label{defCauchy}
-\ee
+\end{equation}
 This defines in fact two functions, one in the upper and one in the lower half
 plane for positive or negative imaginary part, respectively. Each of it
 can be extended to the other half plane using the relation
-\be
-h_n(-\ep) \ =\ (-1)^{n+1}\ h_n(\ep)\ .
+\begin{equation}
+h_n(-\epsilon) \ =\ (-1)^{n+1}\ h_n(\epsilon)\ .
 \label{hparity}
-\ee
+\end{equation}
 which follows easily from the  parity of the polynomials,
 eq. (\ref{parity}).
 We note that the Cauchy transform has the opposite parity than the
@@ -503,22 +503,22 @@ two different functions defined in eq. (\ref{defCauchy}).
 
 
 In the following we show that the object
-\be
-\tilde{h}_n(\epsilon)\ \equiv \exp[+NV_\al(\epsilon)]\ h_n(\epsilon)
+\begin{equation}
+\tilde{h}_n(\epsilon)\ \equiv \exp[+NV_\alpha(\epsilon)]\ h_n(\epsilon)
 \label{ht}
-\ee
+\end{equation}
 satisfies the same recursion relation eq. (\ref{rec})
 and differentiation relation eq. (\ref{Pprime}) as the corresponding
-orthogonal polynomial $p_n(\la)$, provided that $n>d-1$.
+orthogonal polynomial $p_n(\lambda)$, provided that $n>d-1$.
 As an immediate consequence the wavefunction for the Cauchy transform
 defined as
-\be
-\chi_n(\epsilon) \ \equiv\ \exp\left[-\frac{N}{2}V_\al(\ep)\right]
-    \, \tilde{h}_n(\ep)
-\ =\ \exp\left[+\frac{N}{2}V_\al(\ep)\right]\, h_n(\epsilon)
+\begin{equation}
+\chi_n(\epsilon) \ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\epsilon)\right]
+    \, \tilde{h}_n(\epsilon)
+\ =\ \exp\left[+\frac{N}{2}V_\alpha(\epsilon)\right]\, h_n(\epsilon)
 \ ,
 \label{chi}
-\ee
+\end{equation}
 satisfies the second order differential equation identical
 to Eq. (\ref{psidiff}) at finite-$n$, provided the condition  $n>d-2$.
 The corresponding solution of the differential equation
@@ -526,79 +526,79 @@ at finite and large-$n$ will then have to be chosen according to the
 appropriate boundary condition for $\psi_n$ and $\chi_n$, respectively.
 
 
-Let us first consider multiplication on $h_n(\ep)$ for $n>0$:
-\bea
-\ep h_n(\ep) &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-d\la \frac{w(\la)}{\la-\epsilon}\ \ep p_n(\la)\ \ ,\nn\\
-&=& \frac{-1}{2\pi i}\int_{-\infty}^{+\infty} d\la\ w(\la) p_n(\la)
+Let us first consider multiplication on $h_n(\epsilon)$ for $n>0$:
+\begin{eqnarray}
+\epsilon h_n(\epsilon) &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+d\lambda \frac{w(\lambda)}{\lambda-\epsilon}\ \epsilon p_n(\lambda)\ \ ,\nonumber\\
+&=& \frac{-1}{2\pi i}\int_{-\infty}^{+\infty} d\lambda\ w(\lambda) p_n(\lambda)
 \ +\ \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-d\la \frac{w(\la)}{\la-\epsilon}[ c_{n+1}p_{n+1}(\la) + c_{n}p_{n-1}(\la)]\nn\\
-&=&  c_{n+1}h_{n+1}(\ep) + c_{n}h_{n-1}(\ep) \ , \ \ n>0\ .
+d\lambda \frac{w(\lambda)}{\lambda-\epsilon}[ c_{n+1}p_{n+1}(\lambda) + c_{n}p_{n-1}(\lambda)]\nonumber\\
+&=&  c_{n+1}h_{n+1}(\epsilon) + c_{n}h_{n-1}(\epsilon) \ , \ \ n>0\ .
 \label{h-rec}
-\eea
-At the first step we have added and subtracted $\la$ to cancel the denominator
+\end{eqnarray}
+At the first step we have added and subtracted $\lambda$ to cancel the denominator
 and used the recursion relation eq. (\ref{rec}). At the second step we used
-that $p_n(\la)$ is orthogonal to $p_0(\la)=const$ for $n>0$.
+that $p_n(\lambda)$ is orthogonal to $p_0(\lambda)=const$ for $n>0$.
 The fact that the recursion Eq. (\ref{h-rec}) also holds for
-$\tilde{h}_n(\ep)$ as well as for $\chi_n(\epsilon)$ is an
+$\tilde{h}_n(\epsilon)$ as well as for $\chi_n(\epsilon)$ is an
 immediate consequence.
 
 The next step is to consider differentiation acting
-on $\tilde{h}_n(\ep)$ for $n>d-2$:
-\bea
-\partial_\ep \tilde{h}_n(\ep) &=&  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-d\la\ \frac{\mbox{e}^{N(V_\al(\ep)-V_\al(\la))}}{\la-\ep}
-\left[ N\left(V_\al'(\ep)-V_\al'(\la)\right)p_n(\la)\ +\ p_n'(\la)\right] \nn\\
+on $\tilde{h}_n(\epsilon)$ for $n>d-2$:
+\begin{eqnarray}
+\partial_\epsilon \tilde{h}_n(\epsilon) &=&  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+d\lambda\ \frac{\mbox{e}^{N(V_\alpha(\epsilon)-V_\alpha(\lambda))}}{\lambda-\epsilon}
+\left[ N\left(V_\alpha'(\epsilon)-V_\alpha'(\lambda)\right)p_n(\lambda)\ +\ p_n'(\lambda)\right] \nonumber\\
 &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-    d\la\ \mbox{e}^{N(V_\al(\ep)-V_\al(\la))}
-    \left[ N\frac{V'(\ep)-V'(\la)}{\la-\ep}p_n(\la)
-           -\frac{2\al}{\ep\la}p_n(\la) \right. \nn\\
-&&+\left.\frac{A_n(\la)}{\la-\ep}p_{n-1}(\la)
--\frac{{B}_n^{\mbox{\scriptsize reg}}(\la)
-                   +(1-(-1)^n)\al\la^{-1}}{\la-\ep}p_n(\la)\right] \nn\\
+    d\lambda\ \mbox{e}^{N(V_\alpha(\epsilon)-V_\alpha(\lambda))}
+    \left[ N\frac{V'(\epsilon)-V'(\lambda)}{\lambda-\epsilon}p_n(\lambda)
+           -\frac{2\alpha}{\epsilon\lambda}p_n(\lambda) \right. \nonumber\\
+&&+\left.\frac{A_n(\lambda)}{\lambda-\epsilon}p_{n-1}(\lambda)
+-\frac{{B}_n^{\mbox{\scriptsize reg}}(\lambda)
+                   +(1-(-1)^n)\alpha\lambda^{-1}}{\lambda-\epsilon}p_n(\lambda)\right] \nonumber\\
 &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-    d\la\ \mbox{e}^{N(V_\al(\ep)-V_\al(\la))}
-\left[ -\frac{2\al}{\ep\la}p_n(\la)
-+\frac{A_n(\ep)}{\la-\ep}p_{n-1}(\la) \right.\nn\\
-&&\left. -\ \frac{{B}_n^{\mbox{\scriptsize reg}}(\ep)
-                   +(1-(-1)^n)\al\ep^{-1}}{\la-\ep}p_n(\la)
-+\frac{\al(1-(-1)^n)}{\ep\la}p_n(\la)\right]\nn\\
-&=& A_n(\ep)\ \tilde{h}_{n-1}(\ep)\ -\left[{B}_n^{\mbox{\scriptsize reg}}(\ep)
- +(1-(-1)^n)\frac{\al}{\ep}\right]\ \tilde{h}_{n}(\ep)\ , \ \ n>d-2\ .
+    d\lambda\ \mbox{e}^{N(V_\alpha(\epsilon)-V_\alpha(\lambda))}
+\left[ -\frac{2\alpha}{\epsilon\lambda}p_n(\lambda)
++\frac{A_n(\epsilon)}{\lambda-\epsilon}p_{n-1}(\lambda) \right.\nonumber\\
+&&\left. -\ \frac{{B}_n^{\mbox{\scriptsize reg}}(\epsilon)
+                   +(1-(-1)^n)\alpha\epsilon^{-1}}{\lambda-\epsilon}p_n(\lambda)
++\frac{\alpha(1-(-1)^n)}{\epsilon\lambda}p_n(\lambda)\right]\nonumber\\
+&=& A_n(\epsilon)\ \tilde{h}_{n-1}(\epsilon)\ -\left[{B}_n^{\mbox{\scriptsize reg}}(\epsilon)
+ +(1-(-1)^n)\frac{\alpha}{\epsilon}\right]\ \tilde{h}_{n}(\epsilon)\ , \ \ n>d-2\ .
 \label{hprime}
-\eea
-Here we first have used the relation $\partial_\ep\frac{1}{\ep-\la}=-
-\partial_\la\frac{1}{\ep-\la}$ and performed the integration by parts.
-The second step spells out the definition of $V_\al(\la)$ and exploits Eq.
-(\ref{Pprime}) for $p_n'(\la)$. We can now use that
-$(V'(\ep)-V'(\la))/(\la-\ep)$ is a polynomial of order $d-2$ and thus
-orthogonal to $p_n(\la)$ for $n>d-2$. The same argument helps
-to rewrite $A_n(\la)/(\la-\ep)= (A_n(\la)-A_n(\ep))/(\la-\ep)+
-A_n(\ep)/(\la-\ep)$ and to drop the first term, which is again a polynomial
-(this times of the order $d-3$) and thus orthogonal to $p_n(\la)$.
-We can repeat the same steps for ${B}_n^{\mbox{\scriptsize reg}}(\la)$
-and the poles $1/\la$. The remaining terms $\sim 1/(\la\ep)$
+\end{eqnarray}
+Here we first have used the relation $\partial_\epsilon\frac{1}{\epsilon-\lambda}=-
+\partial_\lambda\frac{1}{\epsilon-\lambda}$ and performed the integration by parts.
+The second step spells out the definition of $V_\alpha(\lambda)$ and exploits Eq.
+(\ref{Pprime}) for $p_n'(\lambda)$. We can now use that
+$(V'(\epsilon)-V'(\lambda))/(\lambda-\epsilon)$ is a polynomial of order $d-2$ and thus
+orthogonal to $p_n(\lambda)$ for $n>d-2$. The same argument helps
+to rewrite $A_n(\lambda)/(\lambda-\epsilon)= (A_n(\lambda)-A_n(\epsilon))/(\lambda-\epsilon)+
+A_n(\epsilon)/(\lambda-\epsilon)$ and to drop the first term, which is again a polynomial
+(this times of the order $d-3$) and thus orthogonal to $p_n(\lambda)$.
+We can repeat the same steps for ${B}_n^{\mbox{\scriptsize reg}}(\lambda)$
+and the poles $1/\lambda$. The remaining terms $\sim 1/(\lambda\epsilon)$
 require a little bit more careful treatment.
-For $n$ even $p_n(\la)/\la$ is odd and thus the
+For $n$ even $p_n(\lambda)/\lambda$ is odd and thus the
 corresponding integral vanishes identically.
 For $n$ odd the last term $\sim (1-(-1)^n)$ gives a
 contribution that precisely cancels the first one.
 We thus finally arrive at
 the same relation for differentiation of
-$\tilde{h}_{n}(\ep)$ as that given by eq. (\ref{Pprime}).
+$\tilde{h}_{n}(\epsilon)$ as that given by eq. (\ref{Pprime}).
 Consequently, Eqs. (\ref{h-rec}), (\ref{hprime})
 and (\ref{chi}) imply
-\be
-\chi_n''(\la) - {F}_n(\la)\chi_n'(\la) + {G}_n(\la)
-\chi_n(\la) ~=~ 0 ~.
+\begin{equation}
+\chi_n''(\lambda) - {F}_n(\lambda)\chi_n'(\lambda) + {G}_n(\lambda)
+\chi_n(\lambda) ~=~ 0 ~.
 \label{chidiff}
-\ee
+\end{equation}
 Thus, the wave functions associated with the
 orthogonal polynomials and their Cauchy transforms satisfy
 the same differential equation, provided that condition
 $n>d-2$ holds.
 This constraint is not an obstacle for large but finite-$n$,
-for any given potential $V(\la)$ with a fixed finite degree $d$.
+for any given potential $V(\lambda)$ with a fixed finite degree $d$.
 
 The virtue of our analysis at finite $n$ is that it obviously translates
 all the universality proofs carried out at the origin, in the bulk and at the
@@ -612,41 +612,41 @@ case of chUE.
 The eigenvalues for chUE are distributed on the positive real
 line ${\mathbb R}_+$ and governed by the following
 chiral weight function:
-\be
-w^{ch}(\la) \ \equiv\ \la^{\al}\exp[-NV^{ch}(\la)]
-\ \equiv\ \exp[-NV^{ch}_{\al}(\la)].
+\begin{equation}
+w^{ch}(\lambda) \ \equiv\ \lambda^{\alpha}\exp[-NV^{ch}(\lambda)]
+\ \equiv\ \exp[-NV^{ch}_{\alpha}(\lambda)].
 \label{chweight}
-\ee
- Here the potential $V^{ch}_{\al}(\la)$ is
+\end{equation}
+ Here the potential $V^{ch}_{\alpha}(\lambda)$ is
 of degree $d/2$, with $d$ even, and is defined as
-\be
-V^{ch}_{\al}(\la) \ \equiv\
-\sum_{k=1}^{d/2} \frac{g_{2k}}{k} \la^{k}
-- \frac{\al}{N}\ln(\la) ~. \ \
+\begin{equation}
+V^{ch}_{\alpha}(\lambda) \ \equiv\
+\sum_{k=1}^{d/2} \frac{g_{2k}}{k} \lambda^{k}
+- \frac{\alpha}{N}\ln(\lambda) ~. \ \
 \label{Vch}
-\ee
+\end{equation}
 The orthogonality relation for the corresponding orthogonal polynomials
-denoted as $p^{(\al)}_{k,\ ch}(\la)$ reads
-\be
+denoted as $p^{(\alpha)}_{k,\ ch}(\lambda)$ reads
+\begin{equation}
 \delta_{kl} ~=~
-\int_{0}^{\infty}\! d\la~ w^{ch}(\la) p^{(\al)}_{k,\ ch}(\la)
-p^{(\al)}_{l,\ ch}(\la) ~.
+\int_{0}^{\infty}\! d\lambda~ w^{ch}(\lambda) p^{(\alpha)}_{k,\ ch}(\lambda)
+p^{(\alpha)}_{l,\ ch}(\lambda) ~.
 \label{OPch}
-\ee
-Here we explicitly display the dependence on the parameter $\al$.
-Substituting $\la^2=y$ one can easily see that
+\end{equation}
+Here we explicitly display the dependence on the parameter $\alpha$.
+Substituting $\lambda^2=y$ one can easily see that
 the orthogonal polynomials of the chUE can be obtained from those
 of the UE  by simple replacement
 of the argument \cite{ADMNII}:
-\be
-p_{n,\ ch}^{(\al)}(\la^2) \ =\ p_{2n}^{(\al+1/2)}(\la)\ .
+\begin{equation}
+p_{n,\ ch}^{(\alpha)}(\lambda^2) \ =\ p_{2n}^{(\alpha+1/2)}(\lambda)\ .
 \label{OPrel}
-\ee
+\end{equation}
 Here we have to appropriately identify the corresponding potential as
-\be
+\begin{equation}
 V^{ch}(y^2)\ =\ 2\ V(y)\ ,
 \label{Vrel}
-\ee
+\end{equation}
 which effectively means that the non-chiral polynomials are taken at
 values $2N$. In fact, one can look at the relation Eq. (\ref{OPrel})
 as a generalization of the well-known relation between
@@ -655,45 +655,45 @@ Consequently, there is no need to repeat the whole analysis of the previous
 subsection but one can simple read off the chiral
 orthogonal polynomials and their asymptotics
 from the same differential equation (\ref{psidiff}) for even $N$ at shifted
-value of $\al$.
+value of $\alpha$.
 
 Let us now show that the Cauchy transforms of the chiral orthogonal
 polynomials relate to those of the non-chiral ones as well.
 We first define the Cauchy transform for the chiral case as
-\be
-h_{n,\ ch}^{(\al)}(\ep) \ \equiv\ \frac{1}{2\pi i}\int_{0}^{\infty}
-d\la\ \frac{w^{ch}(\la)}{\la-\epsilon}\ p^{(\al)}_{n,\ ch}(\la)\ ,
+\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{0}^{\infty}
+d\lambda\ \frac{w^{ch}(\lambda)}{\lambda-\epsilon}\ p^{(\alpha)}_{n,\ ch}(\lambda)\ ,
 \ \ \Im m(\epsilon)\neq 0\ .
 \label{chCauchy}
-\ee
-Substituting $\la^2=y$ and
+\end{equation}
+Substituting $\lambda^2=y$ and
 inserting the relation (\ref{OPrel}) we obtain
-\bea
-h_{n,\ ch}^{(\al)}(\ep) &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-dy\ \frac{y}{y^2-\epsilon}\ \mbox{e}^{-NV^{ch}_{\al}(y^2)}
-p^{(\al)}_{n,\ ch}(y^2)
+\begin{eqnarray}
+h_{n,\ ch}^{(\alpha)}(\epsilon) &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+dy\ \frac{y}{y^2-\epsilon}\ \mbox{e}^{-NV^{ch}_{\alpha}(y^2)}
+p^{(\alpha)}_{n,\ ch}(y^2)
 \label{chh}\\
 &=& \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-dy\ \frac{1}{y^2-\epsilon}\ \mbox{e}^{-NV^{ch}_{\al+1/2}(y^2)}\
-p^{(\al+1/2)}_{2n}(y)\ ,
+dy\ \frac{1}{y^2-\epsilon}\ \mbox{e}^{-NV^{ch}_{\alpha+1/2}(y^2)}\
+p^{(\alpha+1/2)}_{2n}(y)\ ,
 \label{chh1}
-\eea
+\end{eqnarray}
 where we have used the parity of the non-chiral polynomial
-$p^{(\al+1/2)}_{2n}(y)$. On the other hand we can rewrite the Cauchy
+$p^{(\alpha+1/2)}_{2n}(y)$. On the other hand we can rewrite the Cauchy
 transform of the non-chiral ensemble eq.
 (\ref{Cauchy}) with an even index $2n$ as
-\be
-h_{2n}^{(\al)}(\ep) \ =\  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
-dy \frac{\ep}{y^2-\ep^2}\ \mbox{e}^{-2NV_{\al}(y)}\
-p^{(\al)}_{2n}(y) \ .
+\begin{equation}
+h_{2n}^{(\alpha)}(\epsilon) \ =\  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+dy \frac{\epsilon}{y^2-\epsilon^2}\ \mbox{e}^{-2NV_{\alpha}(y)}\
+p^{(\alpha)}_{2n}(y) \ .
 \label{chh2}
-\ee
+\end{equation}
 Comparing eqs. (\ref{chh1}) and (\ref{chh2}) together with eq. (\ref{Vrel})
 we thus arrive at
-\be
-h_{n,\ ch}^{(\al)}(\ep^2) \ =\ \frac{1}{\ep}\ h_{2n}^{(\al+1/2)}(\ep) \ ,
+\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon^2) \ =\ \frac{1}{\epsilon}\ h_{2n}^{(\alpha+1/2)}(\epsilon) \ ,
 \label{hrel}
-\ee
+\end{equation}
 where the right hand side has to be taken at $2N$ as for the
 polynomials themselves.
 Consequently the same analysis for the ""chiral"" Cauchy transforms
@@ -712,7 +712,7 @@ different solutions for the chiral Cauchy transforms as well.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\sect{Universality}\label{univ}
+\setcounter{equation}{0}\section{Universality}\label{univ}
 
 In this section we demonstrate the universality of
 the asymptotic polynomials and
@@ -734,7 +734,7 @@ where the spectrum support is a simply connected
 interval, the so-called one-cut phase. We will also stay away
 from multicritical points, where the macroscopic density develops extra
 zeros at the boundary of spectra or inside the support.
-This amounts to requiring the limiting functions for $A_N(\la)$ to be
+This amounts to requiring the limiting functions for $A_N(\lambda)$ to be
 nonvanishing on the support as well (see eq. (\ref{Arho}) below).
 While such multicritical
 cases can be, in principle, analyzed in the framework of the same approach
@@ -746,70 +746,70 @@ Our first step is to derive the large-$N$ limit of the differential equations
 is equivalent to the fact
 that in the large-$N$ limit the recursion
 coefficients $c_n$ in eq. (\ref{reccoeff}) approach a single valued function
-\be
+\begin{equation}
 \lim_{n\to\infty}c_n=c(t=n/N)\ .
 \label{cN}
-\ee
+\end{equation}
 While in the earlier physical matrix model literature
 this assumption was introduced as an ansatz supported by numerical evidence,
 it has been proved rigorously in the recent mathematical literature
 \cite{Deift1}.
 Eq. (\ref{cN}) implies the following asymptotic form
-for the functions $A_N(\la)$ and $B_N(\la)$ in the differential
+for the functions $A_N(\lambda)$ and $B_N(\lambda)$ in the differential
 equation \cite{KFrev}:
-\bea
-\lim_{N\to\infty}\frac{1}{N} A_N(\la) &\equiv& A(\la) \ =\
-\frac{a}{2\pi}\int_{-a}^a \!dt\ \frac{tV'(t)-\la V'(\la)}{t^2-\la^2}
+\begin{eqnarray}
+\lim_{N\to\infty}\frac{1}{N} A_N(\lambda) &\equiv& A(\lambda) \ =\
+\frac{a}{2\pi}\int_{-a}^a \!dt\ \frac{tV'(t)-\lambda V'(\lambda)}{t^2-\lambda^2}
 \frac{1}{\sqrt{a^2-t^2}}
 \label{Alim} \\
-&=& \pi \rho(\la)
-\frac{a}{\sqrt{a^2 - \la^2}} ~, \ \ \la\in\ (-a,a)\ .
+&=& \pi \rho(\lambda)
+\frac{a}{\sqrt{a^2 - \lambda^2}} ~, \ \ \lambda\in\ (-a,a)\ .
 \label{Arho}
-\eea
+\end{eqnarray}
 Here $a\!=\! \lim_{N\to\infty}2c_N$ is the endpoint of the spectral support.
 For convenience we have also presented
-the relation to the macroscopic density of eigenvalues denoted by $\rho(\la)$.
+the relation to the macroscopic density of eigenvalues denoted by $\rho(\lambda)$.
 Using the recursion relation eq. (\ref{rec}) it can be easily seen that
-$A(\la)$ remains a polynomial of degree $d-2$, but the coefficients
+$A(\lambda)$ remains a polynomial of degree $d-2$, but the coefficients
 get smoothened by taking the large-$N$ limit.
 This corresponds to
 the one cut phase through eq. (\ref{Arho}), with the nonpolynomial part of
-$\rho(\la)\sim \sqrt{a^2-\la^2}$ being a simple square root.
-The regular part $B_n^{\mbox{\scriptsize reg}}(\la)$
-of the function $B_N(\la)$ also remains in the same limit a polynomial of
+$\rho(\lambda)\sim \sqrt{a^2-\lambda^2}$ being a simple square root.
+The regular part $B_n^{\mbox{\scriptsize reg}}(\lambda)$
+of the function $B_N(\lambda)$ also remains in the same limit a polynomial of
 order $d-3$, with the limiting form \cite{KF}:
-\bea
-\lim_{N\to\infty}\frac{1}{N} B_N(\la) &\equiv&
-B{\mbox{\scriptsize reg}}(\la) \ +\ (1-(-1)^N)
-\frac{\al}{N\la} \nn\\
-&=& \frac{1}{2\pi}\int_{-a}^a \!dt\ \frac{\la V'(t)-t V'(\la)}{t^2-\la^2}
+\begin{eqnarray}
+\lim_{N\to\infty}\frac{1}{N} B_N(\lambda) &\equiv&
+B{\mbox{\scriptsize reg}}(\lambda) \ +\ (1-(-1)^N)
+\frac{\alpha}{N\lambda} \nonumber\\
+&=& \frac{1}{2\pi}\int_{-a}^a \!dt\ \frac{\lambda V'(t)-t V'(\lambda)}{t^2-\lambda^2}
 \frac{1}{\sqrt{a^2-t^2}}\ +\ (1-(-1)^N)
-\frac{\al}{N\la}
+\frac{\alpha}{N\lambda}
 \label{Blim}
-\eea
+\end{eqnarray}
 Using these expressions we obtain the following result for the
 combination entering the differential equation eq. (\ref{ABV})
 \begin{equation}
 \lim_{N\to\infty}
-\left(B_N(\la) + \frac{N}{2}V_{\al}'(\la)\right) \ =\
-N\ \frac{\la}{2a}A(\la)-(-1)^N\
-            \frac{\al}{\la} \ .
+\left(B_N(\lambda) + \frac{N}{2}V_{\alpha}'(\lambda)\right) \ =\
+N\ \frac{\lambda}{2a}A(\lambda)-(-1)^N\
+            \frac{\alpha}{\lambda} \ .
 \label{ABlim}
 \end{equation}
 We have kept the last term as it will give rise to two different equations for
 even and odd $N$.
-Consequently, $G_N(\la)$ can be expressed asymptotically only in
-terms of  $A(\la)$ and  therefore via
-$\rho(\la)$ by virtue of Eq. (\ref{Arho}).
+Consequently, $G_N(\lambda)$ can be expressed asymptotically only in
+terms of  $A(\lambda)$ and  therefore via
+$\rho(\lambda)$ by virtue of Eq. (\ref{Arho}).
 We have:
 \begin{eqnarray}
-\lim_{N\to\infty}F_N(\la) &=& \frac{A'(\la)}{A(\la)} \label{Flim}\\
-\lim_{N\to\infty}G_N(\la) &=& N^2A(\la)^2\left(1-\frac{\la^2}{a^2}\right)+
-                              \frac{(-1)^N\al-\al^2}{\la^2}
-                +(-1)^N\ \frac{\al}{\la}\frac{A'(\la)}{A(\la)} \ .
+\lim_{N\to\infty}F_N(\lambda) &=& \frac{A'(\lambda)}{A(\lambda)} \label{Flim}\\
+\lim_{N\to\infty}G_N(\lambda) &=& N^2A(\lambda)^2\left(1-\frac{\lambda^2}{a^2}\right)+
+                              \frac{(-1)^N\alpha-\alpha^2}{\lambda^2}
+                +(-1)^N\ \frac{\alpha}{\lambda}\frac{A'(\lambda)}{A(\lambda)} \ .
 \label{Glim}
 \end{eqnarray}
-Although it seems that the first term in $G_N(\la)$
+Although it seems that the first term in $G_N(\lambda)$
 is always dominating the
 second term may contribute in some regimes as well,
 depending on the chosen rescaling of
@@ -822,23 +822,23 @@ the eigenvalues which we are about to investigate in the next subsection.
 We start by defining the microscopic rescaling in the large-$N$ limit
 close to the hard-edge
 origin of the spectrum to be
-\be
-N\la \ \equiv \ \xi\ .
+\begin{equation}
+N\lambda \ \equiv \ \xi\ .
 \label{hardlim}
-\ee
+\end{equation}
 This amounts to magnifying the correlations at the point
-$\la\approx 0$ as $\xi$ is kept fixed while $N\to\infty$.
+$\lambda\approx 0$ as $\xi$ is kept fixed while $N\to\infty$.
 Inserting this rescaling into the differential equations
 (\ref{psidiff}) and (\ref{chidiff})
 and using the asymptotic expressions for the coefficients,
 eqs. (\ref{Flim}) and (\ref{Glim}) it is easy to see that the two terms
-with the logarithmic derivative of $A(\la)$ are both of subleading order
+with the logarithmic derivative of $A(\lambda)$ are both of subleading order
 ${\cal O}(1/N)$. We thus obtain
-\be
-\varphi_N''(\xi) + \left( \pi^2\rho(0)^2+\frac{(-1)^N\al-\al^2}{\xi^2}\right)
+\begin{equation}
+\varphi_N''(\xi) + \left( \pi^2\rho(0)^2+\frac{(-1)^N\alpha-\alpha^2}{\xi^2}\right)
 \varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
 \label{diffhard}
-\ee
+\end{equation}
 This expression is clearly universal as the dependence on all the
 specific parameters $\{g_{2k}\}$ in the
 polynomial potential in eq. (\ref{weightUE}) has been translated
@@ -857,32 +857,32 @@ Cauchy transforms are singular at the origin. As we will
 see below this makes us to choose solutions to be
 Bessel functions of the third kind also known as the Hankel functions,
 $H^{(1)}_\nu(\zeta)$ or $H^{(2)}_\nu(\zeta)$, depending on the sign of
-the imaginary part of the complex argument $N\ep\equiv\zeta$.
+the imaginary part of the complex argument $N\epsilon\equiv\zeta$.
 We therefore obtain
-\bea
+\begin{eqnarray}
 \psi_{2n}(\xi) &\sim&
-(\pi\rho(0)\xi)^{\frac12}J_{\al-\frac12}(\pi\rho(0)\xi) \ ,\nn\\
+(\pi\rho(0)\xi)^{\frac12}J_{\alpha-\frac12}(\pi\rho(0)\xi) \ ,\nonumber\\
 \psi_{2n+1}(\xi) &\sim&
-(\pi\rho(0)\xi)^{\frac12}J_{\al+\frac12}(\pi\rho(0)\xi) \ ,
+(\pi\rho(0)\xi)^{\frac12}J_{\alpha+\frac12}(\pi\rho(0)\xi) \ ,
 \label{psiasymp}\\
-&&\ \nn\\
+&&\ \nonumber\\
 \chi_{2n}(\zeta) &\sim&\left\{
 \begin{array}{rl}
-\ \ (\pi\rho(0)\zeta)^{\frac12}H^{(1)}_{\al-\frac12}(\pi\rho(0)\zeta) &\ , \ \
+\ \ (\pi\rho(0)\zeta)^{\frac12}H^{(1)}_{\alpha-\frac12}(\pi\rho(0)\zeta) &\ , \ \
 \im(\zeta)>0 \\
--(\pi\rho(0)\zeta)^{\frac12}H^{(2)}_{\al-\frac12}(\pi\rho(0)\zeta) &\ , \ \
+-(\pi\rho(0)\zeta)^{\frac12}H^{(2)}_{\alpha-\frac12}(\pi\rho(0)\zeta) &\ , \ \
 \im(\zeta)<0 \\
 \end{array}
-\right. \ ,\nn\\
+\right. \ ,\nonumber\\
 \chi_{2n+1}(\zeta) &\sim&\left\{
 \begin{array}{rl}
-\ \ (\pi\rho(0)\zeta)^{\frac12}H^{(1)}_{\al+\frac12}(\pi\rho(0)\zeta) &\ , \ \
+\ \ (\pi\rho(0)\zeta)^{\frac12}H^{(1)}_{\alpha+\frac12}(\pi\rho(0)\zeta) &\ , \ \
 \im(\zeta)>0  \\
--(\pi\rho(0)\zeta)^{\frac12}H^{(2)}_{\al+\frac12}(\pi\rho(0)\zeta) &\ , \ \
+-(\pi\rho(0)\zeta)^{\frac12}H^{(2)}_{\alpha+\frac12}(\pi\rho(0)\zeta) &\ , \ \
 \im(\zeta)<0  \\
 \end{array}\right. \ .
 \label{chiasymp}
-\eea
+\end{eqnarray}
 
 
 In order to extract from these wave-function asymptotics the
@@ -890,39 +890,39 @@ expressions for the bare polynomials and their Cauchy transforms
 we still have to remove the corresponding weight factor from eqs.
 (\ref{psi}) and (\ref{chi}) accordingly.
 The microscopic limit of the weight function eq. (\ref{weightUE}) reads:
-\be
-\lim_{N\to\infty}N^{2\al}w(\la)\ =\ \xi^{2\al} \ .
+\begin{equation}
+\lim_{N\to\infty}N^{2\alpha}w(\lambda)\ =\ \xi^{2\alpha} \ .
 \label{microw}
-\ee
+\end{equation}
 Multiplying or dividing the respective wavefunction
 by the square root of the weight function,
 we arrive at the final universal expressions to be inserted
 into the determinant of eq. (\ref{KN}):
-\bea
+\begin{eqnarray}
 p_{2n}(\xi) &\sim&
-\xi^{-\al+\frac12}J_{\al-\frac12}(\pi\rho(0)\xi)\ ,\nn\\
+\xi^{-\alpha+\frac12}J_{\alpha-\frac12}(\pi\rho(0)\xi)\ ,\nonumber\\
 p_{2n+1}(\xi) &\sim&
-\xi^{-\al+\frac12}J_{\al+\frac12}(\pi\rho(0)\xi)\ ,
+\xi^{-\alpha+\frac12}J_{\alpha+\frac12}(\pi\rho(0)\xi)\ ,
 \label{OPasymp}\\
-&&\ \nn\\
+&&\ \nonumber\\
 h_{2n}(\zeta) &\sim& \left\{
 \begin{array}{rl}
-\ \ \zeta^{\al+\frac12}H^{(1)}_{\al-\frac12}(\pi\rho(0)\zeta) & \ , \ \
+\ \ \zeta^{\alpha+\frac12}H^{(1)}_{\alpha-\frac12}(\pi\rho(0)\zeta) & \ , \ \
 \im(\zeta)>0\\
--\zeta^{\al+\frac12}H^{(2)}_{\al-\frac12}(\pi\rho(0)\zeta)
+-\zeta^{\alpha+\frac12}H^{(2)}_{\alpha-\frac12}(\pi\rho(0)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
-\right. \ ,\nn\\
+\right. \ ,\nonumber\\
 h_{2n+1}(\zeta) &\sim& \left\{
 \begin{array}{rl}
-\ \ \zeta^{\al+\frac12}H^{(1)}_{\al+\frac12}(\pi\rho(0)\zeta) & \ , \ \
+\ \ \zeta^{\alpha+\frac12}H^{(1)}_{\alpha+\frac12}(\pi\rho(0)\zeta) & \ , \ \
 \im(\zeta)>0\\
--\zeta^{\al+\frac12}H^{(2)}_{\al+\frac12}(\pi\rho(0)\zeta)
+-\zeta^{\alpha+\frac12}H^{(2)}_{\alpha+\frac12}(\pi\rho(0)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
 \right. \ .
 \label{hasymp}
-\eea
+\end{eqnarray}
 Let us now justify our choice of the type of Bessel functions
 featuring in eq. (\ref{chiasymp}).
 Due to the singularity at the origin we have to choose
@@ -945,66 +945,66 @@ $H^{(2)}_\nu(\zeta)$ according to the sign of $\im(\zeta)$.
 %$\im(\zeta)$ is chosen its counterpart follows by changing $\zeta\to -\zeta$,
 %as one can easily check in eq. (\ref{hasymp}).
 
-In fact, for $\al=0$ and Gaussian potential $w(\la)=\exp[-N\la^2]$
+In fact, for $\alpha=0$ and Gaussian potential $w(\lambda)=\exp[-N\lambda^2]$
 one can explicitly write down the integral representations
 for the polynomials and Cauchy transforms at finite-$N$, as discussed
 in \cite{FA}.
 Switching back to the monic normalization the polynomials
-are the Hermite polynomials $\pi_n(\la)=H_n(\la\sqrt{N})/(2\sqrt{N})^n$.
+are the Hermite polynomials $\pi_n(\lambda)=H_n(\lambda\sqrt{N})/(2\sqrt{N})^n$.
 It follows that
-\bea
-\pi_{2m}(\la)   &=& \mbox{e}^{N\la^2}(-1)^m 2N\sqrt{\la}\int_0^\infty ds\
-  \mbox{e}^{-Ns^2} s^{2m+\frac12} J_{-\frac12}(2Ns\la) \nn\\
-\pi_{2m+1}(\la) &=&  \mbox{e}^{N\la^2}(-1)^m 2N\sqrt{\la}\int_0^\infty ds\
-\mbox{e}^{-Ns^2} s^{2m+\frac32} J_{+\frac12}(2Ns\la) \ ,
+\begin{eqnarray}
+\pi_{2m}(\lambda)   &=& \mbox{e}^{N\lambda^2}(-1)^m 2N\sqrt{\lambda}\int_0^\infty ds\
+  \mbox{e}^{-Ns^2} s^{2m+\frac12} J_{-\frac12}(2Ns\lambda) \nonumber\\
+\pi_{2m+1}(\lambda) &=&  \mbox{e}^{N\lambda^2}(-1)^m 2N\sqrt{\lambda}\int_0^\infty ds\
+\mbox{e}^{-Ns^2} s^{2m+\frac32} J_{+\frac12}(2Ns\lambda) \ ,
 \label{OPrepherm}
-\eea
+\end{eqnarray}
 where we have used the standard integral representation of the Hermite
 polynomials as well as reexpressed cosine and sine by the half-integer
 Bessel functions
 $J_{\pm\frac12}$. As a consistency check one can verify
-that eq. (\ref{OPasymp}) at $\al=0$
+that eq. (\ref{OPasymp}) at $\alpha=0$
 follows from a saddle point approximation in the microscopic large-$N$ limit,
 remembering that $\pi\rho(0)=\sqrt{2}$ for the Gaussian potential.
 Using eq. (\ref{OPrepherm}) we obtain a finite-$N$ integral representation of
 the Cauchy transforms as follows. We can rewrite
-\be
-\frac{1}{x-\ep}\ =\ \mbox{sgn}[\im(\ep)]\,i \int_0^\infty dt\
-\exp[-\mbox{sgn}[\im(\ep)]it(x-\ep)]
-\ ,\ \ \im(\ep)\neq 0\ .
+\begin{equation}
+\frac{1}{x-\epsilon}\ =\ \mbox{sgn}[\im(\epsilon)]\,i \int_0^\infty dt\
+\exp[-\mbox{sgn}[\im(\epsilon)]it(x-\epsilon)]
+\ ,\ \ \im(\epsilon)\neq 0\ .
 \label{auxint}
-\ee
+\end{equation}
 Inserting eqs. (\ref{OPrepherm}) and (\ref{auxint}) into the definition
-(\ref{Cauchy}) we can first perform the integral over $\la$ and then
+(\ref{Cauchy}) we can first perform the integral over $\lambda$ and then
 the one over $t$, arriving at
-\bea
-\vartheta_{2m}(\ep) &=& (-1)^m N\sqrt{\ep}
+\begin{eqnarray}
+\vartheta_{2m}(\epsilon) &=& (-1)^m N\sqrt{\epsilon}
 \int_0^\infty ds\ \mbox{e}^{-Ns^2}s^{2m+\frac{1}{2}}
 \left\{
 \begin{array}{rl}
-\ \ H^{(1)}_{-\frac12}(2Ns\ep)& \ , \ \ \im(\ep)>0\\
--H^{(2)}_{-\frac12}(2Ns\ep)& \ , \ \ \im(\ep)<0\\
+\ \ H^{(1)}_{-\frac12}(2Ns\epsilon)& \ , \ \ \im(\epsilon)>0\\
+-H^{(2)}_{-\frac12}(2Ns\epsilon)& \ , \ \ \im(\epsilon)<0\\
 \end{array}\ ,
-\right. \nn\\
-\vartheta_{2m+1}(\ep) &=& (-1)^m N\sqrt{\ep}
+\right. \nonumber\\
+\vartheta_{2m+1}(\epsilon) &=& (-1)^m N\sqrt{\epsilon}
 \int_0^\infty ds\ \mbox{e}^{-Ns^2}s^{2m+\frac{3}{2}}
 \left\{
 \begin{array}{rl}
-\ \ H^{(1)}_{+\frac12}(2Ns\ep)& \ , \ \ \im(\ep)>0\\
--H^{(2)}_{+\frac12}(2Ns\ep)& \ , \ \ \im(\ep)<0\\
+\ \ H^{(1)}_{+\frac12}(2Ns\epsilon)& \ , \ \ \im(\epsilon)>0\\
+-H^{(2)}_{+\frac12}(2Ns\epsilon)& \ , \ \ \im(\epsilon)<0\\
 \end{array}
 \right. \ .
 \label{Cauchyrep}
-\eea
+\end{eqnarray}
 In taking the microscopic large-$N$ limit we again recover
-eq. (\ref{hasymp}) at $\al=0$ from a saddle point approximation.
+eq. (\ref{hasymp}) at $\alpha=0$ from a saddle point approximation.
 This fact confirms the correct choice of the solution for the
 Cauchy transform and thus for the wavefunctions eq. (\ref{chiasymp})
-for a Gaussian potential with $\al=0$. Since the parameters
-$\al$ as well as the higher order coupling constants
+for a Gaussian potential with $\alpha=0$. Since the parameters
+$\alpha$ as well as the higher order coupling constants
 $g_{2k}$ in the potential eq. (\ref{Valpha}) are real and can be switched
 on smoothly the choice of the type of Hankel function remains fixed
-for a general potential for general $\al$ as well.
+for a general potential for general $\alpha$ as well.
 
 
 \indent
@@ -1015,22 +1015,22 @@ Cauchy transforms of the
 chiral and non-chiral ensemble, eqs. (\ref{OPrel}) and (\ref{hrel})
 respectively, to read off immediately the universal asymptotic formulas
 for the {chiral Unitary Ensemble} from (\ref{OPasymp}) and (\ref{hasymp}):
-\bea
-p_{n,\ ch}^{(\al)}(\xi^2) &\sim&
-\xi^{-\al}J_{\al}(\pi\rho(0)\xi)\ ,
+\begin{eqnarray}
+p_{n,\ ch}^{(\alpha)}(\xi^2) &\sim&
+\xi^{-\alpha}J_{\alpha}(\pi\rho(0)\xi)\ ,
 \label{chOPasymp}\\
-&&\ \nn\\
-h_{n,\ ch}^{(\al)}(\zeta^2) &\sim& \left\{
+&&\ \nonumber\\
+h_{n,\ ch}^{(\alpha)}(\zeta^2) &\sim& \left\{
 \begin{array}{rl}
-\ \ \zeta^{\al}H^{(1)}_{\al}(\pi\rho(0)\zeta) & \ , \ \
+\ \ \zeta^{\alpha}H^{(1)}_{\alpha}(\pi\rho(0)\zeta) & \ , \ \
 \im(\zeta)>0\\
--\zeta^{\al}H^{(2)}_{\al}(\pi\rho(0)\zeta)
+-\zeta^{\alpha}H^{(2)}_{\alpha}(\pi\rho(0)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
 \right. \ .
 \label{chhasymp}
-\eea
-We see that for integer values of $\al$
+\end{eqnarray}
+We see that for integer values of $\alpha$
 the indices of the Bessel functions
 are also integer, compared to half
 integer values for the non-chiral case above.
@@ -1041,24 +1041,24 @@ $\im(\xi)$ we can repeat the argument as in eqs. (\ref{OPrepherm}) and
 The corresponding finite-$N$ expression have already been given in
 \cite{FA}, following the integral representation
 of generalized Laguerre polynomials, and we only repeat them here:
-\bea
-\pi_{n,\,ch}(x^2)&=& \mbox{e}^{Nx^2} (-1)^n Nx^{-\al}
-\int_0^{\infty}dt\, \mbox{e}^{-Nt}t^{n+\al/2}J_{\al}
+\begin{eqnarray}
+\pi_{n,\,ch}(x^2)&=& \mbox{e}^{Nx^2} (-1)^n Nx^{-\alpha}
+\int_0^{\infty}dt\, \mbox{e}^{-Nt}t^{n+\alpha/2}J_{\alpha}
 \left(2Nx\sqrt{t}\right)\ ,
-\nn\\
+\nonumber\\
 \vartheta_{n,\, ch}(\epsilon^2)    &=&\frac{(-1)^n}{2}
-N\epsilon^{\al}
-\int_0^{\infty}dt\, \mbox{e}^{-Nt}t^{n+\al/2}
+N\epsilon^{\alpha}
+\int_0^{\infty}dt\, \mbox{e}^{-Nt}t^{n+\alpha/2}
  \left\{
 \begin{array}{rl}
-\ \ H^{(1)}_{\al}\left(2N\epsilon \sqrt{t}\right)& \ , \ \ \im(\ep)>0\\
--H^{(2)}_{\al}\left(2N\epsilon \sqrt{t}\right)& \ , \ \ \im(\ep)<0\\
+\ \ H^{(1)}_{\alpha}\left(2N\epsilon \sqrt{t}\right)& \ , \ \ \im(\epsilon)>0\\
+-H^{(2)}_{\alpha}\left(2N\epsilon \sqrt{t}\right)& \ , \ \ \im(\epsilon)<0\\
 \end{array}
 \right. \ .
 \label{chintrep}
-\eea
+\end{eqnarray}
 The  saddle point approximation reconfirms eq. (\ref{chhasymp}) for the
-Gaussian potential $V_\al^{ch}(\la)=\la-\frac{\al}{N}\ln(\la)$
+Gaussian potential $V_\alpha^{ch}(\lambda)=\lambda-\frac{\alpha}{N}\ln(\lambda)$
 and, by invoking the continuity argument for a general potential as well.
 
 
@@ -1066,7 +1066,7 @@ and, by invoking the continuity argument for a general potential as well.
 
 In this section we briefly describe the microscopic limit
 in the bulk of the spectrum, which
-amounts to setting $\al=0$ in the differential equation
+amounts to setting $\alpha=0$ in the differential equation
 (\ref{diffhard}). For the non-chiral case the corresponding formulae
 match with those obtained in \cite{FSuniv}.
 
@@ -1075,26 +1075,26 @@ origin of the spectrum is no longer singled out. Under these conditions
 correlation functions when properly scaled
 should be the same at every point inside the support of the spectrum,
 due to translational invariance.
-More precisely, let us pick a fixed value $\la_*\in (-a,a)$, that means
+More precisely, let us pick a fixed value $\lambda_*\in (-a,a)$, that means
 neither at the origin nor at the edge of the support.
 The microscopic rescaling around the chosen point is
 then defined as
-\be
-N(\la-\la_*)\ \equiv\ \xi\ .
+\begin{equation}
+N(\lambda-\lambda_*)\ \equiv\ \xi\ .
 \label{bulklim}
-\ee
+\end{equation}
 Inserting this expression into that for the asymptotic coefficients,
 eqs. (\ref{Flim}) and
 (\ref{Glim}), we can easily see that only the first term in
-$G_N(\la)$ contributes yielding
-\be
-\varphi_N''(\xi) +  \pi^2\rho(\la_*)^2
+$G_N(\lambda)$ contributes yielding
+\begin{equation}
+\varphi_N''(\xi) +  \pi^2\rho(\lambda_*)^2
 \varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
 \label{diffbulk}
-\ee
+\end{equation}
 where we used eq. (\ref{Arho}) squared.
 This is just eq. (\ref{diffhard}) with
-$\al=0$, replacing $\rho(0)$ by the universal parameter $\rho(\la_*)$. From
+$\alpha=0$, replacing $\rho(0)$ by the universal parameter $\rho(\lambda_*)$. From
 eqs. (\ref{psiasymp}) and
 (\ref{chiasymp}) we see that the solutions are Bessel functions of index
 $\pm\frac{1}{2}$, which are just sine and cosine.
@@ -1102,82 +1102,82 @@ The differential equation no longer
 distinguishes between even and odd $N$, but the parity fixes the solution
 uniquely. The solutions for the asymptotic Cauchy
 transform will no longer be singular as we expand around the point
-$\la=\la_*$. However, we can still use the results of the previous subsection
-for $\al=0$ in order to fix the solution uniquely
-depending on the sign $\im(\ep)$ in the Cauchy transform.
+$\lambda=\lambda_*$. However, we can still use the results of the previous subsection
+for $\alpha=0$ in order to fix the solution uniquely
+depending on the sign $\im(\epsilon)$ in the Cauchy transform.
 Omitting the constant proportionality factor
-$w(\la_*)^{\pm\frac12}$ when switching from
+$w(\lambda_*)^{\pm\frac12}$ when switching from
 wavefunctions to polynomials and their Cauchy transforms
 yields the explicit expressions for the latter:
-\bea
-p_{2n}(\xi) &\sim& \cos(\pi\rho(\la_*)\xi)\ ,\nn\\
+\begin{eqnarray}
+p_{2n}(\xi) &\sim& \cos(\pi\rho(\lambda_*)\xi)\ ,\nonumber\\
 p_{2n+1}(\xi) &\sim&
-\sin(\pi\rho(\la_*)\xi)\ ,
+\sin(\pi\rho(\lambda_*)\xi)\ ,
 \label{OPbulkasymp}\\
-&&\ \nn\\
+&&\ \nonumber\\
 h_{2n}(\zeta) &\sim& \left\{
 \begin{array}{rl}
-\exp(+i\pi\rho(\la_*)\zeta)
+\exp(+i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)>0\\
--\exp(-i\pi\rho(\la_*)\zeta)
+-\exp(-i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
-\right. \ ,\nn\\
+\right. \ ,\nonumber\\
 h_{2n+1}(\zeta) &\sim& \left\{
 \begin{array}{rl}
--i\ \exp(+i\pi\rho(\la_*)\zeta)
+-i\ \exp(+i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)>0\\
--i\ \exp(-i\pi\rho(\la_*)\zeta)
+-i\ \exp(-i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
 \right. \ .
 \label{hbulkasymp}
-\eea
+\end{eqnarray}
 
 
-Due to the fact that no $\al$-dependence is present in eq. (\ref{diffbulk})
+Due to the fact that no $\alpha$-dependence is present in eq. (\ref{diffbulk})
 the polynomials and Cauchy transform in the chiral ensemble are identical to
 the even half of the non-chiral ones.  The eqs. (\ref{OPrel}) and
 (\ref{hrel}) then give:
-\bea
-p_{n,\ ch}^{(\al)}(\xi^2) &\sim&
- \cos(\pi\rho(\la_*)\xi)\ ,
+\begin{eqnarray}
+p_{n,\ ch}^{(\alpha)}(\xi^2) &\sim&
+ \cos(\pi\rho(\lambda_*)\xi)\ ,
 \label{chOPbulkasymp}\\
-&&\ \nn\\
-h_{n,\ ch}^{(\al)}(\zeta^2) &\sim& \left\{
+&&\ \nonumber\\
+h_{n,\ ch}^{(\alpha)}(\zeta^2) &\sim& \left\{
 \begin{array}{rl}
-\zeta^{-1}\exp(+i\pi\rho(\la_*)\zeta)
+\zeta^{-1}\exp(+i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)>0\\
--\zeta^{-1}\exp(-i\pi\rho(\la_*)\zeta)
+-\zeta^{-1}\exp(-i\pi\rho(\lambda_*)\zeta)
 & \ , \ \ \im(\zeta)<0\\
 \end{array}
 \right. \ .
 \label{chhbulkasymp}
-\eea
+\end{eqnarray}
 
 
 \subsection{The soft edge}
 
 Finally we turn our attention to the correlation functions
-in the vicinity of the edges $\la=\pm a$ of
+in the vicinity of the edges $\lambda=\pm a$ of
 the support of the spectrum, the so-called soft edges \cite{soft,BHsoft}.
-Restricting ourselves to $\la=+a$ for symmetry reasons we define
+Restricting ourselves to $\lambda=+a$ for symmetry reasons we define
 the microscopic scaling limit at the soft edge as
-\be
-N^{\frac23}(\la-a)\ \equiv\ \xi \ .
+\begin{equation}
+N^{\frac23}(\lambda-a)\ \equiv\ \xi \ .
 \label{edgelim}
-\ee
+\end{equation}
 In this way we magnify the region around the endpoint of the support.
 For negative (positive) $\xi$ we are inside (outside) the support.
 In the limit eq. (\ref{edgelim}) only the first term in eq. (\ref{Glim})
-contributes and the different power in $N$ is due to the factor $(a^2-\la^2)$
-that multiplies $A(\la)^2$. In the large-$N$ limit the differential
+contributes and the different power in $N$ is due to the factor $(a^2-\lambda^2)$
+that multiplies $A(\lambda)^2$. In the large-$N$ limit the differential
 equation acquires the form:
-\be
+\begin{equation}
 \varphi_N''(\xi) -  \xi \frac{2A(a)^2}{a}
 \varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
 \label{diffedge}
-\ee
+\end{equation}
 It is again universal, extending the results of \cite{KF97b} to the
 Cauchy transforms.
 After changing variables the solutions is obtained  in terms of
@@ -1185,10 +1185,10 @@ the Airy functions. Again omitting the prefactors $w(a)^{\pm\frac12}$ when
 changing
 from wavefunctions to the original polynomials and Cauchy transforms
 we obtain:
-\bea
+\begin{eqnarray}
 p_{N}(\xi) &\sim& \mbox{Ai}\left(\left(2a^{-1}A(a)^2\right)^{\frac13}\xi\right)
 \ ,\label{OPedgeasymp}\\
-&&\ \nn\\
+&&\ \nonumber\\
 h_{N}(\zeta) &\sim&
 \left\{
 \begin{array}{rl}
@@ -1201,17 +1201,17 @@ h_{N}(\zeta) &\sim&
 \end{array}
 \right.\ .
 \label{hedgeasymp}
-\eea
+\end{eqnarray}
 Here we have chosen for the Cauchy transforms one of the two solutions
 of the Airy equation, that one which is linearly independent
 of $\mbox{Ai}(x)$ \cite{abramo}, in coordination with
 the sign of $\im(\zeta)$:
-\be
+\begin{equation}
 \mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right) \ =\
 \frac12  \,\mbox{e}^{\pm\frac{\pi i}{3}}
 \left( \mbox{Ai}(z) \ \mp i\, \mbox{Bi}(z)\right)
 \label{A's}
-\ee
+\end{equation}
 
 The functions Bi$(z)$ is a new feature emerging when
 negative moments of the characteristic polynomials
@@ -1221,23 +1221,23 @@ only functions Ai$(z)$ feature in the final results.
 
 The discontinuity between the two solutions is again a simple Airy function,
 due to the functional relation \cite{abramo}:
-\be
+\begin{equation}
 \mbox{Ai}(z)\ =\ -\,\mbox{e}^{+\frac{2\pi i}{3}}
 \mbox{Ai}\left( z\,\mbox{e}^{+\frac{2\pi i}{3}}\right) \ -\
 \mbox{e}^{-\frac{2\pi i}{3}}
 \mbox{Ai}\left( z\,\mbox{e}^{-\frac{2\pi i}{3}}\right)
-\ee
+\end{equation}
 For real negative argument
 the Airy functions $\mbox{Ai}$ and $\mbox{Bi}$
 are oscillating while for positive
 argument they monotonously decrease/increase, respectively.
 For large positive argument we conclude that
-\be
+\begin{equation}
 \lim_{z\to+\infty}\mp\,\mbox{e}^{\pm\frac{2\pi i}{3}}
 \mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right)
 \ =\ -i \,\mbox{Bi}(z) \ ,
 \label{equalh}
-\ee
+\end{equation}
 and thus see that both solutions eq. (\ref{hedgeasymp}) agree.
 This fixes our choice of the boundary condition as for large
 positive arguments outside the support the Cauchy transforms should no
@@ -1258,12 +1258,12 @@ For that aim we use explicitly the differentiation eqs. (\ref{Pprime}) and
 (\ref{hprime}) for the corresponding wave functions together with the
 limiting relation eq. (\ref{Blim}).
 Following \cite{KFrev} we finally obtain:
-\be
+\begin{equation}
 \varphi_{N-1}(\xi)\ =\ \varphi_N(\xi)
 \ + \ \frac{1}{N^{\frac13}A(a)}\varphi_N'(\xi)
 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
 \label{correction}
-\ee
+\end{equation}
 
 This completes our demonstration of universality for the
 orthogonal polynomials and their Cauchy transforms for both the UE
@@ -1284,7 +1284,7 @@ and taking necessary derivatives and discontinuities.
 In this way one reproduces the known universal
 microscopic spectral densities of the unitary and
 chiral unitary ensemble, respectively, see e.g. \cite{ADMN}.
-It covers the bulk limit by setting $\al=0$.
+It covers the bulk limit by setting $\alpha=0$.
 The difference is that in the chUE the resolvent
 has a true singularity at the origin while in the UE the discontinuity
 originates from patching two different solutions, each of which is regular
@@ -1303,7 +1303,7 @@ at the soft edge can be performed using  eqs. (\ref{OPedgeasymp}) and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\sect{Discussion}\label{con}
+\setcounter{equation}{0}\section{Discussion}\label{con}
 
 For a broad class of measures we have shown
 that the Cauchy transforms of orthogonal polynomials

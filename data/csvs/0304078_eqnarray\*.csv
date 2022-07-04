@@ -1,0 +1,256 @@
+,eqnarray\*
+0,"\begin{eqnarray*}
+< ({\cal H}_V(t))_{cl} >_{PCFC} 
+& = & \int_V d^3{\vec x} \hspace{0.1in} 
+< (\bar{\psi}(t,{\vec x})\left(-i \gamma^{j} \partial_{j} + 
+M \right)\psi(t,{\vec x}))_{cl} >_{PCFC}  \\
+& = &\int_V d^3{\vec x} \hspace{0.1in} 
+%< \bar{\psi_{cl}}(t,{\vec x})\left(-i \gamma^{j} \partial_{j} + 
+< (\psi_{cl}(t,{\vec x}))^{\dagger}\gamma^0\left(-i \gamma^{j} 
+\partial_{j} + 
+M \right)\psi_{cl}(t,{\vec x}) >_{PCFC}, 
+\end{eqnarray*}
+and similarly
+\begin{eqnarray*}
+< ({\cal B}_V(t))_{cl} >_{PCFC} 
+& = & \int_V d^3{\vec x} \hspace{0.1in} 
+< (\bar{\psi}(t,{\vec x}) \gamma^0 \psi(t,{\vec x}))_{cl} >_{PCFC}  \\
+& = &\int_V d^3{\vec x} \hspace{0.1in} 
+%< \bar{\psi_{cl}}(t,{\vec x}) \gamma^0 \psi_{cl}(t,{\vec x}) >_{PCFC}. 
+< (\psi_{cl}(t,{\vec x}))^{\dagger} \psi_{cl}(t,{\vec x}) 
+>_{PCFC}. 
+\end{eqnarray*}
+Although these equations hold only on average over the whole ensemble of 
+PCFC's and not necessarily on each of them, we gave in (\ref{collective}) 
+a condition that ensures that
+\begin{equation}
+\label{classicalenergy}
+({\cal H}_V(t))_{cl} \simeq \int_V d^3{\vec x} \hspace{0.1in} 
+%\bar{\psi_{cl}}(t,{\vec x})\left(-i \gamma^{j} \partial_{j} + 
+(\psi_{cl}(t,{\vec x}))^{\dagger}\gamma^0\left(-i \gamma^{j} \partial_{j} 
++ M \right)\psi_{cl}(t,{\vec x}), 
+\end{equation}
+and
+\begin{equation}
+\label{classicalnumber}
+({\cal B}_V(t))_{cl} \simeq \int_V d^3{\vec x} \hspace{0.1in} 
+%\bar{\psi_{cl}}(t,{\vec x}) \gamma^0 \psi_{cl}(t,{\vec x}), 
+(\psi_{cl}(t,{\vec x}))^{\dagger} \psi_{cl}(t,{\vec x}), 
+\end{equation}
+on each PCFC, if the random variables
+$\left[({\cal H}_V)_{cl} - \int_V d^3{\vec x} \hspace{0.1in} 
+(\psi_{cl}({\vec x}))^{\dagger}\gamma^0\left(-i \gamma^{j} \partial_{j} + 
+M \right)\psi_{cl}({\vec x})\right]$ and
+$\left[({\cal B}_V)_{cl} - \int_V d^3{\vec x} \hspace{0.1in} 
+(\psi_{cl}({\vec x}))^{\dagger} \psi_{cl}({\vec x})\right]$
+are quadratic in many independent random variables. We called this 
+kind of observables collective observables and will show below that these 
+two operators are in fact ""collective"" operators, but for 
+now let us just assume it to get to some conclussions:
+
+a) We can describe the dynamics on paths of ""collective"" observables like 
+(\ref{classicalenergy}) and (\ref{classicalnumber}) in terms of 
+classical stochastic concepts, from the classical 
+Dirac equations (\ref{operator equationclassical}) or (\ref{operator 
+equationWyukawaclass}) that $\psi_{cl}(t,{\vec x})$ obeys. Only the 
+initial conditions and the actual distribution of paths are constrained by 
+the quantum state of the system $|\Psi \rangle$. 
+
+b) Then, the time correlation function of any operator can be defined 
+on each PCFC as usual in statistichal mechanics \cite{landau}, 
+$f_o(t_1-t_2)=(O_{cl}(t_1))^* O_{cl}(t_2)-(O_{cl}(t_2))^* O_{cl}(t_1)$, 
+and the lifetime of the fluctuation is defined as the inverse width of its 
+Fourier transform. We proved in \cite{oaknin} that the average over the
+ensemble of PCFC's coincides, as it should do, with the usual definition 
+of the time scale of quantum fluctuations.
+
+We will conclude this section giving a formal proof
+that justifies (\ref{classicalenergy}) and (\ref{classicalnumber}). Let
+start introducing the Fourier expansions (\ref{field}) and 
+(\ref{fieldbar}) in the expressions for the operators ${\cal H}_V$ and 
+${\cal B}_V$. Their classical values on paths can then be expressed as
+\footnote{We have included all the dependence on the geometry of the volume
+$V$ inside the spatial integrals $F({\vec k},X)=\int_V d^3x \frac{1}{X^3} 
+exp\left(-2\pi i{\vec k}\cdot{\vec x}/X\right)$, that can be analytically
+computed for simple geometries. If $V=\left[0,X\right]^3$ is the whole
+box, $F({\vec k},X)=0$ except for $F({\vec k}=0,X)=1$.}:
+\begin{equation}
+\label{hamiltonianV}
+({\cal H}_V)_{cl} =
+\sum_{{\vec n},{\vec m}} 
+\sum_{s,s'} \kappa_{\vec m} 
+\left[(a^{s\dagger}_{\vec n} \bar{u}^s_{\vec n} +
+b^{s}_{-{\vec n}} \bar{v}^s_{-{\vec n}})
+(a^{s'}_{\vec m} \gamma^0 u^{s'}_{\vec m} -
+b^{s'\dagger}_{-{\vec m}} \gamma^0 v^{s'}_{-{\vec m}})\right]_{cl}
+F({\vec n}-{\vec m},X),
+\end{equation}
+\begin{equation}
+\label{fermionnumberV}
+({\cal B}_V)_{cl} = \sum_{{\vec n},{\vec m}} 
+\sum_{s,s'} 
+\left[(a^{s\dagger}_{\vec n} \bar{u}^s_{\vec n} +
+b^{s}_{-{\vec n}} \bar{v}^s_{-{\vec n}})
+(a^{s'}_{\vec m}\gamma^0 u^{s'}_{\vec m} +
+b^{s'\dagger}_{-{\vec m}}\gamma^0 v^{s'}_{-{\vec m}})\right]_{cl}
+F({\vec n}-{\vec m},X).
+\end{equation}
+On the other hand the approximate expressions 
+(\ref{classicalenergy}),(\ref{classicalnumber}) can be expressed
+using the same Fourier expansions as:
+\begin{equation}
+\label{hamiltonianVaprox}
+({\cal H}_V)^{\it{approx}}_{cl} =
+\sum_{{\vec n},{\vec m}} 
+\sum_{s,s'} \kappa_{\vec m} 
+\left[([a^{s}_{\vec n}]^*_{cl} \bar{u}^s_{\vec n} +
+[b^{s^{\dagger}}_{-{\vec n}}]^*_{cl} \bar{v}^s_{-{\vec n}})
+([a^{s'}_{\vec m}]_{cl} \gamma^0 u^{s'}_{\vec m} -
+[b^{s'\dagger}_{-{\vec m}}]_{cl} \gamma^0 v^{s'}_{-{\vec m}})\right]
+F({\vec n}-{\vec m},X),
+\end{equation}
+\begin{equation}
+\label{fermionnumberVaprox}
+({\cal B}_V)^{\it{approx}}_{cl} = \sum_{{\vec n},{\vec m}} 
+\sum_{s,s'} 
+\left[([a^{s}_{\vec n}]^*_{cl} \bar{u}^s_{\vec n} +
+[b^{s\dagger}_{-{\vec n}}]^*_{cl} \bar{v}^s_{-{\vec n}})
+([a^{s'}_{\vec m}]_{cl}\gamma^0 u^{s'}_{\vec m} +
+[b^{s'\dagger}_{-{\vec m}}]_{cl}\gamma^0 v^{s'}_{-{\vec m}})\right]
+F({\vec n}-{\vec m},X).
+\end{equation}
+We need to prove that $({\cal H}_V)_{cl}-({\cal H}_V)^{\it{approx}}_{cl}$
+and $({\cal B}_V)_{cl}-({\cal B}_V)^{\it{approx}}_{cl}$ are bilinear in
+the random variables associated to the single modes. Comparing both 
+expressions we can see that it is enough to prove that 
+expressions of the kind $[a^{s\dagger}_{\vec n}a^{s'}_{\vec m}]_{cl}-
+[a^{s}_{\vec n}]^*_{cl}[a^{s'}_{\vec m}]_{cl}$, which involve only two 
+different fermion modes are bilinear. We know from (\ref{twins})
+that they are.
+
+\section{Summary}
+
+We have extended to systems of fermions the formalism of 
+pseudoclassical paths that we recently developed for 
+systems of weakly interacting bosons and have shown that fermionic quantum 
+states can also be represented in the Heisenberg picture as linear 
+combinations of randomly distributed paths which do not interfere 
+between themselves. Every physical observable was assigned a 
+time-dependent value on each path in a way that respects the 
+anticommutation relations between fermionic operators and, in 
+consequence, these values on paths do not neccesarily respect the usual 
+algebraic relations between classical observables. Each path depicts a 
+collection of pseudoclassical harmonic oscillators with 
+constrained initial conditions. 
+
+We used these paths to define the dynamics of quantum 
+fluctuations in systems of fermions without reference to an 
+environment or any additional external system. Then, we selected 
+""collective"" observables which depend on many fermionic degrees of 
+freedom and found that, as we found in \cite{oaknin} for collective 
+operators which depend on many bosonic modes, their values on PCP's do 
+approximately fulfill the usual algebraic relations between classical 
+observables and, therefore, the dynamics of these collective fluctuations 
+can be described in terms of unconstrained classical stochastic processes. 
+
+In this setup, we showed that quantum fluctuations of fermionic fields 
+obey classical Dirac equations and described the dynamics of 
+local fluctuations of globally conserved fermion numbers.
+
+\section{Acknowledgments}
+
+I thank R. Brustein for his help and for encouraging me to write this 
+paper, which broaden the ideas already presented in \cite{oaknin}. 
+I warmly acknowledge many useful discussions with J. Oaknin . This work 
+was partly supported by the National Science and Engineering Research 
+Council of Canada.
+
+\begin{references}
+
+%\cite{Hartle:nn}
+\bibitem{Hartle:nn}
+J.~B.~Hartle and B.~L.~Hu,
+%``Quantum Effects In The Early Universe. Iii. Dissipation Of Anisotropy 
+%By Scalar Particle Production,''
+Phys.\ Rev.\ D {\bf 21}, 2756 (1980).
+%%CITATION = PHRVA,D21,2756;%%
+
+\bibitem{reynaud}
+M.~T.~Jaekel and S.~Reynaud,
+%``Movement and fluctuations of the vacuum,''
+Rept.\ Prog.\ Phys.\  {\bf 60}, 863 (1997)
+[arXiv:quant-ph/9706035].
+%%CITATION = QUANT-PH 9706035;%%
+
+\bibitem{linde}
+L.~A.~Kofman and A.~D.~Linde,
+%``Generation Of Density Perturbations In The Inflationary Cosmology,''
+Nucl.\ Phys.\ B {\bf 282}, 555 (1987).
+%%CITATION = NUPHA,B282,555;%%
+
+\bibitem{polarski}
+D.~Polarski and A.~A.~Starobinsky,
+%``Semiclassicality and decoherence of cosmological perturbations,''
+Class.\ Quant.\ Grav.\  {\bf 13}, 377 (1996)
+[arXiv:gr-qc/9504030].
+%%CITATION = GR-QC 9504030;%%
+
+\bibitem{garriga}
+J.~Garriga and T.~Tanaka,
+%``Cosmological perturbations in the 5D big bang,''
+Phys.\ Rev.\ D {\bf 65}, 103506 (2002) 
+[arXiv:hep-th/0112028].
+%%CITATION = HEP-TH 0112028;%%
+\bibitem{bucher}
+M.~Bucher,
+%``A braneworld universe from colliding bubbles,''
+arXiv:hep-th/0107148.
+%%CITATION = HEP-TH 0107148;%%;
+J.~J.~Blanco-Pillado and M.~Bucher,
+%``Cosmological perturbations generated in the colliding  bubble 
+% braneworld universe,''
+Phys.\ Rev.\ D {\bf 65}, 083517 (2002)
+[arXiv:hep-th/0111089].
+%%CITATION = HEP-TH 0111089;%%
+
+\bibitem{negele} J.W. Negele and H. Orland, {\it Quantum Many-Particle 
+Systems}. Redwood City, California: Addison-Wesley Pub. Co., (1998);
+A. Galindo, {\it Quantum Mechanics}, Vol. 1 (Text and 
+Monographs in Physics). Springer-Verlag, (1991).
+
+\bibitem{oaknin}  R. Brustein and D.H. Oaknin, 
+Phys.\ Rev.\ D {\bf 67}, 025010 (2003)
+[arXiv:hep-th/0207251].
+
+%\cite{Halliwell:1998jf}
+\bibitem{Halliwell:1998jf}
+J.~J.~Halliwell,
+%``Decoherent Histories and Hydrodynamic Equations,''
+Phys.\ Rev.\ D {\bf 58}, 105015 (1998)
+[arXiv:quant-ph/9805062].
+%%CITATION = QUANT-PH 9805062;%%
+
+%\cite{Gell-Mann:kh}
+\bibitem{GMH}
+M.~Gell-Mann and J.~B.~Hartle,
+%``Classical Equations For Quantum Systems,''
+Phys.\ Rev.\ D {\bf 47}, 3345 (1993) [arXiv:gr-qc/9210010].
+%%CITATION = GR-QC 9210010;%%
+
+\bibitem{Feynmann} R. Feynmann and A. Hibbs, {\it Quantum
+Mechanics and Path Integrals}, McGraw-Hill Book Co, New York (1965).
+
+\bibitem{eichler} R. Brustein, D. Eichler, S. Foffa and D.H. Oaknin,
+Phys.\ Rev.\ D {\bf 65}, 105013 (2002) 
+[arXiv:hep-th/0009063].
+
+\bibitem{landau} L.D. Landau and E.M. Lifshitz, {\it Statistical
+Mechanics}, Vol. 1. Oxford:Pergamon Press, (1969)
+
+\end{references}
+
+\end{document}
+
+"
+1,"\begin{eqnarray*}
+<"

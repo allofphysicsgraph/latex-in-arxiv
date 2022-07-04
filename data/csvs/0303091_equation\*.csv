@@ -1,0 +1,636 @@
+,equation\*
+0,"\begin{equation*}
+(U_i f)(s_1,s_2,k_1,k_2) = e^{2 \pi i ( s_1 x_{3i}
++ s_2 x_{4i} + k_1 y_{3i} + k_2 y_{4i} )} f ( s_1 +x_{1i},s_2
++x_{2i},k_1 +y_{1i},k_2 +y_{2i}) .
+\end{equation*}
+The condition (\ref{Xi}) is satisfied if
+\begin{equation} \label{embcon}
+x_{1i}x_{3i}+ x_{2i}x_{4i} + y_{1i}y_{3i} +y_{2i}y_{4i} =0 ,
+\end{equation}
+ and
+\begin{equation} \label{Aik}
+A_{ik} =(\Phi_{\text{inf}}^{-1})_{ik} .
+\end{equation}
+ The embedding maps  (\ref{phii}), (\ref{phif}) satisfy
+the condition (\ref{embcon}), and the condition (\ref{Aik}) gives
+\[ ( A_{ik}) =\begin{pmatrix} \frac{1}{\theta_1 + \frac{n_1}{m_1}}&0&0&0\\
+                0&0&1&0\\
+               0&  \frac{1}{\theta_2 + \frac{n_2}{m_2}}&0&0\\
+                0&0& 0&1 \end{pmatrix} . \]
+%%%
+Therefore the following operators specify a constant curvature
+connection of right $ T_\theta^4$-module $E_{N,M}$:
+\begin{align} \label{connection}
+\nabla_1 & = - \frac{2 \pi i s_1 }{\theta_1 + \frac{n_1}{m_1}} ,
+\notag \\
+\nabla_2 & =  \frac{\partial}{\partial s_1} , \notag \\
+\nabla_3 & = - \frac{2 \pi i s_2 }{\theta_2 + \frac{n_2}{m_2}} ,
+\notag \\
+\nabla_4 & =  \frac{\partial}{\partial s_2} .
+\end{align}
+In general, a constant curvature connection can be obtained by
+adding some constants: \( \nabla_i \rightarrow \nabla_i + d_i , \
+i=1,\cdots,4, \) where $ d_i  \in {\mathbb R} $ are constants.
+
+A complex structure on the module $E_{N,M}$ can be introduced by
+fixing $ \overline{\partial}$-connection
+\begin{align} \label{holconn}
+\overline{\nabla}_1 & = \lambda_{11} \nabla_1 + \lambda_{12}
+\nabla_2 + \lambda_{13} \nabla_3 + \lambda_{14} \nabla_4 , \notag \\
+ \overline{\nabla}_2 & = \lambda_{21} \nabla_1 + \lambda_{22}
+\nabla_2 + \lambda_{23} \nabla_3 + \lambda_{24} \nabla_4 , \notag
+\end{align}
+where $\lambda_{ij} \in {\mathbb C} .$ \ Choosing an appropriate basis such
+that $(\lambda_{ij})$ becomes
+\begin{equation*}
+\begin{pmatrix} \tau_{11} & 1 & \tau_{12} & 0 \\
+          \tau_{21} & 0 & \tau_{22} & 1 \end{pmatrix}
+                   =  \begin{pmatrix} \lambda_{12} & \lambda_{14} \\
+            \lambda_{22} & \lambda_{24} \end{pmatrix}^{-1}
+            \begin{pmatrix}
+           \lambda_{11}& \lambda_{12} &
+             \lambda_{13} & \lambda_{14} \\
+           \lambda_{21} & \lambda_{22} &
+           \lambda_{23} & \lambda_{24}
+            \end{pmatrix} ,
+\end{equation*}
+ the $(2 \times 2) $  matrix $\begin{pmatrix} \tau_{11} & \tau_{12}  \\
+          \tau_{21}  & \tau_{22}  \end{pmatrix}, \ \tau_{ij} \in {\mathbb C} \ $ represents
+          the complex structure of $ T_\theta^4$-module and 1-1 corresponds to
+          the complex structure on $ T_\theta^4  $ via $\overline{\partial}$-derivative,
+           $ \overline{\delta}_i = \sum_j \lambda_{ij} \delta_j $ where $\delta_j$ is
+           defined by (\ref{derv2}) \cite{schwarz01}.
+
+Now we consider holomorphic vectors  in $T_\theta^4$-module. A
+vector $\Theta \in E_{N,M} $ is called holomorphic
+\cite{schwarz01} if it satisfies
+\begin{equation} \label{thetavector}
+( \overline{\nabla}_i -c_i ) \Theta = 0 \ \ \text{for} \ \  i=1,2,
+\end{equation}
+where $ c_i  \in {\mathbb C} $ are constants.
+ The above holomorphic
+condition for $ f \in E_{N,M} $ now takes the form
+\begin{align} \label{holcond}
+( \frac{2 \pi i \tau_{11} }{\theta_1 + \frac{n_1}{m_1}} s_1  +
+ \frac{2 \pi i \tau_{12} }{\theta_2 + \frac{n_2}{m_2}} s_2
+  + c_1 ) f
+ & =   \frac{\partial f}{\partial s_1} , \notag \\
+ ( \frac{2 \pi i \tau_{21} }{\theta_1 + \frac{n_1}{m_1}} s_1  +
+ \frac{2 \pi i \tau_{22} }{\theta_2 + \frac{n_2}{m_2}} s_2
+  + c_2 ) f
+ & =  \frac{\partial f}{\partial s_2} .
+\end{align}
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% restrictions on the complex structure
+%%%
+%%%%%%%%%%
+%
+In order for the two equations in (\ref{holcond}) to be consistent
+$\tau_{ij}, c_i$ should satisfy
+\begin{equation} \label{holcondt4}
+\frac{\tau_{12}}{ \theta_2 + \frac{n_2}{m_2}} = \frac{\tau_{21}}
+{\theta_1 + \frac{n_1}{m_1}}  .
+\end{equation}
+If $ Re \Omega < 0$, Eq.(\ref{holcond}) has $m_1 \times m_2$
+linearly independent solutions, the so-called theta vectors
+\cite{schwarz01,ds02} on noncommutative $T^4$,
+\begin{equation} \label{thetat4}
+f_{(\alpha_1 , \alpha_2 )} (s_1 , s_2 , k_1, k_2 ) = \exp [
+\frac{1}{2} S^t \Omega S + C^t S ] \delta_{\alpha_1}^{k_1}
+\delta_{\alpha_2}^{k_2}
+\end{equation}
+where $C= \begin{pmatrix} c_1 \\ c_2 \end{pmatrix},
+S=\begin{pmatrix} s_1 \\ s_2 \end{pmatrix},  c_i \in {\mathbb C},  s_i \in
+{\mathbb R},  k_i \in {\mathbb Z}_{m_i} \ (i =1,2), $ and $ \Omega =
+\begin{pmatrix} \frac{2 \pi i \tau_{11} }{\theta_1 + \frac{n_1}{m_1}} &
+\frac{2 \pi i \tau_{12} }{\theta_2 + \frac{n_2}{m_2}} \\
+\frac{2 \pi i \tau_{21} }{\theta_1 + \frac{n_1}{m_1}} & \frac{2\pi
+i \tau_{22} }{\theta_2 + \frac{n_2}{m_2}}
+\end{pmatrix} $.
+\\
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{IV. Tensor product}
+
+In this section we consider a tensor product of two bimodules.
+Tensor product of a $(C,Y)$-bimodule $E$ and a $(Y,D)$-bimodule
+$E'$ over $Y$ results in a $(C,D)$-bimodule $F$ for algebras
+$C,Y,D$;
+\[ {}_CE_Y \otimes {}_Y E'_{D} = {}_CF_D \]
+where the tensor product over $Y$ is obtained by identifying $ ey
+\otimes e' \sim e \otimes y e'  \ \ \text{for} \ \ y \in Y, \ e
+\in E , e' \in E' $. Note that in this identification, $E$ behaves
+as a right $Y$-module and $E'$ behaves as a left $Y$-module. Thus,
+we will denote $E_{N,M}$ as a right $T_\theta^4$-module and
+$E'_{K,L}$ as a left $T_{\theta}^4$-module. Here, we recall that
+$T^4_{\tilde{\theta}}$ is Morita equivalent to $T^4_\theta$ if
+$\theta$ and $\tilde{\theta}$ are related by
+$\tilde{\theta}=(A\theta+B)(M\theta+N)^{-1}$ where $\left(
+\begin{array}{cc} A&B\\M&N \end{array} \right) \in \text{
+SO}(4,4|{{\mathbb Z}})$, and
+  $T^4_{\tilde{\theta}}  \cong \text{End}_{T^4_\theta}(E)$ for
+some finite projective module $E$. In this notation, a right
+module $E_{N,M}$ is identified with a left module $E'_{A,M}$. Let
+us calculate the tensor product $E_{N,M} \otimes_{T^4_\theta}
+E'_{K,L} $ which forms a vector space $S( {\mathbb R} \times
+{\mathbb Z}_{n_1l_1+m_1k_1} \times {\mathbb Z}_{n_2l_2+m_2k_2} ) \ $, when each
+$N,M,K,L$ is reducible into two blocks represented by the values
+$N \sim (n_1,n_2), \ M \sim (m_1,m_2), \ K \sim (k_1,k_2), \ L
+\sim (l_1,l_2)$ \cite{kkl01}. For $f(s_1,s_2,\mu_1, \mu_2) \in
+E_{N,M}$, and $g(t_1,t_2,\nu_1,\nu_2) \in E'_{K,L} $ where
+$s_i,t_i \in {\mathbb R}, \ \mu_i \in {\mathbb Z}_{m_i}, \ \nu_i \in {\mathbb Z}_{l_i} \
+(i=1,2) $ the actions of $U_i \in T^4_\theta$ and $Z_i \in
+T^4_{\tilde{\theta}}$ are given as follows. \\
+The right $U_i$ actions on $E_{N,M}$ are defined as
+\begin{eqnarray} \label{URactions}
+(U_1f)(s_1,s_2,\mu_1,\mu_2)&=&
+                 f(s_1  + \theta_1 + \frac{n_1}{m_1},s_2,\mu_1-1,\mu_2), \notag \\
+(U_2f)(s_1,s_2,\mu_1,\mu_2)&=& e^{2\pi i(s_1 + \frac{n_1
+  \mu_1}{m_1} )}   f(s_1,s_2,\mu_1,\mu_2), \notag \\
+(U_3f)(s_1,s_2,\mu_1,\mu_2)&=&
+                 f(s_1,s_2 + \theta_2 + \frac{n_2}{m_2},\mu_1,\mu_2-1), \notag \\
+(U_4f)(s_1,s_2,\mu_1,\mu_2)&=& e^{2\pi i(s_2 + \frac{n_2
+             \mu_2}{m_2} )}  f(s_1,s_2,\mu_1,\mu_2) .
+\end{eqnarray}
+The left $U_i$ actions on $E'_{K,L}$ are defined as
+\begin{eqnarray} \label{ULactions}
+(U_1g)(t_1,t_2,\nu_1,\nu_2)&=&
+                 g(t_1  - \theta_1 + \frac{k_1}{l_1},t_2,\nu_1-1,\nu_2), \notag \\
+(U_2g)(t_1,t_2,\nu_1,\nu_2)&=& e^{2\pi i(t_1 + \frac{k_1
+    \nu_1}{l_1} )} g(t_1,t_2,\nu_1,\nu_2), \notag \\
+(U_3g)(t_1,t_2,\nu_1,\nu_2)&=&
+                 g(t_1,t_2 - \theta_2 + \frac{k_2}{l_2},\nu_1,\nu_2-1), \notag \\
+(U_4g)(t_1,t_2,\nu_1,\nu_2)&=& e^{2\pi i(t_2 + \frac{k_2
+   \nu_2}{l_2} )} g(t_1,t_2,\nu_1,\nu_2) .
+\end{eqnarray}
+The left $Z_i$ actions on $E_{N,M}$ are defined as
+\begin{eqnarray} \label{ZLactions}
+(Z_1f)(s_1,s_2,\mu_1,\mu_2)&=& e^{2\pi i(\frac{s_1}{m_1 \theta_1
+                +n_1} + \frac{\mu_1}{m_1} )} f(s_1,s_2,\mu_1,\mu_2), \notag \\
+(Z_2f)(s_1,s_2,\mu_1,\mu_2)&=& f(s_1 + \frac{1}{m_1},s_2,\mu_1 -a_1,\mu_2),\notag \\
+(Z_3f)(s_1,s_2,\mu_1,\mu_2)&=& e^{2\pi i(\frac{s_2}{m_2 \theta_2 +
+            n_2}  + \frac{\mu_2}{m_2} )}  f(s_1,s_2,\mu_1,\mu_2), \notag \\
+(Z_4f)(s_1,s_2,\mu_1,\mu_2)&=& f(s_1,s_2 +
+         \frac{1}{m_2},\mu_1,\mu_2-a_2),
+\end{eqnarray}
+where $a_i \in {\mathbb Z}$ and $a_i n_i -b_im_i =1 $ for some $b_i \in {\mathbb Z}
+\ (i=1,2) . $
+
+ Following \cite{ds02}, we define the tensor product $f \otimes g \equiv h \in E_{N,M}
+\otimes_{T^4_\theta} E'_{K,L} $ as
+\begin{align} \label{tensorpd}
+h(r_1,r_2,j_1,j_2) =  & \sum_{q_1 \in {\mathbb Z}} \sum_{q_2 \in {\mathbb Z}} f((n_1
++m_1 \theta_1)r_1 + \frac{n_1 +m_1 \theta_1}{m_1}q_1 -
+\frac{l_1(n_1 +m_1 \theta_1)}{m_1(n_1l_1 +m_1k_1)}j_1,
+\notag \\
+& (n_2 +m_2 \theta_2)r_2 + \frac{n_2 +m_2 \theta_2}{m_2}q_2 -
+\frac{l_2(n_2 +m_2 \theta_2)}{m_2(n_2l_2 +m_2k_2)}j_2, -q_1 +a_1
+j_1, -q_2 +a_2 j_2)
+\notag \\
+   \cdot
+   & g( (n_1 +m_1 \theta_1)r_1 - \frac{k_1 - l_1
+\theta_1}{l_1}q_1 + \frac{k_1 -l_1 \theta_1}{n_1l_1 +m_1k_1}j_1,
+\notag \\
+& (n_2 +m_2 \theta_2)r_2 - \frac{k_2 - l_2 \theta_2}{l_2}q_2 +
+\frac{k_2 -l_2 \theta_2}{n_2l_2 +m_2k_2}j_2,
+ q_1, q_2)
+\end{align}
+for $r_i \in {\mathbb R}, \  j_i \in {\mathbb Z} \ (i =1,2) .$ Then, one can check
+that
+\begin{align*}
+& (U_i f) \otimes g  \sim f \otimes (U_i)g , \\
+& (Z_i h) \sim  (Z_i f) \otimes g, \\
+& h(r_i, j_i + n_il_i + m_i k_i ) = h(r_i, j_i)
+\end{align*}
+for $i=1,2$. Notice that in the above calculation $Z_i$'s act on
+$h$ as  left actions, since $h$ is regarded here as an element of
+a left module $E'$. So far, we have only defined the left actions
+of $Z_i$ on a right module $E$. Thus, we define left $Z_i$ actions
+on a left module $E'$ as
+\begin{align*}
+(Z_1 g) & =  (U_2 g) , \\
+(Z_2 g) & =  (U_1 g) , \\
+(Z_3 g) & =  (U_4 g) , \\
+(Z_4 g) & =  (U_3 g) ,
+\end{align*}
+where $ U_i g $ are defined in (\ref{ULactions}).
+
+If  $E_{N,M}$ is a right module expression of $
+(T^4_{\tilde{\theta}}, T^4_{\theta} )$-bimodule and $E'_{K,L}$ is
+a left module expression of $ (T^4_{\theta}, T^4_{\theta'}
+)$-bimodule, then
+ one can also show that $h$ belongs to $ E'_{AK + BL,
+NL +MK} (\tilde{\theta})$ where $\tilde{\theta} =(A\theta
++B)(M\theta +N)^{-1}$ and $\theta =(K\theta' +D)(L\theta'
++C)^{-1}$ with $CK-DL \sim 1, \ AN-BM \sim 1 , $ when each
+$A,B,M,N,K,D,L,C$ is reducible into 2 blocks in the sense that we
+described earlier.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%%
+Let us consider the tensor product (\ref{tensorpd}) between the
+two theta vectors, $f\in E_{N,M}$ and $g \in E'_{K,L}$,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+\begin{align} \label{thetat4p}
+f_{(\alpha_1 , \alpha_2 )} (s_1 , s_2 , \mu_1, \mu_2 ) &= \exp [
+\frac{1}{2} S^t \Omega S + C^t S ] \delta_{\alpha_1}^{\mu_1}
+\delta_{\alpha_2}^{\mu_2}, \notag \\
+g_{(\beta_1 , \beta_2 )} (t_1 , t_2 , \nu_1, \nu_2 ) &= \exp [
+\frac{1}{2} T^t \Omega' T + {C'}^t T ] \delta_{\beta_1}^{\nu_1}
+\delta_{\beta_2}^{\nu_2} ,
+\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+where $ \  C= \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}, \  C'=
+\begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix}, \ S=\begin{pmatrix} s_1 \\
+s_2 \end{pmatrix}, \ T=\begin{pmatrix} t_1 \\
+t_2 \end{pmatrix}, \  c_i, c'_i \in {\mathbb C}, \  s_i,t_i \in {\mathbb R}, \
+  \mu_i \in {\mathbb Z}_{m_i}, \\
+\hspace*{.5cm}   \nu_i \in {\mathbb Z}_{l_i} \ (i=1,2), \
+ \Omega =
+\begin{pmatrix} \frac{2 \pi i \tau_{11} }{\theta_1 + \frac{n_1}{m_1}} &
+\frac{2 \pi i \tau_{12} }{\theta_2 + \frac{n_2}{m_2}} \\
+\frac{2 \pi i \tau_{21} }{\theta_1 + \frac{n_1}{m_1}} & \frac{2\pi
+i \tau_{22} }{\theta_2 + \frac{n_2}{m_2}}
+\end{pmatrix} , \ \text{and} \
+\Omega' =
+\begin{pmatrix} \frac{2 \pi i \tau'_{11} }{-\theta_1 + \frac{k_1}{l_1}} &
+\frac{2 \pi i \tau'_{12} }{-\theta_2 + \frac{k_2}{l_2}} \\
+\frac{2 \pi i \tau'_{21} }{-\theta_1 + \frac{k_1}{l_1}} &
+\frac{2\pi i \tau'_{22} }{-\theta_2 + \frac{k_2}{l_2}}
+\end{pmatrix}
+$.
+\\
+
+The resulting function now takes the form
+\begin{align*} \label{tensorh1}
+h_{\alpha_1, \alpha_2, \beta_1, \beta_2}(r_1,r_2,j_1,j_2) =  &
+\sum_{q_1 \in {\mathbb Z}} \sum_{q_2 \in {\mathbb Z}} \exp ( \frac{1}{2}
+\widetilde{\cal A}^t \Omega \widetilde{\cal A} + C^t
+\widetilde{\cal A} ) \delta_{\alpha_1,\alpha_2}^{-q_1 +a_1j_1,-q_2 +a_2j_2} \\
+& \cdot \exp ( \frac{1}{2} {\widetilde{\cal A}}'{}^t \Omega'
+\widetilde{\cal A}' + {C'}^t \widetilde{\cal A}' )
+\delta_{\beta_1,\beta_2}^{q_1 , q_2 }
+\end{align*}
+where $r_i \in {\mathbb R} , \ j_i \in {\mathbb Z}_{n_il_i +m_ik_i} \ (i=1,2) $ and
+\begin{align*}
+\widetilde{\cal A} & = \begin{pmatrix} (n_1 +m_1 \theta_1)r_1 +
+\frac{n_1 +m_1 \theta_1}{m_1}q_1 - \frac{l_1(n_1 +m_1
+\theta_1)}{m_1(n_1l_1
++m_1k_1)}j_1 \\
+ (n_2 +m_2 \theta_2)r_2 + \frac{n_2 +m_2 \theta_2}{m_2}q_2 -
+\frac{l_2(n_2 +m_2 \theta_2)}{m_2(n_2l_2 +m_2k_2)}j_2
+\end{pmatrix} , \\
+\widetilde{\cal A}' & = \begin{pmatrix} (n_1 +m_1 \theta_1)r_1 -
+\frac{k_1 - l_1 \theta_1}{l_1}q_1 + \frac{k_1 -l_1
+\theta_1}{n_1l_1
++m_1k_1}j_1 \\
+ (n_2 +m_2 \theta_2)r_2 - \frac{k_2 -l_2 \theta_2}{l_2}q_2 +
+\frac{k_2 -l_2 \theta_2}{n_2l_2 +m_2k_2}j_2
+\end{pmatrix}  .
+\end{align*}
+  From the delta function relations, we rewrite $q_i$ as \( q_i = p_i + u_i
+\frac{m_i l_i}{v_i} , \ u_i \in {\mathbb Z} \ (i=1,2) \) for some integers
+ $p_i$ where $ v_i = \text{g.c.d.}(m_i,l_i) $.
+ Then, $h$ can be written as
+\begin{align*}
+h_{\alpha_1, \alpha_2, \beta_1, \beta_2}(r_1,r_2,j_1,j_2) = &
+\sum_{u_1 \in {\mathbb Z}} \sum_{u_2 \in {\mathbb Z}} \exp ( \frac{1}{2}( {\cal A} +
+{\cal U} )^t \Omega ({\cal A} + {\cal U})
+ + C^t {\cal U} + C^t {\cal A} \\
+ &   + \frac{1}{2}( {\cal A}' + {\cal U}' )^t \Omega' ({\cal A}' +
+  {\cal U}' ) + {C'}^t {\cal U}' + {C'}^t {\cal A}' ) ,
+\end{align*}
+where
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{align*}
+ {\cal A} & = \begin{pmatrix} (n_1 +m_1 \theta_1)r_1 + \frac{n_1
++m_1 \theta_1}{m_1}p_1 - \frac{l_1(n_1 +m_1 \theta_1)}{m_1(n_1l_1
++m_1k_1)}j_1 \\
+ (n_2 +m_2 \theta_2)r_2 + \frac{n_2 +m_2 \theta_2}{m_2}p_2 -
+\frac{l_2(n_2 +m_2 \theta_2)}{m_2(n_2l_2 +m_2k_2)}j_2
+\end{pmatrix} , \\
+ {\cal A}' & = \begin{pmatrix} (n_1 +m_1 \theta_1)r_1 - \frac{k_1 - l_1
+\theta_1}{l_1}p_1 + \frac{k_1 -l_1 \theta_1}{n_1l_1
++m_1k_1}j_1 \\
+ (n_2 +m_2 \theta_2)r_2 - \frac{k_2 -l_2 \theta_2}{l_2}p_2 +
+\frac{k_2 -l_2 \theta_2}{n_2l_2 +m_2k_2}j_2
+\end{pmatrix}  , \\
+ {\cal U} & = \begin{pmatrix} \frac{(n_1 +m_1 \theta_1)l_1}{v_1}u_1 \\
+            \frac{(n_2 +m_2 \theta_2)l_2}{v_2}u_2  \end{pmatrix} , \ \
+  {\cal U}'  = \begin{pmatrix} -\frac{(k_1-l_1\theta_1)m_1}{v_1}u_1 \\
+  -\frac{(k_2-l_2\theta_2)m_2}{v_2}u_2
+ \end{pmatrix} .
+\end{align*}
+This can be decompsed into two parts, including the classical
+theta function,
+\begin{equation}
+h = {\cal \vartheta}({\cal T},{\cal Z}) \xi (r_1,r_2,j_1,j_2).
+\end{equation}
+Here, the classical theta function $\vartheta$ is given by
+ \[ \vartheta ({\cal T},{\cal Z}) = \sum_{u_1, u_2 \in {\mathbb Z}} \exp ( \pi i U^t {\cal T} U
+ + 2 \pi i {\cal Z}^t U ), \]
+where \begin{align*}
+  U & = \begin{pmatrix} u_1 \\ u_2 \end{pmatrix}, \
+ {\cal T}  =
+\begin{pmatrix} {\cal B}_1 {\cal O}_{11} {\cal B}_1 + {\cal B'}_1 {\cal O'}_{11} {\cal B'}_1
+ & {\cal B}_1 {\cal O}_{12} {\cal B}_2 + {\cal B'}_1 {\cal O'}_{12} {\cal B'}_2 \\
+ {\cal B}_2 {\cal O}_{21} {\cal B}_1 + {\cal B'}_2 {\cal O'}_{21} {\cal B'}_1
+  & {\cal B}_2 {\cal O}_{22} {\cal B}_2 + {\cal B'}_2 {\cal O'}_{22} {\cal B'}_2
+\end{pmatrix}   ,  \\
+     {\cal Z} & = \begin{pmatrix} {\cal B}_1 {\cal O}_{11} {\cal A}_1
+     + {\cal B}_1 {\cal O}_{12} {\cal A}_2
+     + {\cal B'}_1 {\cal O'}_{11} {{\cal A}'}_1
+      + {\cal B'}_1 {\cal O'}_{12} {{\cal A}'}_2
+  \\
+   {\cal B}_2 {\cal O}_{21} {\cal A}_1
+     + {\cal B}_2 {\cal O}_{22} {\cal A}_2
+     + {\cal B'}_2 {\cal O'}_{21} {{\cal A}'}_1
+      + {\cal B'}_2 {\cal O'}_{22} {{\cal A}'}_2
+  \end{pmatrix}
+  + \frac{1}{2 \pi i} \begin{pmatrix}
+    c_1 {\cal B}_1 + {c'}_1 {\cal B'}_1 \\
+    c_2 {\cal B}_2 + {c'}_2 {\cal B'}_2
+  \end{pmatrix}
+   \end{align*}
+   with
+  \(  {\cal O} = \frac{1}{2 \pi i} \Omega , \
+     {\cal O'} = \frac{1}{2 \pi i} \Omega' , \
+   {\cal B}  = \begin{pmatrix}
+    {\cal B}_1  \\   {\cal B}_2   \end{pmatrix} =
+\begin{pmatrix} \frac{(n_1 +m_1 \theta_1)l_1}{v_1} \\
+            \frac{(n_2 +m_2 \theta_2)l_2}{v_2}  \end{pmatrix} ,  \
+     {\cal B}' = \begin{pmatrix}
+    {\cal B'}_1 \\   {\cal B'}_2    \end{pmatrix}
+      =  \begin{pmatrix} -\frac{(k_1-l_1\theta_1)m_1}{v_1} \\
+  -\frac{(k_2-l_2\theta_2)m_2}{v_2}
+ \end{pmatrix}    , \)
+ and the function $\xi $ is given by
+\[ \xi(r_1,r_2,j_1,j_2) = \exp ( \frac{1}{2} {\cal A}^t \Omega {\cal A} + \frac{1}{2}
+{{\cal A}'}^t \Omega' {\cal A}' + C^t {\cal A} + {C'}^t {\cal A}')
+ . \]
+
+Requiring that $E_{N,M}$ and $ E'_{K,L}$ have the same complex
+structure for consistency of the tensor product, i.e.,
+$(\tau_{ij}) = (\tau'_{ij})$, and the consistency condition
+(\ref{holcondt4}) the resulting function $h$ becomes
+\begin{equation}
+h_{\alpha_1, \alpha_2, \beta_1, \beta_2} (r_1,r_2,j_1,j_2) =
+\sum_{\gamma_1, \gamma_2} c_{\alpha_1, \alpha_2, \beta_1,
+\beta_2}^{\gamma_1, \gamma_2} \varphi_{\gamma_1, \gamma_2}
+(r_1,r_2,j_1,j_2).
+\end{equation}
+Here, the function $\varphi_{\gamma_1,\gamma_2} $ is given by
+\[
+ \varphi_{\gamma_1,\gamma_2} (r_1,r_2,j_1,j_2)  =
+  \exp ( \pi i R^t \widetilde{\cal O}R + (C + C')^t \widetilde{R}
+) \delta_{\gamma_1}^{j_1} \delta_{\gamma_2}^{j_2} \]
+ with $ R=  \begin{pmatrix} r_1 \\ r_2 \end{pmatrix}, \
+\widetilde{\cal O} =
+\begin{pmatrix} \frac{\tau_{11}(n_1 +m_1 \theta_1)(n_1l_1
++m_1k_1)}{(k_1 -l_1 \theta_1)} & \frac{\tau_{12}(n_1 +m_1
+\theta_1)(n_2l_2 +m_2k_2)}{(k_2 -l_2 \theta_2)}
+  \\
+  \frac{\tau_{21}(n_2 +m_2 \theta_2)(n_1l_1
++m_1k_1)}{(k_1 -l_1 \theta_1)} &
+ \frac{\tau_{22}(n_2 +m_2
+\theta_2)(n_2l_2 +m_2k_2)}{(k_2 -l_2 \theta_2)}
+\end{pmatrix} , $
+ $
+\widetilde{R} = \begin{pmatrix} (n_1 +m_1 \theta_1)r_1   \\
+ (n_2 +m_2 \theta_2)r_2
+\end{pmatrix} , $ and the constants
+$ c_{\alpha_1, \alpha_2, \beta_1, \beta_2}^{\gamma_1, \gamma_2}$
+are given by
+\[
+ c_{\alpha_1, \alpha_2, \beta_1, \beta_2}^{\gamma_1,
+\gamma_2}  = \vartheta (\Xi, \Lambda ) e^{\cal K}  \] where
+%
+%
+\[ {\cal K}= \pi i {\widetilde{Q}}^t \widetilde{P} + C^t \widetilde{M}  + {C'}^t \widetilde{L}  , \]
+with
+\[ \widetilde{Q} = \begin{pmatrix} \tau_{11} p_1 + \tau_{12} p_2
+   - \frac{\tau_{11}  l_1 j_1} {n_1l_1 +m_1k_1}
+    - \frac{\tau_{12}  l_2 j_2} {n_2l_2 +m_2k_2} \\
+\tau_{21} p_1 + \tau_{22} p_2
+   - \frac{\tau_{21}  l_1 j_1} {n_1l_1 +m_1k_1}
+    - \frac{\tau_{22}  l_2 j_2} {n_2l_2 +m_2k_2}
+\end{pmatrix} , \
+    \widetilde{P} = \begin{pmatrix} \frac{n_1l_1 +m_1k_1}{l_1m_1} p_1
+     -\frac{j_1}{m_1} \\
+    \frac{n_2l_2 +m_2k_2}{l_2m_2} p_2
+     -\frac{j_2}{m_2}
+\end{pmatrix} , \]
+%
+\[  \tilde{M} = \begin{pmatrix}  \frac{n_1
++m_1 \theta_1}{m_1}p_1 - \frac{l_1(n_1 +m_1 \theta_1)}{m_1(n_1l_1
++m_1k_1)}j_1 \\
+  \frac{n_2 +m_2 \theta_2}{m_2}p_2 -
+\frac{l_2(n_2 +m_2 \theta_2)}{m_2(n_2l_2 +m_2k_2)}j_2
+\end{pmatrix}   , \
+    \tilde{L} = \begin{pmatrix} - \frac{k_1 -
+l_1 \theta_1}{l_1}q_1 + \frac{k_1 -l_1 \theta_1}{n_1l_1
++m_1k_1}j_1 \\
+ - \frac{k_2 -l_2 \theta_2}{l_2}q_2 +
+\frac{k_2 -l_2 \theta_2}{n_2l_2 +m_2k_2}j_2
+\end{pmatrix} ,
+   \]
+and
+\[ \vartheta (\Xi,\Lambda) = \sum_{u_1, u_2 \in {\mathbb Z}} \exp ( \pi i U^t \Xi U
+ + 2 \pi i {\Lambda}^t U ),  \]
+with
+\begin{align*}
+ U & = \begin{pmatrix} u_1 \\ u_2 \end{pmatrix}  , \ \
+        \Xi =   \begin{pmatrix} \frac{\tau_{11}  (n_1l_1
++m_1k_1)l_1 m_1}{v_1^2} & \frac{\tau_{12}  (n_1l_1 +m_1k_1)l_2
+m_2}{v_1 v_2} \\
+\frac{\tau_{21}  (n_2l_2 +m_2k_2)l_1 m_1}{v_1 v_2} &
+\frac{\tau_{22} (n_2l_2 +m_2k_2)l_2 m_2}{v_2^2}
+\end{pmatrix} , \\
+%
+  \Lambda & = \begin{pmatrix} \frac{ \tau_{11} }{v_1} ( (l_1n_1 +m_1k_1)
+ p_1 - l_1 j_1) + \frac{ \tau_{12} }{v_1} ( l_1 n_1 +m_1k_1)
+ ( p_2 -\frac{l_2 j_2}{l_2n_2 +m_2k_2} ) \\
+%
+ \frac{ \tau_{21} }{v_2}  ( l_2 n_2 +m_2k_2)
+ ( p_1   -\frac{l_1 j_1}{l_1n_1 +m_1k_1} )
++ \frac{ \tau_{22} }{v_2} ( (l_2n_2 +m_2k_2)
+ p_2 - l_2j_2)
+ \end{pmatrix} \\
+      &  \ \  +  \frac{1}{2 \pi i} \begin{pmatrix}
+    c_1 {\cal B}_1 + {c'}_1 {\cal B'}_1 \\
+    c_2 {\cal B}_2 + {c'}_2 {\cal B'}_2
+  \end{pmatrix} ,
+  \end{align*}
+where $c_i, c_i' , {\cal B}_i, {\cal B}_i' $ are the same as given
+before.
+
+Notice that the function $\varphi_{\gamma_1,\gamma_2}
+(r_1,r_2,j_1,j_2)$ is a theta vector (\ref{thetat4p}) belongs to $
+{E'}_{AK+BL,NL+MK}(\tilde{\theta})$ with $\tilde{\theta} = \frac{A
+\theta +B}{M\theta +N}$ as we expected.
+\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\pagebreak
+
+%%%%%%%%%%%%%%%%%%
+\section*{V. Discussion}
+
+In this paper, we first construct a module on noncommutative $T^4$
+and its dual. Then we define the complex structure on this module
+and construct the theta vector which is a solution for a
+holomorphic connection. We then consider the tensor product of the
+theta vectors satisfying the consistency requirement.
+
+Here, we want to notice what has not been apparent in the
+noncommutative $T^2$ case \cite{ds02}. When we require the
+holomorphic condition (\ref{thetavector}), the symmetry appears
+not in the complex structure itself but in the $\Omega$-matrix
+which appears in the theta vector (\ref{thetat4}), i.e.,
+$\Omega_{12}=\Omega_{21}$ instead of $\tau_{12} = \tau_{21} $ in
+the commutative 4-torus case. We consider that this difference
+comes from noncommutativity.
+
+As in the noncommutative $T^2$ case, the tensor products of
+modules on the noncommutative 4-torus with complex structures
+become very restrictive in order to satisfy the consistency
+requirement. We consider this consistency requirement as another
+aspect of noncommutativity compared with the commutative case in
+which there is no restriction.
+
+So far, theta functions on noncommutative tori have not been
+utilized in the physics literature except for the integral torus
+case \cite{mm01,ghs01,hsy02}. With the theta functions on
+noncommutative tori without any restriction, one can hope to
+explore the physical states on noncommutative tori in more general
+cases.
+\\
+
+
+
+
+%\pagebreak
+
+
+\vspace{5mm}
+
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\Large \bf Acknowledgments}
+
+\vspace{5mm}
+\noindent
+Most part of the work was done during
+authors' visit to KIAS. The authors would like to thank KIAS for
+its kind hospitality. This work was supported by KOSEF
+Interdisciplinary Research Grant No. R01-2000-000-00022-0.
+
+%\pagebreak
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%\newpage
+
+\begin{thebibliography}{88}
+
+\bibitem{jp} J. Polchinski, {\it String theory}, vol.1 (Cambridge
+Univ. Press, Cambridge, 1998).
+
+\bibitem{gsw} M.B. Green, J.H. Scwarz, and E. Witten,
+ {\it Superstring theory}, vol.2 (Cambridge Univ. Press, Cambridge, 1987).
+
+\bibitem{conn} A. Connes, {\it Noncommutative geometry} (Academic Press, New York, 1994).
+
+\bibitem{sw99} See, for instance, N. Seiberg and E. Witten,
+JHEP 9909,  032 (1999), hep-th/9908142 and references therein for
+the development in this direction.
+
+\bibitem{cds} A. Connes, M.R. Douglas, and A. Schwarz,
+JHEP 9802, 003 (1998), hep-th/9711162.
+
+\bibitem{cr} A. Connes and M. Rieffel,
+Contemp. Math. 62,  237 (1987).
+
+\bibitem{rief88} M. Rieffel, Can. J. Math. Vol. XL, 257 (1988).
+
+\bibitem{nct} D. Brace, B. Morariu, and B. Zumino,
+Nucl. Phys. B 545, 192 (1999),  hep-th/9810099;
+  P.-M. Ho, Y.-Y. Wu, and Y.-S. Wu,
+Phys. Rev. D 58, 026006 (1998), hep-th/9712201.
+
+\bibitem{hv} C. Hofman and E. Verlinde,
+Nucl. Phys. B 547, 157 (1999), hep-th/9810219.
+
+\bibitem{t4ours}
+ E. Kim, H. Kim, N. Kim, B.-H. Lee, C.-Y. Lee, and H. S. Yang,
+Phys. Rev. D 62, 046001 (2000),  hep-th/9912272.
+
+\bibitem{ns98} N.A. Nekrasov and A. Schwarz, Commun. Math. Phys. 198, 689 (1998), hep-th/9802068.
+
+\bibitem{gms00} R. Gopakumar, S. Minwalla,and A. Strominger, JHEP 0005, 020 (2000),
+          hep-th/0003160.
+
+\bibitem{dn01} M.R. Douglas and N.A. Nekrasov, Rev. Mod. Phys. 73, 977 (2001), hep-th/0106048.
+
+\bibitem{manin} Y. Manin, {\it Quantized theta-functions} in:
+Common trends in mathematics and quantum field theories (Kyoto,
+1990), Progress of Theor. Phys. Suppl. 102, 219 (1990);
+ {\it Theta functions, quantum tori and Heisenberg groups}, math.AG/0011197.
+
+\bibitem{schwarz01} A. Schwarz, Lett. Math. Phys. 58,  81 (2001).
+
+\bibitem{ds02} M. Dieng and A. Schwarz, {\it Differential and complex
+geometry of two-dimensional noncommutative tori}, QA/0203160.
+
+\bibitem{bl} D. Berenstein and R. G. Leigh, Phys. Lett. B 499,  207 (2001),
+hep-th/0009209; JHEP 0106, 030 (2001), hep-th/0105229.
+
+\bibitem{bs1} A. Belhaj and E.H. Saidi, Phys. Lett. B 523, 191 (2001),
+hep-th/0108143.
+
+\bibitem{bs2} M. Bennai and E.H. Saidi, Phys. Lett. B 550, 108 (2002), hep-th/0210073.
+
+\bibitem{kl} H. Kim and C.-Y. Lee, Phys. Lett. B 536, 154 (2002), hep-th/0105265;
+ {\it N-Point Deformation of Algebraic K3 Surfaces}, to appear in
+     J. Math. Phys., hep-th/0204013.
+
+\bibitem{mm01}  E.J. Martinec and G. Moore, {\it Noncommutative Solitons on Orbifolds},
+           hep-th/0101199.
+
+\bibitem{ghs01} R. Gopakumar, M. Headrick, and M. Spradlin, Commun. Math. Phys. 233, 355 (2003),
+      hep-th/0103256.
+
+\bibitem{hsy02} Hou Bo-yu, Shi Kangjie, and Yang Zhan-ying,
+{\it Soliton on Noncommutative Orbifold $T^2/Z_k$ },
+hep-th/0204102; B.Y. Hou, D.T. Peng, K.J. Shi, and R.H. Yue, {\it
+Solitons on Noncommutative Torus as Elliptic Algebras and Elliptic
+Models}, hep-th/0110122.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+
+
+\bibitem{rs98}M. Rieffel and A. Schwarz,
+Int. J. Math. 10, 289 (1999), q-alg/9803057.
+
+\bibitem{kkl01} E. Kim, H. Kim, and C.-Y. Lee,
+ J. Math. Phys. 42,  2677 (2001), hep-th/0005205.
+
+
+\end{thebibliography}
+
+
+\end{document}"
+1,"\begin{equation*}
+\"

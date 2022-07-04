@@ -1,0 +1,291 @@
+,itemize
+0,"\begin{itemize}
+
+\item {\bf Construction of $ X $:}  To construct a smooth elliptically
+fibered Calabi-Yau 3-fold $ X $ which admits a freely-acting involution 
+$ \tau_{X} $,
+
+\begin{enumerate}
+
+\item {\bf Choose the base $ B $:}  The requirement that 
+$ c_{1}(TX) = 0 $ restricts the possible bases~\cite{Grassi1,MV1}.  If the
+base is smooth and preserves only $ \mathcal{N} = 1 $ supersymmetry in
+four dimensions, then $ B $ is restricted to be a del Pezzo 
+$ (dP_{r} $, $ r=0,1,\ldots,8) $, Hirzebruch $ (F_{r} $, $ r\geq 0) $,
+blown-up Hirzebruch, or an Enriques surface $ (\mathcal{E}) $.
+
+\item {\bf Require two global sections:}  To admit a freely-acting
+involution $ \tau_{X} $, require $ X $ to have \emph{two} global sections
+$ \sigma $ and $ \xi $ satisfying
+\begin{equation}
+\label{order2}
+\xi + \xi = \sigma.
+\end{equation}
+
+Elliptically fibered manifolds can be described in terms of a Weierstrass
+model.  A general elliptic curve can be embedded via a cubic equation into 
+$ \mathbb{CP}^{2} $.  Without loss of generality, the equation can be
+expressed in the Weierstrass form
+\begin{equation}
+\label{Wpoly}
+z y^{2} = 4 x^{3} - g_{2} z^{2} x - g_{3} z^{3}
+\end{equation}
+where $ g_{2} $ and $ g_{3} $ are general coefficients and $ (x,y,z) $ are
+homogeneous coordinates on $ \mathbb{CP}^{2} $.  To define an elliptic
+fibration over a base $ B $, one needs to specify how the coefficients 
+$ g_{2} $ and $ g_{3} $ vary as one moves around the base.  In order to
+have a pair of sections $ \sigma $ and $ \xi $, the Weierstrass
+polynomial~(\ref{Wpoly}) must factorize as
+\begin{equation}
+\label{Wpolyfac}
+z y^{2} = 4 (x - az)(x^{2} + az x + bz^{2}).
+\end{equation} 
+Comparing~(\ref{Wpoly}) and~(\ref{Wpolyfac}), we see that
+\begin{equation}
+g_{2} = 4(a^{2} - b), \quad g_{3} = 4ab.
+\end{equation}
+The zero section $ \sigma $ is given by $ (x,y,z) = (0,1,0) $, and the
+second section $ \xi $ by $ (x,y,z) = (a,0,1) $.
+
+\item {\bf Blow up singularities:} The elliptic fibers are singular when
+two roots of the Weierstrass polynomial~(\ref{Wpolyfac}) coincide.  The
+set of points in the base over which the fibers are singular is given by
+the discriminant locus
+\begin{equation}
+\Delta = 0
+\end{equation}
+where
+\begin{equation}
+\Delta = \Delta_{1} \Delta^{2}_{2}
+\end{equation}
+and
+\begin{equation}
+\Delta_{1} = a^{2} - 4b, \quad \Delta_{2} = 4(2a^{2} + b).
+\end{equation}
+One can show that there is a curve of singularities over the 
+$ \Delta_{2} $ component of the discriminant curve.  To construct the
+smooth Calabi-Yau 3-fold $ X $, one must blow up this curve of
+singularities.  This is achieved by replacing the singular point of each
+fiber over $ \Delta_{2} = 0 $ by a sphere $ \mathbb{CP}^{1} $.  This is a
+new curve in the Calabi-Yau 3-fold, which we denote by $ N $.  The general
+elliptic fiber $ F $ has now split into two spheres: the new fiber $ N $,
+plus the proper transform of the singular fiber, which is in the class 
+$ F - N $.   
+ 
+\end{enumerate}
+
+\item {\bf Choice of involution $ \tau_{X} $:}  Construct a freely-acting
+involution $ \tau_{X} $ on $ X $ as the composition
+\begin{equation}
+\tau_{X} = \alpha \circ t_{\xi}
+\end{equation}
+where $ \alpha $ is the lift to $ X $ of a fibration-preserving involution
+$ \tau_{B} $ on the base $ B $ with fixed point set 
+$ \mathcal{F}_{\tau_{B}} $, and
+\begin{equation}
+t_{\xi}(x) = x + \xi(x), \quad x \in X
+\end{equation}
+is an involutive translation of the fibers.
+To ensure that $ \tau_{B} $ preserves the fibration, require
+\begin{equation}
+\label{preserve}
+\tau^{*}_{B}(a) = a, \quad \tau^{*}_{B}(b) = b.
+\end{equation}
+Upon the explicit specification of an involution $ \tau_{B} $ with the
+above properties, the involution $ \alpha $ is uniquely determined by the
+additional requirements that it fix the zero section $ \sigma $ and that
+it preserve the holomorphic volume form on $ X $.
+
+Note that $ \alpha $ leaves fixed the whole fiber above each point in 
+$ \mathcal{F}_{\tau_{B}} $.  Since the action of translation on a
+\emph{smooth} torus acts without fixed points, $ \tau_{X} $ will be freely
+acting provided none of the fibers above $ \mathcal{F}_{\tau_{B}} $ are
+singular.  Thus, require
+\begin{equation}
+\label{freeact}
+\mathcal{F}_{\tau_{B}} \cap \{ \Delta = 0 \} = \emptyset.
+\end{equation} 
+
+\"
+1,"\begin{itemize}
+
+\item {\bf $ G_{\mathbb{C}} = SU(n)_{\mathbb{C}} $ bundle constraints:}
+We wish to construct (via the spectral cover
+method~\cite{FMW,Donagi:Prin,BJPS1,DOPW}) a semi-stable holomorphic vector
+bundle $ V_{X} $ over $ X $ with structure group $ G_{\mathbb{C}} =
+SU(n)_{\mathbb{C}} $.  To do this, we need to fix a spectral cover $ C $
+and a line bundle $ \mathcal{N} $ over it.  The condition that $
+c_{1}(V_{X}) = 0 $ implies that the spectral data $ (C, \mathcal{N}) $ can
+be written in terms of an effective divisor class $ \eta $ in the base $ B
+$ and coefficients $ \lambda $ and $ \kappa_{i} $ $ (i = 1, \ldots, 4 \eta
+\cdot c_{1}(B)) $.  Constraints are placed on $ \eta $ , $ \lambda $ , and
+the $ \kappa_{i} $ by the condition that
+\begin{equation}
+c_{1}(\mathcal{N}) = n \left( \frac{1}{2} + \lambda \right) \sigma
+   + \left( \frac{1}{2} - \lambda \right) \pi^{*}_{C} \eta 
+   + \left( \frac{1}{2} + n \lambda \right) \pi^{*}_{C} c_{1}(B)
+   + \textstyle{\sum_{i}} \kappa_{i} N_{i}
+\end{equation}
+be an integer class.  Various sufficient (but not necessary) constraints 
+can be imposed~\cite{DOPW,DOPW2,FGI1}, but most generally, $
+c_{1}(\mathcal{N}) $ will be an integer class if the constraints
+\begin{gather}
+q \equiv n \left( \frac{1}{2} + \lambda \right) \in \mathbb{Z}
+\label{BCsigma} \\
+\left(\frac{1}{2} - \lambda \right) \pi^{*}_{C} \eta
+   + \left( \frac{1}{2} + n \lambda \right) \pi^{*}_{C} c_{1}(B)
+\quad \textrm{is an integer class} \label{BCetaChern}   \\
+\kappa_{i} - \frac{1}{2} m \in \mathbb{Z}, \quad m \in \mathbb{Z} 
+\label{BCkappa}
+\end{gather} are simultaneously satisfied. 
+
+\item {\bf Bundle involution conditions:}  The bundle $ V_{X} $ over $ X $
+will descend to a bundle $ V_{Z} $ over $ Z $ if $ V_{X} $ is invariant
+under the involution $ \tau_{X} $. Necessary conditions for $ V_{X} $ to
+be invariant are given by
+\begin{align}
+\tau_{B}(\eta) &= \eta    \label{BItau}\\
+\textstyle{\sum_{i}} \kappa_{i} &= \eta \cdot c_{1}(B).   \label{BIkappa}
+\end{align}
+We note that there may be non-invariant bundles
+satisfying~(\ref{BItau}) and (\ref{BIkappa}); the details of selecting
+only the invariant bundles are beyond the scope of this paper.
+
+\"
+2,"\begin{itemize}
+
+\item {\bf $ N_{gen} $ condition:}  In the models of interest with 
+$ V_{Z1} $ having structure group $ G_{\mathbb{C}} = SU(n)_{\mathbb{C}} $
+(with $ n = 3 $, 4, or 5), the net number of generations 
+($ \# $ generations $ - $ $ \# $ antigenerations) $ N_{gen} $ of chiral
+fermions in the observable sector (in the $ \mathbf{27} -
+\mathbf{\overline{27}}$ of $ E_{6} $, 
+$ \mathbf{16} - \mathbf{\overline{16}} $ of $ SO(10) $, or $ \mathbf{ 10 +
+\overline{5} } - ( \mathbf{ \overline{10} + 5 } ) $ of $ SU(5) $) is
+given by 
+\begin{equation}
+N_{gen} = \frac{1}{2} \int_{Z} c_{3}(V_{Z1}).
+\end{equation}
+Since $ X $ is a double cover of $ Z $, it follows that
+\begin{equation}
+c_{3} (V_{Z}) = \frac{1}{2} c_{3}(V_{X}).
+\end{equation}
+$ c_{3}(V_{X}) $ has been computed by Curio~\cite{Curio1} and
+Andreas~\cite{Andreas1}:
+\begin{equation}
+c_{3}(V_{X}) = 2 \lambda \sigma \wedge \eta \wedge ( \eta - n c_{1}(B) ).
+\end{equation}
+Thus, 
+\begin{equation}
+\label{Ngen}
+N_{gen} = \frac{1}{2} \int_{B} \lambda \eta \wedge (\eta - n c_{1}(B))
+        = \frac{1}{2} \lambda \eta \cdot ( \eta - n c_{1}(B) )
+\end{equation}
+where we have integrated over the fiber and used Poincar\'{e} duality.
+
+\item {\bf Effectiveness condition:}  Anomaly cancellation requires
+\begin{equation}
+\label{W_{Z}}
+[W_{Z}] = c_{2}(TZ) - c_{2}(V_{Z1}) - c_{2}(V_{Z2}),
+\end{equation}
+where $ [W_{Z}] $ is the class associated with non-perturbative M5-branes
+in the bulk space of the theory.  For simplicity, we will take $ V_{Z2} $
+to be the trivial bundle.  Hence, the gauge group $ E_{8} $ remains
+unbroken in the hidden sector, $ c_{2}(V_{Z2}) $ vanishes,
+and~(\ref{W_{Z}}) simplifies accordingly.  Condition~(\ref{W_{Z}}) can
+then be pulled back onto $ X $ to give
+\begin{equation}
+\label{W_{X}}
+[W_{X}] = c_{2}(TX) - c_{2}(V_{X1}).
+\end{equation}   
+The Chern classes appearing
+in~(\ref{W_{X}}) have been evaluated to be~\cite{DOPW}
+\begin{equation}
+\label{c_2TX}
+c_{2}(TX) = 12 \sigma_{*} c_{1} + \left( c_{2} + 11c^{2}_{1} \right)(F-N) 
+            + \left( c_{2} - c^{2}_{1} \right) N 
+\end{equation}
+\begin{equation}
+\label{c_2V_X}
+c_{2}(V_{X}) = \sigma_{*} \eta - \left( f(n) - k^{2} \right) (F - N)
+               - \left( f(n) - k^{2} + \textstyle{\sum_{i}} \kappa_{i}
+                 \right) N
+\end{equation}  
+where $ c_{i} \equiv c_{i}(B) $ and
+\begin{align}
+k^{2} &= \textstyle{\sum_{i}} \kappa^{2}_{i} \\
+f(n) &= \frac{1}{24} \left( n^{3} - n \right) c^{2}_{1}
+            - \frac{1}{2} \left( \lambda^{2} - \frac{1}{4} \right)
+              n \eta \cdot ( \eta - n c_{1} ).
+\end{align}
+Using these expressions for $ c_{2}(TX) $ and 
+$ c_{2}(V_{X}) $,~(\ref{W_{X}})
+becomes
+\begin{equation}
+[W_{X}] = \sigma_{*} W_{B} + c (F-N) + dN
+\end{equation}
+where
+\begin{align}
+\label{ceqn}
+c &= c_{2} + f(n) + 11c^{2}_{1} - k^{2}     \\
+\label{deqn}
+d &= c_{2} + f(n) - c^{2}_{1} - k^{2} + \textstyle{\sum_{i}} \kappa_{i}    
+\end{align}
+and
+\begin{equation}
+W_{B} = 12c_{1}(B) - \eta. 
+\end{equation}
+The class  $ [W_{Z}] $ must represent a physical holomorphic curve in 
+the Calabi-Yau 3-fold $ Z $ since M5-branes are required to wrap around
+it. Hence $ [W_{Z}] $ must be an effective class, and its pull-back 
+$ [W_{X}] $ is an effective class in the covering 3-fold $ X $.  Thus, we
+require
+\begin{equation}
+W_{B} = 12 c_{1} - \eta  \quad \textrm{is effective in $ B $}
+\end{equation}
+and
+\begin{equation}
+c \geq 0, \quad  d \geq 0.
+\end{equation}
+ 
+\item {\bf $ \beta^{(0)}_{i} = 0 $ constraint:}  As discussed
+in~\cite{AD1}, to obtain phenomenologically viable matter Yukawa
+couplings, require vanishing instanton charges, $ \beta^{(0)}_{i} $, on
+the observable orbifold fixed plane.  $ \beta^{(0)}_{i} = 0 $ implies that
+\begin{equation}
+\Omega \equiv c_{2}(V_{X1}) - \frac{1}{2} c_{2}(TX) = 0
+\end{equation}
+and thus from~(\ref{c_2TX}) and~(\ref{c_2V_X})
+\begin{equation}
+\sigma_{*} (6c_{1} - \eta) + \tilde{c} (F-N) + \tilde{d}N = 0
+\end{equation}
+where
+\begin{align}
+\tilde{c} &= c -\frac{1}{2} c_{2} - \frac{11}{2} c^{2}_{1}, 
+\label{ctilde}   \\
+\tilde{d} &= d -\frac{1}{2} c_{2} + \frac{1}{2} c^{2}_{1}.
+\label{dtilde}
+\end{align}
+Thus, we require
+\begin{equation}
+\label{eta6c_1}
+\eta = 6c_{1}(B) \\
+\end{equation}
+and
+\begin{equation}
+\quad \tilde{c} = 0 \quad \quad \tilde{d} = 0.
+\end{equation}
+
+\item{\bf Stability constraint:} Let $ G = SU(n) \subset E_{8} $ and
+$ G_{\mathbb{C}} $ be the structure group of the vector bundle $ V_{Z} $.
+Then the commutant subgroup of $ G $ in $ E_{8} $, denoted by $ H $ will be
+the largest subgroup preserved by $ V_{Z} $ if~\cite{BM:Stab}
+\begin{equation}
+\eta \geq n c_{1}(B).
+\end{equation}
+We note that for the models of interest (which have $ n = 3 $, $ 4 $ and $
+5 $), the $ \beta^{(0)}_{i} = 0 $ constraint~(\ref{eta6c_1}) ensures that
+the stability constraint is satisfied.
+
+
+\"

@@ -1,0 +1,187 @@
+,gather
+0,"\begin{gather}
+\Psi(x)=\sum_s\int d \Gamma_m(\vec p)\Big(
+u(\vec p,s) b(\vec p,s)e^{-ip\cdot x}
++
+v(\vec p,s) d(\vec p,s)^{\dag}e^{ip\cdot x}
+\Big).
+\"
+1,"\begin{gather}
+\underline{b}(\vec p,s)
+=
+\frac{1}{\sqrt{N}}
+\sum_{n=1}^{N}
+\overbrace{
+\underbrace{I_0\otimes\dots\otimes I_0}
+_{n-1}  \otimes\, b(\vec p,s)\otimes I \otimes \dots
+\otimes I}^{N}
+=
+\underline{ c}_1(\vec p,s),\\
+\underline{ d}(\vec p,s)
+=
+\frac{1}{\sqrt{N}}
+\sum_{n=1}^{N}
+\overbrace{
+\underbrace{I_0\otimes\dots\otimes I_0}
+_{n-1}  \otimes\, d(\vec p,s)\otimes I \otimes \dots
+\otimes I}^{N}
+=
+\underline{ c}_2(\vec p,s),\\
+\underline{\Psi}(x)
+=
+\sum_s\int d \Gamma_m(\vec p)\Big(
+u(\vec p,s) \underline{ b}(\vec p,s)e^{-ip\cdot x}
++
+v(\vec p,s) \underline{ d}(\vec p,s)^{\dag}e^{ip\cdot x}
+\Big).
+\"
+2,"\begin{gather}
+\big\{\underline{ c}_j(\vec p,s),\underline{ c}_{j'}(\vec p\,',s')^{\dag}\big\}
+=
+\delta_{jj'}\delta_{ss'}\delta_{\Gamma_m}(\vec p,\vec p\,')
+\underline{ I}_{\vec p},\\
+\underline{ I}_{\vec p}
+=\frac{1}{N}
+\sum_{n=1}^{N}
+\overbrace{
+\underbrace{I\otimes\dots\otimes I}
+_{n-1}  \otimes I_{\vec p}\otimes I \otimes \dots
+\otimes I}^{N},\quad
+\int d \Gamma_m(\vec p)
+\underline{I}_{\vec p}=\underline{I}.
+\label{uu nCAR}
+\"
+3,"\begin{gather}
+\Psi(x)
+=
+\sum_s\Big(
+u(\hat{\vec p},s) e^{-i\hat p\cdot x}\otimes b_s
++
+v(\hat{\vec p},s) e^{i\hat p\cdot x} \otimes d_{s}^{\dag}
+\Big)\nonumber
+\"
+4,"\begin{gather}
+\underline{ S}^{(\pm)}_{\alpha\beta}(x-y)
+\stackrel{\rm def}{=}
+i\{\underline{\Psi}^{(\mp)}_\alpha(x),\underline{\bar\Psi}^{(\pm)}_\beta(y)\}
+=
+\frac{1}{N}
+\sum_{n=1}^{N}
+\overbrace{
+\underbrace{I\otimes\dots\otimes I}
+_{n-1}  \otimes 
+S^{(\pm)}_{\alpha\beta}(x-y)
+\otimes I \otimes \dots
+\otimes I}^{N}
+\nonumber\\
+S^{(\pm)}_{\alpha\beta}(x-y)
+\stackrel{\rm def}{=}
+i\{\Psi^{(\mp)}_\alpha(x),\bar\Psi^{(\pm)}_\beta(y)\}
+=
+i(\gamma \cdot \hat p\pm m)_{\alpha\beta}e^{\mp i\hat p\cdot(x-y)}\otimes 1.
+\"
+5,"\begin{gather} 
+|O\rangle
+=
+\int d \Gamma_m(\vec p)O(\vec p)|\vec p\rangle\otimes|0\rangle,
+\"
+6,"\begin{gather} 
+\langle \underline{O}|\underline{c}_j(f) \underline{c}_{j'}(g)^{\dag}
+|\underline{O}\rangle
+=
+\delta_{jj'}\sum_{s}\int d \Gamma_m(\vec p)Z(\vec p)
+\overline{f(\vec p,s)}g(\vec p,s)
+\stackrel{\rm def}{=}
+\delta_{jj'}\langle f|g\rangle_Z\label{<of|og>}
+\"
+7,"\begin{gather} 
+\lim_{N\to\infty}
+\langle \underline{O}|\underline{c}_j(f_1)\dots \underline{c}_j(f_M)
+\underline{c}_j(g_1)^{\dag}\dots
+\underline{c}_j(g_M)^{\dag}|\underline{O}\rangle
+=
+\sum_{\sigma}\delta_\sigma
+\langle f_1|g_{\sigma(1)}\rangle_Z
+\dots 
+\langle f_M|g_{\sigma(M)}\rangle_Z\nonumber\\
+=
+\sum_{\sigma}\delta_\sigma\sum_{s_1\dots s_M}
+\int d\Gamma_m(\vec p_1)\dots
+\int d\Gamma_m(\vec p_M)
+\nonumber\\
+\phantom{=}
+\times
+Z(\vec p_1)\dots Z(\vec p_M)\overline{f_1(\vec p_1,s_1)}\dots 
+\overline{f_m(\vec p_M,s_M)}
+g_{\sigma(1)}(\vec p_1,s_1)
+\dots 
+g_{\sigma(m)}(\vec p_M,s_M)\nonumber
+\"
+8,"\begin{gather}
+\langle\phi|S^{(1)}|\psi\rangle
+=
+-ie_0
+\sum_{s,s'}
+\int d\Gamma_m(\vec p)\int d\Gamma_m(\vec p\,')
+\\
+\phantom{\langle{\rm out}|S^{(1)}|{\rm in}\rangle
+=}\times
+\underbrace{
+\langle \underline{O}|\underline{I}_{p\,'}
+\underline{I}_p|\underline{O}\rangle}_{\rm modification}
+\overline{\phi(\vec p\,',s')}
+\psi(\vec p,s)\bar u(\vec p\,',s')\gamma_a u(\vec p,s)
+\int d^4x
+e^{i(p\,'-p)\cdot x} A^a(x).\nonumber
+\"
+9,"\begin{gather}
+{\rm Tr\,}
+\Big(
+\langle\underline{O}|\underline{S}^{(-)}(x_2-x_1)
+\gamma^a
+\underline{S}^{(+)}(x_1-x_2)\gamma^b|\underline{O}\rangle
+\Big)\nonumber\\
+\phantom{{\rm Tr\,}}
+=
+-
+\frac{Z}{N}
+\int d\Gamma_m(\vec p)
+\chi(\vec p)e^{2i{p}\cdot (x_2-x_1)}
+{\rm Tr\,}
+\Big((\gamma\cdot p-m)\gamma^a (\gamma\cdot p+m)\gamma^b\Big)
+\nonumber\\
+\phantom{{\rm Tr\,}=}
+-Z^2
+\Big(1-\frac{1}{N}\Big)
+\int d\Gamma_m(\vec p) \int d\Gamma_m(\vec p\,')\nonumber\\
+\phantom{{\rm Tr\,}==}\times
+\chi(\vec p)\chi(\vec p\,')e^{i(p+p')\cdot (x_2-x_1)}
+{\rm Tr\,}
+\Big((\gamma\cdot p-m)\gamma^a (\gamma\cdot p'+m)\gamma^b\Big).
+\nonumber
+\"
+10,"\begin{gather}
+\underline{\cal D}(f) = e^{\underline{a}(f)^{\dag}
+-\underline{a}(f)},\quad
+\underline{a}(f)=
+\sum_{s}\int d \Gamma_0(\vec k) \overline{f(\vec k,s)}
+\underline{a}(\vec k,s),\\
+\underline{\cal D}(f)^{\dag}
+\underline{a}(\vec k,\pm)
+\underline{\cal D}(f)
+=
+\underline{a}(\vec k,\pm)+f(\vec k,\pm)\underline{I}_{\vec k}.\label{D}
+\"
+11,"\begin{gather}
+\underline{a}(\vec k,\pm)_{\rm out}
+=
+S^{\dag}
+\underline{a}(\vec k,\pm)_{\rm in}
+S
+=
+\underline{a}(\vec k,\pm)_{\rm in}+j(\vec k,\pm)\underline{I}_{\vec k}
+=
+\underline{\cal D}(j)^{\dag}
+\underline{a}(\vec k,\pm)_{\rm in}
+\underline{\cal D}(j)
+\"

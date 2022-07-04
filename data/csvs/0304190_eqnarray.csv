@@ -1,0 +1,243 @@
+,eqnarray
+0,"\begin{eqnarray} &&  w'' - \frc12\lt( \frc1w + \frc1{w-1} +
+\frc1{w-s} \rt) (w')^2 + \lt(\frc1s + \frc1{s-1} +
+\frc1{w-s}\rt)w' \nonumber\\&& = \frc{w(w-1)(w-s)}{s^2(1-s)^2} \lt(
+\frc{(1-4\mu^2)s(s-1)}{2(w-s)^2} - \frc{(\t\lambda-1)^2s}{2w^2}
+        + \frc{\gamma(s-1)}{(w-1)^2} + \frc{\lambda^2}2 \rt)
+\lab{painleveintro}\"
+1,"\begin{eqnarray}\lab{tau}
+    \frc{d}{ds} \ln\tau(s) &=& \frc{s(1-s)}{4w(1-w)(w-s)} \lt( w'-\frc{1-w}{1-s} \rt)^2 - \frc{\mu^2}{w-s} \nonumber\\
+    &&  + \frc{{\t\lambda}^2}{4(1-s)w} + \frc{\lambda^2 w}{4s(1-s)} - \frc{\lambda^2}{4s}
+        + \frc{4\mu^2-{\t\lambda}^2 - \lambda^2}{4(1-s)} .
+\"
+2,"\begin{eqnarray}\lab{pwave}
+    \Psi_s(\xi_\rx,\xi_\ry) &=& \int d\om\, \rho(\om) \, \lt(
+        A_-^\dag(\om) e^{i\om \xi_\rx} \b{P}_-(\om,\xi_\ry) + A_+(\om) e^{-i\om \xi_\rx} P_+(\om,\xi_\ry) \rt)\\
+    \Psi_s^\dag(\xi_\rx,\xi_\ry) &=& \int d\om\, \rho(\om) \, \lt(
+        A_+^\dag(\om) e^{i\om \xi_\rx} \b{P}_+(\om,\xi_\ry) + A_-(\om) e^{-i\om\xi_\rx} P_-(\om,\xi_\ry) \rt) \nonumber ,
+\"
+3,"\begin{eqnarray}\lab{genexp}
+    \<\Or_\a(x)\Or_{\a'}(y)\> &=& \sum_{n=0}^{\infty} \frc1{n!} \sum_{\ep_1,\ldots,\ep_n} \int
+    \lt(\prod_{j=1}^n d\omega_j \rho(\om_j)\rt) \;\times \\
+&&\times\;  F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n}
+        (F_{-\a'}(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n})^*
+    e^{-i(\om_1+\cdots+\om_n) \frc{\dist(x,y)}{2R}} \nonumber.
+\"
+4,"\begin{eqnarray}\lab{unu}
+    u_\nu &=& \frc{\Gamma(1+\mu)\Gamma\lt(\frc12+\mu-i\nu\rt)}{\Gamma(1+2\mu)\Gamma\lt(\frc12-i\nu\rt)}
+        e^{i\nu\eta}(1-e^{2\eta})^{\mu} F(\mu,\frc12+\mu+i\nu;1+2\mu;1-e^{2\eta}) \\
+\lab{vnu}
+    v_\nu &=& - i \frc{\Gamma(1+\mu)\Gamma\lt(\frc12+\mu-i\nu\rt)}{\Gamma(1+2\mu)\Gamma\lt(\frc12-i\nu\rt)}
+        e^{-i\nu\eta}(1-e^{2\eta})^{\mu} F(\mu,\frc12+\mu-i\nu;1+2\mu;1-e^{2\eta}),
+\"
+5,"\begin{eqnarray} &&
+\frc{\Tr\lt( e^{-2\pi H_A} a_{\ep}^\dag(\om)
+a_{\ep'}(\om')\rt)}{\Tr\lt( e^{-2\pi H_A}\rt)}
+    = \frc1{\rho(\om)} \delta(\om-\om') \delta_{\ep,\ep'} \nonumber\\
+&&  \frc{\Tr\lt( e^{-2\pi H_A} a_{\ep}(\om)
+a_{\ep'}(\om')\rt)}{\Tr\lt( e^{-2\pi H_A}\rt)}
+    = 0
+\"
+6,"\begin{eqnarray}
+    \<\Or_\a\> &=& (2R)^{-\a^2} \exp\lt[ \int_0^\infty \frc{dt}{t} (1-e^{-2\mu t}) \frc{\sinh^2(\a t)}{\sinh^2(t)}\rt] \nonumber\\
+\lab{VEV}   &=& (2R)^{-\a^2} \prod_{n=1}^{\infty} \lt( \frc{1-\frc{\a^2}{(\mu+n)^2}}{1-\frc{\a^2}{n^2}}\rt)^n \\
+        &=& (2R)^{-\a^2} \frc{G(1+\mu-\a) G(1+\mu+\a)}{G(1+\mu)^2 G(1-\a) G(1+\a)} \nonumber,
+\"
+7,"\begin{eqnarray}
+&&  \sqrt{\rho(\om_1)} F_\a(\om_1,\om_2)_{+,-} \sim |\om_1|^{-1\pm\a} \; \mbox{ as } \Re e(\om_1)\to \pm\infty\nonumber\\
+&&  \sqrt{\rho(\om_2)} F_\a(\om_1,\om_2)_{+,-} \sim
+|\om_2|^{-1\mp\a} \; \mbox{ as } \Re e(\om_2)\to \pm\infty\nonumber
+\"
+8,"\begin{eqnarray}
+    \<\Or_\a(x)\Or_{\a'}(y)\> &=& \sum_{n=0}^{\infty} \frc1{n!} \sum_{\ep_1,\ldots,\ep_n}
+    \sum_{k_1,\ldots,k_n=0}^{\infty} \;\times  \nonumber \\
+&&\times\;  \<0|\Or_\a(0)|k_1,\ldots,k_n\>_{\ep_1,\ldots,\ep_n}
+    {\ }_{\ep_n,\ldots,\ep_1}\<k_n,\ldots,k_1|\Or_{\a'}(0)|0\>
+    e^{-(\l_1+\cdots+\l_n) \frc{\dist(x,y)}{2R}} \nonumber.
+\"
+9,"\begin{eqnarray}\lab{ffexp} &&  F(t) = 1 - 4^{2\mu+1}
+\frc{\sin(\pi\a) \sin(\pi\a') \G(1+\mu+\a) \G(1+\mu-\a)
+    \G(1+\mu+\a') \G(1+\mu-\a') }{
+    \pi^2 \G(2+2\mu)^2} e^{-(4\mu+2) t} \times \nonumber\\
+&&  \ \ \ \ \ \lt( 1 - 2\a\a' \frc{2\mu+1}{(\mu+1)^2} e^{-2t} +
+O(e^{-4t}) \rt) \;
+    + \; O(e^{-(8\mu+4)t}),
+\"
+10,"\begin{eqnarray}
+    \<vac| \piperp(\Psi_R(z,\b{z})) |r\>_+ &=& -i \frc{\G(1+\mu)}{\G\lt(\frc12+\mu\rt)}
+        (1-z\b{z})^\mu r^{-\frc12} (1-\b{z} r)^{-\mu} (1-zr^{-1})^{-\mu-1} \nonumber\\
+    \<vac| \piperp(\Psi_L(z,\b{z})) |r\>_+ &=& \frc{\G(1+\mu)}{\G\lt(\frc12+\mu\rt)}
+        (1-z\b{z})^\mu r^{\frc12} (1-z r^{-1})^{-\mu} (1-\b{z}r)^{-\mu-1}.
+\lab{PsiZ}\"
+11,"\begin{eqnarray} &&  \<\<a_+(\om_1)a_-(\om_2)
+\>\>_\a =
+    \frc{4^{-\mu} e^{(\om_2-\om_1)\frc\pi4}}{\G(1+\mu)^2} \int_{-\infty}^\infty d\nu\,
+    \frc{\G\lt(\mu+\frc12+i\nu\rt) \G\lt(\mu+\frc12-i\nu\rt) \cosh(\pi\nu)}{1+e^{2\pi\nu-2\pi i \a}}
+    \times \nonumber\\
+&&  \qquad F\lt( \mu + \frc12 -
+i\nu,\mu+\frc12-i\frc{\om_1}2;1+2\mu;2+i0\rt)
+    F\lt( \mu + \frc12 - i\nu,\mu+\frc12-i\frc{\om_2}2;1+2\mu;2-i0\rt). \nonumber
+\"
+12,"\begin{eqnarray}\lab{G} &&
+G_\a^{(p)}(\om_1,\om_2) = \sum_{n=0}^\infty \lt[ \sin(\pi\a)
+        \frc{\G(1+\mu+\a+n)}{\G(1-\mu+\a+n)} e^{ip(\frc12+\a+n)} \rt. \\
+&&\times\;  \lt.
+F\lt(\mu+1+\a+n,\mu+\frc12-i\frc{\om_1}2;2\mu+1;2+i0\rt)
+        F\lt(\mu+1+\a+n,\mu+\frc12-i\frc{\om_2}2;2\mu+1;2-i0\rt) \rt]
+        \nonumber
+\"
+13,"\begin{eqnarray}
+&&  \G(2\mu+1)^2 \sin(\pi\a) 4^{-\mu} (2n)^{-1} e^{\pi\Delta}e^{ip(\frc12+\a+n)} \times \nonumber\\
+&&  \lt[ \frc{(2n)^{-i\om}}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+         + \rt.
+    \frc{(2n)^{i\om}}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+         + \nonumber \\
+&&
+\frc{e^{i\pi(\a-\mu+n)}(2n)^{-i\Delta}}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+          +
+    \lt. \frc{e^{-i\pi(\a-\mu+n)}(2n)^{i\Delta}}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+          \rt] \nonumber,
+\"
+14,"\begin{eqnarray}
+&&  \G(2\mu+1)^2 \sin(\pi\a) 4^{-\mu} e^{\pi\Delta} \times \nonumber\\
+&&  \lt[ \frc{1}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+        \frc{\zeta(1+i\om)}{2^{1+i\om}} + \rt.
+    \frc{1}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+        \frc{\zeta(1-i\om)}{2^{1-i\om}} +  \nonumber \\
+&&  \frc{e^{i\pi(\a-\mu)}(2^{-i\Delta}-1)
+}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 +
+i\frc{\om_2}2\rt)}
+        \frc{\zeta(1+i\Delta)}{2^{1+i\Delta}} +
+    \lt. \frc{e^{-i\pi(\a-\mu)}(2^{i\Delta}-1) }{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+        \frc{\zeta(1-i\Delta)}{2^{1-i\Delta}} \rt]  \nonumber,
+\"
+15,"\begin{eqnarray}
+&&  \<vac| \Or_\a | \beta_1, \beta_2\>_{+-}^{flat} = \lim_{\mu\to\infty} \times \\
+&&  (2\mu)^{\a^2+1} 2\pi \sqrt{\rho(2\mu\sinh(\beta_1))
+\rho(2\mu\sinh(\beta_2))
+    \cosh(\beta_1)\cosh(\beta_2)} F_\a(2\mu\sinh(\beta_1), 2\mu\sinh(\beta_2))_{+-} \nonumber
+\"
+16,"\begin{eqnarray} &&  w'' - \frc12\lt( \frc1w + \frc1{w-1} +
+\frc1{w-s} \rt) (w')^2 + \lt(\frc1s + \frc1{s-1} +
+\frc1{w-s}\rt)w' \nonumber\\&& = \frc{w(w-1)(w-s)}{s^2(1-s)^2} \lt(
+\frc{(1-4\mu^2)s(s-1)}{2(w-s)^2} - \frc{(\t\lambda-1)^2s}{2w^2}
+        + \frc{\gamma(s-1)}{(w-1)^2} + \frc{\lambda^2}2 \rt)
+\lab{painleveintro}\"
+17,"\begin{eqnarray}\lab{tau}
+    \frc{d}{ds} \ln\tau(s) &=& \frc{s(1-s)}{4w(1-w)(w-s)} \lt( w'-\frc{1-w}{1-s} \rt)^2 - \frc{\mu^2}{w-s} \nonumber\\
+    &&  + \frc{{\t\lambda}^2}{4(1-s)w} + \frc{\lambda^2 w}{4s(1-s)} - \frc{\lambda^2}{4s}
+        + \frc{4\mu^2-{\t\lambda}^2 - \lambda^2}{4(1-s)} .
+\"
+18,"\begin{eqnarray}\lab{pwave}
+    \Psi_s(\xi_\rx,\xi_\ry) &=& \int d\om\, \rho(\om) \, \lt(
+        A_-^\dag(\om) e^{i\om \xi_\rx} \b{P}_-(\om,\xi_\ry) + A_+(\om) e^{-i\om \xi_\rx} P_+(\om,\xi_\ry) \rt)\\
+    \Psi_s^\dag(\xi_\rx,\xi_\ry) &=& \int d\om\, \rho(\om) \, \lt(
+        A_+^\dag(\om) e^{i\om \xi_\rx} \b{P}_+(\om,\xi_\ry) + A_-(\om) e^{-i\om\xi_\rx} P_-(\om,\xi_\ry) \rt) \nonumber ,
+\"
+19,"\begin{eqnarray}\lab{genexp}
+    \<\Or_\a(x)\Or_{\a'}(y)\> &=& \sum_{n=0}^{\infty} \frc1{n!} \sum_{\ep_1,\ldots,\ep_n} \int
+    \lt(\prod_{j=1}^n d\omega_j \rho(\om_j)\rt) \;\times \\
+&&\times\;  F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n}
+        (F_{-\a'}(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n})^*
+    e^{-i(\om_1+\cdots+\om_n) \frc{\dist(x,y)}{2R}} \nonumber.
+\"
+20,"\begin{eqnarray}\lab{unu}
+    u_\nu &=& \frc{\Gamma(1+\mu)\Gamma\lt(\frc12+\mu-i\nu\rt)}{\Gamma(1+2\mu)\Gamma\lt(\frc12-i\nu\rt)}
+        e^{i\nu\eta}(1-e^{2\eta})^{\mu} F(\mu,\frc12+\mu+i\nu;1+2\mu;1-e^{2\eta}) \\
+\lab{vnu}
+    v_\nu &=& - i \frc{\Gamma(1+\mu)\Gamma\lt(\frc12+\mu-i\nu\rt)}{\Gamma(1+2\mu)\Gamma\lt(\frc12-i\nu\rt)}
+        e^{-i\nu\eta}(1-e^{2\eta})^{\mu} F(\mu,\frc12+\mu-i\nu;1+2\mu;1-e^{2\eta}),
+\"
+21,"\begin{eqnarray} &&
+\frc{\Tr\lt( e^{-2\pi H_A} a_{\ep}^\dag(\om)
+a_{\ep'}(\om')\rt)}{\Tr\lt( e^{-2\pi H_A}\rt)}
+    = \frc1{\rho(\om)} \delta(\om-\om') \delta_{\ep,\ep'} \nonumber\\
+&&  \frc{\Tr\lt( e^{-2\pi H_A} a_{\ep}(\om)
+a_{\ep'}(\om')\rt)}{\Tr\lt( e^{-2\pi H_A}\rt)}
+    = 0
+\"
+22,"\begin{eqnarray}
+    \<\Or_\a\> &=& (2R)^{-\a^2} \exp\lt[ \int_0^\infty \frc{dt}{t} (1-e^{-2\mu t}) \frc{\sinh^2(\a t)}{\sinh^2(t)}\rt] \nonumber\\
+\lab{VEV}   &=& (2R)^{-\a^2} \prod_{n=1}^{\infty} \lt( \frc{1-\frc{\a^2}{(\mu+n)^2}}{1-\frc{\a^2}{n^2}}\rt)^n \\
+        &=& (2R)^{-\a^2} \frc{G(1+\mu-\a) G(1+\mu+\a)}{G(1+\mu)^2 G(1-\a) G(1+\a)} \nonumber,
+\"
+23,"\begin{eqnarray}
+&&  \sqrt{\rho(\om_1)} F_\a(\om_1,\om_2)_{+,-} \sim |\om_1|^{-1\pm\a} \; \mbox{ as } \Re e(\om_1)\to \pm\infty\nonumber\\
+&&  \sqrt{\rho(\om_2)} F_\a(\om_1,\om_2)_{+,-} \sim
+|\om_2|^{-1\mp\a} \; \mbox{ as } \Re e(\om_2)\to \pm\infty\nonumber
+\"
+24,"\begin{eqnarray}
+    \<\Or_\a(x)\Or_{\a'}(y)\> &=& \sum_{n=0}^{\infty} \frc1{n!} \sum_{\ep_1,\ldots,\ep_n}
+    \sum_{k_1,\ldots,k_n=0}^{\infty} \;\times  \nonumber \\
+&&\times\;  \<0|\Or_\a(0)|k_1,\ldots,k_n\>_{\ep_1,\ldots,\ep_n}
+    {\ }_{\ep_n,\ldots,\ep_1}\<k_n,\ldots,k_1|\Or_{\a'}(0)|0\>
+    e^{-(\l_1+\cdots+\l_n) \frc{\dist(x,y)}{2R}} \nonumber.
+\"
+25,"\begin{eqnarray}\lab{ffexp} &&  F(t) = 1 - 4^{2\mu+1}
+\frc{\sin(\pi\a) \sin(\pi\a') \G(1+\mu+\a) \G(1+\mu-\a)
+    \G(1+\mu+\a') \G(1+\mu-\a') }{
+    \pi^2 \G(2+2\mu)^2} e^{-(4\mu+2) t} \times \nonumber\\
+&&  \ \ \ \ \ \lt( 1 - 2\a\a' \frc{2\mu+1}{(\mu+1)^2} e^{-2t} +
+O(e^{-4t}) \rt) \;
+    + \; O(e^{-(8\mu+4)t}),
+\"
+26,"\begin{eqnarray}
+    \<vac| \piperp(\Psi_R(z,\b{z})) |r\>_+ &=& -i \frc{\G(1+\mu)}{\G\lt(\frc12+\mu\rt)}
+        (1-z\b{z})^\mu r^{-\frc12} (1-\b{z} r)^{-\mu} (1-zr^{-1})^{-\mu-1} \nonumber\\
+    \<vac| \piperp(\Psi_L(z,\b{z})) |r\>_+ &=& \frc{\G(1+\mu)}{\G\lt(\frc12+\mu\rt)}
+        (1-z\b{z})^\mu r^{\frc12} (1-z r^{-1})^{-\mu} (1-\b{z}r)^{-\mu-1}.
+\lab{PsiZ}\"
+27,"\begin{eqnarray} &&  \<\<a_+(\om_1)a_-(\om_2)
+\>\>_\a =
+    \frc{4^{-\mu} e^{(\om_2-\om_1)\frc\pi4}}{\G(1+\mu)^2} \int_{-\infty}^\infty d\nu\,
+    \frc{\G\lt(\mu+\frc12+i\nu\rt) \G\lt(\mu+\frc12-i\nu\rt) \cosh(\pi\nu)}{1+e^{2\pi\nu-2\pi i \a}}
+    \times \nonumber\\
+&&  \qquad F\lt( \mu + \frc12 -
+i\nu,\mu+\frc12-i\frc{\om_1}2;1+2\mu;2+i0\rt)
+    F\lt( \mu + \frc12 - i\nu,\mu+\frc12-i\frc{\om_2}2;1+2\mu;2-i0\rt). \nonumber
+\"
+28,"\begin{eqnarray}\lab{G} &&
+G_\a^{(p)}(\om_1,\om_2) = \sum_{n=0}^\infty \lt[ \sin(\pi\a)
+        \frc{\G(1+\mu+\a+n)}{\G(1-\mu+\a+n)} e^{ip(\frc12+\a+n)} \rt. \\
+&&\times\;  \lt.
+F\lt(\mu+1+\a+n,\mu+\frc12-i\frc{\om_1}2;2\mu+1;2+i0\rt)
+        F\lt(\mu+1+\a+n,\mu+\frc12-i\frc{\om_2}2;2\mu+1;2-i0\rt) \rt]
+        \nonumber
+\"
+29,"\begin{eqnarray}
+&&  \G(2\mu+1)^2 \sin(\pi\a) 4^{-\mu} (2n)^{-1} e^{\pi\Delta}e^{ip(\frc12+\a+n)} \times \nonumber\\
+&&  \lt[ \frc{(2n)^{-i\om}}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+         + \rt.
+    \frc{(2n)^{i\om}}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+         + \nonumber \\
+&&
+\frc{e^{i\pi(\a-\mu+n)}(2n)^{-i\Delta}}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+          +
+    \lt. \frc{e^{-i\pi(\a-\mu+n)}(2n)^{i\Delta}}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+          \rt] \nonumber,
+\"
+30,"\begin{eqnarray}
+&&  \G(2\mu+1)^2 \sin(\pi\a) 4^{-\mu} e^{\pi\Delta} \times \nonumber\\
+&&  \lt[ \frc{1}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt)
+\G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+        \frc{\zeta(1+i\om)}{2^{1+i\om}} + \rt.
+    \frc{1}{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 + i\frc{\om_2}2\rt)}
+        \frc{\zeta(1-i\om)}{2^{1-i\om}} +  \nonumber \\
+&&  \frc{e^{i\pi(\a-\mu)}(2^{-i\Delta}-1)
+}{\G\lt(\mu+\frc12-i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 +
+i\frc{\om_2}2\rt)}
+        \frc{\zeta(1+i\Delta)}{2^{1+i\Delta}} +
+    \lt. \frc{e^{-i\pi(\a-\mu)}(2^{i\Delta}-1) }{\G\lt(\mu+\frc12+i\frc{\om_1}2\rt) \G\lt(\mu+\frc12 - i\frc{\om_2}2\rt)}
+        \frc{\zeta(1-i\Delta)}{2^{1-i\Delta}} \rt]  \nonumber,
+\"
+31,"\begin{eqnarray}
+&&  \<vac| \Or_\a | \beta_1, \beta_2\>_{+-}^{flat} = \lim_{\mu\to\infty} \times \\
+&&  (2\mu)^{\a^2+1} 2\pi \sqrt{\rho(2\mu\sinh(\beta_1))
+\rho(2\mu\sinh(\beta_2))
+    \cosh(\beta_1)\cosh(\beta_2)} F_\a(2\mu\sinh(\beta_1), 2\mu\sinh(\beta_2))_{+-} \nonumber
+\"

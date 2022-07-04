@@ -1,0 +1,317 @@
+,document
+0,"\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We show how, modulo the distinction between the antipode and the
+``twisted'' or ``renormalized'' antipode, Connes and Kreimer's
+algebraic paradigm trivializes the proofs of equivalence of the
+(corrected) Dyson--Salam, Bogoliubov--Parasiuk--Hepp and Zimmermann
+procedures for renormalizing Feynman amplitudes. We discuss the
+outlook for a parallel simplification of computations in quantum field
+theory, stemming from the same algebraic approach.
+\end{abstract}
+
+\medskip
+
+\noindent \textit{Keywords}:
+Feynman diagrams, renormalization, graded Hopf algebras, antipodes.
+
+\noindent PACS numbers: 11.10.Gh, 02.20.Uw
+
+
+\section{Introduction}
+
+The present authors have dealt in a Hopf algebraic context with the
+relation between the Dyson--Salam, Bogoliubov--Parasiuk and Zimmermann
+renormalization schemes in~\cite{Ananke}. This we did using the
+algebra of rooted trees $H_R$~\cite{ConnesKrTrees} as a proxy for the
+complexities of the combinatorics of Feynman graphs in renormalization.
+
+The point of~\cite{Ananke} was that the differences of the diverse
+schemes could largely be tracked down to avatars of the convolution
+operation in spaces of homomorphisms of the Hopf algebra. This was
+illustrated by the apparently simple-minded, but tremendously
+effective, computation of antipode images in $H_R$ by means of the
+convolution geometric series.
+
+In this paper we return on the subject, now in terms of Hopf algebras
+of the Feynman graphs themselves.
+
+It must be acknowledged that the deeply conceptual approach by Connes
+and Kreimer till now has failed to impress many physicists who
+practice renormalization theory. For that approach to become
+mainstream, it should be shown to simplify both \textit{proofs} and
+\textit{calculations} in perturbative renormalization theory.
+
+The proof given by Zimmermann~\cite{Zimmermann} of the equivalence of
+his forest formula and Bogo\-liubov and Parasiuk's scheme has a
+reputation of difficulty. The Dyson--Salam scheme has been thoroughly
+analyzed and purged of difficulties in~\cite{Manoukian}. But the proof
+of equivalence between the forest and the (corrected) Dyson--Salam
+formulae given in~\cite{Manoukian} is anything but simple.
+
+In contrast, here we show that the equivalence between all the
+aforementioned schemes boils down to downright basic facts in Hopf
+algebra theory. So basic in fact, that we can only conclude that the
+combinatorics of perturbative renormalization finds its definitive
+expression in Hopf algebraic terms. Not only the equivalence proofs
+result from uniqueness of the Hopf antipode, but we are able to show
+that the Dyson--Salam scheme corresponds \textit{identically} to the
+convolution geometric series. All our arguments are elementary and
+short, much more so, by the way, than in~\cite{Ananke}: in the
+previous paper, we did not quite see the forest for the trees.
+
+At the end of the paper we briefly review the perspectives for the
+Connes--Kreimer method to simplify other theorems and
+\textit{computations} in renormalization, by means of reduction to the
+case of elements that are primitive (i.e., without subdivergences).
+Here the situation is more mixed; still, the hope remains that
+sizeable simplifications can be gleaned from the algebraic approach.
+
+
+\section{Bialgebras of graphs}
+
+The basics of graded bialgebra theory are recalled in the Appendix.
+{}From now on, we assume the reader is familiar with them.
+
+Bialgebras of Feynman graphs, encoding the combinatorics of
+renormalization, were introduced by Connes and Kreimer
+in~\cite{ConnesKrRHI}. The precise definition we use in this paper was
+first given in~\cite{Etoile}. To fix ideas, and whenever an example is
+given, we think of the (massless) $\varphi^4_4$ scalar model.
+Nevertheless, the constructions hold in any given quantum field
+theory, such as the $\varphi^3_6$ model considered
+in~\cite{ConnesKrRHI}.
+
+We recall that a \textit{graph} or diagram $\Gamma$ of the theory is
+specified by a set $\mathcal{V}(\Gamma)$ of \textit{vertices} and a set $\mathcal{L}(\Gamma)$
+of \textit{lines} (propagators) among them; \textit{external} lines
+are attached to only one vertex each, \textit{internal} lines to two.
+Diagrams with no external lines will not be taken into account ---and
+in $\varphi^4_4$ theory only graphs with an even number of external
+lines are to be found. Also tadpole diagrams, in which a line connects
+a vertex to itself, are excluded in this paper.
+
+Given a graph $\Gamma$, a \textit{subdiagram} $\gamma$ of $\Gamma$ is specified
+by a subset of at least two elements of $\mathcal{V}(\Gamma)$ and a subset of the
+lines that join these vertices in $\Gamma$. By exception, the empty
+subset $\emptyset$ will be admitted as a subdiagram of $\Gamma$. As well
+as $\Gamma$ itself. Clearly, the external lines for a subdiagram $\gamma$
+include not only a subset of original incident lines, but some
+internal lines of $\Gamma$ not included in $\gamma$. The connected pieces of
+$\Gamma$ are the maximal connected subdiagrams. A diagram is
+\textit{proper} (or 1PI) when the number of its connected pieces would
+not increase on the removal of a single internal line; otherwise it is
+called \textit{improper}. An improper graph is the union of proper
+components plus subdiagrams containing a single line.
+
+A \textit{subgraph} of a proper graph is a subdiagram that contains
+all the elements of $\mathcal{L}(\Gamma)$ joining its vertices in the whole graph;
+as such, it is determined solely by the vertices. When a subdiagram
+contains several connected pieces, each one of them being a subgraph,
+we still call it a subgraph. A subgraph of an improper graph $\Gamma$,
+distinct from $\Gamma$ itself, is a proper subdiagram each of whose
+components is a subgraph with respect to the proper components of
+$\Gamma$.
+
+We write $\gamma \subseteq \Gamma$ if and only if $\gamma$ is a subgraph of
+$\Gamma$ as defined (not just a subdiagram): this is the really important
+concept for us. For renormalization in configuration
+space~\cite{Carme}, it is more convenient to deal with subgraphs than
+with more general subdiagrams. Zimmermann showed long ago that only
+subtractions corresponding to subgraphs need be used~\cite{ZimVW}, and
+this dispenses us from dealing with subdiagrams that are not
+subgraphs.
+
+Two subgraphs $\gamma_1,\gamma_2$ of $\Gamma$ are said to be
+\textit{nonoverlapping} when $\gamma_1 \cap \gamma_2 = \emptyset$ or
+$\gamma_1 \subseteq \gamma_2$ or $\gamma_2 \subseteq \gamma_1$; otherwise they are
+overlapping. Given $\gamma \subseteq \Gamma$, the quotient graph or cograph
+$\Gamma/\gamma$ (reduced graph in Zimmermann's parlance) is defined by
+shrinking $\gamma$ in $\Gamma$ to a point, that is to say, $\gamma$ (bereft of
+its external lines) is considered as a vertex of $\Gamma$, and all the
+lines in $\Gamma$ not belonging to $\gamma$ belong to $\Gamma/\gamma$. This is
+modified in the obvious way when $\gamma$ represents a propagator
+correction. The graphs $\Gamma$ and $\Gamma/\gamma$ have the same external
+structure. A nonempty $\Gamma/\gamma$ will be proper iff $\Gamma$ is proper
+---the situation considered in~\cite{ConnesKrRHI}.
+
+Now, the bialgebra $\mathcal{H}$ is defined as the polynomial algebra generated
+by the empty set $\emptyset$ and the connected Feynman graphs that are
+(superficially) divergent and/or have (superficially) divergent
+subgraphs (renormalization parts in Zimmermann's parlance), with set
+union as the product operation (hence $\emptyset$ is the unit element
+$1\in\mathcal{H}$). The counit is given by $\varepsilon(\Gamma) := 0$ on any generator,
+except $\varepsilon(\emptyset) = 1$.
+
+The really telling operation is the coproduct $\Delta: \mathcal{H} \to \mathcal{H} \otimes \mathcal{H}$;
+as it is to be a homomorphism of the algebra structure, we need only
+define it on connected diagrams. By definition, the coproduct of $\Gamma$
+is given by
+\begin{equation}
+\Delta \Gamma\, := \Gamma \otimes 1 + 1 \otimes \Gamma
++ \sum_{\emptyset\varsubsetneq\gamma\varsubsetneq\Gamma} \gamma \otimes \Gamma/\gamma\,
+= \sum_{\emptyset \subseteq \gamma \subseteq \Gamma} \gamma \otimes \Gamma/\gamma.
+\label{eq:coprod} %% (1)
+\end{equation}
+The sum is over all divergent, proper, not necessarily connected
+subgraphs of $\Gamma$, such that \textit{each piece} is divergent,
+including (and then with the possible exception of, as $\Gamma$ need not
+be divergent nor proper) the empty set and $\Gamma$ itself. We put
+$\Gamma/\Gamma = 1$. When appropriate, the sum runs also over different
+types of local counterterms associated to $\gamma$~\cite{ConnesKrRHI};
+this is not needed in our example model.
+
+It is natural to exclude the appearance of tadpole parts in $\Gamma/\gamma$,
+and this we do hereafter. This tadpole-free condition was not used or
+remarked in~\cite{Etoile}, nor in~\cite{GudrunIII}, which employs the
+same definition. We show in Figure~\ref{fg:tadpole-corr} how his
+situation can happen. The cograph corresponding to the ``bikini''
+subgraph in the upper part of the graph in
+Figure~\ref{fg:tadpole-corr} is a tadpole correction and can be
+outlawed from the coproduct.
+
+\begin{figure}[ht]
+\begin{center}
+\vspace{2pc}
+\parbox{5pc}{
+\begin{picture}(50,18)
+\put(-20,5){$\Delta$}
+\put(-10,5){$\Biggl($}
+\put(25,10){\circle{40}}
+\put(25,-10){\circle{20}}
+\qbezier(25,30)(35,10)(50,20)
+\qbezier(25,30)(15,10)(0,20)
+\put(52,5){$\Biggr)$}
+\end{picture}
+}\qquad
+would contain the term
+\qquad
+\parbox{7pc}{
+\begin{picture}(80,10)
+\put(0,5){\line(-1,2){5}}
+\put(0,5){\line(-1,-2){5}}
+\put(10,5){\circle{20}}
+\put(30.2,5){\circle{20}}
+\put(40.2,5){\line(1,2){5}}
+\put(40.2,5){\line(1,-2){5}}
+\put(52,2){$\otimes$}
+\put(85,5){\circle{30}}
+\put(85,-10){\circle{15}}
+\put(85,20){\line(3,2){10}}
+\put(85,20){\line(-3,2){10}}
+\put(82,18){$\bullet$}
+\end{picture}
+}
+\end{center}
+\vspace{1pc}
+\caption{Cograph which is a tadpole part}
+\label{fg:tadpole-corr}
+\vspace{1pc}
+\end{figure}
+
+For the proof of the bialgebra properties of $\mathcal{H}$, we refer
+to~\cite{Polaris}; for graphical examples of coproducts,
+see~\cite{Etoile}.
+
+Actually $\mathcal{H}$ is a connected, graded bialgebra. Obvious grading
+operators are available: if $\#(\Gamma)$ denotes the number of vertices
+in $\Gamma$ (i.e., the coupling order), then we define the degree of a
+generator (connected element) $\Gamma$ as $\nu(\Gamma) := \#(\Gamma) - 1$; the
+degree of a product is the sum of the degrees of the factors. This
+grading is compatible with the coproduct, and clearly scalars are the
+only degree~0 elements. Other gradings are by the number $I(\Gamma)$ of
+internal lines in $\Gamma$ and by loop number
+$\ell(\Gamma) := I(\Gamma) - \nu(\Gamma)$. For the $\varphi^4_4$ model,
+$\ell(\Gamma) = \nu(\Gamma) + 1$ for two-point graphs and
+$\ell(\Gamma) = \nu(\Gamma)$ for four-point graphs. A more relevant grading
+will emerge in the next section.
+
+Lurking in the background there is a character (i.e., multiplicative)
+map $f$ (the ``Feynman rule'') of $\mathcal{H}$ into an algebra $V$ of Feynman
+amplitudes: for instance, in dimensional regularization the character
+takes values in a ring of Laurent series (with finite order poles) in
+the regularization parameter. In physics, the Feynman rules are
+essentially fixed by the interpretation of the theory, and thus one
+tends to identify $\Gamma$ with $f(\Gamma)$.
+
+
+\section{The importance of convolution}
+
+Given a unital algebra $(A,m,u)$ and a counital coalgebra
+$(C,\Delta,\varepsilon)$ over $\mathbb{F}$, the \textit{convolution} of two elements
+$f,g$ of the vector space of $\mathbb{F}$-linear maps $\Hom(C,A)$ is defined
+as the map $f * g \in \Hom(C,A)$ given by the composition
+$$
+C \mathop{\longrightarrow}\limits^\Delta C \otimes C \mathop{\longrightarrow}\limits^{f\otimes g} A \otimes A \mathop{\longrightarrow}\limits^m A.
+$$
+In other words, $f * g = m (f \otimes g) \Delta$. This product
+turns $\Hom(C,A)$ into a unital algebra, where the unit is the map
+$u \varepsilon$, as is easily checked. In particular, linear endomorphisms of
+a bialgebra can be convolved.
+
+A bialgebra $H$ in which the identity map $\mathrm{id}_H$ is invertible under
+convolution is called a \textit{Hopf algebra}, and its convolution
+inverse $S$ is called the coinverse or \textit{antipode}; that is to
+say, $\mathrm{id}_H * S = S * \mathrm{id}_H = u \varepsilon$. The antipode is clearly unique.
+It is known to be of order two for commutative bialgebras. Also, in a
+commutative bialgebra $S$ is a homomorphism: $S(ab) = S(a)S(b)$.
+
+In particular, if $\Delta(a) = \sum_j a'_j \otimes  a''_j$, then
+\begin{equation}
+\varepsilon(a) 1_H = u \varepsilon(a) = m(S \otimes \mathrm{id})\Delta(a) = \mathop{\textstyle\sum}\nolimits_j S(a'_j) a''_j,
+\label{eq:antipode}% (2)
+\end{equation}
+and likewise $\varepsilon(a) 1_H = \sum_j a'_j S(a''_j)$. Since any left
+inverse under convolution automatically equals any right inverse
+provided both exist, any map $S$ satisfying \eqref{eq:antipode} is the
+antipode.
+
+The main outcome of equation~\eqref{eq:gr-coprod} in the Appendix for
+connected graded bialgebras is that these \textit{are always Hopf}.
+Indeed, as is done in~\cite{Ananke}, one can try to compute the
+antipode $S\colon H \to H$ by exploiting its very definition as the
+convolution inverse of the identity in $H$, via a geometric series:
+\begin{equation}
+S := (\mathrm{id})^{*-1} = (u \varepsilon -(u \varepsilon -\mathrm{id}))^{*-1}
+      = u \varepsilon + (u \varepsilon -\mathrm{id}) + (u \varepsilon -\mathrm{id})^{*2}
+      + \cdots
+\label{eq:geom-series}% (3)
+\end{equation}
+
+
+\begin{prop}% Proposition 1.
+Let $H$ be a connected, graded bialgebra, then the geometric series
+expansion of $S(a)$ has at most $n+1$ terms when $a \in H^{(n)}$.
+\end{prop}
+
+\begin{proof}
+If $a \in H^{(0)}$ the claim holds since $(u \varepsilon - \mathrm{id})1 = 0$.
+Assume that the claim holds for the elements of $H^{(k)}$ when
+$k \leq n-1$, and let $a \in H^{(n)}$; then by~\eqref{eq:gr-coprod}
+\begin{align*}
+(u \varepsilon -\mathrm{id})^{*(n+1)}(a)
+&= (u \varepsilon -\mathrm{id}) * (u \varepsilon -\mathrm{id})^{*n}(a)
+\\
+&= m [(u \varepsilon -\mathrm{id}) \otimes (u \varepsilon -\mathrm{id})^{*n}] \Delta(a)
+\\
+&= m [(u \varepsilon -\mathrm{id}) \otimes (u \varepsilon -\mathrm{id})^{*n}]
+(a \otimes 1 + 1 \otimes a + \Delta'a).
+\end{align*}
+The first two terms vanish because $(u \varepsilon - \mathrm{id})1 = 0$. By the
+induction hypothesis each of the summands of the third term are also
+zero.
+\end{proof}
+
+As a corollary, connected graded bialgebras are always Hopf, with
+antipode indeed given by the geometric series~\eqref{eq:geom-series}.
+One of the advantages of this formulation is that we obtain fully
+explicit formulae for $S$ from the coproduct.
+
+
+\begin{prop}% Proposition 2.
+If $a \in H^{(n)}$, $\Delta'(a) = \sum_{j_1} a'_{j_1} \otimes a''_{j_1}$,
+$\Delta'(a'_{j_1}) = \sum_{j_2} a'_{j_1j_2} \otimes a''_{j_1j_2}$, and in
+general $\Delta'(a'_{"

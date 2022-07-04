@@ -1,0 +1,591 @@
+,section
+0,\section{Introduction}
+1,"\section{An unrenormalized expression for $\left<
+\varphi^2 \right>$ and $\left< T^{\mu}_{\nu} \right>$}"
+2,"\section{WKB approximation for $\langle \varphi^2 \rangle$ and
+$\langle T^{\mu}_{\nu} \rangle$ of a very massive field}"
+3,"\section{High-frequency contribution to $\langle \varphi^2 \rangle$
+and $\langle T^{\mu}_{\nu} \rangle$}"
+4,"\section{Low-frequency contribution to $\langle \varphi^2 \rangle$
+and $\langle T^{\mu}_{\nu} \rangle$}"
+5,\section{Conclusion}
+6,"\section*{Acknowledgments}
+%--------------------------------------------------------------------
+
+I would like to thank S. V. Sushkov and N. R. Khusnutdinov for
+helpful discussions. This work was supported by the Russian
+Foundation for Basic Research Grant No. 02-02-17177 and by the
+SRPED Foundation of Tatarstan Republic Grant No. 06-6.5-110.
+
+%--------------------------------------------------------------------
+\section*{Appendix A}
+
+\setcounter{equation}{0}
+
+%--------------------------------------------------------------------
+To calculate the quantities $S^k_n(\varepsilon, u_0)$ it is
+necessary to compute the various sums over $l$. We start from the
+sum in expression (\ref{36}):
+      \begin{eqnarray} \label{sun} S(u, n)=
+      \sum \limits_{l=0}^{\infty}  \left\{\frac{\left(l+\frac12
+      \right)^{2n+1}}{[u^2+\left(l+1/2\right)^2]^{(2n-1)/2}}
+      -\left(l+\frac12 \right)^2+(2n-1)\frac{u^2}{2} \right\},
+       \quad n \geq 0.
+      \end{eqnarray}
+For calculation of this sum we can use the Abel-Plana method
+\cite{Evg,Sushkov2,P}
+      \begin{equation}
+      \sum \limits_{l=0}^{\infty} F( l+1/2)
+      =\int \nolimits_{q}^{\infty}F(x)dx
+      +\int \nolimits_{q-i\infty}^{q}\frac{F(z)}{1+e^{i2\pi z}}dz
+      -\int \nolimits_{q}^{q+i\infty}\frac{F(z)}{1+e^{-i2\pi z}}dz,
+      \end{equation}
+where $-1/2<q<1/2$, $f(z)$ is a holomorphic function for $Re z\geq
+q$, $f(z)$ satisfies the condition
+      \begin{equation} \label{1}
+      \left| F(x+iy) \right|<\epsilon(x)e^{a|y|}, \quad 0<a<2\pi,
+      \end{equation}
+and $\epsilon(x)$ is an arbitrary function with asymptotic
+behavior
+      \begin{equation}
+      \epsilon(x)\rightarrow 0 \quad \mbox{for} \quad x
+      \rightarrow +\infty.
+      \end{equation}
+Using this formula we can calculate the sum (\ref{sun}):
+      \begin{eqnarray} \label{p1}
+      S(u, n)&=&\lim _{q \rightarrow +0}\left\{
+       \int\nolimits_{q}^{\infty}\left[\frac{x^{2n+1}}
+       {(u^2+x^2)^{(2n-1)/2}}-x^2+(2n-1)\frac{u^2}{2}\right]dx
+       \right. \nonumber \\ && \left.+\int \nolimits_{q-i\infty}^{q}
+       \left[ \frac{z^{2n+1}}{(u^2+z^2)^{(2n-1)/2}}
+      -z^2+(2n-1)\frac{u^2}{2}\right]\frac{dz}
+      {(1+e^{i2\pi z})} \right. \nonumber \\ && \left.
+      -\int \nolimits_{q}^{q+i\infty}\left[\frac{z^{2n+1}}
+      {(u^2+z^2)^{(2n-1)/2}}-z^2+(2n-1)\frac{u^2}{2}\right]
+      \frac{dz}{(1+e^{-i2\pi z})}  \right\} \nonumber \\ &&
+      =\frac{(2n-1)}{3}\frac{(2n)!! \ u^3}{(2n-1)!!}
+      +2(-1)^m \lim_{\delta \rightarrow +0} \left[
+      \int \nolimits_{0}^{u+\delta}\frac{x ^{2n+1}dx}
+      {(u^2-x^2)^{(2n-1)/2}(1+e^{2\pi x})}\right. \nonumber \\ && \left.
+      -\left( { \mbox{\small {terms of this integral that}}
+      \atop\mbox{\small{diverge in the limit}} \ \delta \rightarrow +0}
+      \right)\right]\nonumber \\ &&
+      =\frac{(2n-1)\ u^3}{(2n-1)!!}\left\{\frac{(2n)!!}{3}
+      -2\left(\frac{d}{u d u}\right)^n
+      \left[u^{2n} \int \nolimits_{0}^{1}\frac{y \sqrt{1-y^2} dy}
+      {1+e^{2\pi u y}} \right]\right\} \hspace{2cm} (n \geq 0).
+      \end{eqnarray}
+The sum in expression (\ref{37}) can be calculated by the
+differentiation of $S(u,n)$:
+      \begin{eqnarray} \label{sunn}
+      &&\sum \limits_{l=0}^{\infty}  \left\{\frac{\left(l+\frac12
+      \right)^{2n+1}}{[u^2+\left(l+1/2\right)^2]^{(2n+1)/2}}
+      -1 \right\}=\frac{-1}{(2n-1)}\left(\frac{d}{u du}\right) S(u, n)
+      \nonumber \\ && =-\frac{(2n)!! \ u}{(2n-1)!!} +\frac{2}{(2n-1)!!}
+      \left(\frac{d}{u d u}\right)\left\{u^3
+      \left(\frac{d}{u d u}\right)^n
+      \left[u^{2n} \int \nolimits_{0}^{1}\frac{y \sqrt{1-y^2} dy}
+      {1+e^{2\pi u y}} \right]
+       \right\} \hspace{2cm} (n \geq 0).
+      \end{eqnarray}
+The other sums in the expression for $S_n^k(\varepsilon, u_0)$
+[Eq. (\ref{intsums})] can also be calculated by the
+differentiation of $S(u,n)$:
+      \begin{eqnarray} \label{sukn}
+      &&\sum \limits_{l=0}^{\infty} \frac{\left(l+\frac12
+      \right)^{2n+1}}{[u^2+\left(l+1/2\right)^2]^{(2n+2k+3)/2}}
+      =\frac{(-1)^k (2n-1)!!}{(2n-1)(2n+2k+1)!!}
+      \left(\frac{d}{u du}\right)^{k+2} S(u, n)\nonumber \\ &&
+      =-\frac{(2n)!!}{(2n+2k+1)!!}\frac{(2k-1)!!}{u^{2k+1}}
+      \nonumber \\ && -\frac{2 (-1)^k}{(2n+2k+1)!!}
+      \left(\frac{d}{u d u}\right)^{k+2}\left\{u^3
+      \left(\frac{d}{u d u}\right)^n
+      \left[u^{2n} \int \nolimits_{0}^{1}\frac{y \sqrt{1-y^2} dy}
+      {1+e^{2\pi u y}} \right]
+       \right\} \hspace{2.3cm} \left(n \geq 0, \atop k \geq 0 \right).
+      \end{eqnarray}
+The integral over $y$ in all these expressions can be calculated
+approximately. In this integral the integrand decreases
+exponentially for $y > 1/(2 \pi u)$. The parameter $u$ in all
+expressions (\ref{intsums}) satisfies the condition $u > u_0 \gg
+1$. Therefore the main contribution to this integral gives a small
+value of $y$ ($y \ll 1$) and the square root in the integrand can
+be expanded. Then the up limit can be gone to infinity:
+      \begin{eqnarray}
+      \int \nolimits_{0}^{1}\frac{y \sqrt{1-y^2} dy}
+      {1+e^{2\pi u y}}&=&\int \nolimits_{0}^{\infty}\frac{y  dy}
+      {1+e^{2\pi u y}}\left[1-\frac{y^2}{2}-\frac{1!!}{4!!}y^4
+      -\frac{3!!}{6!!}y^6+O(y^{8})\right]
+      \nonumber \\ && =\frac{1}{48u^2}-\frac{7}{3840u^4}-\frac{31}{129024u^6}
+      +O\left(\frac{1}{u^{10}} \right).
+      \end{eqnarray}
+Substituting this expression into Eqs. (\ref{p1})-(\ref{sukn}) and
+integrating in Eq. (\ref{intsums}) we obtain the resulting
+expressions (\ref{start})-(\ref{finish}).
+
+%--------------------------------------------------------------------
+\section*{Appendix B}
+
+\setcounter{equation}{0}
+
+%--------------------------------------------------------------------
+
+      \begin{eqnarray}
+      \left(T^{t}_{t} \right)_{\!(4)}&=& \frac{1}{46080 \pi^2 r^8
+f^4} \left\{
+      360 r^8 f^4 m^4
+      +\left[360 r^8 f^2 f'^2
+      -480 r^6 f^3 f' {(r^2)}'
+      -480 r^8 f^3 f''
+\right]m^2              \right.\nonumber \\ &&
+      +32 r^4 f^4
+      -32 {(r^2)}'''' r^6 f^4
+      -12 f''^2 r^8 f^2
+      +56 {(r^2)}''^2 r^4 f^4
+      +16 f'''' r^8 f^3
+      +7 f'^4 r^8                    \nonumber \\ &&
+      -32 f'' {(r^2)}'' r^6 f^3
+      -16 f' {(r^2)}'^3 r^2 f^3
+      +40 f'^2 {(r^2)}'' r^6 f^2
+      -16 f' f''' r^8 f^2
+      +16 f'' {(r^2)}'^2 r^4 f^3     \nonumber \\ &&
+      +4 f'^2 f'' r^8 f
+      -12 f'^3 {(r^2)}' r^6 f
+      -14 f'^2 {(r^2)}'^2 r^4 f^2
+      -48 f' {(r^2)}''' r^6 f^3
+      +48 {(r^2)}' {(r^2)}''' r^4 f^4  \nonumber \\ &&
+      -112 {(r^2)}'^2 {(r^2)}'' r^2 f^4
+      +32 f' {(r^2)}'' {(r^2)}' r^4 f^3
+      +40 {(r^2)}'^4 f^4
+      +32 {(r^2)}' f''' r^6 f^3      \nonumber \\ &&
+      +\left[5760 r^4 f^4
+      -11520 {(r^2)}'' r^4 f^4
+      +2880 {(r^2)}'^2 r^2 f^4
+      +8640 f'^2 r^6 f^2
+      -11520 f'' r^6 f^3      \right.\nonumber \\ &&
+      +5760 {(r^2)}''^2 r^4 f^4
+      +4320 f''^2 r^8 f^2
+      +7560 f'^4 r^8
+      +360 {(r^2)}'^4 f^4
+      +11520 f'' {(r^2)}'' r^6 f^3 \nonumber \\ &&
+      +2880 f' {(r^2)}'^3 r^2 f^3
+      -2880 f'^2 {(r^2)}'' r^6 f^2
+      +5760 f' f''' r^8 f^2
+      -2880 f'' {(r^2)}'^2 r^4 f^3 \nonumber \\ &&
+      -17280 f'^2 f'' r^8 f
+      -11520 f'^3 {(r^2)}' r^6 f
+      +720 f'^2 {(r^2)}'^2 r^4 f^2
+      +11520 f' {(r^2)}''' r^6 f^3 \nonumber \\ && \left.
+      -2880 {(r^2)}'^2 {(r^2)}'' r^2 f^4
+      +14400 f' f'' {(r^2)}' r^6 f^2
+      -5760 f' {(r^2)}'' {(r^2)}' r^4 f^3
+\right] \left(\xi-1/6 \right)^2 \nonumber \\ &&
+      +\left[\left(2880 r^6 f^4
+      -5760 r^8 f^3 f''
+      -5760 r^6 f^3 f' {(r^2)}'
+      +4320 r^8 f^2 f'^2
+      +720 r^4 f^4 {(r^2)}'^2 \right. \right.\nonumber \\ && \left.
+      -2880 r^6 f^4 {(r^2)}''\right) m^2
+      -960 f'' r^6 f^3
+      +960 {(r^2)}'' r^4 f^4
+      +720 f'^2 r^6 f^2
+      -960 {(r^2)}'^2 r^2 f^4 \nonumber \\ &&
+      -960 {(r^2)}'^4 f^4
+      +1920 {(r^2)}' f''' r^6 f^3
+      +960 {(r^2)}'''' r^6 f^4
+      -2160 f''^2 r^8 f^2
+      -1440 {(r^2)}''^2 r^4 f^4  \nonumber \\ &&
+      +960 f'''' r^8 f^3
+      +2880 f'' {(r^2)}'' r^6 f^3
+      +1200 f' {(r^2)}'^3 r^2 f^3
+      -2160 f'^2 {(r^2)}'' r^6 f^2  \nonumber \\ &&
+      -2880 f' f''' r^8 f^2
+      -1200 f'' {(r^2)}'^2 r^4 f^3
+      +7920 f'^2 f'' r^8 f
+      +2640 f'^3 {(r^2)}' r^6 f               \nonumber \\ &&
+      +900 f'^2 {(r^2)}'^2 r^4 f^2
+      +1920 f' {(r^2)}''' r^6 f^3
+      +2880 {(r^2)}'^2 {(r^2)}'' r^2 f^4
+      -3780 f'^4 r^8                         \nonumber \\ && \left.
+      -1440 {(r^2)}' {(r^2)}''' r^4 f^4
+      -2400 f' {(r^2)}'' {(r^2)}' r^4 f^3
+      -4320 f' f'' {(r^2)}' r^6 f^2
+\right]\left(\xi-1/6 \right)                 \nonumber \\ &&
+      + \left. \left[ -720m^4 r^8 f^4
+      -16 r^4 f^4
+      -20 {(r^2)}'^4 f^4
+      +56 {(r^2)}'^2 {(r^2)}'' r^2 f^4
+      +8 f' {(r^2)}'' {(r^2)}' r^4 f^3 \right. \right.\nonumber \\ &&
+      -28 {(r^2)}''^2 r^4 f^4
+      -16 f'''' r^8 f^3
+      +52 f' f'' {(r^2)}' r^6 f^2
+      +16 {(r^2)}'''' r^6 f^4
+      +36 f''^2 r^8 f^2             \nonumber \\ &&
+      +49 f'^4 r^8
+      -4 f' {(r^2)}'^3 r^2 f^3
+      -4 f'^2 {(r^2)}'' r^6 f^2
+      +48 f' f''' r^8 f^2
+      +4 f'' {(r^2)}'^2 r^4 f^3             \nonumber \\ &&
+      -116 f'^2 f'' r^8 f
+      -22 f'^3 {(r^2)}' r^6 f
+      -3 f'^2 {(r^2)}'^2 r^4 f^2
+      +8 f' {(r^2)}''' r^6 f^3
+      -32 {(r^2)}' f''' r^6 f^3              \nonumber \\ &&
+      -24 {(r^2)}' {(r^2)}''' r^4 f^4
+      -8 f'' {(r^2)}'' r^6 f^3
+      +\left(-2880 r^4 f^4
+      +4320 {(r^2)}'^2 r^2 f^4
+      +5580 {(r^2)}'^4 f^4         \right. \nonumber \\ &&
+      +5760 f' {(r^2)}'' {(r^2)}' r^4 f^3
+      -15840 {(r^2)}'^2 {(r^2)}'' r^2 f^4
+      +6480 f''^2 r^8 f^2
+      +5760 {(r^2)}''^2 r^4 f^4            \nonumber \\ &&
+      -2880 f'''' r^8 f^3
+      -5760 {(r^2)}'''' r^6 f^4
+      -2880 f' {(r^2)}'^3 r^2 f^3
+      +5760 f'^2 {(r^2)}'' r^6 f^2             \nonumber \\ &&
+      +15840 f' f'' {(r^2)}' r^6 f^2
+      +8640 f' f''' r^8 f^2
+      +2880 f'' {(r^2)}'^2 r^4 f^3
+      -20880 f'^2 f'' r^8 f             \nonumber \\ &&
+      -9360 f'^3 {(r^2)}' r^6 f
+      -2160 f'^2 {(r^2)}'^2 r^4 f^2
+      -2880 f' {(r^2)}''' r^6 f^3
+      -5760 {(r^2)}' f''' r^6 f^3             \nonumber \\ && \left.
+      +8640 {(r^2)}' {(r^2)}''' r^4 f^4
+      -5760 f'' {(r^2)}'' r^6 f^3
+      +8820 f'^4 r^8\right) \left(\xi-1/6\right)^2    \nonumber \\ &&  \left. \left.
+      +\left(2880 r^6 f^4 {(r^2)}''
+      -720 r^4 f^4 {(r^2)}'^2
+      -2880 r^6 f^4\right) \left(\xi-1/6\right) m^2
+\right] \ln\left|\frac{4 u_0^2}{m_{ \mbox{\tiny \sl DS}}^2 r^2 } \right|\right\},
+      \end{eqnarray}
+
+      \begin{eqnarray}
+      \left(T^{\rho}_{\rho} \right)_{\!(4)}&=&
+      \frac{1}{46080 \pi^2 r^8f^4} \left\{
+     -1080 m^4 r^8 f^4
+     -120 {f'}^2 m^2 r^8 f^2
+     +{f'}^4 r^8
+     +32 {f'} {(r^2)}'' {{(r^2)}'} r^4 f^3 \right. \nonumber \\ && \left.
+     -4 {f'}^2 f'' r^8 f
+     -24 f'' {{(r^2)}'}^2 r^4 f^3
+     -16 {f'} {(r^2)}''' r^6 f^3
+     -16 {{(r^2)}'} f''' r^6 f^3
+     -8 {f'} {{(r^2)}'}^3 r^2 f^3    \right. \nonumber \\ && \left.
+     -24 {f'}^2 {(r^2)}'' r^6 f^2
+     +12 {f'}^2 {{(r^2)}'}^2 r^4 f^2
+     +8 {f'} f''' r^8 f^2
+     -4 f''^2 r^8 f^2
+     +16 f'' {(r^2)}'' r^6 f^3 \right. \nonumber \\ && \left.
+     -8 {f'}^3 {{(r^2)}'} r^6 f
+     +32 {f'} f'' {{(r^2)}'} r^6 f^2
+     +\left[5760 {f'} {(r^2)}'' {{(r^2)}'} r^4 f^3
+     -1440 {f'} {{(r^2)}'}^3 r^2 f^3 \right. \right. \nonumber \\ && \left. \left.
+     -5760 {f'} {{(r^2)}'} r^4 f^3
+     -2880 {f'}^2 r^6 f^2
+     +2880 {f'} f'' {{(r^2)}'} r^6 f^2
+     +2160 {f'}^2 {{(r^2)}'}^2 r^4 f^2 \right. \right. \nonumber \\ && \left. \left.
+     -720 {f'}^4 r^8
+     +1440 {f'}^2 f'' r^8 f
+     +2880 {f'}^2 {(r^2)}'' r^6 f^2\right] \left(\xi-1/6 \right)^2 \right. \nonumber \\ && \left.
+     +\left[-240 {f'}^2 r^6 f^2
+     +\left(720 {{(r^2)}'}^2 r^4 f^4
+     -1440 {f'} {{(r^2)}'} r^6 f^3
+     -1440 {f'}^2 r^8 f^2 \right. \right. \right. \nonumber \\ && \left. \left.
+     \left.
+     -2880 r^6 f^4  \right) m^2
+     -1260 {f'}^2 {{(r^2)}'}^2 r^4 f^2
+     +540 {f'}^4 r^8
+     +480 {{(r^2)}'} f''' r^6 f^3
+     -720 {f'}^2 f'' r^8 f \right. \right. \nonumber \\ && \left. \left.
+     +480 {f'} f''' r^8 f^2
+     -480 f'' {(r^2)}'' r^6 f^3
+     -720 {f'} {(r^2)}'' {{(r^2)}'} r^4 f^3
+     -1200 {f'} f'' {{(r^2)}'} r^6 f^2 \right. \right. \nonumber \\ && \left. \left.
+     +1200 {f'}^2 {(r^2)}'' r^6 f^2
+     +480 {f'} {(r^2)}''' r^6 f^3
+     +720 {f'}^3 {{(r^2)}'} r^6 f
+     +720 f'' {{(r^2)}'}^2 r^4 f^3 \right. \right. \nonumber \\ && \left. \left.
+     +480 {f'} {{(r^2)}'} r^4 f^3
+     -240 f''^2 r^8 f^2\right] \left(\xi-1/6 \right)
++\left[-720 m^4 r^8 f^4
+     +12 f'' {{(r^2)}'}^2 r^4 f^3 \right. \right. \nonumber \\ && \left. \left.
+     -16 r^4 f^4
+     -4 {{(r^2)}'}^4 f^4
+     +8 {f'}^2 {(r^2)}'' r^6 f^2
+     +12 {f'}^2 f'' r^8 f
+     +8 {{(r^2)}'} f''' r^6 f^3
+     -8 {f'} f''' r^8 f^2 \right. \right. \nonumber \\ && \left. \left.
+     +8 {f'} {(r^2)}''' r^6 f^3
+     -24 {f'} f'' {{(r^2)}'} r^6 f^2
+     -3 {f'}^2 {{(r^2)}'}^2 r^4 f^2
+     +4 {f'} {{(r^2)}'}^3 r^2 f^3 \right. \right. \nonumber \\ && \left. \left.
+     -16 {f'} {(r^2)}'' {{(r^2)}'} r^4 f^3
+     +8 {{(r^2)}'}^2 {(r^2)}'' r^2 f^4
+     -8 {{(r^2)}'} {(r^2)}''' r^4 f^4
+     +10 {f'}^3 {{(r^2)}'} r^6 f \right. \right. \nonumber \\ && \left. \left.
+     -7 {f'}^4 r^8
+     -8 f'' {(r^2)}'' r^6 f^3
+     +4 f''^2 r^8 f^2
+     +4 {(r^2)}''^2 r^4 f^4
+     +\left(
+     -2880 r^4 f^4 \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     -4320 {{(r^2)}'}^2 r^2 f^4
+     -2880 {f'}^2 {(r^2)}'' r^6 f^2
+     -2340 {{(r^2)}'}^4 f^4
+     -1440 {f'} f''' r^8 f^2  \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     +2880 f'' {(r^2)}'' r^6 f^3
+     +4320 {f'} f'' {{(r^2)}'} r^6 f^2
+     -1440 {f'}^3 {{(r^2)}'} r^6 f
+     +4320 {f'}^2 {{(r^2)}'}^2 r^4 f^2  \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     +720 {f'} {{(r^2)}'}^3 r^2 f^3
+     -2880 {f'} {(r^2)}''' r^6 f^3
+     +5760 {{(r^2)}'}^2 {(r^2)}'' r^2 f^4
+     -5760 {{(r^2)}'} {(r^2)}''' r^4 f^4 \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     +1440 {f'} {(r^2)}'' {{(r^2)}'} r^4 f^3
+     -1260 {f'}^4 r^8
+     -2880 {{(r^2)}'} f''' r^6 f^3
+     +2160 {f'}^2 f'' r^8 f \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     -4320 f'' {{(r^2)}'}^2 r^4 f^3
+     +720 f''^2 r^8 f^2
+     +2880 {(r^2)}''^2 r^4 f^4  \right) \left(\xi-1/6 \right)^2
+     +\left(-2880 r^6 f^4  \right. \right. \right. \nonumber \\ && \left. \left. \left.
+     +720 {{(r^2)}'}^2 r^4 f^4
+     +1440 {f'} {{(r^2)}'} r^6 f^3 \right) \left(\xi-1/6 \right) m^2
+\right] \ln\left|\frac{4 u_0^2}{m_{ \mbox{\tiny \sl DS}}^2 r^2 }\right|
+     \right\},
+     \end{eqnarray}
+
+      \begin{eqnarray}
+      \left(T^{\theta}_{\theta} \right)_{\!(4)}&=&
+      \left(T^{\phi}_{\phi} \right)_{\!(4)}=
+\frac{1}{46080 \pi^2 r^8 f^4} \left\{
+      -1080 r^8 f^4 m^4
+      +120 r^8 f^2 {f'}^2 m^2
+      -8 r^4 f^3 {f'}{(r^2)}'' {(r^2)'}\right. \nonumber \\ && \left.
+      +16 r^6 f^2 {f'} f'' {(r^2)'}
+      +17 r^8 {f'}^4
+      -16 r^8 f^3 f''''
+      -8 r^6 f {f'}^3 {(r^2)'}
+      +16 r^6 f^3 {f'} {(r^2)}''' \right. \nonumber \\ && \left.
+      +16 r^4 f^3 f'' {(r^2)'}^2
+      -52 r^8 f {f'}^2 f''
+      +24 r^8 f^2 {f'} f'''
+      -4 r^4 f^2 {f'}^2 {(r^2)'}^2\right. \nonumber \\ && \left.
+      +8 r^6 f^2 {f'}^2 {(r^2)}''
+      +28 r^8 f^2 f''^2
+      -24 r^6 f^3 {(r^2)'} f'''
+      -16 r^6 f^3 f'' {(r^2)}'' \right. \nonumber \\ && \left.
++\left[-5760 r^6 f^3 f''
+      -1440 r^4 f^3 f'' {(r^2)'}^2
+      +2880 r^6 f^2 {f'}^2
+      -14400 r^4 f^3 {f'} {(r^2)}''{(r^2)'}\right. \right. \nonumber \\ && \left.
+      \left.
+      +11520 r^6 f^3 {f'} {(r^2)}'''
+      +2880 r^8 f^2 f''^2
+      +5760 r^6 f^3f'' {(r^2)}''
+      -7920 r^6 f {f'}^3 {(r^2)'}\right. \right. \nonumber \\ && \left.
+      \left.
+      -3600 r^4 f^2 {f'}^2 {(r^2)'}^2
+      -14400 r^8 f {f'}^2 f''
+      +8640 r^4 f^3 {f'} {(r^2)'}
+      +2880 r^6 f^2 {f'}^2 {(r^2)}''\right. \right. \nonumber \\ && \left.
+      \left.
+      +5040 r^2 f^3{f'} {(r^2)'}^3
+      +6480 r^8 {f'}^4
+      +5760 r^8 f^2 {f'} f'''
+      +10080 r^6 f^2 {f'} f'' {(r^2)'}\right] \left(\xi-1/6 \right)^2
+      \right. \nonumber \\ && \left.
++\left[-240 r^6 f^2 {f'}^2
+      +480 r^6 f^3 f''
++\left(-720 r^4 f^4 {(r^2)'}^2
+      -1440 r^8 f^3 f''
+      +720 r^8 f^2 {f'}^2 \right. \right. \right. \nonumber \\ &&
+      \left. \left. \left.
+      +1440 r^6 f^4 {(r^2)}''
+      -720 r^6 f^3 {f'} {(r^2)'}\right) m^2
+      -1440 r^8 f^2 f''^2
+      -720 r^4 f^3 {f'} {(r^2)}'' {(r^2)'}\right. \right. \nonumber \\ && \left.
+      \left.
+      -1920 r^8 f^2 {f'} f'''
+      +5400 r^8 f {f'}^2 f''
+      -2580 r^8 {f'}^4
+      +720 r^6 f^3 f'' {(r^2)}''
+      +480 r^8 f^3 f''''
+      \right. \right. \nonumber \\ && \left.\left.
+      -2280 r^6 f^2 {f'} f'' {(r^2)'}
+      +720 r^6 f^3 {(r^2)'} f'''
+      -720 r^4 f^3 f'' {(r^2)'}^2
+      +1440 r^6 f {f'}^3 {(r^2)'}\right. \right. \nonumber \\ && \left.
+      \left.
+      +480 r^2 f^3 {f'} {(r^2)'}^3
+      +660 r^4 f^2 {f'}^2 {(r^2)'}^2
+      -960 r^6 f^2 {f'}^2 {(r^2)}''\right] \left(\xi-1/6 \right)
+       \right. \nonumber \\ && \left.
++\left[-720 r^8 f^4 m^4
+      +16 r^4 f^4
+      -20 r^8 f^2 {f'} f'''
+      +12 f^4 {(r^2)'}^4
+      -14 r^6 f^2 {f'} f'' {(r^2)'} \right. \right. \nonumber \\ && \left. \left.
+      +12 r^6 f^3 {(r^2)'} f'''
+      +8 r^6 f^3 f'' {(r^2)}''
+      +6 r^6 f {f'}^3 {(r^2)'}
+      -2 r^6 f^2 {f'}^2 {(r^2)}''
+      -8 r^6 f^3 {f'} {(r^2)}''' \right. \right. \nonumber \\ && \left. \left.
+      +12 r^4 f^4 {(r^2)}''^2
+      -20 r^8 f^2 f''^2
+      +4 r^4 f^3 {f'} {(r^2)}'' {(r^2)'}
+      -8 r^4 f^3 f'' {(r^2)'}^2
+      +3 r^4 f^2 {f'}^2 {(r^2)'}^2 \right. \right. \nonumber \\ && \left. \left.
+      +16 r^4 f^4 {(r^2)'} {(r^2)}'''
+      +52 r^8 f {f'}^2 f''
+      +8 r^8 f^3 f''''
+      -8 r^6 f^4 {(r^2)}''''
+      -32 r^2 f^4 {(r^2)'}^2 {(r^2)}'' \right. \right. \nonumber \\ && \left. \left.
+  +\left(2880 r^4 f^4
+      -21 r^8 {f'}^4
+      -8640 r^4 f^4 {(r^2)}''
+      -4320 r^4 f^3 {f'} {(r^2)'}
+      +8640 r^2 f^4 {(r^2)'}^2\right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      +9360 r^6 f^2 {f'} f'' {(r^2)'}
+      +7200 r^8 f^2 {f'} f'''
+      -3240 r^4 f^2 {f'}^2 {(r^2)'}^2
+      +5040 r^6 f^2 {f'}^2 {(r^2)}'' \right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      +7020 f^4 {(r^2)'}^4
+      -5400 r^2 f^3 {f'} {(r^2)'}^3
+      -20880 r^2 f^4 {(r^2)'}^2 {(r^2)}''
+      +11520 r^4 f^4 {(r^2)'} {(r^2)}''' \right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      -16560 r^8 f {f'}^2 f''
+      -5400 r^6 f {f'}^3 {(r^2)'}
+      +8640 r^4 f^4 {(r^2)}''^2
+      +11520 r^4 f^3 {f'} {(r^2)}'' {(r^2)'} \right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      -5760 r^6 f^3 {f'} {(r^2)}'''
+      -7200 r^6 f^3 f'' {(r^2)}''
+      -4320 r^6 f^3 {(r^2)'} f'''
+      -2880 r^8 f^3 f'''' \right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      +5040 r^8 f^2 f''^2
+      +5040 r^4 f^3 f'' {(r^2)'}^2
+      -5760 r^6 f^4 {(r^2)}''''
+      +7020 r^8 {f'}^4 \right) \left(\xi-1/6 \right)^2 \right. \right. \nonumber \\ && \left. \left.
+  +\left(-720 r^4 f^4 {(r^2)'}^2
+      +720 r^6 f^3 {f'} {(r^2)'}
+      +1440 r^6 f^4{(r^2)}''
+      +1440 r^8 f^3 f''  \right. \right. \right. \nonumber \\ && \left. \left.
+      \left.
+      -720 r^8 f^2 {f'}^2\right) \left(\xi-1/6 \right) m^2
+      \right] \ln\left|\frac{4 u_0^2}{m_{ \mbox{\tiny \sl DS}}^2 r^2 }\right|
+\right\}.
+      \end{eqnarray}
+
+
+%----------------------------------------------------------------
+
+\begin{thebibliography}{99}
+
+\bibitem{DC} J. S. Dowker and R. Critchley, \prd {\bf 13},
+3224 (1976); L. S. Brown and J. P. Cassidy, {\it ibid} {\bf 15},
+2810 (1977); T. S. Bunch and P. C. W. Davies, Proc. R. Soc. London
+{\bf A360}, 117 (1978); T. S. Bunch, J. Phys. A {\bf 12}, 517
+(1979); B. Allen and A. Folacci, \prd {\bf 35}, 3771 (1987); A.
+Folacci, J. Math. Phys. {\bf 32}, 2813 (1991); {\bf 32}, 2828
+(1991); K. Kirsten and J. Garriga, \prd {\bf 48}, 567 (1993).
+%--------------------------------------------------------------------
+\bibitem{HC}
+K. W. Howard and P. Candelas, \prl {\bf 53}, 403 (1984).
+%--------------------------------------------------------------------
+\bibitem{C}
+P. Candelas, \prd {\bf 21}, 2185 (1980); M. S. Fawcett, Commun.\
+Math.\ Phys. {\bf 89}, 103 (1983); B. P. Jensen and A. Ottewill,
+\prd {\bf 39}, 1130 (1989); B. P. Jensen, J. G. Mc Laughlin, and
+A. C. Ottewill, {\it ibid} {\bf 45}, 3002 (1992); P. R. Anderson,
+W. A. Hiscock, and D. J. Loranz, \prl {\bf 74}, 4365 (1995).
+%--------------------------------------------------------------------
+\bibitem{AHS}
+P. R. Anderson, W. A. Hiscock, and D. A. Samuel, \prd {\bf 51},
+4337 (1995). %http://www.wfu.edu/~anderson/research/TmnDS.m
+%--------------------------------------------------------------------
+\bibitem{BBK}
+E. R. Bezerra de Mello, V. B. Bezerra, and N. R. Khusnutdinov,
+\prd {\bf 60}, 063506 (1999).
+%--------------------------------------------------------------------
+\bibitem{DW}
+B. S. DeWitt, {\it Dynamical Theory of Groups and Field} (Gordon
+and Breach, New York, 1965).
+%--------------------------------------------------------------------
+\bibitem{Page}
+D. N. Page, \prd {\bf 25}, 1499 (1982).
+%--------------------------------------------------------------------
+\bibitem{BO}
+M. R. Brown and A. C. Ottewill, \prd {\bf 31}, 2514 (1985).
+%--------------------------------------------------------------------
+\bibitem{BOP}
+M. R. Brown, A. C. Ottewill, and D. N. Page, \prd {\bf 33}, 2840
+(1986).
+%--------------------------------------------------------------------
+\bibitem{Z}
+T. Zannias, \prd {\bf 30}, 1161 (1984).
+%--------------------------------------------------------------------
+\bibitem{FZ}
+V. P. Frolov and A. I. Zel'nikov, \prd {\bf 35}, 3031 (1987).
+%--------------------------------------------------------------------
+\bibitem{GAC}
+P. B. Groves, P. R. Anderson, and E. D. Carlson, gr-qc/0207066
+%--------------------------------------------------------------------
+\bibitem{CH2}
+P. Candelas and K. W. Howard, \prd {\bf 29}, 1618 (1984).
+%--------------------------------------------------------------------
+\bibitem{H}
+K. W. Howard, \prd {\bf 30}, 2532 (1984).
+%--------------------------------------------------------------------
+\bibitem{A}
+P. R. Anderson, \prd {\bf 41}, 1152 (1990).
+%--------------------------------------------------------------------
+\bibitem{Mat}
+J. Matyjasek, \prd {\bf 61}, 124019 (2000); J. Matyjasek, {\it
+ibid} {\bf 63}, 084004 (2001), H. Koyama, Y. Nambu, and A.
+Tomimatsu, Mod. Phys. Lett. A {\bf15}, 815 (2000).
+%--------------------------------------------------------------------
+\bibitem{Chris}
+S. M. Christensen, Phys.~Rev.~D {\bf 14}, 2490 (1976).
+%--------------------------------------------------------------------
+\bibitem{PS}
+A. A. Popov and S. V. Sushkov, \prd {\bf 63}, 044017 (2001).
+%--------------------------------------------------------------------
+\bibitem{P}
+A. A. Popov, \prd {\bf 64}, 104005 (2001).
+%--------------------------------------------------------------------
+\bibitem{BFNFSZ}
+R. Balbinot, A. Fabbri, P. Nicolini, V. Frolov, P. Sutton, and A.
+Zelnikov, \prd {\bf 63}, 084029 (2001).
+%--------------------------------------------------------------------
+\bibitem{FSZ}
+V. Frolov, P. Sutton and A. Zelnikov, \prd {\bf 66}, 024014
+(2002).
+%--------------------------------------------------------------------
+\bibitem{BFNS}
+R. Balbinot, A. Fabbri, P. Nicolini and  P. Sutton \prd {\bf 66},
+024014 (2002).
+%--------------------------------------------------------------------
+\bibitem{Sushkov3}
+S. V. Sushkov, Gravitation Cosmol. {\bf 6}, 45 (2000).
+%--------------------------------------------------------------------
+\bibitem{Evg}
+M. A. Evgrafov, {\it Analytic Functions} (Nauka, Moskow, 1968) (in
+Russian).
+%--------------------------------------------------------------------
+\bibitem{Sushkov2}
+S. V. Sushkov, \prd {\bf 62}, 064007 (2000).
+%--------------------------------------------------------------------
+
+\end{thebibliography}
+
+\end{document}
+"
+7,\section*{
+8,\section*{

@@ -1,0 +1,616 @@
+,section
+0,\section{Introduction}
+1,\section{Unfolded Dynamics}
+2,\section{Tensor product}
+3,\section{Rank 2 -- rank 1 correspondence}
+4,\section{Solutions}
+5,\section{Conclusions}
+6,"\section*{Acknowledgments}
+This research was supported in part by MIUR-COFIN contract 2001-025492,
+INTAS, Grant No.99-01-590,
+INTAS, Grant No.00-259 and the RFBR Grant No.02-02-17067.
+
+\newcounter{appendix}
+\setcounter{appendix}{1}
+
+
+
+
+%\newpage
+\section*{Appendix. $\sigma_-$
+cohomology}
+
+Let us first recall some elementary facts relevant to the
+cohomology analysis. Let a linear operator $\Omega$
+act in some linear space $V$ and satisfy
+$\Omega^2=0$. By definition, $H (\Omega )= \ker \,\Omega  /Im\, \Omega $
+is the cohomology space. Let $\Omega^*$ be some other nilpotent
+operator, $(\Omega^*)^2=0$. Then the operator
+\begin{equation}
+\label{l1}
+\Delta=\{ \Omega, \Omega^*\, \}
+\end{equation}
+satisfies
+\begin{equation}
+[\Omega , \Delta ] = [\Omega^*\,, \Delta ] =0\,.
+\end{equation}
+{}From (\ref{l1}) it follows that
+ $\Delta \ker \,\Omega \subset {\mbox Im} \,\Omega$. Therefore,
+$H(\Omega )\subset \ker\, \Omega / \Delta ({\ker \,\Omega})$. Suppose
+now that $V$ is a Hilbert space in which
+$\Omega^*\,$ and $\Omega$ are conjugated and that the operator $\Delta$
+is quasifinite-dimensional, i.e. $V=\sum \oplus V_\alpha$
+with finite-dimensional subspaces $V_\alpha$ such that $\Delta (V_\alpha )
+\subset V_\alpha $ and $V_\alpha $ is orthogonal to $V_\beta$ for $\alpha \neq \beta$.
+Then $\Delta$ can be diagonalized
+and it is easy to see that
+$\ker\, \Omega / \Delta ({\ker \,\Omega})$ = $\ker \Delta  \cap
+\ker \Omega$. Therefore, for this case,
+\begin{equation}
+H(\Omega )\subset
+\ker \,\Delta \cap  \ker\,\Omega\,.
+\end{equation}
+This formula is useful in the practical analysis because
+it is usually  simpler to compute $\ker \,\Delta$ than to
+find  the cohomology $H(\Omega )$ directly.
+
+Let us denote $dX^{\mu \nu }$  by $\xi^{\mu \nu }$. Then
+  $\xi^{\mu \nu }=\xi^{\nu \mu }$,
+$\xi^{\mu \nu}\xi^{\alpha \gamma }=-\xi^{\alpha \gamma}\xi^{\mu \nu }$
+and
+$$
+\frac{d}{d \xi^{\alpha \gamma}} \xi^{\mu \nu}
+=\frac{1}{2} \left(\delta^{\mu}_{\alpha} \delta^{\nu}_{\gamma}
++\delta^{\nu}_{\alpha}\delta^{\mu}_{\gamma}\right) -
+\xi^{\mu \nu }\frac{d}{d \xi^{\alpha \gamma}}.
+$$
+Let $V_1$ and $V_2$ be the linear spaces spanned by
+various  polynomials $P(z,\xi)$ and  $P(z,\bar{z},\xi)$, respectively.
+Let the rank 1 and rank 2 operators $\sigma_-$ acting in $V_1$
+and $V_2$ be denoted $\Omega_{1}$ and $\Omega_{2}$, respectively.
+(For the future convenience  we have changed notations,
+replacing  $y^\alpha$ with $z^\alpha$.) Defining
+ the conjugated operators $\Omega^*_{1,2}$ with respect
+ to the natural Fock type scalar products in $V_{1,2}$ we have
+\begin{eqnarray}\nonumber
+\Omega_1=
+ \xi^{\alpha \gamma}
+\frac{\partial}{\partial z^{\alpha}}
+\frac{\partial}{\partial z^{\gamma} }\,,\qquad
+\Omega^*_1=
+z^{\alpha}z^{\gamma}
+\frac{d}{d \xi^{\alpha \gamma}}\,,
+\end{eqnarray}
+and
+\begin{eqnarray}
+\nonumber
+\Omega_2=
+ \xi^{\alpha \gamma}
+\frac{\partial}{\partial z^{\alpha}}
+\frac{\partial}{\partial \bar z^{\gamma} }\,,\qquad
+\Omega^*_2=
+z^{\alpha}\bar z^{\gamma}
+\frac{d}{d \xi^{\alpha \gamma}}.
+\end{eqnarray}
+One gets
+\begin{eqnarray} \label{Delta1}
+\Delta_1=
+2\xi^{\mu \nu }\frac{d}{\partial \xi^{\mu \nu}}+
+4\xi^{\mu \alpha }
+\frac{d}{d \xi^{\mu \beta}}
+z^{\beta}\frac{\partial}{\partial z^{\alpha}}+
+z^{\beta}z^{\alpha}
+\frac{\partial}{\partial z^{\alpha}}\frac{\partial}{\partial z^{\beta}}\,,
+\end{eqnarray}
+\begin{eqnarray} \label{Delta}
+\Delta_2=
+4\xi^{\mu \nu }\frac{d}{\partial \xi^{\mu \nu}}+
+4\xi^{\mu \alpha }
+\frac{d}{d \xi^{\mu \beta}}
+(z^{\beta}\frac{\partial}{\partial z^{\alpha}}+
+\bar z^{\beta}\frac{\partial}{\partial \bar z^{\alpha}}) \\ \nonumber
++ 2z^{\alpha}\frac{\partial}{\partial z^{\alpha}}\bar z^{\beta}\frac{\partial}{\partial \bar z^{\beta}}+
+2z^{\beta}\bar z^{\alpha}
+\frac{\partial}{\partial z^{\alpha}}\frac{\partial}{\partial \bar z^{\beta}}\,.
+\end{eqnarray}
+
+Let $V_i =\sum_p \oplus V_i^p$, where $V_i^p \subset V_i$ is the
+subspace of degree $p$ homogeneous polynomials in $\xi$, i.e.
+\{$P(z,\ldots, \xi ) \in V^p_i$: $ P(z,\ldots, \mu \xi )=
+\mu^p P(z,\ldots, \xi )$\}.
+The cohomology groups $H^p(\sigma_-)$
+for rank $r$ operators $\sigma_-$ belong to $\ker \Delta_r \cap V^p_r$.
+
+Let us introduce auxiliary spaces $W_1$ and $W_2$  of polynomials
+$P(z,t )$ and $ P(z,\bar z ,t )$, respectively, where $t^\alpha$ is an
+auxiliary commuting variable. Let $W_i =\sum_p \oplus W_i^p$,
+\{$P\in W_i^p \,: P(z,\ldots, \mu t )=
+\mu^{p} P(z,\ldots, t )$\}.
+For the cases of $V_i^p$ with $p= 0$ or 1 associated with the
+cohomology groups $H^0_r$ and $H^1_r$, the obvious isomorphisms
+$V_i^0 = W_i^0$ and $V_i^1 = W_i^2$ take place. In practice this allows one
+to  replace  $\xi^{\alpha \beta}$ by $t^\alpha t^\beta$ and
+$\frac{d}{d \xi^{\alpha \beta}}$ by $\frac{1}{2}
+\frac{\partial}{\partial t^{\alpha}}\frac{\partial}{\partial t^{\beta}}$ (for polynomials at most linear
+in $\xi$ it does not  matter that $\xi$ is anticommuting).
+In these variables,
+the  operators $\Delta_{1,2}$  acquire the form
+\begin{eqnarray} \label{{Ups_z1}}
+\Delta_1=
+2t^\alpha \frac{\partial}{\partial z^\alpha} z^\beta \frac{\partial}{\partial t^\beta} +
+(z^{\alpha}\frac{\partial}{\partial z^{\alpha}}-1)z^{\beta}\frac{\partial}{\partial z^{\beta}}       -
+(t^{\alpha}\frac{\partial}{\partial t^{\alpha}}-1)  t^{\beta}\frac{\partial}{\partial   t^{\beta}}
+\end{eqnarray}
+\begin{eqnarray}  \nonumber \label{{Ups_z}}
+\frac{1}{2} \Delta_2=
+t^\alpha \frac{\partial}{\partial z^\alpha} z^\beta \frac{\partial}{\partial t^\beta} +
+t^\alpha \frac{\partial}{\partial \bar z^\alpha} \bar z^\beta \frac{\partial}{\partial t^\beta}  +
+\bar z^\alpha \frac{\partial}{\partial z^\alpha} z^\beta \frac{\partial}{\partial \bar z^\beta}   \\
++ (z^{\alpha}\frac{\partial}{\partial z^{\alpha}}-1)\bar z^{\beta}\frac{\partial}{\partial \bar z^{\beta}}-
+(t^{\alpha}\frac{\partial}{\partial t^{\alpha}}-1)  t^{\beta}\frac{\partial}{\partial   t^{\beta}}\,.
+\end{eqnarray}
+
+The operators
+\begin{eqnarray}
+\label{cart2}
+e_1=t^\gamma \frac{\partial}{\partial {z}^\gamma}\,,\quad
+f_1=z^\gamma \frac{\partial}{\partial {t}^\gamma}\,,\quad
+h_1=
+t^\gamma \frac{\partial}{\partial {t}^\gamma}
+-z^\gamma \frac{\partial}{\partial {z}^\gamma}\,
+\end{eqnarray}
+form  the Lie algebra $sl_2$. The operator
+\begin{equation}
+\label{cent}
+n_1=t^\gamma \frac{\partial}{\partial {t}^\gamma}
++z^\gamma \frac{\partial}{\partial {z}^\gamma}
+\end{equation}
+ extends it to  $gl_2$
+%with commuting relations
+%$$
+% [e_1, f_1]= h_1, \, [e_1,h_1]=2 e_1, \, [f_1,h_1]=-2 f_1, \,
+%$$
+ with the carrier space $W_1$.
+Since the action of $gl_2$ in $W_1$ leaves a  degree of a polynomial
+invariant, $W_1$ decomposes into the infinite
+direct sum of finite-dimensional submodules over $gl_2$.
+Irreducible finite-dimensional submodules are characterized by their
+$sl_2$ lowest (equivalently, highest) weights and eigenvalues of
+the central element of $gl_2$ (\ref{cent}). The weight basis  of
+$sl_2$ is convenient because the operator $\Delta_1$ turns
+out to be diagonal in this basis.
+
+
+
+Indeed, let $p \in W_1$ be some lowest  vector
+with fixed weight and eigenvalue of
+the central element of $gl_2$, i.e.
+\begin{equation}
+f_1 p =0\,,\qquad h_1 p = \mu p\, \qquad n_1 p = \nu p\,.
+\end{equation}
+ {}From (\ref{cart2}), (\ref{cent}) it follows  that $p$ has a form
+\begin{eqnarray}
+p_{(q,r)}=
+c_{\alpha_1\dots \alpha_q, \beta_1 \dots \beta_r} z^{\alpha_1}\dots  z^{\alpha_q}  t^{\beta_1}
+\dots  t^{\beta_r}\,,\qquad \mu = r-q\,,\quad \nu =r+q\,,
+\end{eqnarray}
+where $c_{\alpha_1\dots \alpha_q, \beta_1 \dots \beta_r}$ is some
+tensor with the symmetry properties of the  Young tableau
+\begin{picture}(43,15)%(0,05)
+\put( 9,12){\scriptsize   q}    % melkaja, two rows
+\put( 9,-5){\scriptsize   r}    % melkaja, two rows
+{\linethickness{.250mm}
+\put(00,10){\line(1,0){30}}
+\put(00,05){\line(1,0){30}}
+\put(00,00){\line(1,0){15}}
+%
+\put(00,00){\line(0,1){10}}%
+\put(05,00.0){\line(0,1){10}}
+\put(10,00.0){\line(0,1){10}}
+\put(15,00.0){\line(0,1){10}}
+\put(20,05.0){\line(0,1){05}}
+\put(25,05.0){\line(0,1){05}}
+\put(30,05.0){\line(0,1){05}}
+}
+\end{picture}.
+%\vskip.1cm
+As a result, every polynomial $P(z,t)$ is a linear combination of
+the polynomials
+\begin{eqnarray}    \nonumber
+\label{psl2}
+P_{(q\,r)}^{(b)} (z,t)
+=\left(e_1
+%t^\gga \frac{\ptl}{\ptl {z}^\gga}
+\right)^b
+p_{(q\,r)}(z,t)
+\end{eqnarray}
+with various $b,q$ and $r$.
+Using  that $[ f_1 , (e_1)^b]=(e_1)^{b-1}b(-h_1-b+1)$, one finds
+\begin{eqnarray}
+\Delta_1\, P_{(q\,r)}^{(b)} =\left( 2 e_1 f_1  - (n_1-1) h_1 \right)\,
+(e_1)^b p_{(q\,r)}
+%\\ \nn
+= \lambda_{1}\, P_{(q\,r)}^{(b)}\,,
+\end{eqnarray} where
+\begin{equation}
+\label{lam1}
+\lambda_{1}=(2(q-b-r+1)b+(q-b)(q-b-1)-(b+r)(b+r-1))\,.
+\end{equation}
+Note that, because the representations under
+consideration are finite-dimensional, the polynomials
+$P_{(q\,r)}^{(b)}$  with $b> q-r$ vanish, i.e. the inequality
+\begin{eqnarray}
+\label{con03}  q-b-r&\ge& 0
+\end{eqnarray}
+is true.
+The degree of $P_{(q\,r)}^{(b)}(z,t)$
+in $t$ is equal to $r+b$. As a result we have $r+b=0$ and
+ $r+b=2$ in the subspaces $W_1^0$ and  $W_1^2$ associated with
+rank 1 cohomology groups $H^0 (\sigma_- )$ and $H^1 (\sigma_- )$, respectively.
+
+
+The rank 2 case will be analyzed in terms of
+ $gl_3$ generated by the operators
+\begin{eqnarray} \label{cart3}
+e_1=t^\gamma \frac{\partial}{\partial {z}^\gamma}\,,\quad
+f_1=z^\gamma \frac{\partial}{\partial {t}^\gamma}\,,\quad
+e_2=z^\gamma \frac{\partial}{\partial {\bar z}^\gamma}\,,\quad
+f_2=\bar z^\gamma \frac{\partial}{\partial {z}^\gamma}\,,\qquad\qquad\\ \nonumber
+h_1=
+t^\gamma \frac{\partial}{\partial {t}^\gamma}
+-z^\gamma \frac{\partial}{\partial {z}^\gamma}\,,\quad
+h_2=
+z^\gamma \frac{\partial}{\partial {z}^\gamma}-
+\bar z^\gamma \frac{\partial}{\partial {\bar z}^\gamma}\,,\quad
+n_2=t^\gamma \frac{\partial}{\partial {t}^\gamma}
++z^\gamma \frac{\partial}{\partial {z}^\gamma}
++\bar z^\gamma \frac{\partial}{\partial {\bar z}^\gamma}.
+\end{eqnarray}
+Again,  $W_2$ decomposes into the infinite direct sum
+of irreducible finite-dimensional modules over $gl_3$.
+Let $p \in W_2$ be some lowest  vector
+with fixed weight and eigenvalue of
+$n_2$, i.e.
+\begin{eqnarray}
+f_1 p =0\,,\qquad f_2 p =0\,,\qquad
+h_1 p = \mu_1 p\,,\qquad
+h_2 p = \mu_2 p\, \qquad n_2 p = \nu p\,.
+\end{eqnarray}
+ {}From (\ref{cart3}) it follows  that $p$ has a form
+\begin{eqnarray}
+p_{(s,q,r)}=
+c_{\gamma_1\dots \gamma_s, \alpha_1\dots \alpha_q, \beta_1 \dots \beta_r}
+\bar z^{\gamma_1}\dots \bar z^{\gamma_s}
+z^{\alpha_1}\dots  z^{\alpha_q}  t^{\beta_1}
+\dots  t^{\beta_r}\,\\ \nonumber \mu_1 = q-s\,,\qquad \mu_2 = r-q\,,
+\qquad \nu =r+q+s\,,
+\end{eqnarray}
+where $c_{\gamma_1\dots \gamma_s, \alpha_1\dots \alpha_q, \beta_1 \dots \beta_r} $
+is some tensor with the symmetry properties of the Young tableau
+\begin{picture}(48,20)(0,05)
+\put( 9,17){\scriptsize   s}    % melkaja, three rows
+\put(43, 5){\scriptsize   q}    %
+\put( 9,-5){\scriptsize   r}    %
+{\linethickness{.250mm}
+\put(00,15){\line(1,0){40}}
+\put(00,10){\line(1,0){40}}
+\put(00,05){\line(1,0){30}}
+\put(00,00){\line(1,0){15}}
+%
+\put(00,00){\line(0,1){15}}%
+\put(05,00.0){\line(0,1){15}}
+\put(10,00.0){\line(0,1){15}}
+\put(15,00.0){\line(0,1){15}}
+%
+\put(20,05.0){\line(0,1){10}}
+\put(25,05.0){\line(0,1){10}}
+\put(30,05.0){\line(0,1){10}}
+\put(35,10.0){\line(0,1){05}}
+\put(40,10.0){\line(0,1){05}}
+\put(40,10.0){\line(0,1){05}}
+}
+\end{picture} .
+Every polynomial $P(z,\bar z,t)$ is some linear combination of the \\ \\
+polynomials of the form
+\begin{eqnarray}\nonumber
+%\label{psl3}
+P_{(s\,q\,r)}^{(b\,a\,k)}
+=\left(e_1
+%t^\gga \frac{\ptl}{\ptl {z}^\gga}
+\right)^b
+\left([e_1, e_2]
+%t^\gga \frac{\ptl}{\ptl {\bz}^\gga}
+\right)^a
+\left(e_2
+%z^\gga \frac{\ptl}{\ptl {\bz}^\gga}
+\right)^k
+p_{(s\,q\,r)}
+\end{eqnarray}
+with various $b,\,a,\,k$. An elementary computation shows that
+\begin{eqnarray} \label{Del_spek}
+\Delta_2\, P_{(s\,q\,r)}^{(b\,a\,k)}=
+\lambda_2\,
+P_{(s\,q\,r)}^{(b\,a\,k)},\end{eqnarray} where
+\begin{eqnarray}
+\label{Lam}\nonumber   \lambda_2=
+(q+k-a-r)b-b(b-1)+(s-k-r)a +k(s-k-q+1)
+\\
++ a(2-a)+(s-k-a-1)(q+k-b)-(a+b+r)(a+b+r-1).
+\end{eqnarray}
+Because all representations of $sl_3$ under
+consideration are finite-dimensional
+the following inequalities take place
+\begin{eqnarray}
+\label{con2}  s-k-a&\ge& 0\,,\\
+\label{con3}  q+k-b&\ge& 0\,,
+\end{eqnarray}
+\begin{equation}
+\label{con4}  q \ge r\,,
+\end{equation}
+\begin{equation}
+\label{con1}  s-k-q\ge 0\,.
+\end{equation}
+Eqs. (\ref{con2}), (\ref{con3}) manifest the simple fact that
+the degrees of $z$ and $\bar z$ are nonnegative. Eq. (\ref{con4}) is obvious
+from the Young tableau representation of the lowest vector of $sl_3$.
+Eq.(\ref{con1}) is understood  analogously taking into account
+the explicit form of $e_2$  in (\ref{cart3}).
+
+\subsection*{rank $1$ $H^1$}
+Consider polynomials $P_{(q\,r)}^{(b)} $ corresponding to the rank 1
+1-forms.
+Then $b+r=2$. Using (\ref{lam1}) one observes that
+the equation $\lambda_1=0$ amounts to
+$$2(q-1)b+(q-b)(q-b-1)-2=0.$$
+{}From (\ref{con03}) it follows that
+$q\ge 2$ .  \\
+I.\,  Let $b > 0$. Then $2(q-1)b\ge2$. As a result the only allowed
+solution is $q=2, b=1$.\\
+II. Let $b=0$.  The only allowed
+solution is $q=2$.
+
+It is easy to see
+that  $P_{(2,1)}^{(1)}$ and $P_{(2,2)}^{(0)}$
+%of $\Delta_1 f=0$
+are $\Omega_1$ closed.
+Since exact forms are symmetric in all variables,
+the obtained solutions belong to the nontrivial cohomology
+classes. Thus the rank 1 cohomology group $ H^1
+(\Omega_1 )$ is spanned by
+$$
+c_{\alpha \beta_1,\beta_2}\,\,z^\alpha  \xi^{\beta_1  \beta_2}, \qquad
+c_{\alpha_1 \alpha_2,\beta_1  \beta_2}\,\,z^{\alpha_1} z^{\alpha_2} \xi^{\beta_1  \beta_2}.   $$
+
+
+\subsection*{rank $2$ $H^0$}
+Consider polynomials $P_{(s\,q\,r)}^{(b\,a\,k)}$
+corresponding to the rank 2 0-forms.
+Using (\ref{Lam}) along with the fact that
+ $a=b=r=0$ for the case of 0-forms
+ one finds that the equation $\lambda_2=0$ amounts to
+\begin{eqnarray} \label{Ups0}
+k(s-k-q+1)+ (s-k-1)(q+k)=0.
+\end{eqnarray}
+{}From (\ref{con1}) one has
+$(s-q-k+1)>0$ or, equivalently,  $s-k-1\ge q-1$.\\
+I.\, Let  $s-k=0$. Then $-kq-q=0$ and, therefore,  $q=0$. \\
+II. Let $(s-k-1)\ge 0$. Then (\ref{Ups0}) requires
+$(k+q)(s-k-1)=0$  and $k(s-q-k+1)=0$. Therefore, $k=0$
+and  $q(s-1)=0$.\\
+As a result (\ref{Ups0}) has  the following solutions:
+  $\quad \{s=k\geq 0, q=0\};
+ \quad \{k=q=0, s\geq 0\}; \quad  \{k=0, q=s=1\}$.
+One can check that
+ $P_{(s,0,0)}^{(0,0,s)}$, $P_{(s,0,0)}^{(0,0,0)}$ and $P_{(1,1,0)}^{(0,0,0))}$
+are    $\Omega_2$-closed.
+Thus the cohomology group $ H^0 (\Omega_2 )$
+is parametrized by the following $0-$forms:
+$$
+c,         \qquad
+c_{\alpha, \beta}\,z^{\alpha}\bar{z}^{\beta} ,\qquad
+{c}_{\alpha_1 \ldots \alpha_n}\,
+z^{\alpha_{1}}\dots z^{\alpha_{n}}      , \qquad
+\bar{c}_{\alpha_1 \ldots \alpha_n}\,
+\bar z^{\alpha_{1}}\dots \bar z^{\alpha_{n}},       \qquad n>0 .
+$$
+
+
+
+\subsection*{rank $2$ $H^1$}
+Consider polynomials
+ $P_{(s\,q\,r)}^{(b\,a\,k)} $   corresponding to rank 2  1-forms.
+In this case   $a+b+r=2$.  Then, taking into account  (\ref{Lam}),
+the  equation $\lambda_2=0$ amounts to
+ \begin{equation} \label{Ups}
+(q+k)(b-1)+(s-k+b)a+k(s-k-q+1)+(s-k-a)(q+k-b)=2 .
+\end{equation}
+The problem is to solve (\ref{Ups})
+in nonnegative integers at the conditions  (\ref{con2})--(\ref{con1})
+along with the two obvious conditions
+\begin{eqnarray}
+\label{con5}  a+b& \le& 2,\\
+\label{con6} s& \ge& 2. %ne mozhet byt' stolbcom-stepeni 2 po t
+\end{eqnarray}
+(The meaning of (\ref{con6}) is that,  to have polynomials
+bilinear in $t^\alpha$ used to describe 1-forms, the first row of the
+respective Young tableaux must contain at least two cells.)
+
+{}From (\ref{con5}) it follows  that there are six  cases:
+$\{a=0, b=0\}$,\,
+$\{a=1, b=1\}$,\,
+$\{a=0, b=1\}$,\,
+$\{a=0, b=2\}$,\,
+$\{a=1, b=0\}$ and
+$\{a=2, b=0\}$. Note, that only four of these six cases are
+essentially different because the interchange $z \leftrightarrow \bar z$
+is equivalent to $a\leftrightarrow b$. \\
+I.\, Let $a=b=0$ . Then (\ref{Ups}) has the form
+\begin{eqnarray} \label{Ups00}
+k(s-k-q+1)+(s-k-1)(q+k)&=&2\,.
+\end{eqnarray}
+{}From (\ref{con1}), (\ref{con4}) it follows  that
+$s-k\ge q\ge 2$ and, therefore, (\ref{Ups00}) requires
+ $q=2$, $s=2$, $k=0$ .\\
+II.\, Let  $b=1$,     $a=1$. Then (\ref{Ups}) has the form
+\begin{eqnarray} \label{Ups11}
+k(s-k-q+1)+(s-k-1)(q+k)&=&0. \end{eqnarray}
+{}From (\ref{con2}) and (\ref{con1}) one can see that
+$k(s-k-q+1) \geq 0$ and $(s-k-1)(q+k)\geq 0$. Therefore,
+(\ref{Ups11}) requires $k(s-k-q+1) = 0$ and $(s-k-1)(q+k)= 0$.
+The first condition requires
+$k=0$. Then from (\ref{con3}), (\ref{con6}) one finds that the second
+one has no admissible solutions.\\
+%III. Let $b\ne0$ .  Then all terms in the left hand side of (\ref{Ups}) are
+%nonnegative by virtue of (\ref{con1})---(\ref{con5}).\\
+III. Let $b=1$, $a=0$. Then (\ref{Ups}) has the form
+\begin{eqnarray} \label{Ups10}
+k(s-k-q+1)+(s-k)(q+k-1)&=&2\,.
+\end{eqnarray}
+Since $a+b+r=2$ we have   $r=1$. {}From (\ref{con4}) it follows that
+$ q\ge1$. {}From (\ref{con1}) we get $ s-k\ge q\ge 1$.
+As a result, the two terms on the left hand side of (\ref{Ups10}) are
+non-negative. So, there are three different cases:\\
+A. $k(s-k-q+1)=0$ ,
+$(s-k)(q+k-1)=2$. The only admissible solution is $k=0,$  $s=2,$ $q=2.$\\
+B.  $k(s-k-q+1)=1$, $(s-k)(q+k-1)=1$. The only solution is
+$k=1$, $s=2$, $q=1$.\\
+C.  $k(s-k-q+1)=2$, $(s-k)(q+k-1)=0$. It is easy to see that
+these equations have no admissible solutions.\\
+IV.  Let $b=2$, $a=0$.  Then (\ref{Ups}) has the form
+\begin{eqnarray} \label{Ups20}
+(q+k) +k(s-k-q+1)+(s-k)(q+k-2)&=&2.
+\end{eqnarray}
+Using (\ref{con3}) one gets $ q+k=2$,
+$k(s-k-q+1)=0$. Using (\ref{con1}) one gets
+$k=0$, $q=2$, $\forall s$.
+
+Instead of considering the rest two cases with
+$\{a=1, b=0\}$ and
+$\{a=2, b=0\}$ we simply add the
+conjugated forms resulting from the interchange $z \leftrightarrow
+\bar z$ to  get the full list
+of $\Delta_2$ zero modes.
+It is easy to see that the obtained solutions
+are    $\Omega_2$-closed but not exact.
+As a result, the cohomology group $H^1 (\Omega_2 )$
+is spanned by
+$$
+c_{\gamma_1 \gamma_2,\,\alpha,\,\beta}\,\,
+z^{\alpha}  \bar{z}^{\beta} \xi^{\gamma_1\gamma_2}, \qquad
+c_{\gamma_1\gamma_2,\,\beta_1 \beta_2,\,\alpha}\,\,
+            z^{\alpha}\bar z^{\beta_1}\bar z^{\beta_2}\xi^{\gamma_1\gamma_2},\qquad
+$$ $$
+c_{\gamma_1\gamma_2,\,\alpha_1 \alpha_2,\,\beta_1 \beta_2}\,\,
+z^{\alpha_1}z^{\alpha_2}\bar z^{\beta_1}\bar z^{\beta_2}\xi^{\gamma_1\gamma_2}, \quad
+c_{\gamma_1\gamma_2,\,\alpha_1 \alpha_2,\,\beta}\,\,
+z^{\alpha_1}z^{\alpha_2}\bar z^{\beta}\xi^{\gamma_1\gamma_2},
+$$ $$
+{c}_{\alpha_1 \dots \alpha_n,\gamma_1\gamma_2}\,\,
+{z^{\alpha_1}\dots z^{\alpha_n} \xi^{\gamma_1\gamma_2}} , \quad
+{\bar c}_{\alpha_1 \dots \alpha_n,\gamma_1\gamma_2}\,\,
+{\bar z^{\alpha_1}\dots \bar z^{\alpha_n}} \xi^{\gamma_1\gamma_2}\,,\quad  n\ge 2\,.
+$$
+
+
+
+
+\begin{thebibliography}{99}
+\parindent=0pt
+\parskip=-4.5pt
+\bibitem{Fr1} C.~Fronsdal, ``Massless Particles, Ortosymplectic Symmetry
+  and Another Type of Kaluza--Klein Theory'', Preprint UCLA/85/TEP/10,
+  in Essays on Supersymmetry, Reidel, 1986 (Mathematical Physics
+  Studies, v.8).
+\bibitem{BHS}  M.A. Vasiliev,
+     {\it Phys. Rev.} {\bf D66} (2002): 066006, {\tt hep-th/0106149}.
+\bibitem{JM}
+J. Maldacena, {\it Adv.\ Theor.\ Math.\ Phys.\ } {\bf 2} (1998) 231, {\tt
+hep-th/9711200}.
+\bibitem{GKP}
+S.S. Gubser, I.R. Klebanov and A.M. Polyakov, {\it Phys.\ Lett.\ }
+{\bf B428} (1998) 105, {\tt hep-th/9802109}.
+\bibitem{Wit1}
+E.~Witten, {\it Adv.\ Theor.\ Math.\ Phys.\ }  {\bf 2} (1998) 253, {\tt
+hep-th/9802150}.
+\bibitem{Sun}
+B. Sundborg, {\it Nucl.\ Phys.\ Proc.\ Suppl.\ } {\bf 102} (2001) 113,
+{\tt hep-th/0103247}.
+\bibitem{Wit}
+E. Witten, talk at J.H. Schwarz 60-th Birthday Conference,
+CalTech, November 2-3, 2001,
+{\tt http://theory.caltech.edu/jhs60/witten/1.html.}
+\bibitem{SS}E. Sezgin and P. Sundell, {\it Nucl. Phys.} {\bf B644} (2002)
+303, {\tt hep-th/0205131}.
+\bibitem{KP}I.R. Klebanov and A.M. Polyakov, {\it Phys.\ Lett.\ }
+{\bf B550} (2002) 213, {\tt hep-th/0210114}.
+\bibitem{PV}  M.A. Vasiliev, {\it Mod. Phys. Lett} {\bf A7} (1992) 3689;\\
+S.F. Prokushkin and M.A. Vasiliev,
+{\it Nucl. Phys.}  {\bf B545} (1999) 385, {\tt hep-th/9806236}.
+\bibitem{4d} M.A. Vasiliev,
+{\it Phys. Lett.} {\bf B243} (1990) 378; {\it Class. Quant. Grav.}
+{\bf 8} (1991) 1387; {\it Phys. Lett.}  { \bf B285} (1992) 225.
+\bibitem{Gol} M.A. Vasiliev,
+``Higher spin gauge theories: star-product and AdS space'',
+Contributed article to Golfand's Memorial
+Volume ``Many faces of the superworld"", ed. by M.Shifman,
+World Scientific Publishing
+Co Pte Ltd, Singapore, 2000; {\tt hep-th/9910096}.
+\bibitem{5d} M.A. Vasiliev,
+{\it Nucl. Phys.}  {\bf B616} (2001) 106, {\tt hep-th/0106200};\\
+K.B. Alkalaev and M.A. Vasiliev, {\it Nucl. Phys.}  {\bf B655} (2003),
+{\tt  hep-th/0206068}.
+\bibitem{Mar}
+M.A. Vasiliev,`` Relativity, Causality, Locality, Quantization and Duality
+in the $Sp(2M)$ Invariant Generalized Space-Time'', {\tt hep-th/0111119};
+ Contribution to the Marinov's Memorial
+Volume, M.Olshanetsky and A.Vainshtein Eds, World Scientific.
+\bibitem{ban}
+I.A. Bandos, J.A. de Azc\'arraga, J.M. Izquierdo and J.
+     Lukierski, {\it Phys. Rev. Lett.} {\bf 86} (2001)
+4451, {\tt  hep-th/00010044};\\
+I.A. Bandos, ``BPS preons and tensionless super-p-branes in
+     generalized superspace '', {\tt  hep-th/0208110}.
+\bibitem{cur} M.A. Vasiliev,
+{\it Russ. Phys. J.} {\bf 45} (2002) 670 ({\it Izv. Vuzov, Fizica}
+{\bf 45} (2002) N7 23),  {\tt hep-th/0204167}.
+ \bibitem{Ann}  M.A. Vasiliev,
+ {\it  Ann. of Phys.}
+{\bf 190} (1989) 59.
+\bibitem{Sah}  M.A. Vasiliev, ``Higher Spin Theory and
+$Sp(2M)$ Invariant     Space-Time'',
+the report on    the 3rd Sakharov International Sakharov Conference
+in Physics, Moscow, Russia, June 24-29, 2002,
+{\tt  hep-th/0301235}.
+%\bibitem{STV} O.V.Shaynkman, I.Tipunin and M.A. Vasiliev, to appear
+\bibitem{SVsc} O.V. Shaynkman and M.A. Vasiliev,
+{\it Theor. Math. Phys.} {\bf 123} (2000) 683 (p. 323 in the
+Russian issue), {\tt hep-th/0003123}.
+\bibitem{ind} G.~Mack and A.~Salam, {\it Ann. of Phys.}
+{\bf 53}  (1969) 174.
+\bibitem{FL} E.S. Fradkin and  V.Ya. Linetsky,
+{\it Ann. of Phys.\/} {\bf 198} (1990) 252; 293.
+\bibitem{3d} O.V. Shaynkman and M.A. Vasiliev,
+{\it Theor. Math. Phys.} {\bf 128} (2001) 1155 (p. 378 in the
+Russian issue),
+  {\tt  hep-th/0103208}.
+\bibitem{BG} I. Bars and M. G\""unaydin, { Commun. Math. Phys.}
+{\bf 91} (1983) 31.
+\bibitem{G}  M. G\""unaydin and S.J. Hyun, { J. Math. Phys.} {\bf 29}
+  (1988) 2367.
+\bibitem{G1}  M. G\""unaydin, ``ADS / CFT dualities and the unitary
+representations  of noncompact groups and supergroups: Wigner
+versus Dirac'', {\tt hep-th/0005168}.
+\bibitem{Ans}D. Anselmi, { Class. Quant. Grav.} {\bf 17}, 1383 (2000),
+             {\tt hep-th/9906167}.
+\bibitem{KVZ} S.E. Konstein, M.A. Vasiliev and V.N.
+Zaikin, {\it JHEP} {\bf 0012} (2000) 018, {\tt hep-th/0010239}.
+\bibitem{Mikh}A. Mikhailov, ``Notes On Higher Spin Symmetries'',
+ {\tt  hep-th/0201019}.
+\end{thebibliography}
+\end{document}
+
+
+
+
+"
+7,\section*{

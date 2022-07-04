@@ -1,0 +1,496 @@
+,document
+0,"\begin{document}
+
+%\baselineskip=16pt
+%\parskip=12pt
+
+
+%%%%%%%%%
+\section{Introduction}%\label{sec:fgz}
+%%%%%%%%%
+
+Even though strings on curved backgrounds have been widely discussed in the last decade or so, rigorous discussion within string theory is very difficult. This is due to the lack of the string theory on general backgrounds, especially the no-ghost theorem. As is well-known, string theory generally contains negative norm states (ghosts) from timelike oscillators. However, they do not appear as physical states. This is well-established for string theory in flat spacetime. When the background spacetime is curved, things are not clear though. 
+%Standard proofs of the no-ghost theorem requires light-cone directions, {\it i.e.}, $d \geq 2$ if the background is written as $ \IR^{1,d-1} \times K $, where $K$ is a unitary CFT. 
+Standard proofs of the no-ghost theorem requires light-cone directions; if the background is written as $ \IR^{1,d-1} \times K $ with a unitary CFT $K$, $d \geq 2$. This is true both in the old covariant quantization (OCQ) and in the BRST quantization.
+
+In our previous papers, we show the no-ghost theorem for $d \geq 1$ using the BRST quantization
+% if the background is written as $ \IR^{1,d-1} \times K $ 
+\cite{Asano:2000fp}. (See Ref.~\cite{Asano:2003jn} for the NSR string). Here, we extend our results to more general backgrounds. We point out that 
+\begin{itemize}
+\item The vanishing theorem is valid if one can isolate the timelike direction as a $c=1$ CFT and if the matter Hilbert space is written as a direct product of two Verma modules (as in Theorem~\ref{thm:vanishing}), one for the $c=1$ CFT and another for the rest, which is assumed to be a unitary CFT.
+\item The no-ghost theorem is also valid for the above Hilbert space (under a certain condition. See~Theorem~\ref{thm:no-ghost}.)
+%\item Moreover, when the $c=1$ part is written in terms of a $U(1)$ boson, one can show the no-ghost theorem. 
+\end{itemize}
+One particular example is $AdS_3$, so we establish the no-ghost theorem in the BRST quantization of $AdS_3$. We heavily use the previous results on the old covariant quantization of $AdS_3$ \cite{Dixon:1989cg,Hwang:1991an,Evans:1998qu,Maldacena:2000hw}. In particular, we impose the restriction on the $SL(2,\IR)$ spin $j$ for the discrete series representations. 
+
+In the context of the OCQ, the no-ghost theorem for $AdS_3$ has been known \cite{Evans:1998qu,Maldacena:2000hw}. However, the foundation of the perturbative string theory lies in the BRST quantization, and the OCQ often needs to be justified from the underlying BRST quantization. We compare our proof with the proof in the OCQ and also establish the BRST-OCQ equivalence for $AdS_3$. It turns out that the key in both approaches is the certain structure of the Hilbert space mentioned above.[Eq.~(\ref{eq:hilbert}) for the BRST quantization and Eq.~(\ref{eq:OCQ_basis2}) for the OCQ]
+
+The organization of the present paper is as follows. First, in the next section, we briefly review string theory on $AdS_3$. The full proof of the no-ghost theorem is rather involved, so we give the outline of the proof in Sec.~\ref{sec:outline}. Section~\ref{sec:vanishing} and \ref{sec:no-ghost:ads3} are the discussion of the vanishing theorem and the no-ghost theorem for $AdS_3$, respectively. In Sec.~\ref{sec:no-ghost}, we present the no-ghost theorem in the most general form. We also discuss a time-dependent background of Ref.~\cite{Balasubramanian:2002ry} where the background has ghosts in certain cases and explain how the background violates the assumptions of our theorem in those cases. In Sec.~\ref{sec:equiv}, we establish the BRST-OCQ equivalence for the backgrounds our no-ghost theorem applies. We summarize our notations and conventions of the BRST quantization in App.~\ref{sec:appA}. The presentation of the proof in our second paper \cite{Asano:2003jn} is slightly different from our first paper \cite{Asano:2000fp} although the proof itself is very similar; we will follow the style of our second paper.
+
+
+
+%%%%%%%%%
+\section{Strings on $AdS_3$}\label{sec:ads3}
+%%%%%%%%%
+
+$AdS_3$ with NS-NS flux is described by the $SL(2,\IR)$ WZW model. In most applications, one tensors an internal CFT $K'$ and considers string theory on $SL(2,\IR) \times K'$. We follow the notations and the conventions of Ref.~\cite{Maldacena:2000hw} with some minor changes. 
+
+The Kac-Moody algebra for $sl(2,\IR)$ is
+%\marginpar{$sl(2,\IR)$ vs $SL(2,\IR)$}
+\begin{equation}
+%
+[J^{a}_{m}, J^{b}_{n}] = i \epsilon^{ab}_{~~c} J^{c}_{m+n} + \frac{k}{2}m \eta^{ab} \delta_{m+n},
+%
+\end{equation}
+where $k$ is the level, $\epsilon^{123}=+1$ and $\eta^{ab}=\mbox{diag}(+1,+1,-1)$. In terms of the modes $J^{\pm}_{n}=J^{1}_{n} \pm iJ^{2}_{n}$, the algebra is
+\begin{eqnarray}
+%
+&&[J^{+}_{m}, J^{-}_{n}] = -2 J^{3}_{m+n} + km \delta_{m+n},\\
+&&[J^{\pm}_{m}, J^{\pm}_{n}] = 0,\\
+&&[J^{3}_{m}, J^{\pm}_{n}] = \pm J^{\pm}_{m+n},\\
+&&[J^{3}_{m}, J^{3}_{n}] = -\frac{k}{2} m \delta_{m+n}.
+%
+\end{eqnarray}
+The matter Virasoro generator 
+\begin{eqnarray}
+%
+L^{\rm m}_{m} &=& \frac{1}{k-2} \sum_n \eta_{ab} \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ} J^{a}_{m-n} J^{b}_{n} \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ} 
+\nonumber \\
+&=& \frac{1}{k-2} \sum_n \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ} \left\{
+\frac{1}{2} (J^{+}_{m-n} J^{-}_{n} + J^{-}_{m-n} J^{+}_{n}) - J^{3}_{m-n} J^{3}_{n} \right\} \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ} 
+%
+\end{eqnarray}
+satisfies the Virasoro algebra with central charge
+\begin{equation}
+%
+c_{SL(2,\IR)} = \frac{3k}{k-2}
+%
+\end{equation}
+and
+\begin{eqnarray}
+%
+&& [J^{\pm}_{m}, L^{\rm m}_{n}]=m J^{\pm}_{m+n}, \\
+&& [J^{3}_{m}, L^{\rm m}_{n}]=m J^{3}_{m+n}.
+%
+\end{eqnarray}
+We always assume $k>2$ to ensure a positive central charge as well as a single timelike direction. When there is no internal CFT $K'$, $c_{SL(2,\IR)}=26$ so that $k=52/23$.
+
+
+%%------------------------------------------------
+\subsection{Unflowed representations}\label{sec:unflowed}
+%%------------------------------------------------
+
+If the spectrum is bounded below, acting repeatedly with $J^{a}_{n} \; (n>0)$ always produces a Kac-Moody primary which is annihilated by $J^{a}_{n} \; (n>0)$. For the moment, let us suppose that this is the case and call these representations as ``unflowed representations"" (for the reason which will soon become clear.) For the WZW model, a Kac-Moody primary is also a Virasoro primary. A Kac-Moody primary forms a representation of the global $sl(2,\IR)$ generated by the zero modes $J^{a}_{0}$. Then, the representations of the $sl(2,\IR)$ current algebra are built over Kac-Moody primaries by applying $J^{a}_{-n} \; (n>0)$ in all possible ways. There are five classes of the unitary representations of the global $sl(2,\IR)$. They are characterized by the second Casimir $c_2 = \eta_{ab} J^{a}_{0} J^{b}_{0} = -j(j-1)$ and $J^{3}_{0}=m$:
+
+\begin{enumerate}
+
+\item Lowest weight discrete series:
+\begin{equation}
+%
+{\cal D}^+_j = \{ \mbox{$| j,m \rangle$}: m=j, j+1, j+2, \cdots \},
+%
+\end{equation}
+where $j>0$ such that $J^{-}_{0} \mbox{$| j,j \rangle$} =0$.
+
+\item Highest weight discrete series:
+\begin{equation}
+%
+{\cal D}^-_j = \{ \mbox{$| j,m \rangle$}: m=-j, -j-1, -j-2, \cdots \},
+%
+\end{equation}
+where $j>0$ such that $J^{+}_{0} \mbox{$| j,-j \rangle$} =0$.
+
+\item Principal continuous series:
+\begin{equation}
+%
+{\cal C}^\alpha_j = \{ \mbox{$| j,\alpha,m \rangle$}: m=\alpha, \alpha \pm 1, \alpha \pm 2, \cdots \},
+%
+\end{equation}
+where $0 \leq \alpha <1$ and $j=1/2+is$, $s>0$.
+
+\item Complementary (Supplementary) series:
+\begin{equation}
+%
+{\cal E}^\alpha_j = \{ \mbox{$| j,\alpha,m \rangle$}: m=\alpha, \alpha \pm 1, \alpha \pm 2, \cdots \},
+%
+\end{equation}
+where $0 \leq \alpha <1$, $1/2<j<1$ and $j-1/2<|\alpha-1/2|$.
+
+\item Identity representation: trivial representation with $j=0$.
+
+\end{enumerate}
+
+\noindent
+%(Since $j$ and $-(j-1)$ represent the same Casimir, we restrict $j$ to $s>0$ for the principal continuous series and $j \geq 1/2$ for the others.) 
+We always consider the universal cover of $SL(2,\IR)$;
+%, $\widetilde{SL}(2,\IR)$ instead of $SL(2,\IR)$ itself
+so, the spin $j$ is not restricted to be a half-integer or an integer. A complete basis for the square integrable functions on $SL(2,\IR)$ is known from the harmonic analysis; they are given by the matrix elements of the first three representations ${\cal D}^{\pm}_j$ (with $j>1/2$) and ${\cal C}^\alpha_j$. Thus, we consider only those representations. We denote the representations of the full current algebra built over those zero mode representations by ${\hat{\cal D}}^\pm_j$ and ${\hat{\cal C}}^\alpha_j$.
+
+Now, the on-shell condition at grade $N$ reduces to 
+\begin{equation}
+%
+\frac{-j(j-1)}{k-2}+N+h=1.
+\label{eq:on-shell}
+%
+\end{equation}
+Here, $h \geq 0$ is a conformal weight from the internal CFT $K'$. For the continuous series, this condition is satisfied only for $N=0$. By construction, they satisfy the other physical state conditions and they are unitary. Thus, only the discrete series are usually considered for the no-ghost theorem (for the unflowed representations.)
+
+The no-ghost theorem for the background has been widely discussed using the OCQ \cite{Hwang:1991an}-\cite{Pakman:2003cu}. Among them, Refs.~\cite{Hwang:1991an,Evans:1998qu} show the theorem for ${\hat{\cal D}}^\pm_j$ with the additional restriction on the spin $j$ for ${\cal D}^{\pm}_j$:
+\begin{equation}
+%
+0<j<\frac{k}{2}.
+\label{eq:bound1}
+%
+\end{equation}
+We sketch the proof in App.~\ref{sec:appC}. 
+%We impose the above condition on all the states in the Hilbert space $\hat{\cal H}$.
+The bound in turn implies that the grade is bounded above from the on-shell condition (\ref{eq:on-shell}):
+\begin{equation}
+%
+N+h<1+\frac{k}{4}
+\label{eq:bound_for_grade}
+%
+\end{equation}
+%\marginpar{$N \rightarrow N+h?$}
+
+
+%%------------------------------------------------
+\subsection{Flowed representations}%\label{sec:general}
+%%------------------------------------------------
+
+It is proposed in Ref.~\cite{Maldacena:2000hw} that these representations appeared in the last subsection are not the only representations appear in the WZW model. To see this, note that the current algebra is invariant under the following transformation:
+\begin{eqnarray}
+%
+{\tilde J}^{3}_{n} &=& J^{3}_{n} - \frac{k}{2} w \delta_n, \\
+{\tilde J}^{+}_{n} &=& J^{+}_{n+w}, \\
+{\tilde J}^{-}_{n} &=& J^{-}_{n-w}.
+%
+\end{eqnarray}
+Then, the Virasoro generators $L^{\rm m}_{m}$ are related to $\tilde{L}^{\rm m}_{m}$ by
+\begin{equation}
+%
+L^{\rm m}_{m} = \tilde{L}^{\rm m}_{m} -w {\tilde J}^{3}_{m}-\frac{k}{4} w^2 \delta_m.
+%
+\end{equation}
+This transformation is known as the spectral flow. Reference~\cite{Maldacena:2000hw} proposed to include the representations transformed by the spectral flow. Denote the resulting representations by ${\hat{\cal D}}^{\pm,w}_{\tilde{j}}$ and ${\hat{\cal C}}^{\alpha,w}_{\tilde{j}}$, where $\tilde{j}$ labels the spin before the flow (Similarly, $\tilde{m}$ and $\tilde{N}$). The on-shell condition becomes
+\begin{equation}
+%
+L^{\rm m}_{0} = -\frac{\tilde{j}(\tilde{j}-1)}{k-2} - w \tilde{m} - \frac{k}{4} w^2 + \tilde{N} + h =1.
+%
+\end{equation}
+In general, $L^{\rm m}_{0}$ is not bounded below for the flowed representations. However, ${\hat{\cal D}}^{\pm,w=\mp 1}_{\tilde{j}} = {\hat{\cal D}}^{\mp}_{m-\tilde{j}}$. Thus, in order for the discrete representations with $j, \tilde{j}<1/2$ not to appear, the spin $j$ has to satisfy the bound
+\begin{equation}
+%
+\frac{1}{2}<j<\frac{k-1}{2}.
+\label{eq:bound2}
+%
+\end{equation}
+Note that this bound is stronger than the bound (\ref{eq:bound1}), which is needed to show the no-ghost theorem. When ${\hat{\cal D}}^{\pm,w}_{\tilde{j}}$ saturates the lower bound of Eq.~(\ref{eq:bound2}), ${\hat{\cal C}}^{\alpha,w}_{\tilde{j}}$ appears; likewise when ${\hat{\cal D}}^{\pm,w}_{\tilde{j}}$ saturates the lower bound of Eq.~(\ref{eq:bound2}), ${\hat{\cal C}}^{\alpha,w+1}_{\tilde{j}}$ appears \cite{Maldacena:2000hw}. The representations ${\hat{\cal C}}^{\alpha,w}_{\tilde{j}}$ correspond to long strings \cite{Maldacena:1998uz,Seiberg:1999xz}.
+
+Then, Ref.~\cite{Maldacena:2000hw} shows the no-ghost theorem for the spectral flowed representations with the bound (\ref{eq:bound1}). 
+
+
+%%%%%%%%%
+\section{The outline of the proof}\label{sec:outline}
+%%%%%%%%%
+
+Now, we turn into the discussion of the no-ghost theorem in the BRST quantization. The full proof of the no-ghost theorem is rather involved, so  we give the outline here. The terminology appeared below is explained later. The proof of the no-ghost theorem consists of 3 steps (Table~\ref{table:outline}).
+
+\begin{table}
+\begin{center}
+\begin{tabular}{lc}
+%
+Step~0:& Matter Hilbert space via Verma modules \\
+&$\downarrow$ \\
+Step~1:& The vanishing theorem using filtration \\
+&(reason why $d \geq 2$ in standard proofs) \\
+&$\downarrow$ \\
+Step~2:& The no-ghost theorem
+%
+\end{tabular}
+\caption{The outline of the proof.}
+\label{table:outline}
+\end{center}
+\end{table}
+
+\begin{itemize}
+
+\item Step~1:
+The first is to show the {\it vanishing theorem}. The vanishing theorem states that the $\hat{Q}$-cohomology is trivial except at the zero ghost number. This is done by choosing an appropriate {\it filtration} for your BRST operator $\hat{Q}$. A filtration allows us to use a simplified BRST operator $Q_{0}$ and we can first study the cohomology of $ Q_{0} $. If the $ Q_{0} $-cohomology is trivial, so is the $\hat{Q}$-cohomology (Lemma~3.1 of Ref.~\cite{Asano:2000fp}); this is the reason why the filtration is so useful. However, the particular filtration used in standard proofs is also part of the reason why $d \geq 2$ in those proofs. 
+
+\item Step~2:
+The second is to compute and compare the {\it index} and the {\it signature} of the cohomology group explicitly. If the index is equal to the signature, the no-ghost theorem holds provided the vanishing theorem is valid.
+
+\end{itemize}
+
+\noindent
+Step~1 and 2 themselves consist of several steps, which are explained in Sec.~\ref{sec:vanishing} and \ref{sec:no-ghost:ads3}, respectively.
+
+In this approach the matter Virasoro generators themselves play a very important role, and it is useful to have an additional step:
+
+\begin{itemize}
+%
+\item Step~0:
+Write the matter Hilbert space in terms of products of two Verma modules, one for the $c=1$ CFT and the other for the unitary CFT $K$.
+%
+\end{itemize}
+
+\noindent The step is useful particularly at Step~1.2 and is convenient when one discusses general spacetime backgrounds.
+
+
+%%%%%%%%%
+\section{The vanishing theorem for string theory}\label{sec:vanishing}
+%%%%%%%%%
+
+The proof of the vanishing theorem consists of three steps (Table~\ref{table:vanishing}):
+
+\begin{itemize}
+%
+\item[$\circ$] Step~1.1:
+Apply our filtration \'{a} la Frenkel, Garland, and Zuckerman (Ref.\cite{Frenkel:1986dg}; Eq.~(35) of Ref.~\cite{Asano:2000fp}). With FGZ's filtration, the simplified BRST operator $Q_0$ can be further decomposed as a sum of two differentials, $d'$ and $d''$. This decomposition is crucial for the proof; it reduces the problem to the $d'$-cohomology, and $d'$ acts only on a ``$c=1$"" CFT, which contains the timelike part and the $b$ ghost part. This is the reason why the proof does not require $d \geq 2$. 
+%
+\item[$\circ$] Step~1.2:
+If the $d'$-cohomology is trivial, so is the $Q_0$-cohomology. This follows from a K\""{u}nneth formula. Then, the $\hat{Q}$-cohomology is trivial as well from the general property of filtration.
+%
+\item[$\circ$] Step~1.3:
+Now, the problem is reduced to the $d'$-cohomology. Show the vanishing theorem for the $d'$-cohomology. 
+%This is possible if the ``$\hc=1$"" part is written in terms of Verma modules.
+%
+\end{itemize}
+\noindent
+See Refs.~\cite{Asano:2000fp,Asano:2003jn} for the actual proof.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c}
+%
+Filtration (Step~1.1) \\
+$\downarrow$ \\
+$Q^{\rm (FGZ)}_{0} = d'+d''$ \\
+effectively reduces the problem to a ``$c=1$"" part \\
+$\downarrow$ \\
+The Vanishing Theorem for the $d'$-cohomology (Step~1.3) \\
+$\downarrow$ \\
+The Vanishing Theorem for the $Q^{\rm (FGZ)}_{0}$-cohomology (Step~1.2) \\
+$\downarrow$ \\
+The Vanishing Theorem for the $\hat{Q}$-cohomology (from the general property of filtration) \\
+%
+\end{tabular}
+\caption{The outline of the proof of the vanishing theorem.}
+\label{table:vanishing}
+\end{center}
+\end{table}
+
+In our previous papers, we show the vanishing theorem for $d=1$.
+%using the filtration introduced by Frenkel, Garland, and Zuckerman \cite{Frenkel:1986dg}. 
+We actually show the vanishing theorem in a more general setting. Let ${\cal V}(c, h)$ be a Verma module with highest weight $h$ and central charge~$c$. Then, we have shown the following theorem:
+\begin{theorem}[The vanishing theorem for string theory]
+%
+The $\hat{Q}$-cohomology can be non-zero only at zero ghost number 
+%$H^n(\hat{\cal H}, \hQ)=0$ for $n\neq 0$ 
+if the matter part of the Hilbert space $ {\cal H} $ can be decomposed as a sum of the following two Verma modules:
+%\marginpar{$K$: unitary}
+\begin{equation}
+%
+{{\cal H}_{h^{\rm 0},h^{K}} = \cal V}(c^0=1, h^{\rm 0}<0) \otimes {\cal V}(c^{K}=25, h^{K}>0).
+%\otimes \mbox{Fock}(b_{-m}, c_{-m}).
+\label{eq:hilbert}
+%
+\end{equation}
+(Or more generally, the $c^0=1$ part is written as nondegenerate Verma modules.)
+\label{thm:vanishing}
+%
+\end{theorem}
+\noindent 
+Here, the restriction on the weights $h^{\rm 0}$ and $h^{K}$ comes in order for the Verma modules to form the basis of the $c^0=1$ nonunitary CFT and the $c^{K}=25$ unitary CFT, respectively.
+%Here, ${\cal V}(\cX=1, \hX<0)$ necessarily corresponds to a nonunitary CFT Hilbert space, and ${\cal V}(\cK=25, \hK>0)$ corresponds to a unitary CFT Hilbert space (?). 
+Then, the only nontrivial step here is to establish that the theory in question has the Hilbert space in the form of Eq.~(\ref{eq:hilbert}); this corresponds to Step~0 of Sec.~\ref{sec:outline}. 
+
+In addition to the vanishing theorem, we have actually established a stronger statement in the paper:
+\begin{theorem}[FP-ghost decoupling theorem]
+%
+Physical states do not contain Fadeev-Popov ghosts if $ {\cal H} $ is decomposed as in Eq.~(\ref{eq:hilbert}).
+\label{thm:decoupling}
+%
+\end{theorem}
+\noindent
+Although the theorem itself is not necessary to establish the no-ghost theorem, it is useful to establish, {\it e.g.}, the BRST-OCQ equivalence (Sec.~\ref{sec:equiv}). 
+
+%Even if one can establishes the vanishing theorem, one may not be able to prove the no-ghost theorem. However, one can establish the no-ghost theorem for the Hilbert space \eq{hilbert} (under a certain condition. See \sect{no-ghost}.)
+%However, the no-ghost theorem implies the vanishing theorem;
+%satoh
+%\footnote{If the vanishing theorem does not hold, there is a physical state $\ket{N}$ at $ \hN = N $. Then, there should be another physical state $\ket{-N}$ with opposite ghost number. Otherwise, the state $\ket{N}$ is orthogonal to all states in the Hilbert space. (The inner product is nonvanishing only between the states with opposite ghost numbers.) This also follows from a Poincar\'{e} duality theorem. But then the inner product takes the form 
+%\[
+%%
+%\left(\begin{array}{c}
+%        \bra{N} \\
+%        \bra{-N} \\
+%\end{array}\right)
+%%
+%\left( \ket{N}, \ket{-N} \right)
+%=
+%%
+%\left( \begin{array}{cc}
+%        0 & 1 \\
+%        1 & 0 
+%\end{array} \right).
+%%
+%\]
+%Choosing a diagonal basis, one has a positive norm and a negative norm states.
+%}
+%; 
+%so, the proof of the vanishing theorem provides a consistency check or a circumstantial evidence of the no-ghost theorem for more general backgrounds. In the next section, we consider the case where the $\cX=1$ CFT can be written as a free CFT. Then, one can establishes the no-ghost theorem as well. 
+
+Now, we discuss the examples where our vanishing theorem can be applied. Again, one merely has to check that a theory has the Hilbert space in the form of Eq.~(\ref{eq:hilbert}).
+
+
+%%------------------------------------------------
+\subsection{$d=1$ case}\label{sec:d=1}
+%%------------------------------------------------
+
+For $\IR^{1,d-1} \times K (d=1)$, choose the $c^0=1$ CFT as a CFT generated by the timelike oscillators $\alpha^{0}_{m}$. The isomorphism
+\begin{equation}
+%
+\mbox{Fock}(\alpha^{0}_{-m}, ;k^0) \cong {\cal V}(1, h^{\rm 0}) 
+\quad\mbox{if $h^{\rm 0}=\alpha' k^2<0$}
+\label{eq:verma}
+%
+\end{equation}
+can be easily shown using the Kac determinant for $c^0=1$ (Eq.~(45) in Ref.~\cite{Asano:2000fp}). The CFT $K$ is a unitary CFT, so $h^{K}>0$.
+
+
+%%------------------------------------------------
+\subsection{Flat spacetime or $d \geq 2$ cases}%\label{sec:general}
+%%------------------------------------------------
+
+Again, choose the $c^0=1$ CFT as a CFT generated by the timelike oscillators $\alpha^{0}_{m}$. The $c^{K}=25$ CFT is a product of the CFT generated by $\alpha^{i}_{m}$ and a unitary CFT $K'$. When $(k^i)^2>0$, the $c^{K}=25$ CFT can be written in terms of Verma modules with $h^{K}>0$ \cite{Frenkel:1986dg}, so reduces to the $d=1$ case.
+
+
+%%------------------------------------------------
+\subsection{$AdS_3$}%\label{sec:general}
+%%------------------------------------------------
+
+The Hilbert space of the $SL(2,\IR)$ WZW model can also be decomposed as in Eq.~(\ref{eq:hilbert}) under the restriction on the spin (\ref{eq:bound1}). This construction of the Hilbert space has been done in Refs.~\cite{Hwang:1991an,Evans:1998qu,Maldacena:2000hw}; it was discussed in order to prove the no-ghost theorem for $AdS_3$ in the context of the old covariant quantization. 
+
+Choose the $c^0=1$ CFT as a CFT generated by $J^{3}_{n}$, which corresponds to the timelike $U(1)$: 
+\begin{equation}
+%
+L^{0}_{m}=-\frac{1}{k} \sum_n \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ} J^{3}_{m-n} J^{3}_{n} \stackrel{\scriptscriptstyle\circ}{\scriptscriptstyle\circ}.
+%
+\end{equation}
+Also, define 
+\begin{equation}
+%
+L^{K}_{m} = L^{\rm m}_{m} -L^{0}_{m}.
+%
+\end{equation} 
+By construction, $L^{K}_{m}$ commute with $J^{3}_{n}$ and thus with $L^{0}_{n}$. Thus, as far as Virasoro generators are concerned, the $SL(2,\IR)$ WZW model can be decomposed as
+\begin{equation}
+%
+U(1) \times SL(2,\IR)/U(1)
+\label{eq:decomposition}
+%
+\end{equation}
+with the Hilbert space consisting of all states of the form
+%We show that the Hilbert space consists of all states of the form
+\begin{equation}
+%
+L^{0}_{-m_1} L^{0}_{-m_2} \ldots L^{0}_{-m_M} 
+L^{K}_{-n_1} L^{K}_{-n_2} \ldots L^{K}_{-n_N} \mbox{$| h^{\rm 0} \rangle$}\mbox{$| h^{K} \rangle$},
+%
+\label{eq:basis}
+\end{equation}
+where $ m_{1} \leq m_{2} \leq \cdots \leq m_{M} $ and $ n_{1} \leq n_{2} \leq \cdots \leq n_{N} $. 
+Thus, we regard the coset part as $K$. When there is an internal CFT $K'$, we include it as a part of $K$. 
+%Thus, we regard the coset as a part of $K$ as well as the internal CFT $K'$.
+Note that even though we write $U(1) \times SL(2,\IR)/U(1)$, it does not mean that the $U(1)$ part is completely separated from the coset part as a direct product; the $J^{3}_{0}$-value for the Virasoro primaries must be common in both.
+
+Since such a construction of the Hilbert space is fairly standard \cite{Goddard:1972iy}, here we merely check that the weights $h^{\rm 0}$ and $h^{K}$ are as in Eq.~(\ref{eq:hilbert}). We discuss the unflowed and flowed representations separately.
+
+{\it (i) Unflowed representations:} The $c^0=1$ CFT has 
+\begin{equation}
+%
+h^{\rm 0}=-\frac{m^2}{k} \leq 0.
+%
+\end{equation}
+Thus, the CFT can be written in terms of the Verma modules ${\cal V}(c^0=1, h^{\rm 0}<0)$ except $m=0$ states. However, there is no on-shell state with $m=0$ except a few states, which have zero ghost number and have positive norm, so they do not affect the vanishing theorem and the no-ghost theorem \cite{Evans:1998qu,Maldacena:2000hw}. 
+%which can be checked to have a positive norm explicitly by hand 
+%\marginpar{${\hat{\cal C}}^\alpha_j$?}
+The coset can also be written in terms of the Verma modules ${\cal V}(c^{K}=25, h^{K}>0)$. For representations ${\hat{\cal D}}^+_j$, this is possible if the spin $j$ satisfies the bound (\ref{eq:bound1}) \cite{Evans:1998qu,Maldacena:2000hw}. If the Virasoro primary $\mbox{$| h^{K} \rangle$}$ is at grade $M$ of ${\hat{\cal D}}^+_j$,
+%If the highest weight states $\ket{\hK}$ are built over the Virasoro primaries at grade $M$ of ${\hat{\cal D}}^+_j$,
+%For the coset part, the coset is unitary when the spin $j$ satisfies the bound \eq{bound1} \cite{Dixon:1989cg}. Thus, $\hK \geq 0$, so the coset can also be written in terms of the Verma modules ${\cal V}(\cK=25, \hK>0)$ if $\hK \neq 0$. In fact, if the highest weight states $\ket{\hK}$ are built over the Virasoro primaries at grade $M$ of ${\hat{\cal D}}^+_j$,
+\begin{eqnarray}
+%
+h^{K} &=& -\frac{j(j-1)}{k-2}+M+\frac{m^2}{k}+h 
+\nonumber \\
+&=& \frac{2j(k/2-j)}{k(k-2)}+\frac{2M}{k}(\frac{k}{2}-j)+\frac{2j}{k}(-j+m+M)+\frac{1}{k}(j-m)^2+h
+>0
+%
+\end{eqnarray}
+since $k>0$, $j>0$, $k/2-j>0$, $-j+m+M \geq 0$, and $h \geq 0$. Here, the bound $-j+m+M \geq 0$ comes from the $SL(2,\IR)$ Clebsh-Gordon decomposition: the spin at grade $M$ is from $j-M$ to $j+M$. Note that $m$ here is the total $J^{3}_{0}$-value, not the $J^{3}_{0}$-value for ${\cal D}^+_j$. The weight $h^{K}$ is non-negative because the coset is unitary under the bound \cite{Dixon:1989cg}.
+
+{\it (ii) Flowed representations:} The discussion for the flowed representations ${\hat{\cal D}}^{+,w}_{\tilde{j}}$ and ${\hat{\cal C}}^{\alpha,w}_{\tilde{j}}$ is similar. For the flowed representations, 
+\begin{eqnarray}
+%
+L^{0}_{0} &=& \tilde{L}^{0}_{0} -w {\tilde J}^{3}_{0}-\frac{k}{4} w^2, \\
+L^{K}_{0} &=& \tilde{L}^{\rm m}_{0} - \tilde{L}^{0}_{0} = \tilde{L}_0^{\rm K}.
+%
+\end{eqnarray} 
+The $c^0=1$ CFT can be written in terms of the Verma modules since
+\begin{equation}
+%
+h^{\rm 0} = - \frac{m^2}{k} = -\frac{(\tilde{m}+\frac{k}{2}w)^2}{k} \leq 0.
+%
+\end{equation}
+Again the $m=0$ state may be problematic, but one can check that there is no $m=0$ on-shell state except the ground state \cite{Maldacena:2000hw}. 
+%which is assumed to be unitary
+The coset can also be written in terms of the Verma modules since 
+\begin{equation}
+%
+h^{K} = -\frac{\tilde{j}(\tilde{j}-1)}{k-2}+\tilde{M}+\frac{\tilde{m}^2}{k}+h>0
+%
+\end{equation}
+for ${\hat{\cal D}}^{+,w}_{\tilde{j}}$ and
+\begin{equation}
+%
+h^{K} = \frac{\tilde{s}^2+\frac{1}{4}}{k-2}+\tilde{M}+\frac{\tilde{m}^2}{k}+h>0
+%
+\end{equation}
+for ${\hat{\cal C}}^{\alpha,w}_{\tilde{j}}$.
+
+%satoh
+%It is instructive to see that the vanishing theorem no longer holds outside the range \eq{bound1}. For instance, at grade one, physical states arise at nonzero ghost numbers: $b_{-1} \ket{j=0,m=0}$ and $c_{-1} \ket{j=0,m=0}$. These are essentially the same states which arise in the infrared limit $k^{\mu}=0$ for the flat string theory.
+
+
+%%%%%%%%%
+\section{The no-ghost theorem for $AdS_3$}\label{sec:no-ghost:ads3}
+%%%%%%%%%
+
+
+\begin{table}
+\begin{center}
+\[
+\begin{array}{ccc}
+%
+\mbox{tr}_{\rm obs} \, q^{L_{0}^{\rm osc}} C 
+	&\stackrel{\mbox{\footnotesize No-Ghost Theorem}}{=}& 
+	\mbox{tr}_{\rm obs} \, q^{L_{0}^{\rm osc}} \\
+&& \\
+	\mbox{\footnotesize Step~2.2} \updownarrow 
+	&& \updownarrow \mbox{\footnotesize Step~2.1} \\
+&& \\
+\mbox{tr}_{\hat{\cal H}} \, q^{L_{0}^{\rm osc}} C 
+	&\stackrel{\mbox{\footnotesize Step~2.3}}{\leftrightarrow}& 
+	\mbox{tr}_{\hat{\cal H}} \, q^{L_{0}^{\rm osc}} (-)^{\hat{N}^g}
+%
+\end{array}
+\]
+\caption{Strategy to prove the no-ghost theorem. The traces ``$\mbox{tr}_{\rm obs}$"" and ``$\mbox{tr}_{\hat{\cal H}}$"" are taken over the observable Hilbert space and the Hilbert space $\hat{\cal H}$, respectively. The operator $C$ gives eigenvalues $C_{a}$ and $L_{0}^{\rm osc}$ counts the total grades.  The no-ghost theorem reduces a calculations of weighted characters modulo the on-shell condition. }
+\label{table:noghost}
+\end{center}
+\end{table}
+
+
+In order to show the no-ghost theorem, the notion of {\it signature} is useful. For a vector space $V$ with an inner product, we can choose a basis $e_{a}$ such that
+$"

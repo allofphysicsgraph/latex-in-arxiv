@@ -151,16 +151,16 @@ wave function renormalization and will probably suffer from the missing contribu
 
 \bigskip
 \noindent
-Substituting $U:=U_k$, $\Z:=Z_{A,k}$ and $\ZZ:=\frac{2!}{4!}\varphi \varphi Z_{D,k}$ the 
+Substituting $U:=U_k$, $Z_0:=Z_{A,k}$ and $Z_1:=\frac{2!}{4!}\varphi \varphi Z_{D,k}$ the 
 truncation thus reads:
 
 \bigskip $ \Gamma_k = \int \limits d^Dx \{ U(\rho) $\\
-$ ~~~~~~~~~~~~~~~~ + \Z(\rho) \cdot \frac{1}{2!} \partial_\mu \varphi \partial^\mu \varphi $\\
-$ ~~~~~~~~~~~~~~~~ + \ZZ(\rho) \cdot \frac{1}{2!} \partial_\mu \partial^\mu \varphi \partial_\nu \partial^\nu \varphi + O(\partial^4) \} $
+$ ~~~~~~~~~~~~~~~~ + Z_0(\rho) \cdot \frac{1}{2!} \partial_\mu \varphi \partial^\mu \varphi $\\
+$ ~~~~~~~~~~~~~~~~ + Z_1(\rho) \cdot \frac{1}{2!} \partial_\mu \partial^\mu \varphi \partial_\nu \partial^\nu \varphi + O(\partial^4) \} $
 
 \bigskip
 \noindent
-and the next step is to derive $\partial_k U$, $\partial_k \Z$ and $\partial_k \ZZ$:
+and the next step is to derive $\partial_k U$, $\partial_k Z_0$ and $\partial_k Z_1$:
 
 
 
@@ -176,18 +176,18 @@ $\bar{\varphi}$ yields the n-point-functions
 $ \Gamma^{(n)}(q_1,...,q_n) = \frac{\delta}{\delta \varphi(q_1)} \cdot\!\cdot\!\cdot \frac{\delta}{\delta \varphi(q_n)} \; \Gamma = \frac{\delta}{\delta \chi(q_1)} \cdot\!\cdot\!\cdot \frac{\delta}{\delta \chi(q_n)} \; \Gamma \mid_{\chi=0} $:
 
 
-\bigskip $ \Gamma^{(2)}(q,-q) = \Ui + 2 \rho \Uii + q^2 \cdot \Z + q^4 \cdot \ZZ $
+\bigskip $ \Gamma^{(2)}(q,-q) = U^\prime + 2 \rho U^{\prime\prime} + q^2 \cdot Z_0 + q^4 \cdot Z_1 $
 
-\smallskip $ \Gamma^{(2)}(p,-p) = \Ui + 2 \rho \Uii + p^2 \cdot \Z + p^4 \cdot \ZZ $
+\smallskip $ \Gamma^{(2)}(p,-p) = U^\prime + 2 \rho U^{\prime\prime} + p^2 \cdot Z_0 + p^4 \cdot Z_1 $
 
 \smallskip $ \Gamma^{(3)}(p,q,-p-q) = $\\
-$ ~~~~ \Gamma^{(3)}(p+q,-q,-p) = \sqrt{2\rho} ~ \{ ~ 3 \Uii + 2 \rho \Uiii $\\
-$ ~~~~~~~~~ + (p^2+(pq)+q^2) \cdot \Zi $\\
-$ ~~~~~~~~~ + (p^4+2p^2(pq)+3p^2q^2+2(pq)q^2+q^4) \cdot \ZZi ~ \} $
+$ ~~~~ \Gamma^{(3)}(p+q,-q,-p) = \sqrt{2\rho} ~ \{ ~ 3 U^{\prime\prime} + 2 \rho U^{\prime\prime\prime} $\\
+$ ~~~~~~~~~ + (p^2+(pq)+q^2) \cdot {Z_0^\prime} $\\
+$ ~~~~~~~~~ + (p^4+2p^2(pq)+3p^2q^2+2(pq)q^2+q^4) \cdot {Z_1^\prime} ~ \} $
 
-\smallskip $ \Gamma^{(4)}(p,q,-q,-p) = 3 \Uii + 12 \rho \Uiii + 4 \rho^2 \Uiiii $\\
-$ ~~~~~~~~~ +(p^2+q^2) \cdot ( \Zi + 2 \rho \Zii ) $\\
-$ ~~~~~~~~~ +(p^4+4p^2q^2+q^4) \cdot ( \ZZi + 2 \rho \ZZii ) $
+\smallskip $ \Gamma^{(4)}(p,q,-q,-p) = 3 U^{\prime\prime} + 12 \rho U^{\prime\prime\prime} + 4 \rho^2 U^{\prime\prime\prime\prime} $\\
+$ ~~~~~~~~~ +(p^2+q^2) \cdot ( {Z_0^\prime} + 2 \rho Z_0^{\prime\prime} ) $\\
+$ ~~~~~~~~~ +(p^4+4p^2q^2+q^4) \cdot ( {Z_1^\prime} + 2 \rho Z_1^{\prime\prime} ) $
 
 \bigskip
 \noindent
@@ -205,9 +205,9 @@ and yield the flow equations
 
 \bigskip $ \partial_k U = \partial_k \Gamma $
 
-\smallskip $ \partial_k \Z = \frac{\partial}{\partial q^2} ~ \partial_k \Gamma^{(2)} ~ \mid_{q^2=0} $
+\smallskip $ \partial_k Z_0 = \frac{\partial}{\partial q^2} ~ \partial_k \Gamma^{(2)} ~ \mid_{q^2=0} $
 
-\smallskip $ \partial_k \ZZ = \frac{1}{2} \frac{\partial}{\partial q^2} \frac{\partial}{\partial q^2} ~ \partial_k \Gamma^{(2)} ~ \mid_{q^2=0} $
+\smallskip $ \partial_k Z_1 = \frac{1}{2} \frac{\partial}{\partial q^2} \frac{\partial}{\partial q^2} ~ \partial_k \Gamma^{(2)} ~ \mid_{q^2=0} $
 
 \bigskip
 \noindent
@@ -232,13 +232,13 @@ This finally gives the explicit flow equations:
 
 \bigskip $ \partial_k U = 1 \cdot I\Big[ \frac{1}{N} \Big] $
 
-\smallskip $ \partial_k \Z = 4 \rho C_0^2 \cdot I\Big[ - \frac{\dot{N}}{N^4} + \frac{4}{D} \frac{p^2\dot{N}^2}{N^5} - \frac{2}{D} \frac{p^2\ddot{N}}{N^4} \Big] + ... $
+\smallskip $ \partial_k Z_0 = 4 \rho C_0^2 \cdot I\Big[ - \frac{\dot{N}}{N^4} + \frac{4}{D} \frac{p^2\dot{N}^2}{N^5} - \frac{2}{D} \frac{p^2\ddot{N}}{N^4} \Big] + ... $
 
-\smallskip $ \partial_k \ZZ = 2 \rho C_0^2 \cdot I\Big[ \frac{2\dot{N}^2}{N^5} - \frac{\ddot{N}}{N^4} \Big] + ... $
+\smallskip $ \partial_k Z_1 = 2 \rho C_0^2 \cdot I\Big[ \frac{2\dot{N}^2}{N^5} - \frac{\ddot{N}}{N^4} \Big] + ... $
 
 \bigskip $ I\Big[f(p^2)\Big] = \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} ~ f(p^2) ~ \partial_k R(p^2) $
 
-\smallskip $ C_0 = 3\Uii+2\rho\Uiii $
+\smallskip $ C_0 = 3U^{\prime\prime}+2\rhoU^{\prime\prime\prime} $
 
 
 
@@ -254,16 +254,16 @@ flow equations in explicitely scale invariant form.
 
 \bigskip
 \noindent
-To this end one substitutes $ \z(\sigma) = \Z(\rho) / \Z(\rho_k) $ ( where
-$\rho_k$ is the running minimum of $U(\rho)$ ), $\sigma=\Z(\rho_k)k^{2-D}\rho$,
-$ u = k^{-d} U $, $t=-\textrm{Ln}k$, $\eta=-\partial_t \textrm{Ln}\Z(\rho_k)$ etc.
+To this end one substitutes $ z_0(\sigma) = Z_0(\rho) / Z_0(\rho_k) $ ( where
+$\rho_k$ is the running minimum of $U(\rho)$ ), $\sigma=Z_0(\rho_k)k^{2-D}\rho$,
+$ u = k^{-d} U $, $t=-\textrm{Ln}k$, $\eta=-\partial_t \textrm{Ln}Z_0(\rho_k)$ etc.
 such that
 
-\bigskip $ \partial_t u^\prime = (-2+\eta) u^\prime +(D-2+\eta)\sigma\uii $\\
+\bigskip $ \partial_t u^\prime = (-2+\eta) u^\prime +(D-2+\eta)\sigmau^{\prime\prime} $\\
 $ ~~~~ - c_0 \cdot I_2^0 $\\
 $ ~~~~ - c_1 \cdot I_2^1 $
 
-\bigskip $ \partial_t \z = \eta z + (D-2+\eta) \sigma \zi $\\
+\bigskip $ \partial_t z_0 = \eta z + (D-2+\eta) \sigma {z_0^\prime} $\\
 $ ~~~~ + 4 \sigma c_0 c_0 \cdot ( ~~~~~~~~~~           - \frac{~0+~D}{D} J_4^0 + \frac{2}{D} K_4^1 ) $\\
 $ ~~~~ + 8 \sigma c_0 c_1 \cdot ( \frac{0+1D}{D} I_3^0 - \frac{~2+~D}{D} J_4^1 + \frac{2}{D} K_4^2 ) $\\
 $ ~~~~ + 4 \sigma c_1 c_1 \cdot ( \frac{1+2D}{D} I_3^1 - \frac{~4+~D}{D} J_4^2 + \frac{2}{D} K_4^3 ) $\\
@@ -273,7 +273,7 @@ $ ~~~~ + 4 \sigma c_2 c_2 \cdot ( \frac{4+6D}{D} I_3^3 - \frac{~8+~D}{D} J_4^4 +
 $ ~~~~ - c_4 \cdot I_2^0 $\\
 $ ~~~~ - c_5 \cdot 4 I_2^1 $
 
-\bigskip $ \partial_t \zz = (2+\eta) \zz + (D-2+\eta) \sigma \zz^\prime $\\
+\bigskip $ \partial_t z_1 = (2+\eta) z_1 + (D-2+\eta) \sigma z_1^\prime $\\
 $ ~~~~ + 2 \sigma c_0 c_0 \cdot ( ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\;             K_4^0 ) $\\
 $ ~~~~ + 4 \sigma c_0 c_1 \cdot ( ~~~~~~~~~~~~            - \frac{~0+~2D}{D} J_4^0 + \frac{~~~~~8+D~~~\;}{D} K_4^1 ) $\\
 $ ~~~~ + 2 \sigma c_1 c_1 \cdot ( \frac{~0+~2D}{D} I_3^0 - \frac{10+~4D}{D} J_4^1 + \frac{~~~~20+D~~~\,}{D} K_4^2 ) $\\
@@ -286,24 +286,24 @@ $ ~~~~ - c_5 \cdot I_2^0 $
 \noindent
 where for abbreviation we have used the constants
 
-\bigskip $ w = \ui + 2 \sigma \uii $\\
+\bigskip $ w = u^\prime + 2 \sigma u^{\prime\prime} $\\
 $ ~~~~ c_0 = w^\prime $\\
-$ ~~~~ c_1 = \zi $\\
-$ ~~~~ c_2 = \zzi $\\
+$ ~~~~ c_1 = {z_0^\prime} $\\
+$ ~~~~ c_2 = {z_1^\prime} $\\
 $ ~~~~ c_3 = w^\prime + 2 \sigma w^{\prime\prime} $\\
-$ ~~~~ c_4 = \zi + 2 \sigma \zii $\\
-$ ~~~~ c_5 = \zzi + 2 \sigma \zzii $
+$ ~~~~ c_4 = {z_0^\prime} + 2 \sigma z_0^{\prime\prime} $\\
+$ ~~~~ c_5 = {z_1^\prime} + 2 \sigma z_1^{\prime\prime} $
 
 \bigskip
 \noindent
 and the momentum integrals
 
-\bigskip $ I^m_n(w,\z,\zz,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ \partial_t r}{(w+p^2\z+p^4\zz+r)^n} $
+\bigskip $ I^m_n(w,z_0,z_1,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ \partial_t r}{(w+p^2z_0+p^4z_1+r)^n} $
 
-\smallskip $ J^m_n(w,\z,\zz,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ (\z+2 p^2 \zz+\dot{r}) ~ \partial_t r}{(w+p^2\z+p^4\zz+r)^n} $
+\smallskip $ J^m_n(w,z_0,z_1,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ (z_0+2 p^2 z_1+\dot{r}) ~ \partial_t r}{(w+p^2z_0+p^4z_1+r)^n} $
 
-\smallskip $ K^m_n(w,\z,\zz,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ 2(\z+2 p^2 \zz+\dot{r})^2 ~ \partial_t r}{(w+p^2\z+p^4\zz+r)^{n+1}} $\\
-$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ - \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ (2\zz + \ddot{r}) ~ \partial_t r}{(w+p^2\z+p^4\zz+r)^n} $
+\smallskip $ K^m_n(w,z_0,z_1,\eta)[r] := \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ 2(z_0+2 p^2 z_1+\dot{r})^2 ~ \partial_t r}{(w+p^2z_0+p^4z_1+r)^{n+1}} $\\
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ - \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ (2z_1 + \ddot{r}) ~ \partial_t r}{(w+p^2z_0+p^4z_1+r)^n} $
 
 \bigskip
 \noindent
@@ -333,21 +333,21 @@ and $I$, $J$ and $K$ are reduced to a single integral $H$:
 
 \bigskip $ I^m_n = (2-\eta) H_n^m + \eta H_n^{m+1} $
 
-\smallskip $ J^m_n = (\z-1) I^m_n + 2\zz I^{m+1}_n $
+\smallskip $ J^m_n = (z_0-1) I^m_n + 2z_1 I^{m+1}_n $
 
-\smallskip $ K^m_n = 2(\z-1)^2 I^m_{n+1} + 8(\z-1)\zz I^{m+1}_{n+1} + 8\zz^2 I^{m+2}_{n+1} $
+\smallskip $ K^m_n = 2(z_0-1)^2 I^m_{n+1} + 8(z_0-1)z_1 I^{m+1}_{n+1} + 8z_1^2 I^{m+2}_{n+1} $
 
-$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\, - 2\zz I^m_n  - v_D (w+\z+\zz)^{-n} $
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\, - 2z_1 I^m_n  - v_D (w+z_0+z_1)^{-n} $
 
 \bigskip
 \noindent
 where $H$ is a special case of a hypergeometric function
 
-\bigskip $ H^m_n(w,\z,\zz) $
+\bigskip $ H^m_n(w,z_0,z_1) $
 
-\smallskip $ = \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ \Theta(1-p^2)}{(w+p^2\z+p^4\zz+r)^n} $
+\smallskip $ = \frac{1}{2} \int \frac{d^Dp}{(2\pi)^D} \frac{(p^2)^m ~ \Theta(1-p^2)}{(w+p^2z_0+p^4z_1+r)^n} $
 
-$ = v_D \int \limits_0^1 dx \frac{x^a}{((w+1)+(\z-1)x+\zz x^2)^n} $
+$ = v_D \int \limits_0^1 dx \frac{x^a}{((w+1)+(z_0-1)x+z_1 x^2)^n} $
 
 $ = \frac{v_D}{(w+1)^n} \int \limits_0^1 dx \cdot x^a \cdot (1-bx-cx^2)^{-n} $
 
@@ -359,8 +359,8 @@ $ = \frac{v_D}{(w+1)^n} \sum \limits_{k=0}^\infty \sum \limits_{l=0}^{k/2} \frac
 
 \bigskip
 \noindent
-with $ v_D = (2^{D+1} \pi^{D/2} \Gamma(D/2))^{-1} $, $ a = m+D/2-1 $, $ b = (1-\z)/(1+w) $ and 
-$ c = -\zz/(1+w) $. The series expansion and reordering is valid and convergent as long as
+with $ v_D = (2^{D+1} \pi^{D/2} \Gamma(D/2))^{-1} $, $ a = m+D/2-1 $, $ b = (1-z_0)/(1+w) $ and 
+$ c = -z_1/(1+w) $. The series expansion and reordering is valid and convergent as long as
 $ 1-bx-cx^2 \neq 0 $ for $ x \in [0;1] $. Which is the case, as the effective average propagator stays finite at all times.
 
 
@@ -385,8 +385,8 @@ dimension. %It can therefore be directly obtained from the critical trajectory.
 \bigskip
 \noindent
 The critical exponents for the universality class of the three dimensional Ising model
-obtained in this way are compared in Table 1 to values obtained in first order (~$\zz=0$~)
-and lowest order (~$\zz=0$, $\z=1$~). For comparison we also give results from literature. 
+obtained in this way are compared in Table 1 to values obtained in first order (~$z_1=0$~)
+and lowest order (~$z_1=0$, $z_0=1$~). For comparison we also give results from literature. 
 An extensive review of different techniques and recent results can be found in \cite{Lit7}.
 We adopt their overall estimates of exponents and errors. In addition we quote some of the 
 newest and precisest results from high temperature expansions, perturbation series at fixed 
@@ -410,8 +410,8 @@ Hence the inclusion of the neglected wave function renormalizations should be th
 \hline
 ~&$\nu$&$\eta$\\
 \hline
-$~~~$effective average action to lowest order ( this paper, $\zz=0$, $\z=1$ )&0.6271&0.1120\\
-$~~~$effective average action to first order ( this paper, $\zz=0$ )&0.6255&0.0503\\
+$~~~$effective average action to lowest order ( this paper, $z_1=0$, $z_0=1$ )&0.6271&0.1120\\
+$~~~$effective average action to first order ( this paper, $z_1=0$ )&0.6255&0.0503\\
 $~~~$effective average action beyond first order ( this paper ) &0.6303&0.0793\\
 $~~~$effective average action to first order ( exponential cutoff \cite{Lit7a} )&0.6307&0.0470\\
 $~~~$effective average action to second order ( exp. cutoff, field exp. \cite{Lit5a} ) &0.632&0.033\\

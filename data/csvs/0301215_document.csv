@@ -1,0 +1,1416 @@
+,document
+0,"\begin{document}
+
+\title{Torus structure on graphs and twisted partition functions for
+minimal and
+affine models \vspace{0.8cm}}
+\author{R. Coquereaux${}^{1}$ \thanks{%
+~Email: Robert.Coquereaux@cpt.univ-mrs.fr}$\;$, M. Huerta${}^{1,}$ ${}^2$
+\thanks{%
+~Email: huertam@ictp.trieste.it} \\
+%EndAName
+\\
+${}^1$ \textit{Centre de Physique Th\'eorique - CNRS} \\
+\textit{Campus de Luminy - Case 907} \\
+\textit{F-13288 Marseille - France} \\
+\\
+${}^2$ \textit{The Abdus Salam International Centre for Theoretical Physics}
+\\
+\textit{I-34100, Trieste, Italy}}
+\date{}
+
+\thispagestyle{empty}
+\begin{titlepage}
+\maketitle
+
+\abstract{Using the Ocneanu quantum geometry of $ADE$ diagrams (and of other
+diagrams belonging to higher Coxeter -- Dynkin systems), we discuss
+the classification of twisted partition functions for affine and
+minimal models in conformal field theory and study several examples
+associated with the WZW, Virasoro and ${\cal W}_{3}$ cases.}
+
+\vspace{3.cm}
+
+
+
+\noindent Keywords: conformal field theories, ADE, modular invariance,
+quantum symmetries, Hopf algebras, quantum groups.
+\vspace{1.0cm}
+
+\noindent MSC: 81T40, 16W30 
+
+\noindent PACS: 11.25.Hf 
+
+\vspace{2. cm}
+
+\noindent hep-th/0301215 \\
+\noindent CPT-2003/P.4253 \\
+
+
+\vspace*{0.3 cm}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Purpose and structure of this article}
+
+One of the purposes of our article is to present a discussion and a
+classification of twisted partition functions for conformal field
+theories associated with minimal models and affine models of type ADE,
+as well as some of their generalizations associated with diagrams
+belonging to higher Coxeter -- Dynkin systems.  The whole discussion
+is based on the quantum geometry of these diagrams.  Since the graphs
+themselves provide the necessary combinatorial data, we shall avoid as
+much as possible to make any explicit use of the theory of affine Lie
+algebras (or of their finite dimensional
+counterparts).  Actually, we shall not use much information coming
+from Conformal Field Theory, so that our presentation should be
+understood by readers with  different backgrounds.
+
+Many mathematical tools used in the study of the quantum geometry of graphs
+were introduced by A. Ocneanu (in the context of operator algebras) and
+later ``explained'' or adapted in various contexts (for instance CFT but not
+only) by several authors;  this information is scattered in publications
+of very different nature. Our presentation starts from very elementary
+concepts and shows how one can calculate many (quantum) geometrical
+quantities of interest by using rather straightforward algorithms.
+ From the data encoded in $ADE$ diagram or their generalizations, we
+remind the reader how the corresponding quantum geometry is related to
+the (twisted or not) partition functions in affine models.  We then
+move to minimal models in particular the unitary ones, discuss the
+relation with graphs and give various examples (Ising, Potts and the
+exceptional $E_{6}$ - ${\ A_{10}}$ model).  We also consider
+twisted ${\cal W}_{3}$ minimal models.
+
+Our discussion of twisted partition functions for minimal models can
+be summarized as follows : to a pair $(G^{(1)},G^{(2)})$ of $ADE$ Dynkin
+diagrams one can associate six types of sesquilinear forms on the
+space of Virasoro characters.  These forms can be interpreted, in
+terms of minimal models, as partition functions in boundary conformal
+field theory with defects.  This classification rests on the
+possibility of introducing several ``torus structures'' for the two
+diagrams $G^{(1)}$ and $G^{(2)}$.  Torus structures are parametrized
+by elements of a particular base in the Ocneanu algebra of quantum
+symmetries; a torus structure may have a single twist, two twists, or
+no twist at all.  The interpretation of what we call torus structures
+in terms of defects (or twists) in a conformal field theory with
+boundary was proposed by V.B. Petkova and J.-B. Zuber
+\cite{PetkovaZuber:Oc}.  An application of these ideas to the
+discussion of the different types of partition functions for minimal
+models was presented in the publication\footnote{While finishing the
+redaction of our paper, we received the recent preprint
+\cite{PearceEtAl:integrable}; the authors use a concept of twisted
+minimal model which is very similar to ours, they do not discuss the
+same examples (besides the Potts model) and do not consider
+generalized Coxeter-Dynkin systems, but they provide a nice lattice
+realization of the twisted $SU(2)$ models.  The two papers share
+therefore several features but focalize nevertheless on distinct
+aspects of the same general theory.} \cite{PearceEtAl:minimalold}.  In
+general, twisted partition functions are not modular invariant, and we
+discuss what is left of this invariance in various cases.  We also
+describe what happens when the $ADE$ Dynkin diagrams are replaced by
+members of an higher Coxeter-Dynkin system (Di Francesco -- Zuber
+diagrams in the case of $SU(3)$).
+
+We want this article to be almost ``self contained'' and we shall have
+therefore to remind the reader several facts or constructions that, in
+principle, can be found in the literature.  For this reason we make
+here a short list of several specific results of the present paper,
+results that, to our knowledge, cannot be found elsewhere: the use of
+induction/restriction matrices to obtain all twisted partition
+functions (with one or two twists), the use of the multiplication
+table of the algebra of quantum symmetries $Oc(G)$ in order to obtain
+identities between toric matrices, the $12 \times 12$ multiplication
+table of $Oc(E_{6})$, the list of toric matrices with two twists (and
+the corresponding partition functions) for the affine $E_{6}$ model,
+the behaviour of these functions with respect to the action of the
+modular group, a general discussion of the various types of twisted
+partition functions for minimal models (see however the previous
+footnote), several explicit examples of twisted versions of Virasoro
+minimal models, for instance $(A_{10}-E_{6})$ and several examples of
+twisted ${\cal W}_{3}$ - minimal models, for instance $({\mathcal
+A}_{4}-{\mathcal E}_{5})$.
+
+Although many of the results and formulae that we mention
+belong to the lore of CFT (in particular affine WZW models or minimal
+models), we decide to adopt a presentation that uses graphs (or pairs
+of graphs) as primary data, so that we can avoid, as much as possible,
+to make use of results coming from the theory of Virasoro algebra or
+of affine Lie algebras; we therefore hope that the reader will find
+our presentation to be of independent interest.
+
+
+\subsection{Torus structures of Dynkin diagrams and their generalizations}
+
+Here is a brief presentation of the various structures that will be
+discussed later in this paper.
+
+\smallskip To a given Dynkin diagram $G$ (or to a member of an higher
+Coxeter-Dynkin system) one associates the complex vector space (also
+called $ G$) spanned by the vertices of this diagram.  In some cases (in
+particular for all diagrams belonging to the $A$ series), this vector
+space $G$ possesses an associative (and commutative) multiplication
+law with positive \textsl{ integral} structure constants and it is
+called the ``graph algebra''; one also says that the diagram (or the
+corresponding vector space) admits ``self fusion''.  In the case of
+ADE diagrams, whether or not the vector space of the diagram $G$ (with
+Coxeter number $\kappa$) admits self fusion, it is anyway a module
+over the graph algebra of the diagram $A_{\kappa -1}$, with the same
+Coxeter number.  More generally, \textrm{i.e.,\/}\ for higher Coxeter
+-- Dynkin systems, the vector space $G$ is a module over a particular
+graph algebra that we call $\mathcal{A} (G)$.
+
+\smallskip
+
+Following Ocneanu \cite{Ocneanu:paths}, to every diagram $G$ (with or
+without self - fusion) belonging to a Coxeter-Dynkin system, one can
+associate a bi-algebra\footnote{
+This bialgebra should be, technically, a weak Hopf algebra (or quantum
+groupoid), but this structure, as far as we know, has only been checked in a
+few cases, and we are not aware of any general proof (see however \cite
+{CoqueTrinAr:weakhopf}).} $\mathcal{B}G$. By using a particular 
+scalar product, it
+is easier to think that $\mathcal{B}G$ is actually a di-algebra (a vector
+space with two compatible associative algebra structures). There are two --
+usually distinct -- block decompositions for this di-algebra (see later).
+Blocks of the first type are labelled by points of a graph that we call $
+\mathcal{A} (G)$. Blocks of the second type are labelled by points of a
+graph that we call $Oc(G)$. The vector spaces spanned by the vertices of
+these two graphs are themselves endowed with natural associative algebra
+structures that we denote by the same symbol as the graphs themselves. The
+algebra $\mathcal{A} (G)$, coincides, for $G$ of type ADE, with the
+graph algebra of a particular member of the $A$ family, and it is a
+commutative algebra, but $Oc(G)$, also called ``algebra of quantum
+symmetries'' of $G$ is not always commutative.
+
+The algebra of quantum symmetries $Oc(G)$, like the vector space $G$ itself,
+comes with a particular basis and its multiplicative structure is encoded by
+a graph called $Oc(G)$ whose vertices are in one to one correspondence with
+the distinguished generators. In the particular case where $G$ is a member
+of the $A$ series, the algebras $\mathcal{A} (G)$, $Oc(G)$ and $G$ coincide.
+
+\smallskip
+
+We call $i,j,\ldots$ the vertices of $\mathcal{A} (G)$, $a,b,\ldots$ the
+vertices of $G$ and $x,y,\ldots$ the vertices of $Oc(G)$. Remember that
+``vertices'' should be thought of as elements of the various (distinguished)
+basis for the corresponding vector spaces. We denote by $\underline{0}$ the
+identity of $Oc(G)$. The vector space $G$ is a module over $\mathcal{A} (G)$
+, and the algebra $Oc(G)$ is a \textsl{bi-module} over $\mathcal{A} (G)$;
+this bi-module structure is encoded by a set of matrices (toric
+matrices) defined as follow:
+\[
+i.x.j = \Sigma_{y} (W_{x,y})_{ij} y
+\]
+A torus structure for the diagram $G$ is (by definition) specified by the
+choice of a matrix $W_{x,y}$. If the dimension of $Oc(G)$ is $s$, the number
+of independent toric structures is \textit{a priori} $s^{2}$, but very often
+we may have  degeneracies, in the sense that we may obtain the
+same toric matrix for different choices of the pair $(x,y)$.
+
+It is convenient to introduce the following terminology: the undeformed
+torus structure corresponds to the choice of the matrix $W_{\underline 0,
+\underline 0}$, a deformed torus structure along one ``defect line''
+specified by $x$ corresponds to the choice of the matrix $W_{\underline 0,
+x} $ (or $W_{x,\underline 0}$) and a deformed torus structure along two
+defect lines specified by $x$ and $y$ corresponds to the choice of the
+matrix $W_{x,y}$. It is convenient to set $W_{x} \doteq W_{x,\underline 0}$
+and in particular $W_{0} \doteq W_{\underline 0,\underline 0}$.
+
+\subsection{Frustrated (or twisted) partition functions for affine models}
+\subsubsection{Twisted partition functions for affine models}
+For affine models characterized by the affine Kac - Moody algebra of
+type $\widehat{su}(2)$ (chiral algebra), the classification of modular
+invariant partition functions is well known \cite{CIZ}, and was shown
+to be in one-to-one correspondence with $ADE$ Dynkin diagrams.  More
+recently \cite{Ocneanu:paths}, it was shown that if the theory is
+associated with the Dynkin diagram $G$, its modular invariant
+partition function is given by $Z_{0} = \overline \chi W_{\underline
+0, \underline 0} \chi$ where $ \chi$ is a vector of the complex vector
+space\footnote{if $\kappa$ is the Coxeter number of $G$, $n$ denotes
+the cardinality of the set of vertices of the diagram $A_{\kappa -1}$,
+\ie $n = \kappa -1$ for a diagram $G$ of type ADE.} $\mathbb{C}^n$ and
+$W_{\underline 0, \underline 0}$ is the toric matrix associated with
+the origin of the Ocneanu graph of the diagram $G$.  This
+characterization of partition functions uses only the (quantum)
+geometry of the diagram $G$ and does not refer to the theory of affine
+algebras; in this approach, for instance, the fact that $\chi$ could
+be interpreted as a character of an affine Lie algebra is not used; in
+particular, modular invariance is implemented by finite dimensional
+matrices representing $SL(2,\mathbb{Z})$.
+
+As shown in \cite{PetkovaZuber:twist} and \cite{PetkovaZuber:Oc}, the
+other partition functions of type $Z_{x} = \overline \chi
+W_{\underline 0,x} \chi$ , or more generally $Z_{x,y} = \overline \chi
+W_{x,y} \chi$, can be interpreted as twisted partition functions in a
+boundary conformal field theory (boundary ``of type'' $G$), in the
+presence of defect lines of type $ x $ and $y$.  A simple algorithm
+for the calculation of the matrices $ W_{\underline 0, x}$ was
+presented in \cite{Coque:Qtetra} (where the example of $E_{6}$ was
+chosen) and explicit results for all $ADE$ cases are given in
+\cite{CoqueGil:ADE} (see also \cite{CoqueGil:Tmodular} for
+generalizations to higher Coxeter-Dynkin systems).  The definition of
+matrices $W_{x,y}$ in \cite{PetkovaZuber:Oc} looks different from ours
+(we use the description of the bimodule structure of $Oc(G)$ over
+$A_{\kappa -1}$) but it can be shown to be equivalent (see our comment in
+section 4.2). The matrix $W_{0} \doteq W_{0,0}$ is a
+modular invariant: it commutes with the generators $S$ and $T$,
+representing $SL(2,\mathbb{Z})$ in the vector space spanned by the
+vertices of the graph $\mathcal{A}_{\kappa-1}$.  The corresponding
+sesquilinear form is the modular invariant partition function.  The
+other matrices $W_{x,y}$ are associated with partition functions that
+are not modular invariant.
+
+%\ref{sec:zubertwist}).
+\smallskip
+
+For affine models characterized by the affine Kac - Moody algebra of type
+$\widehat{su}(N)$, the story is very similar. Here $\chi$ is still a
+vector of the complex vector space $\mathbb{C}^n$ but $n$ now denotes
+the cardinality of the set of
+vertices of a graph $\mathcal{A} (G)$ generalizing the $A_{\kappa -1}$ Dynkin
+diagram. In the case of $SU(3)$ for instance, the $ADE$ diagrams are replaced
+by the Di Francesco - Zuber diagrams, but we can again define the bialgebra $
+\mathcal{B}G$ and the two related associative algebras $\mathcal{A} (G)$ and
+$Oc(G)$. Torus structures on these diagrams and corresponding twisted
+partition functions are defined as before.
+
+\subsubsection{Twisted partition functions for minimal models and their higher
+analogues}
+
+\paragraph{Minimal models}
+
+It has been known for quite a while (see for instance the book
+\cite{Drouffe-Itzykson-book}) that the classification of modular
+invariant partition functions for minimal models, unitary or not, also
+follows a kind of $ADE$ classification, in the sense that every
+partition function describing a minimal model can be associated with
+\textsl{a pair} of Dynkin diagrams\footnote{This property received  
+in \cite{KawaLongo} an 
+interpretation  in the framework of the theory of local nets of von 
+Neumann algebras.} $(G^{(1)},G^{(2)})$.  In our
+set-up, this affirmation can be precisely formulated as follows: the
+partition function of a minimal model of type $(G^{(1)},G^{(2)})$ can
+be obtained as the sesquilinear form associated with the matrix
+$W_{\underline 0, \underline 0}^{(1)}\otimes W_{\underline 0,
+\underline 0}^{(2)}$ where these two matrices respectively describe
+the undeformed torus structures of diagrams $G^{(1)}$ and $G^{(2)}$.
+It is also well known that the obtained minimal model is unitary if
+and only if the Coxeter numbers $ \kappa_{1}$ and $\kappa_{2}$ of the
+two diagrams $G^{(1)}$ and $ G^{(2)}$ just differ by one unit.  The
+usual situation for minimal models corresponds therefore to the choice
+of the two trivial torus structures for the graphs $G^{(1)}$ and $
+G^{(2)}$; the possibility of replacing these two torus structures by
+more general ones (\textrm{i.e.,\/}\ matrices $W_{\underline 0,
+\underline 0}^{(1)}$ and $W_{\underline 0, \underline 0}^{(2)}$ by
+matrices $W_{x_{1},y_{1}}^{(1)}$ and $W_{x_{2},y_{2}}^{(2)}$) leads to
+a natural classification of twisted partition functions for minimal
+models.
+
+\paragraph{Analogues of minimal models for general Coxeter-Dynkin systems
+}
+
+The general case of minimal models corresponds to the choice of two graphs
+of type $SU(2)$ (\textrm{i.e.,\/}\ two arbitrary Dynkin diagrams of type
+ADE) but one can also replace the two $ADE$ diagrams $G^{(1)}$ and $
+G^{(2)}$ by members of an higher Coxeter-Dynkin system (for example
+the Di Francesco - Zuber diagrams of type $SU(3)$) and obtain in this way
+similar classifications.  Here the notion of ``minimal
+model'' is generalized and the corresponding partition functions,
+twisted or not, can be interpreted in terms of minimal models for
+${\mathcal W}_{n}$ algebras (in particular ${\mathcal W}_{3}$ for the
+Di Francesco - Zuber diagrams).
+
+
+\subsection{A brief historical section}
+
+Here we make a long story short and gather only a few references. Many
+others can be found by looking at the quoted material.
+Apologies for omissions.
+
+The study of quantum geometry of $ADE$ graphs was, at the beginning,
+presented as a nice example illustrating the general theory of
+``paragroups'' and ``Ocneanu cells'' \cite{Ocneanu:paragroups}.
+This class of examples and its generalizations turned out to be very
+rich.  Much of the theory was developed by A. Ocneanu himself and
+described (sometimes in a rather allusive way) at several meetings and
+conferences during the years $ 95-2000$ ( for instance
+\cite{Ocneanu:Marseille}).  As far as we know, the first published
+material on this theory is \cite{Ocneanu:paths}.
+
+    From the physical side, many relations existing between $ADE$ graphs and
+physics (models of statistical mechanics) had been already observed and
+investigated by V. Pasquier in his thesis (see \cite{Pasquier}). A
+classification of modular invariant partition functions for conformal field
+theories of $SU(2)$ type was obtained at the same time, \textrm{i.e.,\/}\ at
+the end of the eighties, by \cite{CIZ} in a celebrated paper. Later, T.
+Gannon (and collaborators) could obtain (\cite{Gannon}) similar results for
+conformal field theories based on more general affine Kac -- Moody algebras.
+
+Di Francesco and Zuber made the crucial observation \cite{DiFrancescoZuber}
+that the $SU(3)$ classification could be related to a family of particular
+graphs (that we call the Di Francesco -- Zuber diagrams), in a way similar
+to the relation existing between the $SU(2)$ classification and the $ADE$
+Dynkin diagrams. Several precisions concerning this classification were
+brought by A. Ocneanu at the Bariloche school (\cite{Ocneanu:Bariloche}, see
+also the lectures of J.-B. Zuber and D. Evans at the same school).
+
+After the unpublished work by Ocneanu concerning the $ADE$ themselves,
+it was more or less clear that the existence of modular invariant
+partition functions associated with these diagrams (or their
+generalizations) was only the tip of a theoretical iceberg.  For
+instance, from the existence of several toric structures on $ADE$
+diagrams, it was clear that the modular invariant partition function
+was only describing a particular point of $Oc(G) $, and that other
+``interesting'' partition functions claiming for a physical
+interpretation existed in the theory.  A simple algorithm allowing one
+to obtain the toric matrices $W_{x,\underline{0}}$ was explained in
+\cite {Coque:Qtetra}, following the example of $E_{6}$, and, as
+already mentioned, a physical interpretation of the $W_{x,y}$ in terms
+of conformal field theory with a boundary and defects lines was given
+in \cite{PetkovaZuber:Oc}.  Using the techniques explained in
+\cite{Coque:Qtetra}, a systematic study of all $ADE$ cases was
+performed in \cite{CoqueGil:ADE} and several interesting cases
+belonging to the $SU(3)$ family were analyzed in
+\cite{CoqueGil:Tmodular}. In  \cite{FuchsEtAl}, several properties of 
+the twisted partition functions were interpreted  in terms of bimodules 
+for Frobenius algebras.  More recently (see
+\cite{PearceEtAl:integrable} and footnote 1), it was shown how to build
+a lattice realization of these models.
+
+\section{Quantum geometry on $ADE$ diagrams and their generalizations}
+
+\subsection{From the classical to the quantum situation (in a nutshell)}
+
+\paragraph{Classical situation.}
+
+Representation theory of Lie groups ($SU(2)$, $SU(3)$, etc) and their
+subgroups can be encoded by graphs. These graphs tell us how to decompose
+the representations obtained by tensor multiplying irreducible
+representations (irreps); actually it is enough to know what happens when
+one tensor multiplies some irrep by the fundamental representations.
+Representation theory of $SU(2)$ is encoded, in this way, by the graph $
+A_{\infty}$ (it describes the coupling of an arbitrary spin with a spin $1/2$
+). Representation theory of $SU(3)$ is characterized by two generalized $
+\mathcal{A}_{\infty}$ diagrams differing only by orientation (multiplication
+by the fundamentals $3 = (1,0)$ of $\overline 3=(0,1)$). Such a graph
+defines an associative algebra (the ``graph algebra'') which is the the
+Grothendieck ring spanned by the irreducible characters of the group. Notice
+that the graph algebra of a subgroup is a module over the graph algebra of
+the group and that the structure constants characterizing these
+associative algebras, or modules, are positive integers.
+
+\paragraph{Quantum situation.}
+
+In the case of $SU(2)$, truncating the diagram $A_{\infty}$ leads to
+the usual $A_{n}$ Dynkin diagrams.  In the case of $SU(3)$, truncating
+one of the two  diagrams $\mathcal{A}_{\infty}$ leads to the Di
+Francesco -- Zuber diagrams of type $\mathcal{A}$.  This can be
+generalized to $SU(N)$ \cite{Zuber:generaldynkin}.  The vector space
+spanned by the vertices of any $\mathcal{A}$ diagram, for a given
+$SU(N)$ system, always possess a $\mathbb{Z}_{N}$ grading (called $N$
+-ality).  For instance, in the case of the usual $A_{n}$ Dynkin diagrams,
+vertices are either ""even"" or ""odd"".  All these graphs ``of type
+$\mathcal{A}$'' have self - fusion (an associative multiplication law
+with positive integral structure constants), but they are not the only
+ones enjoying this property.  The obtained graph algebras are
+associative and commutative algebras with a particular basis, they are
+denoted by the same symbol as the graph itself.  For a given $N$ (the
+choice of $SU(N)$), the first task is to determine all those diagrams
+which simultaneously admit $N$-ality, generate a module (with integral
+structure constants) over some associative algebras of type
+$\mathcal{A}$ and also admit  self-fusion.  The next task is to
+identify all those diagrams (with $N$-ality) which do not necessarily
+enjoy self-fusion, but which nevertheless generate a module (with
+integral structure constants) over one of the algebras defined by the
+previous family.  A list of requirements\footnote{For instance, 
+when looking for modules over commutative algebras associated with 
+${\mathcal {A}}$ diagrams, one should impose that they have the same generalized 
+Coxeter numbers.} that a given diagram should
+obey in order to be a member of some ``generalized Coxeter - Dynkin
+system'' was given in reference \cite{Zuber:generaldynkin}, but as
+mentioned by A. Ocneanu in \cite{Ocneanu:Bariloche} (see also \cite{Ocneanu:MSRI}), 
+this list was not complete, in the sense that a local condition of 
+cohomological nature should also be imposed on its set of ``cells''; 
+this is not discussed here.
+
+\subsection{The classical and quantum systems of diagrams for $SU(2)$ and $
+SU(3)$}
+
+\paragraph{The classical {$\mathbf{SU(2)}$} system.}
+
+Choose a finite subgroup of $SU(2)$, \textrm{i.e.,\/}\ one of the
+so-called  binary polyhedral groups. The fundamental representation is again
+$2$ dimensional  and the multiplication of any of its irreps by the
+fundamental is encoded  by the corresponding diagram of tensorisation,
+which, for the binary groups of symmetries of  platonic bodies
+co\""{\i}ncides with the affine exceptional Dynkin diagrams $E_{6}^{(1)}$, $
+E_{7}^{(1)}$, $E_{8}^{(1)}$ (McKay correspondence, \cite{McKay}).
+The vector space generated by the set of irreducible representations
+of such a subgroup is a module over the algebra generated by the set
+of irreps of $SU(2)$ (reduce irreps from the group $SU(2)$ to its
+subgroup and use tensor multiplication of representations).  In
+diagrammatic parlance, we may say that affine $ADE$ diagrams are
+modules over the $A_{\infty}$ diagram.
+Irreps of a binary polyhedral group can also be tensor  multiplied and
+decomposed into irreps (with positive integral  structure constants). In
+other words : affine $ADE$ diagrams  have self fusion. In particular one of
+the vertices $\sigma_{j}$ acts as the unit, we call it $\sigma_{0}$.
+For each of these diagrams, call $G_{1}$ the adjacency matrix; its  highest
+eigenvalue $\beta$ (called  the Perron - Frobenius norm of the diagram) is
+equal to $2$ in all  cases
+and it co\""\i ncides with the dimension of the
+fundamental representation. For a given  diagram, dimensions of the irreps
+are given by components of  the (unique) normalized eigenvector corresponding
+to $\beta$ (it is normalized  to $1$ at the unit point $\sigma_{0}$).
+The table of characters $S$ happens to be equal to the  matrix of
+eigenvectors (properly normalized)  of $G_{1}$. This is a way to express the
+general McKay correspondence  in the case of $SU(2)$.
+
+\paragraph{The quantum {$\mathbf{SU(2)}$} system.}
+
+Now we move to the quantum case and replace the $A_{\infty}$ diagram by $
+A_{n}$ diagrams seen as truncated $A_{\infty}$ diagrams. These diagrams $
+A_{n}$ have self - fusion. The next task is to determine those diagrams
+(with bi-ality) that generate modules over the $A_{n}$ : we get the $A$, $D$
+and $E$ diagrams. For example, $E_{6}$ is an $A_{11}$ module, $E_{7}$ an $
+A_{17}$ module, and $E_{8}$ an $A_{29}$ module. Some of them have
+self-fusion ($A_{n}$, $D_{eve}$, $E_{6}$, $E_{8}$), others don't ($D_{odd}$, $
+E_{7}$). A  diagram $D_{eve}$ actually determines a two-parameters
+family of associative structures, but only two of them have structure constants
+which are positive integers (self fusion); these two structures can be
+identified when we permute the two end points of the $D_{even}$ fork;
+when such a phenomenon appears, the algebra of quantum symmetries
+$Oc(G)$, to which we shall return later, appears to be non commutative.
+
+
+The norm of a diagram $G$ is found to be $\beta = 2 \cos \frac{2 \pi
+}{\kappa}$, where $\kappa = n+1$ if $G = A_{n}$ or when $G$ is a
+module over $A_{n}$.  Note that $1 < \beta < 2$ (see also
+\cite{Jones:book}).  The quantum dimensions $qdim_{a}$ of the vertices
+of $G$ are obtained or defined as the components of the normalized
+Perron Frobenius eigenvector (which corresponds to the eigenvalue
+$\beta$).  For every $ADE$ diagram, \ie for every member $G$ of the
+system that we may call ``the $SU(2)$ Coxeter-Dynkin system'', the
+integer $ \kappa$ is called the \textsl{Coxeter number of the
+diagram}.  All these diagrams (with or without self - fusion) can also
+be labelled by an integer $k$, called the \textsl{level of the
+diagram} and defined by $k = \kappa-2$. A description of the ADE diagrams 
+in terms of representations of 
+quantum subgroups (a quantum analogue of
+the  McKay correspondance) was discussed by \cite{KirillovOstrik} in 
+the framework  of modular categories.
+
+\paragraph{The classical {$\mathbf{SU(3)}$} system.}
+
+Representation theory for finite subgroups of $SU(3)$ is fully characterized
+by a family of diagrams that have self -- fusion and generate modules over
+the graph algebra of the generalized $\mathcal{A}_{\infty}$ diagram of $SU(3)
+$. All of these diagrams have a norm equal to $3$.
+
+\paragraph{The quantum {$\mathbf{SU(3)}$} system.}
+
+Now we move to the quantum and replace $\mathcal{A}_{\infty}$ by
+$\mathcal{A}_{k}$ (truncated $A_{\infty}$ diagrams).  These
+$\mathcal{A}_{k}$ have self-fusion.  The next task is to determine
+those diagrams (with tri-ality) that are modules over the
+$\mathcal{A}_{k}$ : we get the Di Francesco -- Zuber diagrams.  Some
+of them have self-fusion and others don't.  The system contains in
+particular the $\mathcal{A}$ series and a finite number of ``genuine
+exceptional'' cases ($\mathcal{E}_5$, $\mathcal{E}_9$ and
+$\mathcal{E}_{21}$).  The other diagrams of the system are obtained as
+orbifolds of the genuine diagrams (exceptional or not) and as twists
+or conjugates (sometimes both) of the genuine diagrams and of their
+orbifolds.  See references \cite{DiFrancescoZuber},
+\cite{Zuber:generaldynkin} \cite{Ocneanu:Bariloche},
+\cite{Zuber:Bariloche}.  All of them have a norm $\beta$ equal to $1+
+2 \cos \left( \frac{2 \pi}{ \kappa} \right)$.  Note that $2 < \beta <
+3$.  This again defines an integer $ \kappa$ called the
+``generalized Coxeter number'' or ``altitude'' (like in
+\cite{DiFrancescoZuber}).  The level $k$ of a \textsl{diagram}
+belonging to this family is defined by the relation $k \doteq \kappa -
+3$.  The truncated $\mathcal{A}_{\infty}$ diagrams that we call
+$\mathcal{A}_{k}$ are of level $k$ (see the footnote in the next
+subsection).  Even when it exists, the determination of the graph
+algebra of a given diagram is not always unique; a phenomenon similar
+to what happens for the $D_{even}$ diagrams (see a previous remark)
+occurs for instance in the case of the ${\mathcal E}_{9}$ diagram of
+the $SU(3)$ system.
+
+
+
+\subsection{General notations and characteristic numbers for generalized
+Coxeter-Dynkin diagrams}
+
+The classical representation theory of $SU(N)$ can be encoded by a set of $
+N-1$ diagrams (with oriented edges and infinitely many vertices)
+generalizing the $A_{\infty}$ diagram of $SU(2)$; there is one such oriented
+diagram for each fundamental representation. For definiteness, we choose the
+basic representation of $SU(N)$; its Young tableau is given by a single box.
+A given system of diagrams is then labelled by an integer $N$, it has the
+same value for all diagrams of a system. For $ADE$ Dynkin diagrams, $N=2$,
+the (dual) Coxeter number of $SU(2)$. For Di Francesco - Zuber diagrams,
+$N = 3$, the (dual) Coxeter number of $SU(3)$.
+The generalized Coxeter number (altitude) of a diagram $G$ is called
+$\kappa$ in our paper, it can be defined directly from the norm
+$\beta$ of $G$; for usual Dynkin diagrams, altitude is the usual dual
+Coxeter number.
+It is useful to define the root of unity $\mathbf{q} \doteq exp{\frac{i \pi}{
+\kappa}}$, so that $\mathbf{q}^{2 \kappa} = 1$.
+The level $k$ of a given \textsl{diagram} belonging to a given system
+of type $SU(N)$ is defined by the relation $k \doteq \kappa - N$.
+More generally, one could probably define generalized Coxeter-Dynkin
+systems for any Lie group (the case $SU(2)$ corresponding
+to the $ADE$ system), but such a theory remains to be investigated.
+
+As we know, for a given system, members of the $\mathcal{A}$ family
+(call them $\mathcal{A}_{k}$, with $k$ standing for the
+level\footnote{ Another favorite notation is $\mathcal{A}^{(k+N)}$,
+the upper index referring now to the altitude.  We shall stick to the
+notation using level as a subscript.}) are obtained as
+truncated\footnote{ Truncation is made by removing the parts of the
+diagram with level higher than $k$; what we obtain is a truncated Weyl
+chamber (``a Weyl alcove'').} $ \mathcal{A}_{\infty}$ diagrams.  They
+can be related to a particular category of representations of quantum
+groups at roots of unity, but we shall not discuss this aspect here.
+
+A diagram $G$ of level $k$ belonging to such a generalized system is 
+always such
+that the vector space spanned by the set of its $m$ vertices is a module
+over the member $\mathcal{A}_{k}$ of the $\mathcal{A}$ family with the same
+level\footnote{
+Warning, in the $SU(2)$ case, we have two notations for the same objects
+since the subindex of $A_{n}$ refers usually to the number of vertices (the
+rank), but in this particular case, $k = n-1$, so that $\mathcal{A}_{k=n-1}
+= A_{n}$.} (the number of vertices of this corresponding diagram of type $
+\mathcal{A}$ will be called $n$,
+so $m=n$ when $G$ is of type $A$.
+Notice that $n = k+1$ for usual $A_{n} = \mathcal{
+A}_{k}$ Dynkin diagrams, but $n = (k+1)(k+2)/2$ for Di Francesco --
+Zuber diagrams of type $\mathcal{A}_{k}$.
+
+The list of exponents $\{r\}$ of a graph $G$ of type $ADE$ can be
+defined directly from the table of eigenvalues of the adjacency matrix
+$G_{1}$ of $G$:  these eigenvalues are of the form $2 Cos(r \pi
+/\kappa)$.  For instance, in the case of $E_{6}$, from the list of
+eigenvalues, $$\{2 Cos( \pi /12), 2 Cos(4 \pi /12), 2 Cos( 5\pi/12), 2
+Cos(7\pi /12), 2 Cos(8\pi /12), 2 Cos(11\pi /12)\}$$ we read the
+exponents $\{1, 4, 5, 7, 8, 11\}$.  Notice that exponents also refer
+to particular vertices of the corresponding diagram of type
+$\mathcal{A}$ with the same Coxeter number (for $E_{6}$, see the
+circled vertices on figure \ref{fig: E6/A11induction}, and remember
+that our indices for  labelling vertices are shifted by $1$).  The list of
+exponents $\{r=(r_1,r_2)\}$ of a graph $G$ belonging to a generalized
+system can also be defined directly from the adjacency matrix $G_{1}$ of
+$G$.  For Di Francesco - Zuber diagrams (ie the $SU(3)$ system), they
+can be read from the following general formula giving the eigenvalues
+of $G_{1}$ (\cite{DiFrancescoZuber}) ${(1 + e^{\frac{2 i \pi
+r_1}{\kappa}} + e^{\frac{2 i \pi (r_1 + r_2)}{\kappa}})}/{e^{\frac{2
+i\pi (2 r_1 + r_2)}{3 \kappa}}}$.  For instance, the exponents of
+${\mathcal E}_{5}$ are
+$$\{(1,1),(3,3),(1,3),(4,3),(3,1),(3,4),(3,2),(1,6),(4,1),(1,4),(2,3),(6,1)\}$$
+Here again, exponents refer to particular vertices of the
+corresponding diagram of type $\mathcal{A}$ with the same Coxeter
+number and remember that indices labelling vertices are usually shifted by
+$(1,1)$.  Exponents appear in the expression giving the corresponding
+modular invariant partition function (see the examples of ${E}_{6}$ or
+of ${\mathcal E}_{5}$ in sections \ref{sec:E6partfun} and 
+\ref{sec:E5partfun}) and in the usual
+(or generalized) Rocha-Cariddi formulae.
+
+\subsection{Paths, essential paths, the bi-algebra $\mathcal{B}G$ and
+the algebra $Oc(G)$ of quantum symmetries}
+
+We then move from the geometry of the ``space'' $G$ to the geometry of the
+paths on $G$, a procedure  quite common in quantum physics! Paths on
+$G$ generate a vector space $Paths$ which comes with a grading: paths of
+homogeneous grade are associated with Young diagrams of SU(N). In the case of $
+SU(2)$ this grading is just an integer (to be thought of as a length, a
+Young frame with a single row, or as a point of $A_{n} \equiv
+\mathcal{A}_{k=n-1}$).
+
+What turns out to be most interesting is a particular vector subspace
+of $Paths$ whose elements are called ``essential paths'' (we refer to
+\cite{Ocneanu:paths}, \cite{Coque:Qtetra}, see also
+\cite{Coquereaux:ClassicalTetra} for a definition).  The space of
+essential paths $EssPaths$ is itself graded in the same way as $
+Paths$ and one may consider the graded algebra of endomorphisms of
+essential paths $\mathcal{B}G \doteq End_{\sharp}(EssPaths) =
+\bigoplus_{j=0,r-1} End(EssPaths^{j})$.
+
+By using the fact that paths on the chosen
+diagram can be concatenated , one may define {\sl another}
+multiplicative (associative) structure on
+the vector space $\mathcal{B}G$ (see \cite{Ocneanu:paths} for a definition).
+This leads to a {\sl di}-algebra $\mathcal{B}G$ which turns out to be
+semi-simple for both structures, but existence of a scalar product
+allows one to transmute one of the multiplications into a co-multiplication
+compatible with the other structure and one obtains in this way a {\sl
+bi}-algebra. This bi-algebra is sometimes called, by A. Ocneanu ``Algebra of
+double triangles"" (DTA), a terminology coming from the graphical representation
+of the corresponding elementary matrices by diffusion graphs or,
+dually, as double triangles.
+
+For these two associative laws on the same space, that we may call
+``composition law'' and ``convolution law'' (or ``vertical law'' and
+``horizontal law''), there are two --- usually distinct --- block
+decompositions for $\mathcal{\ B}G$ (ideals corresponding to simple
+blocks).  The first type of blocks, labelled by $j$, corresponds to
+the grading associated with points $\sigma_{j}$ of $\mathcal{\
+A}_{k}$, \ie in the case of $SU(2)$, to the lengths of the paths,
+and, more generally, to Young diagrams of $SU(N)$); interpretation of
+this first block structure is therefore clear from the definition of
+$\mathcal{B}G$ as sum of algebras of endomorphisms.  The second block
+decomposition can be interpreted as follows: $ADE$ diagrams (or their
+$SU(N)$ generalizations) may have classical symmetries, for instance,
+all $A_{n}$ diagrams have an obvious $\mathbb{Z}_{2}$ symmetry; these
+classical symmetries (action of a finite group on vertices) can be
+promoted to the level of paths in an obvious way and therefore lead to
+particular endomorphisms of $EssPaths$; but
+there are more ``quantum symmetries'' acting on the space of essential
+paths than classical symmetries: irreducible quantum symmetries
+(call them $x$) are precisely associated with the blocks of
+$\mathcal{B}G$ for the second multiplication.  We call $Oc(G)$ the
+algebra spanned by the minimal central projectors associated with the
+later blocks, using the first multiplicative structure.  $Oc(G)$ is
+called the ``algebra of quantum symmetries''.  In all cases it is
+  an associative algebra with two generators (called ``left'' and
+``right'' generators) and the Cayley graph of multiplication by these
+two generators, called the ``Ocneanu graph of $G$''  is also
+denoted by $Oc(G)$.  The linear span of these generators are called
+left and right chiral parts, and their intersection is called
+``ambichiral''.
+
+The number\footnote{This number is infinite in the classical situation
+(finite subgroups of Lie groups).} of (simple) blocks of ${\cal B}G$
+for its first multiplication, is $n$ (the number of points of the
+corresponding ${\cal A}$ diagram); dimension of these blocks will be
+called $d_{j}, j=1\ldots n$.  The number of (simple) blocks of ${\cal
+B}G$ for its second multiplication, will be called $s$ (the number of
+points of the corresponding Ocneanu diagram); dimension of these
+blocks will be called $d_{x}, x=1\ldots s$.  Existence of two block
+decompositions for the same underlying vector space $\mathcal{B}G$
+leads obviously to the number-theoretical identity (quadratic sum
+rule): $\sum_{i=1,n} d_{i}^{2} = \sum_{x=1,s} d_{x}^{2}$.  In all
+cases explicitly studied so far, an unexpected linear sum rule also
+holds (in some cases one has to introduce a natural correction
+factor).
+
+
+The direct determination of the algebra $Oc(G)$, using the definition
+provided by A. Ocneanu, is not an easy task, and the corresponding
+graphs were first known (published) for the $SU(2)$ Coxeter-Dynkin
+system \cite {Ocneanu:paths}.  This algebra is not always commutative.
+One of the purposes of \cite{Coque:Qtetra} and \cite{CoqueGil:ADE},
+besides the calculation of the toric matrices, was actually to give an
+algebraic construction providing a realization of the \textsl{algebra}
+$Oc(G)$ in terms of graph algebras associated with appropriate Dynkin
+diagrams.  In many relatively easy cases where $G$ admits self-fusion
+and is also such that $Oc(G)$ is commutative, the algebra of quantum
+symmetries is isomorphic with $G\otimes_{J} G$, where $J$ is a
+particular subalgebra of the graph algebra of $G$; the tensor product
+sign, taken ``above $J$'', means that we identify $au \otimes b$ and
+$a \otimes ub$ whenever $u \in J \subset G$.  In those easy cases, and
+as shown in \cite{CoqueGil:Tmodular}, the subalgebra $J$ can be
+determined from the modular properties of the graph $G$; we shall
+remind the reader how this is done in a later section.  Paradoxically,
+for Dynkin diagrams, and besides the $A_{n}$ themselves, the
+``simple'' cases happen to be those where $G$ is an exceptional
+diagram equal to $E_{6}$ or $E_{8}$.  We refer to \cite{CoqueGil:ADE}
+for a discussion of all $ADE$ cases and \cite{CoqueGil:Tmodular} for a
+discussion of a number of cases belonging to the Di Francesco - Zuber
+system.
+
+
+
+\subsection{The matrices $N_{i}$, $F_{i}$, $G_{a}$, $E_{a}$, $S_{x}$ and $
+W_{x,y}$}
+\label{sec:diversesmatrices}
+\subsubsection{Fusion matrices: the $N_{i}$'s}
+
+Fusion matrices are defined for $\mathcal{A}_{k}$ diagrams.  They are
+square matrices of dimension $n \times n$ called $N_{i}$.  They are
+associated with the vertices $\tau_i$, with $i \in \{0, \ldots,
+n-1\}$, and provide a faithful representation of the graph algebra.
+Here $i$ is actually a multi-index referring to a Young frame of
+$SU(N)$ and the cardinality of the indexing set is $n$.  When the
+Young frame refers to a fundamental representation (only one column),
+this fusion matrix is the adjacency matrix of the corresponding
+oriented diagram.  Other matrices $N_{i}$ are obtained from the
+fundamental ones by applying the particular recurrence relation
+specific to $SU(N)$.  Example: in the case of $SU(2)$, each Young
+diagram is an horizontal string of boxes and is characterized by its
+length; the matrix $N_{1}$ is the adjacency matrix of $\mathcal{A}_{k}
+= A_{n=k+1}$ and $N_{0}$ is the unit; the recurrence relation
+(coupling of spins) is $$N_{i+1} = N_{1} N_{i} - N_{i-1}$$
+Matrices $N_{i}$ have indices $(j,k)$ referring to vertices of
+$\mathcal{A}_{k}$.  These matrices generate a (commutative)
+associative algebra isomorphic with the algebra of the given $
+\mathcal{A}$ diagram.  The indices $i,j$ runs from $0$ to $n-1$ but we
+shall sometimes use indices $r=i+1, s=j+1$ running from $1$ to $n$.
+In the case of $SU(3)$, the index $j$ labelling vertices $\tau_{j}$ of
+the ${\mathcal A}_\kappa$ diagram is a pair $(j_1, j_2)$, with $j_1,
+j_2 \geq 0$ and $j_1 + j_2 \leq k$.  The identity is $N_{0,0}$ and the
+matrix $N_{1,0}$ denotes the adjacency matrix of the (oriented)
+diagram $G$.  The recurrence formula reads
+$$
+\begin{array}{lcll}
+N_{j_{1}, j_{2}} &=& 0 & {\text{if} \, j_{1} < 0 \;\, \text{or} \,
+j_{2} <0 } \\
+N_{j_{1}, 0} &=& N_{1,0} N_{j_{1}-1 , 0} - N_{j_{1}-2 , 1} & {}
+\\
+N_{j_{1}, j_{2}} &=& N_{1,0} N_{j_{1}-1 , j_{2}} - N_{j_{1}-1 , j_{2}
+- 1} - N_{j_{1}-2 ,j_{2} + 1} & {\text{if} \, j_{2} \neq 0} \\
+N_{0, j_{1}} &=& N_{j_{1}, 0}^T & {}
+\end{array}
+$$
+
+\subsubsection{Fused adjacency matrices: the $F_{i}$'s}
+
+The module property (external multiplication) of the vector space associated
+with a diagram $G$, of level $k$ and possessing $m$ vertices, with respect
+to the action of the  algebra $\mathcal{A}_{k}$ is encoded by a set of $n$
+matrices $F_{i}, {i=0 \ldots n-1}$, of dimension $m \times m$, sometimes
+called ``fused graph matrices'' (a somehow misleading terminology!): $
+\tau_{i} \sigma_{a} = \sum_{b} (F_{i})_{ab} \sigma_{b}$.
+
+If $G$ is of type $\mathcal{A}$, we shave $n=m$, $F_{i}=N_{i}$ and we are
+done. More generally, call $F_{0}$ the unit matrix of dimension $m \times m$,
+and $F_{1}$ the adjacency matrix of $G$. For usual $ADE$ diagrams, each
+edge carries both orientations and $F_{1}$ is symmetric; for generalized
+diagrams, this is not so. Other matrices $F_{i}$ are then obtained by
+imposing the same recurrence relation as for the fusion matrices. Matrices $
+F_{i}$ have indices $(a,b)$ referring to vertices of $G$; they characterize $
+G$ as a module over the corresponding $\mathcal{A}$ graph. They are also in
+one to one correspondence with the minimal central projectors diagonalizing
+one of the two associative structures of the di-algebra $\mathcal{B}G$, in
+other words they characterize the corresponding blocks and give their
+dimensions $d_{i} = \sum_{a,b} (F_{i})_{a,b}$.
+
+In the case of $SU(3)$ diagrams, remember that indices $j$ are pairs
+$(j_1, j_2)$ and that fused adjacency matrices $F_{j}$,
+associated with any graph $G$ of a given level, are determined by the
+same recurrence relations as for matrices $N_i = N_{j_1,
+j_2 }$ associated with the graph ${\mathcal A}$ of the same level;
+only the seed is different: $F_{1} \doteq G_{1}$, the adjacency
+matrix of $G$.
+
+\subsubsection{Graph matrices: the $G_{a}$'s}
+
+The diagram $G$ sometimes admits self-fusion. In those cases, the $m$ linear
+generators $\sigma_a$ of $G$ ($a$ runs from $0$ to $m-1$) are represented by $m
+$ commuting matrices $G_a$ of dimension $m\times m$ spanning a faithful
+representation of the graph algebra. We call $G_{0} \doteq F_{0}$, $G_{1}
+\doteq F_{1}$ and more generally $G_{a}$ the set of matrices (one for each
+vertex of $G$) representing faithfully the multiplication of vertices.
+Warning: with the exception of $F_{0}$ and $F_{1}$, the matrices $F_{i}$ and
+$G_{a}$ are distinct (in the case of $\mathcal{A}$ diagrams, of course, they
+are identical).
+
+\subsubsection{Essential matrices: the $E_{a}$'s}
+\label{sec:EssMat}
+
+By definition, the $m$ essential matrices $E_{a}$ are rectangular
+matrices of dimension $n \times m$ defined by setting\footnote{The
+reader should be cautious about the meaning of indices: our indices
+$i$ or $a$ refer to actual vertices of the graphs but the numbers
+chosen for labelling matrix rows and columns depend on some arbitrary
+ordering on these sets of vertices.  Moreover our labels $i$ and $a$
+start from $0$, not from $1$.}, for every vertex $a$ of $G$,
+$(E_{a})_{i,b} \doteq (F_{i})_{a,b}$.  These are rectangular matrices
+of dimension $(n,m)$.  Matrices $E_{a}$ display ``visually'' the
+structure of essential paths emanating from a vertex $a$ on the
+diagram $G$.  One can check that, for graphs with self fusion,
+$E_{a}=E_{0} G_{a}$.  The particular matrix $E_{0}$ is usually called
+``intertwiner'', in the statistical physics literature.
+
+As we know, vertices of the diagram $G$ should be thought of as an analogue
+of irreducible representations for a subgroup of a group; the irreducible
+representations of the bigger group are themselves represented by vertices
+of the corresponding $A$ graph. In this analogy, the first column of each
+matrix $F_{i}$ would describe the branching rule of $\tau_{i}$ with respect to
+the chosen subgroup (restriction mechanism). In the same way, the columns of
+the particular essential matrix $E_{0}$ would describe the induction mechanism:
+the non-zero matrix elements of the column labelled by $\sigma_{b}$ tell us
+what are those representations $\tau_{i}$ that contain $\sigma_{b}$ in their
+decomposition (for the branching $A \rightarrow G$).
+
+\subsubsection{Matrices for $Oc(G)$}
+
+Since we have a di-algebra $\mathcal{B}G$ we have also
+a set of matrices $S_{x}$ which characterize the blocks of the other
+associative structure (one for each point of the Ocneanu graph). In
+``simple cases'', like $E_{6}$ or $E_{8}$, the matrix $S_{x}$ associated
+with the vertex $x = a \otimes_{J} b$ of the Ocneanu graph is simply equal
+to the product $G_{a} G_{b}$.  The dimension $d_{x}$ of the block $x$ is
+obtained by summing the matrix elements of $S_{x}$.
+
+\subsubsection{Toric matrices and generalized toric matrices: the $W_{x}$
+and $W_{x,y}$}
+\label{sec:toricmat}
+
+We know that $\mathcal{A}_{k}$ acts on $G$, but
+$\mathcal{A}_{k}$ also acts (from both sides) on $Oc(G)$.
+   In general $Oc(G)$ is an
+$\mathcal{A}_{k}$ bimodule and the action is encoded as follows: $\tau_{i} \,
+x \, \tau_{j} = \sum_{y \in Oc(G)} (W_{xy})_{j}^{i} \; y $, with $x,y \in
+Oc(G)$ and $\tau_{i},\tau_{j} \in \mathcal{A}_{k}$.  In general, one
+obtains $s \times s = s^{2} $ matrices $W_{xy}$ of dimension $ s
+\times s$, (many of them may happen to be equal). In particular one
+obtains the $s$ matrices
+$W_{x} \doteq W_{x0}$ and the matrix $W_{0}= W_{00}$
+associated with the origin of the Ocneanu graph.
+Practically, once we have the $m$ rectangular matrices $E_{a}$, of dimension
+$n \times m$, we first replace by $0$ all the matrix elements of the columns
+labelled by vertices $b$ that \textsl{do not} belong to the subset $J$ of
+the graph $G$, call $E_{a}^{red}$ these ``reduced'' matrices and obtain, for
+each point\footnote{
+In some cases, $x$ may be a linear combination of such elements.} $x = a
+\otimesdot b$ of the Ocneanu graph $Oc(G)$, a ``toric matrix'' $W_{x} =
+E_{a}\, (E_{b}^{red})^T$, of dimension $n \times n$.
+
+We will explain in section \ref{sec:algo1} how to generalize the
+previous method to obtain all the toric matrices $W_{x,y}$ (``first
+algorithm'').  Actually, the $W_{x,y}$ can also be obtained from the
+$W_{x}$, determined as above, by working out the multiplication table of
+$Oc(G)$ (this is our ``second algorithm'').  All we have to do is to
+decompose the product $x\times y$ on the basis generators: if
+$x.y=\Sigma_{z} C_{x,y}^{z} z$ with $x,y,z\in Oc(G)$ then
+$W_{x,y}=\Sigma _{z}C_{x,y}^{z} W_{0,z}$.  This can be seen as a
+compatibility equation; indeed, the action of ${\cal A}_{k}$ is
+central, so $\tau _{i}.x.\tau _{j} = x.  \tau _{i}.\underline{0}.\tau
+_{j} $ implies
+\begin{eqnarray*}
+  \Sigma _{y}(W_{xy})^{i}_{j}y &=&  x . (\Sigma _{z}(W_{0z})^{i}_{j} z) =
+  \Sigma _{z}(W_{0z})^{i}_{j} x. z \\
+{} &=& \Sigma _{z}(W_{0z})^{i}_{j} \Sigma_{y} C_{x,z}^{y} y
+  = \Sigma_{y} (\Sigma _{z}  C_{x,z}^{y} (W_{0z})^{i}_{j}) y
+\end{eqnarray*}
+Notice that linearity of this relation implies in particular $W_{xy,0}
+= W_{x,y}$.Moreover, when $Oc(G)$ is commutative, \ie $xy=yx$, we
+have $W_{x,y}= W_{y,x}$ (but the later equality does not imply the
+former).
+
+ From the toric matrices $W_{xy}$ describing the
+bimodule structure of $Oc(G)$, one obtains the corresponding twisted
+partition functions as sesquilinear forms in the complex vector space 
+$\mathbb{C}^s$.
+Introducing a basis $\chi$ of vectors $(\chi_{j})$, usually interpreted
+as characters, we write
+$$Z_{x,y} = \overline{\chi} W_{x,y} \chi$$ and $Z_x = Z_{x,\underline{0}}$.
+The modular invariant
+partition function is $Z_{\underline{0}}$ with $\underline{0} = 0
+\otimesdot 0$.  The example of $E_{6}$ is discussed in section
+\ref{section: example E6}.
+
+
+\subsection{Modular aspects: $S$, $T$ and $SL(2,\mathbb{Z})$}
+
+
+\subsubsection{The $S$ operator}
+\label{sec:SfromMul}
+
+Any finite subgroup of $SU(2)$ can be associated with an affine ADE
+graph, in such a way that the normalized Perron Frobenius vector of
+the graph gives the list of dimensions for irreducible representations
+of the finite subgroup.  This observation, known as McKay
+correspondence, was later generalized by observing that the whole
+table of characters of a finite subgroup of $SU(2)$ can be identified
+with the list of eigenvectors (properly normalized) of the adjacency
+matrix of the corresponding affine Dynkin diagram (generalized McKay
+correspondence).  For any finite group, not necessarily a subgroup of
+$SU(2)$, the commutative and associative algebra generated by
+irreducible characters (multiplication of representations) can be
+realized by a set of commuting matrices (the analogue of our matrices
+$G_a$ ) and the table of characters can be reconstructed, without
+using the notion of conjugacy classes, by diagonalizing simultaneously
+this set of (commuting) matrices: the character table $S$ is a
+properly normalized diagonalizing matrix. The following ``quantum
+construction'' is analogous.
+
+
+In the quantum case (\ie diagrams ADE), there is no group, there are
+no conjugacy classes and no table of characters.  Nevertheless, there
+is an adjacency matrix for the chosen diagram.  The matrix $S$ that we
+are looking for is precisely the quantum analogue of the table of
+characters, and is obtained, for each level $k$ as the (properly
+normalized) table of eigenvectors for the adjacency matrix of the
+diagram ${\mathcal A}_{k}$.  The bonus in the quantum situation is
+that one can interpret $S$ as one of the generators of the modular
+group in a particular representation; this representation of $SL(2,\mathbb{Z})$ appeared in
+a work by Hurwitz \cite{Hurwitz} about a century ago.  $S$, interpreted as
+a quantum table of characters (or a ``quantum Fourier transform'')
+implements therefore a quantum analogue of the McKay correspondence.
+For illustration, the modular matrix $S$ for the $A_{11}$ diagram is
+determined in this way in section \ref{sec:SforA11}.  The general expression
+for $S=s$, in the case of the $SU(2)$ system, with $\kappa =
+k+2$, is
+$$S_{ij} = \sqrt{\frac{2}{\kappa}} \sin(\pi
+\frac{(i+1)(j+1)}{\kappa}) \, \textstyle{for} \,  0 \leq i,j \leq \kappa-2 $$
+
+\subsubsection{$SL(2,\mathbb{Z})$}
+
+A projective representation of $SL(2,\mathbb{Z})$ can be defined with two
+matrices $s$ and $t$ and a phase $\zeta$ which are such that
+$(st)^{3}= \zeta^{3} s^{2}$, $s^{2}= C$, $Ct=tC$ and $C^{2}=1$.  The
+matrix $C$ is called ``conjugation matrix'' and $t$ is the ``modular
+twist''.  Such representations of the modular group can be obtained on
+the space generated by the simple objects in any braided modular
+category \cite{KiriOsBook}.  The general formula for the modular
+phase is $\zeta = e^{2 \mathsf{i} \pi c/24}$ with $c = (\kappa - N) d/\kappa$.
+In the present context, \ie generalized Coxeter - Dynkin diagrams of
+type $SU(N)$, $\kappa$ is the altitude (generalized Coxeter), $\kappa
+- N = k$ is the level and $d = dim\, SU(N)$.  Therefore $c =
+\frac{3k}{k+2}$ for $SU(2)$ and $c = \frac{8k}{k+3}$ for $SU(3)$.  The
+modular phase $\zeta$ is then equal to $e^{\frac{i\pi}{4}} e^{\frac{
+-i \pi} {2\kappa}}$ for an $ADE$ diagram and to $e^\frac{2 i
+\pi}{3} e^{-\frac{2 i \pi}{\kappa}}$ for a Di Francesco - Zuber
+diagram.  We use modular generators $S,T$ normalized as follows: $S =
+s$ and $T = t / \zeta $.  The $SL(2,Z)$ relations then read
+$(S T )^{3}=  S^{2}$, $S^{2}= 1$.
+
+
+
+\subsubsection{The $T$ operator}
+\label{sec:TgeneratorAff}
+In the framework of modular categories, and for a Lie algebra
+${\mathcal G}$, a general expression for the modular twist is $ t_{ij}
+= \delta_{ij} \mathbf{q}^{<<j, j + 2 \rho>>}$ where $\mathbf{q} =
+e^{\mathsf{i}\pi/\kappa}$, $\rho$ is half the sum of positive roots,
+$i$, $j$ are elements of the weight lattice characterizing the
+representation $\tau_{i}$ and $\tau_{j}$; moreover $<<.,.>>$ is an
+invariant bilinear form on $\mathcal G$ normalized by
+$<<\alpha,\alpha>>=2$ for a short root $\alpha$.  For $SU(2)$, with
+$i,j = 0 \ldots \kappa -2$, the modular twist is $t_{ij} =
+e^{\frac{\mathsf{i} \pi}{2\kappa} j(j+2)} \delta_{ij}$.  Its logarithm
+is proportional to the Casimir operator: $j$ is related with the
+(would be) spin $\ell$ by $j+1 = 2\ell +1$, therefore
+${\frac{\mathsf{i} \pi}{2\kappa} j(j+2)} = {\frac{2 \mathsf{i}
+\pi}{\kappa} \ell(\ell+1)}$.  With our normalization, 
+the modular generator $T$ is therefore
+$$T_{ij} = exp[2 \mathsf{i}\pi (\frac{(j+1)^2}{4
+\kappa} - \frac{1}{8})] \delta_{ij} $$
+The expression $(\frac{(j+1)^2}{4 \kappa} - \frac{1}{8})$ is the
+``modular anomaly'', and it is convenient to call ``modular exponent''
+the quantity $\hat T = (j+1)^{2}$ mod $4\kappa$ (we could as well use
+$j(j+2)$ mod $4\kappa$ or any other expression differing by a constant
+shift).
+
+
+In the case of $SU(3)$, the action of the modular matrix $T$ on
+vertices $\tau_{j} \equiv \tau_{(j_{1}, j_{2})}$ of ${\mathcal
+A}_{k}$ is also diagonal and given by:
+$$
+\left( T \right)_{i j} = e_{\kappa} \left[ -(i_1+1)^2 -
+(i_1+1).(i_2+1) - (i_2+1)^2 + \kappa \right]
+\delta_{i j},
+$$
+where $i \doteq (i_1,i_2)$, $j \doteq
+(j_1,j_2)$, $e_{\kappa}[x] \doteq \exp \left( \frac{-2 \mathsf{i} \pi
+x}{3\kappa} \right)$, and $\kappa=k +3$.  We call ``modular exponent''
+the quantity $\hat{T} = [-(i_1+1)^2 - (i_1+1).(i_2+1)
+- (i_2+1)^2 + \kappa ] \, \textstyle{mod} \, 3 \kappa$.
+
+
+\subsubsection{Modular invariance}
+
+Modular invariance of the partition function $Z_{00}$ can be proven
+either by checking that it is invariant when we replace the modular
+parameter $\tau$ by $\tau + 1$ or $-1/\tau$ in the characters
+$\chi_{r}$ (these functions are generalized Jacobi's theta functions)
+or, much more simply, by showing that the matrix $W_{0}$ commutes with
+the generators $S$ and $T$ of the modular group in this
+representation.
+
+
+It can be checked, from the explicit expressions of $S$ and $T$ in the
+$SU(2)$ case, that, $T^{8 \kappa} = 1$ when $\kappa$ is odd and $T^{4
+\kappa} = 1$ when $\kappa$ is even.  This, by itself, is not enough to
+imply the following property, which is nevertheless true, and was
+proven more than hundred years ago \cite{Hurwitz}: the Hurwitz --
+Verlinde representation of $SL(2,\mathbb{Z})$ factorizes over the finite
+group $SL(2,\mathbb{Z}/8 \kappa \mathbb{Z})$ when $\kappa$ is odd, and
+over $SL(2,\mathbb{Z}/4 \kappa \mathbb{Z})$ when $\kappa$ is even.  For
+instance, $T^{40}=1$ for  $A_{4}$  ($40 = 8 \times 5$), but
+$T^{48}=1$ for $A_{11}$ ($48 = 4 \times 12$).
+
+
+
+\subsubsection{Determination of $Oc(G)$ from the modular properties of
+the diagram $G$}
+\label{sec:Ocstruct}
+In general an Ocneanu cell system is defined by four graphs -- two
+horizontal and two vertical -- satisfying a number of matching
+properties (see \cite{Ocneanu:paragroups}, \cite{EvansKawa:book}).
+Particularly interesting cell systems are obtained when one chooses
+the two horizontal graphs as given by two Dynkin diagrams with the
+same Coxeter number.  In the present situation, these two are given by
+the same Dynkin diagram $G$ (we write ``Dynkin'' but this graph can be
+a member of an higher system).  A priori, the determination of $Oc(G)$
+results from the study of the the block structure of ${\mathcal B}G$
+for its convolution law.  This, in turns, requires the determination
+of the values of all Ocneanu cells for the graph system of type
+$(G,G)$, a task that may involve rather long calculations\ldots but if
+our only purpose is to determine $Oc(G)$, it is simpler to find a
+short cut.  One possibility is to use the fact that we already know,
+in many cases, the expression of the modular invariant (as calculated
+by \cite{CIZ} for $SU(2)$ and \cite{Gannon} for $SU(3)$); such a
+technique was apparently followed by A. Ocneanu himself in his
+determination of the irreducible quantum symmetries $x$, also called
+``irreducible connections'', associated with a given diagram.
+However, if we do not want to use this {\it \/ a priori} knowledge,
+there is another technique, which uses modular properties of the
+diagram; this was one of the purposes of the article
+\cite{CoqueGil:Tmodular}.
+
+The  ${\mathcal A}$ series is always modular: one can define a
+representation\footnote{Actually this representation
+factors to a finite group.} of $SL(2,\mathbb{Z})$ on the vector space of every diagram
+of this class and the operator $T$ is diagonal on the vertices.
+Take now $G$ some member of a generalized Dynkin-Coxeter system,
+and call $A = {\cal A}(G)$ the corresponding member of the ${\mathcal
+A}$ series (same Coxeter number or altitude).
+Being a module over the algebra of $A$, there are
+induction-restriction maps between $G$ and $A$.
+These maps are described by the essential matrices $E_{a}$ or by
+matrices $F_{i}$ (see section \ref{sec:EssMat} and 
+\cite{Coque:Qtetra}, \cite{CoqueGil:ADE}).
+One can try to define
+an action of $SL(2,\mathbb{Z})$ on the vector space of $G$ in a way that
+should be compatible with those maps, but
+this is not necessarily possible. In plain terms: suppose that the vertex
+$\sigma$ of $G$ appears both in the branching
+rules (restriction map from $A$ to $G$)
+of vertices $\tau_p$ and $\tau_q$ of $A$; one could think of defining the
+value of the modular generator $T$ on $\sigma$
+       either as $T(\tau_p)$ or as $T(\tau_q)$, but
+this is ambiguous, unless these two values are equal.
+In general, there is only a subset $J$ of the vertices of $G$ for
+which $T$ can be defined:
+a vertex $\sigma$ will belong to this subset whenever $T$ is constant
+along the vertices of $A$ whose restriction
+to $G$  contains $\sigma$. The knowledge of this set $J$ allows one,
+in the ``simple cases'', to determine
+$Oc(G)$, the algebra of quantum symmetries of $G$: the set $J$
+generates a particular subalgebra of $G$ and one finds $Oc(G) =
+G \otimes_{J} G$.
+
+     \paragraph{Results for the $ADE$ systems}: for diagrams of type
+     ${\mathcal A}$, the subalgebra $J$ coincides with the algebra of
+     the diagram itself, so that $Oc({\mathcal A})$ is isomorphic with
+     ${\mathcal A}$.  For $E_{6}$, the subalgebra $J$, isomorphic with
+     $A_{3}$ is generated by the three extremal points, and $Oc(E_{6})
+     = E_{6} \otimes_{A_{3}} E_{6}$ has dimension $12$ (notice that
+     $\kappa = 12$, as well, but this is an accident).  For $E_{8}$,
+     the subalgebra $J$, isomorphic with $A_{2}$ is generated by the
+     two extremal points of the long branches , and $Oc(E_{8}) = E_{8}
+     \otimes_{A_{2}} E_{8}$ has dimension $32$ (notice that $\kappa =
+     30$).  The other cases are more difficult to analyze: $Oc(E_{7}) =
+     D_{10} \otimes_{\rho} D_{10}$, where the exceptional twist $\rho$
+     can be determined from the modular properties (with respect to
+     $T$) of the $A_{17}$ diagram; its dimension is $17$.  The algebra
+     of quantum symmetries for a $D_{odd}$ diagram can be written as a
+     quotient (using an identification map $\rho$) of the tensor square
+     of the associated algebra of type ${\mathcal A}$ (for instance,
+     $Oc(D_5) = A_7 \otimes_{\rho(A_7)} A_7$); the Ocneanu graph of
+     $D_{2n+1}$ has $4n-1$ vertices.  In some respect, the
+     determination of Ocneanu graphs for $D_{even}$ diagrams is more
+     difficult; indeed, the algebra of quantum symmetries, in this
+     case, is not commutative.  We sketch its construction because the
+     result will be used later in our study of the twisted partition
+     functions for the Potts model.  Starting from $D_{2n}$, one first
+     obtains the induction-restriction rules with respect to the
+     corresponding $A$ diagram with the same norm ($A_{4n-3}$) by
+     calculating the essential matrices; from these rules and from the
+     expression of the modular operator $T$ on $A_{4n-3}$, one
+     determines the set $J$.  One finds that $Oc(D_{2n})$ consists of
+     two separate components.  The first is given by
+     $D_{2n}^{trunc}\otimes_{J^{'}} D_{2n}^{trunc}$, where
+     $D_{2n}^{trunc}$ is the vector space corresponding to the
+     subdiagram spanned by $\{\sigma_{0}, \sigma_{1}, \sigma_{2},
+     \ldots \sigma_{2n-3} \}$, obtained by removing the fork, and $J' =
+     \{\sigma_{0}, \sigma_{2}, \ldots \sigma_{2n-4} \}$ is the
+     corresponding truncated subset\footnote{We choose the natural
+     order to label vertices $\sigma_{a}$ of $D_{2n}$.} of $J$.  The
+     second component is a non-commutative $2\times 2$ matrix algebra
+     reflecting the indistinguishability of $\sigma_{2n-2}$ and
+     $\sigma_{2n-2}^{'}$.  Ambichiral points are associated with the
+     $n+1$ vertices of $J$ (\ie $n-1$ for the linear branch and $2$ for
+     the fork); the Ocneanu graph of $D_{2n}$ has
+     $\frac{(2n-2)(2n-2)}{n-1} + 4 = 4n$ vertices.
+
+Results for the $SU(3)$ system: there is no complete treatment in the
+available literature, but several examples have been worked out in
+\cite{CoqueGil:Tmodular}.  Because we shall use it later (see section
+\ref{sec:w3minimal}) in our study of twisted minimal models of type ${\mathcal
+W}_{3}$, we just mention that the Ocneanu graph of the exceptional
+${\mathcal E}_{5}$ diagram has $24$ points; both left and right chiral
+subgraphs have $12$ points; the ambichiral subalgebra is of dimension
+$6$ and the supplementary subspace has also dimension $6$.
+
+
+\subsection{Characters for affine models}
+\label{sec:CharacAff}
+
+Strictly speaking, we do not need to use characters in this paper
+since modular properties of the partition functions are to be
+discussed in terms of commutation relations between the toric matrices
+and the $S,T$ generators of $SL(2,\mathbb{Z})$.  However, for completeness
+sake, and for the reader who wants to check explicitly the results in
+terms of invariance, or non invariance, with respect to transformations
+$\tau \rightarrow -1/\tau $ and $\tau \rightarrow \tau +1$ (or $\tau
+\rightarrow \tau +N$, for $T^{N}$), we remind the definitions of the
+characters as functions of $\tau$, for affine models.  Here $\tau$ is
+a point in the upper -- half plane and we set $q \doteq e^{2 i \pi
+\tau}$.  These characters provide a basis of the vector space
+$\mathbb{C}^{n}$, for the defining representation (matrices $N_{i}$) of the
+graph algebra of diagrams of type ${\mathcal A}$.  In the case of the
+$SU(2)$ system, $k = \kappa - 2$ denotes the level, and for each
+vertex $j = 0 \ldots k$ of a diagram $A_{k+1}={\mathcal A}_{k}$, we
+set $r = j + 1 \equiv 2 \ell + 1$ and define
+
+
+
+\[
+\xi_{j}^{(k)} (q)=\frac{\sum\limits_{t=-\infty }^{\infty }\left(
+2 \kappa t + r \right) q^{(2  \kappa t + r )^{2}/(4 \kappa)}}{\eta (\tau )}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A closed form, for this expression, is
+$$
+\xi_{j}^{(k)} (q) = q^{\frac{{\left( 1 + j  \right) }^2}
+           {4\,\left( 2 + k \right) }}\,\frac{
+        \left( \left( 1 + j  \right) \,
+           \left( 1 + {\theta}(3,
+              \left( 1 + j  \right) \,\tau ,q^{2 + k})
+             \right)  - \mathsf{i} \,\left( 2 + k \right) \,
+           {\theta'}(3,
+            \left( 1 + j  \right) \,\tau ,q^{2 + k})
+          \right) }{{{\eta}(\tau )}^3}
+          $$
+          where  $\eta(\tau )$ is the Dedekind eta
+          function,
+         $\theta[3, u, v]$ is the third elliptic Jacobi theta function, and
+              $\theta'[3, u, v]$ is its first derivative with respect to $u$.
+More explicitly, these characters read
+
+$$
+\xi_{j}^{(k)} (q) = q^
+          {-\left( \frac{1}{8} \right)  +
+            \frac{{\left( 1 + j  \right) }^2}
+             {4\,\left( 2 + k \right) }}\, \frac{
+         \left( \sum_{t = -\infty }^{{+}\infty }
+            \left( {j } + 1 +
+               2\,t\,\left( k + 2 \right)  \right) \,
+             {{q}}^
+              {t\,\left( j  + 1 +
+                  t\,\left( k + 2 \right)  \right) } \right) }
+         {\sum_{t = -\infty }^{{+}\infty }
+          \left( 1 + 4\,t \right) \,
+           {{q}}^{t\,\left( 1 + 2\,t \right) }}
+$$
+
+
+When $\tau \rightarrow i \infty$,
+then $\xi_{j}^{(k)} (q) \simeq (j + 1) q^{-\frac{1}{8} +
+h}$, with
+$h = \frac{(j + 1)^{2}}{4 \kappa}$. The power of $q$ is negative when 
+$r = j + 1 <
+\sqrt{\kappa /2}$. It is  often convenient to use expressions that are
+valid in a neighborhood of infinity, for instance:
+
+Graph $A_{1}$
+
+$$\xi_{0}^{(0)} (q) = 1$$
+
+Graph $A_{2}$
+\begin{eqnarray*}
+\xi_{0}^{(1)} (q)& = &{q^{-\frac{1}{24}}}(1 + 3\,q + 4\,q^2 + 7\,q^3
++ 13\,q^4 + 19\,q^5 +
+        29\,q^6 +\ldots)
+        \\
+\xi_{1}^{(1)} (q)& = &{q^{\frac{5}{24}}}\,\left( 2 + 2\,q + 6\,q^2 + 8\,q^3 +
+        14\,q^4 + 20\,q^5 + 34\,q^6 + \ldots \right)
+         \end{eqnarray*}
+
+Graph $A_{3}$
+\begin{eqnarray*}
+	 \xi_{0}^{(2)} (q)&=&{q^{\frac{- 1}{16}}}({1 + 3\,q + 9\,q^2 + 15\,q^3
++ 30\,q^4 + 54\,q^5 +
+        94\,q^6 + \ldots})\\
+\xi_{1}^{(2)} (q)&=&q^{\frac{1}{8}}\,\left( 2 + 6\,q + 12\,q^2 + 26\,q^3 +
+        48\,q^4 + 84\,q^5 + 146\,q^6 +\ldots \right)\\
+\xi_{2}^{(2)} (q)&=&q^{\frac{7}{16}}\,\left( 3 + 4\,q + 12\,q^2 + 21\,q^3 +
+        43\,q^4 + 69\,q^5 + 123\,q^6 +\ldots \right)
+    \end{eqnarray*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+$SU(3)$ characters have similar expressions, but indices $j$
+refer then to a Young frame with two rows.
+\noindent
+Because of the two existing conventions, $(i,j)$ or $(r,s)$,
+for the label of the origin ($0$ or $1$)
+it is convenient to set $\chi_{1} \equiv \xi_{0}$, $\chi_{2} \equiv
+\xi_{1}$ \, \etc :
+$$\chi_{j + 1}^{(k)} \doteq \xi_{j}^{(k)}$$
+
+\section{Torus structures for affine models}
+
+\subsection{Example of an affine model: the $E_{6}$ case}
+\label{section: example E6}
+
+Toric matrices $W_{x0}$ have been determined for all $ADE$ cases and a
+few others.  Since we shall need them later, we summarize the
+situation for $E_{6}$.  We also present, in this case, several results
+that were not available before: the full multiplication table of
+$Oc(E6)$, the determination of the frustrated partition functions with
+two twists, and a discussion of modular properties of these functions.
+We also show how to display the expression of these partition
+functions in a compact way, by using induction -- restriction rules for
+the pair $(A_{11},E_{6})$.
+
+\subsubsection{The $E_{6}$ diagram and its Ocneanu graph (summary)}
+
+Figure \ref{Fig: E6labels} displays $E_{6}$ and the related diagram
+$A_{11}$. Vertices $\sigma_{a}$ of $E_{6}$ are
+labelled $0,1,2,5,4,3$ as shown on the picture.
+$A_{11}$ acts on $E_{6}$, hence $ A_{11}$ also acts from the left and
+from the right on the Ocneanu algebra\footnote{This tensor product is
+taken above the subalgebra $A_{3}$ generated by vertices $0,4,3$, so
+that $a \otimesdot ub = a u\otimesdot b$ when $u \in A_{3}$.} of
+quantum symmetries which can be shown to be equal (\cite
+{Coque:Qtetra}, \cite{CoqueGil:ADE}) to $Oc(E_{6}) =
+E_{6} \otimes_{A_{3}} E_{6}$. It has dimension $12$.
+
+The bimodule structure of $Oc(E_{6})$ over $A_{11}$ is encoded by $12
+\times 12 = 144 $ matrices $W_{xy}$ of dimension $ 11 \times 11$, (as
+we shall see, many of them are equal).  In particular one obtains the
+$12$ matrices $W_{x} \doteq W_{x0}$, one for each point of the Ocneanu
+graph, and the matrix $W_{0} \doteq 0 \otimesdot_{A_{3}} 0$ associated
+with the origin $\underline 0$.  Figure \ref{Fig: Oc(E6)} displays the
+Ocneanu graph and the matrix $W_{0}$.  Continuous and dashed lines on
+this graph describe respectively the multiplications by the left and
+right chiral generators $\underline 1 = 1 \otimesdot 0$, $\underline
+1' = 0 \otimesdot 1$.  We use the notations $\underline a = a
+\otimesdot 0$, $\underline a' = 0 \otimesdot a$ and $\underline{ab'}
+\equiv {\underline a} \, {\underline b'} \equiv a \otimesdot b$.
+There are many identities hidden in this graph, like for instance
+$\underline{31'}=\underline{2'}$; to see them, the reader should work
+out for himself the multiplication table of the graph algebra of
+$E_{6}$ or refer to references \cite{Coque:Qtetra} or
+\cite{CoqueGil:ADE}.
+
+
+
+%%%%%%%%% E6 and A11 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+\unitlength 0.7mm
+\begin{center}
+\begin{picture}(170,20)
+\multiput(0,5)(10,0){5}{\circle*{2}}
+\put(20,15){\circle*{2}}
+\put(0,5){\line(1,0){40}}
+\put(20,5){\line(0,1){10}}
+\put(0,0){\makebox(0,0){$\sigma_0$}}
+\put(10,0){\makebox(0,0){$\sigma_1$}}
+\put(20,0){\makebox(0,0){$\sigma_2$}}
+\put(30,0){\makebox(0,0){$\sigma_5$}}
+\put(40,0){\makebox(0,0){$\sigma_4$}}
+\put(20,20){\makebox(0,0){$\sigma_3$}}
+
+\multiput(80,5)(10,0){11}{\circle*{2}}
+\put(80,5){\line(1,0){100}}
+\put(80,0){\makebox(0,0){$\tau_0$}}
+\put(90,0){\makebox(0,0){$\tau_1$}}
+\put(100,0){\makebox(0,0){$\tau_2$}}
+\put(110,0){\makebox(0,0){$\tau_3$}}
+\put(120,0){\makebox(0,0){$\tau_4$}}
+\put(130,0){\makebox(0,0){$\tau_5$}}
+\put(140,0){\makebox(0,0){$\tau_6$}}
+\put(150,0){\makebox(0,0){$\tau_7$}}
+\put(160,0){\makebox(0,0){$\tau_8$}}
+\put(170,0){\makebox(0,0){$\tau_9$}}
+\put(180,0){\makebox(0,0){$\tau_{10}$}}
+
+\put(-5,7){$\ast$}
+\put(75,7){$\ast$}
+
+\end{picture}
+\end{center}
+\caption{The $E_6$ and $A_{11}$ Dynkin diagrams}
+\label{Fig: E6labels}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%  E6  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\par
+\begin{center}
+{\tiny {\ $W_{0} = \left(
+\begin{array}{ccccccccccc}
+1 & . & . & . & . & . & 1 & . & . & . & . \cr . & . & . & . & . & . & . & .
+& . & . & . \cr . & . & . & . & . & . & . & . & . & . & . \cr . & . & . & 1
+& . & . & . & 1 & . & . & . \cr . & . & . & . & 1 & . & . & . & . & . & 1
+\cr . & . & . & . & . & . & . & . & . & . & . \cr 1 & . & . & . & . & . & 1
+& . & . & . & . \cr . & . & . & 1 & . & . & . & 1 & . & . & . \cr . & . & .
+& . & . & . & . & . & . & . & . \cr . & . & . & . & . & . & . & . & . & . &
+.. \cr . & . & . & . & 1 & . & . & . & . & . & 1 \cr
+\end{array}
+\right) $} \qquad %\unitlength 0.8mm
+\begin{picture}(50,70)
+\multiput(25,5)(0,10){3}{\circle*{2}}
+\multiput(25,45)(0,10){3}{\circle{2}}
+\multiput(5,25)(0,10){3}{\circle*{2}}
+\multiput(45,25)(0,10){3}{\circle*{2}}
+
+%%% lignes continues
+\thicklines
+\put(5,45){\line(1,1){20}}
+\put(5,35){\line(1,1){20}}
+\put(5,25){\line(1,1){20}}
+\put(5,25){\line(0,1){20}}
+
+\thinlines
+\put(45,45){\line(-1,-1){20}}
+\put(45,35){\line(-1,-1){20}}
+\put(45,25){\line(-1,-1){20}}
+\put(25.3,5){\line(0,1){20}}
+
+%%% lignes pointillees
+\thicklines
+%\put(45,45){\line(-1,1){20}}
+\dashline[50]{1}(45,45)(25,65)
+%\put(45,35){\line(-1,1){20}}
+\dashline[50]{1}(45,35)(25,55)
+%\put(45,25){\line(-1,1){20}}
+\dashline[50]{1}(45,25)(25,45)
+%\put(45,25){\line(0,1){20}}
+\dashline[50]{1}(45,25)(45,45)
+
+\thinlines
+%\put(5,45){\line(1,-1){20}}
+\dashline[50]{1}(5,45)(25,25)
+%\put(5,35){\line(1,-1){20}}
+\dashline[50]{1}(5,35)(25,15)
+%\put(5,25){\line(1,-1){20}}
+\dashline[50]{1}(5,25)(25,5)
+%\put(24.7,5){\line(0,1){20}}
+\dashline[50]{1}(24.7,5)(24.7,25)
+
+\small
+\put(25,68){\makebox(0,0){"

@@ -1,7 +1,7 @@
 ,document
 0,"\begin{document}
 %\large
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
 \begin{titlepage}
 \noindent
 
@@ -58,7 +58,7 @@ PACS: 04.60.Ds; 11.30.Pb\\
 Keywords: $N=4$ superconformal many--body systems, Hamiltonian reduction
 
 \end{titlepage}
-\renewcommand{\thefootnote}{\arabic{footnote}}
+
 \setcounter{footnote}0
 
 \vspace{0.5cm}
@@ -148,16 +148,16 @@ conformal mechanics \cite{aff}
 S_0=\int dt  \sum_{i<j}\left( \frac{1}{2} {\dot x_{ij}}{\dot x_{ij}} -\frac{\hat g}{x_{ij}^2} \right)\;, \quad x_{ij}=-x_{ji}
  \;,\; i,j =1,\ldots,n \;.
 \ee
-The latter action involves the same number of interaction terms as that in \p{Cal1} but, for the time being, all of them
+The latter action involves the same number of interaction terms as that in (\ref{Cal1}) but, for the time being, all of them
 are independent. In order to bring these terms to the form familiar form the Calogero model, let us impose the
 constraints\footnote{Despite of the fact that $n$ variables $q_i$
-explicitly appear in the constraints, only $(n-1)$ variables $x_{ij}$ in \p{cm1} prove to be linearly
+explicitly appear in the constraints, only $(n-1)$ variables $x_{ij}$ in (\ref{cm1}) prove to be linearly
 independent.}
 \be\label{cm1}
 x_{ij}=\frac{1}{\sqrt{n}}\left( q_i-q_j \right) \; ,
 \ee
-which reduce the number of independent degrees of freedom from $n(n-1)/2$ down to $(n-1)$.  After substituting \p{cm1} into the
-action \p{cm0} we get the proper interaction terms, provided the identification
+which reduce the number of independent degrees of freedom from $n(n-1)/2$ down to $(n-1)$.  After substituting (\ref{cm1}) into the
+action (\ref{cm0}) we get the proper interaction terms, provided the identification
 \be
 g=n{\hat g} \;.
 \ee
@@ -165,7 +165,7 @@ However, the kinetic term is non-standard
 \be\label{cm2}
 S_{kin}=\int dt  \sum_{i<j} \frac{1}{2n} (\dot q_{i} - \dot q_{j} )^2 \;.
 \ee
-In order to bring this to a diagonal form, let us add to the  action \p{cm0} an extra term
+In order to bring this to a diagonal form, let us add to the  action (\ref{cm0}) an extra term
 which describes a free motion of the center of mass
 \be\label{cm3}
 S_1= S_0 +\int dt \frac{{\dot x_0}^2}{2} \;,
@@ -174,13 +174,13 @@ where
 \be\label{cm1a}
  x_0=\frac{1}{\sqrt n} \sum_i q_i \;.
 \ee
-With such an amendment the action \p{cm3} coincides with that of the Calogero model.
+With such an amendment the action (\ref{cm3}) coincides with that of the Calogero model.
 Thus, we derived the $n$-particle Calogero model starting from $n(n-1)/2+1$ copies of the conformal
 mechanics (a free particle and $n(n-1)/2$ copies with the same coupling constant).
 
-Being a composite system, the action \p{cm3} exhibits
+Being a composite system, the action (\ref{cm3}) exhibits
 invariance which is the direct product of $n(n-1)/2+1$ $SO(1,2)$ groups.
-The constraints \p{cm1},\p{cm1a} which specify the reduction
+The constraints (\ref{cm1}),(\ref{cm1a}) which specify the reduction
 hold invariant with respect to the ""diagonal"" $SO(1,2)$ transformations realized as follows
 \be\label{cm4}
 \delta t = a+ bt+ct^2 \equiv f(t)\;,\quad \delta q_i =\frac{1}{2} \dot f  q_i \;.
@@ -189,7 +189,7 @@ This residual symmetry is just the conformal symmetry of the Calogero model.
 
 Worth mentioning also is that the reduction scheme outlined above can be put in rigorous
 Hamiltonian terms. For example, for the three--particle case it suffices to impose only one  constraint
-$x_{12}+x_{23}+x_{31}=0$. This can be added to the original action \p{cm3} with a Lagrange multiplier $\pi$.
+$x_{12}+x_{23}+x_{31}=0$. This can be added to the original action (\ref{cm3}) with a Lagrange multiplier $\pi$.
 Applying the Dirac procedure, one finds a constraint system which, along with the former one, involves also
 $p_{12}+p_{23}+p_{31}=0$, $p_\pi=0$ and $\pi+\sum_{i<j} \frac{2g}{3{(x_{ij})}^3}=0$. Here $p_\pi$ and $p_{ij}$
 stand for momenta canonically conjugate to the variables $\pi$ and $x_{ij}$, respectively. The entire constraint system
@@ -201,7 +201,7 @@ proves to diagonalize the bracket and leads one to the three--particle Calogero 
 Obviously, the construction is general enough and can be applied to any $n$--particle system with a potential of the form
 $\sum_{i<j} V(q_i-q_j)$. In order to get the action for such a system,
 one should start with $n(n-1)/2$ copies of one-particle models involving the
-potential $V(x)$ and a free particle (the center of mass). After implementing the reduction \p{cm1}, \p{cm1a}
+potential $V(x)$ and a free particle (the center of mass). After implementing the reduction (\ref{cm1}), (\ref{cm1a})
 one generates the $n$-particle system with the potential $\sum_{i<j} V(q_i-q_j)$.
 For example, the $n$--particle Calogero model with the harmonic oscillator potential
 \be\label{harmcal}
@@ -244,33 +244,33 @@ auxiliary fields supersymmetry transformations become nonlinear.
 Thus, the starting point is the $N=2$ superconformal mechanics \cite{ap,ikl}, whose superfield action
 reads
 \be\label{n2scm}
-S_0=\frac{1}{2}\int dt d\theta d\bar\theta \left( D X \Db X -2 g \log | X | \right) \;.
+S_0=\frac{1}{2}\int dt d\theta d\bar\theta \left( D X {\bar D} X -2 g \log | X | \right) \;.
 \ee
-Here $X(t,\theta,\tb)$ is a general bosonic $N=2$ real superfield and the covariant derivatives are defined as
+Here $X(t,\theta,{\bar\theta})$ is a general bosonic $N=2$ real superfield and the covariant derivatives are defined as
 \be
-D=\frac{\partial}{\partial \theta}+i\tb \frac{\partial}{\partial t}\;,\;
-\Db=\frac{\partial}{\partial \tb}+i\theta \frac{\partial}{\partial t}\;,\;
-\left\{ D,\Db\right\}=2i\frac{\partial}{\partial t} \;.
+D=\frac{\partial}{\partial \theta}+i{\bar\theta} \frac{\partial}{\partial t}\;,\;
+{\bar D}=\frac{\partial}{\partial {\bar\theta}}+i\theta \frac{\partial}{\partial t}\;,\;
+\left\{ D,{\bar D}\right\}=2i\frac{\partial}{\partial t} \;.
 \ee
-The action \p{n2scm} is invariant with respect to the following transformations
+The action (\ref{n2scm}) is invariant with respect to the following transformations
 \be\label{n2tr}
-\delta t=E-\frac{1}{2}\tb\Db E-\frac{1}{2}\theta D E\;,\;\delta\theta=-\frac{i}{2}\Db E\;,\;
-\delta\tb = -\frac{i}{2} D E\;,\;\delta X= \frac{1}{2}{\dot E}X\;,
+\delta t=E-\frac{1}{2}{\bar\theta}{\bar D} E-\frac{1}{2}\theta D E\;,\;\delta\theta=-\frac{i}{2}{\bar D} E\;,\;
+\delta{\bar\theta} = -\frac{i}{2} D E\;,\;\delta X= \frac{1}{2}{\dot E}X\;,
 \ee
-where the superfunction $E(t,\theta,\tb )$ collects all the infinitesimal parameters of the $N=2,d=1$
+where the superfunction $E(t,\theta,{\bar\theta} )$ collects all the infinitesimal parameters of the $N=2,d=1$
 superconformal group
 \be
-E(t,\theta,\bar\theta ) = f(t)-2i\left(\varepsilon+\beta t\right) \tb -2i\left(\bar\varepsilon + \bar\beta t\right)\theta
-+\theta\tb h \;.
+E(t,\theta,\bar\theta ) = f(t)-2i\left(\varepsilon+\beta t\right) {\bar\theta} -2i\left(\bar\varepsilon + \bar\beta t\right)\theta
++\theta{\bar\theta} h \;.
 \ee
-Here $f(t)$ is the same as in \p{cm4}, $h$ is a $U(1)$ rotation parameter, and
+Here $f(t)$ is the same as in (\ref{cm4}), $h$ is a $U(1)$ rotation parameter, and
 $\varepsilon$ and $\beta$ correspond to Poincar\'e and conformal supersymmetries, respectively.
 
 In order to construct an $N=2$ superconformal $n$-particle Calogero model, let us consider a composite
 system which involves an $N=2$ superconformal extension of a free particle action
 and $n(n-1)/2$ copies of the $N=2$ superconformal mechanics
 \be\label{n2cal1}
-S=\frac{1}{2}\int dt d\theta d\bar\theta\left[ D X_0\Db X_0 +\sum_{i<j} \left( D X_{ij} \Db X_{ij} -2 g \log |X_{ij}| \right)\right] \;,
+S=\frac{1}{2}\int dt d\theta d\bar\theta\left[ D X_0{\bar D} X_0 +\sum_{i<j} \left( D X_{ij} {\bar D} X_{ij} -2 g \log |X_{ij}| \right)\right] \;,
 \ee
 where
 \be
@@ -281,13 +281,13 @@ superfields $X_0,X_{ij}$ in terms of $n$ independent new ones $V_i$
 \be\label{n2hamred}
 X_0=\frac{1}{\sqrt{n}}\sum_i V_i \;\quad X_{ij}=\frac{1}{\sqrt{n}} \left( V_i-V_j \right) \;.
 \ee
-Upon substitution of \p{n2hamred} into \p{n2cal1} one gets the action of an $N=2$ superconformal $n$-particle
+Upon substitution of (\ref{n2hamred}) into (\ref{n2cal1}) one gets the action of an $N=2$ superconformal $n$-particle
 Calogero model
 \be\label{n2cal2}
-S=\frac{1}{2}\int dt d\theta d\bar\theta \left( \sum_{i=1}^n D V_{i} \Db V_{i} -2 g \sum_{i<j} \log |V_i-V_j| \right) .
+S=\frac{1}{2}\int dt d\theta d\bar\theta \left( \sum_{i=1}^n D V_{i} {\bar D} V_{i} -2 g \sum_{i<j} \log |V_i-V_j| \right) .
 \ee
-Eliminating $n$ auxiliary fields $F_i=\left[\Db,D\right]V_i|_{\theta=0}$ with the use of their equations of motion
-one can rewrite the action functional \p{n2cal2} in terms of the physical degrees of freedom
+Eliminating $n$ auxiliary fields $F_i=\left[{\bar D},D\right]V_i|_{\theta=0}$ with the use of their equations of motion
+one can rewrite the action functional (\ref{n2cal2}) in terms of the physical degrees of freedom
 %$\left\{ q_i, \psi_i,\bar\psi_i\right\}$
 \be\label{n2cal3}
 S=\frac{1}{2}\int dt \left[ \sum_{i=1}^n ({\dot{q_{i}}}^2 -i\bar\psi_i{\dot\psi_i} +
@@ -295,21 +295,21 @@ S=\frac{1}{2}\int dt \left[ \sum_{i=1}^n ({\dot{q_{i}}}^2 -i\bar\psi_i{\dot\psi_
 \ee
 where
 \be
-q_i={V_i}|_{\theta=0}\;,\quad \psi_i=iD {V_i}|_{\theta=0} \; \quad {\bar\psi}_i=i\Db {V_i}|_{\theta=0}.
+q_i={V_i}|_{\theta=0}\;,\quad \psi_i=iD {V_i}|_{\theta=0} \; \quad {\bar\psi}_i=i{\bar D} {V_i}|_{\theta=0}.
 \ee
 Being reformulated in Hamiltonian terms, the latter theory proves to coincide with that obtained by
 Freedman and Mende in the framework of many--body supersymmetric quantum mechanics \cite{FM}.
 
 Two comments are in order. Firstly, since each of the superfields $X_0,X_{ij}$ transform linearly and homogeneously
-with respect to the proper $SU(1,1|1)$ transformations, the constraints \p{n2hamred}
+with respect to the proper $SU(1,1|1)$ transformations, the constraints (\ref{n2hamred})
 hold invariant under the residual $SU(1,1|1)$ group acting in a uniform way on all the superfields
 \be\label{n2tr1}
 \delta V_i =\frac{1}{2}{\dot E} V_i \;.
 \ee
-Thus, the actions \p{n2cal2}, \p{n2cal3} possess $N=2$ superconformal symmetry by construction. Secondly,
+Thus, the actions (\ref{n2cal2}), (\ref{n2cal3}) possess $N=2$ superconformal symmetry by construction. Secondly,
 one can employ the supersymmetric reduction, in order to build supersymmetric many--body systems with a potential of
 a more general form $\sum_{i<j} \Phi(V_i-V_j)$. It suffices to start with a proper number of one-particle
-systems and perform the Hamiltonian reduction \p{n2hamred} in that framework. All symmetries which
+systems and perform the Hamiltonian reduction (\ref{n2hamred}) in that framework. All symmetries which
 are realized linearly and homogeneously will survive the reduction.
 
 \vspace{0.5cm}
@@ -349,27 +349,27 @@ $N=4$ superconformal extensions of the $n$-particle Calogero model.
 We start with the {\it 4b} multiplet, this being the simplest multiplet to handle.
 The superfield action of the $N=4$ superconformal mechanics for this multiplet reads \cite{ap,FR,ikl}
 \be\label{4baction}
-S=\frac{1}{2} \left( \int dt d^4\theta Y{\bar Y} -g\int dt d^2\theta \log |Y| -g \int dt d^2 \tb \log |{\bar Y}|\right) \;,
+S=\frac{1}{2} \left( \int dt d^4\theta Y{\bar Y} -g\int dt d^2\theta \log |Y| -g \int dt d^2 {\bar\theta} \log |{\bar Y}|\right) \;,
 \ee
 where the $N=4$ superfields $Y,{\bar Y}$ are constrained to obey the chirality conditions
 \be
-\Db^a Y= D_a {\bar Y}=0\;.
+{\bar D}^a Y= D_a {\bar Y}=0\;.
 \ee
 The covariant derivatives entering the equations above read
 \be
-D_a=\frac{\partial}{\partial \theta^a}+i\tb_a\frac{\partial}{\partial t}\;,\;
-\Db^a=\frac{\partial}{\partial \tb_a}-i\theta^a \frac{\partial}{\partial t}\;,\quad a=1,2 \;.
+D_a=\frac{\partial}{\partial \theta^a}+i{\bar\theta}_a\frac{\partial}{\partial t}\;,\;
+{\bar D}^a=\frac{\partial}{\partial {\bar\theta}_a}-i\theta^a \frac{\partial}{\partial t}\;,\quad a=1,2 \;.
 \ee
-The action \p{4baction} is invariant with respect to the $SU(1,1|2)$ transformations
+The action (\ref{4baction}) is invariant with respect to the $SU(1,1|2)$ transformations
 \be\label{4btr}
-\delta t=E-\frac{1}{2}\theta^2 D_a E+\frac{1}{2}\tb_a\Db^a E\;,\;
-\delta \theta^a=\frac{i}{2}\Db^a E\;,\; \delta\tb_a=-\frac{i}{2}D_a E\;,\quad \delta Y =\dot{E_L}(t_L,\theta)Y\;,
+\delta t=E-\frac{1}{2}\theta^2 D_a E+\frac{1}{2}{\bar\theta}_a{\bar D}^a E\;,\;
+\delta \theta^a=\frac{i}{2}{\bar D}^a E\;,\; \delta{\bar\theta}_a=-\frac{i}{2}D_a E\;,\quad \delta Y =\dot{E_L}(t_L,\theta)Y\;,
 \ee
 where we made use of the notation $t_L=t+i\theta \bar\theta$, $t_R=t-i\theta \bar\theta$.
 The superfunction $E$ collects all the parameters of the $SU(1,1|2)$ group
 \bea
-&& E=f-2i\left( \varepsilon(t)\tb -\theta\bar\varepsilon (t)\right) +\frac{1}{2}\left( \theta \tau^k \tb\right) b^k -2
- \left( \dot\varepsilon \tb +\theta\dot{\bar\varepsilon}\right)\theta\tb+\frac{1}{2}\left(\theta\tb\right)^2 \ddot{f} \;,
+&& E=f-2i\left( \varepsilon(t){\bar\theta} -\theta\bar\varepsilon (t)\right) +\frac{1}{2}\left( \theta \tau^k {\bar\theta}\right) b^k -2
+ \left( \dot\varepsilon {\bar\theta} +\theta\dot{\bar\varepsilon}\right)\theta{\bar\theta}+\frac{1}{2}\left(\theta{\bar\theta}\right)^2 \ddot{f} \;,
  \nonumber \\
 && f=a+bt+ct^2\;, \; \varepsilon^a (t) =\varepsilon^a+\beta^a t\;,
 \eea
@@ -377,28 +377,28 @@ while the chiral superfunction $E_L$ is defined as follows
 \be
 E_L=\frac{1}{2}f(t_L)+2i\theta^a{\bar\varepsilon}_a(t_L)\;.
 \ee
-Owing to the homogeneous character of the transformation law \p{4btr} for $Y$ and ${\bar Y}$, one can apply the Hamiltonian reduction.
+Owing to the homogeneous character of the transformation law (\ref{4btr}) for $Y$ and ${\bar Y}$, one can apply the Hamiltonian reduction.
 As before, the starting point is the sum of a kinetic term for the superfield $Y_0$ $(g=0)$ and $n(n-1)/2$ extra terms
-of the form \p{4baction} with $Y_{ij}=-Y_{ji}$.
+of the form (\ref{4baction}) with $Y_{ij}=-Y_{ji}$.
 The reduction constraints read
 \be\label{n4hamred}
 Y_0=\frac{1}{\sqrt{n}}\sum_i V_i \;\quad Y_{ij}=\frac{1}{\sqrt{n}} \left( V_i-V_j \right) \;,
 \ee
 where  $V_i$ denote $n$ new independent superfields which obey
-the same chirality conditions \be \Db^a V_i= D_a {\bar V_i}=0\;.
+the same chirality conditions \be {\bar D}^a V_i= D_a {\bar V_i}=0\;.
 \ee The resulting action functional has the form \be\label{4bCal}
 S_{4b}=\frac{1}{2} \left( \int dt d^4\theta  \sum_i V_i{\bar V_i}
 -g\int dt d^2\theta \sum_{i < j}\log |V_i-V_j| -
-g \int dt d^2 \tb \sum_{ i < j} \log | {\bar V_i} -{\bar V_j}| \right) \;.
+g \int dt d^2 {\bar\theta} \sum_{ i < j} \log | {\bar V_i} -{\bar V_j}| \right) \;.
 \ee
 Notice that by construction the action holds invariant with respect to the residual ""diagonal"" $SU(1,1|2)$ transformations,
-which are realized in the same way as in Eq. \p{4btr} above, for all the superfields $V_i,{\bar V_i}$.
+which are realized in the same way as in Eq. (\ref{4btr}) above, for all the superfields $V_i,{\bar V_i}$.
 In order to clarify the status of this model, we eliminate auxiliary fields and go over to the
 physical components
 %$\left\{ q_i,{\bar q_i}, \chi_{ia},\bar\chi_i{}^a\right\}$
 \be
 q_i={V_i}|_{\theta=0}\;,\quad \bar{q_i} ={\bar V_i}|_{\theta=0}\;,\quad \chi_{ia}=-i D_a {V_i}|_{\theta=0} \;,
- \quad {\bar\chi}_i^a=i\Db^a {\bar V_i}|_{\theta=0},
+ \quad {\bar\chi}_i^a=i{\bar D}^a {\bar V_i}|_{\theta=0},
 \ee
 the component action having the form
 \bea\label{4bCalcomp}
@@ -407,7 +407,7 @@ the component action having the form
  && \left. \left. \frac{g(\bar\chi_i-\bar\chi_j)(\bar\chi_i-\bar\chi_j)}{4(\bar q_i -\bar q_j)^2}
  \right) \right] \;.
 \eea
-Thus, the model \p{4bCalcomp} describes an $N=4$ superconformal extension of a complexification of the
+Thus, the model (\ref{4bCalcomp}) describes an $N=4$ superconformal extension of a complexification of the
 $n$--particle Calogero model.
 
 \vspace{0.5cm}
@@ -431,8 +431,8 @@ the $n$-particle case.
 The starting point is the superfield action functional
 \be\label{4cactionA}
 S=-\int dt d^2\theta\left[ \frac{1}{4}\left(
-v^2+4\rho\bar\rho\right)^{\frac{1-2\alpha}{2\alpha}}\left( D v \Db
-v + D\rho \Db{\bar \rho}\right) +
+v^2+4\rho\bar\rho\right)^{\frac{1-2\alpha}{2\alpha}}\left( D v {\bar D}
+v + D\rho {\bar D}{\bar \rho}\right) +
  g \log \left| \frac{v+\sqrt{v^2+4\rho\bar\rho}}{2}\right| \right]
  \;,
 \ee which depends on the parameter $\alpha$ characterizing the
@@ -441,7 +441,7 @@ latter.
 
 In the last line $v$ is a general bosonic $N=2$ superfield, while the
 $N=2$ superfields $\rho$ and ${\bar \rho}$ obey the chirality
-conditions \be D \bar\rho=\Db \rho =0. \ee
+conditions \be D \bar\rho={\bar D} \rho =0. \ee
 Altogether  $v$, $\rho$ and ${\bar \rho}$ form
 an irreducible $N=4$ supermultiplet \cite{IS,BP,MSS}. The
 fact that the superfields $v,\rho,\bar\rho$ transform
@@ -451,11 +451,11 @@ the resulting action functional
 \bea\label{4cCalg}
 S&=&-\int dt
 d^2\theta\left[ \frac{1}{4}\left( Y_0^2+4 X_0\bar
-X_0\right)^{\frac{1-2\alpha}{2\alpha}}\left( D Y_0 \Db Y_0 + D X_0
-\Db{\bar X_0}\right) +
+X_0\right)^{\frac{1-2\alpha}{2\alpha}}\left( D Y_0 {\bar D} Y_0 + D X_0
+{\bar D}{\bar X_0}\right) +
      \right.  \\
 && \left. \frac{1}{4}\sum_{i<j} \left( Y_{ij}^2+4 X_{ij}\bar X_{ij}\right)^{\frac{1-2\alpha}{2\alpha}}
-\left( D Y_{ij} \Db Y_{ij} + D X_{ij} \Db{\bar X_{ij}}\right)+
+\left( D Y_{ij} {\bar D} Y_{ij} + D X_{ij} {\bar D}{\bar X_{ij}}\right)+
  g \log \left| \frac{Y_{ij}+\sqrt{Y_{ij}^2+4X_{ij}\bar X_{ij}}}{2}\right| \right] \;, \nonumber
 \eea where \be Y_0=\frac{1}{\sqrt{n}}\sum_{i=1}^n
 v_i\;,\;X_0=\frac{1}{\sqrt{n}}\sum_{i=1}^n \rho_i\;,\;
@@ -465,7 +465,7 @@ v_i-v_j\right)\;,\;X_{ij}=\frac{1}{\sqrt{n}}\left(
 and the superfields
 $\bar\rho_i(\rho_i)$ are chiral (anti-chiral).
 
-As formulated in Eq. \p{4cCalg} above, the action functional exists
+As formulated in Eq. (\ref{4cCalg}) above, the action functional exists
 for a generic value of the parameter $\alpha$ {}\footnote{A singular
 value of the parameter $\alpha=0$ is equivalent to $\alpha=-1$,
 see e.g. Ref. \cite{ikL}.}. However, only for $\alpha=1/2$ the kinetic
@@ -474,13 +474,13 @@ there appears a nontrivial metric \cite{ikL}). Thus, in what
 follows we concentrate on this particular case, the action
 functional being drastically simplified
 \bea\label{4caction}
-S=&& -\int dtd^2\theta\left[\frac{1}{4} \sum_i \left( D v_i \Db v_i + D \rho_i \Db{\bar \rho_i}\right) + \right.
+S=&& -\int dtd^2\theta\left[\frac{1}{4} \sum_i \left( D v_i {\bar D} v_i + D \rho_i {\bar D}{\bar \rho_i}\right) + \right.
 \nonumber \\
 && g\sum_{i<j} \left. \log \left|
 \frac{v_i-v_j+\sqrt{(v_i-v_j)^2+4 (\rho_i-\rho_j)(\bar \rho_i
 -\bar\rho_j)}}{2}\right| \right] \;. \eea Notice that for a
-vanishing $\rho_i$, the action \p{4caction} reduces to that of the $N=2$
-Calogero model \p{n2cal2}, while for $v_i=0$ the interaction term
+vanishing $\rho_i$, the action (\ref{4caction}) reduces to that of the $N=2$
+Calogero model (\ref{n2cal2}), while for $v_i=0$ the interaction term
 disappears and one ends up with a collection of $n$ free
 particles. For completeness of the presentation we write down
 the  component action (with all auxiliary fields eliminated by means of their equations of motion)
@@ -542,17 +542,17 @@ S=\frac{1}{16}\int dt d^4 \theta \left[ e^{Y_0}
  Y_0=\frac{1}{\sqrt{n}}\sum_{i=1}^n v_i\;,\;
 Y_{ij}=\frac{1}{\sqrt{n}} \left( v_i-v_j\right),
 \ee
-and all the superfields $v_i$ satisfy the constraints \p{2acon}. A simple
+and all the superfields $v_i$ satisfy the constraints (\ref{2acon}). A simple
 inspection then shows that the kinetic term of the component action
 includes a non-trivial coupling to a specific  metric and
 thus the model fails to reproduce the Calogero model in the
 bosonic limit. A way out could be to perform the reduction not in
 terms of the superfield $u$, but rather $e^{\frac{1}{2}u}$. In
 other words, one can pass to the new variable
-$w=e^{\frac{1}{2}u}$ in the action \p{4a} and then perform the
+$w=e^{\frac{1}{2}u}$ in the action (\ref{4a}) and then perform the
 same reduction as before for the newly introduced superfields.
 Unfortunately, this step proves to be incompatible with the
-constraints \p{2acon} which are of the second order in the covariant
+constraints (\ref{2acon}) which are of the second order in the covariant
 derivatives. Thus, for the {\it 4a} multiplet the reduction method
 fails to produce an $N=4$ superconformal extension of a real
 Calogero model.

@@ -1,0 +1,499 @@
+,section
+0,"\section*{Appendix \Alph{section}\protect\indent \parbox[t]{11.15cm}{#1}}
+\addcontentsline{toc}{section}{Appendix \Alph{section}\ \ \ #1}}"
+1,\section{Introduction}
+2,\section{Field and Killing-spinor equations}
+3,\section{The $\alpha'$ corrections to backgrounds with torsion}
+4,\section{The gauge field}
+5,"\section{(2,0) heterotic compactifications}"
+6,\section{The $\alpha'$-corrected conifold}
+7,\section{The $\alpha'$-corrected  $U(n)$-invariant Calabi-Yau metric}
+8,\section{Concluding Remarks}
+9,"\section*{Acknowledgements}
+
+We would like to thank P. Howe for stimulating discussions. This work 
+was partially supported by PPARC grants 
+PPA/G/S/1998/00613 and PPA/G/O/2000/00451 and by EU grant HPRN-2000-00122.
+
+
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix{Useful Formulae for KT Geometry}
+
+
+Let $(X_n, J, G)$ be a KT manifold, i.e. $X_n$ is a hermitian manifold of
+complex dimension $n$
+with metric $G$ and complex structure $J$ such that $\nabla^{(+)}J=0$, where
+$\nabla^{(+)}$ has skew-symmetric torsion $H$.  In the mathematics literature
+$\nabla^{(+)}$ is called the Bismut connection.
+ The holonomy of  $\nabla^{(+)}$
+is contained in $U(n)$. In complex coordinates, the holonomy
+condition requires $\Gamma^{(+)}_i{}^\alpha{}_{\bar \beta}=0$ which in
+turn gives
+\be
+H_{\alpha\beta\bar\gamma}=-\partial_\alpha G_{\beta\bar\gamma}
++\partial_\beta G_{\alpha\bar\gamma}~.
+\label{ktto}
+\ee
+The rest of the components of the torsion are determined by complex conjugation.
+The (3,0) and (0,3) components of $H$ vanish as it can be seen
+from the integrability of the complex structure.
+ So $H$ is determined
+uniquely in terms of the metric and complex structure of $(X_n, J, G)$.
+The Lee form of the KT geometry is
+$$
+\theta_i={1\over2} J^j{}_i H_{jkl} \Omega^{kl}~,
+$$
+where $\Omega_{ij}= G_{ik} J^k{}_j$ is the K\""ahler form.
+In complex coordinates, the Lee form can be written as
+\be
+\theta_\alpha=\partial_\alpha{\rm ln}\det(G_{\beta\bar\gamma})- G^{\beta\bar\gamma}
+\partial_\beta G_{\alpha\bar\gamma}
+\label{ktth}
+\ee
+and $\theta_{\bar\alpha}= (\theta_\alpha)^*$.
+
+The connection of the canonical bundle
+induced by $\nabla^{(+)}$   is
+\be
+\omega_\alpha= i\Gamma^{(+)}{}_\alpha{}^\beta{}_\beta-
+i\Gamma^{(+)}{}_\alpha{}^{\bar\beta}{}_{\bar\beta}=2i G^{\beta\bar\gamma}
+\partial_\beta G_{\alpha\bar\gamma}-i G^{\beta\bar\gamma}\partial_\alpha G_{\beta\bar\gamma}
+\label{ktuo}
+\ee
+and $\omega_{\bar\alpha}=(\omega_\alpha)^*$. Let $\rho=d\omega$ be the
+curvature of the 
+$U(1)$ connection $\omega$. The holonomy of the connection $\nabla^{(+)}$
+is contained in $SU(n)$, iff $\rho=0$.
+
+
+
+A KT manifold is conformally balanced iff there is a function $\Phi$ on $X_n$
+such that $\theta=2d\Phi$, i.e. the Lee form is exact.
+It has been shown in \cite{gpsib} that if
+$(X_n, J,G)$ is a conformally balanced KT manifold and
+the holonomy of $\nabla^{(+)}$
+is contained in $SU(n)$ ($\rho=0$), then
+\be
+R_{ij}+{1\over4} H^k{}_{il} H^l{}_{jk}
++2\nabla_i\partial_j\Phi= {1\over4} J^k{}_i (dH)_{kjmn} \Omega^{mn}~,
+\label{ktfeq}
+\ee
+where $\nabla$ is the Levi-Civita connection of the metric $G$. Note that
+we do  {\sl not} require $dH=0$ in the above expression.
+
+Our conventions for the curvature
+of a connection $\Gamma$ are
+$$
+R_{ij}{}^k{}_l=\partial_i \Gamma^k_{jl}-\partial_j \Gamma^k_{il}+\Gamma^k_{im} \Gamma^m_{jl}-
+\Gamma^k_{jm} \Gamma^m_{il}
+$$
+and the Ricci tensor is $R_{ij}=R_{mi}{}^m{}_j$.
+
+
+
+
+
+
+
+\appendix{Lichnerowicz and Laplace operators}
+
+Let $(M,g)$ be a Riemannian manifold with associated Levi-Civita connection $\nabla$.
+The Lichnerowicz operator $\Delta_L$ is defined by
+$$
+R_{ij}(g+\epsilon h)= R_{ij}+\epsilon \Delta_L h_{ij}
++O(\epsilon^2)~.
+$$
+So $\Delta_L$ is the first-order deformation of the Ricci tensor.
+A calculation reveals that
+\bea
+\Delta_Lh_{ij}=&-&{1\over2}\nabla^2 h_{ij}- R_{ik jl} h^{kl}
++{1\over2}\nabla_i\nabla^kh_{kj}+
+{1\over2}\nabla_j\nabla^kh_{ki}
+\cr
+&-&{1\over2}\nabla_i\nabla_j h^k{}_k+{1\over2} R_{ki} h^k{}_j+{1\over2} R_{kj} h^k{}_i
+\label{lop}
+\eea
+The Laplacian operator $\Delta$ on a two form $Y$ is
+$$
+\Delta Y_{ij}=-{1\over2} \nabla^k \nabla_k Y_{ij}-R_{ikj\ell} Y^{k\ell}+{1\over2}
+R_{ik} Y^k{}_j-{1\over2}R_{jk} Y^k{}_i~.
+$$
+On Ricci-flat K\""ahler manifolds, we can relate the  Lichnerowicz operator
+ to the Laplace operator on two-forms
+by choosing  the gauge fixing condition
+$$
+\nabla^j h_{ji}-{1\over2} \nabla_i h^j{}_j=0
+$$
+ for infinitesimal diffeomorphisms and by 
+using the relation $Y_{ij}=h_{ik} J^k{}_i$
+ between symmetric (1,1)-tensors and (1,1)-forms. The Hermiticity
+ condition for the metric implies that the deformations $h$ of the
+ metric are (1,1) tensors.
+
+Note that the above gauge can always be attained.
+Suppose that $h$ does not satisfy the gauge.
+Assume that there is an infinitesimal diffeomorphism $v$ such that
+ $h'_{ij}=h_{ij}+\nabla_i v_j+\nabla_j v_i$
+ satisfies the gauge. Then $v$ is determined by the equation
+$$
+\nabla^k \nabla_k v_i=\nabla^j h_{ji}-{1\over2} \nabla_i h^j{}_j~.
+$$
+To show that  there is always such a $v$, we must
+invert  the above equation. This can be achieved iff
+$\nabla^j h_{ji}-{1\over2} \nabla_i h^k{}_k$ is orthogonal to the kernel of the
+elliptic operator $\nabla^k \nabla_k$. We rewrite the above equation as
+$$
+(d\delta+\delta d) V=-\nabla^j Y_{ji}+{1\over2} J^k{}_i \nabla_k h^j{}_j~,
+$$
+where $V_i= v_k J^k{}_i$ and $\delta$ is the adjoint of $d$.
+Of course this equation can be inverted iff the right-hand-side is orthogonal
+to harmonic one-forms.  Indeed let $Z$ be a harmonic one-form, then
+$$
+\int_M Z^i\left(-\nabla^j Y_{ji}+{1\over2} \Omega_{ki} \nabla^k h^j{}_j\right)
+d{\rm vol}=
+-\int_M \left(\nabla_i Z_j Y^{ij} +{1\over2} \nabla_i Z_j~ \Omega^{ij}~ h^k{}_k
+\right) d{\rm vol}=0
+$$
+because $Z$ is closed.
+
+
+ \appendix{Another derivation of the field equations for (2,0) compactifications}
+
+ The first-order corrections $(h, f, \phi)$ to the background of a Calabi-Yau
+ compactification $(g, \varphi)$, $T=0$, can be determined
+ by the field equations without using
+ the conditions for spacetime supersymmetry. To show
+ this, we substitute (\ref{expeq}) in the
+field equation (\ref{feq}) and collect the linear terms in $\alpha'$.
+Using the fact that at zeroth order in $\alpha'$ the geometry is Calabi-Yau,
+the equation for the metric gives
+\beq
+\Delta_Lh_{ij}+ S_{ij} +2\nabla_i \partial_j\phi=0~,
+\label{eina}
+\eeq
+where $\Delta_L$ is the Lichnerowicz
+operator (see appendix B).  In this case, we have
+\beq
+\Delta_Lh_{ij}=-{1\over2}\nabla^2 h_{ij}-
+ R_{ik jl} h^{kl}+{1\over2}\nabla_i\nabla^kh_{kj}+
+{1\over2}\nabla_j\nabla^k h_{ki}
+-{1\over2}\nabla_i\nabla_j h^k{}_k
+\label{lop}
+\eeq
+because $X_n$ is Calabi-Yau and $R_{ij}=0$,
+and
+\beq
+S_{ij}={1\over4}[ R_{iklm} R_j{}^{klm}
+- F_{ikab} F_j{}^{kab}]
+\label{ann}
+\eeq
+The covariant derivative $\nabla$ in (\ref{eina}) and (\ref{lop})
+and the curvature $R$ are  with respect to the Calabi-Yau metric $g$.
+
+
+To solve equation (\ref{eina}) with respect to
+$h$, we shall exploit the well-known relation between the
+Lichnerowicz and Laplace operators
+on Calabi-Yau manifolds. There are two ways to do this.
+One is to use the scheme dependence
+of the two-loop beta function and the other is to impose a gauge fixing condition
+on the deformations $h$ of the metric $g$. The latter is common in moduli problems
+in order for the deformation $h$ to be orthogonal to the orbits of infinitesimal
+diffeomorphisms.
+Using the scheme dependence of the two-loop beta function, we can 
+arrange so that
+the term
+$$
+{1\over2}\nabla_i\nabla^kh_{kj}+{1\over2}\nabla_j\nabla^kh_{ki}
++{1\over2} r \nabla_i \partial_j h^k{}_k
+$$
+is cancelled  by a wave function renormalization, where $r$ is a real number.
+Alternatively, one can impose the gauge fixing condition
+$$
+\nabla^k h_{ki}+ {r\over 2} \nabla_i h^k{}_k=0~.
+$$
+Provided that we set for the deformation of the dilaton
+$$
+\phi={1\over 4} (r+1) h^k{}_k~,
+$$
+the remaining equation is
+\beq
+-{1\over2}\nabla^2 h_{ij}- R_{ik jl} h^{kl}+S_{ij}=0~.
+\label{lap}
+\eeq
+To solve this equation observe that $S$ is a (1,1) symmetric tensor with respect to the
+complex structure. This allows us to consider deformations of the metric which
+are (1,1) as well, i.e. to take $h$ to be a (1,1) symmetric tensor.
+It is well known that on K\""ahler manifolds there is a 1-1 correspondence between
+symmetric (1,1) tensors and (1,1) two-forms. Indeed define the  forms
+$Y_{ij}=h_{ik} J^k{}_j$ and $Z_{ij}=S_{ik} J^k{}_j$ associated to $T$ and $S$.
+Equation (\ref{lap}) becomes
+\beq
+\Delta Y+Z=0
+\label{lapa}
+\eeq
+where
+$$
+\Delta Y_{ij}=-{1\over2} \nabla^k \nabla_k Y_{ij}-R_{ikj\ell} Y^{k\ell}
+$$
+is the standard Laplace operator on $Y$ (see appendix B). We have
+taken into account that Calabi-Yau manifolds are Ricci-flat, $R_{ij}=0$.
+So it remains to invert the
+Laplace operator to determine $Y$ in terms of $Z$.
+
+To solve the equation (\ref{lapa}) in terms of $Y$, we have to show that
+$Z$ is orthogonal to
+the harmonic two-forms of $X_n$ in the Hodge decomposition with respect to the
+Calabi-Yau metric $g$. This can be achieved by relating
+the two-loop contribution $Z$ to the beta function of the metric, to the
+heterotic anomaly $P$. Using
+$$
+\Omega^{ij} R_{ijkl}=\Omega^{ij} F_{ij ab}=0~,
+$$
+we can show that
+$$
+Z_{ij}={1\over4} P_{ijmn} \Omega^{mn}~.
+$$
+Now suppose that $n=3$. After some computation, we find that
+$$
+Z_{ij}=-{1\over 2} {}^*P_{ij}+{1\over 16} \Omega_{ij} P_{mnpq} \Omega^{mn} \Omega^{pq}~.
+$$
+The cancellation of the global anomaly implies that $P$ is exact.
+As a consequence the dual two-form ${}^*P$ is co-exact and
+so it is orthogonal to harmonic two-forms. It remains to show that
+$P_{mnpq} \Omega^{mn} \Omega^{pq}$
+is not harmonic.  Observe  that a harmonic function on $X_3$ is a non-vanishing constant.
+Integrating the identity
+$$
+P\wedge \Omega={1\over8} P_{mnpq} \Omega^{mn} \Omega^{pq} d{\rm vol}
+$$
+over the compact manifold $X_3$ and using that $P$ is exact, it is easy
+to see that $P_{mnpq} \Omega^{mn} \Omega^{pq}$ is not harmonic.
+
+
+
+This result can be easily extended to four- and eight-dimensional
+internal manifolds.  The $n=2$ case has been
+investigated in \cite{hpap}. For
+$n=4$, the computation is similar to $n=3$. The only difference
+is the relation between the two-loop counterterm and the anomaly.
+
+
+Next we  investigate the field equation of the three-form field strength.
+Again substituting (\ref{expeq}) in (\ref{feq}) and
+collecting the terms linear in $\alpha'$, we find
+$$
+\nabla^i f_{ijk}=0\
+$$
+or equivalently
+$$
+d^\dagger f=0~,
+$$
+where $d^\dagger$ is the adjoint operator of $d$.
+To derive this, we have used the fact that $H$ vanishes at
+zeroth order  in $\alpha'$. In addition, we have that  $df=-P$; $f$
+is well-defined because $P$ is exact.
+Using the Hodge decomposition, we can write
+$$
+f=f_h+dX+d^\dagger W
+$$
+where $f_h$ is harmonic and $W$ is a four-form.
+Adding the counterterm
+$$
+b=-\alpha' X\ ,
+$$
+the exact three-form $dX$ can be eliminated as follows
+$$
+H=-\alpha' dX+\alpha' f= \alpha' f_h+\alpha' d^\dagger W~.
+$$
+Thus the field equation is satisfied and $dH=-P$.
+Alternatively, one can choose $f$ such that $f=f_h+d^\dagger W$.
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%{99}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\cite{Candelas:en}
+\bi {Candelas}
+P.~Candelas, G.~T.~Horowitz, A.~Strominger and E.~Witten,
+{\sl Vacuum Configurations For Superstrings},
+Nucl.\ Phys.\  {\bf B258} (1985) 46.
+
+
+\bi{sw}
+A.~Strominger and E.~Witten,
+{\sl New Manifolds For Superstring Compactification},
+Commun.\ Math.\ Phys.\  {\bf 101} (1985) 341.
+
+\bi{wsd}
+B.~de Wit, D.~J.~Smit and N.~D.~Hari Dass,
+{\sl Residual Supersymmetry Of Compactified D = 10 Supergravity},
+Nucl.\ Phys.\ B {\bf 283} (1987) 165.
+
+%\cite{Callan:1991at}
+\bi{Callan}
+C.~G.~Callan, J.~A.~Harvey and A.~Strominger,
+{\sl Supersymmetric string solitons},
+arXiv:hep-th/9112030.
+
+%\cite{Gauntlett:1997pk}
+\bibitem{Gauntlett}
+J.~P.~Gauntlett, G.~W.~Gibbons, G.~Papadopoulos and P.~K.~Townsend,
+{\sl Hyper-Kaehler manifolds and multiply intersecting branes},
+Nucl.\ Phys.\  {\bf B500} (1997) 133;
+hep-th/9702202.
+%%CITATION = HEP-TH 9702202;%%
+
+%\cite{Papadopoulos:1998yx}
+\bi{Papates}
+G.~Papadopoulos and A.~Teschendorff,
+{\sl Grassmannians, calibrations and five-brane intersections},
+Class.\ Quant.\ Grav.\  {\bf 17} (2000) 2641;
+hep-th/9811034.
+%%CITATION = HEP-TH 9811034;%%
+
+%\cite{Howe:qv}
+\bi{howe}
+P.~S.~Howe and G.~Papadopoulos,
+{\sl Ultraviolet Behavior Of Two-Dimensional Supersymmetric Nonlinear Sigma Models},
+Nucl.\ Phys.\  {\bf B289} (1987) 264.
+%%CITATION = NUPHA,B289,264;%%
+
+
+\bi{hpap}
+P.S.~ Howe and  G.~ Papadopoulos, {\sl
+Finiteness and anomalies in (4,0)-supersymmetric sigma models},
+ Nucl.Phys. {\bf B381}:360-372, (1992): hep-th/9203070.
+
+
+%\cite{Hull:jv}
+\bibitem{Hull}
+C.~M.~Hull and E.~Witten,
+{\sl Supersymmetric Sigma Models And The Heterotic String},
+Phys.\ Lett.\ B {\bf 160} (1985) 398.
+%%CITATION = PHLTA,B160,398;%%
+
+
+\bi{strom}
+A.~ Strominger, {\sl Superstrings with torsion},
+ Nucl.Phys. {\bf B274}:253, (1986).
+
+ \bi{lust}
+ G.L.~ Cardoso, G.~ Curio, G.~ Dall'Agata, D.~ Lust, P.~ Manousselis and G.~ Zoupanos
+ {\sl Nonkahler string backgrounds and their five torsion classes}
+ Nucl.Phys. {\bf B652}:5-34, (2003); hep-th/0211118.
+
+ %\cite{Gauntlett:2003cy}
+\bi{Waldram}
+J.~P.~Gauntlett, D.~Martelli and D.~Waldram,
+{\sl Superstrings with intrinsic torsion}, hep-th/0302158.
+
+\bibitem{beckera}
+K.~Becker, M.~Becker, K.~Dasgupta and P.~S.~Green,
+{\sl Compactifications of heterotic theory on non-Kaehler complex manifolds.
+  I},
+JHEP {\bf 0304} (2003) 007; hep-th/0301161.
+
+\bibitem{beckerb}
+K.~Becker, M.~Becker, K.~Dasgupta and S.~Prokushkin,
+{\sl Properties of heterotic vacua from superpotentials}; hep-th/0304001.
+
+
+
+
+\bi{gpsi}
+S.~ Ivanov and G.~ Papadopoulos,
+{\sl A no go theorem for string warped compactifications},
+ Phys.Lett. {\bf B497}:309-316, (2001): hep-th/0008232
+
+ \bi{gpsib}
+ S.~ Ivanov and G.~ Papadopoulos,
+{\sl  Vanishing theorems and string backgrounds},
+ Class.Quant.Grav. {\bf 18}:1089-1110, (2001): math.dg/0010038.
+
+%\cite{Candelas:js}
+\bibitem{co}
+P.~Candelas and X.~C.~de la Ossa,
+{\sl Comments On Conifolds},
+Nucl.\ Phys.\  {\bf B342} (1990) 246.
+%%CITATION = NUPHA,B342,246;%%
+
+\bi{calabi} E. Calabi, {\sl Metriques k\""ahl\'eriennes et fibr\'es holomorphes},
+Ann Sci de l'Ecole Norm Sup, {\bf 12} (1979) 269.
+
+
+\bi{hta}
+ C.M.~ Hull, P.K.~ Townsend
+{\sl The two loop beta function for sigma models with torsion},
+Phys.Lett. {\bf B191}:115, (1987).
+
+\bibitem{roo}
+E.~A.~Bergshoeff and M.~de Roo,
+{\sl The Quartic Effective Action Of The Heterotic String And Supersymmetry},
+Nucl.\ Phys.\  {\bf B328} (1989) 439.
+
+
+\bibitem{howegpc}
+P.~S.~Howe and G.~Papadopoulos,
+{\sl Anomalies In Two-Dimensional Supersymmetric Nonlinear Sigma Models},
+Class.\ Quant.\ Grav.\  {\bf 4} (1987) 1749.
+%%CITATION = CQGRD,4,1749;%%
+
+
+%\cite{Bonora:tx}
+\bibitem{italians}
+L.~Bonora {\it et al.},
+{\sl Some Remarks On The Supersymmetrization Of The Lorentz
+Chern-Simons Form In D = 10 N=1 Supergravity Theories},
+Phys.\ Lett.\ {\bf B277} (1992) 306.
+
+\bibitem{gut}
+J.~Gutowski, S.~Ivanov and G.~Papadopoulos,
+{\sl Deformations of generalized calibrations
+and compact non-Kahler manifolds with vanishing first Chern class},
+math.dg/0205012.
+
+%\cite{Page:1984ae}
+\bibitem{pp}
+D.~N.~Page and C.~N.~Pope,
+{\sl Which Compactifications Of D = 11 Supergravity Are Stable?},
+Phys.\ Lett.\ {\bf B144} (1984) 346.
+%%CITATION = PHLTA,B144,346;%%
+
+%\cite{Minasian:1999tt}
+\bibitem{mt}
+R.~Minasian and D.~Tsimpis,
+{\sl On the geometry of non-trivially embedded branes},
+Nucl.\ Phys.\ {\bf B572} (2000) 499; hep-th/9911042.
+%%CITATION = HEP-TH 9911042;%%
+
+\bibitem{dlm}
+M.~J.~Duff, J.~T.~Liu and R.~Minasian,
+{\sl Eleven-dimensional origin of string / string duality: A one-loop test},
+Nucl.\ Phys.\ {\bf B452} (1995) 261
+[arXiv:hep-th/9506126].
+
+\bibitem{gukov}
+S.~Gukov,
+{\sl Solitons, superpotentials and calibrations},
+Nucl.\ Phys.\  {\bf B574} (2000) 169; hep-th/9911011.
+
+\end{thebibliography}
+
+
+
+\end{document}"

@@ -1,0 +1,421 @@
+,equation
+0,"\begin{equation}\lab{norm}
+    \<\Or_\a(x) \Or_{\a'}(y)\> \sim \<\Or_{\a+\a'}\> \dist(x,y)^{2\a\a'}
+    \ \mbox{ at } x\to y \;,
+\"
+1,"\begin{equation}\lab{ws0}
+    w \sim Bs^{\a+\a'} \ \mbox{ at } s\to0,
+\"
+2,"\begin{equation}\lab{leadinglongdist}
+    \<\Or_\a(x) \Or_{\a'}(y)\> = \<\Or_\a\>\<\Or_{\a'}\> F\lt(\frc{\dist(x,y)}{2R}\rt) ,
+    \ \ \
+    \lim_{t \to \infty} F\lt(t\rt) = 1,
+\"
+3,"\begin{equation}\lab{ws1}
+    1-w \sim A (1-s)^{1+2\mu} \ \mbox{ at } s\to 1,
+\"
+4,"\begin{equation}\lab{Flarged}
+    F\lt(t\rt) = 1 -
+    A \frc{(\mu+\a)(\mu+\a')}{(2\mu+1)^2} 4^{2\mu+1} e^{-(4\mu+2)t} +
+    O\lt( e^{-(4\mu+4)t}\rt).
+\"
+5,"\begin{equation}\lab{A}
+    A = \frc{\sin(\pi\a) \sin(\pi\a') \G(\mu+\a) \G(1+\mu-\a)
+    \G(\mu+\a') \G(1+\mu-\a') }{
+    \pi^2 \G(1+2\mu)^2}
+\"
+6,"\begin{equation}\lab{geod}
+    \dist(x_1,x_2) = 2R\,{\arctanh} \lt( \frc{|z_1-z_2|}{|1-z_1\b{z}_2|} \rt).
+\"
+7,"\begin{equation}\lab{theory}
+    {\cal A} = \int d{\rm x} d{\rm y} \, \b\Psi \lt(\ga^\rx\d_\rx + \ga^\ry\d_\ry + \frc{2\mu}{1-|z|^2}\rt) \Psi,
+\"
+8,"\begin{equation}\lab{pint}
+    \<\Or_\a(x) \Or_{\a'}(y)\> = \int_{{\cal F}_{\a,\a'}} [{\cal D}\Psi {\cal D}\b\Psi] e^{-{\cal A}}.
+\"
+9,"\begin{equation}{\cal F}_{\a,\a'}: \lt\{\begin{array}{l}
+    \mbox{around }x: \  \Psi \to e^{2\pi i \a}\Psi,\ \b\Psi \to e^{-2\pi i \a} \b\Psi \\
+    \mbox{around }y: \ \Psi \to e^{2\pi i \a'}\Psi,\ \b\Psi \to e^{-2\pi i \a'} \b\Psi
+\end{array}\rt. .\lab{qp}\"
+10,"\begin{equation}\lab{isoK}
+    \iK\,:\ g_q = \mato{cc} \cosh(q) & \sinh(q) \\ \sinh(q) & \cosh(q) \matf ,\; q\in \R.
+\"
+11,"\begin{equation}\lab{bcop} \begin{array}{c} \displaystyle
+    \lim_{\xi_\ry \to -\pi/4} \Psi_s(\xi_\rx,\xi_\ry)|vac\> =
+    \lim_{\xi_\ry \to -\pi/4} \Psi_s^\dag(\xi_\rx,\xi_\ry)|vac\> = 0 \\
+\displaystyle
+    \lim_{\xi_\ry \to \pi/4} \<vac|\Psi_s(\xi_\rx,\xi_\ry) =
+    \lim_{\xi_\ry \to \pi/4} \<vac|\Psi_s^\dag(\xi_\rx,\xi_\ry) = 0.
+\end{array}\"
+12,"\begin{equation}\lab{meas}
+    \rho(\om) = \frc{\G\lt(\frc12 + \mu + i\frc{\om}2\rt) \G\lt(\frc12 + \mu - i\frc{\om}2\rt)}{
+            2\pi \G\lt(\frc12+\mu\rt)^2}
+\"
+13,"\begin{equation}\lab{pwaveexpr}
+    P_+(\om,\xi_\ry) = \mato{c}
+    2^{-2\mu-\frc12} e^{-i\frc{\pi}2\lt( \mu+\frc12-i\frc{\om}2\rt)}
+        (1+e^{4i\xi_\ry})^\mu e^{\om \xi_\ry}
+        F\lt(\mu,\frc12+\mu-i\frc{\om}2;1+2\mu;1+e^{4i\xi_\ry}\rt) \\
+    2^{-2\mu-\frc12} e^{-i\frc{\pi}2\lt( \mu+\frc12+i\frc{\om}2\rt)}
+        (1+e^{4i\xi_\ry})^\mu e^{-\om \xi_\ry}
+        F\lt(\mu,\frc12+\mu+i\frc{\om}2;1+2\mu;1+e^{4i\xi_\ry}\rt)
+    \matf
+\"
+14,"\begin{equation}\lab{p2}
+    \b{P}_\ep(\om,\xi_\ry) = (P_\ep(\om,-\xi_\ry))^\dag ,\;
+    P_-(\om,\xi_\ry) = (P_+(\om,\xi_\ry))^t ,
+\"
+15,"\begin{equation}\lab{Aac}
+    \{A_{\ep}(\om), A^\dag_{\ep'}(\om')\} = \frc1{\rho(\om)} \delta(\om-\om') \delta_{\ep,\ep'}\,,\;
+    \{A_{\ep}(\om), A_{\ep'}(\om')\} = \{A_{\ep}^\dag(\om), A_{\ep'}^\dag(\om')\} = 0 .
+\"
+16,"\begin{equation}\lab{basis}
+    |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n} =
+    A^\dag_{\ep_1}(\om_1) \cdots A^\dag_{\ep_n}(\om_n) |vac\>
+\"
+17,"\begin{equation}\lab{scalingfieldPsi}
+    \Or_\a(x) \mapsto \piperp\lt(\exp\lt[\,
+        2 \pi i \a \int_{{\cal C}_x} dx^\mu\ep_{\mu,\nu} \b\Psi  \ga^\nu \Psi
+    \,\rt]\rt),
+\"
+18,"\begin{equation}\lab{Fff}
+    F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n} \equiv
+    \<vac|\Or_\a(0)|\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n},
+\"
+19,"\begin{equation}\lab{cylcoord}
+    z=e^{\eta+i\theta},\; \b{z} = e^{\eta-i\theta}.
+\"
+20,"\begin{equation}\lab{cylact}
+    {\cal A} = \int_0^{2\pi} d\theta \int_{-\infty}^0 d\eta \,\bPsic \lt( \ga^\eta \d_\eta + \ga^\theta \d_\theta
+    - \frc{\mu}{\sinh(\eta)} \rt) \Psic,
+\"
+21,"\begin{equation}\lab{hamilt}
+    H_A = \int_{-\infty}^0 d\eta :\Psic^\dag \ga^\theta \lt(\ga^\eta\d_\eta - \frc{\mu}{\sinh(\eta)}\rt) \Psic: ,
+\"
+22,"\begin{equation}\lab{mode}
+    \Psic(\eta,\theta) = \int_{-\infty}^{\infty} \frc{d\nu}{\sqrt{2\pi}} c_\nu \U_\nu(\eta) e^{-\nu\theta} \;,\
+    \Psic^\dag(\eta,\theta) = \int_{-\infty}^\infty \frc{d\nu}{\sqrt{2\pi}} c_\nu^\dag \U_\nu^\dag(\eta) e^{\nu\theta}
+\"
+23,"\begin{equation}\lab{embed}
+    |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n} \equiv a_{\ep_1}(\om_1) \cdots a_{\ep_n}(\om_n) e^{-\pi H_A},
+\"
+24,"\begin{equation}\lab{form}
+    \<u|v\> \equiv \frc{\Tr\lt( U^\dag V\rt)}{\Tr\lt(e^{-2\pi H_A}\rt)}\;
+    \mbox{ if } |u\> \equiv U,\, |v\> \equiv V.
+\"
+25,"\begin{equation}\lab{loc}
+    \{a_\ep(\om), \Psic(\eta\to-\infty)\} = \{a_\ep(\om), \Psic^\dag(\eta\to-\infty)\} = 0.
+\"
+26,"\begin{equation}\lab{Acv}
+    a_+(\om) = \int_{-\infty}^{\infty} d\nu\, g(\nu;\om) \, c_\nu^\dag
+    \,,\ \ \
+    a_-(\om) = \int_{-\infty}^{\infty} d\nu\, g(\nu;\om) \, c_{-\nu},
+\"
+27,"\begin{equation}\lab{Aacomm}
+    \{a_{\ep_1}(\om_1), a_{\ep_2}(\om_2)\} = 0.
+\"
+28,"\begin{equation}\lab{cs}
+    (F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n})^* = F_{-\a}(\om_n,\ldots,\om_1)_{-\ep_n,\ldots,-\ep_1}
+\"
+29,"\begin{equation}\lab{Q}
+    Q = \int_{0}^{\infty} d\nu \,(c_\nu^\dag c_\nu - c_{-\nu} c^\dag_{-\nu}).
+\"
+30,"\begin{equation}\lab{ffdef}
+    \frc{\<vac|\Or_\a(0) |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n}}{\<vac|\Or_\a|vac\> }
+        = \frc{\Tr\lt(e^{-2\pi H_A +2\pi i \a Q} a_{\ep_1}(\om_1) \cdots a_{\ep_n}(\om_n) \rt)}{
+        \Tr\lt(e^{-2\pi H_A +2\pi i \a Q}\rt)}.
+\"
+31,"\begin{equation}\lab{trace}
+    \<\Or_\a\> = \<vac|\Or_\a|vac\> = \lim_{\varepsilon\to0} \varepsilon^{-\a^2} \frc{\Tr_\varepsilon\lt(e^{-2\pi H_A +2\pi i \a Q} \rt)}{\Tr_\varepsilon\lt(e^{-2\pi H_A}\rt)},
+\"
+32,"\begin{equation}\lab{boundcond}
+    [\PsicR(\eta) - \PsicL(\eta)]_{\eta=\ln\,\tanh\lt(\frc{\varepsilon}{2R}\rt)} =
+    [\PsicdR(\eta) - \PsicdL(\eta)]_{\eta=\ln\,\tanh\lt(\frc{\varepsilon}{2R}\rt)} = 0.
+\"
+33,"\begin{equation}\lab{Smatrix}
+    S(\nu) = (2R)^{2i\nu} \frc{\Gamma(1/2+i\nu)\Gamma(1/2-i\nu+\mu)}{\Gamma(1/2-i\nu)\Gamma(1/2+i\nu+\mu)} .
+\"
+34,"\begin{equation} \lab{1ptfct}
+    \<\Or_\a\> = \exp\lt[\int_0^\infty \frc{d\nu}{2\pi i}
+        \ln\lt( \frc{\lt(1+e^{-2\pi\nu + 2\sqrt2\pi i a}\rt) \lt(1+e^{-2\pi\nu - 2\sqrt2\pi i a}\rt)}{ \lt(1+e^{-2\pi\nu}\rt)^2 } \rt)
+        \d_\nu \ln S(\nu) \rt].
+\"
+35,"\begin{equation}\lab{genexpHp}
+    \<\Or_\a(x)\Or_{\a'}(y)\> = \sum_{N=0}^{\infty} \frc1{(N!)^2}
+    \sum_{k_1,\ldots,k_{2N}=0}^{\infty}
+    f_\a(k_1,\ldots,k_{2N}) f_{\a'}(k_{2N},\ldots,k_1)
+    e^{-(\l_1+\cdots+\l_{2N}) \frc{\dist(x,y)}{2R}},
+\"
+36,"\begin{equation}\lab{f}
+    f_\a(k_1,\ldots,k_{2N}) = \<0|\Or_\a(0)|k_1,\ldots,k_{2N}\>_{\underbrace{+,+,\ldots}_{N},\underbrace{-,-,\ldots}_{N}}.
+\"
+37,"\begin{equation}\lab{diffeq}
+    F(t) = \exp\lt[ -\int_{\tanh^2t}^1 ds \frc{d}{ds} \ln\tau(s) \rt],
+\"
+38,"\begin{equation}\lab{B}
+    B = \mu\frc{ \G(\a)\,\G(\a') \,\G(1-\a-\a')^2\, \G(\a+\a'+\mu)}{
+        \G(1-\a)\,\G(1-\a')\, \G(\a+\a')^2\, \G(1-\a-\a'+\mu)}.
+\"
+39,"\begin{equation}\lab{wlarged}
+    1-w = A(1-s)^{1+2\mu}\sum_{p,q=0}^{\infty} D_{p,q} \; (1-s)^{p(1+2\mu) + q}
+\"
+40,"\begin{equation}\lab{D0q}
+    \sum_{q=0}^{\infty} D_{0,q}\; (1-s)^q = s^{\a-\a'}F(1-\a'+\mu,\a+\mu;1+2\mu;1-s)^2.
+\"
+41,"\begin{equation}
+    f(\nu) = \sqrt{2\pi} \frc{\G\lt(\frc12+\mu+i\nu\rt)}{\G\lt(\frc12 + \mu\rt) \G\lt(\frc12+i\nu\rt)}.
+\lab{fnu} \"
+42,"\begin{equation}\lab{aint}
+    a_\ep(\om) = \frc{2^{-\mu-\frc12} e^{-i\frc{\pi}2 \lt(\mu+\frc12 + i\frc{\om}2\rt) } \G\lt(\frc12+\mu\rt)^2}{
+    \sqrt{\pi}\G\lt(\frc12 + \mu + i\frc{\om}2\rt) \G\lt(\frc12 + \mu - i\frc{\om}2\rt)}
+    \int_{-1}^1 dr\,(1-r)^{\mu-\frc12+i\frc{\omega}2} (1+r)^{\mu-\frc12-i\frc{\om}2}r^{-\mu-\frc12} Z_\ep(r),
+\"
+43,"\begin{equation}\lab{normcorr}
+    \<\< \cdots \>\>_\a =
+        \frc{\Tr\lt(e^{-2\pi K + 2\pi i\a Q} \cdots \rt)}{\Tr\lt( e^{-2\pi K + 2\pi i\a Q}\rt)}.
+\"
+44,"\begin{equation}\lab{ffapp0}
+    \<\<a_+(\om_1)a_-(\om_2) \>\>_\a =
+    \frc{4^{-\mu} i\pi e^{(\om_2-\om_1)\frc\pi4}}{
+        \sin(\pi(\mu-\a)) \G(1+\mu)^2}
+    \lt[ G_{\a}(\om_1,\om_2) - e^{-i\pi(\mu-\a)} G_{\mu}(\om_1,\om_2) \rt],
+\"
+45,"\begin{equation}
+    \frc{F_\a(\om_1,\om_2)_{+,-}}{\<\Or_\a\>} =
+    \frc{4^{-\mu} i\pi e^{(\om_2-\om_1)\frc\pi4}}{
+        \sin(\pi(\mu-\a)) \G(1+\mu)^2} G_{\a}(\om_1,\om_2).
+\lab{ffapp} \"
+46,"\begin{equation}
+    G_{\a;k_1,k_2}  =
+    \sin(\pi\a) \sum_{m_1=0}^{k_1} \sum_{m_2=0}^{k_2}
+    \frc{(-k_1)_{m_1} (-k_2)_{m_2} 2^{m_1+m_2}}{
+    (2\mu+1)_{m_1} (2\mu+1)_{m_2} m_1! m_2!} H_{m_1,m_2}
+\"
+47,"\begin{equation}
+    \frc{f_\a(k_1,k_2)}{\<\Or_\a\>} =
+    2^{2\mu+1}i(-1)^{k_1} \sqrt{\frc{\G(1+2\mu+k_1)\G(1+2\mu+k_2)}{k_1!k_2!}}
+    \frc{G_{\a;k_1,k_2}}{\G(1+2\mu)^2 \sin(\pi(\mu-\a)) } .
+\"
+48,"\begin{equation}
+    F_\a(\om_1,\ldots,\om_{n})_{\ep_1,\ldots,\ep_n}
+    = \sum_{j=2}^n (-1)^j F_\a(\om_1,\om_j)_{\ep_1,\ep_j}
+    F_\a(\om_2,\ldots,\widehat{\om_j},\ldots,\om_n)_{\ep_2,\ldots,\widehat{\ep_j},\ldots,\ep_n}
+\"
+49,"\begin{equation}
+    F_\a(\om_1,\ldots,\om_{n})_{\ep_1,\ldots,\ep_n} =
+    {\rm Pf} \lt({\bf F}_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n}\rt).
+\"
+50,"\begin{equation}\lab{mpff}
+    F_\a(\om_1,\ldots,\om_{N},\t\om_1,\ldots,\t\om_N)_{\underbrace{+,+,\ldots}_{N},\underbrace{-,-,\ldots}_{N}} =
+    \det ({\bf G}_\a(\om_1,\ldots,\om_N;\,\t\om_1,\ldots,\t\om_N)).
+\"
+51,"\begin{equation}\lab{norm}
+    \<\Or_\a(x) \Or_{\a'}(y)\> \sim \<\Or_{\a+\a'}\> \dist(x,y)^{2\a\a'}
+    \ \mbox{ at } x\to y \;,
+\"
+52,"\begin{equation}\lab{ws0}
+    w \sim Bs^{\a+\a'} \ \mbox{ at } s\to0,
+\"
+53,"\begin{equation}\lab{leadinglongdist}
+    \<\Or_\a(x) \Or_{\a'}(y)\> = \<\Or_\a\>\<\Or_{\a'}\> F\lt(\frc{\dist(x,y)}{2R}\rt) ,
+    \ \ \
+    \lim_{t \to \infty} F\lt(t\rt) = 1,
+\"
+54,"\begin{equation}\lab{ws1}
+    1-w \sim A (1-s)^{1+2\mu} \ \mbox{ at } s\to 1,
+\"
+55,"\begin{equation}\lab{Flarged}
+    F\lt(t\rt) = 1 -
+    A \frc{(\mu+\a)(\mu+\a')}{(2\mu+1)^2} 4^{2\mu+1} e^{-(4\mu+2)t} +
+    O\lt( e^{-(4\mu+4)t}\rt).
+\"
+56,"\begin{equation}\lab{A}
+    A = \frc{\sin(\pi\a) \sin(\pi\a') \G(\mu+\a) \G(1+\mu-\a)
+    \G(\mu+\a') \G(1+\mu-\a') }{
+    \pi^2 \G(1+2\mu)^2}
+\"
+57,"\begin{equation}\lab{geod}
+    \dist(x_1,x_2) = 2R\,{\arctanh} \lt( \frc{|z_1-z_2|}{|1-z_1\b{z}_2|} \rt).
+\"
+58,"\begin{equation}\lab{theory}
+    {\cal A} = \int d{\rm x} d{\rm y} \, \b\Psi \lt(\ga^\rx\d_\rx + \ga^\ry\d_\ry + \frc{2\mu}{1-|z|^2}\rt) \Psi,
+\"
+59,"\begin{equation}\lab{pint}
+    \<\Or_\a(x) \Or_{\a'}(y)\> = \int_{{\cal F}_{\a,\a'}} [{\cal D}\Psi {\cal D}\b\Psi] e^{-{\cal A}}.
+\"
+60,"\begin{equation}{\cal F}_{\a,\a'}: \lt\{\begin{array}{l}
+    \mbox{around }x: \  \Psi \to e^{2\pi i \a}\Psi,\ \b\Psi \to e^{-2\pi i \a} \b\Psi \\
+    \mbox{around }y: \ \Psi \to e^{2\pi i \a'}\Psi,\ \b\Psi \to e^{-2\pi i \a'} \b\Psi
+\end{array}\rt. .\lab{qp}\"
+61,"\begin{equation}\lab{isoK}
+    \iK\,:\ g_q = \mato{cc} \cosh(q) & \sinh(q) \\ \sinh(q) & \cosh(q) \matf ,\; q\in \R.
+\"
+62,"\begin{equation}\lab{bcop} \begin{array}{c} \displaystyle
+    \lim_{\xi_\ry \to -\pi/4} \Psi_s(\xi_\rx,\xi_\ry)|vac\> =
+    \lim_{\xi_\ry \to -\pi/4} \Psi_s^\dag(\xi_\rx,\xi_\ry)|vac\> = 0 \\
+\displaystyle
+    \lim_{\xi_\ry \to \pi/4} \<vac|\Psi_s(\xi_\rx,\xi_\ry) =
+    \lim_{\xi_\ry \to \pi/4} \<vac|\Psi_s^\dag(\xi_\rx,\xi_\ry) = 0.
+\end{array}\"
+63,"\begin{equation}\lab{meas}
+    \rho(\om) = \frc{\G\lt(\frc12 + \mu + i\frc{\om}2\rt) \G\lt(\frc12 + \mu - i\frc{\om}2\rt)}{
+            2\pi \G\lt(\frc12+\mu\rt)^2}
+\"
+64,"\begin{equation}\lab{pwaveexpr}
+    P_+(\om,\xi_\ry) = \mato{c}
+    2^{-2\mu-\frc12} e^{-i\frc{\pi}2\lt( \mu+\frc12-i\frc{\om}2\rt)}
+        (1+e^{4i\xi_\ry})^\mu e^{\om \xi_\ry}
+        F\lt(\mu,\frc12+\mu-i\frc{\om}2;1+2\mu;1+e^{4i\xi_\ry}\rt) \\
+    2^{-2\mu-\frc12} e^{-i\frc{\pi}2\lt( \mu+\frc12+i\frc{\om}2\rt)}
+        (1+e^{4i\xi_\ry})^\mu e^{-\om \xi_\ry}
+        F\lt(\mu,\frc12+\mu+i\frc{\om}2;1+2\mu;1+e^{4i\xi_\ry}\rt)
+    \matf
+\"
+65,"\begin{equation}\lab{p2}
+    \b{P}_\ep(\om,\xi_\ry) = (P_\ep(\om,-\xi_\ry))^\dag ,\;
+    P_-(\om,\xi_\ry) = (P_+(\om,\xi_\ry))^t ,
+\"
+66,"\begin{equation}\lab{Aac}
+    \{A_{\ep}(\om), A^\dag_{\ep'}(\om')\} = \frc1{\rho(\om)} \delta(\om-\om') \delta_{\ep,\ep'}\,,\;
+    \{A_{\ep}(\om), A_{\ep'}(\om')\} = \{A_{\ep}^\dag(\om), A_{\ep'}^\dag(\om')\} = 0 .
+\"
+67,"\begin{equation}\lab{basis}
+    |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n} =
+    A^\dag_{\ep_1}(\om_1) \cdots A^\dag_{\ep_n}(\om_n) |vac\>
+\"
+68,"\begin{equation}\lab{scalingfieldPsi}
+    \Or_\a(x) \mapsto \piperp\lt(\exp\lt[\,
+        2 \pi i \a \int_{{\cal C}_x} dx^\mu\ep_{\mu,\nu} \b\Psi  \ga^\nu \Psi
+    \,\rt]\rt),
+\"
+69,"\begin{equation}\lab{Fff}
+    F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n} \equiv
+    \<vac|\Or_\a(0)|\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n},
+\"
+70,"\begin{equation}\lab{cylcoord}
+    z=e^{\eta+i\theta},\; \b{z} = e^{\eta-i\theta}.
+\"
+71,"\begin{equation}\lab{cylact}
+    {\cal A} = \int_0^{2\pi} d\theta \int_{-\infty}^0 d\eta \,\bPsic \lt( \ga^\eta \d_\eta + \ga^\theta \d_\theta
+    - \frc{\mu}{\sinh(\eta)} \rt) \Psic,
+\"
+72,"\begin{equation}\lab{hamilt}
+    H_A = \int_{-\infty}^0 d\eta :\Psic^\dag \ga^\theta \lt(\ga^\eta\d_\eta - \frc{\mu}{\sinh(\eta)}\rt) \Psic: ,
+\"
+73,"\begin{equation}\lab{mode}
+    \Psic(\eta,\theta) = \int_{-\infty}^{\infty} \frc{d\nu}{\sqrt{2\pi}} c_\nu \U_\nu(\eta) e^{-\nu\theta} \;,\
+    \Psic^\dag(\eta,\theta) = \int_{-\infty}^\infty \frc{d\nu}{\sqrt{2\pi}} c_\nu^\dag \U_\nu^\dag(\eta) e^{\nu\theta}
+\"
+74,"\begin{equation}\lab{embed}
+    |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n} \equiv a_{\ep_1}(\om_1) \cdots a_{\ep_n}(\om_n) e^{-\pi H_A},
+\"
+75,"\begin{equation}\lab{form}
+    \<u|v\> \equiv \frc{\Tr\lt( U^\dag V\rt)}{\Tr\lt(e^{-2\pi H_A}\rt)}\;
+    \mbox{ if } |u\> \equiv U,\, |v\> \equiv V.
+\"
+76,"\begin{equation}\lab{loc}
+    \{a_\ep(\om), \Psic(\eta\to-\infty)\} = \{a_\ep(\om), \Psic^\dag(\eta\to-\infty)\} = 0.
+\"
+77,"\begin{equation}\lab{Acv}
+    a_+(\om) = \int_{-\infty}^{\infty} d\nu\, g(\nu;\om) \, c_\nu^\dag
+    \,,\ \ \
+    a_-(\om) = \int_{-\infty}^{\infty} d\nu\, g(\nu;\om) \, c_{-\nu},
+\"
+78,"\begin{equation}\lab{Aacomm}
+    \{a_{\ep_1}(\om_1), a_{\ep_2}(\om_2)\} = 0.
+\"
+79,"\begin{equation}\lab{cs}
+    (F_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n})^* = F_{-\a}(\om_n,\ldots,\om_1)_{-\ep_n,\ldots,-\ep_1}
+\"
+80,"\begin{equation}\lab{Q}
+    Q = \int_{0}^{\infty} d\nu \,(c_\nu^\dag c_\nu - c_{-\nu} c^\dag_{-\nu}).
+\"
+81,"\begin{equation}\lab{ffdef}
+    \frc{\<vac|\Or_\a(0) |\om_1,\ldots,\om_n\>_{\ep_1,\ldots,\ep_n}}{\<vac|\Or_\a|vac\> }
+        = \frc{\Tr\lt(e^{-2\pi H_A +2\pi i \a Q} a_{\ep_1}(\om_1) \cdots a_{\ep_n}(\om_n) \rt)}{
+        \Tr\lt(e^{-2\pi H_A +2\pi i \a Q}\rt)}.
+\"
+82,"\begin{equation}\lab{trace}
+    \<\Or_\a\> = \<vac|\Or_\a|vac\> = \lim_{\varepsilon\to0} \varepsilon^{-\a^2} \frc{\Tr_\varepsilon\lt(e^{-2\pi H_A +2\pi i \a Q} \rt)}{\Tr_\varepsilon\lt(e^{-2\pi H_A}\rt)},
+\"
+83,"\begin{equation}\lab{boundcond}
+    [\PsicR(\eta) - \PsicL(\eta)]_{\eta=\ln\,\tanh\lt(\frc{\varepsilon}{2R}\rt)} =
+    [\PsicdR(\eta) - \PsicdL(\eta)]_{\eta=\ln\,\tanh\lt(\frc{\varepsilon}{2R}\rt)} = 0.
+\"
+84,"\begin{equation}\lab{Smatrix}
+    S(\nu) = (2R)^{2i\nu} \frc{\Gamma(1/2+i\nu)\Gamma(1/2-i\nu+\mu)}{\Gamma(1/2-i\nu)\Gamma(1/2+i\nu+\mu)} .
+\"
+85,"\begin{equation} \lab{1ptfct}
+    \<\Or_\a\> = \exp\lt[\int_0^\infty \frc{d\nu}{2\pi i}
+        \ln\lt( \frc{\lt(1+e^{-2\pi\nu + 2\sqrt2\pi i a}\rt) \lt(1+e^{-2\pi\nu - 2\sqrt2\pi i a}\rt)}{ \lt(1+e^{-2\pi\nu}\rt)^2 } \rt)
+        \d_\nu \ln S(\nu) \rt].
+\"
+86,"\begin{equation}\lab{genexpHp}
+    \<\Or_\a(x)\Or_{\a'}(y)\> = \sum_{N=0}^{\infty} \frc1{(N!)^2}
+    \sum_{k_1,\ldots,k_{2N}=0}^{\infty}
+    f_\a(k_1,\ldots,k_{2N}) f_{\a'}(k_{2N},\ldots,k_1)
+    e^{-(\l_1+\cdots+\l_{2N}) \frc{\dist(x,y)}{2R}},
+\"
+87,"\begin{equation}\lab{f}
+    f_\a(k_1,\ldots,k_{2N}) = \<0|\Or_\a(0)|k_1,\ldots,k_{2N}\>_{\underbrace{+,+,\ldots}_{N},\underbrace{-,-,\ldots}_{N}}.
+\"
+88,"\begin{equation}\lab{diffeq}
+    F(t) = \exp\lt[ -\int_{\tanh^2t}^1 ds \frc{d}{ds} \ln\tau(s) \rt],
+\"
+89,"\begin{equation}\lab{B}
+    B = \mu\frc{ \G(\a)\,\G(\a') \,\G(1-\a-\a')^2\, \G(\a+\a'+\mu)}{
+        \G(1-\a)\,\G(1-\a')\, \G(\a+\a')^2\, \G(1-\a-\a'+\mu)}.
+\"
+90,"\begin{equation}\lab{wlarged}
+    1-w = A(1-s)^{1+2\mu}\sum_{p,q=0}^{\infty} D_{p,q} \; (1-s)^{p(1+2\mu) + q}
+\"
+91,"\begin{equation}\lab{D0q}
+    \sum_{q=0}^{\infty} D_{0,q}\; (1-s)^q = s^{\a-\a'}F(1-\a'+\mu,\a+\mu;1+2\mu;1-s)^2.
+\"
+92,"\begin{equation}
+    f(\nu) = \sqrt{2\pi} \frc{\G\lt(\frc12+\mu+i\nu\rt)}{\G\lt(\frc12 + \mu\rt) \G\lt(\frc12+i\nu\rt)}.
+\lab{fnu} \"
+93,"\begin{equation}\lab{aint}
+    a_\ep(\om) = \frc{2^{-\mu-\frc12} e^{-i\frc{\pi}2 \lt(\mu+\frc12 + i\frc{\om}2\rt) } \G\lt(\frc12+\mu\rt)^2}{
+    \sqrt{\pi}\G\lt(\frc12 + \mu + i\frc{\om}2\rt) \G\lt(\frc12 + \mu - i\frc{\om}2\rt)}
+    \int_{-1}^1 dr\,(1-r)^{\mu-\frc12+i\frc{\omega}2} (1+r)^{\mu-\frc12-i\frc{\om}2}r^{-\mu-\frc12} Z_\ep(r),
+\"
+94,"\begin{equation}\lab{normcorr}
+    \<\< \cdots \>\>_\a =
+        \frc{\Tr\lt(e^{-2\pi K + 2\pi i\a Q} \cdots \rt)}{\Tr\lt( e^{-2\pi K + 2\pi i\a Q}\rt)}.
+\"
+95,"\begin{equation}\lab{ffapp0}
+    \<\<a_+(\om_1)a_-(\om_2) \>\>_\a =
+    \frc{4^{-\mu} i\pi e^{(\om_2-\om_1)\frc\pi4}}{
+        \sin(\pi(\mu-\a)) \G(1+\mu)^2}
+    \lt[ G_{\a}(\om_1,\om_2) - e^{-i\pi(\mu-\a)} G_{\mu}(\om_1,\om_2) \rt],
+\"
+96,"\begin{equation}
+    \frc{F_\a(\om_1,\om_2)_{+,-}}{\<\Or_\a\>} =
+    \frc{4^{-\mu} i\pi e^{(\om_2-\om_1)\frc\pi4}}{
+        \sin(\pi(\mu-\a)) \G(1+\mu)^2} G_{\a}(\om_1,\om_2).
+\lab{ffapp} \"
+97,"\begin{equation}
+    G_{\a;k_1,k_2}  =
+    \sin(\pi\a) \sum_{m_1=0}^{k_1} \sum_{m_2=0}^{k_2}
+    \frc{(-k_1)_{m_1} (-k_2)_{m_2} 2^{m_1+m_2}}{
+    (2\mu+1)_{m_1} (2\mu+1)_{m_2} m_1! m_2!} H_{m_1,m_2}
+\"
+98,"\begin{equation}
+    \frc{f_\a(k_1,k_2)}{\<\Or_\a\>} =
+    2^{2\mu+1}i(-1)^{k_1} \sqrt{\frc{\G(1+2\mu+k_1)\G(1+2\mu+k_2)}{k_1!k_2!}}
+    \frc{G_{\a;k_1,k_2}}{\G(1+2\mu)^2 \sin(\pi(\mu-\a)) } .
+\"
+99,"\begin{equation}
+    F_\a(\om_1,\ldots,\om_{n})_{\ep_1,\ldots,\ep_n}
+    = \sum_{j=2}^n (-1)^j F_\a(\om_1,\om_j)_{\ep_1,\ep_j}
+    F_\a(\om_2,\ldots,\widehat{\om_j},\ldots,\om_n)_{\ep_2,\ldots,\widehat{\ep_j},\ldots,\ep_n}
+\"
+100,"\begin{equation}
+    F_\a(\om_1,\ldots,\om_{n})_{\ep_1,\ldots,\ep_n} =
+    {\rm Pf} \lt({\bf F}_\a(\om_1,\ldots,\om_n)_{\ep_1,\ldots,\ep_n}\rt).
+\"
+101,"\begin{equation}\lab{mpff}
+    F_\a(\om_1,\ldots,\om_{N},\t\om_1,\ldots,\t\om_N)_{\underbrace{+,+,\ldots}_{N},\underbrace{-,-,\ldots}_{N}} =
+    \det ({\bf G}_\a(\om_1,\ldots,\om_N;\,\t\om_1,\ldots,\t\om_N)).
+\"

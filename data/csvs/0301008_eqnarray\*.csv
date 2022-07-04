@@ -1,0 +1,480 @@
+,eqnarray\*
+0,"\begin{eqnarray*}
+I & = & \left[
+\begin{array}{cc}
+  0 & \mbox{\bf{1}} \\
+  -\mbox{\bf{1}} & 0
+\end{array}
+\right],
+\end{eqnarray*}
+and $U\in U(2N_f)$.
+The partition function with vanishing topological charge is \cite{DV01}
+\begin{eqnarray}
+{\cal Z}^{\beta=1} & = & \int_{U\in U(2N_f)}\hspace{-7mm}dU e^{\frac{1}{4}{\rm Tr}\left(
+\tilde{{\cal M}}^\dag
+UIU^t+\tilde{{\cal M}}(UIU^t)^\dag\right)},
+\end{eqnarray}
+where the mass matrix $\tilde{{\cal M}}$
+is an arbitrary complex antisymmetric matrix.
+Note also that the combination $UIU^t\equiv V$ is antisymmetric, which will
+turn out to
+be very useful in the following. Again, the partition function is a function
+of the eigenvalues of $\tilde{{\cal M}}\tilde{{\cal M}}^\dag$
+and since the
+Goldstone modes are parameterized by the unitary group we can follow the
+same approach as in the case of $\beta=2$. We know that
+\begin{eqnarray}
+0 = \int_{U\in U(2N_f)} \hspace{-8mm}
+dU {\rm Tr} t^a\nabla^a\!\!\left(F(U) e^{\frac{1}{4}
+{\rm Tr}\left(\tilde{{\cal M}}^\dag V+\tilde{{\cal M}}V^\dag\right)}\right),
+\end{eqnarray}
+and if we, inspired by the $\beta=2$ calculation,
+choose $F(U)=V\tilde{{\cal M}}^\dag$ this results in
+\begin{eqnarray}
+\hspace{-4mm}
+\left<(2N_f-1){\rm Tr} \tilde{{\cal M}}^\dag V\right> & = & \frac{1}{2}\left<{\rm Tr}
+\tilde{{\cal M}}
+\tilde{{\cal M}}^\dag \right. \nonumber \\ && \left.
+\hspace{4mm}- {\rm Tr} V\tilde{{\cal M}}^\dag V\tilde{{\cal M}}^\dag\right>\!.
+\label{sdb1matrix1}
+\end{eqnarray}
+It is important to realize that since both $V$ and ${{\cal M}}^\dag$ are
+antisymmetric, this equation should be treated a bit differently
+from the $\beta=2$ case. Being careful, we define the
+differential operators
+\begin{eqnarray}
+\left< {\rm Tr} \tilde{{\cal M}}^\dag V\right> & = & 2\left<
+\sum_{\stackrel{i,j}{i\neq j}}
+\tilde{{\cal M}}^\dag_{ij}\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{ij}}\right> \nonumber \\
+& \equiv &
+2\left< D_1\right>,
+\label{sdb1matrix2a}\\
+\left<{\rm Tr} V\tilde{{\cal M}}^\dag V\tilde{{\cal M}}^\dag\right> & = & 4\left<
+\sum_{\stackrel{i,j,k,l}{i\neq l, j\neq k}} \tilde{{\cal M}}^\dag_{ij}
+\tilde{{\cal M}}^\dag_{kl}
+\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{kj}}\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{il}}\right> \nonumber \\
+& \equiv & 4\left< D_2\right>.
+\label{sdb1matrix2}
+\end{eqnarray}
+Again we let these act on the basis functions $\phi_p, p=1,\dots,N_f$. The
+basis functions
+are defined in the same way as in the $\beta=2$ case but differ, since
+the matrices in this case are $2N_f\times 2N_f$.
+Asuming that the theory has no di-quark terms, the mass matrix has the form
+\begin{eqnarray}
+\tilde{\cal M} = \left[
+\begin{array}{cc}
+  0 & {\cal M} \\
+  -{\cal M}^t & 0
+\end{array}
+\right],
+\end{eqnarray}
+which results in the basis functions
+(again letting $x_i$, $i=1,\dots,N_f$ be the eigenvalues
+of the matrix ${\cal M}{\cal M}^\dag$)
+\begin{eqnarray}
+\phi_p & = & {\rm Tr} ((\tilde{{\cal M}}\tilde{{\cal M}}^\dag)^{p}) \nonumber \\
+& = & 2\sum_ix_i^p.
+\end{eqnarray}
+Though the sums in eqs. (\ref{sdb1matrix2a}) and (\ref{sdb1matrix2})
+do not run over all indices, when doing the actual derivatives the
+results turn out rather nicely.  Indeed for the first derivative we
+find
+\begin{eqnarray}
+D_1\phi_p & = & \sum_{\stackrel{i,j}{i\neq j}}
+\tilde{{\cal M}}^\dag_{ij}\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{ij}}{\rm Tr}((\tilde{{\cal M}}
+\tilde{{\cal M}}^\dag)^p) \nonumber \\
+& = & p\sum_{\stackrel{i,j}{i\neq j}}\tilde{{\cal M}}^\dag_{ij}\left[((\tilde{{\cal M}}
+\tilde{{\cal M}}^\dag)^{p-1}\tilde{{\cal M}})_{ji} \right. \nonumber \\
+&& \hspace{17mm} \left. -((\tilde{{\cal M}}\tilde{{\cal M}}^\dag)^{p-1}
+\tilde{{\cal M}})_{ij}\right] \nonumber \\
+& = & 2p\phi_p,
+\end{eqnarray}
+from which we recognize
+\begin{eqnarray}
+D_1 & = & 2x_i\frac{\partial}{\partial x_i}.
+\end{eqnarray}
+Turning to the second order differential operator
+\begin{eqnarray}
+D_2\phi_p & = & \sum_{\stackrel{i,j,k,l}{i\neq l,
+j\neq k}} \!\!
+\tilde{{\cal M}}^\dag_{ij}\tilde{{\cal M}}^\dag_{kl}\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{kj}}
+\frac{\partial}{\partial \tilde{{\cal M}}^\dag_{il}}{\rm Tr}((\tilde{{\cal M}}\tilde{{\cal M}}^\dag)^p) \nonumber \\
+& = & 2p\sum_{p'=1}^p\phi_{p'}\phi_{p-p'}-2p(p-1)\phi_p \nonumber \\
+& = & 8p\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}
+(x_i^{p-1}-x_j^{p-1}) \nonumber \\
+&& +8p(p-1)\sum_ix_i^p-4p(p-1)\sum_ix_i^p,
+\end{eqnarray}
+from which we conclude that
+\begin{eqnarray}
+D_2 = 2x_i^2\frac{\partial^2}{\partial x_i^2}+4\sum_{\stackrel{i,j}{i\neq j}}
+\frac{x_ix_j}{x_i-x_j}\left(\frac{\partial}{\partial x_i}-\frac{\partial}{\partial x_j}\right).
+\label{d2b1}
+\end{eqnarray}
+Again we have to verify this double derivative on a product $\phi_p\phi_q$.
+The test produces exactly the necessary result.
+
+Collecting the terms using eq. (\ref{sdb1matrix1}) we find the
+differential equation
+\begin{eqnarray}
+&\left[x_i^2\partial_i^2+(2N_f-1)x_i\partial_i+
+2\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}
+\left(\partial_i-\partial_j\right)\right]\!\!{\cal Z}^{\beta=1}& \nonumber \\ & \hspace{-59mm}
+= \frac{1}{4}\sum_ix_i{\cal Z}^{\beta=1}.&
+\label{sdb1}
+\end{eqnarray}
+
+\subsection{$\beta=4$}
+For fermions in a real representation the coset is
+$SU(N_f)/SO(N_f)$. Once again this can be parameterized by elements
+from the unitary group, in this case by $UU^t$. Here the mass
+matrix is an arbitrary symmetric complex matrix and the partition
+function with vanishing topological charge is \cite{LS92, SV95}
+\begin{eqnarray}
+{\cal Z}^{\beta=4} & = & \int_{U\in U(N_f)}\!\!dU e^{\frac{1}{2}{\rm Tr}\left(
+{{\cal M}}^\dag UU^t+{{\cal M}}(UU^t)^\dag\right)}.
+\end{eqnarray}
+Proceeding in the familiar manner, with $W$ being
+the symmetric matrix $UU^t$, we find
+\begin{eqnarray}
+0 = \int_{U\in U(N_f)}\hspace{-9mm}dU {\rm Tr} t^a\nabla^a\left(F(U)
+e^{\frac{1}{2}{\rm Tr}\left({{\cal M}}^\dag W+{{\cal M}}W^\dag\right)}\right).
+\end{eqnarray}
+Defining $F(U)=W{{\cal M}}^\dag$ we find the Schwinger-Dyson equation
+\begin{eqnarray}
+\left<(N_f\!+\!1)\!{\rm Tr} {{\cal M}}^\dag W\right> \!=\!
+\left<{\rm Tr} {{\cal M}}
+{{\cal M}}^\dag \!-\! {\rm Tr} W\!{{\cal M}}^\dag W\!{{\cal M}}^\dag\right>\!\!.
+\label{sdb4matrix1}
+\end{eqnarray}
+Having seen the techniques in the anti-symmetric case of $\beta=1$ this
+is much the same. The only complication is that in this case the
+diagonal elements of the mass matrix are not equal
+to zero. Again we carefully define the
+differential operators
+\begin{eqnarray}
+\left< {\rm Tr} {{\cal M}}^\dag W\right> & = &
+\!\!\left< 2\sum_i{{\cal M}}^\dag_{ii}\frac{\partial}{\partial {{\cal M}}^\dag_{ii}}+
+\sum_{\stackrel{i,j}{i\neq j}} {{\cal M}}^\dag_{ij}\frac{\partial}{\partial {{\cal M}}^\dag_{ij}}\right> \nonumber \\
+& \equiv &\! \left< D_1\right>, \\
+\left<{\rm Tr} W{{\cal M}}^\dag W{{\cal M}}^\dag\right>\!\! & = &
+\!\left<\sum_{\stackrel{i,j,k,l}{i\neq l, j\neq k}}
+\!\!{{\cal M}}^\dag_{ij}{{\cal M}}^\dag_{kl}\frac{\partial}{\partial {{\cal M}}^\dag_{kj}}\frac{\partial}{\partial {{\cal M}}^\dag_{il}}
+\right.\nonumber \\
+&&\! \left.+2\sum_{\stackrel{i,j,k}{j\neq k}}
+\!\!{{\cal M}}^\dag_{ij}{{\cal M}}^\dag_{ki}\frac{\partial}{\partial {{\cal M}}^\dag_{kj}}\frac{\partial}{\partial {{\cal M}}^\dag_{ii}}
+\right. \nonumber \\
+&&\! \left.  +2\sum_{\stackrel{i,j,l}{i\neq l}} {{\cal M}}^\dag_{ij}{{\cal M}}^\dag_{jl}
+\frac{\partial}{\partial {{\cal M}}^\dag_{jj}}\frac{\partial}{\partial {{\cal M}}^\dag_{il}} \right. \nonumber \\
+&&\! + \left. 4\sum_{i,j} {{\cal M}}^\dag_{ij}{{\cal M}}^\dag_{ji}\frac{\partial}{\partial {{\cal M}}^\dag_{jj}}
+\frac{\partial}{\partial {{\cal M}}^\dag_{ii}}\right>\nonumber \\
+& \equiv &\! \left< D_2\right>.
+\label{sdb4matrix2}
+\end{eqnarray}
+The partition function only depends on the eigenvalues of
+${{\cal M}}{{\cal M}}^\dag$ and since we have returned to working with
+$N_f\times N_f$ matrices the $\phi_p$, $p=1, \dots, N_f$
+are exactly the same as for $\beta=2$. That is
+\begin{eqnarray}
+\phi_p & = & {\rm Tr}(({{\cal M}}{{\cal M}}^\dag)^{p}) = \sum_ix_i^p.
+\end{eqnarray}
+In this case we find that
+\begin{eqnarray}
+D_1\phi_p & = & 2p\phi_p,
+\end{eqnarray}
+and thus
+\begin{eqnarray}
+D_1 & = & 2x_i\frac{\partial}{\partial x_i}.
+\end{eqnarray}
+The second derivative looks ugly but after some algebra we
+end up with the nice expression
+\begin{eqnarray}
+D_2\phi_p & = & 2p\sum_{p'=1}^p\phi_{p'}\phi_{p-p'}+2p(p-1)\phi_p,
+\end{eqnarray}
+from which we deduce that
+\begin{eqnarray}
+D_2 = 2\sum_{\stackrel{i,j}{i\neq j}}
+\frac{x_ix_j}{x_i-x_j}\left(\frac{\partial}{\partial x_i}-\frac{\partial}{\partial x_j}\right)+4x_i^2\frac{\partial^2}{\partial x_i^2}.
+\end{eqnarray}
+Now we are able to collect the terms and we end up with the result
+\begin{eqnarray}
+&\left[x_i^2\partial_i^2+\frac{N_f+1}{2}x_i\partial_i+ \frac{1}{2}
+\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}\left(\partial_i-\partial_j\right)
+\right]{\cal Z}^{\beta=4} & \nonumber \\
+& \hspace{-55mm} = \frac{1}{4}\sum_ix_i{\cal Z}^{\beta=4}.&
+\end{eqnarray}
+
+\subsection{Including the topological charge}
+Including the topological charge in the Schwinger-Dyson equations is now
+quite simple. In all classes of chiral symmetry breaking the topological
+charge enters the partition function as a change of measure. Again we make
+use of the fact that the integral of a total derivative vanishes. Thus we
+get an extra term in the Schwinger-Dyson equations corresponding to the
+derivative of the change in measure.
+
+More specifically, consider first $\beta=2$. Allowing a non-vanishing
+topological charge changes the measure in (\ref{partapp2}) by
+$dU\to dU(\det U)^\nu$. Thus we need to know the derivative of $\det U$
+\begin{eqnarray}
+\nabla^a(\det U) & = & i(t^aU)_{ij}\frac{\partial}{\partial U_{ij}} \det U \nonumber \\
+& = & i(t^aU)_{ij}U^{-1}_{ji}\det U \nonumber \\
+& = & i{\rm Tr} (t^a) \det U
+\end{eqnarray}
+since
+\begin{eqnarray}
+\det(U+\delta U) & = & \det(U(1+U^{-1}\delta U)) \nonumber \\
+& = & \det U(1+{\rm Tr}(U^{-1}\delta U)\!+\!\dots)\!.
+\end{eqnarray}
+Thus we see that the expectation value equation (\ref{sdb2matrix1})
+changes into
+\begin{eqnarray}
+\hspace{-2mm}(N_f\!+\!\nu)\!\left<{\rm Tr} {{\cal M}}^\dag U\right>\! = \!
+\frac{1}{2}\!\left< {\rm Tr} {{\cal M}}{{\cal M}}^\dag
+\!-\! \!{\rm Tr} U{{\cal M}}^\dag U{{\cal M}}^\dag\right>\!,
+\end{eqnarray}
+which only alters the coefficient in front of the differential operator $D_1$.
+Modifying the partition function, of course also implies that the dependencies
+are changed. As discussed in section \ref{vcsec}, $(\det {\cal M})^{-\nu}{\cal Z}^{\beta=2}_\nu$
+is a
+function of the eigenvalues of ${\cal M}{\cal M}^\dagger$ only, and all results of the last
+section are thus valid in sectors of non-vanishing topological charge provided
+we change the coefficient in front of $D_1$ and let the differential operators
+act on $(\det {\cal M})^{-\nu}{\cal Z}^{\beta=2}_\nu$ instead of just ${\cal Z}^{\beta=2}$. Thus we find
+\begin{eqnarray}
+&& \left[x_i^2\partial_i^2+(N_f+\nu)x_i\partial_i+
+\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}
+\left(\partial_i-\partial_j\right)\right] \nonumber
+\\ & \times & (\det {\cal M})^{-\nu}{\cal Z}^{\beta=2}_\nu =
+\frac{1}{4}\sum_ix_i(\det {\cal M})^{-\nu}{\cal Z}^{\beta=2}_\nu.
+\label{sdeqapp2}
+\end{eqnarray}
+
+Turning to $\beta=1$ where the measure also changes by $dU\to dU (\det U)^\nu$
+we find that the expectation value equation (\ref{sdb1matrix1}) changes into
+\begin{eqnarray}
+\hspace{-4mm}
+& \left<(2N_f-1+\nu){\rm Tr} \tilde{{\cal M}}^\dag V\right> & \nonumber \\
+= & \frac{1}{2}\left<{\rm Tr}
+\tilde{{\cal M}}
+\tilde{{\cal M}}^\dag - {\rm Tr} V\tilde{{\cal M}}^\dag V\tilde{{\cal M}}^\dag\right>. &
+\end{eqnarray}
+In this case we need to replace ${\cal Z}^{\beta=1}$ with
+$(\det\tilde{{\cal M}})^{-\nu/2}{\cal Z}^{\beta=1}_\nu=(\det{\cal M})^{-\nu}{\cal Z}^{\beta=1}_\nu$ and we find the
+differential equation
+\begin{eqnarray}
+& \left[x_i^2\partial_i^2+(2N_f-1+\nu)x_i\partial_i+
+2\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}
+\left(\partial_i-\partial_j\right)\right]& \nonumber \\
+&\hspace{-5mm}\times (\det{\cal M})^{-\nu}{\cal Z}^{\beta=1}_\nu
+\, = \, \frac{1}{4}\sum_ix_i(\det{\cal M})^{-\nu}{\cal Z}^{\beta=1}_\nu.&
+\label{sdeqapp1}
+\end{eqnarray}
+
+Finally, for $\beta=4$ the change of the measure is
+$dU\to dU (\det U)^{2\bar{\nu}}$, with $\bar{\nu}=N_c\nu$. Hence eq.
+(\ref{sdb4matrix1}) becomes
+\begin{eqnarray}
+&\left<\left(\frac{N_f+1}{2}+\bar{\nu}\right){\rm Tr} {{\cal M}}^\dag W\right> & \nonumber \\
+=&\frac{1}{2}\left<{\rm Tr} {{\cal M}}
+{{\cal M}}^\dag - {\rm Tr} W{{\cal M}}^\dag W{{\cal M}}^\dag\right>.&
+\end{eqnarray}
+${\cal Z}^{\beta=4}$ should be replaced by $(\det {\cal M})^{-\bar{\nu}}{\cal Z}^{\beta=4}_{\bar\nu}$ and thus
+\begin{eqnarray}
+&\left[x_i^2\partial_i^2+\left(\frac{N_f+1}{2}+\bar{\nu}\right)x_i\partial_i+
+\frac{1}{2}
+\sum_{\stackrel{i,j}{i\neq j}}\frac{x_ix_j}{x_i-x_j}\left(\partial_i-\partial_j\right)
+\right]& \nonumber \\
+& \! \times (\det {\cal M})^{-\bar{\nu}}{\cal Z}^{\beta=4}_{\bar\nu} \, = \,
+\frac{1}{4}\sum_ix_i(\det {\cal M})^{-\bar{\nu}}{\cal Z}^{\beta=4}_{\bar\nu}\!.&
+\label{sdeqapp4}
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Topological Susceptibility \label{topsusapp}}
+In this appendix we calculate the topological susceptibility. This we
+calculate by allowing a non-vanishing vacuum angle $\theta$ and
+subsequently projecting onto sectors of fixed topological charge by
+means of a Fourier transform. We consider the classes of symmetry
+breaking separately.
+
+The case of $\beta=2$ has been considered previously \cite{D01} by means
+of the same method as we will use here. The result found was
+\begin{eqnarray}
+\left<\nu^2\right>_{\beta=2} & = & \frac{m_0^2VF^2}{2N_c}.
+\label{topsus2}
+\end{eqnarray}
+
+Matching of the two finite volume regimes requires that the dependence
+of the topological susceptibility upon the Dyson index follows the
+same pattern as the last (non-trivial) part of the diagonal
+propagator.  Thus we expect the topological susceptibility to be twice as
+large as formula (\ref{topsus2}) in the $\beta=1$ case while being
+identically the same in the $\beta=4$ case.
+
+\subsection{$\beta=1$}
+A non-vanishing vacuum angle can be absorbed into the mass-matrix
+$\cal M$ by letting ${\cal M}\to e^{i\theta/N_f}{\cal M}$ \cite{LS92, SV95}.  We
+can include the vacuum angle in a shifted $\Xi_0$. To see this
+consider how the change of the mass matrix affects the combination
+\begin{eqnarray}
+\mbox{Re}{\rm Tr}{\cal M} U^\dag \! \to \! \mbox{Re}{\rm Tr}\left[{\cal M} e^{i\theta/N_f}
+e^{-i\sqrt{2}\xi/F_1}e^{-i\sqrt{2}\varphi_0/F_1}\right]\!\!,
+\end{eqnarray}
+from which we find that we can include the vacuum angle in a change of
+variables
+\begin{eqnarray}
+\varphi_0 & \to & \varphi_0-\frac{\theta F_1}{\sqrt{2}N_f}.
+\end{eqnarray}
+Taking the trace of this equation we obtain (note that the dimension
+of the coset is $2N_f\times 2N_f$)
+\begin{eqnarray}
+\Xi_0 \to  \Xi_0' \equiv \Xi_0-\sqrt{2}\theta F_1.
+\end{eqnarray}
+
+Finally we perform the Fourier transform (for large volumes)
+\begin{widetext}
+\begin{eqnarray}
+{\cal Z}^{\beta=1}_\nu & = & \frac{1}{2\pi}\int_{-\pi}^{\pi}d\theta e^{-i\nu\theta}
+\int_{SU(2N_f)/Sp(2N_f)}dU_0 \exp\left[\frac{1}{2}{\rm Tr}{\cal M}(U_0+U_0^\dag)
+-\frac{m_0^2V}{2N_c}\Xi_0'^2\right] \nonumber \\
+& \propto & \sqrt{\frac{N_c}{2m_0^2VF_1^2}}e^{-\nu^2N_c/4m_0^2VF_1^2}
+\int_{U(2N_f)/Sp(2N_f)}dU_0 (\det U_0)^{-\nu/2}
+\exp\left[\frac{1}{2}{\rm Tr}{\cal M}(U_0+U_0^\dag)\right],
+\end{eqnarray}
+\end{widetext}
+from which we identify the topological susceptibility
+\begin{eqnarray}
+\left<\nu^2\right> & = & \frac{2m_0^2VF_1^2}{N_c} = \frac{m_0^2VF^2}{N_c}.
+\end{eqnarray}
+As expected, this is exactly twice the result from the $\beta=2$ case.
+
+\subsection{$\beta=4$}
+The $\beta=4$ calculation proceeds in the same way. In this case the
+vacuum angle can be included in the mass matrix by letting ${\cal M}\to
+e^{i\theta/N_cN_f}{\cal M}$ \cite{LS92, SV95}. Again this can be included in the
+field of constant modes, this time by the substitution
+\begin{eqnarray}
+\varphi_0 & \to & \varphi_0-\frac{\theta F_4}{\sqrt{2}N_cN_f}.
+\end{eqnarray}
+Thus for the traced equation we find
+\begin{eqnarray}
+\Xi_0 \to \Xi_0' \equiv \Xi_0-\frac{\theta F_4}{\sqrt{2}N_c}.
+\end{eqnarray}
+The projection onto sectors of fixed topological charge is performed as
+before
+\begin{widetext}
+\begin{eqnarray}
+{\cal Z}^{\beta=4}_\nu & = & \frac{1}{2\pi}\int_{-\pi}^{\pi}d\theta e^{-i\nu\theta}
+\int_{SU(N_f)/SO(N_f)}dU_0 \exp\left[\frac{1}{2}{\rm Tr}{\cal M}(U_0+U_0^\dag)
+-\frac{m_0^2V}{2N_c}\Xi_0'^2\right] \nonumber \\
+& \propto & \sqrt{\frac{1}{\left<\bar\nu^2\right>}}e^{-\bar\nu^2/2\left<
+\bar\nu^2\right>}
+\int_{U(N_f)/SO(N_f)} dU_0 (\det U_0)^{-\bar\nu}
+\exp\left[\frac{1}{2}{\rm Tr}{\cal M}(U_0+U_0^\dag)\right],
+\end{eqnarray}
+\end{widetext}
+with the topological susceptibility given by
+\begin{eqnarray}
+\left<\bar\nu^2\right> & = & \frac{m_0^2VF_4^2}{2N_c} = \frac{m_0^2VF^2}{2N_c}.
+\end{eqnarray}
+Again we define $\bar\nu\equiv N_c\nu$. This result is also as expected.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{X}
+
+\bibitem{P80}
+M.~Peskin, Nucl.\ Phys.\ {\bf B175} (1980) 197.
+
+\bibitem{V94}
+J.~J.~M.~ Verbaarschot, Phys.\ Rev.\ Lett. {\bf 72} (1994) 2531.
+
+\bibitem{BG92}
+C.~Bernard and M.~F.~L.~Golterman, Phys.\ Rev.\ D {\bf 46} (1992) 853;
+Phys.\ Rev.\ D {\bf 53} (1996) 476.
+
+\bibitem{S92}
+S.~R.~Sharpe, Phys.\ Rev.\ D {\bf 46} (1992) 3146; Phys.\ Rev.\
+D{\bf 56} (1997) 7052.
+
+\bibitem{M87}
+A.~Morel, J.\ Physique {\bf 48} (1987) 111.
+
+\bibitem{DS00}
+P.~H.~Damgaard and K.~Splittorff, Phys.\ Rev.\ D {\bf 62} (2000)
+054509.
+
+\bibitem{DV01}
+D.~Dalmazi and J.~J.~M.~Verbaarschot, Phys.\ Rev.\ D {\bf 64} (2001) 054002.
+
+\bibitem{DS00A}
+P.~H.~Damgaard and K.~Splittorff, Nucl.\ Phys.\ {\bf B572} (2000) 478;
+D.~Dalmazi and J.~J.~M.~Verbaarschot, Nucl.\ Phys.\ {\bf B592} (2001) 419.
+
+\bibitem{KSV02}
+E.~Kanzieper, cond-mat/0207745;
+K.~Splittorff and J.~J.~M.~Verbaarschot, cond-mat/0209594;
+Y.~V.~Fyodorov and G.~Akemann, cond-mat/0210647.
+
+\bibitem{GN92}
+D.~J.~Gross and M.~J.~Newman, Nucl.\ Phys.\ {\bf B380} (1992) 168.
+
+\bibitem{MMS96}
+A.~Mironov, A.~Morozov, and G.~Semenoff, Int.\ J.\ Mod.\ Phys.\ A
+{\bf 11} (1996) 5031.
+
+\bibitem{BRT81}
+R.~Brower, P.~Rossi, and C.~-I.~Tan, Nucl.\ Phys.\ {\bf B190} (1981) 699.
+
+\bibitem{D00}
+P.~H.~Damgaard, Phys.\ Lett.\ B {\bf 476} (2000) 465.
+
+\bibitem{BN81}
+R.~C.~Brower and M.~Nauenberg, Nucl.\ Phys.\ {\bf B180} (1981) 221.
+
+\bibitem{GL87}
+J.~Gasser and H.~Leutwyler, Phys.\ Lett.\ B {\bf 188} (1987) 477.
+
+\bibitem{N88}
+H.~Neuberger, Phys.\ Rev.\ Lett.\ {\bf 60} (1988) 889;
+Nucl.\ Phys.\ {\bf B300} (1988) 180.
+
+\bibitem{D01}
+P.~H.~Damgaard, Nucl.\ Phys.\ {\bf B608} (2001) 162.
+
+\bibitem{TV99}
+D.~Toublan and J.~J.~M.~Verbaarschot, Nucl.\ Phys.\ {\bf B560} (1999) 259.
+
+\bibitem{GL98}
+M.~Golterman and K.~C.~Leung, Phys.\ Rev.\ D {\bf 57} (1998) 5703.
+
+\bibitem{OTV99}
+J.~C.~Osborn, D.~Toublan, and J.~J.~M.~Verbaarschot, Nucl.\ Phys.\
+{\bf B540} (1999) 317.
+
+\bibitem{LS92}
+H.~Leutwyler and A.~Smilga, Phys.\ Rev.\ D {\bf 46} (1992) 5607.
+
+\bibitem{SV95}
+A.~Smilga and J.~J.~M.~Verbaarschot, Phys.\ Rev.\ D {\bf 51} (1995) 829;
+T.~Nagao and S.~M.~Nishigaki, Phys.\ Rev.\ D {\bf 62} (2000) 065006.
+
+\bibitem{JSV97}
+A.~D.~Jackson, M.~K.~Sener, and J.~J.~M.~Verbaarschot, Phys.\ Lett.\ B
+{\bf 387} (1996) 355.
+
+\bibitem{HL90}
+P.~Hasenfratz and H.~Leutwyler, Nucl.\ Phys.\ {\bf B343} (1990) 241.
+
+\bibitem{DDHJ02}
+P.~H.~Damgaard, M.~C.~Diamantini, P.~Hernandez, and K.~Jansen, Nucl.\
+Phys.\ {\bf B629} (2002) 445
+
+\bibitem{D99}
+P.~H.~Damgaard, Nucl.\ Phys.\ {\bf B556} (1999) 327.
+
+\end{thebibliography}
+
+\end{document}
+"

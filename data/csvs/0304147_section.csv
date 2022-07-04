@@ -1,0 +1,551 @@
+,section
+0,\section{Introduction}
+1,\section{Bulk Solutions}
+2,\section{Brane tensions and jump conditions}
+3,\section{Stabilization in warped model}
+4,\section{Friedmann equation in warped model}
+5,\section{Stability of unwarped model}
+6,\section{Discussion and conclusions}
+7,"\section*{Appendix}
+\appendix
+
+\section{Perturbation to AdS soliton from small $\Lambda_4$}
+Let us write $E = E_0 + \delta E$, where $E_0 = az_0^2$ and
+$\delta E = - b z_0^{6/5}$ is an energy shift relative to the static solution which allows us
+to keep the same starting value $z_0$;  then $(E-U)$ can be written as
+\begin{equation}
+	E-U(z) =  a(z_0^2 - z^2) + b(z^{6/5} - z_0^{6/5})
+\end{equation}
+and the $b$ term can be consistently treated as a perturbation, even in the region $\rho\cong 0$, 
+$z\cong z_0$.  The integral (\ref{rhoint}) gives
+\begin{eqnarray}
+	\rho &=& k^{-1}\ln\left({z\over z_0}+\sqrt{\left({z\over z_0}\right)^2 - 1}\right) -
+	\delta\rho(z);\\
+\label{deltarho}
+	\delta\rho(z) &=& {b\over k^{3}} \int_{z_0}^z {z^{6/5}-z_0^{6/5} \over
+	(z^2-z_0^2)^{3/2}} \, dz + O(b^2)\nonumber\\
+	&\cong&  {b\, z_0^{4/5}\over k^3} \left\{\begin{array}{ll} 
+	1.368 + \frac54\left({z_0\over z}\right)^{4/5} - \frac12\left({z_0\over z}\right)^{2}
+	+ O( (\frac{z_0}{z})^{14/5}), & z\gg z_0\\
+	0.85\,\epsilon^{1/2} - 0.18\,\epsilon^{3/2} + 0.062\,\epsilon^{5/2} + O(\epsilon^{7/2}),& \frac{z}{z_0} = 1+\epsilon \end{array}\right.
+\end{eqnarray}
+where now we define $k=|2a|^{1/2}$.
+This can be inverted to find $z(\rho)$ and $M(\rho)$ to first order in $b$,
+
+
+\section{Cosmology of codimension one branes in six dimensions}
+
+In section 2, we mentioned that the case where $z'(0)\neq 0$ corresponds to having a 4-brane 
+rather than a 3-brane at the origin, and that such a model is similar to RS in 5 dimensions.  
+Here we will show this explicitly, following closely the formalism of \cite{CFCV}.
+
+We write the metric as
+\begin{eqnarray}
+\label{metric}
+ds^2 = -n^2(r,t)dt^2 + a^2(r,t)dx^2 + b^2(r,t)dr^2 + c^2(r,t) d\theta^2
+\end{eqnarray}
+and include a scalar to stabilize the bulk.  We will write the branes' stress energy 
+tensors as:
+\begin{eqnarray}
+T^m_n &=& \delta(br) \diag(V_0+\rho_*,V_0-p_*,V_0-p_*,V_0-p_*,0,V_0-p_*^\theta)\nonumber\\
+&&+\delta(b(r-R)) \diag(V_1+\rho,V_1-p,V_1-p,V_1-p,0,V_1-p^\theta)
+\end{eqnarray}
+where the perturbations $\rho$, $p$ have arbitrary equation of state.
+We will expand the metric components around the static solution
+\begin{eqnarray}
+\label{expansion}
+n(r,t)&=&\tilde a(r)e^{-N_1(r,t)};\quad a(r,t)=\tilde a(r) a_0 (t) e^{-A_1(r,t)}\nonumber\\
+b(r,t)&=& 1 + B_1 (r,t);\quad c(r,t)=\tilde a(r) c_0(t) e^{-C_1(r,t)}\nonumber\\
+\phi(r,t)&=&\phi_0(r)+\phi_1(r,t)
+\end{eqnarray}
+where $\tilde a$ and $\phi_0$ correspond to the static solutions and the other
+terms are higher order in powers of $\rho$. 
+
+\subsection{Boundary conditions}
+
+The complications related to having a codimension-2 brane, and a 4-brane for which $T^0_0\neq T^{\theta}_{\theta}$ 
+are not present in this model, since we are simply dealing with a space cut off by two codimension-1 branes.  
+We simply impose $S_1/Z_2$ symmetry, so that the boundary conditions will be 
+\begin{eqnarray}
+\label{bcR}
+\left.\left(3\frac{a'}{a}+\frac{c'}{c}\right)\right|_{y=R} &=& \frac{b(R)\kappa^2}{2}\left.{T^0}_0\right|_{y=R}\nonumber\\
+\left.\left(2\frac{a'}{a}+\frac{c'}{c}+\frac{n'}{n}\right)\right|_{y=R} &=& \frac{b(R)\kappa^2}{2}\left.{T^i}_i\right|_{y=R}\nonumber\\
+\left.\left(3\frac{a'}{a}+\frac{n'}{n}\right)\right|_{y=R} &=& \frac{b(R)\kappa^2}{2}\left.{T^5}_5\right|_{y=R}
+\end{eqnarray}
+
+\begin{eqnarray}
+\label{bc0}
+\left.\left(3\frac{a'}{a}+\frac{c'}{c}\right)\right|_{y=0} &=& -\frac{b(0)\kappa^2}{2}\left.{T^0}_0\right|_{y=0}\nonumber\\
+\left.\left(2\frac{a'}{a}+\frac{c'}{c}+\frac{n'}{n}\right)\right|_{y=0} &=& -\frac{b(0)\kappa^2}{2}\left.{T^i}_i\right|_{y=0}\nonumber\\
+\left.\left(3\frac{a'}{a}+\frac{n'}{n}\right)\right|_{y=0} &=& -\frac{b(0)\kappa^2}{2}\left.{T^5}_5\right|_{y=0}.
+\end{eqnarray}
+We must also consider the boundary conditions for the scalar field equation, which are
+\begin{eqnarray}
+\frac{2}{b}\phi'|_{r=0} &=&V_0'\nonumber\\
+\frac{2}{b}\phi'|_{r=R} &=&V_1'
+\end{eqnarray}
+
+
+\subsection{Order ($\rho^0$)}
+
+The static solutions must solve the Einstein and scalar field equations expanded to zeroth order in $\rho$. 
+These can be written as
+\begin{eqnarray}
+\label{order0EE}
+\frac{\partial}{\partial \phi_0} V(\phi_0)&=&\phi_0''+\phi_0'5\frac{\tilde a'}{\tilde a}\nonumber\\
+V(\phi_0)&=&-\Lambda+\frac{1}{2}\phi_0'^2-10\kappa^{-2}\left(\frac{\tilde a'}{\tilde a}\right)^2\nonumber\\
+-4\frac{\tilde a''}{\tilde a}&=&\kappa^2(V(\phi_0)+\frac{1}{2}\phi_0'^2+\Lambda)+6\left(\frac{\tilde a'}{\tilde a}\right)^2
+\end{eqnarray}
+Using the superpotential method \cite{dewolfe}, one can find an exact solution
+\begin{eqnarray}
+\tilde a(r) &=&\tilde c(r) = e^{-A_0(r)}\nonumber\\
+A_0(r)&=& \frac{2}{5}kr+\frac{\kappa^2 v_0^2}{16}\left(e^{-2\epsilon kr}-1\right)\nonumber\\
+\phi_0&=&v_0 e^{-\epsilon kr}\nonumber\\
+V(\phi_0)&=&\epsilon k^2 \phi_0^2 \left(1+\frac{\epsilon}{2}-\frac{5}{32}\kappa^2 \epsilon \phi_0^2\right)
+\end{eqnarray}
+The boundary conditions at lowest order in $\rho$ impose:
+\begin{eqnarray}
+V_0&=&-\frac{10\Lambda}{k}\left(1-\frac{5}{16}\kappa^2v_0^2\epsilon\right)\nonumber\\
+V_1&=&\frac{10\Lambda}{k}\left(1-\frac{5}{16}\kappa^2v_0^2\epsilon e^{-2\epsilon kR}\right)
+\end{eqnarray}
+where
+\begin{eqnarray}
+\Lambda = -\frac{8k^2}{5\kappa^2}.
+\end{eqnarray}
+It is clear that at the static level, this model is completely analogous to Randall-Sundrum.
+
+\subsection{Order $\rho$}
+
+We now look at the perturbed equations.  We first define the following variables:
+\begin{eqnarray}
+\label{newvars}
+\Psi_1&=&-\left(3A'_1+C'_1+4B_1\frac{\tilde a'}{\tilde a}\right)+\kappa^2 \phi_0'\phi_1 \nonumber\\
+\Upsilon_1&=& N'_1 -A'_1\nonumber\\
+\xi_1&=&-\left(3A'_1+N'_1+4B_1\frac{\tilde a'}{\tilde a}\right)+\kappa^2 \phi_0'\phi_1\nonumber\\
+\zeta_1&=&\phi_0''\phi_1-\phi_0'\phi_1'+\phi_0'^2 B_1
+\end{eqnarray}
+which appear naturally in the boundary conditions. It is simple to check that these are invariant 
+under the following gauge transformations:
+\begin{eqnarray}
+y&=&\bar y +f(\bar y) ;\quad f(0) = f(1) = 0\nonumber\\
+A_1 &\rightarrow& A_1 - \frac{\tilde a'}{\tilde a}f ;\quad N_1 \rightarrow N_1 - \frac{\tilde a'}{\tilde a}f\nonumber\\
+B_1 &\rightarrow& B_1 + f' ;\quad \phi_1 \rightarrow \phi_1 + \phi_0' f\nonumber\\
+C_1 &\rightarrow& C_1 - \frac{\tilde a'}{\tilde a}f. 
+\end{eqnarray}
+
+These new variables obey the boundary conditions
+\begin{eqnarray}
+\label{order1bc}
+\left.\Psi_1\right|_{y=R}&=&\frac{\kappa^2}{2}\rho;\quad\left.\Psi_1\right|_{y=0}=-\frac{\kappa^2}{2}\rho_*\nonumber\\
+\left.\Upsilon_1\right|_{y=R}&=& \frac{\kappa^2}{2}\left(\rho+p\right);\quad \left.\Upsilon_1\right|_{y=0}= -\frac{\kappa^2}{2}\left(\rho_*+p_*\right)\nonumber\\
+\left.\xi_1\right|_{y=R}&=&-\frac{\kappa^2}{2}p^\theta;\quad \left.\xi_1\right|_{y=0}=\frac{\kappa^2}{2}p_*^\theta
+\end{eqnarray}
+Since we still haven't fixed a gauge, we will now choose to work in the stiff potential limit,
+i.e. $\phi_1\equiv 0$ \cite{CFCV}.  This allows us 
+to write the first order in $\rho$ terms of the Einstein equations as :
+
+\begin{eqnarray}
+3 e^{2A_0}\left[\left(\frac{\dot a_0}{a_0}\right)^2+\frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0}\right]_1&=&\Psi_1' -5 A_0'\Psi_1 \\
+%%%%%%%%%%%%%%
+e^{2A_0}\left[2\left(\left(\frac{\dot a_0}{a_0}\right)^2-\frac{\ddot a_0}{a_0}\right) + \frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0} - \frac{\ddot c_0}{c_0}\right]_1&=&\Upsilon'_1 -5A_0' \Upsilon_1\\
+%%%%%%%%%%%%%%
+3e^{2A_0}\left[\frac{\ddot a_0}{a_0} + \left(\frac{\dot a_0}{a_0}\right)^2\right]_1&=&\xi'_1-5A_0'\xi_1\\
+%%%%%%%%%%%%%%%
+3e^{2A_0}\left[\frac{\ddot a_0}{a_0} + \left(\frac{\dot a_0}{a_0}\right)^2 + \frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0} + \frac{1}{3}\frac{\ddot c_0}{c_0}\right]_1&=&-A_0'\left(\xi_1+4\Psi_1 -3\Upsilon_1\right) + \kappa^2\phi_0'^2 B_1\\
+%%%%%%%%%%%%%%% 
+\dot\Psi_1+3\left(\frac{\dot a_0}{a_0}\right)_{1/2}\Upsilon_1+\left(\frac{\dot c_0}{c_0}\right)_{1/2}(\Psi_1-\xi_1)&=&0
+\end{eqnarray}
+
+ The solutions are given by:
+\begin{eqnarray}
+%%%%%%%%%%%%
+\Psi_1(r) &=& e^{5A_0(r)}\left[\Psi|_{r=0}+3\left[\left(\frac{\dot a_0}{a_0}\right)^2+\frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0}\right]_1 \int^r_0 e^{-3A_0(r)}dr\right]\nonumber\\
+%%%%%%%%%%%%
+\Upsilon_1(r) &=& e^{5A_0(r)}\left[\Upsilon|_{r=0}+\left[2\left(\left(\frac{\dot a_0}{a_0}\right)^2-\frac{\ddot a_0}{a_0}\right) + \frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0} - \frac{\ddot c_0}{c_0}\right]_1 \int^r_0 e^{-3A_0(r)}dr\right]\nonumber\\
+%%%%%%%%%%%%
+\xi_1(r) &=& e^{5A_0(r)}\left[\xi|_{r=0}+3\left[\frac{\ddot a_0}{a_0} + \left(\frac{\dot a_0}{a_0}\right)^2\right]_1 \int^r_0 e^{-3A_0(r)}dr\right]
+\end{eqnarray}
+
+The Friedmann equations are then, using $8\pi G \equiv\frac{\kappa^2}{2\int^R_0 e^{-3A_0(r)}dr}$,
+\begin{eqnarray}
+%%%%%%%%%%%%%
+\left(\frac{\dot a_0}{a_0}\right)^2&=&\frac{8\pi G}{3}\left[\rho_*+e^{-5A_0(R)} \rho \right]-\frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0}\nonumber\\
+%%%%%%%%%%%%%
+\frac{\ddot a_0}{a_0}-\left(\frac{\dot a_0}{a_0}\right)^2 &=& -4\pi G\left[\rho_*+ p_*+e^{-5A_0(R)}(\rho+ p)\right]+\frac{1}{2}\frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0}-\frac{1}{2}\frac{\ddot c_0}{c_0}\nonumber\\
+%%%%%%%%%%%%%
+\frac{\ddot a_0}{a_0}+\left(\frac{\dot a_0}{a_0}\right)^2 &=& -\frac{8\pi G}{3}\left[(p_*^\theta+e^{-5A_0(R)}p^\theta\right]
+\end{eqnarray}
+We can combine these to write:
+\begin{eqnarray}
+\label{ceqn}
+3\frac{\dot a_0}{a_0}\frac{\dot c_0}{c_0}+\frac{\ddot c_0}{c_0}&=&\frac{8\pi G}{3}\left[\rho_*-3 p_*+ e^{-5A_0(R)}(\rho -3 p)+2\left(p_*^\theta+e^{-5A_0(R)}p^\theta\right)\right]
+\end{eqnarray}
+We can then use the fourth Einstein equation to solve for $B_1$:
+\begin{eqnarray}
+B_1&=&\frac{1}{6\phi_0'^2}\left[\left(\rho_* -3 p_* -p_*^\theta\right)\left(F(r)-3A_0'e^{5A_0}\right)+e^{-5A_0(R)}\left(\rho -3p -p^\theta\right)F(r)\right]\nonumber\\
+\end{eqnarray}
+where we have defined
+\begin{eqnarray}
+F=\frac{1}{\int_0^R e^{-3A_0(r)}dr}\left[e^{2A_0}+3A_0'e^{5A_0}\int_0^r e^{-3A_0(r)}dr\right]
+\end{eqnarray}
+
+These results are very similar to those one gets in the Randall-Sundrum scenarion.  There are however 
+some differences.  First, $\rho$ and $p$ denote $(4+1)$-dimensional quantities, since the branes 
+in this model correspond to 4-branes.  If the compact dimension is small however, there will be 
+no light Kaluza-Klein modes, and one expects to recover standard cosmology at low energies.
+
+Another difference is the appearance of terms involving the time variation of the
+compact dimension's  scale factor. Such terms are observationally constrained to be
+quite small, so that they should not lead to appreciable effects on late-time cosmology
+once a  stabilization mechanism for the size of the angular dimension is included
+\cite{CV}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{thebibliography}{99}  
+
+\bibitem{BDL}
+P.~Binetruy, C.~Deffayet and D.~Langlois,
+``Non-conventional cosmology from a brane-universe,''
+Nucl.\ Phys.\ B {\bf 565}, 269 (2000)
+[arXiv:hep-th/9905012].
+%%CITATION = HEP-TH 9905012;%%
+
+\bibitem{CGKT}
+C.~Csaki, M.~Graesser, C.~F.~Kolda and J.~Terning,
+``Cosmology of one extra dimension with localized gravity,''
+Phys.\ Lett.\ B {\bf 462}, 34 (1999)
+[arXiv:hep-ph/9906513].
+%%CITATION = HEP-PH 9906513;%%
+
+\bibitem{CGS}
+J.~M.~Cline, C.~Grojean and G.~Servant,
+``Cosmological expansion in the presence of extra dimensions,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 4245 (1999)
+[arXiv:hep-ph/9906523].
+%%CITATION = HEP-PH 9906523;%%
+
+
+\bibitem{RuSh} 
+V.~A.~Rubakov and M.~E.~Shaposhnikov, 
+``Extra spacetime Dimensions: Towards A Solution To The Cosmological Constant Problem,'' 
+Phys.\ Lett.\ B {\bf 125}, 139 (1983). 
+%%CITATION = PHLTA,B125,139;%%
+
+\bibitem{Wett}
+C.~Wetterich,
+``The Cosmological Constant And Noncompact Internal Spaces In Kaluza-Klein Theories,''
+Nucl.\ Phys.\ B {\bf 255}, 480 (1985).
+%%CITATION = NUPHA,B255,480;%%
+
+\bibitem{Randjbar-Daemi:1985wg}
+S.~Randjbar-Daemi and C.~Wetterich,
+``Kaluza-Klein Solutions With Noncompact Internal Spaces,''
+Phys.\ Lett.\ B {\bf 166}, 65 (1986).
+%%CITATION = PHLTA,B166,65;%%
+
+\bibitem{Sundrum}
+R.~Sundrum,
+``Compactification for a three-brane universe,''
+Phys.\ Rev.\ D {\bf 59}, 085010 (1999)
+[arXiv:hep-ph/9807348].
+%%CITATION = HEP-PH 9807348;%%
+
+\bibitem{Luty}
+J.~W.~Chen, M.~A.~Luty and E.~Ponton, 
+``A critical cosmological constant from millimeter extra dimensions,'' 
+JHEP {\bf 0009}, 012 (2000) 
+[arXiv:hep-th/0003067].
+%%CITATION = HEP-TH 0003067;%% 
+
+\bibitem{GS}
+T.~Gherghetta and M.~E.~Shaposhnikov,
+``Localizing gravity on a string-like defect in six dimensions,''
+Phys.\ Rev.\ Lett.\  {\bf 85}, 240 (2000)
+[arXiv:hep-th/0004014].
+%%CITATION = HEP-TH 0004014;%%
+
+\bibitem{DG}
+G.~R.~Dvali and G.~Gabadadze,
+``Gravity on a brane in infinite-volume extra space,''
+Phys.\ Rev.\ D {\bf 63}, 065007 (2001)
+[arXiv:hep-th/0008054].
+%%CITATION = HEP-TH 0008054;%%
+
+
+\bibitem{CIK}
+O.~Corradini, A.~Iglesias and Z.~Kakushadze,
+``Toward solving the cosmological constant problem?,''
+arXiv:hep-th/0212101.
+%%CITATION = HEP-TH 0212101;%%
+
+
+\bibitem{CG}
+S.~M.~Carroll and M.~M.~Guica,
+``Sidestepping the cosmological constant with football-shaped extra  dimensions,''
+arXiv:hep-th/0302067.
+%%CITATION = HEP-TH 0302067;%%
+
+\bibitem{nav}
+I.~Navarro,
+``Codimension two compactifications and the cosmological constant  problem,''
+arXiv:hep-th/0302129.
+%%CITATION = HEP-TH 0302129;%%
+
+\bibitem{CK}
+A.~G.~Cohen and D.~B.~Kaplan,
+``Solving the hierarchy problem with noncompact extra dimensions,''
+Phys.\ Lett.\ B {\bf 470}, 52 (1999)
+[arXiv:hep-th/9910132].
+%%CITATION = HEP-TH 9910132;%%
+
+\bibitem{Gregory}
+R.~Gregory,
+``Nonsingular global string compactifications,''
+Phys.\ Rev.\ Lett.\  {\bf 84}, 2564 (2000)
+[arXiv:hep-th/9911015].
+%%CITATION = HEP-TH 9911015;%%
+
+\bibitem{CN}
+Z.~Chacko and A.~E.~Nelson,
+``A solution to the hierarchy problem with an infinitely large extra  dimension and moduli stabilization,''
+Phys.\ Rev.\ D {\bf 62}, 085006 (2000)
+[arXiv:hep-th/9912186].
+%%CITATION = HEP-TH 9912186;%%
+
+\bibitem{Collins}
+H.~Collins and B.~Holdom,
+``The Randall-Sundrum scenario with an extra warped dimension,''
+Phys.\ Rev.\ D {\bf 64}, 064003 (2001)
+[arXiv:hep-ph/0103103].
+%%CITATION = HEP-PH 0103103;%%
+
+\bibitem{Kim}
+J.~E.~Kim, B.~Kyae and H.~M.~Lee,
+``Localized gravity and mass hierarchy in D = 6 with Gauss-Bonnet term,''
+Phys.\ Rev.\ D {\bf 64}, 065011 (2001)
+[arXiv:hep-th/0104150].
+%%CITATION = HEP-TH 0104150;%%
+
+
+
+\bibitem{CFNW}
+Z.~Chacko, P.~J.~Fox, A.~E.~Nelson and N.~Weiner,
+``Large extra dimensions from a small extra dimension,''
+JHEP {\bf 0203}, 001 (2002)
+[arXiv:hep-ph/0106343].
+%%CITATION = HEP-PH 0106343;%%%\cite{Kanti:2001vb}
+
+\bibitem{KMO}
+P.~Kanti, R.~Madden and K.~A.~Olive,
+``A 6-D brane world model,''
+Phys.\ Rev.\ D {\bf 64}, 044021 (2001)
+[arXiv:hep-th/0104177].
+%%CITATION = HEP-TH 0104177;%%
+
+\bibitem{BCCF}
+C.~P.~Burgess, J.~M.~Cline, N.~R.~Constable and H.~Firouzjahi,
+``Dynamical stability of six-dimensional warped brane-worlds,''
+JHEP {\bf 0201}, 014 (2002)
+[arXiv:hep-th/0112047].
+%%CITATION = HEP-TH 0112047;%%
+
+\bibitem{Gio}
+M.~Giovannini, H.~Meyer and M.~E.~Shaposhnikov,
+``Warped compactification on Abelian vortex in six dimensions,''
+Nucl.\ Phys.\ B {\bf 619}, 615 (2001)
+[arXiv:hep-th/0104118].
+%%CITATION = HEP-TH 0104118;%%
+
+\bibitem{KMPR}
+I.~I.~Kogan, S.~Mouslopoulos, A.~Papazoglou and G.~G.~Ross,
+``Multigravity in six dimensions: Generating bounces with flat positive  tension branes,''
+Phys.\ Rev.\ D {\bf 64}, 124014 (2001)
+[arXiv:hep-th/0107086].
+%%CITATION = HEP-TH 0107086;%%
+
+\bibitem{Corr}
+O.~Corradini, A.~Iglesias, Z.~Kakushadze and P.~Langfelder,
+``Gravity on a 3-brane in 6D bulk,''
+Phys.\ Lett.\ B {\bf 521}, 96 (2001)
+[arXiv:hep-th/0108055].
+%%CITATION = HEP-TH 0108055;%%
+
+\bibitem{Louko}
+J.~Louko and D.~L.~Wiltshire,
+``Brane worlds with bolts,''
+JHEP {\bf 0202}, 007 (2002)
+[arXiv:hep-th/0109099].
+%%CITATION = HEP-TH 0109099;%%
+
+\bibitem{Park}
+D.~K.~Park and H.~s.~Kim,
+``Single 3-brane brane-world in six dimension,''
+Nucl.\ Phys.\ B {\bf 650}, 114 (2003)
+[arXiv:hep-th/0206002].
+%%CITATION = HEP-TH 0206002;%%
+
+\bibitem{Multamaki}
+T.~Multamaki and I.~Vilja,
+``Warped and compact extra dimensions: 5D branes in 6D models,''
+Phys.\ Lett.\ B {\bf 545}, 389 (2002)
+[arXiv:hep-th/0207263].
+%%CITATION = HEP-TH 0207263;%%
+``Cosmological solutions of braneworlds with warped and compact  dimensions,''
+Phys.\ Lett.\ B {\bf 559}, 1 (2003)
+[arXiv:hep-th/0301168].
+%%CITATION = HEP-TH 0301168;%%
+
+
+\bibitem{Ponton}
+E.~Ponton and E.~Poppitz,
+``Casimir energy and radius stabilization in five and six dimensional  orbifolds,''
+JHEP {\bf 0106}, 019 (2001)
+[arXiv:hep-ph/0105021].
+%%CITATION = HEP-PH 0105021;%%
+
+\bibitem{CGHW}
+S.~M.~Carroll, J.~Geddes, M.~B.~Hoffman and R.~M.~Wald,
+``Classical stabilization of homogeneous extra dimensions,''
+Phys.\ Rev.\ D {\bf 66}, 024036 (2002)
+[arXiv:hep-th/0110149].
+%%CITATION = HEP-TH 0110149;%%
+
+\bibitem{ABPQ}
+Y.~Aghababaie, C.~P.~Burgess, S.~L.~Parameswaran and F.~Quevedo,
+``SUSY breaking and moduli stabilization from fluxes in gauged 6D  supergravity,''
+JHEP {\bf 0303}, 032 (2003)
+[arXiv:hep-th/0212091].
+%%CITATION = HEP-TH 0212091;%%
+
+
+\bibitem{GMZ}
+U.~Gunther, P.~Moniz and A.~Zhuk,
+``Nonlinear multidimensional cosmological models with form fields:  Stabilization of extra dimensions and the cosmological constant  problem,''
+arXiv:hep-th/0303023.
+%%CITATION = HEP-TH 0303023;%%
+
+\bibitem{HM}
+G.~T.~Horowitz and R.~C.~Myers,
+``The AdS/CFT correspondence and a new positive energy conjecture for general relativity,''
+Phys.\ Rev.\ D {\bf 59}, 026005 (1999)
+[arXiv:hep-th/9808079].
+%%CITATION = HEP-TH 9808079;%%
+
+
+
+\bibitem{LMW}
+F.~Leblond, R.~C.~Myers and D.~J.~Winters,
+``Consistency conditions for brane worlds in arbitrary dimensions,''
+JHEP {\bf 0107}, 031 (2001)
+[arXiv:hep-th/0106140].
+%%CITATION = HEP-TH 0106140;%%
+
+\bibitem{RS}
+L.~Randall and R.~Sundrum,
+``A large mass hierarchy from a small extra dimension,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 3370 (1999)
+[hep-ph/9905221];
+%%CITATION = HEP-PH 9905221;%%
+``An alternative to compactification,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 4690 (1999)
+[hep-th/9906064]
+%%CITATION = HEP-TH 9906064;%%
+
+\bibitem{GW}
+W.~D.~Goldberger and M.~B.~Wise,
+``Modulus stabilization with bulk fields,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 4922 (1999)
+[hep-ph/9907447].
+%%CITATION = HEP-PH 9907447;%% 
+
+
+
+
+\bibitem{CFCV}
+J.~M.~Cline and H.~Firouzjahi,
+``5-dimensional warped cosmological solutions with radius stabilization  by a bulk scalar,''
+Phys.\ Lett.\ B {\bf 495}, 271 (2000)
+[hep-th/0008185],
+%%CITATION = HEP-TH 0008185;%%
+J~.M.~Cline and J.~Vinet,
+``Order $\rho^2$ Corrections to Randall-Sundrum I Cosmology,''
+JHEP {\bf 02} (2002) 042,
+[hep-th/0201041].
+
+
+\bibitem{dewolfe}
+O.~DeWolfe, D.~Z.~Freedman, S.~S.~Gubser and A.~Karch,
+``Modeling the fifth dimension with scalars and gravity,''
+Phys.\ Rev.\ D {\bf 62}, 046008 (2000)
+[hep-th/9909134].
+%%CITATION = HEP-TH 9909134;%%
+
+\bibitem{CV}
+J.~M.~Cline and J.~Vinet, 
+``Problems with time-varying extra dimensions or 'Cardassian expansion' as alternatives to dark energy,'' 
+arXiv:hep-ph/0211284. 
+%%CITATION = HEP-PH 0211284;%% 
+
+
+\bibitem{MG1}
+M.~Giovannini,
+``Gauge field localization on Abelian vortices in six dimensions,''
+Phys.\ Rev.\ D {\bf 66}, 044016 (2002)
+[arXiv:hep-th/0205139].
+%%CITATION = HEP-TH 0205139;%%
+
+\bibitem{MG2}
+M.~Giovannini, J.~V.~Le Be and S.~Riederer,
+``Zero modes of six-dimensional Abelian vortices,''
+Class.\ Quant.\ Grav.\  {\bf 19}, 3357 (2002)
+[arXiv:hep-th/0205222].
+%%CITATION = HEP-TH 0205222;%%
+
+\bibitem{ranshap}
+S.~Randjbar-Daemi and M.~Shaposhnikov,
+``A formalism to analyze the spectrum of brane world scenarios,''
+Nucl.\ Phys.\ B {\bf 645}, 188 (2002)
+[arXiv:hep-th/0206016];
+``QED from six-dimensional vortex and gauge anomalies,''
+JHEP {\bf 0304}, 016 (2003)
+[arXiv:hep-th/0303247].
+%%CITATION = HEP-TH 0303247;%%
+%%CITATION = HEP-TH 0206016;%%
+
+
+\end{thebibliography}
+
+\end{document}
+
+
+With these boundary conditions in mind let us take the difference of the 
+$(\rho,\rho)$ and $(\theta,\theta)$ components of the perturbed Einstein equations
+(\ref{rrper}) and (\ref{ththper}):
+\begin{equation}
+\psi'' - \ell\psi' = \frac{1}{2}\Box(\xi + \varphi),
+\label{first}
+\end{equation}
+where the background equations have been used. From eq.\ (\ref{first}), using (\ref{boundary}) 
+we obtain that $\psi''(0) =0$. Using eq.\ (\ref{munuper}),  eq.\  (\ref{mumuper}) can be written as 
+\begin{equation} 
+\psi'' +\ell \psi' + \Box \psi = -\frac{\beta}{2 L} A_{\theta}' +\beta^2 \psi.
+\label{second}
+\end{equation}
+Recalling now  eq.\ (\ref{boundary}) together with the previous result $\psi''(0) =0$, we see
+that the mass eigenvalue for the radion, $m_{r}$,
+ has to be $m_{r}^2 = \beta^2$.  By looking at eqs.\ (\ref{rrper}) and (\ref{ththper}) 
+we can deduce, using the various conditions obtained so far together with eqs.\ (\ref{boundary}), 
+that 
+\begin{equation} 
+\varphi'(0) = \varphi''(0) = 0, ~~~~~~\Box\varphi = \beta^2 \varphi,
+\end{equation}
+implying, consistently with the previous findings, that the radion mass is $m_{r}^2 =\beta^2$.
+Thus, for $\rho \to 0$ the mass spectrum does not have tachyons, and 
+$\psi(0) = - \varphi(0)= {\rm constant}$.
+"
+8,\section{P
+9,\section{C

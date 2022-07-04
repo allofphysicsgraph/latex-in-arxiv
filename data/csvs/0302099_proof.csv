@@ -1,0 +1,189 @@
+,proof
+0,"\begin{proof}
+%{\it Proof.}
+Proceed by induction on $n = \dim T-\dim W$.  If $n=0$, then $T\subseteq
+S$ and we can take $Y=X$.  If $n>0$, then $\dim W < \dim T$, and since we
+assumed that
+\[ T_{W,w} = T_{T,w}\cap T_{S,w}, \]
+we conclude that $T_{T,w}$ is not contained in $T_{S,w}$.
+
+Observe that $T_{S,w}$ is the intersection of the (Zariski) tangent
+spaces $T_{X',w}$ of all the local hypersurfaces $X'$ through $w$ that
+contain $S$. Since $T_{T,w}$ is not
+contained in $T_{S,w}$, there exists a hypersurface $X'$ that contains
+$S$ and such that $T_{T,w}\not\subseteq T_{X',w}$.  Thus $X'$ and $T'
+= T\cap X$ are smooth at $w$, of dimensions $\dim X - 1$ and $\dim T
+-1$, respectively, and $S\subseteq X'$.  We have
+\[ S\cap T' = S\cap (X'\cap T) = (S\cap X')\cap T = S\cap T = W, \]
+thus we are in the same situation as before, but with
+$\dim T'-\dim W = n-1$.  By the induction hypothesis we can find $Y$
+in $X'$ satisfying the conditions of the proposition.  Considering $Y$
+inside of $X$ instead of $X'$ still satisfies (a) and (b), and we have
+\begin{align*}
+\dim Y+\dim T-\dim X & = \dim Y+(\dim T' + 1) - (\dim X'+1) \\
+& = \dim Y+\dim T'-\dim X' = \dim W. 
+\end{align*}
+\"
+1,"\begin{proof}
+Since the question is local and $T$ is locally a complete
+intersection, we can use the Koszul resolution with respect to the
+normal bundle to obtain a locally free resolution of ${\cal O}_T$
+\[ \cdots\rightarrow \Lambda^{q+1} {\cal G}^{\vee} \rightarrow \Lambda^q {\cal G}^{\vee} 
+\rightarrow \cdots \rightarrow {\cal G}^{\vee} \rightarrow {\cal O}_X \rightarrow {\cal O}_T \rightarrow 0 \] 
+around every point of $T$, where ${\cal G}$ is locally free on $X$
+and ${\cal G}|_T\simeq {\cal N}_{T/X}$.  
+To compute $\mbox{Tor}_q^X({\cal O}_S, {\cal O}_T)$ we
+tensor this resolution by ${\cal O}_S$, which has the effect of restricting
+all the bundles to $S$ and making all the maps in the complex zero,
+hence the result.
+\"
+2,"\begin{proof}
+By Proposition~\ref{app:prop1}, around every point of $W$ we can find
+$Y$ smooth such that $S$ is contained in $Y$, $T$ and $Y$ intersect
+in the expected dimension, and $W=T\cap Y$.  
+
+Since $T$ and $Y$ intersect in the expected dimension, using
+Proposition~\ref{app:prop3} we see that the change-of-rings spectral
+sequence~\cite[Exercise A3.45]{Eis}
+\[ \mbox{Tor}_q^Y({\cal O}_S, \mbox{Tor}_p^X({\cal O}_T, {\cal O}_Y)) \Longrightarrow
+\mbox{Tor}_{p+q}^X({\cal O}_S, {\cal O}_T) \]
+consists of the single column
+\[ \mbox{Tor}_q^Y({\cal O}_S, \mbox{Tor}_0^X({\cal O}_T, {\cal O}_Y)) = \mbox{Tor}_q^Y({\cal O}_S, {\cal O}_W) =
+\Lambda^q {\cal N}_{S/Y}^{\vee}|_W, \]
+where the last equality is Proposition~\ref{app:prop2}.  In other
+words,
+\[ \mbox{Tor}_q^X({\cal O}_S, {\cal O}_T) = \Lambda^q {\cal N}_{S/Y}^{\vee}|_W. \]
+
+At each $w\in W$, the composition of maps
+\[ {\cal N}_{S/Y,w} = T_{Y,w}/T_{S,w} \rightarrow T_{X,w}/T_{S,w} \rightarrow 
+T_{X,w}/(T_{S,w}+T_{T,w}) = \tilde{N}_w \]
+is injective, because a tangent vector to $Y$ will be tangent to $T$
+only if it is tangent to $W$, and then it is tangent to $S$.  Comparing
+dimensions, we see that the natural map ${\cal N}_{S/Y}\to
+\tilde{N}$ is therefore an isomorphism.
+Finally,
+one can trace through the identifications and see that the local
+isomorphism
+\[ \mbox{Tor}_q^X({\cal O}_S, {\cal O}_T) \cong \Lambda^q \tilde{N}^{\vee} \]
+does not depend on the choice of $Y$, hence it lifts to a global
+isomorphism. 
+
+As this calculation can be tedious, we supplement this argument with
+an alternative approach.  The claimed result is elementary to check
+directly for $q=0$.  For $q=1$ this is also straightforward: using the
+exact sequence
+\[
+0\to \mathcal{I}_S\to \mathcal{O}_X\to \mathcal{O}_S\to 0,
+\]
+we compute that $\mbox{Tor}_1^X({\cal O}_S, {\cal O}_T)$ is isomorphic
+to the kernel of the map
+\[
+\mathcal{I}_S\otimes\mathcal{O}_T\to \mathcal{O}_T,
+\]
+namely 
+\[
+\frac{\mathcal{I}_S\cap\mathcal{I}_T}{\mathcal{I}_S\mathcal{I}_T}.
+\]
+But this can be seen directly to be isomorphic to $\tilde{N}^{\vee}$; the
+isomorphism is induced by the natural map
+$(\mathcal{I}_S\cap\mathcal{I}_T)/(\mathcal{I}_S\mathcal{I}_T)\to 
+\tilde{N}^{\vee}$ taking a class represented by a function
+$f$ to the linear functional on $\tilde{N}$ induced
+by $df$.
+
+For $q>1$ we note the existence of a natural map
+\begin{equation}
+\label{higherq}
+\Lambda^q\mbox{Tor}_1^X({\cal O}_S, {\cal O}_T)\to
+\mbox{Tor}_q^X({\cal O}_S, {\cal O}_T).
+\end{equation}
+This alternating product is constructed by using the exterior algebra
+structure on any local Koszul resolution and the multiplication on 
+$\mathcal{O}_T$.  As the algebra structure on the Koszul complex is 
+canonical (a change of regular sequence induces a canonical isomorphism
+of algebras), the map (\ref{higherq}) is canonical, independent of the
+choice of local defining equations yielding the Koszul complex.  Then
+our earlier local calculations show that (\ref{higherq}) is an isomorphism.
+\"
+3,"\begin{proof}
+By the projection formula~(\cite[2.3.5]{andreithesis},~\cite[II.5.6]{HarRD}) we have
+\[ j_* \mathbf{L} j^* i_* {\cal E} = i_*{\cal E} \stackrel{\mathbf{L}}{\otimes}_X j_* {\cal O}_T. \]
+On the other hand, since $j_*$ is exact, we have
+\[ {\cal H}_q (j_* \mathbf{L} j^* i_* {\cal E}) = j_* {\cal H}_q(\mathbf{L} j^* i_* {\cal E}), \]
+and thus
+\[ {\cal H}_q(\mathbf{L} j^* i_* {\cal E}) = j^* {\cal H}_q (j_* \mathbf{L} j^* i_* {\cal E}) = j^*
+{\cal H}_q(i_*{\cal E} \stackrel{\mathbf{L}}{\otimes}_X j_* {\cal O}_T). \] 
+(Here we have used the fact that for a sheaf or twisted sheaf, pulling
+back {\em in the underived way} its push-forward by a closed embedding
+yields back the original sheaf.)  Using the projection formula again
+for $i_*$ we have
+\[ i_* {\cal E} \stackrel{\mathbf{L}}{\otimes}_X j_* {\cal O}_T = i_* ({\cal E} \otimes_S \mathbf{L} i^* j_*
+{\cal O}_T), \]
+and since ${\cal E}$ is locally free on $S$ we get
+\[ {\cal H}_q(i_* {\cal E} \stackrel{\mathbf{L}}{\otimes}_X j_* {\cal O}_T) = i_* {\cal H}_q({\cal E} \otimes_S \mathbf{L} i^* j_*
+{\cal O}_T) = i_* ({\cal E} \otimes_S {\cal H}_q(\mathbf{L} i^* j_* {\cal O}_T)). \]
+But for {\em sheaves} and {\em underived operations}, $j^* i_* = l_*
+k^*$.  Therefore
+\begin{eqnarray*}
+{\cal H}_q(\mathbf{L} j^* i_* {\cal E}) & = & j^* i_* ({\cal E} \otimes_S {\cal H}_q(\mathbf{L} i^* j_*
+{\cal O}_T))  \\
+ & = & l_* k^* ({\cal E} \otimes_S {\cal H}_q(\mathbf{L} i^* j_* {\cal O}_T)) \\
+ & = & l_*
+({\cal E}|_W \otimes {\cal H}_q(\mathbf{L} i^* j_* {\cal O}_T)|_W), 
+\end{eqnarray*}
+which is the first result.  Applying again the projection formula we have
+\[ {\cal H}_q(\mathbf{L} i^* j_* {\cal O}_T) = i^* {\cal H}_q(i_* {\cal O}_S \stackrel{\mathbf{L}}{\otimes}_X j_*
+{\cal O}_T) = i^*\mbox{Tor}_q^X( {\cal O}_S, {\cal O}_T). \]
+By Proposition~\ref{app:prop4}, 
+\[ \mbox{Tor}_q^X({\cal O}_S, {\cal O}_T) = \Lambda^q \tilde{N}^{\vee}, \]
+hence the second result.
+\"
+4,"\begin{proof}
+To prove the first statement it is enough to show that there exist
+natural local isomorphisms 
+\[ \mathbf{R}\underline{\mathrm{Hom}}_U(l_* {\cal G} |_U,  {\cal F} |_U) = l_* \mathbf{R}\underline{\mathrm{Hom}}_V( {\cal G} |_V, l^!( {\cal F} |_V)) \]
+for $U$ an open set of $T$, sufficiently small to trivialize $\alpha$,
+and $V=U\cap W$.  (Here we work with either the analytic or the
+\'etale topology, as the Zariski topology is not fine enough for the
+Brauer group to be interesting.)  In this form, the above isomorphism
+is nothing else than duality for a finite morphism~(\cite[III.7.3,
+III.6.7 and Definition after III.1.3]{HarRD}; see~\cite{BanSta} for
+similar statements for morphisms of analytic spaces).
+
+The second statement follows immediately from the fact that 
+\[ \mathbf{R}\Gamma(T, \mathbf{R}\underline{\mathrm{Hom}}_T(\,\cdot\,, \,\cdot\,)) = \mathbf{R} \mbox{Hom} _T(\,\cdot\,, \,\cdot\,)
+\]
+for $\alpha$-twisted sheaves~\cite[2.3.2]{andreithesis}.
+\"
+5,"\begin{proof}[Proof of Theorem~\ref{app:mainthm}]
+{\it Proof of the main theorem.}
+The functor $\mathbf{L} j^*$ is left adjoint to
+$j_*$~(\cite[2.3.9]{andreithesis},~\cite[II.5.11]{HarRD}), so we have
+\[  \mbox{Ext} ^{p+q}_X(i_*{\cal E}, j_*  {\cal F} ) = {\cal H}^{p+q}\mathbf{R} \mbox{Hom} _X(i_*{\cal E}, j_* {\cal F} ) =
+{\cal H}^{p+q}\mathbf{R} \mbox{Hom} _T(\mathbf{L} j^* i_* {\cal E}, {\cal F}). \] 
+Writing down the Grothendieck spectral sequence for the composition of
+the two functors $\mathbf{R} \mbox{Hom} _T(\,\cdot\,, {\cal F})$ (contravariant) and $\mathbf{L} j^*
+i_*(\,\cdot\,)$ (covariant) yields the convergent spectral sequence
+\[ {}^2E^{pq} = {\cal H}^p\mathbf{R} \mbox{Hom} _T({\cal H}_q(\mathbf{L} j^* i_* {\cal E}), {\cal F}) \Longrightarrow
+{\cal H}^{p+q}\mathbf{R} \mbox{Hom} _T(\mathbf{L} j^* i_* {\cal E}, {\cal F}). \]
+(Note the implicit change of sign in $q$, due to the fact that
+$\mathbf{R} \mbox{Hom} _T(\,\cdot\,,  {\cal F} )$ is contravariant.)  Using
+Proposition~\ref{app:prop5} we get that 
+\[ {}^2E^{pq} = {\cal H}^p\mathbf{R} \mbox{Hom} _T(l_*({\cal E}|_W \otimes \Lambda^q \tilde{N}^{\vee}), {\cal F}),
+\]
+which by Grothendieck duality (Proposition~\ref{app:prop6}) gives
+\[ {}^2E^{pq} = {\cal H}^p\mathbf{R} \mbox{Hom} _W({\cal E}|_W \otimes \Lambda^q \tilde{N}^{\vee}, {\cal F}|_W
+\otimes \Lambda^{m} {\cal N}_{W/T}[-m]). \]
+But ${\cal E}$ and $\Lambda^q \tilde{N}^{\vee}$ are locally free, so 
+\begin{align*}
+{}^2E^{pq} & = {\cal H}^p\mathbf{R} \mbox{Hom} _W({\cal E}|_W \otimes \Lambda^q \tilde{N}^{\vee}, {\cal F}|_W
+\otimes \Lambda^{m} {\cal N}_{W/T}[-m]) \\
+& = H^{p-m}(W, {\cal E}^{\vee}|_W \otimes {\cal F}|_W \otimes \Lambda^{top} 
+{\cal N}_{W/T} \otimes \Lambda^q \tilde{N}). 
+\end{align*}
+Renumbering and putting it all together we arrive at our result: there
+exists a convergent spectral sequence
+\[ {}^2E^{pq} = H^p(W, {\cal E}^{\vee}|_W \otimes {\cal F}|_W \otimes
+\Lambda^{m} {\cal N}_{W/T} \otimes \Lambda^{q-m} \tilde{N}) \Longrightarrow
+ \mbox{Ext} ^{p+q}_X(i_*{\cal E}, j_* {\cal F}). \]
+%\"

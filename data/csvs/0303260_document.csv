@@ -1,0 +1,177 @@
+,document
+0,"\begin{document}
+
+%=====================START FEYNMF===========================
+
+
+
+
+\begin{fmffile}{graphen}
+% A-Boson: modifizierte dashes
+\fmfcmd{style_def bosonA expr p =
+ save dpp; numeric dpp;
+ dpp = (ceiling (pixlen (p, 10) / dash_len)) / length p;
+ cdraw point 0 of p .. point (.25)/dpp of p;
+ for k=1 upto dpp*length(p)-1:
+    cdraw point (k-.25)/dpp of p .. point (k+.25)/dpp of p;
+ endfor
+ cdraw point (dpp*length(p)-.25)/dpp of p .. point length(p) of p;
+enddef;}
+% B-Boson: wiggly
+\fmfcmd{style_def bosonB expr p = draw_wiggly p; enddef;}
+% Majorana-Fermion: plain
+\fmfcmd{style_def majorana expr p = cdraw p; enddef;}
+
+%%%%%%%%%%%%%% TITEL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\bf\vspace{1cm} Finite-Temperature Supersymmetry:\\
+           The Wess-Zumino Model}
+\author {{Kai Kratzert} \\[3mm]
+        {\normalsize\it Deutsches Elektronen-Synchrotron DESY}\\
+        {\it\normalsize D--22603 Hamburg, Germany}}
+\date{\normalsize March 31, 2003\\[2cm]}
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+  We investigate the breakdown of supersymmetry at finite temperature.
+  While it has been proven that temperature always breaks
+  supersymmetry, the nature of this breaking is less clear. On the one
+  hand, a study of the Ward-Takahashi identities suggests a
+  spontaneous breakdown of supersymmetry without the existence of a
+  Goldstino, while on the other hand it has been shown that in any
+  supersymmetric plasma there should exist a massless fermionic
+  collective excitation, the phonino.  Aim of this work is to unify
+  these two approaches. For the Wess-Zumino model, it is shown that
+  the phonino exists and contributes to the supersymmetric
+  Ward-Takahashi identities in the right way displaying that
+  supersymmetry is broken spontaneously with the phonino as the
+  Goldstone fermion.
+\end{abstract}
+\vspace{-18.8cm}
+\begin{flushright}
+DESY 03--043 \\
+hep-th/0303260\\
+\end{flushright}
+\vfill
+\noindent
+{\small e-mail:} {\small\tt kratzert@mail.desy.de} 
+\end{titlepage}
+%%%%%%%%%%%%%% TITEL SPEZIELL ELSEVIER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+\label{sec:intro}
+
+Supersymmetry has become a central element in the extensions of the
+standard model of elementary particle physics that currently attract
+most attention.  It is not only an intriguing mathematical concept
+with a distinct importance for theoretical physics as the only
+nontrivial extension of the Poincar\'e algebra in relativistic quantum
+field theory, but it has some very attractive properties also from the
+point of view of phenomenology.
+
+On the other hand, our insight into the evolution of the universe has
+made an enormous progress over the last decades, and there has been a
+stimulating interchange of ideas between cosmology and quantum field
+theory. Of particular importance is the behaviour of symmetries in a
+hot plasma like it is believed to have existed shortly after the big
+bang, since phase transitions may have left their traces in the
+present state of the universe. For example, it is well-known that the
+spontaneously broken gauge symmetry of the standard model is restored
+at high temperature, a phenomenon that appears quite generally for
+global and gauge symmetries. So, if we believe that supersymmetry was
+realized in the hot early stages of the universe in one or the other
+way, it is indispensable to understand its behaviour at high
+temperatures.
+
+Considering the fact that this is such a fundamental problem, it is
+astonishing how little has been done to solve it. Although it was
+realized that supersymmetry generally breaks down at finite
+temperature already in the earliest works on the
+subject~\cite{Das:rx,Girardello:1980vv}, the subsequent literature
+contains many contradictory statements, and our understanding of the
+mechanism of supersymmetry breaking at finite temperature is still
+unsatisfactory.
+
+The current status can be summarized as follows. Only recently, it has
+been rigorously proven that supersymmetry is always broken at any
+finite temperature~\cite{Buchholz:1997mf}. In fact, this is not
+surprising, as in thermal field theory the ground state is described
+by a statistical ensemble with different populations of bosons and
+fermions.  Since the thermal ground state is responsible for the
+breakdown of supersymmetry, it has much in common with a spontaneous
+breaking.  Thus, a natural question to ask is whether it is associated
+with the existence of a massless Goldstone fermion.  The investigation
+of the supersymmetric Ward-Takahashi
+identities~\cite{Boyanovsky:1983tu,Matsumoto:im} showed that there
+must be a zero-energy Goldstone mode.  However, since the rest frame
+of the heat bath also breaks Lorentz invariance, this mode is not
+necessarily associated with a propagating Goldstone particle.
+Nevertheless, in~\cite{Lebedev:rz} (clarifying earlier ideas
+in~\cite{Gudmundsdottir:1986uq}) it has been shown from a
+complementary point of view that any model with thermally broken
+supersymmetry should contain a massless fermionic collective
+excitation, similar to the appearance of sound waves in a medium with
+spontaneously broken Lorentz invariance. The associated particle was
+baptized phonino because of its similarity to the phonon.  For the
+simple case of the Wess-Zumino model, the existence of this phonino
+was proved.
+
+In this work, we will again focus on the Wess-Zumino model. Though it
+appears relatively simple and has already been investigated in a
+number of papers, it reveals a very interesting structure. Our aim is
+to unify the different results in the literature and to obtain a
+complete picture of the breakdown of supersymmetry in this model. To
+this end, we will give an explicit proof of the existence of the
+phonino and investigate its contributions to the Ward-Takahashi
+identities of broken supersymmetry.  It turns out that supersymmetry
+is indeed broken spontaneously by the heat bath with the phonino
+playing the role of the Goldstone particle.  The results obtained for
+the Wess-Zumino model allow us to infer the behaviour of more general
+models.
+
+The paper is organized as follows. After briefly reviewing the
+theoretical framework and the Wess-Zumino model in
+sections~\ref{sec:tft} and~\ref{sec:model}, the established knowledge
+about supersymmetry and one-loop behaviour of the Wess-Zumino model
+will be presented and partly extended for our purposes in
+sections~\ref{sec:susy} and~\ref{sec:loop}.  In
+section~\ref{sec:phonino}, we present a full calculation of the
+fermion propagator for low momenta and give an explicit proof of the
+existence of the phonino.  Finally, section~\ref{sec:wti} is devoted
+to the investigation of the Ward-Takahashi identities.
+
+%=============THERMAL FIELD THEORY=================================
+\section{Thermal field theory}
+\label{sec:tft}
+
+We will work in the framework of finite temperature field theory which
+is the appropriate formalism for the description of quantum fields in
+thermal equilibrium. The thermal background will be described by the
+canonical ensemble with a density matrix
+\[  \rho=Z^{-1}\mathrm{e}^{-\beta H}. \]
+Here, $H$ is the Hamiltonian, and the inverse temperature
+\mbox{$\beta=(k_\mathrm{B} T)^{-1}$} is chosen in units so that
+Boltzmann's constant is unity.  The partition function $Z$ normalizes
+the density operator so that the expectation value of an
+observable~$\mathcal{O}$ is given by
+\[   \langle \mathcal{O}\rangle_\beta= \tr \rho\mathcal{O}. \]
+
+The basic effect of the presence of the thermal background on free
+quantum fields is a modification of the propagators. Since
+annihilation operators do not annihilate the thermal ground state, the
+propagator of a scalar field $A$ gets an additional thermal
+contribution. It reads
+\begin{equation}
+\label{eq:propagator}
+ D(p)=\ensuremath{\int\! \mathrm{d}^4 x}\, \mathrm{e}^{ip(x-y)}\langle T A(x)A(y)\rangle_\beta=
+ \frac{i}{p^2-m^2+i\epsilon}+2\pi\,\delta(p^2-m^2)\,\ensuremath{n_\mathrm{B}(p_0)},
+\end{equation}
+where
+\begin{equation}
+  \ensuremath{n_\mathrm{B}(p_0)}=\frac{1}{\mathrm{e}^{\beta |p_0|}-1}
+\end{equation}
+is the Bose-Einstein distribution function.  Analogously, the free
+fermion propagator is given by
+\begin{equation}
+  S(p)=\ensuremath{\int\! \mathrm{d}^4 x}\, \mathrm{e}^{ip(x-y)}\langle T \Psi(x)"

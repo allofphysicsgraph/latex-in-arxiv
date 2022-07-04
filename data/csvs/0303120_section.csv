@@ -1,0 +1,697 @@
+,section
+0,\section{Introduction}
+1,\section{Quantum effects in matrix models}
+2,\section{Two loop effective action}
+3,"\section*{fermion propagators and vertices }
+
+The fermionic action is
+\begin{eqnarray}
+S^\psi = -{f^4 \over 2} \mbox{Tr} \left( {\bar \psi}
+\Gamma^\mu \left[A_\mu, \psi\right]\right),
+\end{eqnarray}
+where we have scaled out $f$.
+
+Specially we can represent the $\Gamma^\mu$ matrices as follows
+\begin{eqnarray}
+ \Gamma^0 &=&
+\left(
+ \begin{array}{cc}
+  0        & i 1_{16} \\
+ -i 1_{16} & 0
+\end{array}
+\right), \quad
+\Gamma^9 =
+\left(
+\begin{array}{cc}
+  0            & {\gamma^9} \\
+ {\gamma^9}^T & 0
+\end{array}
+\right), \quad
+\Gamma^8 =
+\left(
+ \begin{array}{cc}
+ 0            & \gamma^8 \\
+ {\gamma^8}^T & 0
+\end{array}
+\right), \nonumber \\
+\Gamma^i &=&
+\left(
+ \begin{array}{cc}
+  0        & \gamma^i \\
+ {\gamma^i}^T & 0
+ \end{array}
+\right)
+\quad (i=1, 2 \cdots, 7) ,
+\end{eqnarray}
+where
+\begin{eqnarray}
+\gamma^8  &=&
+\left(
+\begin{array}{cc}
+ 0   & 1_8 \\
+ 1_8 & 0
+\end{array}
+\right), \quad
+\gamma^9  =
+\left(
+\begin{array}{cc}
+  1_8 &  0   \\
+  0   & -1_8
+\end{array}
+\right), \nonumber \\
+\gamma^i &=&
+\left(
+\begin{array}{cc}
+ 0                 & {\gamma^i}_8 \\
+ -{\gamma^i}_8 & 0
+\end{array}
+\right) \quad \left(i=1, 2 \cdots, 7 \right), \quad
+\end{eqnarray}
+and $\gamma^i_8$ are real and antisymmetric.
+
+
+The fermion $\psi$ is written by using chiral projection
+\begin{eqnarray}
+\psi={1+ \Gamma \over 2}
+\left(
+\begin{array}{c}
+\psi_{16}  \\
+\psi_{16}'
+\end{array}
+\right), \nonumber \\
+\Gamma = -i \Gamma^0 \Gamma^1 \cdots \Gamma^9,
+\end{eqnarray}
+We can rewrite the fermion action as
+\begin{eqnarray}
+S^\psi = {f^4 \over 2} \mbox{Tr} \left[\psi_{16}^T \tilde{\gamma}^0
+\tilde{\gamma}^{\mu} [A_{\mu},\psi_{16}] \right] .
+\end{eqnarray}
+The fermion kinetic term is
+\begin{equation}
+S_0^\psi = {f^4 \over 2} \mbox{Tr} \left[\psi_{16}^T \tilde{\gamma}^0
+\tilde{\gamma}^{\alpha} [p_{\alpha},\psi_{16}] \right],
+\end{equation}
+where
+\begin{eqnarray}
+&&\tilde{\gamma}^0=\sigma^2\otimes 1_8,
+\quad\tilde{\gamma}^9=-\sigma^1\otimes 1_8,
+\quad\tilde{\gamma}^8=\sigma^3\otimes 1_8,\nonumber \\
+&&\tilde{\gamma}^i=-1_2\otimes \gamma^i_8
+\quad (i=1,\cdots, 7) .
+\end{eqnarray}
+The interaction vertices are
+\begin{equation}
+S_1^\psi = {f^4 \over 2} \mbox{Tr} \left[\psi_{16}^T \tilde{\gamma}^0
+\tilde{\gamma}^{\alpha} [a_{\alpha},\psi_{16}] \right]
++{f^4 \over 2} \mbox{Tr} \left[\psi_{16}^T \tilde{\gamma}^0
+\tilde{\gamma}^{i} [\phi_{i},\psi_{16}] \right] .
+\end{equation}
+
+
+The kinetic term can be rewritten as
+\begin{equation}
+S_0^\psi = {f^4 \over 2} \mbox{Tr} \left[\psi_{a}^T \sigma^2
+\sigma^{\alpha} [p_{\alpha},\psi_{a}] \right],
+\label{ferkin}
+\end{equation}
+where $\psi_{a}$ are 8 SU(2) doublets.
+From (\ref{ferkin}), the fermion propagator is
+\begin{eqnarray}
+\langle \left(\psi_{a}\right)_{\beta,st} \left(\psi
+_{b}{\sigma^2}\right)_{\delta,uv}
+\rangle &=& {1 \over f^4}
+\sum_{j_1=1}^{2l}
+\sum_{m=-\left(j_1+{1 \over 2} \right)}^{j_1+{1 \over 2}}
+\left\{-{1 \over j_1+1}  C_{-}\left(j_1 \enspace \beta \enspace \delta
+\enspace m
+\right) +{1 \over j_1}  C_{+}\left(j_1 \enspace \beta \enspace \delta
+\enspace m \right) \right\}  \nonumber \\
+&& \times \left(Y_{j_1,m-\beta}^{}\right)_{st}
+\left(Y_{j_1,m-\delta}^\dag\right)_{uv}
+\delta_{ab} ,
+\end{eqnarray}
+where $s, t, u, v$ are matrix indices, $\beta,\delta$ are $SU(2)$ spin
+indices and  $a, b$ are 8 `flavor' indices.
+$C_{-},C_{+}$ are defined as follows:
+\begin{eqnarray}
+C_{+}(j_1 \enspace \pm {1 \over 2} \enspace  \pm{1 \over 2} \enspace m )
+&=&
+-C_{-}(j_1 \enspace \mp {1 \over 2} \enspace  \mp{1 \over 2} \enspace m )
+=
+{j_1 \pm m + {1 \over 2} \over 2 j_1 +1}, \nonumber \\
+C_{-}(j_1 \enspace \pm {1 \over 2} \enspace \mp{1 \over 2} \enspace m)
+&=&
+-{\sqrt{(j_1 -m + {1 \over 2})(j_1+ m + {1 \over 2})} \over 2 j_1 +1}, \nonumber \\
+C_{+}(j_1 \enspace \pm {1 \over 2} \enspace \mp{1 \over 2} \enspace m)
+&=&
+{\sqrt{(j_1 -m + {1 \over 2})(j_1+ m + {1 \over 2})} \over 2 j_1 +1}.
+\end{eqnarray}
+
+
+\section*{fermionic contribution (e)}
+
+2-loop (1PI) contribution to the effective action from the fermion-boson
+vertex is
+\begin{eqnarray}
+&&{1 \over 2!} \Big\langle
+ (-S_{1}^\psi) (-S_{1}^\psi )\Big\rangle_{\mbox{2loop-1PI}}\nonumber \\
+&=&
+{1 \over f^4}
+\sum_{j_1 j_2 j_3} \sum_{m_1 m_2 m_3}\nonumber \\
+&&
+\left(
+4\cdot (7-3){\mbox{Tr}\{(Y_{j_1 m_1} [Y_{j_2 m_2},Y_{j_3 m_3}])^2\} \over
+j_1(j_1+1) j_2(j_2+1) j_3(j_3+1)} \right.
+\nonumber \\
+& &
++4\cdot (7+1){(-1)^{m_1+m_2+m_3} \over j_1 (j_1+1) j_2 (j_2+1) j_3(j_3+1)}
+\nonumber \\
+&&\times \left.\mbox{Tr} [p_\mu, Y_{j_1m_1}][Y_{j_2m_2},Y_{j_3m_3}]
+\mbox{Tr} [p_\mu,
+Y_{j_2,-m_2}][Y_{j_1,-m_1},Y_{j_3,-m_3}]
+\right)
+\nonumber \\ &=&
+{32 \over f^4} \left[ F_3^p\left(l\right) - F_3^{np}\left(l\right)
+- 2 F_2^p\left(l\right) + 2 F_2^{np}\left(l\right)\right] .
+\end{eqnarray}
+We listed the contributions which involve $\phi_i$ and $a_{\alpha}$
+exchanges separately.
+
+The fermionic contribution in the 3d model is
+\begin{equation}
+{ 1\over f^4} \left[ -3F_3^p\left(l\right) +3F_3^{np}\left(l\right)
+- F_2^p\left(l\right) +F_2^{np}\left(l\right) \right] .
+\end{equation}
+
+\subsection*{2-loop effective action}
+
+In this way we find the total 2-loop free energy $F(l)$ of
+$U(1)$ NC gauge theory on fuzzy sphere as follows
+\begin{eqnarray}
+-F(l)&=&-36{1\over f^4}(F_1^p(l)-F_1^{np}(l)
++2F_2^p(l)-2F_2^{np}(l)
+-F_3^p(l)+F_3^{np}(l))\nonumber \\
+&=&36{1\over f^4}(F_3^p(l)-F_3^{np}(l)) .
+\end{eqnarray}
+It is because we can prove that $F_1^p(l)-F_1^{np}(l)
++2F_2^p(l)-2F_2^{np}(l)=0$ by using the Jacobi-identity
+in the original matrix representation.
+In the case of 3d model,
+\begin{eqnarray}
+-F_{3d}(l)&=&-(F_1^p(l)-F_1^{np}(l)
++2F_2^p(l)-2F_2^{np}(l)
+-F_3^p(l)+F_3^{np}(l))\nonumber \\
+&=&F_3^p(l)-F_3^{np}(l) .
+\end{eqnarray}
+
+For $U(n)$ gauge group, we obtain
+\begin{equation}
+-F(l)=-36{1\over f^4}\left(n^3 (F_1^p(l)+2F_2^p(l)
+-F_3^p(l)+{1\over 4}F_5(l))
+-n (F_1^{np}(l)+2F_2^{np}(l)-F_3^{np}(l)+{1\over 4}F_5(l))\right) ,
+\end{equation}
+where
+\begin{equation}
+F_5(l)={1\over 2l+1}\sum_{j=1}^{2l}{2j+1\over (j(j+1))^2}
+\rightarrow {1\over 2l+1} ~~(l\rightarrow \infty) .
+\label{F5}
+\end{equation}
+$F_5(l)$ takes care of the absence of the $SU(2)$ singlet
+state in the gluon propagator.
+In the 3d model, the two loop effective action for $U(n)$ gauge group is
+\begin{equation}
+-F_{3d}(l)=-{1\over f^4}\left(n^3 (F_1^p(l)+2F_2^p(l)-F_3^p(l)
++2F_5(l))
+-n (F_1^{np}(l)+2F_2^{np}(l)-F_3^{np}(l)+2F_5(l))\right) .
+\end{equation}
+
+\subsection*{commutative sphere limit}
+
+In this subsection, we show that
+NC gauge theory on fuzzy sphere reduces to ordinary gauge theory
+on $S^2$ in the formal semiclassical (or infrared) limit.
+This correspondence implies
+\begin{equation}
+Tr \rightarrow V\int {d\Omega\over 4\pi}tr ,
+\end{equation}
+where $d\Omega=dcos(\theta )d\varphi$.
+$V=N/n$ is the volume of $S^2$  and $tr$ is over $U(n)$ gauge group.
+The action (\ref{expact})
+gives the following result in the semiclassical limit:
+\begin{eqnarray}
+&&{Vf^4\over 4\pi} \int{d\Omega}tr
+\left( -{1\over 4}
+(L_{\alpha} a_{\beta}-L_{\beta}
+a_{\alpha}+[a_{\alpha},a_{\beta}])^2
+-{1\over
+2}(L_{\alpha}\phi_i+[a_{\alpha},\phi_i])^2\right. \nonumber \\
+&&
+-{1\over 4}[\phi_i,\phi_j]^2
++{i\over 2}\epsilon_{\alpha\beta\gamma}
+(L_{\alpha} a_{\beta}-L_{\beta} a_{\alpha})a_{\gamma}
++{i\over 3}\epsilon_{\alpha\beta\gamma}
+[a_{\alpha}, a_{\beta}]a_{\gamma}  \nonumber \\
+&&\left .+
+{1\over 2}
+\bar{\psi}\gamma^{\alpha}(L_{\alpha}\psi+[a_{\alpha},\psi])+
+{1\over 2}\bar{\psi}\gamma^{i}[\phi_i,\psi ]
+\right) .
+\end{eqnarray}
+They are nothing but the ordinary gauge theory action on $S^2$.
+The gauge coupling $g_{CM}^2$ is identified with
+\begin{equation}
+g_{CM}^2={ 2\pi \over lf^4}=lg_{NC}^2 .
+\end{equation}
+It is larger than $g_{NC}^2$ in (\ref{2dcoup}) by a factor
+$l$. It is because the gauge coupling is scale dependent in
+2 dimension. The factor $l$ can be understood if we recall
+that the radius of the sphere is $O(\sqrt{l})$ with respect to the
+non-commutativity scale and $g_{CM}^2$ is the coupling
+constant at the infrared cut-off scale.
+
+This correspondence can be proven at the
+Feynman rules level.
+In the perturbative investigation of ordinary gauge theory on $S^2$,
+we expand the fields in terms of the spherical harmonics
+\begin{equation}
+\phi={1\over \sqrt{V}}\sum_{jm}\phi_{jm}Y_{jm}(\theta,\varphi ) ,
+\end{equation}
+where
+\begin{equation}
+\int{d\Omega\over 4\pi}Y_{j_1m_1}(\theta,\varphi )Y_{j_2m_2}(\theta,\varphi )
+=\delta_{j_1,j_2}\delta_{m_1,-m_2}(-1)^{m_1} .
+\end{equation}
+The propagators are
+\begin{equation}
+<\phi_{j_1m_1} \phi_{j_2m_2}>={1\over f^4}{1\over
+j_1(j_1+1)}\delta_{j_1,j_2}
+\delta_{m_1,-m_2}(-1)^{m_1} .
+\end{equation}
+The three point vertices are given in terms of
+$3j$ symbols since
+\begin{eqnarray}
+&&{f^4 \over 4\pi\sqrt{V}}\int{d\Omega}Y_{j_1m_1}(\theta,\varphi
+)Y_{j_2m_2}(\theta,\varphi) Y_{j_3m_3}(\theta,\varphi )\nonumber \\
+&=&{f^4}\sqrt{(2j_1+1)(2j_2+1)(2j_3+1)}\nonumber \\
+&&\times\left(\begin{array}{ccc}
+j_1&j_2&j_3\\
+m_1&m_2&m_3
+\end{array}\right){1 \over \sqrt{V}}
+\left(\begin{array}{ccc}
+j_1&j_2&j_3\\
+0&0&0
+\end{array}\right) .
+\label{cmvrtx}
+\end{eqnarray}
+
+The Feynman rules of NC gauge theory on fuzzy sphere have been derived
+in this section.
+We can see that the propagators are identical
+in the both cases as it is well known.
+On the other hand,
+the interaction vertices of NC gauge theory contain $6j$
+symbols. In the large $l$ limit, they can be related to 3j symbols:
+\begin{eqnarray}
+\left\{\begin{array}{ccc}
+j_1&j_2&j_3\\
+l&l&l
+\end{array}\right\}
+\rightarrow {1\over \sqrt{2l}}
+\left(\begin{array}{ccc}
+j_1&j_2&j_3\\
+0&0&0
+\end{array}\right) ,
+\end{eqnarray}
+with $j_1,j_2,j_3$ being fixed.
+Hence the interaction vertices of NC gauge theory
+(\ref{6jsym}) reduces to
+those of ordinary gauge theory expression (\ref{cmvrtx})
+as $V\sim 2l$.
+We can thus observe that the former reduces to the latter
+in the formal semi-classical limit at the Feynman rules level.
+
+
+\subsection*{U(1) Yang-Mills theory on non-commutative
+${ R^2}$}
+In this sections, we have calculated the 2-loop effective action of
+the matrix models on fuzzy sphere.
+In the remainder we compare the results with
+the 2-loop 1PI contribution to vacuum energy in
+U(1) Yang-Mills theory on fuzzy ${ R^2}$.
+
+We quote the action:
+\begin{eqnarray}
+S&=&{1\over g_{NC}^2}\int d^2x\;{\cal L},\nonumber \\
+{\cal L}&=&-\frac{1}{2}A^{\mu}\partial^2 A_{\mu}
+-b\partial^2\; c
+-\frac{i}{2}tr\bar{\Psi}\Gamma^{\mu}\partial_{\mu}\Psi\nonumber \\
+&&+i\partial_{\mu}b*[c,A^{\mu}]_{*}
+-\frac{1}{2}tr\bar{\Psi}*\Gamma^{\mu}[A_{\mu},\Psi]_{*}\nonumber \\
+&&-\frac{i}{2}(\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu})*[A^{\mu},
+A^{\nu}]_{*}
+-\frac{1}{4}[A_{\mu},A_{\nu}]_{*}[A^{\mu},A^{\nu}]_{*}  .
+\end{eqnarray}
+One can obtain this action locally from the matrix models
+as it is explained in the preceding section.
+In this theory vacuum energy contributions from the 2loop 1PI graphs
+can be evaluated as follows:
+
+\begin{itemize}
+\item
+2-loop 1PI from 4-gauge boson vertex:
+\begin{eqnarray}
+-45g_{NC}^2V\cdot \int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;\frac{1}{p^2q^2}
+\;(1-\cos(p\wedge q)) ,
+\end{eqnarray}
+where $V$ denotes the volume of ${ R^2}$.
+
+\item
+2-loop 1PI from 3-gauge boson vertices:
+\begin{eqnarray}
+9g_{NC}^2V\cdot \int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;
+\left(\frac{1}{p^2q^2}-\frac{p\cdot q}{p^2q^2(p+q)^2}\right)
+\;(1-\cos(p\wedge q)) .
+\end{eqnarray}
+
+\item
+2-loop 1PI from ghost-gauge vertices:
+\begin{eqnarray}
+g_{NC}^2V\cdot\int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;
+\frac{p\cdot q}{p^2q^2(p+q)^2}
+\;(1-\cos(p\wedge q)) .
+\end{eqnarray}
+
+\item
+2-loop 1PI from fermion-gauge vertices:
+\begin{eqnarray}
+-64g_{NC}^2V\cdot\int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;
+\frac{p\cdot q}{p^2q^2(p+q)^2}
+\;(1-\cos(p\wedge q)).
+\end{eqnarray}
+\end{itemize}
+
+The total amplitude is
+\begin{eqnarray}
+&&-36g_{NC}^2V\cdot\int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;
+\frac{1}{p^2q^2}
+\;(1-\cos(p\wedge q)) \nonumber \\
+&&-72g_{NC}^2V\cdot\int {d^2p\over (2\pi)^2} \int
+{d^2q \over (2\pi)^2}\;
+\frac{p\cdot q}{p^2q^2(p+q)^2}
+\;(1-\cos(p\wedge q)) .
+\end{eqnarray}
+The first and the second term cancel each other
+since
+\begin{equation}
+\frac{p\cdot q}{p^2q^2(p+q)^2}=
+\frac{1}{2}\left(\frac{1}{p^2q^2}-\frac{1}{q^2(p+q)^2}
+-\frac{1}{p^2(p+q)^2}\right) .
+\end{equation}
+
+From these results and the relation
+$g_{NC}^2=2\pi/f^4l^2$, we can find the following correspondence
+between the amplitudes of
+NC $U(1)$ gauge theory on ${ R^2}$ and $S^2$:
+\begin{eqnarray}
+&&\int {d^2p\over (2\pi)} \int
+{d^2q \over (2\pi)}\;
+\frac{1}{p^2q^2}
+\;(1-\cos(p\wedge q)) \quad \Leftrightarrow \quad
+{l\over 2}(F_1^p\left(l\right)-F_1^{np}\left(l\right)) ,\nonumber \\
+&&\int {d^2p\over (2\pi)} \int
+{d^2q \over (2\pi)}\;
+\frac{p\cdot q}{p^2q^2(p+q)^2}
+\;(1-\cos(p\wedge q))
+\quad \Leftrightarrow\quad
+{l\over 2}
+\left(F_2^p\left(l\right)-F_2^{np}\left(l\right)\right) .
+\end{eqnarray}
+
+Non-planar phases: $\cos(p\wedge q)$
+in NC gauge theories on ${ R^2}$ correspond to
+$(-1)^{(j_1+ \cdots)}$ in those on $S^2$.
+We point out here that the
+$6j$ symbols vanish unless the non-planar
+phases are trivial in the semiclassical (infrared) limit.
+Therefore the non-commutativity plays no role
+in the infrared limit in the both theories.
+We further observe the identical power counting rules
+in the both theories. Namely logarithmically
+divergent amplitudes and convergent amplitudes
+correspond to each other.
+
+The amplitudes of NC gauge theory on fuzzy $S^2$, however, are different
+from  those on ${ R^2}$ in the following points:
+\begin{itemize}
+\item
+In NC gauge theory on fuzzy ${ R^2}$,
+the cancellation of 2-loop effective action occurs in the planer and
+non-planar sectors separately.  In NC gauge theory on fuzzy $S^2$, the
+corresponding cancellation does not occur if
+we consider planar or non-planar contributions separately.
+
+\item
+In NC gauge theory on fuzzy $S^2$, the fermionic contribution gives
+rise to extra terms represented by $F_3^p$ and $F_3^{np}$.
+They result in the non-vanishing
+effective action even for $U(1)$ gauge theory.
+The origin of this new term may be thought as
+the spin connection of fermions in a curved space.
+\end{itemize}
+
+
+
+
+\section{Conclusions and Discussions}
+\setcounter{equation}{0}
+In this paper, we have investigated quantum corrections
+in NC gauge theory on fuzzy sphere up to the two loop level.
+Such theories are realized by matrix models with a Myers term.
+The classical solutions of the matrix models are
+reducible representations of $SU(2)$ which represent
+a group of fuzzy spheres. The irreducible representation which represents
+a single fuzzy sphere minimizes the classical action.
+These backgrounds are supersymmetric in the sense that
+the SUSY transformation of $\psi$ field classically vanishes.
+
+We have found that the quantum corrections do not vanish at each order.
+At the one loop level, it does not vanish due to the presence of
+the cut-off for the angular momentum. Due to the mismatch between
+the bosonic and fermionic degrees of freedom at the largest
+angular momentum, we find $O(log(N))$ one loop contribution.
+At the two loop level, we find comparable quantum corrections
+to the tree action with finite gauge coupling $g_{NC}$ in the case
+of $U(n)$ gauges group. It is because SUSY cancellations do
+not take place in planar and non-planar sectors separately
+contrary to flat theory. In a deformed IIB matrix model with
+a Myers term, we find this effect destabilize the classically
+favorable $U(1)$ gauge theory.
+
+
+
+Our results are consistent with the fact that
+there cannot be unbroken supersymmetry in de-Sitter space
+since the Euclidean continuation of an $n$-dimensional de-Sitter space
+$dS_n$ is an $n$ sphere $S^n$.
+We may put forward a generic argument as follows.
+In any field theory on a homogeneous space $G/H$,
+we need to identify the Hamiltonian with one of the Killing
+vectors which form the Lie algebra of $G$.
+Since there is no positive Killing vectors
+in this case, there is no positive conserved energy.
+It in turn implies that there is no supercharge $Q$
+whose square equals the Hamiltonian.
+Consequently there cannot be unbroken supersymmetry
+in compact homogeneous spaces.
+
+One of the most important questions concerning NC gauge theory
+is its relation to quantum gravity.
+Various similarities have been pointed out
+such as the absence of local gauge invariant operators,
+UV-IR mixing and Wilson lines which couple to closed strings.
+In this paper we have found that NC gauge theory on $S^2$
+allows 2d quantum gravitational interpretation.
+We have reproduced the semiclassical free energy of
+2d supergravity. We have further seen a possible signal for
+$c=1$ barrier. It is therefore tempting to conjecture that
+NC gauge theory on $S^2$ belongs to the same universality class
+of 2d quantum gravity.
+
+
+Since we can locally recover flat theory with SUSY
+in these models,
+the SUSY breaking effect must come from those
+degrees of freedom which is sensitive
+to the curvature. They are either infra-red (IR)
+or ultra-violet (UV) degrees of freedom.
+Since the two loop amplitudes are finite due to SUSY
+in our case, we are mostly sensitive to IR degrees of freedom.
+In the case of $U(1)$ gauge theory, we find little quantum
+corrections since it becomes free theory in IR regime.
+
+In the case of higher dimensional spaces like
+$CP^2$ or $S^2\times S^2$,
+the effective actions are no longer convergent in the
+sense that they are dominated by IR contributions.
+In that case,  we expect that
+UV degrees of freedom also contribute to the
+SUSY breaking effect.
+It will be interesting to generalize
+our investigations to higher dimensional homogeneous
+spaces.
+It is also interesting to explore the relevance
+of these spaces to IIB matrix model
+in the spirit of \cite{NS}\cite{Kyoto}.
+
+
+\begin{center} \begin{large}
+Acknowledgments
+\end{large} \end{center}
+We would like to thank M. Hatsuda, S. Iso and T. Suyama
+for discussions.
+This work is supported in part by the Grant-in-Aid for Scientific
+Research from the Ministry of Education, Science and Culture of Japan.
+
+\newpage
+
+\begin{thebibliography}{99}
+\bibitem{BFSS}
+T. Banks, W. Fischler, S.H. Shenker and L. Susskind,
+{\em M-theory as a matrix model: a conjecture},
+Phys. Rev. {\bf D55} 5112 (1997), hep-th/9610043.
+\bibitem{IKKT}N. Ishibashi, H. Kawai, Y. Kitazawa and A. Tsuchiya,
+{\em A Large-N Reduced Model as Superstring},
+Nucl. Phys. {\bf B498} (1997) 467, hep-th/9612115.
+\bibitem{CDS} A. Connes, M. Douglas and A. Schwarz,
+{\em Noncommutative geometry and matrix theory:
+compactification on tori},
+JHEP 9802: 003.1998, hep-th/9711162.
+\bibitem{AIIKKT}
+H. Aoki, N. Ishibashi, S. Iso, H. Kawai, Y. Kitazawa
+and T. Tada,
+{\em Non-commutative Yang-Mills in IIB matrix model},
+Nucl. Phys. {\bf 565} (2000) 176,
+hep-th/9908141.
+\bibitem{Li}
+M. Li, {\em Strings from IIB Matrices},
+Nucl.Phys. {\bf B499} (1997) 149,hep-th/961222.
+\bibitem{SW}  N. Seiberg and E. Witten,
+{\em String theory and non-commutative geometry},
+JHEP {\bf 9909} (1999) 032,
+hep-th/9908142.
+\bibitem{MRS}
+S. Minwalla, M.V. Raamsdonk and N. Seiberg,
+{\em Non-commutative Perturbative Dynamics},
+JHEP {\bf 0002} (2000) 020,hep-th/9912072.
+\bibitem{IIKK}
+N. Ishibashi, S. Iso, H. Kawai and Y. Kitazawa, {\em Wilson loops in
+non-commutative Yang-Mills}, Nucl. Phys. {\bf B573} (2000) 573,
+hep-th/9910004.
+\bibitem{Gross}
+D. J. Gross, A. Hashimoto and N. Itzhaki,
+{\em Observables of Non-Commutative Gauge Theories},
+Adv.Theor.Math.Phys. {\bf 4} (2000) 893,hep-th/0008075.
+\bibitem{DK}
+A. Dhar and Y. Kitazawa,
+{\em Non-commutative Gauge Theory, Open Wilson Lines and Closed Strings},
+JHEP {\bf 0108} (2001) 044, hep-th/0106217.
+\bibitem{MN}
+K. Murakami and T. Nakatsu,
+{\em Open Wilson Lines as States of Closed String},
+hep-th/0211232.
+\bibitem{Myers}
+R.C. Myers,{\em Dielectric-Branes},
+JHEP 9912 (1999) 022,hep-th/9910053.
+\bibitem{Alekseev}
+A. Y. Alekseev, A. Recknagel and V. Schomerus,
+{\em Brane Dynamics in Background Fluxes and noncommutative Geometry},
+JHEP {\bf 0005} (2000) 010, hep-th/0003187.
+\bibitem{Mathom}
+Y. Kitazawa,
+{\em Matrix Models in Homogeneous Spaces},
+Nucl Phys. {\bf B642} (2002) 210,
+hep-th/0207115.
+\bibitem{Masuda}
+S. Aoyama and T. Masuda,
+{\em The Fuzzy K\""{a}hler Coset Space with the Darboux Coordinates},
+Phys. Lett. {\bf B 521} (2001) 376,hep-th/0109020.
+\bibitem{IKK}
+S. Iso, H. Kawai and Y. Kitazawa,
+{\em Bi-local Fields in Non-commutative Field Theory},
+Nucl.Phys. {\bf B576} (2000) 375,hep-th/0001027.
+\bibitem{IKTW}
+S. Iso, Y. Kimura, K. Tanaka and K. Wakatsuki,
+{\em Non-commutative Gauge Theory on Fuzzy Sphere
+from Matrix Model},
+Nucl Phys. {\bf B604} (2001) 121,
+hep-th/0101102.
+\bibitem{Bonel}
+G. Bonelli, {\em Matrix Strings in pp-wave backgrounds from
+deformed Super Yang-Mills Theory},
+JHEP 0208 (2002) 022; hep-th/0205213.
+\bibitem{Kitazawa}
+Y. Kitazawa,
+{\em Vertex Operators in IIB Matrix Model},
+JHEP {\bf 0204} (2002) 004,
+hep-th/0201218.
+\bibitem{deSit}
+E. Witten,
+{\em Quantum gravity in de Sitter space},
+in Proceedings of Strings 2001,  eds. A. Dabholker, S. Mukhi and S. Wadia,
+Clay Mathematics Institute (2002).
+\bibitem{KNS}
+W. Krauth, H. Nicolai and M. Staudacher,
+{\em Monte Carlo Approach to M-Theory},
+Phys. Lett. {\bf B431}, 31 (1998);
+hep-th/9803117.
+\bibitem{MNS}
+G. W. Moore, N. Nekrasov and S. Shatashvili,
+{\em D-particle bound states and generalized instantons},
+Commun. Math. Phys. {\bf 209}, 77 (2000);
+hep-th/9803265.
+\bibitem{HLW}
+C. Holzhey, F. Larsen and F. Wilczek,
+{\em Geometric and Renormalized Entropy in Conformal Field Theory},
+Nucl. Phys. {\bf B424}, 443 (1994); hep-th/9403108.
+\bibitem{AK}
+T. Aida and Y. Kitazawa,
+{\em Quantum Gravity with Boundaries near Two Dimensions},
+Mod. Phys. Lett. {\bf A10} 1351 (1995) ;hep-th/9504075.
+\bibitem{BMN}
+D. Berenstein, J. Maldacena and H. Nastase,
+{\em Strings in flat space and pp waves from \cal{N}=4
+super Yang Mills}, JHEP {\bf 0204} (2002) 013,
+hep-th/0202021.
+\bibitem{DSR}
+K. Dasgupta, M. M. Sheikh-Jabbari, M. Van Raamsdonk,
+{\em Matrix Perturbation Theory For M-Theory On a PP-wave},
+JHEP {\bf 0205} (2002) 056,
+hep-th/0205185.
+\bibitem{Edm}
+A. R. Edmonds,
+{\em Angular Momentum in Quantum Mechanics},
+Princeton Univ. Press (1957).
+\bibitem{NS}
+J. Nishimura and F. Sugino,
+{\em Dynamical Generation of Four-Dimensional Space-Time
+in IIB Matrix Model},
+JHEP {\bf 0205} (2002) 001,
+hep-th/0111102.
+\bibitem{Kyoto}
+H. Kawai, S. Kawamoto, T. Kuroki, T. Matsuo, S. Shinohara,
+{\em  Mean Field Approximation of IIB Matrix Model and Emergence of Four
+Dimensional Space-Time},Nucl.Phys. B647 (2002) 153-189:
+hep-th/0204240;
+{\em Improved Perturbation Theory and Four-Dimensional Space-Time in IIB
+Matrix Model},Prog.Theor.Phys. 109 (2003) 115-132:hep-th/0211272 .
+\end{thebibliography}
+
+\end{document}
+"
+4,\section*{
+5,\section{C

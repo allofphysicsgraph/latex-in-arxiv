@@ -1,0 +1,2399 @@
+,align*
+0,"\begin{align}
+A_1(\kappa)&=\frac{\kappa}{2\sinh\frac{\pi\kappa}{2}}
+\\
+\intertext{which agrees with \eqref{A1} and the result of \cite{okuyama1},}
+A_{\frac12}(\kappa)&=\frac{1}{2\cosh\frac{\pi\kappa}{2}}
+\label{A1/2}
+\\
+\intertext{which agrees with \cite{arevefa}, and especially}
+A_0(\kappa)&=\lim_{s\to +0}\frac{A_{s+1}(\kappa)}{\kappa^2+4s^2},
+\label{A_0}
+\end{align}
+\end{subequations}
+which requires some explanation. We did not evaluate
+the limit $s\to 0$ because the expressions multiplying
+$A_0(\kappa)$ may depend on $s$,
+and therefore the limit can change. Some of the
+following expressions will be used in our
+calculations:
+\begin{equation}
+\lim_{s\to +0}\frac{\kappa}{\kappa^2+4s^2}=\mathscr{P}\frac{1}{\kappa},
+\quad
+\lim_{s\to +0}\frac{2s}{\kappa^2+4s^2}=\pi\,\delta(\kappa)
+\quad\text{and}\quad
+\lim_{s\to +0}\frac{s^m}{\kappa^2+4s^2}=0,\quad m\geqslant 2.
+\label{limits}
+\end{equation}
+An example of the use of these expressions is \eqref{C3'}.
+
+It follows from \eqref{C3}, \eqref{<mk>}
+and
+\eqref{220} that
+\begin{equation}
+\langle m+1,0|\kappa,0\rangle=\langle m,1|\kappa,1\rangle
+\quad\text{for}\quad \kappa\ne 0,
+\label{228}
+\end{equation}
+so $s=1$ is just $s=0$ with $m=0$ and $\kappa=0$ omitted.
+
+Equation \eqref{limits} means that for $s=0$ the spectrum of
+$K_1$ includes an additional $\kappa=0$ eigenstate superimposed on
+the continuum. This will be discussed
+further in Section~\ref{sec:zeromodes}.
+\eqref{228} also means that $s=0$ adds an $m=0$ border to $s=1$.
+
+The ghosts and superghosts appear in the tensor product
+of the representations $\Ds_s^+$ and $\Ds_{1-s}^+$. From equation \eqref{As}
+one gets
+\begin{subequations}
+\begin{align}
+\bigl(A_{n}A_{1-n}\bigr)^{1/2}&=\frac{1}{2\sinh\frac{\pi\kappa}{2}},
+\label{AnAn}
+\\
+\bigl(A_{n+\frac{1}{2}}A_{\frac{1}{2}-n}\bigr)^{1/2}&=\frac{1}{2\cosh\frac{\pi\kappa}{2}}
+\equiv A_{\frac12}(\kappa).
+\end{align}
+\end{subequations}
+
+
+%\end{document}
+%\input definitions.tex
+%\begin{document}
+
+\dopage{\finkfile}
+\subsection{Review of ghost gluing vertices}
+The ghost gluing vertex $\langle V_N^{s,1-s}|$
+is a multilinear map from the $N$-th tensor power of the
+ghost Fock space to complex numbers. For a free
+ghost conformal field theory the ghost vertex can be
+written as a Gaussian state. However there are
+two subtleties. The first one is related to
+non-zero background charge $Q$ of the ghost systems
+($Q=-3$ for $bc$-ghosts and $Q=2$ for $\beta\gamma$-ghosts).
+The second subtlety is related to the choice of
+picture but it is important only for fermionic $\beta\gamma$-ghosts,
+which are bosons. The ghosts occur in conjugate
+pairs with scale dimensions $s$ and $1-s$.
+By \eqref{NN} $N_m^{(s)}$ cancels from the
+ghost (anti)commutators if we expand
+as in \eqref{32}.
+
+\subsubsection{Ghost gluing vertex}
+There are several equivalent representations for the
+$bc$-ghost gluing vertex. For our purpose it
+is convenient to use the representation constructed
+by Gross and Jevicki \cite{GJ} (the second paper).
+The other formulation can be found in \cite{peskin1}.
+So the $3$-string gluing vertex is of the form \cite{GJ}
+\begin{multline}
+\langle V_3^{2,-1}|=N_{\textsf{gh}}\,{}_{123}\langle +|
+\exp\left[-\sum_{I,J=1}^3\sum_{m=1,n=1}
+b_m^{(I)} \frac{1}{\sqrt{m}}\,\bigl(M^{IJ}_{bc}C\bigr)_{mn}
+\sqrt{n}\,
+c_n^{(J)}\right]
+\\
+\times
+\exp\left[-\sum_{I,J=1}^3\sum_{n=1}
+b_0^{(I)} \bigl(M^{IJ}_{bc}C\bigr)_{0n}
+\sqrt{n}\,
+c_n^{(J)}\right],
+\label{Vgh1}
+\end{multline}
+where $N_{\textsf{gh}}=\left(\frac{3\sqrt{3}}{4}\right)^3$ is
+a normalization constant,
+${}_{123}\langle +|$ denotes the tensor
+product of three $\langle +|$ vacua from each
+Fock space, $\langle +|$ is related to the $SL(2,\Rh)$
+vacuum via $\langle +|=\langle 0| c_0 c_{-1}$,
+$b_m^{(I)}$ and $c_n^{(I)}$ are annihilation
+operators acting in the $I$-th Fock space, $C_{mn}=(-1)^m\delta_{mn}$ is a twist
+operator
+and $M^{IJ}_{bc}$ are the ghost Neumann matrices which we are going
+to diagonalize.
+
+There are two ways to express the operator $M^{IJ}_{bc}$
+in terms of the maps $h_I$. We use one which was described
+by Gross and Jevicki \cite{GJ} (paper 2). They related
+the $3$-string ghost Neumann matrix $\bigl(M_{bc}^{IJ}\bigr)_{mn}$ to
+the $6$-string matter ($s=0$) Neumann matrix $M^{\prime\,IJ}_{6,\,mn}$ as
+\begin{equation}
+M^{IJ}_{bc}=(-1)^{I+J}\bigl(-M^{\prime\,IJ}_{6}
++M^{\prime\,I,J+3}_{6}\bigr)\quad\text{for}\quad
+I,J=1,2,3,
+\label{M6->gM3}
+\end{equation}
+where operators $M^{\prime\,IJ}_{6}$ are given by
+equation \eqref{M''}. From these $6$-string Neumann matrices
+one can also obtain $3$-string matter matrices by
+\begin{equation}
+M^{\prime\,IJ}_{3}=M^{\prime\,IJ}_{6}
++M^{\prime\,I,J+3}_{6},\quad
+I,J=1,2,3.
+\label{M6->M3}
+\end{equation}
+
+The second method is related to conformal gluing \cite{peskin1}
+and its application will be considered elsewhere \cite{dima3}.
+
+
+
+\subsubsection{Superghost gluing vertex}
+The case of $NS$ superghosts is more complicated because
+of the pictures. Here we will consider the $3$-string vertex
+over the picture $-1$ vacuum \cite{GJ} (paper 3):
+\begin{equation}
+\langle V_3|={}_{123}\langle -1|\exp\left[
+\sum_{I,J=1}^{3}\sum_{r,s=\frac12}^{\infty}
+\beta_{r}^{(I)}\bigl(M^{IJ}_{\beta\gamma}C\bigr)_{rs}\gamma_s^{(J)}
+\right]\Delta\Bigl(\frac{\pi}{2}\Bigr),
+\label{Vsgh}
+\end{equation}
+where ${}_{123}\langle-1|$ is a tensor product of three
+Fock vacua in the $-1$ picture, $\beta_r^{(I)},\,\gamma^{(I)}_s$
+are ghost/antighost annihilation operators
+acting in the $I$th Fock space, $M^{IJ}_{\beta\gamma}$ are
+Neumann matrices, which we are going to diagonalize,
+$C_{rs}=(-1)^{r-\frac12}\delta_{rs}$ is a twist matrix
+and $\Delta(\frac{\pi}{2})$ is the midpoint insertion.
+The Neumann  matrix $M^{IJ}_{\beta\gamma}$ is given by the generating
+function \cite{GJ} (paper 3, equation (4.35)), which in our notations takes the form
+\begin{multline}
+M_{\beta\gamma}^{IJ}(z,\oz')\equiv \sum_{r,s=\frac12}^{\infty}
+\bigl(M_{\beta\gamma}^{IJ}\bigr)_{rs}z^{r-\frac12}(-\oz')^{s-\frac12}
+=-\frac{\delta^{IJ}}{z+\oz'}
+\\
++\frac{1}{2}\left[
+\left(\frac{h_I(z)}{h_J(-\oz')}\right)^{\frac12}
++
+\left(\frac{h_I(z)}{h_J(-\oz')}\right)^{-\frac12}
+\right]
+\,
+\frac{\bigl[h_I'(z)\bigr]^{1/2}\bigl[h_J'(-\oz')\bigr]^{1/2}}{h_I(z)-h_J(-\oz')}
+.
+\label{superN}
+\end{multline}
+
+
+
+\subsection{$bc$-ghost $3$-string vertex}
+In Section~\ref{sec:zeroNeumann} we obtained expressions \eqref{M''} for
+the elements of momentum $s=0$ $N$-string Neumann matrices,
+in terms of integrals
+involving eigenvalues $\mu_{1,N}^{IJ}(\kappa)$. From
+\eqref{M's} follows that for
+$N=6$ these eigenvalues are
+\begin{subequations}
+\begin{align}
+\mu^{II}_{1,6}(\kappa)&=-\frac{\sinh 4\rx}{\sinh 6\rx},
+\label{M6II}
+\\
+\mu^{IJ}_{1,6}(\kappa)&=e^{2\rx(3+I-J)}
+\,\frac{\sinh 2\rx}{\sinh 6\rx}\quad\text{for}\quad I<J,
+\\
+\mu^{IJ}_{1,6}(\kappa)&=e^{2\rx(3-I+J)}
+\,\frac{\sinh 2\rx}{\sinh 6\rx}\quad\text{for}\quad I>J,
+\end{align}
+\label{M6's}
+\end{subequations}
+where $\rx\equiv\frac{\pi\kappa}{4}$.
+Hence \eqref{M6->gM3} and \eqref{M''} yield the following
+representation for the $3$-string ghost Neumann matrices
+($m,n\geqslant 1$):
+\begin{subequations}
+\begin{align}
+\bigl(M^{IJ}_{bc}\bigr)_{mn}&=
+-\int_{-\infty}^{\infty}d\kappa\,\mu_{bc}^{IJ}(\kappa)\,
+\langle m-1,1|\kappa,1\rangle\,
+\langle \kappa,1|n-1,1\rangle\, ,
+\\
+\bigl(M_{bc}^{IJ}\bigr)_{0n}&=
+-\int_{-\infty}^{\infty}d\kappa\,
+\bigl[\mu_{bc}^{IJ}(\kappa)-\mu_{bc}^{IJ}(0)\bigr]\,
+\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,\langle \kappa,1|n-1,1\rangle\, ,
+\end{align}
+\label{tM}
+\end{subequations}
+where the eigenvalues of the ghost Neumann matrices
+$\mu_{bc}^{IJ}(\kappa)$ are given by
+\begin{subequations}
+\begin{align}
+\mu_{bc}^{11}(\kappa) &= -\mu^{11}_{1,6}(\kappa)
++\mu^{14}_{1,6}(\kappa)=\frac{\cosh\rx}{\cosh 3\rx},
+\\
+\mu_{bc}^{12}(\kappa)&=\mu^{12}_{1,6}(\kappa)
+-\mu^{15}_{1,6}(\kappa)=+e^{+\rx}\,
+\frac{\sinh 2\rx}{\cosh 3\rx},
+\\
+\mu_{bc}^{13}(\kappa)&=-\mu^{13}_{1,6}(\kappa)
++\mu^{16}_{1,6}(\kappa)=-e^{-\rx}\,\frac{\sinh
+2\rx}{\cosh 3\rx}.
+\end{align}
+\label{gh}
+\end{subequations}
+These eigenvalues agree with those found in \cite{dima1,Erler},
+and the continuum representation (\ref{tM}b) for
+$\bigl(M_{bc}^{IJ}\bigr)_{0n}$ coincides with that in \cite{dima1}.
+In addition one obtains the following relation between eigenvalues
+of $3$-string matter boson Neumann matrices \eqref{M10}
+and $bc$-Neumann matrices \eqref{gh}
+\begin{equation}
+\mu^{IJ}_{bc}(\kappa)=(-1)^{I+J}\mu^{IJ}_{1,3}(\kappa\pm 2i).
+\label{ghm}
+\end{equation}
+As another check of our result one
+can easily show that
+the sum \eqref{M6->M3} of $6$-string Neumann
+matrices \eqref{M''} indeed yields
+the $3$-string matrices \eqref{M''}.
+In particular, the sum \eqref{M6->M3} of
+$6$-string Neumann matrix eigenvalues \eqref{M6's}
+yields the $3$-string eigenvalues \eqref{M10}.
+
+Now we will rewrite the ghost $3$-string vertex
+\eqref{Vgh1} in the diagonal basis. To this end we
+introduce ghost continuum oscillators:
+\begin{subequations}
+\begin{align}
+b^{\pm}(\kappa)&=\sum_{m=1}^{\infty}b_{\mp m}\,\frac{1}{\sqrt{m}}\,
+\langle m-1,1|\kappa,1\rangle;
+\\
+c^{\pm}(\kappa)&=\sum_{m=1}^{\infty}c_{\mp m}\,\sqrt{m}\,
+\langle m-1,1|\kappa,1\rangle
+\label{610b}
+\end{align}
+\label{610}
+\end{subequations}
+with the commutation relations
+\begin{equation}
+\{b^{\pm}(\kappa),\,c^{\mp}(\kappa)\}=\delta(\kappa-\kappa').
+\end{equation}
+The twist operator $C$ acts on the continuum oscillators as
+\begin{equation*}
+C\,c^{\pm}(\kappa)=-c^{\pm}(-\kappa)\quad
+\text{and}\quad
+C\,b^{\pm}(\kappa)=-b^{\pm}(-\kappa).
+\end{equation*}
+Then the vertex \eqref{Vgh1} becomes
+\begin{multline}
+\langle V_3^{2,-1}|=N_{\textsf{gh}}\,{}_{123}\langle +|
+\exp\left[
+\int_{-\infty}^{\infty}d\kappa\,
+b^{-(I)}(\kappa)\,\mu_{bc}^{IJ}(\kappa)\,C\,c^{-(J)}(\kappa)
+\right]
+\\
+\times
+\exp\left[
+b_0^{(I)}\,\int_{-\infty}^{\infty}d\kappa\,
+\bigl[\mu^{IJ}_{bc}(\kappa)
+-\mu_{bc}^{IJ}(0)\bigr]\,\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+C\,c^{-(J)}(\kappa)
+\right].
+\label{Vgh2}
+\end{multline}
+From our experience with momentum Neumann matrices we know
+that the zero modes can be added by a unitary transformation
+\eqref{U}. We show that a similar thing happens
+for ghosts: the term proportional to $b_0$ in
+the exponent \eqref{Vgh2} can be obtained by a unitary
+transformation acting on the first line of \eqref{Vgh2}.
+The statement is
+\begin{equation}
+\langle V_3^{2,-1}|=N_{\textsf{gh}}\,{}_{123}\langle +|
+\exp\left[
+\int_{-\infty}^{\infty}d\kappa\,
+b^{-(I)}(\kappa)\,\mu_{bc}^{IJ}(\kappa)\,C\,c^{-(J)}(\kappa)
+\right]\,U_{\text{gh}}^{(1)}\otimes U_{\text{gh}}^{(2)}\otimes
+U_{\text{gh}}^{(3)},
+\label{Vgh3}
+\end{equation}
+where
+the unitary operator $U_{\text{gh}}$ is given by
+\begin{equation}
+U_{\text{gh}}=\exp\left\{
+-b_0\,\int_{-\infty}^{\infty}d\kappa\,
+\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+\bigl[c^{-}(\kappa)+c^{+}(\kappa)\bigr]
+\right\}
+\label{Ugh}
+\end{equation}
+The proof of this statement is very similar to the one
+given in Section~\ref{sec:zeroNeumann}, one just has
+to notice that $\mu_{bc}^{IJ}(0)=+\delta^{IJ}$.
+
+Using \eqref{610b} and \eqref{xim}, one can rewrite
+\eqref{Ugh} in the discrete
+basis
+\begin{equation}
+U_{\text{gh}}=\exp\left\{
+b_0\,\sum_{n=1}^{\infty}(-1)^n(c_{2n}+c_{-2n})
+\right\}.
+\label{Ugh2}
+\end{equation}
+This unitary operator and the
+relation \eqref{Vgh3} have appeared before
+in papers \cite{reduced,Erler}, though the details are different.
+One should look on it
+ as a \textit{unitary} redefinition of a string field $\Ac$. If
+we redefine  $\Ac_{\text{new}}=U_{\text{gh}}\Ac_{\text{old}}$
+then the interaction part of the cubic action simplifies, but
+the kinetic term changes too
+\begin{equation*}
+Q_B\mapsto U_{\text{gh}}Q_B U^{-1}_{\text{gh}}.
+\end{equation*}
+In particular, in the Siegel gauge this new kinetic
+operator becomes by \eqref{Ugh2}
+\begin{equation}
+\left.U_{\text{gh}}\, c_0 L^{\text{tot}}_0\, U^{-1}_{\text{gh}}
+\right|_{b_0=0}
+=\frac{1}{2i}\,\bigl[c(i)-c(-i)\bigr]L_0^{\text{tot}}.
+\end{equation}
+Notice that unlike $c_0$ the ghost piece of this
+kinetic operator has a simple representation
+in both $bc$ and bosonized formulations of the ghost CFT.
+
+
+
+\subsection{$\beta\gamma$ superghosts}
+The diagonalization of \eqref{superN} goes almost
+in the same way as described in Section~\ref{sec:matter}.
+So let us only sketch the derivation. Substitution
+of the maps \eqref{h3}, expansion in a binomial series, and
+turning the sum into a contour integral yields
+\begin{multline}
+M_{\beta\gamma}^{IJ}(z,\oz')=\cosh w\cosh\ow'\,\frac{1}{2i}
+\int_C\frac{dj}{\sin\pi j}\left\{
+-\delta^{IJ}\,2i e^{\mp \frac{i\pi}{2}} \Bigl[e^{\pm i\pi}
+e^{2(\ow'-w)}\Bigr]^{j+\frac12}
+\right.
+\\
+\left.
+-\frac{3}{8i}\,\Bigl[-e^{\frac{4}{3}(\ow'-w)+i(\varphi_J-\varphi_I)}\Bigr]^{j}
++\frac{3}{8i}\,\Bigl[-e^{\frac{4}{3}(\ow'-w)+i(\varphi_J-\varphi_I)}\Bigr]^{j+1}
+\right\}
+\label{int2}
+\end{multline}
+Now we want to deform the contour as shown on Figure~\ref{fig:2}
+with $C_0$ for the first term and $C_{-1}$ for the second. But
+before we do this we have to worry about falloff at infinity.
+Using cyclic symmetry we choose $I=2$, then for $J=1,3$ we can interpret
+\begin{equation*}
+-e^{i(\varphi_J-\varphi_2)}=e^{\mp \frac{i\pi}{3}}.
+\end{equation*}
+After dividing by $\sin(\pi j)$ we
+get the following asymptotic behavior of the integrand
+\begin{equation*}
+\sim e^{-2\pi|\Im j|/3},\quad\text{as}\quad \Im j\to\pm\infty.
+\end{equation*}
+Hence for $M_{\beta\gamma}^{2J}$ ($J\ne 2$) the
+integrand vanishes at infinity. Instead for $J=I=2$ the term
+with $\delta^{IJ}$ comes into play and cancels the integrand at infinity
+(see details in Section~\ref{sec:matter}).
+\begin{figure}[!t]
+\centering
+\includegraphics[width=270pt]{contour2.eps}
+\caption{The dots represent the poles
+of the integrand in \eqref{int2}. Contour
+$C$ encircles the positive real
+axis counterclockwise. Then we deform it to
+contour $C_0$ for the first term and to
+contour $C_{-1}$ for the second term, which lie parallel to the
+imaginary axis at $\Re j =0$ and $\Re j=-1$ correspondingly.}
+\label{fig:2}
+\end{figure}
+Finally we get
+\begin{subequations}
+\begin{align}
+M_{\beta\gamma}^{2J}(z,\oz')&=\frac{1}{2}\,\cosh w\cosh\ow'\int_{-\infty}^{\infty}
+d\kappa\,e^{i\kappa(w-\ow')}\,
+\mathscr{P}\frac{e^{\mp\frac{\pi\kappa}{4}}}{\sinh\frac{3\pi\kappa}{4}}
+\quad\text{for}\quad J=1,3;
+\\
+M_{\beta\gamma}^{22}(z,\oz')&=\frac{1}{2}\,\cosh w\cosh\ow'\int_{-\infty}^{\infty}
+d\kappa\,e^{i\kappa(w-\ow')}\,
+\left[
+\mathscr{P}\frac{e^{\pm\frac{3\pi\kappa}{4}}}{\sinh\frac{3\pi\kappa}{4}}
+\mp\frac{e^{\pm\frac{\pi\kappa}{2}}}{\cosh\frac{\pi\kappa}{2}}
+\right].
+\end{align}
+\end{subequations}
+The principal value comes from the sum of two integrals over contours
+$C_{0}$ and $C_{-1}$ (see Figure~\ref{fig:2}), which now run on
+opposite sides of the $\kappa=0$ pole. Comparison with
+\eqref{kappas} shows that
+we can interpret it as an expansion of the
+$\beta\gamma$ Neumann matrix
+in $s=\frac12$ $K_1$-eigenfunctions. Thus to obtain the eigenvalues
+we have to use the $s=\frac12$ normalization \eqref{A1/2} of the eigenstates:
+\begin{equation}
+\mu_{\beta\gamma}^{22}(\kappa) = \pm\mathscr{P}\frac{\cosh \rx}{\sinh 3\rx},
+\qquad
+\mu_{\beta\gamma}^{21}(\kappa)=e^{- \rx}\,\mathscr{P}\frac{\cosh 2\rx}{\sinh 3\rx},
+\qquad
+\mu_{\beta\gamma}^{23}(\kappa)=e^{+\rx}\,\mathscr{P}\frac{\cosh 2\rx}{\sinh 3\rx},
+\label{sgh}
+\end{equation}
+where $\rx\equiv\frac{\pi\kappa}{4}$.
+The eigenvalue $\mu_{\beta\gamma}^{22}(\kappa)$ with the ``$+$'' sign
+coincides with Arefeva et. al. \cite{arevefa} (eq. (7.11)).
+The non-diagonal elements
+$\mu_{\beta\gamma}^{I,I+1}$ and $\mu_{\beta\gamma}^{I+1,I}$
+have to be switched in order to
+agree with \cite{arevefa}. The origin of this switching
+is related to the definition of the $3$-string vertex. Here
+we use bra $3$-string vertex \eqref{Vsgh}, while
+authors of \cite{arevefa} use ket $3$-string vertex (see
+equation (7.9) therein). The relation between these two vertices
+is precisely a switch $I\leftrightarrow I+1$ in \eqref{sgh}.
+
+As in the case of the ghosts
+\eqref{ghm}
+one obtains the following relation between eigenvalues
+of $3$-string matter fermion Neumann matrices \eqref{M1/2}
+and picture $-1$ $\beta\gamma$-Neumann
+matrices \eqref{sgh}
+\begin{equation}
+\mu_{\beta\gamma}^{IJ}(\kappa)=\mu^{IJ}_{\frac12}(\kappa\pm 2i).
+\end{equation}
+
+%\end{document}
+%\input definitions.tex
+%\begin{document}
+
+\dopage{\finkfile}
+
+Here we list some useful properties of the functions introduced
+in Section~\ref{sec:eigen}.
+By \eqref{As} and a standard Fourier transform
+\begin{equation}
+\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)e^{i\kappa w}
+=\Gamma(2s)(\cosh w)^{-2s}.
+\label{C1}
+\end{equation}
+By noticing that the kernels $\mathrm{Id}_s(z,\oz')$ in
+equations \eqref{218} and \eqref{id} are the same and
+expanding both equations in $z$ and $\oz'$ one concludes
+\begin{equation}
+\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)\,V_{m}^{(s)}(\kappa)
+V_n^{(s)}(\kappa)=\bigl[N_m^{(s)}\bigr]^2\,\delta_{mn},
+\label{C2}
+\end{equation}
+From this it follows that
+the transition matrix \eqref{<mk>} is unitary.
+Another way to obtain \eqref{C2} is to expand
+\eqref{C1} as in \eqref{223}.
+Differentiating \eqref{223}
+with respect to $z$ and expanding
+in $z$ one gets
+\begin{equation}
+V_1^{(s)}(\kappa)=\kappa\,V_{0}^{(s+1)}(\kappa)
+\quad\text{and}\quad
+V_{m+1}^{(s)}(\kappa)=\frac{1}{m+1}\,
+\Bigl[\kappa\,V_{m}^{(s+1)}(\kappa)-2s\,V_{m-1}^{(s+1)}(\kappa)\Bigr].
+\label{C3}
+\end{equation}
+Notice $s$ in the numerator. Because of it one gets the following
+equation by \eqref{limits}
+\begin{equation}
+A_0(\kappa)V_{m+1}^{(0)}(\kappa)
+=\frac{1}{m+1}
+\left[A_1(\kappa)\,\mathscr{P}\frac{V_{m}^{(1)}(\kappa)}{\kappa}
+-V_{m-1}^{(1)}(0)\,\delta(\kappa)\right],
+\label{C3'}
+\end{equation}
+where $\mathscr{P}$ means principal value.
+By expanding \eqref{223} for $\kappa=0$ one obtains
+\begin{equation}
+V_{2m-1}^{(s)}(0)=0\quad\text{and}\quad
+V_{2m}^{(s)}(0)=(-1)^m\,\frac{\Gamma(m+s)}{\Gamma(s)\Gamma(m+1)}.
+\label{C3''}
+\end{equation}
+Dividing \eqref{223} by $s$
+yields the following identity for $s\to 0$ and $\kappa=0$
+\begin{equation}
+\left.\frac{\pd V_{2m}^{(s)}(0)}{\pd s}\right|_{s=0}
+=\frac{(-1)^m}{m}
+\quad\text{and}\quad
+\left.\frac{\pd V_{2m-1}^{(s)}(0)}{\pd s}\right|_{s=0}
+=0,\quad m\geqslant 1.
+\label{C4}
+\end{equation}
+By differentiating the recursion formula \eqref{req1}
+\begin{equation}
+\left.\frac{\pd V_{2m+1}^{(0)}}{\pd\kappa}\right|_{\kappa=0}=
+\frac{(-1)^m}{2m+1},\quad\text{and}\quad
+\left.\frac{\pd V_{2m}^{(0)}}{\pd\kappa}\right|_{\kappa=0}=0.
+\label{C4.5}
+\end{equation}
+The recursion formula \eqref{req1} yields the following
+representation for $V_{2n+1}^{(1)}$:
+\begin{equation*}
+\frac{V_{2n+1}^{(1)}(\kappa)}{\kappa}=\sum_{j=0}^{n}
+(-1)^{n-j}\,\frac{V_{2j}^{(1)}(\kappa)}{2j+1},
+\end{equation*}
+and therefore by \eqref{C2}
+\begin{equation}
+\int_{-\infty}^{\infty}d\kappa\,A_1(\kappa)\,
+\frac{V_{2n+1}^{(1)}(\kappa)}{\kappa}= (-1)^n.
+\label{C5}
+\end{equation}
+
+%\end{document}
+%&latex2e
+\documentclass[12pt,letterpaper]{article}
+
+
+\input definitions.tex
+
+
+\begin{document}
+\title{
+$~$
+\vspace{-25mm}
+\begin{flushright}
+{\small
+\hfill RUNHETC-2003-11
+\\
+\vspace{-4mm}
+\hfill hep-th/0304158}
+\\
+\end{flushright}
+\vspace{10mm}
+\textsc{Star Products Made Easy}
+$~$\\
+$~$\\}
+\author{
+\textsf{D.M.~Belov}\footnote{On leave from Steklov Mathematical
+Institute, Moscow, Russia.}
+\textsf{ and
+C.~Lovelace}
+\vspace{8mm}
+\\
+Department of Physics
+\\
+Rutgers University
+\\
+136 Frelinghuysen Rd.
+\\
+Piscataway, NJ 08854, USA
+\vspace{8mm}
+\\
+\texttt{belov@physics.rutgers.edu,}
+\\
+\texttt{lovelace@physics.rutgers.edu}
+}
+
+%\date{\version}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+The infinite matrices in Witten's vertex are
+easy to diagonalize. It just requires some
+$SL(2,\Rh)$ lore plus a Watson-Sommerfeld transformation.
+We calculate the eigenvalues of all Neumann matrices
+for all scale dimensions $s$,
+both for matter and ghosts, including fractional $s$
+which we use to
+regulate the difficult $s=0$ limit. We find that
+$s=1$ eigenfunctions just acquire a $p$ term,
+and $x$ gets replaced by the midpoint position.
+\end{abstract}
+
+\newpage
+%\dopage{\finkfile}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Introduction}\label{sec:intro}
+\dopage{\finkfile}
+\setcounter{equation}{0}
+Witten \cite{witten} derived open strings from a field
+theory with cubic Lagrangian. Its loop graphs include closed
+strings \cite{freedman}. The kinetic term is the BRST operator,
+which in Siegel gauge reduces to  $c_0L_0$. Unfortunately
+the basis which diagonalizes  $L_0$  leads to forbiddingly
+complicated formulae for the vertex \cite{GJ}. It was known
+from the beginning that   $K_1=L_1+ L_{-1}$ commuted with
+Witten's vertex, but only recently did Rastelli et al.
+\cite{spectroscopy} have the idea of transforming it to the basis with
+   $K_1$  diagonal. After a long indirect  calculation,
+which omitted the momenta, they
+found that the Neumann matrices in the vertex take a
+simple diagonal form in this basis. Subsequent authors
+have extended their work for boson matter sector
+including momenta \cite{dima1}, boson's ghost sector \cite{dima1,Erler},
+fermion matter sector \cite{marino}
+and fermion's ghosts \cite{arevefa}.
+
+    In this paper we develop
+a powerful new method based on $SL(2,\Rh)$
+representation theory. It easily diagonalizes the star product for all
+scale dimensions $s$, both for matter fields and ghosts.
+In most cases we confirm previous authors (though our proofs
+are an order of magnitude shorter). The exception is  $s=0$,
+which is crucial. Our answer is
+simple: Including the momentum does nothing to the
+continuum eigenvalues. It adds a momentum term to
+their eigenfunctions, and also a zero mode oscillator
+which is just that for   $L_0$   with  $x$  replaced by
+the midpoint position $X_L(i) + X_L(-i)$.
+
+\bigskip
+    In section~\ref{sec:eigen}, we review $SL(2,\Rh)$ representations
+for different scale dimensions $s$, and carefully
+normalize the eigenvectors   $|m,s\rangle$   of   $L_0$   and
+$|\kappa,s\rangle$   of   $K_1$. In section~\ref{sec:matter} we
+diagonalize the $N$-string Neumann matrices for matter
+fields and in section~\ref{sec:ghost} the $3$-string matrices for
+the ghosts and superghosts, using Watson-Sommerfeld transformations.
+Each
+matrix is diagonalized independently, so the
+identities connecting them are a cross-check.
+In section~\ref{sec:zeromodes} we examine the zero modes closely.
+Most of the confusion in earlier papers arose from
+regularizing them inconsistently.
+Section~\ref{sec:zeroNeumann} checks that
+ the momentum Neumann
+matrices can be correctly reconstructed.
+ Section~\ref{sec:summary} is a
+summary. In Appendix~\ref{app:L0}, we calculate  $L_0$   in
+the new basis. Appendix~\ref{app:lemma} lists some lemmas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Normalized Eigenfunctions}
+\label{sec:eigen}
+\setcounter{equation}{0}
+\input{SPME-eigen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Matter Vertex}
+\label{sec:matter}
+\setcounter{equation}{0}
+\input{SPME-matter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Zero modes, $s\to 0$ limit}
+\label{sec:zeromodes}
+\setcounter{equation}{0}
+\input{SPME-zeromodes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{$s=0$ Neumann matrices}
+\label{sec:zeroNeumann}
+\setcounter{equation}{0}
+\input{SPME-zeromodesN}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Ghost vertex}
+\label{sec:ghost}
+\setcounter{equation}{0}
+\input{SPME-ghost}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+\section{Conclusion}
+\label{sec:summary}
+\setcounter{equation}{0}
+    For nonzero scale dimension $s$, our results largely confirm
+previous authors, though our proofs are much
+shorter and clearer.
+For $s>0$ we are dealing with unitary representations
+of $SL(2,\Rh)$ or its covering group. The discrete basis
+with $L_0$ diagonal is \eqref{basisn}. From it we constructed
+a Cauchy kernel \eqref{id}, which projects
+onto the entire Hilbert space.
+A Watson-Sommerfeld transformation then expanded
+it in the continuous $\kappa$-basis which diagonalizes $K_1=L_1+L_{-1}$.
+The eigenfunctions are \eqref{kappas} with normalization
+\eqref{As}. The transformation matrix between the bases is
+\eqref{<mk>}.
+
+Another integral kernel \eqref{Mmaps} generates the $N$-string
+Neumann matrices \cite{peskin1}. The same Watson-Sommerfeld
+transformation expands it in the
+$K_1$ basis, where it is diagonal. The ratio to the
+diagonalized Cauchy kernel then gives the Neumann
+eigenvalues
+\begin{subequations}
+\begin{align}
+\mu^{II}_{s,N}(\kappa)&=e^{\pi\kappa N/4}\frac{B_{s,N}(\kappa)}{A_s(\kappa)}
+-e^{\pi\kappa/2},
+\\
+\mu^{IJ}_{s,N}(\kappa)&=e^{+\frac{\pi \kappa}{4}\,(N+2I-2J)}
+\,\frac{B_{s,N}(\kappa)}{A_s(\kappa)}\quad\text{for}\quad I<J,
+\\
+\mu^{IJ}_{s,N}(\kappa)&=e^{-\frac{\pi \kappa}{4}\,(N-2I+2J)}
+\,\frac{B_{s,N}(\kappa)}{A_s(\kappa)}\quad\text{for}\quad I>J,
+\end{align}
+\end{subequations}
+where
+\begin{equation}
+\frac{B_{s,N}(\kappa)}{A_s(\kappa)}=\left[\frac{2}{N}\right]^{2s-1}\,
+\frac{\Gamma\Bigl(s+\frac{iN\kappa}{4}\Bigr)\Gamma\Bigl(s-\frac{iN\kappa}{4}\Bigr)}
+{\Gamma\Bigl(s+\frac{i\kappa}{2}\Bigr)\Gamma\Bigl(s-\frac{i\kappa}{2}\Bigr)}.
+\end{equation}
+Note the simple formula valid for all $s$ and $N$.
+
+Unitarity fails at $s=0$, where there is a vector with infinite norm.
+In the second quantized world-sheet theory this corresponds
+to a zero frequency oscillator,
+and the divergence is eliminated by transforming it
+to position and momentum (Section~\ref{sec:zeromodes}).
+The Neumann eigenvalues are the same as for $s=1$, but the
+eigenfunctions differ.
+If $x,\,p,\,\alpha_n$ are the usual oscillators
+from the $L_0$ basis \cite{GSW}, then the continuum
+oscillators in the $K_1$ basis are
+\begin{multline}
+a^{\pm}(\kappa,p)
+=\mp i \left[
+\frac{\kappa}{2\sinh\frac{\pi\kappa}{2}}
+\right]^{1/2}\left\{\mathscr{P}\frac{\hat{p}}{\kappa}
++\alpha_{\mp 1}+\frac{1}{2}\,\kappa\,\alpha_{\mp 2}
+\right.
+\\
+\left.
++\frac{1}{6}(\kappa^2-2)\,\alpha_{\mp 3}+
+\frac{1}{24}(\kappa^3-8\kappa)\alpha_{\mp 4}+\dots
+\right\}.
+\end{multline}
+(We have suppressed Lorentz indices.)
+For $p=0$ these reduce to the $s=1$ continuum oscillators.
+The average position $x$ is also replaced by the midpoint
+position
+\begin{equation}
+\xi=X_L(i)+X_L(-i)=x+i\sqrt{2\ap}\,\sum_{n=1}^{\infty}
+\frac{(-1)^n}{2n}\,\bigl[\alpha_{2n}-\alpha_{-2n}\bigr].
+\end{equation}
+Then $\xi,\,\hat{p},\,a^{\pm}(\kappa,p)$ form
+a complete basis for the $s=0$ world-sheet field theory with
+\begin{equation}
+\begin{split}
+&[\xi,\,\hat{p}]=i,\qquad
+[a^{-}(\kappa,p),\,a^+(\kappa',p)]=\delta(\kappa -\kappa'),
+\\
+&
+[\xi,\,a^{\pm}(\kappa,p)]=
+[\hat{p},\,a^{\pm}(\kappa,p)]=0.
+\end{split}
+\end{equation}
+$\xi$ and $\hat{p}$ arise from an additional nonnormalizable
+state at $\kappa=0$. The expansion of $X_L(z)$ in
+these new oscillators is \eqref{X_Lcont}. Similar
+results for other world-sheet fields can be found in
+\eqref{phipm} -- \eqref{psiz} and \eqref{610}.
+
+Plane waves will now contain the midpoint position $\xi$
+instead of $x$. The bosonized ghost insertions
+at curvature points will therefore be very simple in
+this basis.
+
+The zero momentum and non-zero momentum oscillators
+are related by the unitary transformation $U_p$
+\begin{equation}
+U_{p}=\exp\left\{
+i\sqrt{2\ap}\,\hat{p}\,\int_{-\infty}^{\infty}
+d\kappa\,\lim_{s\to 0}\sqrt{A_s(\kappa)}\,\bigl[
+a^{+}(\kappa,0)+a^{-}(\kappa,0)
+\bigr]
+\right\},
+\end{equation}
+where $\hat{p}$ is the momentum operator.
+One can consider this alternatively as a unitary string field redefinition
+$\Ac_{\text{new}}=U_p\Ac_{\text{old}}$.
+There are two consequences.
+Firstly, remember that the cubic interaction looks
+nonlocal if it is written in the component
+fields corresponding to $\Ac_{\text{old}}$ since it
+involves exponentials of $p$.
+This is cured by the field redefinition.
+Secondly, the BRST charge changes to
+\begin{equation*}
+Q_B\mapsto U_p Q_B U_p^{-1},
+\end{equation*}
+which adds terms linear and quadratic in $p$.
+Therefore the action in  the component fields
+corresponding to $\Ac_{\text{new}}$ now looks local,
+which may  help in constructing lump and rolling tachyon solutions.
+
+
+For the $bc$ and $\beta\gamma$ ghosts (Section~\ref{sec:ghost})
+we took the easy way out by using a vacuum in which
+their Neumann matrices can be related to those
+of the matter fields. However the ghost eigenvalues
+certainly depend on the
+vacuum, and in other vacua are nonhermitian. This
+question deserves further investigation,
+as does BRST invariance in the $K_1$ basis.
+In Appendix~\ref{app:L0} we suggest some expressions
+for the Virasoro operator $L_0$ in the $K_1$ basis.
+
+In usual field theory, $p$ space is appropriate
+to weak coupling, $x$ space to strong coupling. Diagonalizing
+the vertex may therefore allow a latticized strong
+coupling approach to string field theory,
+and make concrete the old idea of induced gravity.
+Perhaps we really live in flat
+$10D$ space-time, and what we see is just illusion.
+This was one of our motivations for solving this preliminary
+mathematical problem. Another motivation was
+to study the relation of Witten's string
+product to the Moyal product as described in \cite{Bars} and
+\cite{moore}. This may help give a mathematical understanding
+of the string algebra in the $K$-theory context \cite{Kt}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+We are grateful to H.~Liu, S.~Lukyanov and G.~Moore for useful discussions.
+We would like to thank A.~Giryavets for
+many valuable comments on the draft of this paper.
+The work of D.M.B. was supported in part by RFBR grant 02-01-00695.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\appendix
+\section*{Appendix}
+\addcontentsline{toc}{section}{Appendix}
+
+
+\section{$L_0$ in the $\kappa$-basis}
+\label{app:L0}
+\setcounter{equation}{0}
+\input{SPME-L0}
+
+\section{Lemmas}
+\label{app:lemma}
+\setcounter{equation}{0}
+\input{SPME-lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%\dopage{\finkfile}
+{\small
+\begin{thebibliography}{99}
+\bibitem{witten}
+E.~Witten,
+``Noncommutative Geometry and String Field Theory,''
+Nucl.\ Phys.\ B {\bf 268}, 253 (1986).
+%%CITATION = NUPHA,B268,253;%%
+
+\bibitem{freedman} D.~Freedman, S.~Giddings, J.~Shapiro and C.~Thorn,
+\textit{The Nonplanar One Loop Amplitude in Witten's String Field Theory},
+Nucl.~Phys.~\textbf{B}298 (1988) 253.
+%%CITATION = NUPHA,B298,253;%%
+
+\bibitem{GJ} D.~Gross, A.~Jevicki,
+\textit{Operator Formulation of Interacting String Field
+Theory (I), (II) and (III)},
+Nucl.Phys.~\textbf{B}283 (1987) 1,
+Nucl.Phys.~\textbf{B}287 (1987) 225,
+Nucl.Phys.~\textbf{B}293 (1987) 29;
+%%CITATION = NUPHA,B283,1;%%
+%%CITATION = NUPHA,B287,225;%%
+%%CITATION = NUPHA,B293,29;%%
+\\
+E.~Cremmer, A.~Schwimmer and C.~B.~Thorn,
+\textit{The Vertex Function in Witten's Formulation of String Field Theory},
+Phys.\ Lett.\ {\bf B}179, 57 (1986);
+%%CITATION = PHLTA,B179,57;%%
+\\
+S.~Samuel,
+\textit{The Physical and Ghost Vertices in Witten's String Field Theory},
+Phys.\ Lett.\ {\bf B}181, 255 (1986).
+%%CITATION = PHLTA,B181,255;%%
+
+\bibitem{spectroscopy} L.~Rastelli, A.~Sen, B.~Zwiebach,
+\textit{Star Algebra Spectroscopy}, hep-th/0111281.
+%%CITATION = HEP-TH 0111281;%%
+
+\bibitem{bargmann} V.~Bargmann, Ann.~Math. 48 (1947) 568.
+
+\bibitem{gelfand} I.~Gelfand, M.~Graev and N.~Vilenkin,
+\textit{Generalized functions}, Academic Press, 1966, Vol.~5, Ch.~7.
+
+\bibitem{ruhl} W.~R\""{u}hl, \textit{The Lorentz Group and Harmonic
+Analysis}, Benjamin (1970), Ch.~5.
+
+\bibitem{peskin1} A. Le Clair, M. Peskin and C. Preitschopf,
+\textit{String Field Theory on the Conformal Plane (I). Kinematical Principles},
+Nucl. Phys. {\bf B}317 (1989) 411-463;
+%%CITATION = NUPHA,B317,411;%%
+\\
+ \textit{String Field Theory on the Conformal Plane (II). Generalized Gluing},
+ Nucl. Phys. {\bf B}317 (1989) 464.
+%%CITATION = NUPHA,B317,464;%%
+
+\bibitem{marino} M.~Marino and R.~Schiappa,
+\textit{Towards Vacuum Superstring Field Theory: The Supersliver},
+J.Math.Phys. 44 (2003) 156-187; hep-th/0112231.
+
+\bibitem{arevefa} I.Ya.~Arefeva and A.~Giryavets,
+\textit{Open Superstring Star as a Continuous Moyal Product},
+hep-th/0204239; JHEP 0212 (2002) 074.
+%%CITATION = HEP-TH 0204239;%%
+
+\bibitem{dima1} D.~Belov, \textit{Diagonal Representation of Open String Star and
+Moyal Product}, hep-th/0204164;
+%%CITATION = HEP-TH 0204164;%%
+\\
+B.~Feng, Y.~He and N.~Moeller, \textit{The Spectrum of the
+Neumann Matrix with Zero Modes}, hep-th/0202176; JHEP 0204 (2002) 038.
+%%CITATION = HEP-TH 0202176;%%
+
+\bibitem{Erler} T.G.~Erler, \textit{Moyal Formulation of
+Witten's Star Product in the Fermionic Ghost Sector},
+hep-th/0205107.
+%%CITATION = HEP-TH 0205107;%%
+
+\bibitem{okuyama1} K.~Okuyama, \textit{Ghost Kinetic Operator of Vacuum
+String Field Theory}, hep-th/0201015; JHEP 0201 (2002) 027.
+%%CITATION = HEP-TH 0201015;%%
+
+\bibitem{fubini} S.~Fubini and G.~Veneziano,
+\textit{Duality in Operator Formalism},
+Nuovo Cim.\ {\bf A}67 (1970) 29.
+%%CITATION = NUCIA,A67,29;%%
+
+\bibitem{GSW} M.~Green, J.~Schwartz and E.~Witten,
+\textit{Superstring Theory}, Cambridge 1987;
+\\
+J.~Polchinski, \textit{String Theory},
+Cambridge University Press 1998.
+
+\bibitem{dima2} D.~Belov, \textit{Representation of Small
+Conformal Algebra in $\kappa$-basis}, hep-th/0210199;
+%%CITATION = HEP-TH 0210199;%%
+\\
+E.~Fuchs, M.~Kroyter and A.~Marcus,
+\textit{Virasoro Operators in the Continuous Basis of String Field Theory},
+hep-th/0210155; JHEP 0211 (2002) 046.
+%%CITATION = HEP-TH 0210155;%%
+
+\bibitem{rastelli}
+L.~Rastelli, A.~Sen and B.~Zwiebach, \textit{Star Algebra Projectors},
+hep-th/0202151; JHEP 0204 (2002) 060;
+%%CITATION = HEP-TH 0202151;%%
+\\
+L.~Rastelli, A.~Sen and B.~Zwiebach,
+\textit{String Field Theory Around the Tachyon Vacuum},
+hep-th/0012251; Adv.Theor.Math.Phys. 5 (2002) 353-392;
+%%CITATION = HEP-TH 0012251;%%
+\\
+D.~Gaiotto, L.~Rastelli, A.~Sen and B.~Zwiebach,
+\textit{Ghost Structure and Closed Strings in Vacuum String
+Field Theory}, hep-th/0111129.
+%%CITATION = HEP-TH 0012251;%%
+
+\bibitem{DK}
+D.~M.~Belov and A.~Konechny,
+``On continuous Moyal product structure in string field theory,''
+JHEP {\bf 0210}, 049 (2002); hep-th/0207174.
+%%CITATION = HEP-TH 0207174;%%
+
+\bibitem{Bars} I.~Bars,
+\textit{Map of Witten's $\star$ to Moyal's $\ast$},
+Phys.Lett. B517 (2001) 436-444, hep-th/0106157;
+%%CITATION = HEP-TH 0106157;%%
+%%CITATION = PHLTB,B517,436;%%
+I.~Bars,
+\textit{MSFT : Moyal Star Formulation of String Field Theory},
+hep-th/0211238;
+%%CITATION = HEP-TH 0211238;%%
+\\
+I.~Bars, Yutaka Matsuo,
+\textit{Computing in String Field Theory Using the Moyal Star Product},
+Phys.Rev. D66 (2002) 066003; hep-th/0204260.
+%%CITATION = HEP-TH 0204260;%%
+
+\bibitem{moore}
+M.R.~Douglas, H.~Liu, G.~Moore and B.~Zwiebach,
+\textit{Open String Star as a Continuous Moyal Product},
+JHEP 0204 (2002) 022; hep-th/0202087.
+%%CITATION = HEP-TH 0202087;%%
+
+\bibitem{reduced} K.~Okuyama,
+\textit{Siegel Gauge in Vacuum String Field Theory},
+JHEP 0201:043,2002, hep-th/0111087.
+%%CITATION = HEP-TH 0111087;%%
+
+\bibitem{dima3} D.M.~Belov, work in progress.
+
+\bibitem{Kt} G.~Moore,
+\textit{K-Theory from a physical perspective},
+hep-th/0304018.
+%%CITATION = HEP-TH 0304018;%%
+
+\bibitem{vladimirov} V.S. Vladimirov, \textit{Equations of mathematical physics},
+New York, M. Dekker, 1971.
+\end{thebibliography}
+}
+
+\end{document}
+%\input definitions.tex
+%\begin{document}
+
+\dopage{\finkfile}
+\subsection{Review of the gluing vertices}
+\subsubsection{Oscillator normalization}
+\label{subsubsec:311}
+Consider a primary conformal field $\Oc_s(z)$ of
+dimension $s$. Here we assume that $2s$ is an integer,
+and $\Oc_s(z)$ is a boson or fermion depending on whether
+$s$ is an integer
+or half integer. In the $NS$ sector the field has a mode expansion
+\begin{equation}
+\Oc_s(z)=\sum_{m\in\Zh-s}\frac{\Oc_m}{z^{m+s}}.
+\end{equation}
+We decompose it into creation and annihilation parts
+with respect to the $SL(2,\Rh)$-invariant vacuum:
+\begin{equation}
+\Oc_s(z)=\sum_{n=0}^{\infty}N_n^{(s)}\Bigl[
+\mathbf{a}_n^{+}\,z^n+
+\mathbf{a}_n^{-}\, z^{-n-2s}
+\Bigr]+\text{rest},
+\label{32}
+\end{equation}
+where $N_n^{(s)}$ is defined by \eqref{basisn}, and
+\begin{subequations}
+\begin{equation}
+N_n^{(s)}\,\mathbf{a}^{\pm}_n=\Oc_{\mp(n+s)}.
+\label{oscil}
+\end{equation}
+The ``rest'' consist of oscillators annihilating
+both the $SL(2,\Rh)$-invariant vacuum and its
+conjugate (for example for $s=1$ it contains $p/z$).
+We assume the following (anti)commutation relations between the oscillators
+\begin{equation}
+[\mathbf{a}_n^{-},\,\mathbf{a}^{+}_m]_{\pm}=\delta_{nm}.
+\end{equation}
+\label{bfaosc}
+\end{subequations}
+Although these are not the most general commutation
+relations, they cover the cases in which  we are
+interested: bosonic fields with $s=0$ or $s=1$
+and fermionic field with $s=\frac12$.
+In any case the two point correlation function of fields $\Oc_s(z)$ is
+\begin{equation}
+\langle \Oc_s(z)\Oc_s(z')\rangle=\frac{\Gamma(2s)}{(z-z')^{2s}},
+\label{OOcorf}
+\end{equation}
+where $\Gamma(2s)$ comes from our normalization convention
+\eqref{bfaosc}.
+
+Before we proceed with formulation of a gluing vertex
+let us consider a couple of examples: $s=1$ and $s=\frac12$.
+Discussion of the tricky case $s=0$ we postpone to Section~\ref{sec:zeromodes}.
+
+For $s=\frac{1}{2}$ the fermionic conformal field $\psi(z)$ has
+the following mode expansion
+\begin{subequations}
+\begin{equation}
+\psi(z)=i\left[\frac{\ap}{2}\right]^{\frac12}\,
+\sum_{m\in \Zh+\frac12}\frac{\psi_m}{z^{m+\frac12}}
+\end{equation}
+and the two point correlation function is
+\begin{equation}
+\langle\psi(z)\psi(z')\rangle=-\frac{\ap}{2}\,\frac{1}{z-z'}.
+\end{equation}
+By comparing this correlation function with
+\eqref{OOcorf} for $s=\frac12$ one concludes that
+\begin{equation*}
+i\left[\frac{\ap}{2}\right]^{\frac12}\,\Oc_{\frac12}(z)=\psi(z),
+\end{equation*}
+and therefore
+\begin{equation}
+\quad\mathbf{a}_n^{\pm}=\psi_{\mp (n+\frac12)},
+\quad n\geqslant 0.
+\end{equation}
+\end{subequations}
+
+For $s=1$ the bosonic conformal field $\pd X(z)$ has
+the following mode expansion
+\begin{subequations}
+\begin{equation}
+i\pd X(z)=\left[\frac{\ap}{2}\right]^{\frac12}\,
+\sum_{m\in\Zh}\frac{\alpha_m}{z^{m+1}}
+\end{equation}
+and the two point correlation function is
+\begin{equation}
+\langle\pd X(z)\pd X(z')\rangle=-\frac{\ap}{2}\,\frac{1}{(z-z')^2}.
+\end{equation}
+By comparing this correlation function with
+\eqref{OOcorf} for $s=1$ one concludes that
+\begin{equation*}
+\left[\frac{\ap}{2}\right]^{\frac12}\,\Oc_1(z)=i\pd X(z),
+\end{equation*}
+and therefore
+\begin{equation}
+\mathbf{a}_n^{\pm}=\frac{\alpha_{\mp (n+1)}}{\sqrt{n+1}},
+\quad n\geqslant 0.
+\end{equation}
+\end{subequations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Continuum oscillators}
+So by the unitary transformation \eqref{<mk>},
+\begin{equation}
+\mathbf{a}^{\pm}(\kappa)=\sqrt{A_s(\kappa)}\,
+\sum_{m=0}^{\infty} \frac{V_m^{(s)}(\kappa)}{N_m^{(s)}}\,
+\mathbf{a}_m^{\pm}
+\label{phipm}
+\end{equation}
+are the oscillators in the $\kappa$-basis, satisfying
+\begin{equation}
+[\mathbf{a}^{-}(\kappa),\,\mathbf{a}^+(\kappa')]_{\pm}=\delta(\kappa-\kappa').
+\end{equation}
+
+Now we expand world sheet fields $\Oc_s(z)$ in these $\kappa$-oscillators.
+We assume that $z$ is on the unit circle, which allows
+us to change $1/z$ to $\oz$ (This is not a restriction
+for us, because we are only interested
+in the world-sheet fields on the boundary). Hence the expansion is
+\begin{multline}
+\left.\Oc_s(z)\right|_{|z|=1}=
+\int_{-\infty}^{\infty} d\kappa\,
+\Bigl\{
+\mathbf{a}^+(\kappa)\,|\kappa,s\rangle(z)
++\mathbf{a}^-(\kappa)\,\oz^{2s}\,|\kappa,s\rangle(\oz)
+\Bigr\}+\text{rest}
+\\
+\equiv\int_{-\infty}^{\infty} d\kappa\,\sqrt{A_s(\kappa)}\,
+\Bigl\{
+\mathbf{a}^+(\kappa)\,[\cosh w]^{2s}\,e^{i\kappa w}
++\mathbf{a}^-(\kappa)\,\oz^{2s}\,
+[\cosh \ow]^{2s}\,e^{-i\kappa \ow}
+\Bigr\}+\text{rest}.
+\label{psiz}
+\end{multline}
+This expansion is easy to obtain by using the
+representation \eqref{218} for the Cauchy kernel.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Gluing vertex}
+The $N$-string vertex $\langle V^{(s)}_N|$ is a multilinear map from
+the $N$-th  power of an oscillator Fock space to the complex numbers.
+For a conformal field $\Oc_s(z)$ of dimension $s$ (described
+in subsection~\ref{subsubsec:311})
+it can be written as a Gaussian
+state of the form
+\begin{equation}
+\langle V^{(s)}_N|={}_{1\dots N}\langle 0|\exp\left[
+\frac{(-1)^{2s}}{2}\sum_{n,m=0}^{\infty}\sum_{I,J=1}^{N}\bigl(M_{s,N}^{IJ}C
+\bigr)_{mn}\,
+\mathbf{a}_m^{-(I)}\mathbf{a}_n^{-(J)}\right].
+\label{mbra}
+\end{equation}
+Here
+${}_{1\dots N}\langle 0|$ is a tensor product of $SL(2,\Rh)$
+invariant vacua from each Fock space,
+$\mathbf{a}_n^{-(I)}$ are annihilation oscillators \eqref{bfaosc}
+acting in the $I$-th Fock space,
+$C_{nm}=(-1)^n\delta_{nm}$ is a twist
+matrix and $M_{s,N,\,\,nm}^{IJ}$ are the Neumann matrices defining the
+gluing vertex \cite{GJ,peskin1}. The Neumann matrices
+are symmetric or skewsymmetric
+$\bigl(M_{s,N}^{IJ}\bigr)_{mn}=(-1)^{2s}\bigl(M_{s,N}^{JI}\bigr)_{nm}$
+and
+satisfy the cyclicity property $M_{s,N}^{IJ}=M_{s,N}^{I+1,J+1}$.
+
+
+For any string field theory matter vertex, the Neumann matrices
+can be generated from a kernel operator
+\begin{equation}
+\bigl(M_{s,N}^{IJ}C\bigr)_{mn}=\langle m,s|M_{s,N}^{IJ}C|n,s\rangle
+\quad\text{and}\quad
+\bigl(M_{s,N}^{IJ}\bigr)_{mn}=\langle m,s|M_{s,N}^{IJ}|n,s\rangle,
+\label{MmnIJ}
+\end{equation}
+where the states are \eqref{basisn}. The expression
+for the operator $M_{s,N}^{IJ}C$ can by obtained using
+the conformal definition \cite{peskin1} of the gluing vertex:
+\begin{equation}
+\bigl(M_{s,N}^{IJ}C\bigr)(z,\oz')=\Gamma(2s)\,\left\{
+\frac{\Bigl[h_I'(z)\Bigr]^s\Bigl[h_J'(\oz')\Bigr]^s}
+{\Bigl[h_I(z)-h_J(\oz')\Bigr]^{2s}}
+-\frac{\delta^{IJ}}{(z-\oz')^{2s}}
+\right\},
+\label{CMs}
+\end{equation}
+where $I,J=1,\dots, N$ label the glued strings
+and the maps $h_I(z)$ are defined below. This generalizes
+\cite{peskin1} to arbitrary scale dimension $s$.
+When $s$ is fractional we assume the principal branch of
+the power function, in other words the branch cut is
+on the negative real axis.
+The
+$\Gamma$-function is needed to give a nontrivial $s\to 0$ limit.
+To be consistent with our scalar product \eqref{norm}
+we have put $\oz'$ as the second argument.
+The second term proportional to $(z-\oz')^{-2s}$ comes from the normal
+ordering when one acts by two operators of weight $s$ in the same
+Fock space. When using a contour integral representation
+for the Neumann matrices (as in \cite{peskin1}) one never sees
+this term: it simply gives zero contribution. In our calculations
+this term cancels some divergences appearing in the diagonalization
+of $M^{II}_{s,N}$. Gross and Jevicki \cite{GJ} (paper 3, eq. (3.28))
+also mentioned that the free propagator must be subtracted from $M^{II}_{s,N}$.
+
+To obtain an expression for the operator $M_{s,N}^{IJ}$ it is enough
+to notice that the twist operator $C$ acts on the eigenvectors
+$|n,s\rangle(z)$ by changing the sign of the argument $z$:
+\begin{equation}
+\bigl(C|n,s\rangle\bigr)(z) =|n,s\rangle(-z).
+\end{equation}
+In other words to get an expression for $M_s^{IJ}$ one
+has just to change the sign of $\oz$ in \eqref{CMs}:
+\begin{equation}
+M_{s,N}^{IJ}(z,\oz')=\Gamma(2s)\,\left\{
+\frac{\Bigl[h_I'(z)\Bigr]^s\Bigl[h_J'(-\oz')\Bigr]^s}
+{\Bigl[h_I(z)-h_J(-\oz')\Bigr]^{2s}}
+-\frac{\delta^{IJ}}{(z+\oz')^{2s}}
+\right\}
+\label{Mmaps}
+\end{equation}
+
+
+Projecting with \eqref{basisn} in \eqref{MmnIJ} is equivalent to expanding
+\eqref{Mmaps} in $z$ and $\oz'$, picking out the term $z^m\oz^{\prime\,n}$
+and then multiplying
+its coefficient by $N_m^{(s)}N_n^{(s)}$. (This last assumes
+oscillators are normalized $[\mathbf{a}_m^-,\,\mathbf{a}_n^{+}]=\delta_{mn}$.)
+
+\subsection{Diagonalizing Witten's vertices}
+Different string field theories use different maps $h_I(z)$.
+For Witten's $3$-string vertex
+\begin{subequations}
+\begin{equation}
+h_2(z)=\left(\frac{1-iz}{1+iz}\right)^{2/3}=e^{4w/3},
+\label{h2}
+\end{equation}
+where $z=i\tanh w$, and
+\begin{equation}
+h_{1,3}(z)=e^{\pm 2\pi i/3}\,h_2(z).
+\end{equation}
+\label{h3}
+\end{subequations}
+However we can diagonalize the $N$-string vertex for very little extra
+trouble. We therefore take
+\begin{equation}
+h_I(z)=e^{i\varphi_I}\left(\frac{1-iz}{1+iz}\right)^{2/N}=
+e^{i\varphi_I}\,e^{4w/N},
+\label{h}
+\end{equation}
+where $z=i\tanh w$ and $\varphi_I=\frac{2\pi}{N}\,(\alpha_N-I)$.
+Here $\alpha_N$ is a real number which is chosen
+in such a way that all angles $\varphi_I$ lie in the
+range $(-\pi,\pi]$. This last requirement is important because
+we use rational powers in the definition of the Neumann matrix.
+Then
+\begin{equation}
+h_I'(z)=-\frac{4i}{N}\,\cosh^2 w\,h_I(z).
+\label{hI}
+\end{equation}
+As we saw in \eqref{inner} the map $z\to w$ takes the unit disk into the
+strip $-\pi/4\leqslant \Im w\leqslant \pi/4$. The maps
+$w\to h_I$ then transform this strip into $N$
+$360^o/N$ wedges, which are glued together by the Neumann matrices
+\cite{peskin1}.
+Note that \eqref{Mmaps} is homogeneous in the $h_I$'s. The $\cosh w$
+factors from \eqref{hI} and \eqref{kappas} always cancel against
+the inner product \eqref{inner},
+so homogeneity in $h$ implies translation invariance under
+$w\to w+c$, $\overline{w}'\to\overline{w}'+c$, and therefore
+conservation of $K_1$.
+
+To diagonalize the $N$-string Neumann matrix, we proceed as in \eqref{id}
+et seq. --- first a binomial expansion of \eqref{Mmaps}, then a Watson-Sommerfeld
+transformation. The final result is the same whichever way round
+one does the binomial expansion. Thus if
+$\Re (\overline{w}'-w)<0$,
+\begin{multline}
+M^{IJ}_{s,N}(z,\oz')=\Bigl[
+\cosh w\cosh\overline{w}'
+\Bigr]^{2s}\,
+\frac{1}{2i}\oint_C\frac{dj}{\sin(\pi j)}\frac{\Gamma(2s+j)}{\Gamma(j+1)}
+\\
+\times\left\{
+\left(\frac{4}{N}\right)^{2s}
+\left[-e^{i(\varphi_J-\varphi_I)}e^{4(\overline{w}'-w)/N}\right]^{s+j}
+-\delta^{IJ}\,2^{2s}
+\left[-e^{2(\overline{w}'-w)}\right]^{s+j}
+\right\},
+\label{M1J}
+\end{multline}
+where $\varphi_J-\varphi_I=\frac{2\pi}{N}\,(I-J)$.
+The contour $C$ encircles the positive real axis counterclockwise
+(see Figure~\ref{fig:1}). Before deforming it as in Figure~\ref{fig:1}
+we must worry about the contour at infinity.
+Starting from here we will consider $I\ne J$ and $I=J$ separately.
+
+\subsection{Matrices $M_{s,N}^{IJ}$ for $I\ne J$}
+
+By cyclic symmetry we can fix $I=1$, then $J=2,\dots,N$.
+In this case we can interpret $(-1)=e^{i\pi}$ and therefore
+\begin{equation*}
+-e^{i(\varphi_J-\varphi_1)}=e^{\frac{2\pi i}{N}\left(
+1-J+\frac{N}{2}\right)}.
+\end{equation*}
+This guarantees that for $2\leqslant J \leqslant N$
+\begin{equation}
+-\pi <\arg\Bigl( -e^{i(\varphi_J-\varphi_1)}\Bigr)<\pi.
+\end{equation}
+After dividing by $\sin(\pi j)$ we
+get the following asymptotic behavior of the integrand
+\begin{equation*}
+\sim |j|^{2s-1}\,e^{-2\pi|\Im j|/N}
+\end{equation*}
+as $\Im j\to\pm\infty$. Hence for $M^{1J}$ ($J\ne 1$) the
+integrand vanishes at infinity.
+The poles of $\bigl[\sin(\pi j)\bigr]^{-1}$
+at negative integers are cancelled by zeros of $\bigl[\Gamma(j+1)\bigr]^{-1}$,
+so for $s>0$ we can shift the contour to $\Re j=-s$ as in
+Figure~\ref{fig:1} by writing
+\begin{equation}
+j=-s-\frac{iN\kappa}{4}
+\label{j2}
+\end{equation}
+to get
+\begin{equation}
+M^{1J}_{s,N}(z,\oz')=\int_{-\infty}^{\infty}d\kappa\,
+e^{\frac{\pi \kappa}{4}\,(2+N-2J)}
+\,B_{s,N}(\kappa)\,
+e^{i\kappa(w-\bar{w}')}\,
+\bigl(
+\cosh w\cosh\overline{w}'
+\bigr)^{2s},
+\end{equation}
+where
+\begin{equation}
+B_{s,N}(\kappa)=\frac{1}{2\pi}\left[\frac{4}{N}\right]^{2s-1}\,
+\Gamma\Bigl(s+\frac{iN\kappa}{4}\Bigr)\Gamma\Bigl(s-\frac{iN\kappa}{4}\Bigr).
+\label{Bs}
+\end{equation}
+This displays the Neumann matrix as an outer product of $K_1$
+eigenfunctions \eqref{kappas}. Notice also that the normalization
+$A_s(\kappa)$ introduced in \eqref{As} is equal to $B_{s,2}(\kappa)$.
+
+
+\subsection{Matrix $M^{II}_{s,N}$}
+
+If $I=J$, the first term in \eqref{M1J} contains a factor
+\begin{equation*}
+(-1)^{s+j}=e^{\pm i\pi(s+j)}.
+\end{equation*}
+Either interpretation of $(-1)$
+will cancel the nice falloff of $\bigl[\sin(\pi j)\bigr]^{-1}$ in \eqref{M1J}
+and prevent deformation of the contour.
+However in this case the second term in \eqref{M1J} comes into play.
+The bad asymptotic behavior at $\Im j\to\pm\infty$
+is closely related to the coincident singularity at $w=\ow'$
+coming from the vanishing denominators in \eqref{Mmaps}. Thus
+\begin{equation*}
+\sim \rho^{2s}\,\int^{i\infty}dj\,j^{2s-1}\,
+\left[e^{\rho(\overline{w}'-w)}\right]^j\sim (w-\overline{w}')^{-2s},
+\end{equation*}
+where $\rho=4/N$ for the first term in \eqref{M1J} and $\rho=2$ for the second one.
+Therefore the singularity at $\Im j=\pm\infty$ cancels between
+these terms and we can deform the contour as in Figure~\ref{fig:1}.
+
+Notice that the second term in
+\eqref{M1J} differs from the identity kernel \eqref{ws1} only by the
+the factor $(-1)^{s+j}$. Therefore deformation of $j$
+as in \eqref{j2} for the first term and as in \eqref{j1}
+for the second term yields
+\begin{equation}
+M_{s,N}^{11}(z,\oz')=\int_{-\infty}^{\infty}d\kappa\,
+\Bigl\{e^{\pm \pi\kappa N/4}B_{s,N}(\kappa)-e^{\pm\pi\kappa/2}
+A_s(\kappa)\Bigr\}\,
+e^{i\kappa(w-\ow')}\,\bigl(
+\cosh w\cosh\overline{w}'
+\bigr)^{2s},
+\label{Ms11}
+\end{equation}
+where $B_{s,N}(\kappa)$ is \eqref{Bs} and $A_s(\kappa)$ is
+\eqref{As}. The asymptotic behavior is
+\begin{equation}
+\sim\frac{e^{\pm N\pi\kappa/4}}{e^{N\pi|\kappa|/4}}
+-\frac{e^{\pm\pi\kappa/2}}{e^{\pi|\kappa|/2}},
+\label{B7.5}
+\end{equation}
+so the contour at infinity cancels if we choose the same sign
+in both terms.
+
+\subsection{Summary}
+Here we present the results of the calculations performed in this
+section. First we list the eigenvalues of operators
+\eqref{Mmaps} for general $N$ and discuss their properties.
+Second we present the results for $N=3$ and certain values of $s$.
+
+\subsubsection{$N$-string Neumann eigenvalues}
+\label{proposal}
+The eigenfunctions have to be normalized by dividing by
+$A_s(\kappa)$ from \eqref{As}, so the Neumann eigenvalues are
+\begin{subequations}
+\begin{align}
+\mu^{II}_{s,N}(\kappa)&=e^{\pm \pi\kappa N/4}\frac{B_{s,N}(\kappa)}{A_s(\kappa)}
+-e^{\pm\pi\kappa/2},
+\label{MII}
+\\
+\mu^{IJ}_{s,N}(\kappa)&=e^{+\frac{\pi \kappa}{4}\,(N+2I-2J)}
+\,\frac{B_{s,N}(\kappa)}{A_s(\kappa)}\quad\text{for}\quad I<J,
+\\
+\mu^{IJ}_{s,N}(\kappa)&=e^{-\frac{\pi \kappa}{4}\,(N-2I+2J)}
+\,\frac{B_{s,N}(\kappa)}{A_s(\kappa)}\quad\text{for}\quad I>J,
+\end{align}
+\label{M's}
+\end{subequations}
+where
+\begin{equation}
+\frac{B_{s,N}(\kappa)}{A_s(\kappa)}=\left[\frac{2}{N}\right]^{2s-1}\,
+\frac{\Gamma\Bigl(s+\frac{iN\kappa}{4}\Bigr)\Gamma\Bigl(s-\frac{iN\kappa}{4}\Bigr)}
+{\Gamma\Bigl(s+\frac{i\kappa}{2}\Bigr)\Gamma\Bigl(s-\frac{i\kappa}{2}\Bigr)}.
+\label{B/A}
+\end{equation}
+The sign in \eqref{MII} is undetermined. For $s=0,1$ it makes
+no difference. For $s=\frac12$ the ``$+$'' sign agrees with
+other authors.
+From \eqref{B/A} one easily obtains the recurrence formula relating  eigenvalues
+for $s$ and $s+1$:
+\begin{equation}
+\frac{B_{s,N}(\kappa)}{A_s(\kappa)}=\frac{B_{s+1,N}(\kappa)}{A_{s+1}(\kappa)}\,
+\frac{\kappa^2+4s^2}{\kappa^2+\frac{16}{N^2}s^2}.
+\label{B/As->B/As+1}
+\end{equation}
+First, this shows that $B_s(\kappa)/A_s(\kappa)$
+is not a continuous function at the point $(s,\kappa)=(0,0)$:
+\begin{equation}
+\lim_{s\to 0}\frac{B_{s,N}(0)}{A_s(0)}=\frac{N}{2}
+\quad\text{while}\quad
+\lim_{\kappa\to 0}\frac{B_{0,N}(\kappa)}{A_0(\kappa)}=\frac{2}{N}.
+\label{N22N}
+\end{equation}
+This discontinuity will be important in Section~\ref{sec:zeromodes}, when
+we will analyze the spectrum of $s=0$ Neumann matrices.
+Second, from equation \eqref{B/As->B/As+1} it follows that if
+we first take the limit $s\to 0$ then the
+continuous eigenvalues \eqref{M's}  for
+$s=0$ and $s=1$ coincide \cite{dima1}.
+
+For $2s=\text{integer}$, the products of $\Gamma$-functions
+reduce to hyperbolic ones. In this case \eqref{B/A} takes
+the following form
+\begin{equation}
+\frac{B_{1,N}(\kappa)}{A_1(\kappa)}=
+\frac{\sinh\frac{\pi\kappa}{2}}{\sinh\frac{N\pi\kappa}{4}}=
+\frac{B_{0,N}(\kappa)}{A_0(\kappa)}
+\label{B1/A1}
+\end{equation}
+for $s=1$ or $s=0$ and
+\begin{equation}
+\frac{B_{\frac12,N}(\kappa)}{A_{\frac12}(\kappa)}=
+\frac{\cosh\frac{\pi\kappa}{2}}{\cosh\frac{N\pi\kappa}{4}}.
+\end{equation}
+for $s=\frac12$.
+
+\subsubsection{Sliver and identity Neumann eigenvalues}
+
+From \eqref{MII} one can easily get the eigenvalue for
+the sliver Neumann matrix \cite{rastelli,okuyama1}
+\begin{subequations}
+\begin{equation}
+\Xi_{1}(\kappa)=\lim_{N\to\infty} \mu_{1,N}^{11}(\kappa)=
+\lim_{N\to\infty}\left[\frac{\sinh\frac{\pi\kappa}{2}}{\sinh\frac{\pi N\kappa}{4}}\,
+e^{\frac{\pi N\kappa}{4}}-e^{\frac{\pi\kappa}{2}}\right]
+=-e^{-\frac{\pi|\kappa|}{2}}.
+\label{xi1}
+\end{equation}
+Actually one can do even better. By \eqref{MII}
+\begin{equation}
+\Xi_s(\kappa)=\lim_{N\to\infty} \mu_{s,N}^{11}(\kappa)=
+\theta(\pm\kappa)\,\frac{|\kappa|^{2s-1}}{A_s(\kappa)}
+-e^{\pm\frac{\pi\kappa}{2}}.
+\end{equation}
+For $s=\frac12$ one obtains
+\begin{equation}
+\Xi_{\frac12}(\kappa)=\pm\sgn(\kappa)\,e^{-\frac{\pi|\kappa|}{2}},
+\end{equation}
+\end{subequations}
+which agrees with \cite{arevefa} (equation (3.22))
+if we choose the ``$+$'' sign in \eqref{MII}.
+
+
+The identity state is a surface state \eqref{mbra} determined by the map
+\eqref{h} for $N=1$. In our notation it is $\langle V_1|$.
+Hence it can be represented as an exponential of  a quadratic form,
+which is defined by \eqref{Mmaps} for $N=1$.
+We will denote $M_{s,N=1}\equiv \Ic_s$. The spectrum
+of the operator $\Ic_s(z,\oz')$ can be determined from
+the general formula \eqref{M's}. For the special cases $s=0,1$ and $\frac12$
+it is
+\begin{equation}
+\Ic_{0}(\kappa)=\Ic_{1}(\kappa)=1
+\quad\text{and}\quad \Ic_{\frac12}(\kappa)=\mp\tanh\frac{\pi\kappa}{4}.
+\end{equation}
+The spectrum of the identity state for $s=\frac12$ agrees with that
+found in \cite{arevefa} (equation (3.21)) if we choose the upper
+``$-$'' sign.
+
+\subsubsection{$3$-string Neumann eigenvalues}
+Finally we specialize to $N=3$, abbreviating
+\begin{equation}
+\rx\equiv\frac{\pi\kappa}{4}.
+\label{x}
+\end{equation}
+In the following formulae we suppress the index $N=3$ in
+$M^{IJ}_{s,N}$.
+Then for $s=1$ or $s=0$,
+\begin{subequations}
+\begin{equation}
+\mu_{1,0}^{II}(\kappa)=-\frac{\sinh \rx}{\sinh 3\rx},
+\qquad
+\mu_{1,0}^{I,I+1}(\kappa)=
+e^{+\rx}\,
+\frac{\sinh 2\rx}{\sinh 3\rx},
+\qquad
+\mu_{1,0}^{I+1,I}(\kappa)=e^{-\rx}\,
+\frac{\sinh 2\rx}{\sinh 3\rx};
+\label{M10}
+\end{equation}
+and for $s=\frac{1}{2}$
+\begin{equation}
+\mu_{\frac12}^{II}(\kappa)=\pm\frac{\sinh \rx}{\cosh 3\rx},
+\qquad
+\mu_{\frac12}^{I,I+1}(\kappa)=
+e^{+\rx}\,
+\frac{\cosh 2\rx}{\cosh 3\rx},
+\qquad
+\mu_{\frac12}^{I+1,I}(\kappa)=e^{-\rx}\,
+\frac{\cosh 2\rx}{\cosh 3\rx}.
+\label{M1/2}
+\end{equation}
+\end{subequations}
+
+For $s=1$, \eqref{M10} exactly coincides with Rastelli et al.
+\cite{spectroscopy}. The sign ambiguity in \eqref{MII} cancels for
+$s=1,0$ but not for $s=\frac{1}{2}$. For $s=\frac12$,
+$\mu^{IJ}_{\frac12}(\kappa)$ in \eqref{M1/2} agrees with
+Marino and Schiappa
+\cite{marino} if we choose the upper ``$+$'' sign.
+
+For $s=0$ the continuous eigenvalues are the same as for the
+case $s=1$. This is in agreement with previous authors \cite{dima1}.
+The improvement here is that we have much simpler expressions
+for the eigenvectors as compared to \cite{dima1}.
+
+In Section~\ref{sec:zeromodes} we will consider
+the zero modes more carefully. The continuum eigenvalues
+are indeed identical for $s=0$ and $s=1$.
+However there is
+an additional discrete state at $\kappa=0$ whose
+function is to replace the average position $x$ by
+the midpoint position.
+
+%\end{document}
+%\input definitions.tex
+%\begin{document}
+
+\dopage{\finkfile}
+\subsection{The $L_0$ basis}
+
+The correct procedure for regularizing zero modes
+goes back to the earliest days of string theory \cite{fubini}.
+First note that for $s\approx 0$, \eqref{id} becomes
+\begin{equation*}
+\frac{1}{2s}-\log\bigl(1-z\oz'\bigr)=\frac{1}{2s}+
+\sum_{m=1}^{\infty}\frac{(z\oz')^m}{m}.
+\end{equation*}
+The divergence implements momentum conservation
+\begin{equation}
+\exp\left[-\frac{1}{2s}\sum_{I,J}p_Ip_J\right]\sim\delta_D\bigl(\sum_I p_I\bigr),
+\label{cons}
+\end{equation}
+and is an essential part of the representation.
+
+Now consider the $m=0$ oscillator. By \eqref{Lnz} it has
+frequency $s\to 0$. We therefore define
+\begin{equation}
+a_0=\frac{1}{2}\sqrt{\frac{s}{\ap}}\,x+i\sqrt{\frac{\ap}{s}}\,p
+\label{a0}
+\end{equation}
+to get
+\begin{equation*}
+s\left(a_0^{\dag}a_0+\frac{1}{2}\right)=
+\ap p^2+\frac{s^2x^2}{4\ap},
+\end{equation*}
+which is the correct oscillator Hamiltonian.
+By \eqref{basisn} $N_0^{(s)}=(2s)^{-1/2}$, so the zero
+modes of the boson field become
+\begin{equation}
+\frac{1}{\sqrt{2s}}\,\left[\frac{\ap}{2}\right]^{\frac12}\bigl(
+a_0^{\dag}+a_0z^{-2s}
+\bigr)=\frac{x}{2}-i\ap p\,\log z,
+\label{aaxp}
+\end{equation}
+which agrees with the usual expansion \cite{GSW}.
+
+Next consider how the transformation $T$ \eqref{z'z} is
+represented for $s\to 0$. The matrix elements $T_{mn}^{(s)}$ are defined
+by
+\begin{equation*}
+T_{mn}^{(s)}=\langle n,s|T|m,s\rangle.
+\end{equation*}
+In other words
+\begin{equation}
+N_m^{(s)}(\bar{\beta} z+\bar{\alpha})^{-2s}\,
+\left(\frac{\alpha z+\beta}{\bar{\beta} z+\bar{\alpha}}\right)^m
+=\sum_{n=0}^{\infty}\,T_{mn}^{(s)}N_n^{(s)}\,z^n.
+\label{C_mn}
+\end{equation}
+If both $m,n\geqslant 1$, the $s\to 0$ limit is nonsingular.
+Differentiation with respect to $z$ of this equation for $s=0$
+and comparison of the result with equation \eqref{C_mn}
+for the case $s=1$ yields
+\begin{subequations}
+\begin{equation}
+T_{mn}^{(0)}=T_{m-1,n-1}^{(1)},\quad m,n\geqslant 1.
+\end{equation}
+The singular cases are
+\begin{align}
+T_{00}^{(0)}&=1-2s\,\log \bar{\alpha},
+\\
+T_{m0}^{(0)}&=\sqrt{\frac{2s}{m}}\,\left(\frac{\beta}{\bar{\alpha}}\right)^m
+\\
+T_{0n}^{(0)}&=\sqrt{\frac{2s}{n}}\,\left(-\frac{\bar{\beta}}{\bar{\alpha}}\right)^n
+\end{align}
+\label{Tmn}
+\end{subequations}
+The $\sqrt{2s}$ zeros cancel against $ip/\sqrt{2s}$ in \eqref{a0}. The only
+remaining divergence comes from the first term of $T_{00}^{(0)}$ and
+enforces momentum conservation by \eqref{cons}.
+
+
+\subsection{The $K_1$ basis}
+In the discrete basis, the infinite norm
+state $|0,0\rangle$ is clearly separated,
+and the $s=0$ divergences are well defined.
+In the $K_1$ basis this is not so. The spectrum is
+continuous and there is an infinite norm discrete
+``eigenvalue'' sitting on top of it at $\kappa=0$.
+However, when we go to the second quantized world sheet
+theory, these mathematical difficulties vanish.
+Nevertheless we first present an heuristic first
+quantized discussion, since otherwise the rigorous proof
+would be hard to follow.
+
+\subsubsection{First quantized discussion}
+As is well known, the $s=1$ field $-iP(z)$ is
+the derivative of the $s=0$ field $X_L(z)$.
+The $L_0$ eigenfunctions \eqref{basisn}
+are related by
+\begin{equation}
+|m+1,0\rangle(z)=\int_0^z dz' |m,1\rangle(z').
+\end{equation}
+Notice that the singular eigenfunction $|0,0\rangle(z)$ cannot
+be obtained from $s=1$ $L_0$ eigenfunctions.
+Similarly the $s=1$ eigenfunctions of $K_1$
+\begin{equation}
+|\kappa,1\rangle(z)=\bigl[A_1(\kappa)\bigr]^{\frac12}\,
+\bigl(\cosh w\bigr)^2 e^{i\kappa w}
+\end{equation}
+can be integrated using
+\begin{equation*}
+dz=i\bigl(\cosh w\bigr)^{-2}\,dw
+\end{equation*}
+to give
+\begin{equation}
+\int_0^z dz' |\kappa,1\rangle(z')=\bigl[A_1(\kappa)\bigr]^{\frac12}\,
+\frac{e^{i\kappa w}-1}{\kappa}
+\equiv |\kappa,\Omega\rangle(z).
+\label{kappaO}
+\end{equation}
+This is not quite an $s=0$ eigenfunction of $K_1$
+because the $\kappa=0$ singularity has been subtracted.
+The subtracted piece has no $z$ dependence and
+therefore corresponds to $m=0$ in the $L_0$ basis.
+This agrees with \eqref{228}. From equation \eqref{kappaO}
+it follows that the function $|\kappa,\Omega\rangle(z)$
+has the following expansion in terms of $s=1$
+polynomials \eqref{223}
+\begin{equation}
+|\kappa,\Omega\rangle(z)=\sqrt{A_1(\kappa)}\,\sum_{m=1}^{\infty}
+V_{m-1}^{(1)}(\kappa)\,\frac{z^m}{m}
+\equiv\sum_{m=1}^{\infty}\langle\kappa,1|m-1,1\rangle\,
+\frac{z^m}{\sqrt{m}}.
+\end{equation}
+Notice that the function $|\kappa,\Omega\rangle(z)$
+is exactly the one found by Rastelli et al. \cite{rastelli}.
+
+
+Now by \eqref{220}
+\begin{equation}
+A_s(\kappa)=\frac{A_{s+1}(\kappa)}{\kappa^2+4s^2}.
+\label{Ass+1}
+\end{equation}
+As $s\to 0$ the poles at $\kappa=\pm 2is$ pinch
+the $\kappa$ integral, making $\kappa=0$ very singular.
+The square root in \eqref{<mk>} may have arbitrary sign.
+We choose $\sqrt{A_1(\kappa)}$
+always positive, and $\sqrt{A_0(\kappa)}$
+to have the sign of $\kappa$.
+Hence the missing piece of \eqref{kappaO} is
+\begin{equation}
+\lim_{s\to 0} \sqrt{A_s(\kappa)} =
+\lim_{s\to 0} \frac{\sgn(\kappa)}{\sqrt{\kappa^2+4s}}\, \sqrt{A_{1+s}(\kappa)}
+=\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}.
+\label{510}
+\end{equation}
+This completes the continuum wave function
+\begin{equation}
+\lim_{s\to 0}\,|\kappa,s\rangle(z)=
+|\kappa,\Omega\rangle(z)+\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}.
+\end{equation}
+
+However as in \eqref{limits}
+\begin{equation*}
+\lim_{s\to 0}\frac{2s}{\kappa^2+4s^2}=\pi\delta(\kappa),
+\end{equation*}
+so there is very likely to be a discrete state at $\kappa=0$ picking
+up $O(s)$ terms. The easiest way to guess its wave function $|D\rangle$
+is to reverse the order of limits.
+Taking $\kappa=0$ first, \eqref{kappas} and \eqref{As} yield
+\begin{equation}
+|\kappa=0,s\rangle=\frac{2^{s-1}}{\sqrt{\pi}}\,\Gamma(s)\bigl(
+\cosh w\bigr)^{2s}\propto \frac{1}{s}+2\log\cosh w.
+\label{512}
+\end{equation}
+Now $\cosh w=(1+z^2)^{-\frac12}$, so plausible
+matrix elements with the $L_0$ basis \eqref{basisn} are
+\begin{equation}
+\langle 0|D\rangle \equiv 1,\quad
+\langle 2j+1|D\rangle =0\quad\text{and}\quad
+\langle 2j|D\rangle =(-1)^j\sqrt{\frac{2s}{2j}}
+\quad\text{for } j\geqslant 1.
+\label{scp}
+\end{equation}
+We renormalized \eqref{512} by requiring $\langle 0|D\rangle \equiv 1$.
+Just as in \eqref{Tmn}, the $\sqrt{2s}$ in
+\eqref{scp} can cancel against $p/\sqrt{2s}$ in \eqref{a0}.
+One can also derive \eqref{scp} from the second term
+in \eqref{C3'}, or by computing the residues at the pinching
+poles in Figure~\ref{fig:1}, but none of these first quantized
+derivations can be considered rigorous.
+
+
+\subsubsection{Second quantized eigenfunctions}
+Our rigorous proof will start from a different $s=0$ basis,
+intermediate between $L_0$ and $K_1$. By \eqref{id} and
+\eqref{218} the $s=1$ Cauchy kernel is
+\begin{equation*}
+\mathrm{Id}_1(z,\oz')=\bigl[1-z\oz'\bigr]^{-2}=
+\int_{-\infty}^{\infty}d\kappa\,|\kappa,1\rangle(z)
+\otimes \langle\kappa,1|(\oz').
+\end{equation*}
+Integrating both sides, we get part of the $s=0$
+Cauchy kernel:
+\begin{multline}
+\mathrm{Id}_{s\to 0}(z,\oz')=
+\Gamma(2s)-\log\bigl(1-z\oz'\bigr)+O(s)
+=\Gamma(2s)+\int_0^zd\zeta\,\int_0^{\oz'}d\bar{\zeta}'\,
+\bigl[1-\zeta\bar{\zeta}'\bigr]^{-2}
+\\
+=|0,s\rangle\otimes\langle 0,s|+
+\int_{-\infty}^{\infty}d\kappa\,|\kappa,\Omega\rangle(z)
+\otimes \langle\kappa,\Omega|(\oz').
+\label{514}
+\end{multline}
+Here the first outer product is the $m=0$ state from the $L_0$
+basis \eqref{basisn}, and the integral is over the
+outer product of \eqref{kappaO}. So if we add the $L_0$
+zero mode to the continuum states \eqref{kappaO}, we get a complete
+orthogonal basis for $s=0$. The divergence is all concentrated
+in the first term, so it is unproblematic. Of course,
+it does not quite diagonalize $K_1$, because
+\eqref{510} needs to be added to \eqref{kappaO}.
+
+Now we consider the world sheet fields. In the notations
+of \cite{GSW}
+\begin{equation}
+X_L(z)=\frac{1}{2}\,x-i\ap p\log z+i\left[\frac{\ap}{2}\right]^{\frac12}
+\sum_{m\ne 0}\frac{\alpha_m}{m z^m},
+\label{X_L}
+\end{equation}
+so oscillators satisfying $[a_m^-,\,a_n^+]=\delta_{mn}$,
+and occurring in $X_L(z)$ multiplied by
+$s=0$ normalized $L_0$ eigenfunctions \eqref{basisn},
+are
+\begin{subequations}
+\begin{align}
+a_0^{\pm}&=\frac{1}{2}\sqrt{\frac{s}{\ap}}\,x\mp i\sqrt{\frac{\ap}{s}}\,p,
+\quad\text{as in \eqref{a0}},
+\label{516a}
+\\
+a_m^{\pm}&=\mp \frac{i}{\sqrt{m}}\,\alpha_{\mp m},\quad
+m\geqslant 1.
+\end{align}
+\end{subequations}
+If we differentiate \eqref{X_L}, $a_m^+$ are
+multiplied by $\sqrt{m}z^{m-1}=|m-1,1\rangle$,
+so $a^{\pm}_{m-1}$ are also (up to a
+phase factor) normalized oscillators
+for $s=1$ with just a trivial index shift.
+We can now put these together with the matrix elements
+\eqref{<mk>} to form continuum oscillators in the $K_1$
+basis. For $s=1$ the transformation is unitary, so
+we get as in \eqref{phipm}
+\begin{equation}
+a^{\pm}(\kappa)=\mp i\sqrt{A_1(\kappa)}\,\sum_{m=1}^{\infty}
+\frac{\alpha_{\pm m}}{m}\,V_{m-1}^{(1)}(\kappa),
+\label{517}
+\end{equation}
+satisfying
+\begin{equation}
+[a^-(\kappa),\,a^+(\kappa')]=\delta(\kappa-\kappa').
+\label{518}
+\end{equation}
+By \eqref{228} we only have to add an $m=0$ term to get the
+$s=0$ continuum oscillators. By \eqref{<mk>}
+\begin{equation*}
+\langle 0,s|\kappa,s\rangle=\sgn(\kappa)\,\bigl[A_s(\kappa)\bigr]^{\frac12}\,\sqrt{2s}.
+\end{equation*}
+Using \eqref{510} and  multiplying by \eqref{516a}
+one obtains
+\begin{equation}
+a^{\pm}(\kappa,p)=\mp i\sqrt{2\ap}\, \hat{p}\,\mathscr{P}\frac{\sqrt{A_1(\kappa)}}{\kappa}
++a^{\pm}(\kappa).
+\label{519}
+\end{equation}
+The undefined term $\bigl(\mathscr{P}\,\frac{1}{\kappa}\bigr)^2$ cancels
+from the commutator, so these are satisfactory oscillators in the
+$K_1$ basis.
+
+Now we recall \eqref{514}. The first outer product is the zero mode from
+the $L_0$ basis. It corresponds to the oscillator
+$a_0^{\pm}$ of \eqref{516a}. The second outer
+product is the integrated $s=1$ $K_1$ basis \eqref{kappaO}. It
+corresponds to the oscillators $a^{\pm}(\kappa)$ of
+\eqref{517}. The $z$ integration just provides the $1/m$.
+So in this basis we can take the $s\to 0$ limit simply by replacing $a_0^{\pm}$
+by $\hat{x}$ and $\hat{p}$. Thus \eqref{514} implies that
+\begin{equation}
+\hat{x},\,\hat{p}\quad\text{and}\quad a^{\pm}(\kappa)
+\end{equation}
+form a complete orthogonal basis for the $s=0$ world sheet
+field theory. We need to replace $a^{\pm}(\kappa)$ by
+$a^{\pm}(\kappa,p)$, but the extra term in \eqref{519}
+can be added by a unitary transformation. Define
+\begin{equation}
+U_p=\exp\left\{i\sqrt{2\ap}\,\hat{p}\,
+\int_{-\infty}^{\infty}d\kappa\,
+\mathscr{P}\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+\Bigl[a^{+}(\kappa)+a^{-}(\kappa)\Bigr]\right\}.
+\label{U}
+\end{equation}
+Then by \eqref{518}
+\begin{subequations}
+\begin{align}
+a^{\pm}(\kappa,p)&=U^{-1}_p\,a^{\pm}(\kappa)\,U_p.
+\label{523a}
+\\
+\intertext{Although the momentum operator does not change
+under this unitary transformation}
+\hat{p}&=U^{-1}_p\, \hat{p}\, U_p,
+\\
+\intertext{the center of mass coordinate operator changes to}
+\hat{\xi}&\equiv U^{-1}_p\,\hat{x}\, U_p.
+\end{align}
+\end{subequations}
+To calculate $\hat{\xi}$, we insert \eqref{517} into
+\eqref{U} and do the integral by \eqref{C5}, getting
+\begin{equation}
+U_p=\exp\left[\sqrt{2\ap}\,\hat{p}
+\sum_{m=1}^{\infty}\frac{(-1)^m}{2m}\bigl(
+\alpha_{2m}-\alpha_{-2m}\bigr)\right].
+\label{Ud}
+\end{equation}
+Then
+\begin{equation}
+\hat{\xi}=\hat{x}+i\sqrt{2\ap}\,
+\sum_{m=1}^{\infty}\frac{(-1)^m}{2m}\bigl(
+\alpha_{2m}-\alpha_{-2m}\bigr)
+\equiv X_L(i)+X_L(-i)
+\label{xi}
+\end{equation}
+by \eqref{X_L}. This is just the position of the string's midpoint.
+\eqref{xi} also confirms the guess \eqref{scp}.
+The oscillator corresponding to the discrete $\kappa=0$
+state is
+\begin{equation*}
+a_D^{\pm}=\frac{1}{2}\sqrt{\frac{s}{\ap}}\,\xi\mp i\sqrt{\frac{\ap}{s}}\,p,
+\end{equation*}
+in analogy to \eqref{516a}.
+
+The unitary transformation \eqref{U} cannot change
+the commutators, so we conclude finally that $\hat{\xi},\,\hat{p}$ and
+$a^{\pm}(\kappa,p)$ form a complete orthogonal basis for
+the $s=0$ world sheet field theory with
+$K_1$ diagonal, and
+\begin{equation}
+\begin{split}
+&[\hat{\xi},\,\hat{p}]=i,\qquad
+[a^{-}(\kappa,p),\,a^+(\kappa',p)]=\delta(\kappa -\kappa'),
+\\
+&
+[\hat{\xi},\,a^{\pm}(\kappa,p)]=
+[\hat{p},\,a^{\pm}(\kappa,p)]=0.
+\end{split}
+\end{equation}
+
+The average  position $x$ has been replaced by the midpoint position
+$\xi$. In view of the importance of the string midpoint in
+Witten's string field theory, this is a very satisfying result.
+
+\subsubsection{Expansion of the world sheet field
+in $K_1$ eigenfunctions}
+Lastly we expand $X_L(z)$ in these oscillators, assuming
+that $z$ is on the boundary of the unit disk.
+Again we start with the basis \eqref{514}, where
+the wave functions \eqref{kappaO} give by \eqref{510}
+\begin{equation}
+X_L(z)=
+\frac{1}{2}\,x-i\ap p\log z
++\left[\frac{\ap}{2}\right]^{\frac12}
+\int_{-\infty}^{\infty}d\kappa\,
+\Bigl\{a^+(\kappa)\,|\kappa,\Omega\rangle(z)+
+a^-(\kappa)\,|\kappa,\Omega\rangle(\oz)\Bigr\}
+\end{equation}
+By \eqref{C1}
+\begin{equation*}
+\lim_{s\to 0}\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)\,
+\bigl[e^{i\kappa w}-1\bigr]=\lim_{s\to 0}\Gamma(2s)
+\Bigl[\bigl(\cosh w\bigr)^{-2s}-1\Bigr]
+=-\log\cosh w
+\end{equation*}
+or by \eqref{kappaO} and \eqref{510}
+\begin{equation}
+-\frac12\,\log(1+z^2)=\log\cosh w=-\int_{-\infty}^{\infty}d\kappa\,
+\mathscr{P}\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+|\kappa,\Omega\rangle(z).
+\label{logcosh}
+\end{equation}
+For $z$ on the unit circle, $\log z=\frac12\,\log\left(
+\frac{1+z^2}{1+\oz^2}\right)$, so by \eqref{519}
+\begin{equation*}
+X_L(z)=
+\frac{1}{2}\,x+\left[\frac{\ap}{2}\right]^{\frac12}
+\int_{-\infty}^{\infty}d\kappa\,
+\Bigl\{a^+(\kappa,p)\,|\kappa,\Omega\rangle(z)+
+a^-(\kappa,p)\,|\kappa,\Omega\rangle(\oz)\Bigr\}.
+\end{equation*}
+Notice that the oscillators were changed from $a^{\pm}(\kappa)$
+to $a^{\pm}(\kappa,p)$. The next step is to change $x$ to $\xi$.
+To this end we substitute expression \eqref{kappaO} for the function
+$|\kappa,\Omega\rangle(z)$ and split it into two terms by
+changing $\frac{1}{\kappa}$ to $\mathscr{P}\frac{1}{\kappa}$.
+\begin{equation*}
+X_L(z)=
+\frac{1}{2}\,x+\left[\frac{\ap}{2}\right]^{\frac12}
+\int_{-\infty}^{\infty}d\kappa\,\mathscr{P}\,
+\frac{\sqrt{A_1(\kappa)}}{\kappa}
+\Bigl\{a^+(\kappa,p)\,e^{i\kappa w}+
+a^-(\kappa,p)\,e^{-i\kappa \ow}
+-\bigl[a^+(\kappa,p)+a^-(\kappa,p)\bigr]\Bigr\}.
+\end{equation*}
+Now notice that the last term in the integral can
+also be written by \eqref{519} as $a^{+}(\kappa)+a^{-}(\kappa)$,
+i.e. the terms proportional to the momentum cancel.
+Hence the last term can be integrated as in \eqref{U}~$\to$~
+\eqref{Ud}. Finally one obtains
+\begin{equation}
+X_L(z)=\frac{1}{2}\,\xi
++\left[\frac{\ap}{2}\right]^{\frac12}
+\int_{-\infty}^{\infty}d\kappa\,\mathscr{P}\,
+\frac{\sqrt{A_1(\kappa)}}{\kappa}
+\Bigl\{a^+(\kappa,p)\,e^{i\kappa w}+
+a^-(\kappa,p)\,e^{-i\kappa \ow}\Bigr\}.
+\label{X_Lcont}
+\end{equation}
+This equation contains one subtlety: because
+of the singularity in the oscillators $a^{\pm}(\kappa,p)$
+the integral cannot be rewritten as a sum of two integrals
+corresponding to creation and annihilation parts.
+We emphasize that it is only valid for $\Im w=\pm\frac{\pi}{4}$,
+corresponding to $|z|=1$.
+
+%\end{document}
+%\input definitions.tex
+%\begin{document}
+
+\dopage{\finkfile}
+
+\subsection{Zero mode vertex}
+In this section we apply these zero mode fields to calculate the
+$s=0$ Neumann matrix.
+
+Let $I,J=1,\dots,N$ label the external lines. Then the $s=1$
+vertex in the diagonal $K_1$ basis is
+\begin{equation}
+\langle V_N^{(0)}|={}_{1\dots N}\langle 0|\exp\left\{
+\frac{1}{2}\,\sum_{I,J=1}^{N}\int_{-\infty}^{\infty}
+d\kappa\,a^{-(I)}(\kappa)\,\mu^{IJ}_{N}(\kappa)\,Ca^{-(J)}(\kappa)
+\right\}.
+\end{equation}
+Here $a^{-(I)}(\kappa)$ are the $s=1$ annihilation oscillators
+\eqref{517} acting in the $I$-th particle Hilbert space,
+$\mu_N^{IJ}(\kappa)$ are the eigenvalues \eqref{M's}
+for $s=1$ or $s=0$ and $C$ is a twist operator, which
+acts on the oscillators $a^{-}(\kappa)$ as
+\begin{equation}
+C a^{\mp}(\kappa)=-a^{\mp}(-\kappa).
+\end{equation}
+We now include the momenta by
+applying $N$ copies of the unitary transformation
+\eqref{U}. By \eqref{Ass+1} this can be written
+\begin{equation}
+U_{p^I}=\exp\left\{
+i\sqrt{2\ap}\,p^I\,\int_{-\infty}^{\infty}
+d\kappa\,\lim_{s\to 0}\sqrt{A_s(\kappa)}\,\bigl[
+a^{+(I)}(\kappa)+a^{-(I)}(\kappa)
+\bigr]
+\right\}
+\end{equation}
+which can be normal ordered by \eqref{C1}
+\begin{equation}
+U_{p^I}=\exp\left\{
+-\ap \bigl(p^I\bigr)^2\,\Gamma(2s)
+\right\}\,:U_{p^I}:\,.
+\end{equation}
+Notice now that $\sqrt{A_s(\kappa)}$ contains
+$\sgn(\kappa)$ in its definition \eqref{510} and therefore
+it is even with respect to action of the twist operator $C$.
+Thus by \eqref{523a} and \eqref{519}
+\begin{multline}
+\langle V_N^{(0)}|\{p^I\}\rangle
+\equiv\langle V_N^{(0)}|\bigotimes_{I=1}^N\,U_{p^I}
+=\lim_{s\to 0}\,{}_{1\dots N}\langle 0|\exp\left\{-\Gamma(2s)\,\sum_{I=1}^N
+\ap\bigl(p^I\bigr)^2
+\right.
+\\
++\frac{1}{2}\,\sum_{I,J=1}^N\,\int_{-\infty}^{\infty}d\kappa\,
+a^{-(I)}(\kappa,p)\,\mu^{IJ}_{N}(\kappa)\,C a^{-(J)}(\kappa,p)
+\\
+\left.
++i\sqrt{2\ap}\,\sum_{I=1}^N\,
+p^I\int_{-\infty}^{\infty}d\kappa\,\sqrt{A_s(\kappa)}\,
+a^{-(I)}(\kappa)
+\right\}
+\end{multline}
+The creation part of $U_{p^I}$ converted $a^{-(I)}(\kappa)$
+to $a^{-(I)}(\kappa,p)$ as in \eqref{523a},
+while the annihilation part gave an extra diagonal piece.
+The term in the first line and the integral in the second line
+are singular. To show that the expression in the exponent is
+meaningful let us rewrite it in terms of oscillators $a^{-}(\kappa)$:
+\begin{multline}
+\langle V_N^{(0)}|\{p^I\}\rangle
+=\lim_{s\to 0}\,{}_{1\dots N}\langle 0|\exp\left\{
++\frac{1}{2}\,\sum_{I,J=1}^N\,\int_{-\infty}^{\infty}d\kappa\,
+a^{-(I)}(\kappa)\,\mu^{IJ}_{N}(\kappa)\,C a^{-(J)}(\kappa)
+\right.
+\\
++i\sqrt{2\ap}\,\sum_{I=1}^N\,
+p^I\int_{-\infty}^{\infty}d\kappa\,
+\sqrt{A_s(\kappa)}\,\bigl[\mu^{IJ}(\kappa)+\delta^{IJ}
+\bigr]\,C
+a^{-(I)}(\kappa)
+\\
+\left.
+-\ap\sum_{I,J=1}^{N} p^I\,p^J\,\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)
+\bigl[\mu^{IJ}(\kappa)+\delta^{IJ}\bigr]
+\right\}
+\label{VN:1}
+\end{multline}
+We see now that the integral in the first line is well defined,
+however there are problems with the $s\to 0$ limit in the other
+two integrals.
+
+Consider first the last term in \eqref{VN:1}.
+Notice the following integral of \eqref{Bs} analogous
+to \eqref{C1}:
+\begin{equation}
+\int_{-\infty}^{\infty}d\kappa\,e^{\kappa y}\,B_{s,N}(\kappa)
+=\left[\frac{2}{N}\right]^{2s}\,\Gamma(2s)
+\left[\cos\Bigl(\frac{2y}{N}\Bigr)\right]^{-2s}.
+\label{ABs}
+\end{equation}
+For $I\ne J$ the integral in the last line of \eqref{VN:1}
+can be calculated by using
+\eqref{M's} and \eqref{ABs} with the result
+\begin{equation*}
+\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)\,
+\mu^{IJ}(\kappa)=\Gamma(2s)-M_{N,\,00}^{\prime\,IJ}+O(s)\quad\text{for}\quad I\ne J,
+\end{equation*}
+where
+\begin{equation}
+M_{N,\,00}^{\prime\,IJ}=\bigl(1-\delta^{IJ}\bigr)\,
+\log\Bigl[\frac{N}{2}\,\sin\frac{\pi}{N}|I-J|\Bigr].
+\label{M'IJ00}
+\end{equation}
+For $I=J$ one has to insert extra regularization
+by multiplying by $e^{\pm\varepsilon\kappa}$.
+Once again the integral can be calculated by using \eqref{ABs},
+and \eqref{C1} for the subtraction term in \eqref{MII}
+\begin{equation*}
+\int_{-\infty}^{\infty}d\kappa\,A_s(\kappa)\,
+\mu^{II}(\kappa)=\lim_{\varepsilon \to 0}
+\left\{
+\left[\frac{N}{2}\,\sin
+\frac{2\varepsilon}{N}
+\right]^{-2s}
+-\bigl(\sin\varepsilon
+\bigr)^{-2s}
+\right\}
+=0\quad
+\text{for}\quad s<1.
+\end{equation*}
+Hence the last term in the exponent is
+\begin{equation}
+-\Gamma(2s)\,\ap\left(\sum p^I\right)^2
++\ap \sum_{I,J=1}^{N} p^I M^{\prime\,IJ}_{N,\,00}\,p^J.
+\end{equation}
+The first term here is infinite. This is responsible for
+the momentum conservation and after proper normalization of the vertex
+ yields $(2\pi)^{26}\delta(\sum p^I)$ as in \eqref{cons}.
+
+Now we are ready to consider the second term in the
+exponent \eqref{VN:1}. Because of momentum conservation, we are at liberty to
+include an extra factor
+\begin{equation}
+\exp\left\{\Lambda\,i\sqrt{2\ap}\,
+\sum_{I,J=1}^{N}
+p^I\int_{-\infty}^{\infty}d\kappa\,\sqrt{A_s(\kappa)}\,
+a^{-(J)}(\kappa)\right\},
+\end{equation}
+where $\Lambda$ is an arbitrary constant. We choose
+$\Lambda=-2/N$, since by \eqref{N22N} and \eqref{M's}
+\begin{equation}
+\mu^{IJ}_N(0)=\frac{2}{N}-\delta^{IJ}.
+\end{equation}
+This turns $\delta^{IJ}$ in \eqref{VN:1} into $-\mu^{IJ}_N(0)$.
+After this substitution the $s\to 0$ limit is easy.
+Finally the $s=0$ $N$-string vertex in the $K_1$
+diagonal basis takes the form
+\begin{multline}
+\langle V_N^{(0)}|\{p^I\}\rangle
+=(2\pi)^{26}\,\delta(p^{(1)}+\dots+p^{(N)})
+\;{}_{1\dots N}\langle \Omega|\exp\left\{
++\ap \sum_{I,J=1}^{N} p^I M^{\prime\,IJ}_{N,\,00}\,p^J
+\right.
+\\
++i\sqrt{2\ap}\,\sum_{I=1}^N\,
+p^I\int_{-\infty}^{\infty}d\kappa\,
+\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+\bigl[\mu^{IJ}(\kappa)-\mu^{IJ}(0)\bigr]\,C
+a^{-(I)}(\kappa)
+\\
+\left.
++\frac{1}{2}\,\sum_{I,J=1}^N\,\int_{-\infty}^{\infty}d\kappa\,
+a^{-(I)}(\kappa)\,\mu^{IJ}_{N}(\kappa)\,C a^{-(J)}(\kappa)
+\right\},
+\label{VN:CF}
+\end{multline}
+where ${}_{1\dots N}\langle \Omega|$ is a tensor
+product of $N$ Fock vacua $\langle \Omega|$ for the
+oscillators $a^{-}(\kappa)$,
+and $M^{\prime\,IJ}_{N,\,00}$ is \eqref{M'IJ00}.
+Notice that in principal one can omit $\mathscr{P}$ in the second
+line of \eqref{VN:CF}.
+
+For $N=3$ the fact that the zero and nonzero momentum matter
+vertices are related by a unitary transformation
+agrees with \cite{DK}.
+
+
+\subsection{Vertex in the $L_0$ basis}
+To compare the vertex \eqref{VN:CF} with
+\cite{GJ} and \cite{peskin1}
+we first have to rewrite it in the discrete $L_0$
+basis. Substituting the continuum oscillators
+\eqref{517} and \eqref{<mk>} we obtain the following
+expression for the $N$-string
+vertex \eqref{mbra} in the momentum representation:
+\begin{multline}
+\langle V_N^{(0)}|\{p^{(I)}\}\rangle=(2\pi)^{26}
+\delta^{(26)}\bigl(p^{(1)}+\dots+p^{(N)}\bigr)\,
+{}_{1\dots N}\langle \Omega|\,
+\exp
+\left[+\ap \sum_{I,J=1}^N p^{(I)}p^{(J)}M_{N,\,00}^{\prime\,IJ}
+\right.
+\\
+\left.
++\sqrt{2\ap}\sum_{I,J=1}^{N}
+\sum_{m=1}^{\infty}p^{(I)}M_{N,\,0m}^{\prime\,IJ}(-1)^m a_m^{(J)}
++\frac{1}{2}
+\sum_{I,J=1}^N\sum_{m,n=1}^{\infty}
+a_m^{(I)}M_{N,\,mn}^{\prime\,IJ}(-1)^n\,a_n^{(J)}
+ \right],
+\label{V_Nmoment}
+\end{multline}
+where $a_n=\frac{\alpha_n}{\sqrt{n}}$, and
+${}_{1\dots N}\langle \Omega|$ is a tensor
+product of $N$ Fock vacua $\langle \Omega|$ for the
+oscillators $a_n^{(I)}$ ($n\geqslant 1$), and
+the matrix $M_N^{\prime\,IJ}$ is defined by
+\begin{subequations}
+\begin{align}
+M_{N,\,mn}^{\prime\,IJ}&=
+-\int_{-\infty}^{\infty}d\kappa\,\mu^{IJ}_{1,N}(\kappa)\,
+\langle m-1,1|\kappa,1\rangle\langle\kappa,1|m-1,1\rangle
+\quad\text{for}\quad m,n\geqslant 1;
+\label{M':mn}
+\\
+M_{N,\,0m}^{\prime\,IJ}&=-\int_{-\infty}^{\infty}d\kappa\,
+\Bigl[\mu_{1,N}^{IJ}(\kappa)-\mu_{1,N}^{IJ}(0)
+\Bigr]\,\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+\langle\kappa,1|m-1,1\rangle
+\quad\text{for}\quad m\geqslant 1;
+\label{M':0m}
+\\
+M_{N,\,00}^{\prime\,IJ}&=\bigl(1-\delta^{IJ}\bigr)\,
+\log\Bigl[\frac{N}{2}\,\sin\frac{\pi}{N}|I-J|\Bigr].
+\label{N:M'00}
+\end{align}
+\label{M''}
+\end{subequations}
+The sign in equation \eqref{M':mn} comes from
+the ``$i$'' in the definition of the continuum oscillator
+\eqref{517}.
+Notice that equation \eqref{M':mn} up to sign
+and obvious shift of indexes coincides
+with the $s=1$ Neumann matrix.
+
+For $N=3$ the representation \eqref{M''} of the
+momentum Neumann matrices in the $\kappa$-basis
+coincides with that in \cite{DK} (see Appendix~B therein).
+
+\subsection{Check of Neumann matrix elements}
+Lastly we check the $s=0$ Neumann matrices
+$M^{\prime\,IJ}_{N,\,mn}$ against \cite{GJ} and \cite{peskin1}.
+Let us start from $m=n=0$.
+For $N=3$ equation \eqref{N:M'00} yields
+\begin{equation}
+M_{00}^{\prime\,IJ}=\bigl(1-\delta^{IJ}\bigr)\log\frac{3\sqrt{3}}{4},
+\end{equation}
+which is in complete agrement with \cite{GJ} (paper 1).
+For general $N$ equation \eqref{N:M'00}
+gives the $00$ matrix element, which
+after taking into account momentum conservation
+coincides with the result of \cite{peskin1}
+(paper 1, equation (4.27)).
+
+
+Next we check $M^{\prime\,IJ}_{N,\,0m}$.
+From equation \eqref{M':0m} and \eqref{<mk>} one obtains the following
+integral representation
+\begin{subequations}
+\begin{equation}
+M_{N,\,0m}^{\prime\,IJ}=-\frac{1}{\sqrt{m}}\int_{-\infty}^{\infty}d\kappa\,
+\mu_{1,N}^{IJ}(\kappa)\,\mathscr{P}\,\frac{A_1(\kappa)}{\kappa}\,
+V_{m-1}^{(1)}(\kappa)
++\mu_{1,N}^{IJ}(0)\,\xi_m,
+\label{int1}
+\end{equation}
+where $\xi_m$ is by \eqref{C5}
+\begin{equation}
+\xi_m\equiv\int_{-\infty}^{\infty}d\kappa\,\mathscr{P}\,\frac{\sqrt{A_1(\kappa)}}{\kappa}\,
+\langle\kappa,1|m-1,1\rangle
+=\left\{%
+\begin{array}{ll}
+    -\frac{(-1)^k}{\sqrt{2k}}, & \hbox{for } m=2k;\\
+    0, & \hbox{for } m=2k-1 \\
+\end{array}%
+\right.
+\label{xim}
+\end{equation}
+\label{M'N}
+\end{subequations}
+and corresponds to the discrete state \eqref{scp}.
+Since $V_{m-1}(\kappa)$ are polynomials
+in $\kappa$, the integral in \eqref{int1} can be calculated by
+differentiating the following function (see \eqref{M's})
+\begin{equation}
+\int_{-\infty}^{\infty}d\kappa\,\mathscr{P}\frac{B_{1,N}(\kappa)}{\kappa}\,
+e^{\kappa y}=\frac{2}{N}\,\tan \frac{2y}{N},
+\label{BN2}
+\end{equation}
+which follows from the $s\to 0$ limit \eqref{limits}
+of the derivative of \eqref{ABs} with respect to $y$.
+This trick nicely works when $I\ne J$. For $I=J$ one
+has to insert extra regularization by multiplying
+the integrand in \eqref{int1} by $e^{\varepsilon \kappa}$,
+then one can calculate the integral via \eqref{BN2}
+and  take the limit $\varepsilon \to 0$
+after the subtraction in \eqref{MII}.
+
+For $N=3$ the equation \eqref{M'N} gives
+(we suppress index $N=3$)
+\begin{subequations}
+\begin{alignat}{3}
+\frac{1}{\sqrt{2}}\,M_{02}^{\prime\,12,13}&=-\frac{8}{27}+\frac{1}{3}=\frac{1}{27},
+\qquad\qquad &
+\frac{1}{\sqrt{2}}\,M_{02}^{\prime\,11}&=\frac{5}{54}-\frac{1}{6}=-\frac{2}{27};
+\\
+\frac{1}{\sqrt{4}}\,M_{04}^{\prime\,12,13}&=\frac{112}{729}-\frac{1}{6}=-\frac{19}{1458},
+&
+\frac{1}{\sqrt{4}}\,M_{04}^{\prime\,11}&=-\frac{167}{2916}+\frac{1}{12}=\frac{19}{729}.
+\end{alignat}
+\end{subequations}
+Here the first two numbers are from the corresponding
+terms in \eqref{M'N}, while the third is from \cite{GJ} (paper 1,
+equation (4.25)).
+We also checked
+$mn=01,\,03,\,11,\,12,\,22$. The usual Neumann
+matrices are twisted \cite{spectroscopy}, meaning that
+elements with the first index odd change sign.
+Allowing for this, we found complete agreement.
+
+
+
+
+%\end{document}"
+1,"\begin{align}
+\"
+2,"\begin{align}
+\"
+3,"\begin{align}
+\"
+4,"\begin{align}
+\"
+5,"\begin{align}
+b"
+6,"\begin{align}
+M"
+7,"\begin{align}
+\"
+8,"\begin{align}
+\"
+9,"\begin{align}
+T"
+10,"\begin{align}
+a"
+11,"\begin{align}
+a"
+12,"\begin{align}
+M"

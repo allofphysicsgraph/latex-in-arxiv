@@ -1,0 +1,120 @@
+,document
+0,"\begin{document}
+
+\title{Polarization-Free Quantum Fields and Interaction}
+\author{Gandalf Lechner\\Institut für Theoretische Physik, Universität Göttingen\\37073 Göttingen,
+  Germany\\{\small e-mail:{\tt lechner@theorie.physik.uni-goettingen.de}}}
+\maketitle
+\abstract{A new approach to the inverse scattering problem proposed by
+  Schroer, is applied to two-dimensional integrable quantum field
+  theories. For any two-particle S-matrix $S_2$ which is analytic in
+  the physical sheet, quantum fields are constructed which are
+  localizable in wedge-shaped regions of Minkowski space and whose
+  two-particle scattering is described by the given $S_2$. These
+  fields are polarization-free in the sense that they create one-particle states from the vacuum without polarization clouds. Thus they provide examples of temperate polarization-free generators in the presence of non-trivial interaction.}
+
+%==============================================================================
+\section{Introduction}
+%==============================================================================
+
+Within the context of collision theory the inverse scattering
+problem, i.e. the reconstruction of a relativistic quantum field
+theory from its scattering matrix, is one of a few remaining challenges. This
+question is important for the construction of field-theoretic models
+and is addressed in the framework of integrable theories in the so-called form-factor program \cite{ff}.\\
+It was realized by Schroer \cite{S97} that in certain models of this
+type an
+intermediate step from the S-matrix to the
+local quantum fields might be possible. These models admit an algebra of particle creation and annihilation operators satisfying exchange relations involving the two-particle S-matrix \cite{zamo}. Schroer argued that these operators can be combined to yield Bose-type fields which are localized in wedge-shaped regions and which create single particle states from the vacuum without accompanying polarization clouds ({\bf p}olarization-{\bf f}ree {\bf g}enerators). Because of their relations to the S-matrix, they promised to provide a
+new tool in the inverse scattering problem in quantum field theory.\\
+A model-independent analysis of these new objects was carried out in
+\cite{BBS}. It turned out that polarization-free generators exist in
+any local theory, but their subtle domain properties render them useless, in general. Assuming for example certain mild temperateness conditions, which are inevitable if one wants to do scattering theory, it was shown in \cite{BBS} that the underlying S-matrix must be trivial if the space-time dimension is larger than two. The results obtained for the
+two-dimensional case indicated that temperate PFGs might well exist in
+theories with a factorizing S-matrix.\\
+Based on the ideas by Schroer \cite{S97, schroer}, we prove in this
+article by an explicit construction, cf. also \cite{diplom}, that there are indeed two-dimensional,
+factorizing theories with non-trivial interaction which allow for temperate PFGs localized in wedge regions. For notational
+simplicity, we consider only one type of massive, scalar particles. Given a two-particle S-matrix $S_2$ which has to
+satisfy well-known physical requirements and additionally
+analyticity in the physical sheet, we construct temperate polarization-free
+generators as semi-local Wightman fields which give rise to a
+wedge-local theory whose two-particle scattering is described by $S_2$.\\
+Section 2 introduces Zamolodchikov's algebra which is the basis for
+our construction and a representation of this algebra on a Hilbert
+space similar to the bosonic Fock space. In section 3 we define and
+analyze the wedge-local field. Collision processes of two particles
+are studied in section 4.
+
+%======================================================================
+\section{The Zamolodchikov algebra}
+%======================================================================
+
+The starting point of our construction is the well-known
+Zamolodchikov-Faddeev algebra \cite{zamo} which is commonly used in
+the context of two-dimensional, integrable models \cite{abda}. This
+algebra is described by quadratic exchange relations involving an
+operator $S_2$ which is closely related to the two-particle S-matrix. Since we are dealing with the inverse
+scattering problem, $S_2$ is assumed to be given.\\
+We define the Zamoldchikov algebra in a somewhat abstract manner: Let
+$H$ be a Hilbert space with an antiunitary involution 
+$J_0=J_0^{-1}=J_0^*$
+acting on it and let $S_2:H\otimes H\to H\otimes H$ be a unitary
+operator which fulfills the following exchange relations with $J_0$
+and the ``flip operator'' $t:H\otimes H\to H \otimes H$,
+$t(\psi\otimes\varphi):=\varphi\otimes\psi$:
+\begin{eqnarray}\label{scon}
+  S_2 t = tS_2^*,\qquad\qquad S_2J_0^{\otimes 2}=J_0^{\otimes 2}S_2^*\;.
+\end{eqnarray}
+Here and in the following $A^{\otimes n}$ denotes the $n$-fold tensor
+product of an operator $A$ on $H$, and $H^{\otimes n}$ is the $n$-fold
+tensor product of $H$. The constraints (\ref{scon}) will translate to
+physically significant properties of the two-particle S-matrix in the
+representation of the Zamolodchikov algebra given below.\\
+Consider the free $*$-algebra generated
+by the symbols $1$, $Z(\psi),Z^{\dagger}(\psi)$, $\psi\in H$ and
+$(Z\times Z)(\psi^{(2)})$, $(Z^{\dagger}\timesZ^{\dagger})(\psi^{(2)})$,
+$(Z\timesZ^{\dagger})(\psi^{(2)})$, $(Z^{\dagger}\times Z)(\psi^{(2)})$,
+$\psi^{(2)}\in H^{\otimes 2}$. The Zamolodchikov algebra $\mathcal{Z}(H,J_0,S_2)$ is
+obtained by imposing several additional relations on this free
+algebra: All symbols are assumed to depend complex linearly on
+$\psi\in H$ and $\psi^{(2)}\in H^{\otimes 2}$, respectively. With respect to
+multiplication in $\mathcal{Z}$ we have $1$ as the neutral element and
+\begin{eqnarray}\label{z-mult}
+  Z^{\dagger}(\psi)Z(\varphi) = (Z^{\dagger}\times Z)(\psi\otimes\varphi),\qquad\quad\psi,\varphi\in H,
+\end{eqnarray}
+and analogously for the other symbols. The star operation on $\mathcal{Z}$ is
+fixed by
+\begin{eqnarray}\label{star}
+  1^* = 1,\qquad Z(\psi)^* = Z^{\dagger}(J_0\psi),\qquad\psi\in H\,.
+\end{eqnarray}
+The definition of the algebraic structure of $\mathcal{Z}$ is completed by
+requiring the relations ($\varphi,\psi\in H$)
+\begin{eqnarray}
+  Z^{\dagger}(\varphi)Z^{\dagger}(\psi) &=& (Z^{\dagger}\times 
+Z^{\dagger})(S_2^*(\psi\otimes\varphi))\label{z1}\;,\\
+  Z(\varphi)Z^{\dagger}(\psi) &=& (Z^{\dagger}\times
+  Z)(S_2(\psi\otimes\varphi)) + \langle J_0\varphi,\psi\rangle
+  \cdot 1\;. \label{z2}
+\end{eqnarray}
+Here $\langle.\,,\,.\rangle$ denotes the scalar product in $H$.
+It should be mentioned that under the assumptions  made the exchange relation
+$Z(\varphi)Z(\psi)=(Z\times Z)(S_2^*(\psi\otimes\varphi))$ holds true as
+well. All these equalities are consistent because of the properties
+(\ref{scon}) of $S_2$.\\ 
+\\
+Having defined the abstract Zamolodchikov algebra, we now turn to the
+construction of a field theoretic model based on a specific
+representation of $\mathcal{Z}$. For the sake of simplicity we consider here
+only the case of one type of scalar particles of mass $m$, although
+our results apply to a more complicated particle spectrum as well.\\
+It is convenient to parametrize the momentum $p$ of a particle by the rapidity $\theta$,
+\begin{equation}
+ p(\theta) = m\left(
+   \begin{array}{c}
+     \cosh\theta\\\sinh\theta
+   \end{array}
+   \right)\;.
+\end{equation}
+We choose as our Hilbert space the rapidity space of a particle of
+mass $m$, $H:=\mathcal{H}_1:=L^2({"

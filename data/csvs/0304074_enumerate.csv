@@ -1,0 +1,454 @@
+,enumerate
+0,"\begin{enumerate}
+\item
+  For elements $g_1,g_2\in\sym{C}_0$ we write single arrows while
+  elements $f\in\sym{C}_1$, $f\colon g_1\Rightarrow g_2$ are
+  visualized by double arrows, \cf~\eqref{eq_bigon}.
+\item
+  In a strict Lie $2$-group, we have two composition laws for the set
+  $\sym{C}_1$. One of them is the group product as $\sym{C}_1$ is now
+  a Lie group. We call it \emph{horizontal composition}
+  (see~\eqref{eq_horizontal}) and write a dot ($\cdot$) which we
+  sometimes even omit. Observe that the source of a horizontal
+  composition is the product of the sources because
+  $s\colon\sym{C}_1\to\sym{C}_0$ is a group homomorphism, \etc. The
+  other composition law is denoted by a circle ($\circ$). It
+  originates from the definition of a category and is explicitly
+  listed in Definition~\ref{def_lietwo}. This is called \emph{vertical
+  composition} (see~\eqref{eq_vertical}).
+\item
+  Notice that the exchange law~\eqref{eq_exchange2} holds because the
+  composition map
+  $\circ\colon\sym{C}_1\times_{\sym{C}_0}\sym{C}_1\to\sym{C}_1$ is a
+  Lie group homomorphism.
+\item
+  A generalization of strict $2$-groups is is provided by \emph{weak}
+  and \emph{coherent $2$-groups}~\cite{La02}. We restrict ourselves to
+  the strict case.
+\"
+1,"\begin{enumerate}
+\item
+  Each element $f\in\sym{C}_1$ has a unique decomposition of the form
+  $f=h\cdot \id_g$ where $g=s(f)\in\sym{C}_0$ and $h\in\ker
+  s\unlhd\sym{C}_1$\footnote{The notation $A\unlhd B$ indicates that
+  $A$ is a normal subgroup of $B$.}.
+\item
+  There is an isomorphism of Lie groups $\ker
+  s\rtimes\sym{C}_0\cong\sym{C}_1$, given by $(h,g)\mapsto
+  h\cdot\id_g$. The semi-direct product $\ker s\rtimes\sym{C}_0$ is
+  defined so that
+\begin{equation}
+\label{eq_semimult}
+  (h_1,g_1)\cdot(h_2,g_2):=(h_1\alpha(g_1)[h_2],g_1g_2),
+\end{equation}
+  for $h_1,h_2\in\ker s$ and $g_1,g_2\in\sym{C}_0$, where we set
+  $\alpha(g)[h]:=\id_g h\id_{g^{-1}}$.
+\item
+  The vertical composition of elements of $\sym{C}_1$ is already fixed
+  by the structure described so far. In the notation of the
+  semi-direct product, it reads
+\begin{equation}
+  (h_1,g_1)\circ(h_2,g_2) = (h_2h_1,g_1),
+\end{equation}
+  for $h_1,h_2\in\ker t$ and $g_1,g_2\in\sym{C}_0$, whenever
+  composable.
+\"
+2,"\begin{enumerate}
+\item
+  Let $\sym{C}$ be a strict Lie $2$-group. Then there is a Lie crossed
+  module $(G,H,t,\alpha)$ defined as follows. Define $G:=\sym{C}_0$
+  and $H:=\ker s$ to be the kernel of the source homomorphism. The map
+  $t\colon H\to G$ is defined to be the restriction $t|_H$ of the
+  target homomorphism. Finally, $\alpha(g)[h]:=\id_g h\id_{g^{-1}}$.
+\item
+  Let $(G,H,t,\alpha)$ be a Lie crossed module. Then there is a strict
+  Lie $2$-group $\sym{C}$ defined as follows. Set $\sym{C}_0:=G$ and
+  $\sym{C}_1:=H\rtimes G$, the semi-direct product given
+  by~\eqref{eq_semimult} using the map $\alpha$ provided by the Lie
+  crossed module. The source, target, identity and composition maps
+  are defined as follows,
+\begin{alignat}{2}
+  s&\colon H\rtimes G\to G,&\quad& (h,g)\mapsto g,\\
+  t&\colon H\rtimes G\to G,&\quad& (h,g)\mapsto t(h)g,\\
+  \id&\colon G\to H\rtimes G,&\quad& g\mapsto (1,g),
+\end{alignat}
+\begin{equation}
+  (h,g)\circ(h^\prime,g^\prime):=(h^\prime h,g),
+\end{equation}
+  for $g,g^\prime\in G$ and $h,h^\prime\in H$, whenever composable.
+\"
+3,"\begin{enumerate}
+\item
+  Horizontal composition is given by the product in $H\rtimes G$. In
+  particular, horizontal composition has the identity $(1,1)$ and
+  inverses
+\begin{equation}
+\label{eq_semiinverse}
+  {(h,g)}^{-1}=(\alpha(g^{-1})[h^{-1}],g^{-1}).
+\end{equation}
+\item
+  Any pair of elements of $H\rtimes G$ can be composed horizontally.
+\item
+  Elements $(h_2,g_2),(h_1,g_1)\in H\rtimes G$ are vertically
+  composable to $(h_1,g_1)\circ(h_2,g_2)$ if and only if
+  $g_2=t(h_1)g_1$.
+\item
+  Vertical composition has the units $\id_g=(1,g)$, $g\in G$, and is
+  always invertible,
+\begin{equation}
+  (h,g)^\ast = (h^{-1},t(h)g),
+\end{equation}
+  where we write a star ($\ast$) for the inverse with respect to
+  $\circ$.
+\item
+  The group $H\unlhd H\rtimes G$ parameterizes all morphisms that have
+  the unit $1\in G$ as their source. All morphisms whose source and
+  target agree, are parameterized by $\ker t\unlhd H$.
+\"
+4,"\begin{enumerate}
+\item
+  The \emph{trivial $2$-group}. $G$ is any Lie group and $H$ is
+  trivial. This example is uninteresting except for the fact that it
+  confirms that ordinary Lie groups form a special case of strict Lie
+  $2$-groups.
+\item
+  The \emph{purely Abelian $2$-group}. $G$ is trivial. In this case
+  $H$ is Abelian by the Eckmann--Hilton argument. This example gives
+  rise to Abelian $2$-form electrodynamics.
+\item
+  $H$ is an Abelian Lie group on which $G$ acts by some action
+  $\alpha\colon G\to\Aut H$. The map $t$ is
+  trivial\footnote{Triviality of $t$ already implies that $H$ is
+  Abelian by the Eckmann--Hilton argument. This example nevertheless
+  provides a non-trivial generalization of $2$-form electrodynamics
+  because it involves an interplay of $G$ and $H$ via the action
+  $\alpha$.}, $t\colon H\to G,h\mapsto 1$.
+\item
+  The \emph{Euclidean $2$-groups}. As a special case of (3.) we can
+  choose $H=V$ to be some $\R$-vector space (translations) equipped
+  with a non-degenerate symmetric bilinear form $\eta$. The group
+  $G=\SO(V,\eta)$ (rotations) acts on $V$. From this we obtain the
+  \emph{Poincar\'e $2$-group}~\cite{Ba02} which is employed in the
+  refined state sum model of~\cite{CrYe03a} if we choose $V=\R^{3+1}$
+  with the scalar product of Minkowski space.
+\item
+  The \emph{automorphism $2$-group}. This is finally an example with
+  non-trivial $t$. Choose any Lie group $H$ and $G:=\Aut H$ to be its
+  group of automorphisms. The action of $G$ on $H$ is the action by
+  the particular automorphism, and $t\colon H\to G$ assigns the inner
+  automorphism, conjugation by $h$, to each element $h\in H$. This
+  example gives rise to the lattice version of a theory involving the
+  connections on non-Abelian gerbes. This Lie $2$-group is related to
+  the bi-torsors that are usually employed in the study of non-Abelian
+  gerbes, see~\cite{Ba02} for details.
+\item
+  Many examples of finite and discrete crossed modules are known in
+  algebraic topology where crossed modules are a standard tool. For a
+  recent survey, see, for example~\cite{Br99}.
+\"
+5,"\begin{enumerate}
+\item
+  Maps $s^{(1)}\colon\sym{C}_1\to\sym{C}_0$,
+  $t^{(1)}\colon\sym{C}_1\to\sym{C}_0$,
+  $\id^{(1)}\colon\sym{C}_0\to\sym{C}_1$ and
+  $\cdot\colon\sym{C}_1\times_{\sym{C}_0}\sym{C}_1\to\sym{C}_1$
+  such that $(\sym{C}_0,\sym{C}_1,s^{(1)},t^{(1)},\id^{(1)},\cdot)$
+  forms a small category (Definition~\ref{def_category}). We have
+  denoted by
+\begin{equation}
+  \sym{C}_1\times_{\sym{C}_0}\sym{C}_1:=\{\,(g_1,g_2)\in\sym{C}_1\times\sym{C}_1
+    \colon\quad s^{(1)}(g_2)=t^{(1)}(g_1)\,\}
+\end{equation}
+  the pairs of horizontally composable morphisms. Compositions in this
+  category are visualized by diagrams such as~\eqref{eq_compose}.
+\item
+  Maps $s^{(2)}\colon\sym{C}_2\to\sym{C}_1$,
+  $t^{(2)}\colon\sym{C}_2\to\sym{C}_1$,
+  $\id^{(2)}\colon\sym{C}_2\to\sym{C}_1$ and
+  $\circ\colon\sym{C}_2\times_{\sym{C}_1}\sym{C}_2\to\sym{C}_2$ such
+  that $(\sym{C}_1,\sym{C}_2,s^{(2)},t^{(2)},\id^{(2)},\circ)$ forms
+  a small category. We have denoted by
+\begin{equation}
+  \sym{C}_2\times_{\sym{C}_1}\sym{C}_2:=\{\,(f_1,f_2)\in\sym{C}_1\times\sym{C}_2
+    \colon\quad s^{(2)}(f_2)=t^{(2)}(f_1)\,\}
+\end{equation}
+  the pairs of vertically composable $2$-morphisms.
+\item
+  Axioms
+\begin{equation}
+  t^{(1)}(s^{(2)}(f)) = t^{(1)}(t^{(2)}(f)),\qquad
+  s^{(1)}(s^{(2)}(f)) = s^{(1)}(t^{(2)}(f)),
+\end{equation}
+  stating that source $s^{(2)}(f)$ and target $t^{(2)}(f)$ of any
+  $2$-morphism $f\in\sym{C}_2$ are parallel morphisms, \ie\ that
+  $2$-morphisms are bi-gons as in~\eqref{eq_bigon}. The composition
+  ($\circ$) listed under item (2.) is therefore visualized by diagrams
+  such as~\eqref{eq_vertical}.
+\item
+  A map
+  $\cdot\colon\sym{C}_2\times_{\sym{C}_0}\sym{C}_2\to\sym{C}_2$
+  (horizontal composition of $2$-morphisms), where
+\begin{equation}
+  \sym{C}_2\times_{\sym{C}_0}\sym{C}_2:=\{\,(f_1,f_2)\in\sym{C}_2\times\sym{C}_2
+    \colon\quad t^{(1)}(s^{(2)}(f_1))=s^{(1)}(s^{(2)}(f_2))\,\}
+\end{equation}
+  denotes the set of all pairs of horizontally composable
+  $2$-morphisms. This composition is shown in
+  diagram~\eqref{eq_horizontal}.
+\item
+  Further axioms\footnote{In more abstract terms they state that
+  $(\sym{C}_0,\sym{C}_2,s^{(2)}\circ s^{(1)},t^{(2)}\circ
+  t^{(1)},\id^{(1)}\circ\id^{(2)},\cdot)$ forms a small category and
+  that $s^{(2)}$, $t^{(2)}$ and $\id^{(2)}$ give rise to functors
+  between this category and the one formed by $\sym{C}_0$ and
+  $\sym{C}_1$.},
+\begin{gather}
+  s^{(2)}(f_1\cdot f_2) = s^{(2)}(f_1)\cdot s^{(2)}(f_2),\\
+  t^{(2)}(f_1\cdot f_2) = t^{(2)}(f_1)\cdot t^{(2)}(f_2),\\
+  \id^{(2)}(\id^{(1)}(s^{(1)}(s^{(2)}(f))))\cdot f = f =
+    f\cdot \id^{(2)}(\id^{(1)}(t^{(1)}(t^{(2)}(f)))),\\
+  (f_1\cdot f_2)\cdot f_3 = f_1\cdot (f_2\cdot f_3),
+\end{gather}
+  for any $f\in\sym{C}_2$ and horizontally composable
+  $f_1,f_2,f_3\in\sym{C}_2$, as well as,
+\begin{gather}
+  \id^{(2)}(g_1)\cdot \id^{(2)}(g_2)=\id^{(2)}(g_1\cdot g_2),\\
+  (f_1\circ f_1^\prime)\cdot (f_2\circ f_2^\prime)
+  = (f_1\cdot f_2)\circ(f_1^\prime\cdot f_2^\prime),
+\end{gather}
+  for any $g_1,g_2\in\sym{C}_1$ and
+  $f_1,f_1^\prime,f_2,f_2^\prime\in\sym{C}_2$ whenever they are
+  composable.
+\"
+6,"\begin{enumerate}
+\item
+  $(F_0,F_1)$ is a functor
+  $(\sym{C}_0,\sym{C}_1,s^{(1)},t^{(1)},\id^{(1)},\cdot)
+  \to(\sym{C}^\prime_0,\sym{C}^\prime_1,{s^\prime}^{(1)},{t^\prime}^{(1)},{\id^\prime}^{(1)},\cdot^\prime)$,
+\item
+  $(F_1,F_2)$ is a functor
+  $(\sym{C}_1,\sym{C}_2,s^{(2)},t^{(2)},\id^{(2)},\circ)
+  \to(\sym{C}^\prime_1,\sym{C}^\prime_2,{s^\prime}^{(2)},{t^\prime}^{(2)},{\id^\prime}^{(2)},\circ^\prime)$,
+\item
+  $F_2(f_1\cdot f_2)=F_2f_1 \cdot^\prime F_2f_2$ for any
+  $(f_1,f_2)\in\sym{C}_2\times_{\sym{C}_0}\sym{C}_2$.
+\"
+7,"\begin{enumerate}
+\item
+  For any $2$-morphism $f\colon g\Rightarrow g^\prime$ in $\sym{C}$
+  between morphisms $g,g^\prime\colon x\to y$, the diagram
+\begin{equation}
+\label{eq_bigcan}
+\begin{aligned}
+\xymatrix{
+  Fx\ar[ddd]_{\eta_x}
+    \ar@{}[ddd]^(0.85){}=""fx""\ar@/^3ex/[rrr]^{Fg}=""a""\ar@/_3ex/[rrr]_{Fg^\prime}=""b""
+  &&&Fy\ar[ddd]^{\eta_y}\ar@{}[ddd]_(0.15){}=""fy""\\
+  \\
+  \\
+  \tilde Fx\ar@/^3ex/[rrr]^{\tilde Fg}=""c""\ar@/_3ex/[rrr]_{\tilde Fg^\prime}=""d""&&&\tilde Fy\\
+  \ar@{=>}^{Ff} ""a""+<0pt,-2.5ex>;""b""+<0pt,2.5ex>
+  \ar@{:>}^{\tilde Ff} ""c""+<0pt,-2.5ex>;""d""+<0pt,2.5ex>
+  \ar@{} ""fy"";""c""|(0.3){}=""f1""
+  \ar@{} ""fy"";""c""|(0.7){}=""f2""
+  \ar@{} ""b"";""fx""|(0.3){}=""b1""
+  \ar@{} ""b"";""fx""|(0.7){}=""b2""
+  \ar@{=>} ""f1"";""f2""^{\eta_{g^\prime}}
+  \ar@{:>} ""b1"";""b2""_{\eta_g}
+}
+\end{aligned}
+\end{equation}
+  $2$-commutes (this means it commutes for $2$-morphisms), \ie\ we
+  have the following equality of $2$-morphisms,
+\begin{equation}
+\label{eq_twonat}
+  (Ff\cdot\id^{(2)}_{\eta_y})\circ\eta_{g^\prime}
+  = \eta_g\circ(\id^{(2)}_{\eta_x}\cdot \tilde Ff).
+\end{equation}
+  In~\eqref{eq_bigcan}, the $2$-morphism $\eta_{g^\prime}\colon
+  F{g^\prime}\cdot\eta_y\Rightarrow \eta_x\cdot \tilde F{g^\prime}$ is
+  located at the front face of the diagram while $\eta_g\colon
+  Fg\cdot\eta_y\Rightarrow \eta_x\cdot \tilde Fg$ is at the back.
+\item
+  For any two composable morphisms $g_1\colon x\to y$ and $g_2\colon
+  y\to z$ in $\sym{C}$, the diagram
+\begin{equation}
+\begin{aligned}
+\xymatrix{
+  &&&&Fy\ar[drr]^{Fg_2}\ar[ddd]_{\eta_y}
+    \ar@{}[ddddllll]|(0.4){}=""e""\ar@{}[ddddllll]|(0.55){}=""f""\\
+  Fx\ar[ddd]_{\eta_x}\ar[urrrr]^{Fg_1}\ar[rrrrrr]^{F(g_1\cdot g_2)}&&&&&&
+  Fz\ar[ddd]^{\eta_z}\ar@{}[dddllllll]|(0.12){}=""a""\ar@{}[dddllllll]|(0.25){}=""b""
+    \ar@{}[ddll]|(0.3){}=""c""\ar@{}[ddll]|(0.6){}=""d""\\
+  \\
+  &&&&\tilde Fy\ar[drr]^{\tilde Fg_2}\\
+  \tilde Fx\ar[urrrr]^{\tilde Fg_1}\ar[rrrrrr]_{\tilde F(g_1\cdot g_2)}&&&&&&\tilde Fz
+  \ar@{=>}_{\eta_{g_1\cdot g_2}} ""a"";""b""
+  \ar@{:>}^{\eta_{g_2}} ""c"";""d""
+  \ar@{:>}^{\eta_{g_1}} ""e"";""f""
+}
+\end{aligned}
+\end{equation}
+  which has the equalities $F(g_1\cdot g_2)=Fg_1\cdot Fg_2$ at the top
+  and $\tilde F(g_1\cdot g_2)=\tilde Fg_1\cdot\tilde Fg_2$ at the bottom, $2$-commutes,
+  \ie\
+\begin{equation}
+  \eta_{g_1\cdot g_2} =
+  (\id^{(2)}_{Fg_1}\cdot\eta_{g_2})\circ(\eta_{g_1}\cdot\id^{(2)}_{\tilde Fg_2}).
+\end{equation}
+\item
+  For each object $x\in\sym{C}_0$, we have $\eta_{\id^{(1)}_x}=\id^{(2)}_{\eta_x}$.
+\"
+8,"\begin{enumerate}
+\item
+  All faces $f\in F$. We set $s^{(2)}(f)=(\del_1f)\cdot(\del_2f)$ and
+  $t^{(2)}(f)={(\del_3f)}^\ast$,
+\item
+  For each face $f\in F$ another face $f^\ast$ with the double arrow
+  reversed,
+\begin{equation}
+\begin{aligned}
+\xymatrix{
+  v_1\ar[ddrr]_{{(\del_3f)}^\ast}=""a""\ar[rr]^{\del_1f}&&v_2\ar[dd]^{\del_2f}\\
+  \\
+  &&v_3
+  \ar@{<=}_{f^\ast} [uu]+<-2.5ex,-2.5ex>;""a""+<3ex,3ex>
+}
+\end{aligned}
+\end{equation}
+  such that $s^{(2)}(f^\ast)={(\del_3f)}^\ast$ and
+  $t^{(2)}(f^\ast)=(\del_1f)\cdot (\del_2f)$,
+\item
+  For each face $f\in F$ another face $\overline{f}$ with all single
+  arrows reversed,
+\begin{equation}
+\begin{aligned}
+\xymatrix{
+  v_1&&v_2\ar[ll]_{{(\del_1f)}^\ast}\\
+  \\
+  &&v_3\ar[uu]_{{(\del_2f)}^\ast}\ar[uull]^{\del_3f}=""a""
+  \ar@{=>}_{\overline f}[uu]+<-2.5ex,-2.5ex>;""a""+<2.5ex,2.5ex>
+}
+\end{aligned}
+\end{equation}
+  such that
+  $s^{(2)}(\overline{f})={(\del_2f)}^\ast\cdot{(\del_1f)}^\ast$ and
+  $t^{(2)}(\overline{f})=\del_3f$,
+\item
+  For each edge $e\in E$ a $2$-morphism $\id^{(2)}_e$ with
+  $s^{(2)}(\id^{(2)}_e)=e=t^{(2)}(\id^{(2)}_e)$,
+\item
+  All formal horizontal $(\cdot)$ and vertical $(\circ)$ compositions
+  of faces, subject to the following relations,
+\begin{enumerate}
+\item
+  $f\circ f^\ast=\id^{(2)}_{s^{(2)}(f)}$ and $f^\ast\circ
+  f=\id^{(2)}_{t^{(2)}(f)}$,
+\item
+  $\id^{(2)}_{s^{(2)}(f)}\circ f=f=f\circ\id^{(2)}_{t^{(2)}(f)}$,
+\item
+  $f\circ\overline{f}=\id^{(2)}(\id^{(1)}(s^{(1)}(s^{(2)}(f))))$ and
+  $\overline{f}\circ f=\id^{(2)}(\id^{(1)}(t^{(1)}(s^{(2)}(f))))$,
+\item
+  $\id^{(2)}(\id^{(1)}(s^{(1)}(s^{(2)}(f))))\cdot f = f = 
+    f\cdot \id^{(2)}(\id^{(1)}(t^{(1)}(t^{(2)}(f))))$,
+\item
+  $\id^{(2)}_{e_1\cdot e_2}=\id^{(2)}_{e_1}\cdot\id^{(2)}_{e_2}$ for
+  all composable edges $e_1,e_2\in E$,
+\item
+  the exchange law, $(f_1\cdot f_2)\circ(f_1^\prime\cdot
+  f_2^\prime)=(f_1\circ f_1^\prime)\cdot(f_2\circ f_2^\prime)$,
+  whenever faces $f_1,f_1^\prime,f_2,f_2^\prime$ are composable.
+\end{enumerate}
+\"
+9,"\begin{enumerate}
+\item
+  $f\circ f^\ast=\id^{(2)}_{s^{(2)}(f)}$ and $f^\ast\circ
+  f=\id^{(2)}_{t^{(2)}(f)}$,
+\item
+  $\id^{(2)}_{s^{(2)}(f)}\circ f=f=f\circ\id^{(2)}_{t^{(2)}(f)}$,
+\item
+  $f\circ\overline{f}=\id^{(2)}(\id^{(1)}(s^{(1)}(s^{(2)}(f))))$ and
+  $\overline{f}\circ f=\id^{(2)}(\id^{(1)}(t^{(1)}(s^{(2)}(f))))$,
+\item
+  $\id^{(2)}(\id^{(1)}(s^{(1)}(s^{(2)}(f))))\cdot f = f = 
+    f\cdot \id^{(2)}(\id^{(1)}(t^{(1)}(t^{(2)}(f))))$,
+\item
+  $\id^{(2)}_{e_1\cdot e_2}=\id^{(2)}_{e_1}\cdot\id^{(2)}_{e_2}$ for
+  all composable edges $e_1,e_2\in E$,
+\item
+  the exchange law, $(f_1\cdot f_2)\circ(f_1^\prime\cdot
+  f_2^\prime)=(f_1\circ f_1^\prime)\cdot(f_2\circ f_2^\prime)$,
+  whenever faces $f_1,f_1^\prime,f_2,f_2^\prime$ are composable.
+\"
+10,"\begin{enumerate}
+\item
+  Write $f_{123}=(h,g)\in H\rtimes G$. We know that
+  $s^{(2)}(f)=g_{12}\cdot g_{23}$ and $t^{(2)}(f)=g_{13}$ so that
+  $t(h)=\alignidx{g_{13}g_{23}^{-1}g_{12}^{-1}}$ which is just the holonomy
+  around the triangle.
+\item
+  We can horizontally compose the $2$-morphism $f_{123}$ with
+  identities,
+\begin{equation}
+  {\hat f}_{123}:=\id^{(2)}_{g_{12}^{-1}}\cdot f_{123}\cdot
+  \id^{(2)}_{g_{13}^{-1}}\colon \alignidx{g_{23}\cdot g_{13}^{-1}}\Rightarrow
+  g_{12}^{-1},
+\end{equation}
+  which can be visualized as follows,
+\begin{equation}
+\begin{aligned}
+\xymatrix{
+  1&&2\ar[ll]_{g_{12}^{-1}}=""a""\ar[dd]^{g_{23}}\\
+  \\
+  &&3\ar[uull]^{g_{13}^{-1}}
+  \ar@{=>}_{{\hat f}_{123}} []+<-3ex,6ex>;""a""+<2ex,-4ex>
+}
+\end{aligned}
+\end{equation}
+  We have thus obtained another triangle on which the arrow for the
+  $2$-morphism has been `rotated'. On our generalized lattice
+  $\sym{C}^{V,E,F}$ (Example~\ref{ex_complex}), this new `rotated'
+  triangle is considered different from the original one. At first
+  sight, it seems that triangles proliferate if we `rotate' them in
+  this way. In our generalized gauge group $\sym{G}^{G,H}$, one can
+  show, however, that `triple rotation' does not change the associated
+  $2$-morphism because
+\begin{equation}
+  \id^{(2)}_{g_{13}}\cdot \id^{(2)}_{g_{23}^{-1}}\cdot \id^{(2)}_{g_{12}^{-1}}\cdot f_{123}
+  \cdot \id^{(2)}_{g_{13}^{-1}}\cdot \id^{(2)}_{g_{12}}\cdot \id^{(2)}_{g_{23}} = f_{123}.
+\end{equation}
+\item
+  From the conditions on the identities in Example~\ref{ex_complex}
+  and the properties of the strict $2$-functor, we know that for each
+  vertex $v\in V$, the identity edge $\id^{(1)}_v$ is mapped to the
+  unit in $G$,
+\begin{equation}
+  F_1\id^{(1)}_v=\id^{(1)}_\ast=1\in G,
+\end{equation}
+  while for any edge $e$, labeled by $g:=F_1e$, the unit $\id^{(2)}_e$
+  is mapped to,
+\begin{equation}
+  F_2\id^{(2)}_e=\id^{(2)}_g=(1,g)\in H\rtimes G.
+\end{equation}
+  These conditions imply that for each $2$-morphism $f_{123}$, the
+  $2$-morphism $f^\ast_{123}$ (Example~\ref{ex_complex}) is given by
+  its inverse with respect to vertical composition,
+\begin{equation}
+  f_{123}^\ast = {(h,g)}^\ast = (h^{-1},t(h)g),
+\end{equation}
+  while the other $2$-morphism $\overline{f}_{123}$ is the inverse
+  with respect to horizontal composition,
+\begin{equation}
+  \overline{f}_{123} = {(h,g)}^{-1} = (\alpha(g^{-1})[h^{-1}],g^{-1}).
+\end{equation}
+\item
+  Finally, these two ways of reversing the orientation of triangles
+  are related in the following way,
+\begin{equation}
+  \id^{(2)}_{g_{23}}\cdot\overline{f^\ast}_{123}\cdot\id^{(2)}_{g_{13}}
+  = \id^{(2)}_{g_{12}^{-1}}\cdot f.
+\end{equation}
+  A careful analysis shows that this is exactly what one expects from
+  the geometry of the triangle if these operations are combined.
+\"

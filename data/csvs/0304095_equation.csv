@@ -1,15 +1,455 @@
 ,equation
 0,"\begin{equation}
-\lim_{N\to\infty}
-\left(B_N(\la) + \frac{N}{2}V_{\al}'(\la)\right) \ =\
-N\ \frac{\la}{2a}A(\la)-(-1)^N\
-            \frac{\al}{\la} \ .
-\label{ABlim}
+{\cal Z}_N \ \sim\ \int_D [dH]_{N\times N}\  w(H)
+     \ \sim\ \int_D \prod_{k=1}^N d\lambda_k\  w(\lambda_k) \Delta_N(\Lambda)^2 \ .
+\label{defZN}
 \"
 1,"\begin{equation}
+{\cal K}_N(M_f,M_b)\ \equiv\
+\left\langle
+\frac{\prod\limits_{j=1}^{L}\det\left(m_j^{f}{\bf 1}_N+H\right)}
+{\prod\limits_{j=1}^{M}\det\left(m_j^{b}{\bf 1}_N+H\right)}
+\right\rangle .
+\label{defKN}
+\"
+2,"\begin{equation}
+\int_{D}d\lambda\, w(\lambda)
+\pi_n(\lambda)\pi_m(\lambda)=\delta_{nm}f_n
+\label{defOP}
+\"
+3,"\begin{equation}
+\vartheta_n(\epsilon)\ \equiv\ \frac{1}{2\pi i}\int_{D}
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\pi_n(\lambda)\ ,\ \ \Im m(\epsilon)\neq 0 \ .
+\label{Cauchy}
+\"
+4,"\begin{equation}
+ {\cal K}(M_f,M_b)\propto \frac{1}{\Delta(M_b)\triangle(\hat{M}_f)}
+%\\ \nonumber &&\times
+\,\mbox{det}\left|
+\begin{array}{cccc} \vartheta_{N-M}\left(-m^{b}_1\right) &
+\vartheta_{N-M+1}\left(-m^{b}_1\right) &
+\ldots & \vartheta_{N+L-1}\left(-m^{b}_1\right) \\
+\vdots &\vdots &  &\vdots \\ \vartheta_{N-M}\left(-m^{b}_M\right) &
+\vartheta_{N-M+1}\left(-m^{b}_M\right) &
+\ldots & \vartheta_{N+L-1}\left(-m^{b}_M\right) \\
+\pi_{N-M}\left(-m^{f}_1\right) &
+\pi_{N-M+1}\left(-m^{f}_1\right) &
+ \ldots & \pi_{N+L-1}\left(-m^{f}_1\right) \\
+\vdots &\vdots &  &\vdots \\  \pi_{N-M}\left(-m^{f}_L\right) &
+\pi_{N-M+1}\left(-m^{f}_L\right) & \ldots &
+\pi_{N+L-1}\left(-m^{f}_L\right)
+\end{array}\right|.
+\label{KN}
+\"
+5,"\begin{equation}
+\psi_n(\lambda)\ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\lambda)\right]\
+\frac{\pi_n(\lambda)}{\sqrt{f_n}}\ .
+\label{psi}
+\"
+6,"\begin{equation}
+w(\lambda)\ \equiv\ \lambda^{2\alpha}\exp[-NV(\lambda)] \ \equiv\ \exp[-NV_{\alpha}(\lambda)]\ .
+\label{weightUE}
+\"
+7,"\begin{equation}
+V_{\alpha}(\lambda) ~\equiv~ V(\lambda) - \frac{2\alpha}{N}\ln(\lambda) ~, \ \
+V(\lambda)=\sum_{k=1}^{d/2} \frac{g_{2k}}{2k} \lambda^{2k}\ ,
+\label{Valpha}
+\"
+8,"\begin{equation}
+\delta_{kl} ~=~
+\int_{-\infty}^{\infty}\! d\lambda~ w(\lambda) p_k(\lambda)
+      p_l(\lambda) ~, \ \ p_k(\lambda)= \pi_k(\lambda)/\sqrt{f_k}\ .
+\label{OP}
+\"
+9,"\begin{equation}
+p_n(-\lambda)\ =\ (-1)^n \ p_n(\lambda) \ .
+\label{parity}
+\"
+10,"\begin{equation}
+\lambda p_{n}(\lambda) ~=~ c_{n+1}p_{n+1}(\lambda) + c_{n}p_{n-1}(\lambda) ~,
+\label{rec}
+\"
+11,"\begin{equation}
+c_n\ =\ \sqrt{\frac{f_n}{f_{n-1}}} \ .
+\label{reccoeff}
+\"
+12,"\begin{equation}
+p_n'(\lambda) ~\equiv~ {A}_n(\lambda)p_{n-1}(\lambda) ~-~
+                       {B}_n(\lambda)p_{n}(\lambda) ~.
+\label{Pprime}
+\"
+13,"\begin{equation}
+{B}_n(\lambda) + {B}_{n-1}(\lambda) ~+~  N~ V_{\alpha}'(\lambda)
+~=~ \frac{\lambda}{c_{n-1}}{A}_{n-1}(\lambda)~.
+\label{ABV}
+\"
+14,"\begin{equation}
+\psi_n''(\lambda) - {F}_n(\lambda)\psi_n'(\lambda) + {G}_n(\lambda)
+\psi_n(\lambda) ~=~ 0 ~,
+\label{psidiff}
+\"
+15,"\begin{equation}
+h_n(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\,p_n(\lambda)\ ,\ \ \im(\epsilon)\neq 0 \ .
+\label{defCauchy}
+\"
+16,"\begin{equation}
+h_n(-\epsilon) \ =\ (-1)^{n+1}\ h_n(\epsilon)\ .
+\label{hparity}
+\"
+17,"\begin{equation}
+\tilde{h}_n(\epsilon)\ \equiv \exp[+NV_\alpha(\epsilon)]\ h_n(\epsilon)
+\label{ht}
+\"
+18,"\begin{equation}
+\chi_n(\epsilon) \ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\epsilon)\right]
+    \, \tilde{h}_n(\epsilon)
+\ =\ \exp\left[+\frac{N}{2}V_\alpha(\epsilon)\right]\, h_n(\epsilon)
+\ ,
+\label{chi}
+\"
+19,"\begin{equation}
+\chi_n''(\lambda) - {F}_n(\lambda)\chi_n'(\lambda) + {G}_n(\lambda)
+\chi_n(\lambda) ~=~ 0 ~.
+\label{chidiff}
+\"
+20,"\begin{equation}
+w^{ch}(\lambda) \ \equiv\ \lambda^{\alpha}\exp[-NV^{ch}(\lambda)]
+\ \equiv\ \exp[-NV^{ch}_{\alpha}(\lambda)].
+\label{chweight}
+\"
+21,"\begin{equation}
+V^{ch}_{\alpha}(\lambda) \ \equiv\
+\sum_{k=1}^{d/2} \frac{g_{2k}}{k} \lambda^{k}
+- \frac{\alpha}{N}\ln(\lambda) ~. \ \
+\label{Vch}
+\"
+22,"\begin{equation}
+\delta_{kl} ~=~
+\int_{0}^{\infty}\! d\lambda~ w^{ch}(\lambda) p^{(\alpha)}_{k,\ ch}(\lambda)
+p^{(\alpha)}_{l,\ ch}(\lambda) ~.
+\label{OPch}
+\"
+23,"\begin{equation}
+p_{n,\ ch}^{(\alpha)}(\lambda^2) \ =\ p_{2n}^{(\alpha+1/2)}(\lambda)\ .
+\label{OPrel}
+\"
+24,"\begin{equation}
+V^{ch}(y^2)\ =\ 2\ V(y)\ ,
+\label{Vrel}
+\"
+25,"\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{0}^{\infty}
+d\lambda\ \frac{w^{ch}(\lambda)}{\lambda-\epsilon}\ p^{(\alpha)}_{n,\ ch}(\lambda)\ ,
+\ \ \Im m(\epsilon)\neq 0\ .
+\label{chCauchy}
+\"
+26,"\begin{equation}
+h_{2n}^{(\alpha)}(\epsilon) \ =\  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+dy \frac{\epsilon}{y^2-\epsilon^2}\ \mbox{e}^{-2NV_{\alpha}(y)}\
+p^{(\alpha)}_{2n}(y) \ .
+\label{chh2}
+\"
+27,"\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon^2) \ =\ \frac{1}{\epsilon}\ h_{2n}^{(\alpha+1/2)}(\epsilon) \ ,
+\label{hrel}
+\"
+28,"\begin{equation}
+\lim_{n\to\infty}c_n=c(t=n/N)\ .
+\label{cN}
+\"
+29,"\begin{equation}
 \lim_{N\to\infty}
-\left(B_N(\la) + \frac{N}{2}V_{\al}'(\la)\right) \ =\
-N\ \frac{\la}{2a}A(\la)-(-1)^N\
-            \frac{\al}{\la} \ .
+\left(B_N(\lambda) + \frac{N}{2}V_{\alpha}'(\lambda)\right) \ =\
+N\ \frac{\lambda}{2a}A(\lambda)-(-1)^N\
+            \frac{\alpha}{\lambda} \ .
 \label{ABlim}
+\"
+30,"\begin{equation}
+N\lambda \ \equiv \ \xi\ .
+\label{hardlim}
+\"
+31,"\begin{equation}
+\varphi_N''(\xi) + \left( \pi^2\rho(0)^2+\frac{(-1)^N\alpha-\alpha^2}{\xi^2}\right)
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffhard}
+\"
+32,"\begin{equation}
+\lim_{N\to\infty}N^{2\alpha}w(\lambda)\ =\ \xi^{2\alpha} \ .
+\label{microw}
+\"
+33,"\begin{equation}
+\frac{1}{x-\epsilon}\ =\ \mbox{sgn}[\im(\epsilon)]\,i \int_0^\infty dt\
+\exp[-\mbox{sgn}[\im(\epsilon)]it(x-\epsilon)]
+\ ,\ \ \im(\epsilon)\neq 0\ .
+\label{auxint}
+\"
+34,"\begin{equation}
+N(\lambda-\lambda_*)\ \equiv\ \xi\ .
+\label{bulklim}
+\"
+35,"\begin{equation}
+\varphi_N''(\xi) +  \pi^2\rho(\lambda_*)^2
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffbulk}
+\"
+36,"\begin{equation}
+N^{\frac23}(\lambda-a)\ \equiv\ \xi \ .
+\label{edgelim}
+\"
+37,"\begin{equation}
+\varphi_N''(\xi) -  \xi \frac{2A(a)^2}{a}
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffedge}
+\"
+38,"\begin{equation}
+\mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right) \ =\
+\frac12  \,\mbox{e}^{\pm\frac{\pi i}{3}}
+\left( \mbox{Ai}(z) \ \mp i\, \mbox{Bi}(z)\right)
+\label{A's}
+\"
+39,"\begin{equation}
+\mbox{Ai}(z)\ =\ -\,\mbox{e}^{+\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{+\frac{2\pi i}{3}}\right) \ -\
+\mbox{e}^{-\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{-\frac{2\pi i}{3}}\right)
+\"
+40,"\begin{equation}
+\lim_{z\to+\infty}\mp\,\mbox{e}^{\pm\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right)
+\ =\ -i \,\mbox{Bi}(z) \ ,
+\label{equalh}
+\"
+41,"\begin{equation}
+\varphi_{N-1}(\xi)\ =\ \varphi_N(\xi)
+\ + \ \frac{1}{N^{\frac13}A(a)}\varphi_N'(\xi)
+\ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{correction}
+\"
+42,"\begin{equation}
+{\cal Z}_N \ \sim\ \int_D [dH]_{N\times N}\  w(H)
+     \ \sim\ \int_D \prod_{k=1}^N d\lambda_k\  w(\lambda_k) \Delta_N(\Lambda)^2 \ .
+\label{defZN}
+\"
+43,"\begin{equation}
+{\cal K}_N(M_f,M_b)\ \equiv\
+\left\langle
+\frac{\prod\limits_{j=1}^{L}\det\left(m_j^{f}{\bf 1}_N+H\right)}
+{\prod\limits_{j=1}^{M}\det\left(m_j^{b}{\bf 1}_N+H\right)}
+\right\rangle .
+\label{defKN}
+\"
+44,"\begin{equation}
+\int_{D}d\lambda\, w(\lambda)
+\pi_n(\lambda)\pi_m(\lambda)=\delta_{nm}f_n
+\label{defOP}
+\"
+45,"\begin{equation}
+\vartheta_n(\epsilon)\ \equiv\ \frac{1}{2\pi i}\int_{D}
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\pi_n(\lambda)\ ,\ \ \Im m(\epsilon)\neq 0 \ .
+\label{Cauchy}
+\"
+46,"\begin{equation}
+ {\cal K}(M_f,M_b)\propto \frac{1}{\Delta(M_b)\triangle(\hat{M}_f)}
+%\\ \nonumber &&\times
+\,\mbox{det}\left|
+\begin{array}{cccc} \vartheta_{N-M}\left(-m^{b}_1\right) &
+\vartheta_{N-M+1}\left(-m^{b}_1\right) &
+\ldots & \vartheta_{N+L-1}\left(-m^{b}_1\right) \\
+\vdots &\vdots &  &\vdots \\ \vartheta_{N-M}\left(-m^{b}_M\right) &
+\vartheta_{N-M+1}\left(-m^{b}_M\right) &
+\ldots & \vartheta_{N+L-1}\left(-m^{b}_M\right) \\
+\pi_{N-M}\left(-m^{f}_1\right) &
+\pi_{N-M+1}\left(-m^{f}_1\right) &
+ \ldots & \pi_{N+L-1}\left(-m^{f}_1\right) \\
+\vdots &\vdots &  &\vdots \\  \pi_{N-M}\left(-m^{f}_L\right) &
+\pi_{N-M+1}\left(-m^{f}_L\right) & \ldots &
+\pi_{N+L-1}\left(-m^{f}_L\right)
+\end{array}\right|.
+\label{KN}
+\"
+47,"\begin{equation}
+\psi_n(\lambda)\ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\lambda)\right]\
+\frac{\pi_n(\lambda)}{\sqrt{f_n}}\ .
+\label{psi}
+\"
+48,"\begin{equation}
+w(\lambda)\ \equiv\ \lambda^{2\alpha}\exp[-NV(\lambda)] \ \equiv\ \exp[-NV_{\alpha}(\lambda)]\ .
+\label{weightUE}
+\"
+49,"\begin{equation}
+V_{\alpha}(\lambda) ~\equiv~ V(\lambda) - \frac{2\alpha}{N}\ln(\lambda) ~, \ \
+V(\lambda)=\sum_{k=1}^{d/2} \frac{g_{2k}}{2k} \lambda^{2k}\ ,
+\label{Valpha}
+\"
+50,"\begin{equation}
+\delta_{kl} ~=~
+\int_{-\infty}^{\infty}\! d\lambda~ w(\lambda) p_k(\lambda)
+      p_l(\lambda) ~, \ \ p_k(\lambda)= \pi_k(\lambda)/\sqrt{f_k}\ .
+\label{OP}
+\"
+51,"\begin{equation}
+p_n(-\lambda)\ =\ (-1)^n \ p_n(\lambda) \ .
+\label{parity}
+\"
+52,"\begin{equation}
+\lambda p_{n}(\lambda) ~=~ c_{n+1}p_{n+1}(\lambda) + c_{n}p_{n-1}(\lambda) ~,
+\label{rec}
+\"
+53,"\begin{equation}
+c_n\ =\ \sqrt{\frac{f_n}{f_{n-1}}} \ .
+\label{reccoeff}
+\"
+54,"\begin{equation}
+p_n'(\lambda) ~\equiv~ {A}_n(\lambda)p_{n-1}(\lambda) ~-~
+                       {B}_n(\lambda)p_{n}(\lambda) ~.
+\label{Pprime}
+\"
+55,"\begin{equation}
+{B}_n(\lambda) + {B}_{n-1}(\lambda) ~+~  N~ V_{\alpha}'(\lambda)
+~=~ \frac{\lambda}{c_{n-1}}{A}_{n-1}(\lambda)~.
+\label{ABV}
+\"
+56,"\begin{equation}
+\psi_n''(\lambda) - {F}_n(\lambda)\psi_n'(\lambda) + {G}_n(\lambda)
+\psi_n(\lambda) ~=~ 0 ~,
+\label{psidiff}
+\"
+57,"\begin{equation}
+h_n(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+d\lambda\ \frac{w(\lambda)}{\lambda-\epsilon}\,p_n(\lambda)\ ,\ \ \im(\epsilon)\neq 0 \ .
+\label{defCauchy}
+\"
+58,"\begin{equation}
+h_n(-\epsilon) \ =\ (-1)^{n+1}\ h_n(\epsilon)\ .
+\label{hparity}
+\"
+59,"\begin{equation}
+\tilde{h}_n(\epsilon)\ \equiv \exp[+NV_\alpha(\epsilon)]\ h_n(\epsilon)
+\label{ht}
+\"
+60,"\begin{equation}
+\chi_n(\epsilon) \ \equiv\ \exp\left[-\frac{N}{2}V_\alpha(\epsilon)\right]
+    \, \tilde{h}_n(\epsilon)
+\ =\ \exp\left[+\frac{N}{2}V_\alpha(\epsilon)\right]\, h_n(\epsilon)
+\ ,
+\label{chi}
+\"
+61,"\begin{equation}
+\chi_n''(\lambda) - {F}_n(\lambda)\chi_n'(\lambda) + {G}_n(\lambda)
+\chi_n(\lambda) ~=~ 0 ~.
+\label{chidiff}
+\"
+62,"\begin{equation}
+w^{ch}(\lambda) \ \equiv\ \lambda^{\alpha}\exp[-NV^{ch}(\lambda)]
+\ \equiv\ \exp[-NV^{ch}_{\alpha}(\lambda)].
+\label{chweight}
+\"
+63,"\begin{equation}
+V^{ch}_{\alpha}(\lambda) \ \equiv\
+\sum_{k=1}^{d/2} \frac{g_{2k}}{k} \lambda^{k}
+- \frac{\alpha}{N}\ln(\lambda) ~. \ \
+\label{Vch}
+\"
+64,"\begin{equation}
+\delta_{kl} ~=~
+\int_{0}^{\infty}\! d\lambda~ w^{ch}(\lambda) p^{(\alpha)}_{k,\ ch}(\lambda)
+p^{(\alpha)}_{l,\ ch}(\lambda) ~.
+\label{OPch}
+\"
+65,"\begin{equation}
+p_{n,\ ch}^{(\alpha)}(\lambda^2) \ =\ p_{2n}^{(\alpha+1/2)}(\lambda)\ .
+\label{OPrel}
+\"
+66,"\begin{equation}
+V^{ch}(y^2)\ =\ 2\ V(y)\ ,
+\label{Vrel}
+\"
+67,"\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon) \ \equiv\ \frac{1}{2\pi i}\int_{0}^{\infty}
+d\lambda\ \frac{w^{ch}(\lambda)}{\lambda-\epsilon}\ p^{(\alpha)}_{n,\ ch}(\lambda)\ ,
+\ \ \Im m(\epsilon)\neq 0\ .
+\label{chCauchy}
+\"
+68,"\begin{equation}
+h_{2n}^{(\alpha)}(\epsilon) \ =\  \frac{1}{2\pi i}\int_{-\infty}^{+\infty}
+dy \frac{\epsilon}{y^2-\epsilon^2}\ \mbox{e}^{-2NV_{\alpha}(y)}\
+p^{(\alpha)}_{2n}(y) \ .
+\label{chh2}
+\"
+69,"\begin{equation}
+h_{n,\ ch}^{(\alpha)}(\epsilon^2) \ =\ \frac{1}{\epsilon}\ h_{2n}^{(\alpha+1/2)}(\epsilon) \ ,
+\label{hrel}
+\"
+70,"\begin{equation}
+\lim_{n\to\infty}c_n=c(t=n/N)\ .
+\label{cN}
+\"
+71,"\begin{equation}
+\lim_{N\to\infty}
+\left(B_N(\lambda) + \frac{N}{2}V_{\alpha}'(\lambda)\right) \ =\
+N\ \frac{\lambda}{2a}A(\lambda)-(-1)^N\
+            \frac{\alpha}{\lambda} \ .
+\label{ABlim}
+\"
+72,"\begin{equation}
+N\lambda \ \equiv \ \xi\ .
+\label{hardlim}
+\"
+73,"\begin{equation}
+\varphi_N''(\xi) + \left( \pi^2\rho(0)^2+\frac{(-1)^N\alpha-\alpha^2}{\xi^2}\right)
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffhard}
+\"
+74,"\begin{equation}
+\lim_{N\to\infty}N^{2\alpha}w(\lambda)\ =\ \xi^{2\alpha} \ .
+\label{microw}
+\"
+75,"\begin{equation}
+\frac{1}{x-\epsilon}\ =\ \mbox{sgn}[\im(\epsilon)]\,i \int_0^\infty dt\
+\exp[-\mbox{sgn}[\im(\epsilon)]it(x-\epsilon)]
+\ ,\ \ \im(\epsilon)\neq 0\ .
+\label{auxint}
+\"
+76,"\begin{equation}
+N(\lambda-\lambda_*)\ \equiv\ \xi\ .
+\label{bulklim}
+\"
+77,"\begin{equation}
+\varphi_N''(\xi) +  \pi^2\rho(\lambda_*)^2
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffbulk}
+\"
+78,"\begin{equation}
+N^{\frac23}(\lambda-a)\ \equiv\ \xi \ .
+\label{edgelim}
+\"
+79,"\begin{equation}
+\varphi_N''(\xi) -  \xi \frac{2A(a)^2}{a}
+\varphi_N(\xi)\ =\ 0 \ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{diffedge}
+\"
+80,"\begin{equation}
+\mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right) \ =\
+\frac12  \,\mbox{e}^{\pm\frac{\pi i}{3}}
+\left( \mbox{Ai}(z) \ \mp i\, \mbox{Bi}(z)\right)
+\label{A's}
+\"
+81,"\begin{equation}
+\mbox{Ai}(z)\ =\ -\,\mbox{e}^{+\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{+\frac{2\pi i}{3}}\right) \ -\
+\mbox{e}^{-\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{-\frac{2\pi i}{3}}\right)
+\"
+82,"\begin{equation}
+\lim_{z\to+\infty}\mp\,\mbox{e}^{\pm\frac{2\pi i}{3}}
+\mbox{Ai}\left( z\,\mbox{e}^{\pm\frac{2\pi i}{3}}\right)
+\ =\ -i \,\mbox{Bi}(z) \ ,
+\label{equalh}
+\"
+83,"\begin{equation}
+\varphi_{N-1}(\xi)\ =\ \varphi_N(\xi)
+\ + \ \frac{1}{N^{\frac13}A(a)}\varphi_N'(\xi)
+\ ,\ \ \varphi_N\in \{\psi_N,\ \chi_N\}\ .
+\label{correction}
 \"

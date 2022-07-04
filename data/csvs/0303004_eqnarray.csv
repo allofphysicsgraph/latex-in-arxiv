@@ -1,0 +1,519 @@
+,eqnarray
+0,"\begin{eqnarray}
+\label{eq:U(N)action}
+S [U]
+= 
+- \sum_{x,\ \mu > \nu } \displaystyle{\frac{\beta}{2{\rm k}N}}
+{\rm Tr}( U_\mu ( x ) U_\nu ( x + \mu ) U_\mu^\dagger ( x + \nu ) U_\nu^\dagger ( x )
++ {\rm h}.{\rm c}. )   \ ,
+\"
+1,"\begin{eqnarray}
+\label{eq:left-derivative1}
+\displaystyle{\frac{\partial}{\partial V^A_\mu}} U_\mu
+& = & 
+\displaystyle{\frac{1}{{\rm k}}}{\rm Tr}\Big( 
+( \displaystyle{\frac{\partial}{\partial V^A_\mu}} U_\mu ) U_\mu^\dagger t^B 
+\Big) t_B U_\mu        
+ = 
+\displaystyle{\frac{i}{{\rm k}}}\int^1_0 ds {\rm Tr}\Big( 
+{\rm e}^{isV_\mu}t_A {\rm e}^{-isV_\mu} t^B 
+\Big) t_B U_\mu                           \nonumber \\  
+& \equiv &
+i K_A^{\ B} (x, \mu) t_B U_\mu             \ , \nonumber \\  
+{\hat E}_A  (x, \mu)                    
+& \equiv & 
+-i L_A^{\ B} (x, \mu) \displaystyle{\frac{\partial}{\partial V^B_\mu}}      \ , \quad
+K_A^{\ C} L_C^{\ B} 
+ =  
+L_A^{\ C} K_C^{\ B} = \delta_A^{\ B}      \ . 
+\"
+2,"\begin{eqnarray}
+\label{eq:left-derivative2}
+{\hat E}_A ( x, \mu ) U_\mu (x) 
+& = &   
+t_A U_\mu (x)     \ ,      \nonumber \\  
+{\hat E}_A ( x, \mu ) U_\mu^\dagger (x) 
+& = &   
+ - U_\mu^\dagger (x) t_A     \ ,      \nonumber \\  
+ \Big[ {\hat E}_A ( x, \mu ), {\hat E}_B ( y, \nu ) \Big] 
+& = & 
+-i f_{AB}^{\ \ \ C} {\hat E}_C (x, \mu) \delta_{x,y}\delta_{\mu\nu}   \ . 
+\"
+3,"\begin{eqnarray}
+\label{eq:Maurer-Cartan}
+L_A^{\ C} \partial_C L_B^{\ D} - L_B^{\ C} \partial_C L_A^{\ D} 
+& = & 
++ f_{AB}^{\ \ \ C}L_C^{\ D}       \ , \nonumber \\  
+\partial_B K_C^{\ A} - \partial_C K_B^{\ A} 
+& = & 
+- f_{B'C'}^{\ \ \ A}K_B^{\ B'}K_C^{\ C'}       \ .
+\"
+4,"\begin{eqnarray} 
+\label{eq:U(N)Langevin-eq1}
+& {} & U_\mu (\tau + \Delta \tau ,\ x)   \nonumber \\
+& {} & \qquad \qquad 
+= 
+ {\rm exp}\Big( 
+ \Delta \tau ( {\hat E}(\tau, x, \mu )S[U( \tau )] )  
+ + i \Delta W_\mu (\tau, x)  \Big) U_\mu (\tau, x)
+\ ,   \nonumber \\ 
+& {} & < ( \Delta W_\mu )_{ij} (\tau, x ) ( \Delta W_\nu )_{kl} (\tau, y )>_{\Delta W}      \nonumber \\
+& {} & \qquad \qquad 
+= 
+2{\rm k} \Delta \tau \delta_{\mu\nu} 
+\delta_{il}\delta_{kj}  \delta_{xy}     \ , 
+\"
+5,"\begin{eqnarray}
+\label{eq:U(N)equation-of-motion}
+{\hat E}(x, \mu )S[U] 
+= 
+- \sum_{x,\ \mu > \nu } 
+\displaystyle{\frac{\beta}{2N}} 
+( U_\mu ( x ) U_\nu ( x + \mu ) U_\mu^\dagger ( x + \nu ) U_\nu^\dagger ( x )
+- {\rm h}.{\rm c}. )      \ .
+\"
+6,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq2}
+\Big( \Delta  U_\mu (\tau, x) \Big) U_\mu (\tau, x)^\dagger 
+ =  
+ \Delta \tau ( {\hat E}( \tau, x, \mu )S[U( \tau )] ) + i \Delta W_\mu (\tau, x) 
+ - \Delta\tau {\rm k}N {\bf 1}  \ . 
+\"
+7,"\begin{eqnarray}
+\label{eq:Ito-constraint1}
+\Delta U_\mu U_\mu^\dagger + U_\mu \Delta U_\mu^\dagger 
+& = & 
+- \Delta U_\mu \Delta U_\mu^\dagger + O ( \Delta\tau^{3/2})  \nonumber \\
+& = & 
+- 2\Delta\tau {\rm k}N {\bf 1} + O ( \Delta\tau^{3/2})    \ ,
+\"
+8,"\begin{eqnarray}
+\label{eq:time-development-observable} 
+\Delta F [U]   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%& = & 
+%\sum_{x, \mu}( \Delta U_\mu (x))_{ij} 
+%\displaystyle{\frac{\delta\ }{\delta (U_\mu (x))_{ij}}}F[U] 
+%+ \displaystyle{\frac{1}{2}}\sum_{x,\mu}\sum_{y,\nu}
+%( \Delta U_\mu (x) )_{ij}( \Delta U_\nu (y) )_{kl}
+%\displaystyle{\frac{\delta^2\ }{\delta (U_\mu (x))_{ij} 
+%\delta (U_\nu (y))_{kl}}}F[U]   \ , \nn 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+& = & 
+\sum_{x,\ \mu} \Big(  
+ \Delta \tau ( {\hat E}(x, \mu )S[U] ) 
++ i \Delta W_\mu (x, \mu) 
+ \Big)^A {\hat E}_A F [U]    \nonumber \\ 
+& {} & 
+\quad - \sum_{x,\ \mu} \Delta \tau {\hat E}^A {\hat E}_A  F [U]
+ - \sum_{x, \mu}\Delta\tau {\rm k}N (U_\mu (x))_{ij} \displaystyle{\frac{\delta F[U] }{\delta (U_\mu (x))_{ij}}}         \ , 
+\"
+9,"\begin{eqnarray}
+\label{eq:exercise-eq1}
+& {} & 
+\displaystyle{\frac{d}{d\tau}} < (U_\mu)_{ij}(\tau,x) 
+(U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W}         \nonumber \\ 
+& = & 
+- 2{\rm k} N  < (U_\mu)_{ij}(\tau,x) 
+(U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W} 
++ 2{\rm k}\delta_{il}\delta_{kj}\delta_{\mu\nu}\delta_{xy}  \ .
+\"
+10,"\begin{eqnarray}
+\label{eq:exercise-eq2}
+& {} & < (U_\mu)_{ij}(\tau,x) (U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W}       \nonumber \\
+& = & {\rm e}^{-2 {\rm k}N \tau} (U_\mu)_{ij}(0,x) (U_\nu)^\dagger_{kl} (0, y)  
++ \Big( 
+1 - {\rm e}^{-2{\rm k}N \tau} 
+\Big) \displaystyle{\frac{1}{N}} \delta_{il}\delta_{kj}\delta_{\mu\nu}\delta_{xy}      \ .
+\"
+11,"\begin{eqnarray}
+\label{eq:measure-eq1}
+- \Delta\tau {\rm k}N \sum_{x, \nu} ( U_\mu (x))_{ij} \displaystyle{\frac{\delta\ }{\delta (U_\mu (x))_{ij}}}F[U] 
+= 
+ \Big( F[ {\rm e}^{-{\rm k}N \Delta\tau} U ] - F[U]  
+\Big) \ .
+\"
+12,"\begin{eqnarray}
+\label{eq:probability-distribution}
+< F[U] (\tau) >_{\Delta W} \equiv \int d\mu (U) 
+F[ U]P( \tau, ( 1 - {\rm e}^{-{\rm k}N \tau} )U )   \ ,
+\"
+13,"\begin{eqnarray}
+\label{eq:U(N)Fokker-Planck-eq1} 
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau , U) 
+= 
+- \displaystyle{\frac{1}{{\rm k}}}
+\sum_{x,\ \mu} {\rm Tr} \Big\{ 
+{\hat E} ( x, \mu ) \Big( 
+{\hat E} ( x, \mu ) 
++  ( {\hat E}(x, \mu )S[U] ) 
+\Big) \Big\}  P( \tau, U )          \ .
+\"
+14,"\begin{eqnarray}
+\label{eq:SU(N)Langevin-eq1} 
+& {} & ( \Delta U_\mu (\tau, x ) ) U_\mu^\dagger (\tau, x )  \nonumber \\ 
+& {} & \qquad \qquad 
+= 
+\Delta \tau {\hat E}'( \tau, x, \mu)S[U( \tau )] + i \Delta {W'}_\mu ( \tau, x) 
+- \Delta \tau {\rm k}\displaystyle{\frac{N^2-1}{N}} {\bf 1} \ ,   \nonumber \\
+& {} & < ( \Delta {W'}_\mu )_{ij} (\tau, x ) ( \Delta {W'}_\nu )_{kl} (\tau, y )>_{\Delta W'}      \nonumber \\ 
+& {} & \qquad \qquad 
+= 
+2{\rm k} \Delta \tau \delta_{\mu\nu} 
+\Big( \delta_{il}\delta_{jk}  
+- \displaystyle{\frac{1}{N}}\delta_{ij}\delta_{kl}
+\Big) \delta_{xy}   \ ,
+\"
+15,"\begin{eqnarray}
+\label{eq:SU(N)Fokker-Planck-eq1}
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau, U ) 
+= - \displaystyle{\frac{1}{{\rm k}}}
+\sum_{x,\ \mu}{\rm Tr} \Big\{ 
+{\hat E}' ( x, \mu ) \Big( 
+{\hat E}' ( x, \mu ) 
++  ( {\hat E}'(x, \mu )S[U] ) 
+\Big) \Big\} P( \tau, U )         \ .
+\"
+16,"\begin{eqnarray}
+\label{eq:U(N)gauge-transformation}
+U_\mu ( \tau, x )
+ = 
+{\rm e}^{i\Lambda ( x ) }U_\mu ( \tau, x ) {\rm e}^{-i\Lambda ( x + \mu )}     \ , 
+\"
+17,"\begin{eqnarray}
+\label{eq:SU(N)noise-transformation}
+\Delta W_\mu ( \tau, x )
+\rightarrow {\rm e}^{i\Lambda (x)} \Delta W_\mu ( \tau, x ) {\rm e}^{-i\Lambda (x)} . 
+\"
+18,"\begin{eqnarray}
+\label{eq:U(N)gauge-transformation2}
+\delta V^A_\mu ( \tau, x )
+= \Lambda^B ( x ) L_B^{\ A} ( \tau, x, \mu )- L^A_{\ B} ( \tau, x, \mu ) \Lambda^B ( x + \mu ) \ , 
+\"
+19,"\begin{eqnarray}
+\label{eq:Killing-vector-eq1}
+\delta G^{AB} 
+& \equiv & 
+\displaystyle{\frac{\partial G^{AB}}{\partial V^C_\mu}} \delta V^C_\mu  \ , \nonumber \\
+& = & 
+G^{AC} \displaystyle{\frac{\partial \delta V^B_\mu}{\partial V^C_\mu}}  +  
+G^{CB} \displaystyle{\frac{\partial \delta V^A_\mu}{\partial V^C_\mu}}  \ . 
+\"
+20,"\begin{eqnarray}
+\label{eq:U(N)contact-term-eq1}
+( \Delta U_\mu ) U_\mu^\dagger 
+=  
+\Delta V^A_\mu (\partial_A U_\mu ) U_\mu^\dagger + {1\over 2}\Delta V^A_\mu \Delta V^B_\mu ( \partial_A \partial_B U_\mu ) U_\mu^\dagger  + O(\Delta\tau^{3/2})          \ . 
+\"
+21,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq3} 
+& {} & \Delta V^A_\mu ( \tau, x )   \nonumber \\
+& =  & 
+- i ( ( \Delta U_\mu ) U_\mu^\dagger )^B L_B^{\ A}
++  {i\over 2}\Delta V^B_\mu \Delta V^C_\mu (( \partial_B \partial_C U_\mu ) U_\mu^\dagger )^{A'}  L_{A'}^{\ A} + O(\Delta\tau^{3/2})        \nonumber \\
+& = &
+ \Big( - i \Delta \tau {\hat E}( \tau, x, \mu )S[U] +  \Delta W_\mu ( \tau, x )   
+ + i  \Delta\tau {\rm k}N {\bf 1} 
+ \Big) ^B L_B^{\ A}         \nonumber \\
+& {} & \qquad + 
+i \Delta \tau L_{B'}^{\ B} L_{B'}^{\ C} \Big( ( \partial_B \partial_C U_\mu ) U_\mu^\dagger \Big) ^{C'} L_{C'}^{\ A}   + O(\Delta\tau^{3/2})       \ ,  \nonumber \\ 
+& =  & 
+ \Big(  - i \Delta \tau {\hat E}( \tau, x, \mu )S[U] +  \Delta W_\mu ( \tau, x )   \Big) ^B L_B^{\ A} ( \tau, x, \mu )         \nonumber \\
+& {} & \qquad +  \Delta \tau ( \partial_B L_C^{\ A} ) L_C^{\ B} ( \tau, x, \mu ) 
+  + O(\Delta\tau^{3/2})     \ .
+\"
+22,"\begin{eqnarray}
+\label{eq:general-coordinate-tr}
+\Delta V^A_\mu \rightarrow ( \partial_B {V'}^A ) \Delta V^B_\mu 
++ \Delta \tau G^{BC}\partial_B \partial_C {V'}^A_\mu  \ .
+\"
+23,"\begin{eqnarray}
+\label{eq:covariant-derivative}
+\Delta_{\rm cov} V^A_\mu \equiv \Delta V^A_\mu 
++ \Delta \tau \Gamma^A_{\ \ BC}G^{BC} \ ,
+\"
+24,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq4}
+\Delta V^A_\mu ( \tau, x )
+& = & 
+-\Delta \tau G^{AB} ( \tau, x, \mu )\displaystyle{\frac{\partial S}{\partial V^B_\mu (x)}} ( \tau )    \nonumber \\
+& {} & \quad - 
+\Delta \tau \Gamma^A_{\ \ BC}G^{BC} ( \tau, x, \mu )
++ \Delta_W V^A_\mu ( \tau, x )    \ , \nonumber \\
+< \Delta_W V^A_\mu ( \tau, x )\Delta_W V^B_\nu ( \tau, \nu )>_{\Delta W} 
+& = & 
+2 \Delta \tau G^{AB}( \tau, x, \mu ) \delta_{\mu\nu}  \delta_{xy}  , 
+\"
+25,"\begin{eqnarray} 
+\label{eq:U(N)Fokker-Planck-eq2}
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau, V ) 
+= \sum_{x,\ \mu}
+\displaystyle{\frac{1}{\sqrt{G}}} \displaystyle{\frac{\partial\ }{\partial V^A_\mu (x)}} 
+\Big( 
+\sqrt{G}G^{AB} ( x, \mu )( \displaystyle{\frac{\partial\ }{\partial V^B_\mu (x)}} + 
+ \displaystyle{\frac{\partial S}{\partial V^B_\mu (x)}} )
+ P( \tau, V )  \Big)         \ ,
+\"
+26,"\begin{eqnarray}
+\label{eq:probability-distribution2}
+<F[V](\tau)>_{\Delta W} = \int\!\! F[V]P(\tau, V)\sqrt{G}dV \ . 
+\"
+27,"\begin{eqnarray}
+\label{eq:U(N)action}
+S [U]
+= 
+- \sum_{x,\ \mu > \nu } \displaystyle{\frac{\beta}{2{\rm k}N}}
+{\rm Tr}( U_\mu ( x ) U_\nu ( x + \mu ) U_\mu^\dagger ( x + \nu ) U_\nu^\dagger ( x )
++ {\rm h}.{\rm c}. )   \ ,
+\"
+28,"\begin{eqnarray}
+\label{eq:left-derivative1}
+\displaystyle{\frac{\partial}{\partial V^A_\mu}} U_\mu
+& = & 
+\displaystyle{\frac{1}{{\rm k}}}{\rm Tr}\Big( 
+( \displaystyle{\frac{\partial}{\partial V^A_\mu}} U_\mu ) U_\mu^\dagger t^B 
+\Big) t_B U_\mu        
+ = 
+\displaystyle{\frac{i}{{\rm k}}}\int^1_0 ds {\rm Tr}\Big( 
+{\rm e}^{isV_\mu}t_A {\rm e}^{-isV_\mu} t^B 
+\Big) t_B U_\mu                           \nonumber \\  
+& \equiv &
+i K_A^{\ B} (x, \mu) t_B U_\mu             \ , \nonumber \\  
+{\hat E}_A  (x, \mu)                    
+& \equiv & 
+-i L_A^{\ B} (x, \mu) \displaystyle{\frac{\partial}{\partial V^B_\mu}}      \ , \quad
+K_A^{\ C} L_C^{\ B} 
+ =  
+L_A^{\ C} K_C^{\ B} = \delta_A^{\ B}      \ . 
+\"
+29,"\begin{eqnarray}
+\label{eq:left-derivative2}
+{\hat E}_A ( x, \mu ) U_\mu (x) 
+& = &   
+t_A U_\mu (x)     \ ,      \nonumber \\  
+{\hat E}_A ( x, \mu ) U_\mu^\dagger (x) 
+& = &   
+ - U_\mu^\dagger (x) t_A     \ ,      \nonumber \\  
+ \Big[ {\hat E}_A ( x, \mu ), {\hat E}_B ( y, \nu ) \Big] 
+& = & 
+-i f_{AB}^{\ \ \ C} {\hat E}_C (x, \mu) \delta_{x,y}\delta_{\mu\nu}   \ . 
+\"
+30,"\begin{eqnarray}
+\label{eq:Maurer-Cartan}
+L_A^{\ C} \partial_C L_B^{\ D} - L_B^{\ C} \partial_C L_A^{\ D} 
+& = & 
++ f_{AB}^{\ \ \ C}L_C^{\ D}       \ , \nonumber \\  
+\partial_B K_C^{\ A} - \partial_C K_B^{\ A} 
+& = & 
+- f_{B'C'}^{\ \ \ A}K_B^{\ B'}K_C^{\ C'}       \ .
+\"
+31,"\begin{eqnarray} 
+\label{eq:U(N)Langevin-eq1}
+& {} & U_\mu (\tau + \Delta \tau ,\ x)   \nonumber \\
+& {} & \qquad \qquad 
+= 
+ {\rm exp}\Big( 
+ \Delta \tau ( {\hat E}(\tau, x, \mu )S[U( \tau )] )  
+ + i \Delta W_\mu (\tau, x)  \Big) U_\mu (\tau, x)
+\ ,   \nonumber \\ 
+& {} & < ( \Delta W_\mu )_{ij} (\tau, x ) ( \Delta W_\nu )_{kl} (\tau, y )>_{\Delta W}      \nonumber \\
+& {} & \qquad \qquad 
+= 
+2{\rm k} \Delta \tau \delta_{\mu\nu} 
+\delta_{il}\delta_{kj}  \delta_{xy}     \ , 
+\"
+32,"\begin{eqnarray}
+\label{eq:U(N)equation-of-motion}
+{\hat E}(x, \mu )S[U] 
+= 
+- \sum_{x,\ \mu > \nu } 
+\displaystyle{\frac{\beta}{2N}} 
+( U_\mu ( x ) U_\nu ( x + \mu ) U_\mu^\dagger ( x + \nu ) U_\nu^\dagger ( x )
+- {\rm h}.{\rm c}. )      \ .
+\"
+33,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq2}
+\Big( \Delta  U_\mu (\tau, x) \Big) U_\mu (\tau, x)^\dagger 
+ =  
+ \Delta \tau ( {\hat E}( \tau, x, \mu )S[U( \tau )] ) + i \Delta W_\mu (\tau, x) 
+ - \Delta\tau {\rm k}N {\bf 1}  \ . 
+\"
+34,"\begin{eqnarray}
+\label{eq:Ito-constraint1}
+\Delta U_\mu U_\mu^\dagger + U_\mu \Delta U_\mu^\dagger 
+& = & 
+- \Delta U_\mu \Delta U_\mu^\dagger + O ( \Delta\tau^{3/2})  \nonumber \\
+& = & 
+- 2\Delta\tau {\rm k}N {\bf 1} + O ( \Delta\tau^{3/2})    \ ,
+\"
+35,"\begin{eqnarray}
+\label{eq:time-development-observable} 
+\Delta F [U]   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%& = & 
+%\sum_{x, \mu}( \Delta U_\mu (x))_{ij} 
+%\displaystyle{\frac{\delta\ }{\delta (U_\mu (x))_{ij}}}F[U] 
+%+ \displaystyle{\frac{1}{2}}\sum_{x,\mu}\sum_{y,\nu}
+%( \Delta U_\mu (x) )_{ij}( \Delta U_\nu (y) )_{kl}
+%\displaystyle{\frac{\delta^2\ }{\delta (U_\mu (x))_{ij} 
+%\delta (U_\nu (y))_{kl}}}F[U]   \ , \nn 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+& = & 
+\sum_{x,\ \mu} \Big(  
+ \Delta \tau ( {\hat E}(x, \mu )S[U] ) 
++ i \Delta W_\mu (x, \mu) 
+ \Big)^A {\hat E}_A F [U]    \nonumber \\ 
+& {} & 
+\quad - \sum_{x,\ \mu} \Delta \tau {\hat E}^A {\hat E}_A  F [U]
+ - \sum_{x, \mu}\Delta\tau {\rm k}N (U_\mu (x))_{ij} \displaystyle{\frac{\delta F[U] }{\delta (U_\mu (x))_{ij}}}         \ , 
+\"
+36,"\begin{eqnarray}
+\label{eq:exercise-eq1}
+& {} & 
+\displaystyle{\frac{d}{d\tau}} < (U_\mu)_{ij}(\tau,x) 
+(U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W}         \nonumber \\ 
+& = & 
+- 2{\rm k} N  < (U_\mu)_{ij}(\tau,x) 
+(U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W} 
++ 2{\rm k}\delta_{il}\delta_{kj}\delta_{\mu\nu}\delta_{xy}  \ .
+\"
+37,"\begin{eqnarray}
+\label{eq:exercise-eq2}
+& {} & < (U_\mu)_{ij}(\tau,x) (U_\nu)^\dagger_{kl} (\tau, y)>_{\Delta W}       \nonumber \\
+& = & {\rm e}^{-2 {\rm k}N \tau} (U_\mu)_{ij}(0,x) (U_\nu)^\dagger_{kl} (0, y)  
++ \Big( 
+1 - {\rm e}^{-2{\rm k}N \tau} 
+\Big) \displaystyle{\frac{1}{N}} \delta_{il}\delta_{kj}\delta_{\mu\nu}\delta_{xy}      \ .
+\"
+38,"\begin{eqnarray}
+\label{eq:measure-eq1}
+- \Delta\tau {\rm k}N \sum_{x, \nu} ( U_\mu (x))_{ij} \displaystyle{\frac{\delta\ }{\delta (U_\mu (x))_{ij}}}F[U] 
+= 
+ \Big( F[ {\rm e}^{-{\rm k}N \Delta\tau} U ] - F[U]  
+\Big) \ .
+\"
+39,"\begin{eqnarray}
+\label{eq:probability-distribution}
+< F[U] (\tau) >_{\Delta W} \equiv \int d\mu (U) 
+F[ U]P( \tau, ( 1 - {\rm e}^{-{\rm k}N \tau} )U )   \ ,
+\"
+40,"\begin{eqnarray}
+\label{eq:U(N)Fokker-Planck-eq1} 
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau , U) 
+= 
+- \displaystyle{\frac{1}{{\rm k}}}
+\sum_{x,\ \mu} {\rm Tr} \Big\{ 
+{\hat E} ( x, \mu ) \Big( 
+{\hat E} ( x, \mu ) 
++  ( {\hat E}(x, \mu )S[U] ) 
+\Big) \Big\}  P( \tau, U )          \ .
+\"
+41,"\begin{eqnarray}
+\label{eq:SU(N)Langevin-eq1} 
+& {} & ( \Delta U_\mu (\tau, x ) ) U_\mu^\dagger (\tau, x )  \nonumber \\ 
+& {} & \qquad \qquad 
+= 
+\Delta \tau {\hat E}'( \tau, x, \mu)S[U( \tau )] + i \Delta {W'}_\mu ( \tau, x) 
+- \Delta \tau {\rm k}\displaystyle{\frac{N^2-1}{N}} {\bf 1} \ ,   \nonumber \\
+& {} & < ( \Delta {W'}_\mu )_{ij} (\tau, x ) ( \Delta {W'}_\nu )_{kl} (\tau, y )>_{\Delta W'}      \nonumber \\ 
+& {} & \qquad \qquad 
+= 
+2{\rm k} \Delta \tau \delta_{\mu\nu} 
+\Big( \delta_{il}\delta_{jk}  
+- \displaystyle{\frac{1}{N}}\delta_{ij}\delta_{kl}
+\Big) \delta_{xy}   \ ,
+\"
+42,"\begin{eqnarray}
+\label{eq:SU(N)Fokker-Planck-eq1}
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau, U ) 
+= - \displaystyle{\frac{1}{{\rm k}}}
+\sum_{x,\ \mu}{\rm Tr} \Big\{ 
+{\hat E}' ( x, \mu ) \Big( 
+{\hat E}' ( x, \mu ) 
++  ( {\hat E}'(x, \mu )S[U] ) 
+\Big) \Big\} P( \tau, U )         \ .
+\"
+43,"\begin{eqnarray}
+\label{eq:U(N)gauge-transformation}
+U_\mu ( \tau, x )
+ = 
+{\rm e}^{i\Lambda ( x ) }U_\mu ( \tau, x ) {\rm e}^{-i\Lambda ( x + \mu )}     \ , 
+\"
+44,"\begin{eqnarray}
+\label{eq:SU(N)noise-transformation}
+\Delta W_\mu ( \tau, x )
+\rightarrow {\rm e}^{i\Lambda (x)} \Delta W_\mu ( \tau, x ) {\rm e}^{-i\Lambda (x)} . 
+\"
+45,"\begin{eqnarray}
+\label{eq:U(N)gauge-transformation2}
+\delta V^A_\mu ( \tau, x )
+= \Lambda^B ( x ) L_B^{\ A} ( \tau, x, \mu )- L^A_{\ B} ( \tau, x, \mu ) \Lambda^B ( x + \mu ) \ , 
+\"
+46,"\begin{eqnarray}
+\label{eq:Killing-vector-eq1}
+\delta G^{AB} 
+& \equiv & 
+\displaystyle{\frac{\partial G^{AB}}{\partial V^C_\mu}} \delta V^C_\mu  \ , \nonumber \\
+& = & 
+G^{AC} \displaystyle{\frac{\partial \delta V^B_\mu}{\partial V^C_\mu}}  +  
+G^{CB} \displaystyle{\frac{\partial \delta V^A_\mu}{\partial V^C_\mu}}  \ . 
+\"
+47,"\begin{eqnarray}
+\label{eq:U(N)contact-term-eq1}
+( \Delta U_\mu ) U_\mu^\dagger 
+=  
+\Delta V^A_\mu (\partial_A U_\mu ) U_\mu^\dagger + {1\over 2}\Delta V^A_\mu \Delta V^B_\mu ( \partial_A \partial_B U_\mu ) U_\mu^\dagger  + O(\Delta\tau^{3/2})          \ . 
+\"
+48,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq3} 
+& {} & \Delta V^A_\mu ( \tau, x )   \nonumber \\
+& =  & 
+- i ( ( \Delta U_\mu ) U_\mu^\dagger )^B L_B^{\ A}
++  {i\over 2}\Delta V^B_\mu \Delta V^C_\mu (( \partial_B \partial_C U_\mu ) U_\mu^\dagger )^{A'}  L_{A'}^{\ A} + O(\Delta\tau^{3/2})        \nonumber \\
+& = &
+ \Big( - i \Delta \tau {\hat E}( \tau, x, \mu )S[U] +  \Delta W_\mu ( \tau, x )   
+ + i  \Delta\tau {\rm k}N {\bf 1} 
+ \Big) ^B L_B^{\ A}         \nonumber \\
+& {} & \qquad + 
+i \Delta \tau L_{B'}^{\ B} L_{B'}^{\ C} \Big( ( \partial_B \partial_C U_\mu ) U_\mu^\dagger \Big) ^{C'} L_{C'}^{\ A}   + O(\Delta\tau^{3/2})       \ ,  \nonumber \\ 
+& =  & 
+ \Big(  - i \Delta \tau {\hat E}( \tau, x, \mu )S[U] +  \Delta W_\mu ( \tau, x )   \Big) ^B L_B^{\ A} ( \tau, x, \mu )         \nonumber \\
+& {} & \qquad +  \Delta \tau ( \partial_B L_C^{\ A} ) L_C^{\ B} ( \tau, x, \mu ) 
+  + O(\Delta\tau^{3/2})     \ .
+\"
+49,"\begin{eqnarray}
+\label{eq:general-coordinate-tr}
+\Delta V^A_\mu \rightarrow ( \partial_B {V'}^A ) \Delta V^B_\mu 
++ \Delta \tau G^{BC}\partial_B \partial_C {V'}^A_\mu  \ .
+\"
+50,"\begin{eqnarray}
+\label{eq:covariant-derivative}
+\Delta_{\rm cov} V^A_\mu \equiv \Delta V^A_\mu 
++ \Delta \tau \Gamma^A_{\ \ BC}G^{BC} \ ,
+\"
+51,"\begin{eqnarray}
+\label{eq:U(N)Langevin-eq4}
+\Delta V^A_\mu ( \tau, x )
+& = & 
+-\Delta \tau G^{AB} ( \tau, x, \mu )\displaystyle{\frac{\partial S}{\partial V^B_\mu (x)}} ( \tau )    \nonumber \\
+& {} & \quad - 
+\Delta \tau \Gamma^A_{\ \ BC}G^{BC} ( \tau, x, \mu )
++ \Delta_W V^A_\mu ( \tau, x )    \ , \nonumber \\
+< \Delta_W V^A_\mu ( \tau, x )\Delta_W V^B_\nu ( \tau, \nu )>_{\Delta W} 
+& = & 
+2 \Delta \tau G^{AB}( \tau, x, \mu ) \delta_{\mu\nu}  \delta_{xy}  , 
+\"
+52,"\begin{eqnarray} 
+\label{eq:U(N)Fokker-Planck-eq2}
+\displaystyle{\frac{\partial}{\partial \tau}} P( \tau, V ) 
+= \sum_{x,\ \mu}
+\displaystyle{\frac{1}{\sqrt{G}}} \displaystyle{\frac{\partial\ }{\partial V^A_\mu (x)}} 
+\Big( 
+\sqrt{G}G^{AB} ( x, \mu )( \displaystyle{\frac{\partial\ }{\partial V^B_\mu (x)}} + 
+ \displaystyle{\frac{\partial S}{\partial V^B_\mu (x)}} )
+ P( \tau, V )  \Big)         \ ,
+\"
+53,"\begin{eqnarray}
+\label{eq:probability-distribution2}
+<F[V](\tau)>_{\Delta W} = \int\!\! F[V]P(\tau, V)\sqrt{G}dV \ . 
+\"

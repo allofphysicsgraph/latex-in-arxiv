@@ -1,0 +1,408 @@
+,section
+0,\section{Introduction}
+1,\section{Effective hydrodynamics}
+2,\section{Supersymmetric Hydrodynamics}
+3,"\section{Long-time tails in $\mathcal{N}=4$ supersymmetric
+Yang-Mills theory}"
+4,"\section
+    {Long-time tail in stress-stress correlator}
+\label {app:non-scale-inv}
+
+In a theory, which is not necessarily scale-invariant,
+inserting the stress tensor constitutive relation (\ref {eq:Tij-std})
+into the zero-wavenumber connected stress-stress correlator
+gives
+\begin {eqnarray}
+    \volume^{-1}
+    \left\langle \half \{ T^{ij}(t), T^{kl}(0) \} \right\rangle_{\rm conn}
+    &=&
+    \delta^{ij} \, \delta^{kl} \, \vs^2 \, \bar\enthalpy \, T
+    +
+    \frac{1 }{ \bar\enthalpy^2} \,
+    H^{ij}_{mn} \, H^{kl}_{pq} \, B_{\pi^m\pi^n,\pi^p\pi^q}(t)
+\nonumber \\ && {}
+    +
+    \frac{\xi }{ 2 \bar\enthalpy} \,
+    \delta^{ij} \, H^{kl}_{pq} \, B_{\vareps\vareps,\pi^p\pi^q}(t)
+    +
+    \frac{\xi }{ 2 \bar\enthalpy} \,
+    H^{ij}_{mn} \, \delta^{kl} \, B_{\pi^m\pi^n,\vareps\vareps}(t)
+\nonumber \\ && {}
+    +
+    \frac{\xi^2 }{ 4} \,
+    \delta^{ij} \, \delta^{kl} \, B_{\vareps\vareps,\vareps\vareps}(t)
+    +
+    \frac{\Xi_{ab} \, \Xi_{cd} }{ 4} \,
+    \delta^{ij} \, \delta^{kl} \, B_{\rho_a\rho_b,\rho_c\rho_d}(t)
+    \,,
+\end {eqnarray}
+where
+$
+    H^{ij}_{mn} \equiv
+    \half \, \delta^i_m \, \delta^j_n
+    + \half \, \delta^i_n \, \delta^j_m
+    - \vs^2 \, \delta^{ij} \, \delta_{mn}
+$,
+and
+\begin {eqnarray}
+    B_{\pi^i\pi^j,\pi^k\pi^l}(t)
+    &\equiv&
+    \int d^3\x \>
+    \left\langle
+	\half \left\{
+	    \pi^i(t,\x)\pi^j(t,\x), \,
+	    \pi^k(0,{\bf 0})\pi^l(0,{\bf 0})
+	\right\}
+    \right\rangle_{\rm conn} \,,
+\\
+    B_{\pi^i\pi^j,\vareps\vareps}(t)
+    &\equiv&
+    \int d^3\x \>
+    \left\langle
+	\half \left\{
+	    \pi^i(t,\x) \pi^j(t,\x), \, \vareps(0,{\bf 0})^2
+	\right\}
+    \right\rangle_{\rm conn} \,,
+\\
+    B_{\vareps\vareps,\pi^i\pi^j}(t)
+    &\equiv&
+    \int d^3\x \>
+    \left\langle
+	\half \left\{
+	    \vareps(t,\x)^2, \, \pi^i(0,{\bf 0})\pi^j(0,{\bf 0})
+	\right\}
+    \right\rangle_{\rm conn} \,,
+\\
+    B_{\vareps\vareps,\vareps\vareps}(t)
+    &\equiv&
+    \int d^3\x \>
+    \left\langle
+	\half \left\{
+	    \vareps(t,\x)^2, \, \vareps(0,{\bf 0})^2
+	\right\}
+    \right\rangle_{\rm conn} \,,
+\\
+    B_{\rho_a\rho_b,\rho_c\rho_d}(t)
+    &\equiv&
+    \int d^3\x \>
+    \left\langle
+	\half \left\{
+	    \rho_a(t,\x) \, \rho_b(t,\x), \,
+	    \rho_c(0,{\bf 0}) \, \rho_d(0,{\bf 0})
+	\right\}
+    \right\rangle_{\rm conn} \,.
+\end {eqnarray}
+Evaluating these correlators in the hydrodynamic regime,
+as described in section \ref {sec:stress tails}, yields
+\begin {eqnarray}
+    B_{\pi^i\pi^j,\pi^k\pi^l}(t)
+    &=&
+    \int \frac{d^3\k }{ (2\pi)^3} \>
+    \left[ \vphantom{\half}
+	A_{\pi^i\pi^k}(t,\k) \, A_{\pi^j\pi^l}(t,-\k)
+	+
+	A_{\pi^i\pi^l}(t,\k) \, A_{\pi^j\pi^k}(t,-\k)
+	%(k\leftrightarrow l) \vphantom{\half}
+    \right]
+\nonumber\\ &\sim&
+    \frac{\bar\enthalpy^2 \, T^2 }{ 15}
+    \left[
+	\frac{
+	    \delta^{ij} \delta^{kl} +
+	    \delta^{ik} \delta^{jl} +
+	    \delta^{il} \delta^{jk}
+	}{
+	    (4 \pi \gamma_s |t|)^{3/2}
+	}
+	+
+	\frac{
+	    2 \, \delta^{ij} \delta^{kl} +
+	    7 \, ( \delta^{ik} \delta^{jl} + \delta^{il} \delta^{jk} )
+	}{
+	     \, (8 \pi \gamma_\eta |t|)^{3/2}
+	}
+    \right] ,
+\\[2mm]
+    B_{\pi^i\pi^j,\vareps\vareps}(t)
+    &=&
+    B_{\vareps\vareps,\pi^i\pi^j}(t)
+    =
+    \int \frac{d^3\k }{ (2\pi)^3} \;\;
+    %\left[ \vphantom {\half} \,
+	2 \, A_{\pi^i\vareps}(t,\k) \, A_{\pi^j\vareps}(t,-\k)
+    %\right]
+\nonumber\\ &\sim&
+    \frac{\bar\enthalpy^2 \, T^2 }{ 3 \, v_s^2} \,
+    \frac{\delta^{ij} }{ (4 \pi \gamma_s |t|)^{3/2}} \,,
+\\[2mm]
+    B_{\vareps\vareps,\vareps\vareps}(t)
+    &=&
+    \int \frac{d^3\k }{ (2\pi)^3} \;\;
+    %\left[ \vphantom {\half} \,
+	2 \, A_{\vareps\vareps}(t,\k) \, A_{\vareps\vareps}(t,-\k)
+    %\right] \,
+\nonumber\\ &\sim&
+    \frac{\bar\enthalpy^2 \, T^2 }{ v_s^4} \,
+    \frac{1 }{ (4 \pi \gamma_s |t|)^{3/2}} \,,
+\\[2mm]
+    B_{\rho_a\rho_b,\rho_c\rho_d}(t)
+    &=&
+    \int \frac{d^3\k }{ (2\pi)^3} \>
+    \left[ \vphantom{\half}
+	A_{\rho_a\rho_c}(t,\k) \, A_{\rho_b\rho_d}(t,-\k)
+	+
+	A_{\rho_a\rho_d}(t,\k) \, A_{\rho_b\rho_c}(t,-\k)
+    \right]
+\nonumber\\ &\sim&
+    \chi^{1/2}_{aa'}
+    \chi^{1/2}_{bb'}
+    \chi^{1/2}_{cc'}
+    \chi^{1/2}_{dd'} \>
+    \frac{
+	\delta_{a'c'} \, \delta_{b'd'} + \delta_{a'd'} \, \delta_{b'c'}
+    }{
+	[4 \pi (D_{a'} {+} D_{b'}) |t|]^{3/2}
+    }
+    \,.
+\label {eq:4rhos}
+\end {eqnarray}
+In writing the result (\ref {eq:4rhos}),
+we have chosen to use a basis for conserved charges in which
+the symmetric matrix $\chi^{-1/2} D \chi^{1/2}$ is diagonal
+and has eigenvalues $\{ D_a \}$.
+
+Putting everything together yields
+\begin {eqnarray}
+    \volume^{-1}
+    \left\langle \half \left\{ T^{ij}(t), T^{kl}(0) \right\} \right\rangle
+    &=&
+    \delta_{ij} \delta_{kl} \, T \, \bar\enthalpy \, v_s^2
+    +
+	\half \, \delta_{ij} \, \delta_{kl} \,
+	\sum_{a,b}
+	\frac{
+	    \left[ (\chi^{1/2} \, \Xi \, \chi^{1/2})_{ab} \right]^2
+	}{
+	    [4\pi (D_a{+}D_b) |t|]^{3/2}
+	}
+\nonumber\\ && {}
+    +
+	\frac{2T^2 }{ 15} \,
+	(
+	    \half \, \delta_{ik} \delta_{jl}
+	  + \half \, \delta_{il} \delta_{jk}
+	  - \coeff 13 \, \delta_{ij} \delta_{kl}
+	)
+	\!\left[
+	    \frac{1 }{ (4\pi \gamma_s |t|)^{3/2}}
+	    +
+	    \frac{7 }{ (8\pi \gamma_\eta |t|)^{3/2}}
+	\right]\!
+\nonumber\\ && {}
+    +
+	\frac{T^2 }{ 9} \, \delta_{ij} \, \delta_{kl}
+	\left[
+	    \frac{
+		(1 - 3\vs^2 + \coeff 32 \vs^{-2} \xi \bar\enthalpy)^2
+	    }{
+		(4\pi \gamma_s |t|)^{3/2}
+	    }
+	+
+	    \frac{
+		4 \, (1 - 3\vs^2)^2
+	    }{
+		(8\pi \gamma_\eta |t|)^{3/2}
+	    }
+	\right] ,
+\label {eq:stresstail}
+\end {eqnarray}
+up to terms vanishing faster than $|t|^{-3/2}$ as $|t| \to \infty$.
+
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sloppy
+
+\begin {thebibliography}{99}
+
+\bibitem{Maldacena}
+  J.~M.~Maldacena,
+  {\it ``The Large N Limit of Superconformal Field Theories and Supergravity,''}
+  Adv. Theor. Math. Phys. {\bf 2}, 231 (1998),
+  {\tt hep-th/9711200}.
+%%CITATION = HEP-TH 9711200;%%
+
+\bibitem{Gubser Klebanov Polyakov}
+  S.~S.~Gubser, I.~R.~Klebanov, A.~M.~Polyakov,
+  {\it ``Gauge Theory Correlators from Non-Critical String Theory,''}
+  Phys. Lett. {\bf B428}, 105 (1998),
+  {\tt hep-th/9802109}.
+%%CITATION = HEP-TH 9802109;%%
+
+\bibitem{Witten1}
+  E.~Witten,
+  {\it ``Anti-de Sitter space and holography,''}
+  Adv. Theor. Math. Phys. {\bf 2}, 253 (1998),
+  {\tt hep-th/9802150}.
+%%CITATION = HEP-TH 9802150;%%
+
+\bibitem{AdSCFT Review}
+  For a review of the subject see:
+  O.~Aharony, S.~S.~Gubser, J.~M.~Maldacena, H.~Ooguri, Y.~Oz,
+  {\it ``Large N Field Theories, String Theory and Gravity,''}
+  Phys. Rept. {\bf 323}, 183 (2000),
+  {\tt hep-th/9905111}.
+%%CITATION = HEP-TH 9905111;%%
+
+\bibitem{Witten2}
+  E.~Witten,
+  {\it ``Anti-de Sitter space, thermal phase transition, and confinement
+  in gauge theories,''}
+  Adv. Theor. Math. Phys. {\bf 2}, 505 (1998),
+  {\tt hep-th/9803131}.
+%%CITATION = HEP-TH 9803131;%%
+
+\bibitem{review of tails}
+  Y.~Pomeau and P.~R\'esibois,
+  {\it ``Time dependent correlation functions and
+  mode-mode coupling theories,''}
+  Phys. Rept. {\bf 19}, 63 (1975).
+
+\bibitem{Balescu}
+   R.~Balescu,
+   {\it Equilibrium and nonequilibrium statistical mechanics},
+   Wiley, 1975. %(Sect. 21.5 contains the relevant discussion)
+
+\bibitem{Larry and Peter}
+  P.~Arnold and L.~G.~Yaffe,
+  {\it ``Effective theories for real-time correlations in hot plasmas,''}
+  Phys. Rev. D {\bf 57}, 1178 (1998),
+  {\tt hep-ph/9709449}.
+%%CITATION = HEP-PH 9709449;%%
+
+\bibitem{Klebanov1}
+  I.~R.~Klebanov,
+  {\it ``World volume approach to absorption by nondilatonic branes,''}
+  Nucl.~Phys. {\bf B496}, 231 (1997),
+  {\tt hep-th/9702076}.
+%%CITATION = HEP-TH 9702076;%%
+
+\bibitem{Klebanov2}
+  S.~S.~Gubser, I.~R.~Klebanov, A.~A.~Tseytlin,
+  {\it ``String theory and classical absorption by threebranes,''}
+  Nucl.~Phys. {\bf B499}, 217 (1997),
+  {\tt hep-th/9703040}.
+%%CITATION = HEP-TH 9703040;%%
+
+\bibitem{PoliStar}
+  G.~Policastro, A.~Starinets,
+  {\it ``On the Absorption by Near-Extremal Black Branes,''}
+  Nucl.Phys. {\bf B610}, 117 (2001),
+  {\tt hep-th/0104065}.
+%%CITATION = HEP-TH 0104065;%%
+
+\bibitem{Son et al}
+  G.~Policastro, D.~T.~Son, A.~O.~Starinets,
+  {\it ``Shear Viscosity of Strongly Coupled $\mathcal{N}{=}4$
+  supersymmetric Yang-Mills Plasma,''}
+  Phys. Rev. Lett. {\bf 87}, 081601 (2001),
+  {\tt hep-th/0104066}.
+%%CITATION = HEP-TH 0104066;%%
+
+\bibitem{Forster}
+  D.~Forster,
+  {\it Hydrodynamic Fluctuations, Broken Symmetry, and Correlation Functions},
+  Benjamin/Cummings, 1975.
+
+\bibitem{Landau Lifshitz v9}
+  L.~D.~Landau, E.~M.~Lifshitz,
+  {\it Statistical Physics, Part 2},
+  Pergamon Press, 1980.
+
+\bibitem{complementarity}
+  See, for example:
+  G.~'t~Hooft,
+  {\it ``Confinement and topology in non-Abelian gauge theories,''}
+  in ``Field theory and strong interactions'' (ed. P. Urban)
+  Springer, 1980,
+%\href{http://www.slac.stanford.edu/spires/find/hep/www?r=print-80-0551\%2F(utrecht)}{SPIRES entry}
+  and
+  S.~Elitzur,
+  ``Impossibility Of Spontaneously Breaking Local Symmetries,''
+  Phys.\ Rev.\ D {\bf 12}, 3978 (1975).
+  %%CITATION = PHRVA,D12,3978;%%
+
+\bibitem{Son QCD}
+  D.~T.~Son,
+  {\it ``Hydrodynamics of Nuclear Matter in Chiral Limit,''}
+  Phys. Rev. Lett. {\bf 84}, 3771 (2000),
+  {\tt hep-ph/9912267}.
+%%CITATION = HEP-PH 9912267;%%
+
+\bibitem{higher coefs}
+  M.~H.~Ernst, J.~R.~Dorfman,
+  {\it ``Non-analytic dispersion relations for classical fluids.
+  II. The general fluid,''}
+   J.~Stat.~Phys. {\bf 12}, 311 (1975).
+
+\bibitem{2d hydro}
+  S.~W.~Lovesey,
+  {\it Condensed Matter Physics. Dynamic correlations.}
+  Benjamin/Cummings, 1980.
+
+\bibitem {AMY leading-log}
+P.~Arnold, G.~D.~Moore and L.~G.~Yaffe,
+{\it ``Transport coefficients in high temperature gauge theories. I:  Leading-log results,''}
+JHEP {\bf 0011}, 001 (2000)
+{\tt hep-ph/0010177}.
+%%CITATION = HEP-PH 0010177;%%
+
+\bibitem{Witten}
+E.~Witten,
+{\it ``Chiral symmetry, the $1/N$ expansion and the $SU(N)$ Thirring model,''}
+Nucl. Phys. {\bf B145}, 110 (1978).
+%%CITATION = NUPHA,B145,110;%%
+
+\bibitem{Wess and Bagger}
+  J.~Wess, J.~Bagger,
+  {\it Supersymmetry and Supergravity},
+  Princeton University Press, 1992.
+%\href{http://www.slac.stanford.edu/spires/find/hep/www?irn=5426545}{SPIRES entry}
+
+\bibitem{real mu for supercharge}
+  M.~B.~Paranjape, A.~Taormina, L.~C.~R.~Wijewardhana,
+  {\it ``Supersymmetry at Finite Temperature Revisited''},
+  Phys. Rev. Lett. {\bf 50}, 1350 (1983).
+%%CITATION = PRLTA,50,1350;%%
+
+\bibitem{Sohnius}
+  M.~F.~Sohnius,
+  {\it ``Introducing supersymmetry,''}
+  Phys. Rept. {\bf 128}, 39 (1985).
+%%CITATION = PRPLC,128,39;%%
+
+\bibitem{supersound}
+  V.~V.~Lebedev, A.~V~.Smilga,
+  {\it ``Supersymmetric sound,''}
+  Nucl. Phys. {\bf B318}, 669 (1989).
+%%CITATION = NUPHA,B318,669;%%
+
+\bibitem{AdSCFT diffusion}
+  G.~Policastro, D.~T.~Son, A.~Starinets,
+  {\it ``From AdS/CFT correspondence to hydrodynamics,''}
+  JHEP {\bf 0209}, 043 (2002),
+  {\tt hep-th/0205052}.
+%%CITATION = HEP-TH 0205052;%%
+
+\bibitem{Starinets QN modes}
+  A.~Starinets,
+  {\it ``Quasinormal modes of near extremal black branes,''}
+  Phys. Rev. {\bf D66}, 124013 (2002),
+  {\tt hep-th/0207133}.
+%%CITATION = HEP-TH 0207133;%%
+
+\end{thebibliography}
+
+\end{document}"

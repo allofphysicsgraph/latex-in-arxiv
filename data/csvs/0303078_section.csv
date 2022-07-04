@@ -1,0 +1,200 @@
+,section
+0,\section{Introduction}
+1,\section{Curves in D-Dimensional Minkowski Space}
+2,\section{Massless Scalar Field }
+3,\section{Electromagnetic Field}
+4,\section{Conclusion}
+5,"\section*{Appendix A: Serret-Frenet Frames.}
+
+In this Appendix, we first give the Serret-Frenet frame in $D$ dimensions.
+Here we shall assume that the 
+curve $C$ described in Section 2 is time-like and has the tangent vector
+ $T^{\mu}=\dot{z}^{\mu}$.
+Starting from this unit tangent vector, by repeated differentiation 
+with respect to
+the arclength parameter $\tau_{0}$, one can generate an orthonormal frame 
+$\{ T^{\mu}, N_{1}^{\mu},N_{2}^{\mu}, \cdots ,N_{D-1}^{\mu} \}$ ,the 
+{\it Serret-Frenet frame}:
+
+\begin{eqnarray}
+\dot{T}^{\mu}&=&\kappa_{1}\, N_{1}^{\mu},  \\
+\dot{N}_{1}^{\mu}&=&\kappa_{1}\,T^{\mu}-\kappa_{2}\, N_{2}^{\mu},  \\
+\dot{N}_{2}^{\mu}&=&\kappa_{2}\,N_{1}^{\mu}-\kappa_{3}\,N_{3}^{\mu},\\
+&& \cdots \nonumber\\
+\dot{N}_{D-2}^{\mu}&=&\kappa_{D-2}\, N_{D-3}^{\mu}-
+\kappa_{D-1}\, N_{D-1}^{\mu},\\
+\dot{N}_{D-1}^{\mu}&=&\kappa_{D-1}\,N_{D-2}^{\mu}.
+\end{eqnarray}
+
+\noindent
+Here $\kappa_{i},~ (i=1,2, \cdots , D-1)$ are the curvatures of the curve 
+$C$ at the point 
+$z^{\mu}(\tau_{0})$. The normal vectors $N_{i}, ~(i=1,2, \cdots , D-1)$ are 
+space-like unit vectors.
+Hence at the point $z^{\mu}(\tau_{0})$ on the curve we have an orthonormal
+ frame which
+can be used  as a basis of the tangent space (of ${\bf M_{D}}$) at this point. 
+In Section 2, 
+we have defined some scalars 
+$$a_{k}={d^k \ddot{z}_{\mu} \over d\tau_{0}^k}\, \lambda^{\mu},$$
+where 
+$$\lambda^{\mu}=\epsilon T^{\mu}+\epsilon_{1}\,
+{n^{\mu} \over R}.$$
+
+Here $n^{\mu}$ is a space-like
+vector orthogonal to $T^{\mu}$. It can be expressed as a linear combination 
+of the unit vectors $N_{i}$'s as
+$$n^{\mu}=\alpha_{1}\, N_{1}^{\mu}+\alpha_{2} \, N_{2}^{\mu}\, +
+\cdots + \alpha_{D-1}\, N_{D-1}^{\mu},$$
+where $\alpha_{1}^2+\alpha_{2}^2+\cdots +\alpha_{D-1}^2=R^2$. 
+One can choose the spherical angles $\theta , \phi_{1}, \cdots, \phi_{D-4}
+\in (0, \pi),~~\phi_{D-3} \in (0, 2\pi) $ such that
+
+\begin{eqnarray}
+\alpha_{1}&=&R \cos \theta,~~ \alpha_{2}=R \sin \theta \cos \phi_{1},
+~~\alpha_{3}=
+R \sin \theta \sin \phi_{1} \, \cos \phi_{2}, \cdots,\nonumber \\
+\alpha_{D-2}&=&R \sin \theta\, \sin \phi_{1} \cdots \sin \phi_{D-4}\, 
+\cos \phi_{D-3}, \nonumber \\
+\alpha_{D-1}&=&R \sin \theta\, \sin \phi_{1} \cdots \sin \phi_{D-4}\, 
+\sin \phi_{D-3}. \nonumber
+\end{eqnarray}
+
+\noindent
+Hence we can calculate the scalars $a_{k}$ in terms of the curvatures of the
+curve $C$ and 
+the angles $(\theta, \phi_{1}, \cdots, \phi_{D-3})$ at the point 
+$z^{\mu}(\tau_{0})$. We need these
+expressions in the evaluation of energy flux formulae. As an example we give
+$a$ and $a_{1}$:
+
+\begin{equation}
+a=-\epsilon \epsilon_{1} \kappa_{1}\, \cos \theta,
+~~a_{1}=\kappa_{1}^2-\epsilon \epsilon_{1} \dot{\kappa}_{1}
+ \cos \theta+
+\epsilon \epsilon_{1} \kappa_{1} \, \kappa_{2} \, \sin \theta \, \cos \phi_{1}.
+\end{equation}
+
+\noindent
+The rest of the scalars can be determined similarly.
+It is clear that these scalars, $a_{k}$,
+depend on the curvatures and the spherical angles, for all $k$. 
+
+
+
+\section*{Appendix B: The proof of the Recursion relations (11) and (29)}
+
+Here we give the proof for the vector potential case. The same type of 
+proof applies also for the scalar case.
+Using the recursion relation (\ref{rec2}) successively we get
+
+\begin{equation}
+A_{\mu}^{(D)}=\left({1 \over R}\, {d \over d\tau}\right)^{{D \over 2}-2}\,\,
+{\dot{z}_{\mu} \over R}. \label{rec3}
+\end{equation}
+
+\noindent
+On the other hand, from \cite{gal} and \cite{kaz}, we have
+
+\begin{equation}
+A_{\mu}^{(D)}=\int \, G(x-z(\tau))\, \dot{z}_{\mu}\, d\tau,
+\label{vec1}
+\end{equation}
+
+\noindent
+where $G(x-z)$ is the retarded Green function given by
+
+\begin{equation}
+G(x-z)=\theta(x^{0})\, \delta^{{D \over 2}-2}(\Omega). \label{grn}
+\end{equation}
+
+\noindent
+Here $\Omega$ is the world function given by (\ref{dist}), $\theta(x)$ is the 
+Heaviside
+step function and $\delta^{k}(x)={d^k \over dx^k}\, \delta(x)$. 
+Here we assume that $D$ is an even integer (When $D$ is an odd integer,
+the expression for the Green function in (\ref{grn}) contains the step 
+function instead of the $\delta$-function. Hence the potentials in all 
+odd dimensions remain non-local (integral expressions). This makes our 
+curve kinematics ineffective). The zeros of $\Omega$  denote the advanced 
+and retarded
+proper times on the curve $C$, but the step function $\theta(x^{0})$ chooses
+the retarded one. Since the integration is over the curve parameter
+$\tau$ in (\ref{vec1}), it is  better to transform the derivative of
+ the delta function with respect to $\Omega$ to the derivative with respect 
+to $\tau$. As a simple example consider the D=6 case
+
+\begin{equation}
+{d \over d\Omega}\, \delta (\Omega)= \left[ {1 \over d\Omega/d\tau}\,
+{d \over d\tau}\,\delta (\Omega) \right]_{\Omega=0}. 
+\end{equation}
+
+\noindent
+It is easy to show that ${d\Omega \over d\tau}=-R$. The delta function
+$\delta(\Omega)$ can be expressed as follows
+
+\[
+\delta(\Omega)={\delta(\tau-\tau_{0}) \over R} +{\delta(\tau-\tau_{1}) 
+\over R }.
+\]
+
+\noindent
+The second term will vanish identically due to the step function
+in (\ref{grn}). Hence
+
+\[
+A^{(6)}_{\mu}={1 \over R} {d \over d\tau}\, {\dot{z}_{\mu} \over R},
+\]
+
+\noindent
+or simply $A^{(6)}={1 \over R}\, {d \over d\tau}\, A^{(4)}$. This verifies 
+our relation (\ref{rec2}).
+In the general case, for all $k=0,1,2, \cdots $ we obtain (when $\Omega=0$)
+
+\begin{equation}
+{d^{k} \over d\Omega^{k}}\, \delta (\Omega)=
+\left[\left({-1 \over R}\,{d \over d\tau} \right)^{k}\,\delta (\Omega) 
+\right].
+\end{equation}
+
+\noindent
+Using this expression in the Green's function (\ref{grn}) for 
+$k={D \over 2}-2$, inserting it in the integral equation (\ref{vec1}) 
+and  integrating by parts, we obtain (\ref{rec3}). 
+
+%\section*{References}
+
+\begin{thebibliography}{99}
+\bibitem{gal} D. V. Gal'tsov, {\it Phys. Rev.}, {\bf D 66}, 025016 (2002).
+\bibitem{kaz} P. O. Kazinski, S. L. Lyakhovich, and A. A. Shaparov, {\it
+Phys.Rev.}, {\bf D 66}, 025017 (2002).
+\bibitem{gu1} M. G{\"" u}rses and {\"" O}. Sar{\i}o\u{g}lu, 
+{\it Class. Quantum Grav.}, {\bf 19}, 4249 (2002).
+\bibitem{ozg} {\"" O}. Sar{\i}o\u{g}lu, {\it Phys. Rev.}, 
+{\bf D 66} 085005 (2002).
+\bibitem{gu2} M. G{\"" u}rses and {\"" O}. Sar{\i}o\u{g}lu, 
+{\it Class. Quantum Grav.}, {\bf 20}, 351 (2003).
+\bibitem{brt} A. O. Barut, {\bf Electrodynamics and Classical Theory of
+Fields and Particles}, (Dover Publications, New York, 1980).
+\bibitem{jack} J. D. Jackson, {\bf Classical Electrodynamics}, (John Wiley
+and Sons, New York, 1975).
+\bibitem{spv} M. Spivak, {\bf A Comprehensive Introduction to Differential 
+Geometry}, (Publish or Perish Inc., Boston, 1979).
+\bibitem{syng2} J.L. Synge, {\bf Relativity: The General Theory},
+(North Holland Publishing, Amsterdam, 1966). (Third Edition)
+\bibitem{syng} J.L. Synge, {\bf Relativity: The Special Theory},
+(North Holland Publishing, Amsterdam, 1965). (See page 29) , (Second Edition)
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+
+
+"
+6,\section*{
+7,\section*{

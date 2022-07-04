@@ -1,0 +1,625 @@
+,section
+0,\section{Introduction}
+1,\section{The affine $\sl$ theory}
+2,\section{The Hodge theory of the BRST complex}
+3,\section{No-ghost theorem for strings in $AdS_3$}
+4,\section{Discussion}
+5,"\section*{Acknowledgements}
+I thank for discussions G.~d'Appolonio, S.~Elitzur, A.~Giveon, D.~Kazhdan,
+B.~Kol, \linebreak A.~Konechny, B.~Pioline, P.A.G.~Pisani, A.~Sever and B.~Zwiebach,
+and especially \linebreak J.M.~Figueroa-O'Farrill.
+I also thank P.A.G.~Pisani for collaboration at the early stages
+of this work.
+This work is supported in part by the Israel Academy
+of Sciences and Humanities -- Centers of Excellence Program, the
+German-Israel Bi-National Science Foundation, and the European RTN
+network HPRN-CT-2000-00122.
+
+\vskip 1.5cm
+\ni
+{\bf Note added:}
+After this paper appeared in hep-th,
+the work \cite{Asano:2003qb} appeared, where
+the methods of \cite{Asano} are applied to $AdS_3 \times {\cal N}$ backgrounds.
+
+
+
+\newpage
+\appendix
+
+
+\setcounter{equation}{0}
+\section{BRST essentials}
+We review here the basics of the $(b,c)$ and $(\beta,\gamma)$ algebra that we need in this work.
+More details can be found in \cite{Polchinski:rq}. The zero-mode quantization
+has some subtleties, which have been discussed, {\it inter alia}, in \cite{henneaux}.
+
+
+\subsection{Bosonic strings}
+The anticommuting $(b,c)$ reparametrization ghosts, with conformal dimensions $(2,-1)$, have the OPEs
+\eqn{opebc}{\eqalign{
+b(z)c(w)  & \sim c(z)b(w) \sim  {1 \over z-w} \,,\cr
+b(z)b(w)  & \sim  c(z)c(w) \sim \, 0 \,.
+}}
+The ghost number operator is defined as
+\eqn{ng}{\eqalign{
+N_g & = - \oint dz \, b(z) c(z) \,, \cr
+    & = \sum_{n=1}^{\infty}\left( c_{-n}b_{n} - b_{-n}c_{n}\right) + c_0b_0 - \frac12 \,.
+}}
+The ordering constant $-\frac12$ can be fixed in several ways \cite{Polchinski:rq},
+the most immediate one being the requirement of $N_g$ being antihermitian,
+i.e., $N_g^\dagger = -N_g$. For this we use
+$b_n^{\dagger}=b_{-n}, c_n^{\dagger}=c_{-n}$.
+
+The charge of the $(b-c)$ modes under $N_g$ is
+\eqn{cargasbc}{\eqalign{
+[N_g,b_m]= - b_m \,,\cr
+[N_g,c_m]= + c_m \,.
+}}
+The zero modes $b_0, c_0$ satisfy the Clifford algebra $\{b_0,c_0 \}=1$,
+so there is a  double-degenerate vacuum $|\uparrow \rangle , |\downarrow \rangle$, which satisfies
+\eqn{ghvac}{\eqalign{
+c_0 |\downarrow \rangle & = |\uparrow \rangle  \qquad \qquad b_0|\uparrow \rangle  = |\downarrow \rangle \,,\cr
+c_0|\uparrow \rangle & = b_0|\downarrow \rangle = c_{n}|\uparrow,\downarrow \rangle  = b_{n}|\uparrow,\downarrow \rangle=0 \,, \qquad n>0.
+%c_{n}|\uparrow,\downarrow \rangle & = b_{n}|\uparrow,\downarrow \rangle=0 \qquad n>0.
+}}
+On the vacua $|\uparrow \rangle , |\downarrow \rangle$ we have $L_0^{(b,c)}=-1$.
+The zero-modes algebra implies that the inner product on the ghost space is consistently defined~by
+\eqn{ghinp}{\eqalign{
+\langle \uparrow | c_0|\uparrow \rangle & = \langle \uparrow | c_0|\uparrow \rangle =1 \,,\cr
+\langle \uparrow | c_0|\downarrow \rangle & = 0 \,,
+}}
+and from this follows the inner product of any exited state.
+
+The BRST charge
+\eqn{brstcharge}{
+Q = \oint dz \, c(z) \left( T^{M}(z) + \frac12 T^{(b,c)}(z) \right) \,,
+}
+is an hermitian operator which carries ghost number $+1$, and $Q^2=0$ if $c_M=26$. Here $T^M$ is the matter stress tensor.
+In this work we consider the restriction to the space ${\cal F}$ defined by $b_0=L_0=0$,
+where $L_0$ is the zero mode of $T=T^M + T^{(b,c)}$.
+This chooses the $|\downarrow \rangle$ vacuum,
+which will be denoted $|0 \rangle_g$. In ${\cal F}$ we redefine
+$N_g$ to be in $\mathbb{Z}$ by assigning ghost number $0$ to $|0 \rangle_g$ and ignoring the last two terms in the expansion \ng.
+The action of $Q$ is consistent with the restriction to ${\cal F}$  because $\{ Q,b_0 \} = L_0$.
+
+
+
+
+
+
+
+\subsection{Fermionic strings}
+For  NSR strings, we have, on top of the $(b,c)$ system,
+the super-reparametrization ghosts $(\beta,\gamma)$, with conformal dimensions $(\frac32,-\frac12)$ and OPEs
+\eqn{opebg}{\eqalign{
+\gamma(z)\beta(w) \sim \, & {1 \over z-w} \,, \cr
+\beta(z)\gamma(w) \sim \, & {-1 \over z-w} \,,\cr
+\beta(z)\beta(w) \sim \, & \gamma(z)\gamma(w) \sim \, 0 \,.
+}}
+The modes of $(\beta,\gamma)$ satisfy
+$\beta_r^{\dagger}=-\beta_{-r}, \gamma_r^{\dagger}=\gamma_{-r}$,
+where $ r \in \mathbb{Z} \, (r \in \mathbb{Z}+ 1/2)$ for the Ramond (Neveu-Schwarz) sector.
+In the Ramond sector, the zero modes again make the vacuum double-degenerate.
+We choose $\beta_0=0$ in ${\cal F}$, and denote the selected vacuum also by $|0 \rangle_g$.
+We have then,
+\eqn{vbg}{
+\beta_{r \geq 0}|0 \rangle_{g}  = \gamma_{r>0}|0 \rangle_{g} =0.
+}
+On $|0 \rangle_g$, we have $L_0^{(\beta,\gamma)}=\frac38 \,\, (L_0^{(\beta,\gamma)}=\frac12)$ for the Ramond (Neveu-Schwarz) sector.
+The $|0 \rangle_g$ ghost number is zero, and the operator $N_g$ in \ng\ is extended to satisfy
+\eqn{cargasbg}{\eqalign{
+[N_g,\beta_r]= - \beta_r \,, \cr
+[N_g, \gamma_r]= + \gamma_r \,.
+}}
+The BRST charge is now
+\eqn{brstchfer}{
+Q = \oint dz \, \left[ c(z) \left( T^{M}(z) + \frac12 T^{g}(z) \right) +
+\gamma(z)\left( G^{M}(z) + \frac12 G^{g}(z) \right) \right] \,,
+}
+with $Q^2=0$ if $c_M=10$. Here $G^M$ is the matter supercurrent,
+$T^{g}=T^{(b,c)} +T^{(\beta,\gamma)}$ and $G^g$ the supercurrent of the superconformal
+combined $(b,c)-(\beta,\gamma)$ systems. The $L_0=0$ condition is imposed with $T^M + T^g$.
+The space ${\cal F}$ is again defined by $b_0=L_0=0$. In the Ramond sector, also by $\beta_0=G_0=0$, where
+$G_0$ is the zero mode of  $G= G^M + G^{g}$. This
+restriction is consistent because $\{Q,\beta_0 \} = G_0$.
+
+
+
+
+
+
+
+
+\setcounter{equation}{0}
+\section{The action of ${\cal C}$ in the ghost sector}
+In this Appendix we will show that the operator ${\cal C}$, defined in Section 2, interchanges
+between $b_n$ and $c_n$ (and $\beta_r$ and $\gamma_r$) modes, thus
+mapping ${\cal F}_g$ to ${\cal F}_{-g}$.
+
+We can decompose the ghost sector ${\cal F}_{(b,c)}$ into
+\begin{equation}
+{\cal F}_{(b,c)} = \bigotimes_{n=1}^{\infty} \left\{ \, |0 \rangle_g, |+,n \rangle \right\} \otimes \{ \, |0 \rangle_g, |-,n \rangle \} \,,
+\label{ghostdecom}
+\end{equation}
+where
+\eqn{gemasmenos}{
+|\pm,n \rangle \equiv \frac{ ( b_{-n} \pm c_{-n}) }{\sqrt{2}} |0 \rangle_g \,,
+}
+satisfy
+\eqn{gein}{\eqalign{
+\langle \pm,n | \pm,m \rangle =&  \pm \delta_{n,m} \,, \cr
+\langle +,n | -,m \rangle =&  0 \,,
+}}
+so from $ {\cal C} | \pm,m \rangle= \pm | \pm,m \rangle$ we have
+\eqn{cenghost}{\eqalign{
+{\cal C} c_n {\cal C} & = b_n \,, \cr
+{\cal C} b_n {\cal C} & = c_n \,.
+}}
+For fermionic strings, we use the decomposition
+\begin{equation}
+{\cal F}_{(\beta,\gamma)} = \bigotimes_{r>0} \bigoplus_{N_r=0}^{\infty} \{  |+,N_r \rangle \} \otimes
+\bigotimes_{r>0} \bigoplus_{N_r=0}^{\infty} \{ |-,N_r \rangle \} \,,
+\label{ghdemm}
+\end{equation}
+where
+\eqn{gemm}{
+|\pm,N_r \rangle \equiv \frac{ ( \beta_{-r} \pm \gamma_{-r})^{N_r} }{\sqrt{2N_r!}} |0 \rangle_g \,,
+}
+satisfy
+\eqn{geimm}{\eqalign{
+\langle \pm,N_r | \pm,N_s \rangle =&  (\pm 1)^{N_r} \delta_{r,s}\delta_{N_r,N_s} \, \,, \cr
+\langle +,N_r | -,N_s \rangle =&  0 \,,
+}}
+so we have
+\eqn{cenghmm}{\eqalign{
+{\cal C} \beta_r {\cal C} & = (-1)^{S(r)} \gamma_r \,, \cr
+{\cal C} \gamma_r {\cal C} & = (-1)^{S(r)} \beta_r \,,
+}}
+where $S(r)$ equals $0 \, (1)$ if $r<0 \, (r>0)$.
+
+\setcounter{equation}{0}
+\section{$\sl/U(1) \times U(1)$ character decomposition}
+In this Appendix we will prove explicitly the character decompositions \cardeco\ and \cardecof.
+Let us start with the representation $\cD{j}^+$, whose character is
+\eqn{carchi}{
+\chi^+_j(q,z)= { q^{- {j(j-1) \over k-2}} z^j \over \prod^{\infty}_{n=1}(1-q^n)(1-q^{n-1}z)(1-q^nz^{-1})} \,.
+}
+We will use the technique of infinite partial fractions, which has been used in \cite{prod,thorn} in order
+to prove similar identities. Define
+\eqn{efene}{
+f_{N}(q,z)= {1 \over {\prod}_{n=1}^{N} \left( 1-q^{n-1}z\right) \left( 1-q^nz^{-1} \right) } \,,
+}
+which can be decomposed into partial fractions as
+\eqn{partialefe}{
+f_{N}(q,z)=\sum^N_{k=1} {a_k(q) \over ( 1 - q^{k-1}z )( 1 - q^kz^{-1} )}\,.
+}
+The coefficients $a_k(q)$ are
+\eqn{aka}{\eqalign{
+a_k(q) & = \lim_{z \rightarrow q^k} ( 1 - q^{k-1}z )(  1 - q^kz^{-1} ) f_{N}(q,z) \,, \cr
+       & = { 1 - q^{2k-1}  \over \prod_{n=k}^{N+k-1}(1-q^n)\prod^N_{n=1  n \neq k}(1-q^{n-k})} \,, \cr
+       & = {(1-q^{2k-1}) (-1)^{k-1} q^{{k(k-1) \over 2}} \over \prod^{N+k-1}_{n=1}(1-q^n) \prod^{N-k}_{n=1}(1-q^n)} \,,
+}}
+thus for $N \rightarrow \infty$ we have
+
+\eqn{efelimite}{\eqalign{
+\lim_{N \rightarrow \infty} f_N(q,z) & = {1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} \,, \cr
+ & = {1 \over \prod^{\infty}_{n=1}(1-q^n)^2 }
+\left[ \sum_{k=1}^{\infty} {(1-q^{2k-1})(-1)^{k-1} q^{{k(k-1)
+\over 2}} \over (1-q^{k-1}z)(1-q^kz^{-1})} \right] \,.
+}}
+The
+denominators in the sum of \efelimite\ can be expanded and
+resummed as
+\eqn{sumageo}{\eqalign{
+{1 \over (1-q^{k-1}z)(1-q^k z^{-1})} & = \sum^{\infty}_{m,n=0} q^{m(k-1)}z^m q^{nk}z^{-n} \,, \cr
+& = {1 \over (1-q^{2k-1})} \left[ \sum^{\infty}_{n=0} q^{n(k-1)}
+z^n + \sum^{-1}_{n=-\infty} q^{-nk} z^{n} \right] \,.
+}}
+Thus
+\efelimite\ can be written as
+\eqn{efelimitedos}{\eqalign{
+{1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} & =
+{1 \over \prod^{\infty}_{n=1}(1-q^n)^2 } \,\,\, \times \cr
+ \left[ \sum^{\infty}_{n=0} \sum_{k=1}^{\infty} \right.   z^n (-1)^{k-1} & q^{\frac12 (k - 2n)(k-1)}
+  \left. +  \sum_{n=-\infty}^{-1} \sum_{k=1+2n}^{\infty} \! \! \! \! z^n (-1)^{k-1} q^{\frac12 (k - 2n)(k-1)}
+\right] \,,
+}}
+where in the second term we have changed the index $k$ to $k+2n$ in order to make the exponents of $q$ be  the same in both terms.
+Now, using that for $n \in \mathbb{Z}$
+\eqn{sumacero}{
+\sum_{k=1}^{2n}  (-1)^{k-1} q^{\frac12 (k - 2n)(k-1)} = 0 \,,
+}
+and changing the index $k$ to $s=k-1$ we obtain finally
+\eqn{igualdadfinal}{
+{1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} =
+{1  \over \prod^{\infty}_{n=1}(1-q^n)^2} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0} z^{n}(-1)^s q^{\frac12 s(s+2n+1)} \,,
+}
+and
+multiplying both sides by
+$q^{- {j(j-1) \over k-2}} z^j  \prod^{\infty}_{n=1}(1-q^n)^{-1}$,
+the first line of \cardeco\ follows.
+
+From \cardf, we see that the flowed characters can be obtained from $\chi^+_j(q,z)$ by
+replacing $z \rightarrow zq^{-w}$, and multiplying the resulting expression by $z^{kw/2}q^{-kw^2/4}$.
+So we have,
+
+\eqn{uedt}{\eqalign{
+\chi^w_j(q,z)= &
+{q^{- {j(j-1) \over k-2}-kw^2/4} \, z^{kw/2} \over
+\prod^{\infty}_{n=1}(1-q^n)^3} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0} (zq^{-w})^{n+j}(-1)^s q^{\frac12 s(s+2n+1)} \,, \cr
+= &  {q^{- {j(j-1) \over k-2}} z^{j+kw/2}  \over
+\prod^{\infty}_{n=1}(1-q^n)^3} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0}
+q^{{(j+n)^2\over k}-{(j+n+kw/2)^2\over k}} z^n
+ (-1)^s q^{\frac12 s(s+2n+1)} \,,
+}}
+and this equality is the first line of \cardecof.
+
+The decompositions for $\cCo{j,\alpha}$ representations
+are immediate and are left as an exercise.
+
+
+
+\newpage
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{Kato:1982im}
+M.~Kato and K.~Ogawa,
+``Covariant Quantization Of String Based On BRS Invariance,''
+Nucl.\ Phys.\ B {\bf 212}, 443 (1983).
+%%CITATION = NUPHA,B212,443;%%
+
+\bibitem{FGZ}
+I.~B.~Frenkel, H.~Garland and G.~J.~Zuckerman,
+``Semiinfinite Cohomology And String Theory,''
+Proc.\ Nat.\ Acad.\ Sci.\  {\bf 83}, 8442 (1986).
+%%CITATION = PNASA,83,8442;%%
+
+
+
+
+\bibitem{Figueroa-O'Farrill:1988hu}
+J.~M.~Figueroa-O'Farrill and T.~Kimura,
+``The BRST Cohomology Of The NSR String: Vanishing And 'No Ghost' Theorems,''
+Commun.\ Math.\ Phys.\  {\bf 124}, 105 (1989);
+%%CITATION = CMPHA,124,105;%%
+B.~H.~Lian and G.~J.~Zuckerman,
+``BRST Cohomology Of The Supervirasoro Algebras,''
+Commun.\ Math.\ Phys.\  {\bf 125}, 301 (1989).
+%%CITATION = CMPHA,125,301;%%
+
+\bibitem{Bouwknegt:1991yg}
+P.~Bouwknegt, J.~G.~McCarthy and K.~Pilch,
+``BRST analysis of physical states for 2-D gravity coupled to $c \leq 1$ matter,''
+Commun.\ Math.\ Phys.\  {\bf 145}, 541 (1992).
+%%CITATION = CMPHA,145,541;%%
+
+\bibitem{Spiegelglas}
+M.~Spiegelglas,
+``Q BRST Cohomology: A Mechanism For Getting Rid Of Negative Norm States, With An Application To The Bosonic String,''
+Nucl.\ Phys.\ B {\bf 283}, 205 (1987).
+%%CITATION = NUPHA,B283,205;%%
+
+\bibitem{Zuckerman:1987ds}
+G.~J.~Zuckerman,
+``Modular Forms, Strings And Ghosts,''
+Proceedings of Symposia in Pure Mathematics {\bf 49}  Part 1, 273, (1989).
+
+\bibitem{Asano}
+M.~Asano and M.~Natsuume,
+``The no-ghost theorem for string theory in curved backgrounds with a  flat timelike direction,''
+Nucl.\ Phys.\ B {\bf 588}, 453 (2000)
+[arXiv:hep-th/0005002];
+%%CITATION = HEP-TH 0005002;%%
+M.~Asano and M.~Natsuume,
+``The no-ghost theorem in curved backgrounds with a timelike u(1): NSR string,''
+[arXiv:hep-th/0303051].
+%%CITATION = HEP-TH 0303051;%%
+
+
+\bibitem{Brower}
+R.~C.~Brower,
+``Spectrum Generating Algebra And No Ghost Theorem For The Dual Model,''
+Phys.\ Rev.\ D {\bf 6}, 1655 (1972);
+%%CITATION = PHRVA,D6,1655;%%
+R.~C.~Brower and K.~A.~Friedman,
+``Spectrum Generating Algebra And No Ghost Theorem For The Neveu-Schwarz Model,''
+Phys.\ Rev.\ D {\bf 7}, 535 (1973).
+%%CITATION = PHRVA,D7,535;%%
+
+\bibitem{Malda}
+J.~M.~Maldacena and H.~Ooguri,
+``Strings in AdS(3) and SL(2,R) WZW model. I,''
+J.\ Math.\ Phys.\  {\bf 42}, 2929 (2001)
+[arXiv:hep-th/0001053].
+%%CITATION = HEP-TH 0001053;%%
+
+\bibitem{Malda2}
+J.~M.~Maldacena, H.~Ooguri and J.~Son,
+``Strings in AdS(3) and the SL(2,R) WZW model. II: Euclidean black hole,''
+J.\ Math.\ Phys.\  {\bf 42}, 2961 (2001)
+[arXiv:hep-th/0005183].
+%%CITATION = HEP-TH 0005183;%%
+
+\bibitem{Aharony:1999ti}
+O.~Aharony, S.~S.~Gubser, J.~M.~Maldacena, H.~Ooguri and Y.~Oz,
+``Large N field theories, string theory and gravity,''
+Phys.\ Rept.\  {\bf 323}, 183 (2000)
+[arXiv:hep-th/9905111].
+%%CITATION = HEP-TH 9905111;%%
+
+
+\bibitem{GKS}
+A.~Giveon, D.~Kutasov and N.~Seiberg,
+``Comments on string theory on AdS(3),''
+Adv.\ Theor.\ Math.\ Phys.\  {\bf 2}, 733 (1998)
+[arXiv:hep-th/9806194].
+%%CITATION = HEP-TH 9806194;%%
+
+\bibitem{Giveon:1999jg}
+A.~Giveon and M.~Rocek,
+``Supersymmetric string vacua on AdS(3) x N,''
+JHEP {\bf 9904}, 019 (1999)
+[arXiv:hep-th/9904024];
+%%CITATION = HEP-TH 9904024;%%
+D.~Berenstein and R.~G.~Leigh,
+``Spacetime supersymmetry in AdS(3) backgrounds,''
+Phys.\ Lett.\ B {\bf 458}, 297 (1999)
+[arXiv:hep-th/9904040].
+%%CITATION = HEP-TH 9904040;%%
+
+\bibitem{Argurio:2000tb}
+R.~Argurio, A.~Giveon and A.~Shomer,
+``Superstrings on AdS(3) and symmetric products,''
+JHEP {\bf 0012}, 003 (2000)
+[arXiv:hep-th/0009242].
+%%CITATION = HEP-TH 0009242;%%
+
+\bibitem{Giveon:2003ku}
+A.~Giveon and A.~Pakman,
+``More on superstrings in AdS(3) x N,''
+JHEP {\bf 0303}, 056 (2003)
+[arXiv:hep-th/0302217].
+%%CITATION = HEP-TH 0302217;%%
+
+
+
+
+
+
+
+
+\bibitem{Hwang:1991an}
+S.~Hwang,
+``Cosets as gauge slices in SU(1,1) strings,''
+Phys.\ Lett.\ B {\bf 276}, 451 (1992)
+[arXiv:hep-th/9110039].
+%%CITATION = HEP-TH 9110039;%%
+
+
+
+
+\bibitem{Evans:1998qu}
+J.~M.~Evans, M.~R.~Gaberdiel and M.~J.~Perry,
+``The no-ghost theorem for AdS(3) and the stringy exclusion principle,''
+Nucl.\ Phys.\ B {\bf 535}, 152 (1998)
+[arXiv:hep-th/9806024].
+%%CITATION = HEP-TH 9806024;%%
+
+\bibitem{Pakman:2003cu}
+A.~Pakman,
+``Unitarity of supersymmetric SL(2,R)/U(1) and no-ghost theorem for fermionic strings in AdS(3) x N,''
+JHEP {\bf 0301}, 077 (2003)
+[arXiv:hep-th/0301110].
+%%CITATION = HEP-TH 0301110;%%
+
+
+\bibitem{Balog:1988jb}
+J.~Balog, L.~O'Raifeartaigh, P.~Forgacs and A.~Wipf,
+``Consistency Of String Propagation On Curved Space-Times: An SU(1,1) Based Counterexample,''
+Nucl.\ Phys.\ B {\bf 325}, 225 (1989).
+
+\bibitem{Henningson:1990ua}
+M.~Henningson and S.~Hwang,
+``The Unitarity Of SU(1,1) Fermionic Strings,''
+Phys.\ Lett.\ B {\bf 258}, 341 (1991).
+%%CITATION = PHLTA,B258,341;%%
+
+\bibitem{DPL}
+L.~J.~Dixon, M.~E.~Peskin and J.~Lykken,``N=2 Superconformal Symmetry And SO(2,1) Current Algebra,''
+Nucl.\ Phys.\ B {\bf 325}, 329 (1989);
+%%CITATION = NUPHA,B325,329;%%
+B.~H.~Lian and G.~J.~Zuckerman,
+``BRST Cohomology And Highest Weight Vectors. 1,''
+Commun.\ Math.\ Phys.\  {\bf 135}, 547 (1991).
+%%CITATION = CMPHA,135,547;%%
+
+\bibitem{Bars:1995mf}
+I.~Bars,
+``Ghost - free spectrum of a quantum string in SL(2,R) curved space-time,''
+Phys.\ Rev.\ D {\bf 53}, 3308 (1996)
+[arXiv:hep-th/9503205];
+%%CITATION = HEP-TH 9503205;%%
+Y.~Satoh,
+``Ghost-free and modular invariant spectra of a string in SL(2,R) and  three-dimensional black hole geometry,''
+Nucl.\ Phys.\ B {\bf 513}, 213 (1998)
+[arXiv:hep-th/9705208].
+%%CITATION = HEP-TH 9705208;%%
+
+
+
+\bibitem{josebrst}
+J.~M.~Figueroa-O'Farrill and T.~Kimura,
+``The Cohomology Of BRST Complexes,''
+ITP-SB-88-34-REV (unpublished).
+
+
+
+%%CITATION = NUPHA,B325,225;%%
+\bibitem{jose}
+J.~M.~Figueroa-O'Farrill, ``BRST Cohomology and Its Applications to
+Two-Dimensional Conformal Field Theory'', PhD Thesis, State University of New York at Stony Brook, 1989.
+http://www.maths.ed.ac.uk/\verb+~+jmf/English/PVBLICATIONS/thesis/thesis.ps.gz
+
+\bibitem{vanHolten:1990xd}
+J.~W.~van Holten,
+``The BRST Complex And The Cohomology Of Compact Lie Algebras,''
+Phys.\ Rev.\ Lett.\  {\bf 64}, 2863 (1990)
+[Nucl.\ Phys.\ B {\bf 339}, 158 (1990)].
+%%CITATION = PRLTA,64,2863;%%
+
+\bibitem{DVV}
+R.~Dijkgraaf, H.~Verlinde and E.~Verlinde,
+``String propagation in a black hole geometry,''
+Nucl.\ Phys.\ B {\bf 371}, 269 (1992).
+%%CITATION = NUPHA,B371,269;%%
+
+
+\bibitem{Giveon}
+A.~Giveon and D.~Kutasov,
+``Little string theory in a double scaling limit,''
+JHEP {\bf 9910}, 034 (1999)
+[arXiv:hep-th/9909110].
+%%CITATION = HEP-TH 9909110;%%
+
+\bibitem{Kac:fz}
+V.~G.~Kac and D.~A.~Kazhdan,
+``Structure Of Representations With Highest Weight Of Infinite Dimensional Lie Algebras,''
+Adv.\ Math.\  {\bf 34}, 97 (1979).
+%%CITATION = ADMTA,34,97;%%
+
+\bibitem{mumford}
+D.~Mumford, ``Tata Lectures on Theta I,'' Vol. 28, Progress in Mathematics, Birkhauser, Boston, 1983.
+
+
+\bibitem{Lykken}
+J.~D.~Lykken,
+``Finitely Reducible Realizations Of The N=2 Superconformal Algebra,''
+Nucl.\ Phys.\ B {\bf 313}, 473 (1989).
+%%CITATION = NUPHA,B313,473;%%
+
+\bibitem{Fateev}
+V.~A.~Fateev and A.~B.~Zamolodchikov,
+``Parafermionic Currents In The Two-Dimensional Conformal Quantum Field Theory And Selfdual Critical Points In Z(N) Invariant Statistical
+Systems,''
+Sov.\ Phys.\ JETP {\bf 62}, 215 (1985)
+[Zh.\ Eksp.\ Teor.\ Fiz.\  {\bf 89}, 380 (1985)].
+%%CITATION = SPHJA,62,215;%%
+
+
+
+\bibitem{cha}
+P.~A.~Griffin and O.~F.~Hernandez,
+``Feigin-Fuchs Derivation Of SU(1,1) Parafermion Characters,''
+Nucl.\ Phys.\ B {\bf 356}, 287 (1991).
+%%CITATION = NUPHA,B356,287;%%
+
+
+
+\bibitem{sfetsos}
+K.~Sfetsos,``Degeneracy of string states in 2-D black hole and a new derivation of SU(1,1) parafermion characters,''
+Phys.\ Lett.\ B {\bf 271}, 301 (1991).
+%%CITATION = PHLTA,B271,301;%%
+
+\bibitem{Polchinski:rq}
+J.~Polchinski,
+``String Theory. Vol. 1 \& 2,''
+Cambridge, UK: Univ. Pr. (1998).
+
+\bibitem{henneaux}
+M.~Henneaux,
+``Remarks On The Cohomology Of The BRS Operator In String Theory,''
+Phys.\ Lett.\ B {\bf 177}, 35 (1986);
+%%CITATION = PHLTA,B177,35;%%
+M.~Henneaux,
+``BRST Cohomology Of The Fermionic String,''
+Phys.\ Lett.\ B {\bf 183}, 59 (1987).
+%%CITATION = PHLTA,B183,59;%%
+
+
+
+\bibitem{prod}
+R.~Bellman, ``The expansions of some infinite products,''
+Duke  Math.\ J. {\bf 24}, 353 (1957).
+
+
+\bibitem{thorn}
+C.~B.~Thorn,
+``String Field Theory,''
+Phys.\ Rept.\  {\bf 175}, 1 (1989).
+%%CITATION = PRPLC,175,1;%%
+
+
+
+
+
+\bibitem{Banados:wn}
+M.~Banados, C.~Teitelboim and J.~Zanelli,
+``The Black Hole In Three-Dimensional Space-Time,''
+Phys.\ Rev.\ Lett.\  {\bf 69}, 1849 (1992)
+[arXiv:hep-th/9204099].
+%%CITATION = HEP-TH 9204099;%%
+
+\bibitem{Hikida:2003fp}
+Y.~Hikida,
+``Superstrings on NSNS pp-waves and their CFT duals,''
+arXiv:hep-th/0303222.
+%%CITATION = HEP-TH 0303222;%%
+
+
+\bibitem{Witten:1991yr}
+E.~Witten,
+``On string theory and black holes,''
+Phys.\ Rev.\ D {\bf 44}, 314 (1991).
+%%CITATION = PHRVA,D44,314;%%
+
+
+\bibitem{Nappi:1992kv}
+C.~R.~Nappi and E.~Witten,
+``A Closed, expanding universe in string theory,''
+Phys.\ Lett.\ B {\bf 293}, 309 (1992)
+[arXiv:hep-th/9206078];
+%%CITATION = HEP-TH 9206078;%%
+S.~Elitzur, A.~Giveon, D.~Kutasov and E.~Rabinovici,
+``From big bang to big crunch and beyond,''
+JHEP {\bf 0206}, 017 (2002)
+[arXiv:hep-th/0204189].
+%%CITATION = HEP-TH 0204189;%%
+
+\bibitem{Elitzur:2002vw}
+S.~Elitzur, A.~Giveon and E.~Rabinovici,
+``Removing singularities,''
+JHEP {\bf 0301}, 017 (2003)
+[arXiv:hep-th/0212242].
+%%CITATION = HEP-TH 0212242;%%
+
+\bibitem{Hwang:1993nc}
+S.~Hwang and H.~Rhedin,
+``The BRST Formulation of G/H WZNW models,''
+Nucl.\ Phys.\ B {\bf 406}, 165 (1993)
+[arXiv:hep-th/9305174].
+%%CITATION = HEP-TH 9305174;%%
+
+\bibitem{Asano:2003qb}
+M.~Asano and M.~Natsuume,
+``The BRST quantization and the no-ghost theorem for AdS(3),''
+arXiv:hep-th/0304254.
+%%CITATION = HEP-TH 0304254;%%
+
+
+\end{thebibliography}
+
+
+%\nocite{*}    %This command makes every ref in review.bib appear.
+
+
+
+
+
+\end{document}"
+6,\section{B
+7,\section{T
+8,\section{$

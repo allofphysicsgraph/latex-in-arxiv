@@ -1,0 +1,599 @@
+,equation
+0,"\begin{equation}
+   S = \int d^{\,d} x \left(
+       -\frac 12 {\rm tr}(\partial \Phi)^2
+       -\frac 12 m^2 \, {\rm tr} \Phi^2 \right) \ .
+\"
+1,"\begin{equation}
+    \left[ \partial_- \Phi_{ij}(x^+, x^-, \xp),
+    \Phi_{kl}(x^+, y^{\,-},\yp) \right] =
+    - \, \delta_{ik}  \delta_{jl} \; \frac i2 \,
+    \delta(x^- - y^{\,-}) \, \delta(\xp - \yp)
+\"
+2,"\begin{equation}
+    \Phi_{ij}(x^-,\xp) =
+    \int_0^\infty \frac{dp_-}{2\pi 2p_-}
+    \int \frac{d^{\,d-2}p_\perp}{(2\pi)^{d-2}}  \left[
+    a_{ij}(p_-,\pp) e^{ ip_- x^- + i\pp\cdot\xp} +
+    a^\dagger_{ij}(p_-,\pp) e^{ -ip_- x^- - i\pp\cdot\xp}
+    \right]
+\"
+3,"\begin{equation}
+    a^\dagger_{i_1 j_1}(\p_1) \,
+    a^\dagger_{i_2 j_2}(\p_2) \dots
+    a^\dagger_{i_M j_M}(\p_M) \,|0\rangle \ ,
+\"
+4,"\begin{equation}
+    {\cal E}_{LC}(\p) = - p_+
+    = \frac{\pp^2 + m^2}{2 p_-}
+\"
+5,"\begin{equation}
+\label{eq:M particle Hamiltonian 1}
+    H_{LC} = \sum_{\p} N_\p \;
+             {\cal E}_{LC}(\p)
+           = \sum_{\p} N_\p \;
+             \frac{\pp^2 + m^2}{2 p_-} \ ,
+\"
+6,"\begin{equation}
+\label{eq:M particle Hamiltonian 2}
+     H_{LC} = \sum_{n=1}^M
+     \frac{\pp^2 (n) + m^2}{2 p_- (n)} \ ,
+\"
+7,"\begin{equation}
+     |(p_-,\pp)_{n_1}, (p_-,\pp)_{n_2}, \dots
+     (p_-,\pp)_{n_M} \rangle \ .
+\"
+8,"\begin{equation}
+\label{eq:M particle Hamiltonian 3}
+    H_{LC}= \sum_{n=1}^M
+    \frac{\pp^2 (n) + m^2}{2 \, p_- (n)}
+    \to
+    \frac 1a \int_0^l dx\;
+    \frac{\pp^2 (x) + m^2}{2 p_- (x)}
+\"
+9,"\begin{equation}
+\label{eq:FT continuum Hamiltonian 1}
+    H_{LC} = \int_0^l dx\;
+    \frac{\pip^2 (x) + \pi_Y^2}{2 \, \pi_- (x)}
+\"
+10,"\begin{equation}
+\label{eq:M particle Hamiltonian 4}
+    H_{LC}= \sum_{n=1}^M
+    \frac{\pp^2 (n) + m^2}{2 \, p_- (n)}
+    \to
+    \int_0^l \frac{dx}{\tilde a(x)}
+    \frac{\pp^2 (x) + m^2}{2 p_-(x)} =
+    \int_0^l dx\; \frac{1}{\tilde a(x)^2}
+    \frac{\pp^2 (x) + m^2}{2 k_-} \ .
+\"
+11,"\begin{equation}
+\label{eq:FT continuum Hamiltonian 2}
+    H_{LC} = \frac{1}{2k_-} \int_0^l dx\;
+    \left( \tilde\pip^2 (x) + \tilde\pi_Y^2(x) \right)
+\"
+12,"\begin{equation}
+\label{eq:string action}
+  S=-\frac{1}{4\pi\alpha'}
+       \int d\tau \int_0^l d\sigma
+       \sqrt{-\gamma}\gamma^{ab} \,
+       \partial_a Z^\mu \partial_b Z^\nu \, G_{\mu\nu}(Z) \ .
+\"
+13,"\begin{equation} \label{eq:lagrangian}
+%\mathcal{L}=-\frac{1}{4\pi\alpha'} G_{\mu\nu} \left(
+%            h^{\tau\tau} \dot Z^\mu \dot Z^\nu +
+%            2 h^{\tau\sigma} \dot Z^\mu Z^{\nu\prime} +
+%            h^{\sigma\!\sigma} Z^{\mu\prime} Z^{\nu\prime}
+%            \right)
+%\"
+14,"\begin{equation} \label{eq:canon-momenta}
+\pi_\mu = \frac{\delta\mathcal{L}}{\delta \dot Z^\mu} =
+          -\frac{1}{2\pi\alpha'}G_{\mu\nu} \left(
+          h^{\tau\tau} \dot Z^\nu + h^{\tau\sigma} Z^{\nu\prime}
+          \right) \ ,
+\"
+15,"\begin{equation}
+\mathcal{H} = -\frac{\pi\alpha'}{h^{\tau\tau}} \left[
+              G^{\mu\nu}\pi_\mu \pi_\nu +
+              \frac{1}{(2\pi\alpha')^2}
+              G_{\mu\nu}Z^{\mu\prime} Z^{\nu\prime}
+              \right] -
+              \frac{h^{\tau\sigma}}{h^{\tau\tau}}
+              \pi_\mu Z^{\mu\prime} \ ,
+\"
+16,"\begin{equation}
+Z^\pm = \frac{1}{\sqrt{2}}\left(Z^1\pm Z^0\right) \ .
+\"
+17,"\begin{equation} \label{eq:LC Lagrangian}
+    \mathcal{L}_{LC}=-\frac{h^{\tau\tau}}{4\pi\alpha'} \left(
+    2 G_{+-} \dot Z^- +  G_{ij} \dot Z^i \dot Z^j -
+    \frac{1}{(h^{\tau\tau})^2} G_{ij} Z^{i\,\prime} Z^{j\,\prime}
+    \right)
+\"
+18,"\begin{equation}\label{eq:LC Hamiltonian}
+    H_{LC} = \int_0^l \mathcal{H}_{LC} =
+    \int_0^l d\sigma \, \frac{G_{+-}}{2 \,\pi_-}
+    \left( G^{ij} \pi_i \pi_j +
+    \frac{1}{(2\pi\alpha')^2} G_{ij} Z^{i\,\prime} Z^{j\,\prime}
+    \right)
+\"
+19,"\begin{equation}
+  \mathcal{H}_{LC}=-G_{+-}G^{-+}\pi_+ = -\pi_+ \ .
+\"
+20,"\begin{equation}
+\label{eq:AdS metric}
+    ds^2_{AdS}=\frac{R^2}{Y^2} \left(
+    2 dZ^+ dZ^- + dZ^i dZ^j \delta_{ij}
+    \right).
+\"
+21,"\begin{equation}\label{eq:LC AdS Hamiltonian}
+   H_{LC}^{(AdS)}= \int_0^l \frac{d\sigma}{2\, \pi_-} \, \left(
+                     \pi_i \pi_i +
+                     \frac{1}{(2\pi\alpha')^2}
+                     \frac{R^4}{Y^4} Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+22,"\begin{equation} \label{eq:pi- transformation}
+    \tilde\pi_-(\tilde\sigma)d\tilde\sigma = \pi_-(\sigma)d\sigma \ .
+\"
+23,"\begin{equation}
+   \tilde\sigma = \frac{1}{p_-}
+   \int_0^{\sigma} \pi_-(\sigma') d\sigma' \ ,
+\"
+24,"\begin{equation}\label{eq:LC AdS Hamiltonian 1}
+   H_{LC}^{(AdS)}= \frac{1}{2 p_-}\int_0^l d\sigma \, \left(
+                     \pi_i \pi_i +
+                     \frac{1}{(2\pi\alpha')^2}
+                     \frac{R^4}{Y^4} Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+25,"\begin{equation}
+\label{eq:flat Hamiltonian}
+    H_{LC}^{(flat)} =
+    \frac{1}{2 p_-}\int_0^l d\sigma \, \left(
+    \pi_i \pi_i +
+    \frac{1}{(2\pi\alpha')^2}
+    Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+26,"\begin{equation}
+\label{eq:LC zeroAdS Hamiltonian}
+    H_{LC} = \frac{1}{2 p_-}\int_0^l d\sigma \;
+    \pi_i \pi_i   \equiv
+    \frac{1}{2 p_-}\int_0^l d\sigma \;
+    \left( \bm{\pi}_{\perp}(\sigma)^2 +
+    \pi_Y(\sigma)^2\right) \ ,
+\"
+27,"\begin{equation}
+\label{eq:py string Hamiltonian}
+   H_{LC} = \int_0^l d\sigma \, \frac{
+                     \sum_{i=2}^{d-1} \pi_i \pi_i + p_Y^2}
+                     {2 \, \pi_-(\sigma)} \equiv
+           \int_0^l d\sigma \, \frac{
+                     \bm{\pi}_{\perp}(\sigma)^2 + p_Y^2}
+                     {2 \, \pi_-(\sigma)}\ ,
+\"
+28,"\begin{equation}
+    Z^- (\sigma,\tau) = \sum_{n=-\infty}^{\infty} \left(
+                        z_n^- + \frac{p_n^-}{l} \tau \right)
+                        \cos\left(\frac{\pi n \sigma}{l}\right)
+\"
+29,"\begin{equation}
+\label{eq:open string H mode expansion}
+     H_{LC} = \frac{1}{2p_-} \int_0^{l}\! d\sigma \, \pi_i \pi_i =
+              \frac{p_-}{2l}\sum_{n=-\infty}^{\infty} p^i_n p^i_n
+\"
+30,"\begin{equation}
+    Z^- (\sigma,\tau) = \sum_{n=-\infty}^{\infty} \left(
+                        z_n^- + \frac{p_n^-}{l} \tau \right)
+                        e^{\textstyle{\frac{2\pi i n \sigma}{l}}}
+\"
+31,"\begin{equation}
+    \sum_{m=-\infty}^{\infty} m \, z^i_{-m} \, p^i_m = 0 \ .
+\"
+32,"\begin{equation}
+\label{eq:closed string H mode expansion}
+    H_{LC} \; = \;
+%            \frac{1}{2} \int_0^{2\pi P_-}\! d\sigma \, \pi_M \pi_M =
+             \frac{p_-}{2l}\!\sum_{n=-\infty}^{\infty} p^i_n p^i_{-n}
+             \; = \;
+             \frac{p_-}{2l}\!\sum_{n=-\infty}^{\infty} p^i_n (p^i_n)^* \ .
+\"
+33,"\begin{equation}
+    [z^j_n, p^k_m] = \frac{i}{p_-} \delta^{jk} \delta_{n,-m}
+\"
+34,"\begin{equation}
+\label{eq:open-zp-comm}
+    \left[ z^j_n , \, p^k_m \right] =
+    \frac{i}{2p_-} \delta_{nm} \delta^{jk}
+    , \ \ \ \ n,m\geq 0
+\"
+35,"\begin{equation}
+[z_0^-, p_-] = i/l \ ,
+\"
+36,"\begin{equation}
+\label{eq:py commutation relation}
+     \left[ y_0, p_Y \right] = i/l \ .
+\"
+37,"\begin{equation}
+\label{eq:Schroedinger equation}
+    -\frac{1}{l^2} \frac{d^2}{dy_0^2} \psi(y_0) =
+     E_Y \psi(y_0) \ ,
+\"
+38,"\begin{equation}
+    E_Y = \frac{4\pi^2 n^2}{l^2 Y_{max}^2} \ ,
+\"
+39,"\begin{equation}
+  H_{LC} = \int_0^l d\sigma \, \frac{1}{2\pi_-(\sigma)}
+           \left(
+                     \bm{\pi}_{\perp}(\sigma)^2 +
+                     \left(\frac{2\pi}{Y_{max}}\right)^2
+                     \frac{n^2}{l^2}
+           \right)
+\"
+40,"\begin{equation}
+    H_{LC} = \int_0^l dx\; \frac{1}{2 \, \pi_- (x)}
+    \left(\pip^2 (x) + m^2 \frac{M^2}{l^2} \right) \ .
+\"
+41,"\begin{equation}
+    m = \frac{2\pi}{Y_{max}} \ ,
+\"
+42,"\begin{equation}
+    J^K_I = \int_0^l d\sigma \, \left(
+            Z^K \pi_I -
+            \eta_{I\!J} \, \eta^{KL} Z^J \pi_L
+            \right) \
+\"
+43,"\begin{equation}
+\label{eq:Lorentz-algebra}
+    [J^K_I, J^M_N] = i \left(
+                     \delta^K_N J^M_I -
+                     \delta^M_I J^K_N +
+                     \eta_{N\!I}\,\eta^{M\!L} J^K_L -
+                     \eta_{N\!L}\,\eta^{M\!K} J^L_I
+                     \right) \ .
+\"
+44,"\begin{equation}
+    J^M_\pm = \frac{1}{\sqrt{2}}\left(J^M_1 \pm J^M_0 \right) =
+             \int_0^l d\sigma \left(
+              Z^M \pi_\pm - Z^\mp \pi_L \delta^{LM} \right)
+\"
+45,"\begin{equation}
+\label{eq:JpJp-zero}
+    [J^M_+, J^N_+] = 0 \ .
+%    [J^M_-, J^N_-] = 0\ .
+\"
+46,"\begin{equation}
+    Z^m(\sigma, \tau) = \left(z^m_0 + \frac{p^m_0}{l} \tau \right)
+                        \; + \;
+                        i\sqrt{2} \sum_{k \neq  0} \frac{a^m_k}{k}
+                        \exp\left[-\frac{i \pi k c \tau}{ l}\right]
+                        \cos\left( \frac{\pi k \sigma}{l} \right) .
+\"
+47,"\begin{equation}
+\label{eq:flat-mode-comm}
+   [a_k^m, a_{-k}^n] =
+   \alpha' k\delta^{mn} \sim\frac{1}{c}\delta^{mn} \,.
+\"
+48,"\begin{equation}
+     Z^m(\sigma, \tau) =
+           \left(z^m_0 + \frac{p^m_0}{l } \tau \right) \; + 2 \;
+           \sum_{k > 0} \left(z^{m}_k + \frac{p^{m}_k}{ l} \tau \right)
+           \cos\left( \frac{\pi k \sigma}{l} \right) \ ,
+\"
+49,"\begin{equation}
+Z^m(\sigma, \tau) = (z^m_0 + \frac{p^m_0}{l} \tau) \; + \;
+ \frac{i}{\sqrt{2}} \sum_{k \neq  0}\left\{
+   \frac{a^m_k}{k}\exp\left[\frac{2\pi i k (\sigma - c\tau)}{l}\right]
+             \; + \;
+   \frac{\tilde{a}^m_k}{k}\exp\left[-\frac{2\pi i k (\sigma + c\tau)}{l}\right]
+  \right\} \,,
+\"
+50,"\begin{equation}
+     Z^m(\sigma, \tau) = \left(z^m_0 + \frac{p^m_0}{l} \tau \right)
+            \; + \;
+            \sum_{k \neq  0}\left(z^m_k + \frac{p^m_k}{l}\tau \right)
+            e^{\textstyle{\frac{2\pi i k \sigma}{l}}} \ ,
+\"
+51,"\begin{equation}
+     [J^m_+,J^n_+]_{AdS}=
+     \lim_{c\rightarrow 0}[J^m_+,J^n_+]_{flat}\,.
+\"
+52,"\begin{equation}
+   S = \int d^{\,d} x \left(
+       -\frac 12 {\rm tr}(\partial \Phi)^2
+       -\frac 12 m^2 \, {\rm tr} \Phi^2 \right) \ .
+\"
+53,"\begin{equation}
+    \left[ \partial_- \Phi_{ij}(x^+, x^-, \xp),
+    \Phi_{kl}(x^+, y^{\,-},\yp) \right] =
+    - \, \delta_{ik}  \delta_{jl} \; \frac i2 \,
+    \delta(x^- - y^{\,-}) \, \delta(\xp - \yp)
+\"
+54,"\begin{equation}
+    \Phi_{ij}(x^-,\xp) =
+    \int_0^\infty \frac{dp_-}{2\pi 2p_-}
+    \int \frac{d^{\,d-2}p_\perp}{(2\pi)^{d-2}}  \left[
+    a_{ij}(p_-,\pp) e^{ ip_- x^- + i\pp\cdot\xp} +
+    a^\dagger_{ij}(p_-,\pp) e^{ -ip_- x^- - i\pp\cdot\xp}
+    \right]
+\"
+55,"\begin{equation}
+    a^\dagger_{i_1 j_1}(\p_1) \,
+    a^\dagger_{i_2 j_2}(\p_2) \dots
+    a^\dagger_{i_M j_M}(\p_M) \,|0\rangle \ ,
+\"
+56,"\begin{equation}
+    {\cal E}_{LC}(\p) = - p_+
+    = \frac{\pp^2 + m^2}{2 p_-}
+\"
+57,"\begin{equation}
+\label{eq:M particle Hamiltonian 1}
+    H_{LC} = \sum_{\p} N_\p \;
+             {\cal E}_{LC}(\p)
+           = \sum_{\p} N_\p \;
+             \frac{\pp^2 + m^2}{2 p_-} \ ,
+\"
+58,"\begin{equation}
+\label{eq:M particle Hamiltonian 2}
+     H_{LC} = \sum_{n=1}^M
+     \frac{\pp^2 (n) + m^2}{2 p_- (n)} \ ,
+\"
+59,"\begin{equation}
+     |(p_-,\pp)_{n_1}, (p_-,\pp)_{n_2}, \dots
+     (p_-,\pp)_{n_M} \rangle \ .
+\"
+60,"\begin{equation}
+\label{eq:M particle Hamiltonian 3}
+    H_{LC}= \sum_{n=1}^M
+    \frac{\pp^2 (n) + m^2}{2 \, p_- (n)}
+    \to
+    \frac 1a \int_0^l dx\;
+    \frac{\pp^2 (x) + m^2}{2 p_- (x)}
+\"
+61,"\begin{equation}
+\label{eq:FT continuum Hamiltonian 1}
+    H_{LC} = \int_0^l dx\;
+    \frac{\pip^2 (x) + \pi_Y^2}{2 \, \pi_- (x)}
+\"
+62,"\begin{equation}
+\label{eq:M particle Hamiltonian 4}
+    H_{LC}= \sum_{n=1}^M
+    \frac{\pp^2 (n) + m^2}{2 \, p_- (n)}
+    \to
+    \int_0^l \frac{dx}{\tilde a(x)}
+    \frac{\pp^2 (x) + m^2}{2 p_-(x)} =
+    \int_0^l dx\; \frac{1}{\tilde a(x)^2}
+    \frac{\pp^2 (x) + m^2}{2 k_-} \ .
+\"
+63,"\begin{equation}
+\label{eq:FT continuum Hamiltonian 2}
+    H_{LC} = \frac{1}{2k_-} \int_0^l dx\;
+    \left( \tilde\pip^2 (x) + \tilde\pi_Y^2(x) \right)
+\"
+64,"\begin{equation}
+\label{eq:string action}
+  S=-\frac{1}{4\pi\alpha'}
+       \int d\tau \int_0^l d\sigma
+       \sqrt{-\gamma}\gamma^{ab} \,
+       \partial_a Z^\mu \partial_b Z^\nu \, G_{\mu\nu}(Z) \ .
+\"
+65,"\begin{equation} \label{eq:lagrangian}
+%\mathcal{L}=-\frac{1}{4\pi\alpha'} G_{\mu\nu} \left(
+%            h^{\tau\tau} \dot Z^\mu \dot Z^\nu +
+%            2 h^{\tau\sigma} \dot Z^\mu Z^{\nu\prime} +
+%            h^{\sigma\!\sigma} Z^{\mu\prime} Z^{\nu\prime}
+%            \right)
+%\"
+66,"\begin{equation} \label{eq:canon-momenta}
+\pi_\mu = \frac{\delta\mathcal{L}}{\delta \dot Z^\mu} =
+          -\frac{1}{2\pi\alpha'}G_{\mu\nu} \left(
+          h^{\tau\tau} \dot Z^\nu + h^{\tau\sigma} Z^{\nu\prime}
+          \right) \ ,
+\"
+67,"\begin{equation}
+\mathcal{H} = -\frac{\pi\alpha'}{h^{\tau\tau}} \left[
+              G^{\mu\nu}\pi_\mu \pi_\nu +
+              \frac{1}{(2\pi\alpha')^2}
+              G_{\mu\nu}Z^{\mu\prime} Z^{\nu\prime}
+              \right] -
+              \frac{h^{\tau\sigma}}{h^{\tau\tau}}
+              \pi_\mu Z^{\mu\prime} \ ,
+\"
+68,"\begin{equation}
+Z^\pm = \frac{1}{\sqrt{2}}\left(Z^1\pm Z^0\right) \ .
+\"
+69,"\begin{equation} \label{eq:LC Lagrangian}
+    \mathcal{L}_{LC}=-\frac{h^{\tau\tau}}{4\pi\alpha'} \left(
+    2 G_{+-} \dot Z^- +  G_{ij} \dot Z^i \dot Z^j -
+    \frac{1}{(h^{\tau\tau})^2} G_{ij} Z^{i\,\prime} Z^{j\,\prime}
+    \right)
+\"
+70,"\begin{equation}\label{eq:LC Hamiltonian}
+    H_{LC} = \int_0^l \mathcal{H}_{LC} =
+    \int_0^l d\sigma \, \frac{G_{+-}}{2 \,\pi_-}
+    \left( G^{ij} \pi_i \pi_j +
+    \frac{1}{(2\pi\alpha')^2} G_{ij} Z^{i\,\prime} Z^{j\,\prime}
+    \right)
+\"
+71,"\begin{equation}
+  \mathcal{H}_{LC}=-G_{+-}G^{-+}\pi_+ = -\pi_+ \ .
+\"
+72,"\begin{equation}
+\label{eq:AdS metric}
+    ds^2_{AdS}=\frac{R^2}{Y^2} \left(
+    2 dZ^+ dZ^- + dZ^i dZ^j \delta_{ij}
+    \right).
+\"
+73,"\begin{equation}\label{eq:LC AdS Hamiltonian}
+   H_{LC}^{(AdS)}= \int_0^l \frac{d\sigma}{2\, \pi_-} \, \left(
+                     \pi_i \pi_i +
+                     \frac{1}{(2\pi\alpha')^2}
+                     \frac{R^4}{Y^4} Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+74,"\begin{equation} \label{eq:pi- transformation}
+    \tilde\pi_-(\tilde\sigma)d\tilde\sigma = \pi_-(\sigma)d\sigma \ .
+\"
+75,"\begin{equation}
+   \tilde\sigma = \frac{1}{p_-}
+   \int_0^{\sigma} \pi_-(\sigma') d\sigma' \ ,
+\"
+76,"\begin{equation}\label{eq:LC AdS Hamiltonian 1}
+   H_{LC}^{(AdS)}= \frac{1}{2 p_-}\int_0^l d\sigma \, \left(
+                     \pi_i \pi_i +
+                     \frac{1}{(2\pi\alpha')^2}
+                     \frac{R^4}{Y^4} Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+77,"\begin{equation}
+\label{eq:flat Hamiltonian}
+    H_{LC}^{(flat)} =
+    \frac{1}{2 p_-}\int_0^l d\sigma \, \left(
+    \pi_i \pi_i +
+    \frac{1}{(2\pi\alpha')^2}
+    Z^{i\,\prime} Z^{i\,\prime}
+                     \right)\ .
+\"
+78,"\begin{equation}
+\label{eq:LC zeroAdS Hamiltonian}
+    H_{LC} = \frac{1}{2 p_-}\int_0^l d\sigma \;
+    \pi_i \pi_i   \equiv
+    \frac{1}{2 p_-}\int_0^l d\sigma \;
+    \left( \bm{\pi}_{\perp}(\sigma)^2 +
+    \pi_Y(\sigma)^2\right) \ ,
+\"
+79,"\begin{equation}
+\label{eq:py string Hamiltonian}
+   H_{LC} = \int_0^l d\sigma \, \frac{
+                     \sum_{i=2}^{d-1} \pi_i \pi_i + p_Y^2}
+                     {2 \, \pi_-(\sigma)} \equiv
+           \int_0^l d\sigma \, \frac{
+                     \bm{\pi}_{\perp}(\sigma)^2 + p_Y^2}
+                     {2 \, \pi_-(\sigma)}\ ,
+\"
+80,"\begin{equation}
+    Z^- (\sigma,\tau) = \sum_{n=-\infty}^{\infty} \left(
+                        z_n^- + \frac{p_n^-}{l} \tau \right)
+                        \cos\left(\frac{\pi n \sigma}{l}\right)
+\"
+81,"\begin{equation}
+\label{eq:open string H mode expansion}
+     H_{LC} = \frac{1}{2p_-} \int_0^{l}\! d\sigma \, \pi_i \pi_i =
+              \frac{p_-}{2l}\sum_{n=-\infty}^{\infty} p^i_n p^i_n
+\"
+82,"\begin{equation}
+    Z^- (\sigma,\tau) = \sum_{n=-\infty}^{\infty} \left(
+                        z_n^- + \frac{p_n^-}{l} \tau \right)
+                        e^{\textstyle{\frac{2\pi i n \sigma}{l}}}
+\"
+83,"\begin{equation}
+    \sum_{m=-\infty}^{\infty} m \, z^i_{-m} \, p^i_m = 0 \ .
+\"
+84,"\begin{equation}
+\label{eq:closed string H mode expansion}
+    H_{LC} \; = \;
+%            \frac{1}{2} \int_0^{2\pi P_-}\! d\sigma \, \pi_M \pi_M =
+             \frac{p_-}{2l}\!\sum_{n=-\infty}^{\infty} p^i_n p^i_{-n}
+             \; = \;
+             \frac{p_-}{2l}\!\sum_{n=-\infty}^{\infty} p^i_n (p^i_n)^* \ .
+\"
+85,"\begin{equation}
+    [z^j_n, p^k_m] = \frac{i}{p_-} \delta^{jk} \delta_{n,-m}
+\"
+86,"\begin{equation}
+\label{eq:open-zp-comm}
+    \left[ z^j_n , \, p^k_m \right] =
+    \frac{i}{2p_-} \delta_{nm} \delta^{jk}
+    , \ \ \ \ n,m\geq 0
+\"
+87,"\begin{equation}
+[z_0^-, p_-] = i/l \ ,
+\"
+88,"\begin{equation}
+\label{eq:py commutation relation}
+     \left[ y_0, p_Y \right] = i/l \ .
+\"
+89,"\begin{equation}
+\label{eq:Schroedinger equation}
+    -\frac{1}{l^2} \frac{d^2}{dy_0^2} \psi(y_0) =
+     E_Y \psi(y_0) \ ,
+\"
+90,"\begin{equation}
+    E_Y = \frac{4\pi^2 n^2}{l^2 Y_{max}^2} \ ,
+\"
+91,"\begin{equation}
+  H_{LC} = \int_0^l d\sigma \, \frac{1}{2\pi_-(\sigma)}
+           \left(
+                     \bm{\pi}_{\perp}(\sigma)^2 +
+                     \left(\frac{2\pi}{Y_{max}}\right)^2
+                     \frac{n^2}{l^2}
+           \right)
+\"
+92,"\begin{equation}
+    H_{LC} = \int_0^l dx\; \frac{1}{2 \, \pi_- (x)}
+    \left(\pip^2 (x) + m^2 \frac{M^2}{l^2} \right) \ .
+\"
+93,"\begin{equation}
+    m = \frac{2\pi}{Y_{max}} \ ,
+\"
+94,"\begin{equation}
+    J^K_I = \int_0^l d\sigma \, \left(
+            Z^K \pi_I -
+            \eta_{I\!J} \, \eta^{KL} Z^J \pi_L
+            \right) \
+\"
+95,"\begin{equation}
+\label{eq:Lorentz-algebra}
+    [J^K_I, J^M_N] = i \left(
+                     \delta^K_N J^M_I -
+                     \delta^M_I J^K_N +
+                     \eta_{N\!I}\,\eta^{M\!L} J^K_L -
+                     \eta_{N\!L}\,\eta^{M\!K} J^L_I
+                     \right) \ .
+\"
+96,"\begin{equation}
+    J^M_\pm = \frac{1}{\sqrt{2}}\left(J^M_1 \pm J^M_0 \right) =
+             \int_0^l d\sigma \left(
+              Z^M \pi_\pm - Z^\mp \pi_L \delta^{LM} \right)
+\"
+97,"\begin{equation}
+\label{eq:JpJp-zero}
+    [J^M_+, J^N_+] = 0 \ .
+%    [J^M_-, J^N_-] = 0\ .
+\"
+98,"\begin{equation}
+    Z^m(\sigma, \tau) = \left(z^m_0 + \frac{p^m_0}{l} \tau \right)
+                        \; + \;
+                        i\sqrt{2} \sum_{k \neq  0} \frac{a^m_k}{k}
+                        \exp\left[-\frac{i \pi k c \tau}{ l}\right]
+                        \cos\left( \frac{\pi k \sigma}{l} \right) .
+\"
+99,"\begin{equation}
+\label{eq:flat-mode-comm}
+   [a_k^m, a_{-k}^n] =
+   \alpha' k\delta^{mn} \sim\frac{1}{c}\delta^{mn} \,.
+\"
+100,"\begin{equation}
+     Z^m(\sigma, \tau) =
+           \left(z^m_0 + \frac{p^m_0}{l } \tau \right) \; + 2 \;
+           \sum_{k > 0} \left(z^{m}_k + \frac{p^{m}_k}{ l} \tau \right)
+           \cos\left( \frac{\pi k \sigma}{l} \right) \ ,
+\"
+101,"\begin{equation}
+Z^m(\sigma, \tau) = (z^m_0 + \frac{p^m_0}{l} \tau) \; + \;
+ \frac{i}{\sqrt{2}} \sum_{k \neq  0}\left\{
+   \frac{a^m_k}{k}\exp\left[\frac{2\pi i k (\sigma - c\tau)}{l}\right]
+             \; + \;
+   \frac{\tilde{a}^m_k}{k}\exp\left[-\frac{2\pi i k (\sigma + c\tau)}{l}\right]
+  \right\} \,,
+\"
+102,"\begin{equation}
+     Z^m(\sigma, \tau) = \left(z^m_0 + \frac{p^m_0}{l} \tau \right)
+            \; + \;
+            \sum_{k \neq  0}\left(z^m_k + \frac{p^m_k}{l}\tau \right)
+            e^{\textstyle{\frac{2\pi i k \sigma}{l}}} \ ,
+\"
+103,"\begin{equation}
+     [J^m_+,J^n_+]_{AdS}=
+     \lim_{c\rightarrow 0}[J^m_+,J^n_+]_{flat}\,.
+\"

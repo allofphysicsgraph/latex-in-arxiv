@@ -1,0 +1,694 @@
+,section
+0,\section{Introduction}
+1,\section{Wilson-Polchinski renormalization for\\ large $\theta$}
+2,\section{The Parametric Equation}
+3,\section{Conclusions}
+4,"\section*{Acknowledgments} 
+We are glad to thank Prof. A. Schwimmer for in-depth discussions of
+several aspects of this work.  This work is supported in part by
+Ministero dell'Universit\`a e della Ricerca Scientifica e Tecnologica
+and the European Commission's Human Potential program under contract
+HPRN-CT-2000-00131 Quantum Space-Time, to which the authors are
+associated through the Frascati National Laboratory.
+
+\appendix
+\section{Moyal Phases for Spherical Amplitudes}
+
+In this appendix we derive a formula for the $\theta$ dependence
+of generic spherical Feynman diagram integrands. 
+
+Recall that planar diagrams depend on $\theta$ via the Moyal factor
+\be
+{\rm e}^{-i\, \Phi_n(p_1,\ldots, p_n)} \equiv {\rm e}^{-i\sum_{i<j} p_i\wedge p_j}
+\label{moyalfactor1}
+\ee
+where $p_1\wedge p_2 \equiv {1\over 2}\theta_{\mu\nu}\,p_1^\mu\, p_2^\nu$, 
+and $p_1,\ldots,p_n$ are the momenta associated to the $n$ external
+lines of the graph. Let us briefly review the derivation of 
+Eq. (\ref{moyalfactor1}) which 
+exploits the following property
+of planar double-line graphs: the momentum through any
+propagator (or external line) in the graph can be written as
+the difference $l_i -l_j$ 
+where $l_i$ and $l_j$ are pseudo-momenta associated with the (oriented)
+single lines that are the adjacent edges of the double-line propagator.
+For any vertex with $k$ legs, let the momenta entering the vertex
+be $q_1, q_2, \ldots, q_k,$ in cyclic
+order: with respect to the commutative
+theory, the Feynman rules of the Moyal non-commutative theory 
+include the additional phase factor
+\be
+{\rm e}^{-i\, \Phi_k(q_1,\ldots, q_k)} = {\rm e}^{-i\sum_{i<j} q_i\wedge q_j}
+\label{moyalfactor}
+\ee
+Writing the momenta $q_j$ in terms of pseudo-momenta, 
+$q_j = l_{i_j}- l_{i_{j+1}}$, one obtains
+\be
+\sum_{i<j} q_i \wedge q_j =
+l_{i_1}\wedge l_{i_2} +l_{i_2} \wedge l_{i_3} + \cdots + l_{i_n}
+\wedge l_{i_1}
+\ee
+Thus the phase factor at any interaction point may be expressed 
+as the product of $k$ terms, one for each incoming propagator
+\be
+{\rm e}^{-i\, \Phi_k(q_1,\ldots, q_k)}= 
+\prod_{j=1}^{k}e^{-i\,(l_{i_j} \wedge\, l_{i_{j+1}})}
+\ee
+Any internal propagator gives two contributions  to the total phase factor
+(\ref{moyalfactor1}) ---  one for each of its two end vertices ---  which
+cancel each other.  Therefore only the external momenta contribute 
+to the total phase factor, and one obtains Eq. (\ref{moyalfactor1}).
+
+The representation of propagator momenta in
+terms of pseudo-momenta is valid not only for the planar diagrams but,
+more generally, also for PIS amplitudes. Therefore the very same 
+argument which leads to Eq. (\ref{moyalfactor1}) 
+generalizes to PIS amplitudes with $h$ holes: 
+every hole with $k$ external lines gives a
+phase factor ${\rm e}^{-i\Phi_k}$, and hence the total Moyal phase of
+the amplitude is the product of $h$ factors like in
+(\ref{moyalfactor1}), one for each hole. 
+
+Let us now turn to generic non-planar spherical diagrams with 
+$h$ holes. Let $a=1,\ldots, h$ be a label defining 
+an arbitrary order of the holes.
+Let $p^{(a)}_{i_a}$, with $i_a=1,\ldots, n_a$, be the 
+$i_a$-th momentum entering the $a$-th hole of the spherical amplitude.
+The $n_a$ momenta entering the hole have a natural cyclic order determined
+by the orientation of the associated Riemann surface:
+thus, defining the indices $i_a$ requires choosing a particular 
+(first) momentum for each hole. A spherical diagram with $L$ loops
+defines a triangulation of the sphere with $F= L+1$ faces. We called
+holes the faces
+to which external lines are attached, and thus, obviously, $h\le F=L+1$.
+We denote by $q_A$, with $A=1,\ldots, L$ the independent loop momenta, 
+arbitrarily chosen. The Moyal phase  $\Phi\, (q_A, p^{(a)}_{i_a})$
+of the diagram has the general structure
+\be
+\Phi\,(q_A, p^{(a)}_{i_a}) =\! \sum_{A,B}C_{AB}\, q_A\wedge\,q_B +
+\!\sum_{a,\,A,\, i_a}\!\! D^{(a)}_{A\,i_a} q_A \wedge p^{(a)}_{i_a} + 
+\!\sum_{a,\, b,\, i_a,\, i_b}\!\!\!\!\!
+E^{(a b)}_{i_a i_b}\, p^{(a)}_{i_a}\wedge\, p^{(b)}_{i_b}
+\label{generalmoyal}
+\ee
+where $C_{AB}$, $D^{(a)}_{A\,i_a}$ and 
+$E^{(a b)}_{i_a i_b}$ are constant coefficients.
+
+When all the external momenta $p^{(a)}_{i_a}$ vanish, the amplitude
+becomes planar with no external lines and, thus, the Moyal phase
+vanish: it follows that $C_{AB}=0$. Also, if all the loop
+momenta $q_A$ vanish, the resulting Moyal phase is
+that of the  tree ---
+and hence planar --- diagram obtained from the original diagram by 
+cutting all the internal propagators associated with the momenta
+$q_A$. This tree diagram has the external lines of the
+original diagram, with an ordering which depends on the choice
+of the cut propagators, i.e. on the choice of the $L$ independent
+loop momenta $q_A$. Our choice of ordering of the holes and of
+the ``first'' momenta of each hole (implicit in the definition of
+the indices $a$ and $i_a$) induces, of course, an ordering on
+the external momenta: we can always take this ordering to coincide
+with the ordering of the external momenta of the tree
+diagram above. In other words, the (arbitrary) definition of
+the loop momenta $q_A$ should be consistent with the
+(arbitrary) definition of the indices $a$ and $i_a$. With this
+understanding, $\Phi(0, p^{(a)}_{i_a})$ writes as
+\be
+\Phi(0, p^{(a)}_{i_a})=\!\sum_{a,\, b,\, i_a,\, i_b}\!\!\!\!\!
+E^{(a b)}_{i_a i_b}\, p^{(a)}_{i_a}\wedge\, p^{(b)}_{i_b} =
+\sum_{a}\!\sum_{i_a<j_a}\! p^{(a)}_{i_a}\wedge\, p^{(a)}_{j_a}
++ \sum_{a<b}\Sigma^{(a)}\wedge\,\Sigma^{(b )}
+\ee
+where $\Sigma^{(a)}\equiv \sum_{i_a}\!p^{(a)}_{i_a}$ is the momentum
+entering the $a$-th hole. Last, let us take all the $\Sigma^{(a)} =0$:
+the amplitude becomes PIS and thus its Moyal phase reduces to 
+$\sum_{a}\!\sum_{i_a<j_a}\! p^{(a)}_{i_a}\wedge\, p^{(a)}_{j_a}$.
+Hence the term $\sum_{a,\,A,\, i_a}\!\! D^{(a)}_{A\,i_a} q_A \wedge p^{(a)}_{i_a}$ in (\ref{generalmoyal}) must vanish when $\Sigma^{(a)} =0$ and
+therefore it  can be expressed as linear combination of the $\Sigma^{(a)}$ 
+\be
+\sum_{a,\,A,\, i_a}\!\! D^{(a)}_{A\,i_a} q_A \wedge p^{(a)}_{i_a}=
+\!\sum_a k^{(a)} \wedge\, \Sigma^{(a )}
+\ee
+where $k^{(a)}$ are $h$ linear combinations of the $L$ loop momenta $q_A$.
+In conclusion the Moyal phase of the diagram is
+\be
+\Phi\,(k^{(a)}, p^{(a)}_{i_a}) = 
+\sum_{a}\!\sum_{i_a<j_a}\! p^{(a)}_{i_a}\wedge\, p^{(a)}_{j_a}
++ \sum_{a<b}\Sigma^{(a)}\wedge\,\Sigma^{(b )}+
+\!\sum_a k^{(a)} \wedge\, \Sigma^{(a )}
+\label{nonplanarmoyal}
+\ee
+The last term in the R.H.S. of Eq. (\ref{nonplanarmoyal})
+gives an IR sensitive UV cut-off for the integrand of the
+corresponding Feynman amplitude --- the origin
+of the famous IR-UV mixing effect. Because of this term, the Feynman
+integral is not --- for $\Sigma^{(a)}\not=0$ --- an analytic function
+of the non-commutative parameter $\theta$ at $\theta=\infty$.  
+As we mentioned above, PIS
+amplitudes  (for which $\Sigma^{(a)}=0$) are precisely those that 
+admit a good $\theta\to\infty$ limit: for them, 
+the R.H.S. of Eq. (\ref{nonplanarmoyal}) reduces to the first term,
+which, thanks to momentum conservation, is now independent of
+the ordering choices underlying the definition of the indices
+$a$ and $i_a$. 
+
+An explicit definition for the $h$ loop momenta $k^{(a)}$ in Eq. 
+(\ref{nonplanarmoyal}) can be
+given as follows. Take the original non-planar diagram and put to zero
+all the external momenta $p^{(a)}_{i_a}$. The resulting diagram
+is planar and its internal momenta admit the EK representation
+in terms of pseudo-momenta $l_A$, with $A=1,\ldots L+1$, one
+for each face of the diagram. To take into account the external
+momenta consider also an auxiliary oriented 
+path running through the double-line
+propagators with the following properties: (i) the path
+connects all the points to which the external legs are attached; (ii)
+it turns clockwise around each hole starting from the arbitrary
+chosen ``first'' leg to the ``last'' and going from the arbitrary chosen
+``first'' hole to the ``last'' (thus defining an ordering of the
+external legs); (iii) the path together with the external legs attached
+to it forms a tree diagram whose propagators carry the momenta
+which  enter through the external legs. An example of such
+auxiliary momentum path is depicted in Figure~\ref{f:path}.
+
+\begin{figure}
+\centerline{
+\begin{picture}(100,100)(0,0)
+\put(-1,15){\makebox(0,0){\tiny
+3}}\put(42,49){\makebox(0,0){\tiny 4}} \put(76,15){\makebox(0,0)
+{\tiny 4}}\put(-1,92){\makebox(0,0){\tiny 2}}
+\put(76,92){\makebox(0,0){\tiny 1}} \put(31,49){\makebox(0,0){\tiny 1}}
+\put(31,59){\makebox(0,0)
+{\tiny 2}}\put(42,59){\makebox(0,0){\tiny 3}}
+\put(7,29){\line(0,1){49}}\put(7,29){\line(-1,-1){10}}\put(7,78)
+{\line(-1,1){10}}\multiput(7,25)(-2,-2){4}{.}\multiput(8,80)(-2,2){4}{.}
+\put(12,24){\line(1,0){49}}\put(12,24){\line(-1,-1){10}}\put(12,84)
+{\line(1,0){49}}\put(12,84){\line(-1,1){10}}
+\put(17,39){\line(1,1){10}}\put(17,39){\line(0,1){30}}\put(17,69)
+{\line(1,-1){10}}\multiput(16,35)(2,2){6}{.}\multiput(17,72)(2,-2){6}{.}
+\put(23,34){\line(1,0){29}}\put(23,34){\line(1,1){10}}\put(23,74)
+{\line(1,0){29}}\put(23,74){\line(1,-1){10}}
+\put(52,34){\line(-1,1){10}}\put(52,74){\line(-1,-1){10}}
+\put(57,39){\line(0,1){30}}\put(57,39){\line(-1,1){10}}\put(57,70)
+{\line(-1,-1){10}}\multiput(54,72)(-2,-2){6}{.}
+\put(62,24){\line(1,-1){10}}\put(61,84){\line(1,1){10}}
+\multiput(64,82)(2,2){4}{.}
+\put(67,29){\line(0,1){49}}\put(67,29){\line(1,-1){10}}
+\put(67,78){\line(1,1){10}}
+\multiput(10,26)(3,0){18}{.}\multiput(8,26)(0,3){18}{.}
+\multiput(71,18)(-2,2){15}{.}\multiput(14,33)(0,3){15}{.}
+\multiput(10,80)(3,0){18}{.}\multiput(15,75)(3,0){15}{.}
+\multiput(57,33)(0,3){15}{.}
+\end{picture}}
+\caption[x] {\footnotesize A spherical non-planar 
+diagram with two holes and its auxiliary momentum path}
+\label{f:path}
+\end{figure}
+The EK prescription for
+the momentum $k^{(a)}$ flowing through a given propagator is now
+corrected by adding to the pseudo-momenta contribution the
+momenta carried by the path, if this happens to go through
+the propagator. With this definition of the internal $k^{(a)}$
+the Moyal phase (\ref{nonplanarmoyal}) of a spherical non-planar
+diagram writes as
+\be
+\Phi\,(l_a, p^{(a)}_{i_a}) = 
+\sum_{a}\!\sum_{i_a<j_a}\! p^{(a)}_{i_a}\wedge\, p^{(a)}_{j_a}
++ \sum_{a<b}\Sigma^{(a)}\wedge\,\Sigma^{(b )}+
+\!2\,\sum_a l_a \wedge\, \Sigma^{(a )}
+\label{nonplanarmoyalek}
+\ee
+where $l_a$ with $a=1,\ldots, h\le L+1$ 
+are the pseudo-momenta associated with the holes.
+Since $\sum_a \Sigma^{(a)} =0$, $\Phi\,(l_a, p^{(a)}_{i_a})$
+is invariant under $l_a\to l_a + c$, and thus depends only
+on the differences of the pseudo-momenta $l_a$.
+
+
+\section{Moyal phases for higher genus amplitudes}
+
+In this appendix we will analyze the $\theta$ dependence of non-spherical
+amplitudes. 
+
+Let us begin with the following remark: 
+the Moyal phase associated with a double-line diagram
+is invariant under 
+topological deformations of the type depicted in Figure~\ref{f:deformation}. 
+These are deformations which vary the lengths of the double-line
+propagators and correspond to changing the triangulation
+of the underlying Riemann surface by keeping fixed its genus
+$g$ and its number $F$ of faces. Note that the number of loops
+$L$ of the Feynman diagram, which is given by
+\be
+L = F-1 +2\,g\, ,
+\label{loopcount}
+\ee
+is left unchanged by these deformations.
+
+
+\begin{figure}
+\centerline{
+\begin{picture}(300,40)(-60,20)
+\put(10,35){\line(0,1){10}}\put(10,35){\line(-1,-1){10}}
+\put(10,45){\line(-1,1){10}}
+\put(15,30){\line(-1,-1){10}}\put(15,30){\line(1,-1){10}}\put(15,50)
+{\line(-1,1){10}}\put(15,50){\line(1,1){10}}
+\put(20,35){\line(0,1){10}}\put(20,35){\line(1,-1){10}}\put(20,45)
+{\line(1,1){10}}
+\put(50,40){\makebox(0,0){$\leftrightarrow$}}
+\put(80,40){\line(-1,-1){10}}\put(80,40){\line(-1,1){10}}
+\put(85,35){\line(-1,-1){10}}\put(85,35){\line(1,-1){10}}\put(85,45)
+{\line(-1,1){10}}\put(85,45){\line(1,1){10}}
+\put(90,40){\line(1,-1){10}}\put(90,40){\line(1,1){10}}
+\put(120,40){\makebox(0,0){$\leftrightarrow$}}
+\put(150,40){\line(-1,-1){10}}\put(150,40){\line(-1,1){10}}
+\put(155,35){\line(-1,-1){10}}\put(155,35){\line(1,0){10}}\put(155,45) 
+{\line(-1,1){10}}\put(155,45){\line(1,0){10}}
+\put(165,35){\line(1,-1){10}}\put(165,45){\line(1,1){10}}
+\put(170,40){\line(1,-1){10}}\put(170,40){\line(1,1){10}}
+\end{picture}
+}
+\caption[x] {\footnotesize Topological deformations preserving 
+the Moyal phases}
+\label{f:deformation}
+\end{figure}
+
+Consider now a
+diagram of genus $g$ and $F$ faces and join with a double-line
+propagator two external legs attached to two {\it different}
+holes: one obtains in this way 
+a diagram of genus $g+1$ and $F-1$ faces. This follows
+from the Euler relation $2-2g= F-E+V$, where $V$, $E$ and $F$
+are the numbers of vertices, propagators and faces of the diagram:
+the new diagram has the same number of vertices, one more
+propagator and one face less than the original diagram and,
+thus, one more handle. Therefore we can build diagrams
+of any genus $g$ and any number of faces $F$ starting from
+spherical (non-planar) diagrams with $g+F$ faces by means
+of the following construction: Consider
+one such spherical diagram and join $g$ pairs of external legs
+with $g$ propagators --- choosing the legs of each pair 
+to belong to different holes. In other words there should be at
+most a single double-line propagator connecting any pair of holes.
+An example of this construction for a genus 2 surface
+built out of a spherical diagram with 3 holes and 4 external
+legs is given in Figure~\ref{f:highergenus}.
+
+An important result in the theory of Riemann surfaces states
+that double-line diagrams with fixed $g$ and $F$ 
+provide a cell decomposition of the  moduli space of oriented 
+Riemann surfaces of genus $g$ and $F$ boundaries: the moduli
+of Riemann surfaces are parametrized by non-negative real numbers
+associated with the lengths of the double-line propagators.
+Since the moduli space of fixed genus and fixed number of boundaries
+is a connected variety, it follows that
+one can transform, by means of the deformations   
+in Figure~\ref{f:deformation}, any graph of genus $g$ and $F$ faces
+into a topologically equivalent one
+built out of spherical non-planar diagrams in the way 
+explained in the previous paragraph.
+
+Given two topologically equivalent diagrams, their loop 
+momenta are in a one-to-one correspondence and thus can be identified:
+under this identification their Moyal phases coincide. We can therefore 
+limit ourselves to evaluate the Moyal phase of the higher genus diagrams
+built out of spherical non-planar graphs. The Moyal phases of such
+graphs are given by the formula in Eq. (\ref{nonplanarmoyalek})
+for the associated non-planar spherical graphs  
+where some of the external momenta $p^{(a)}_{i_a}$  --- those flowing into
+the legs which are joined by the $g$ propagators --- become loop momenta, 
+$q_i$ (with $i=1,\ldots,g$) of the higher genus diagrams. Thus we can
+write the sum $\Sigma^{(a)}$ of the momenta entering the $a$-th
+hole, which appears in Eq. (\ref{nonplanarmoyalek}),
+as follows:
+\be
+\Sigma^{(a)}= \sum_{i=1}^g q_i\, e_i^a + P^{(a)}
+\label{external}
+\ee 
+In the formula above $P^{(a)}$ is momentum carried by the
+external legs  of the higher genus diagram attached to the $a$-th hole
+of the corresponding spherical diagram; $e_i^a$ is a 
+numerical matrix whose $(i,a)$-th element
+is +1 (-1) if the momentum $q_i$ enters (leaves) the $a$-th hole and
+0 otherwise. $e_i^a$ is the incidence matrix of the
+graph whose points
+are the holes of the non-planar spherical diagram and whose lines
+are the $g$ propagators which connect the holes. This is a
+{\it tree} graph because any pair of holes is
+\begin{figure}
+\begin{center}
+\includegraphics*[scale=.23, clip=false]{highergenus.eps}
+\end{center}
+\caption[x] {\footnotesize A genus 2 surface from a sphere with
+3 holes and 4 external legs}
+\label{f:highergenus}
+\end{figure}connected at most by a single propagator.
+
+The Moyal phase of the higher genus diagram is therefore a
+quadratic form in the loop momenta $l_a$ and $q_i$ which
+looks as follows:
+\be
+\Phi_{higher-genus} = \sum_{i,j} C_{ij}\, q_i \wedge\,q_j + 2 \sum_{i,\,a}
+e_i^a\, l_a \wedge q_i +A
+\ee
+where $C_{ij}$ is a numerical matrix  and
+$A$ is at most linear in the loop momenta. 
+Since $\sum_{i,\,a} e_i^a\,
+q_i =0$, the Moyal phase $\Phi_{higher-genus}$ depends only
+on the differences of the $l_a$'s. In conclusion, the part of
+$\Phi_{higher-genus}$ quadratic in the loop momenta $ Q_A \equiv (l_a, q_i)$ 
+can be written as $\sum_{A,B} D_{AB}\, Q_A \wedge Q_B$ where 
+$D_{AB}$ is an anti-symmetric matrix of the following form 
+\be
+(D)_{AB} = \left(\matrix{0 & e_j^b\cr -e_i^a & C_{ij}}\right)
+\label{quadraticloop}
+\ee
+As we said above, $e_i^a$ is the incidence matrix of a tree 
+graph with $g$ lines and thus it has rank $g$. It follows
+that the matrix $D_{AB}$ has rank $2g$.
+
+We are now ready to discuss the $\theta$ dependence of a
+generic diagram of genus $g$. To understand the general
+situation let us consider the example in Figure~\ref{f:3loops} of
+a diagram of genus 1 and 3 loops
+with 2 external legs carrying momentum $P$ and $-P$. 
+By using the Schwinger parametrization for the
+propagators one obtains a Feynman amplitude which writes
+as follows:
+\bea
+&& \int\!\! d\a \, d\b \, 
+d\c \, d\d \, d\eta\, d\zeta\, g(\a,\b,\c, \d, \eta, \zeta)\times\\
+&&\quad\times\!\int\!d^dp\, d^dq\, d^dk\,
+{\rm e}^{-\bigl[\a p^2+\b q^2+\c k^2+\d (p-q)^2+\eta
+(p-k)^2+\zeta(q-k)^2 + 2 i p\wedge q + 2ik\wedge P\bigr]}\nonumber\\
+&&\qquad \equiv \int\!\! d\a \, d\b \, 
+d\c \, d\d \, d\eta\, d\zeta\, g(\a,\b,\c, \d, \eta, \zeta) \,
+I(\a,\b,\c, \d, \eta, \zeta ;P)\nonumber
+\label{3loopsamplitude}
+\eea
+\begin{figure}
+\begin{center}
+\includegraphics*[scale=.23, clip=false]{3loops.eps}
+\end{center}
+\caption[x] {\footnotesize A genus 1 amplitude with
+3 loops and 2 external legs}
+\label{f:3loops}
+\end{figure}
+Performing the integration over the loop momenta one obtains the following
+function of the Schwinger parameters
+\be
+I(\a,\b,\c, \d, \eta, \zeta ;P) ={\pi^{3 d\over 2}\over 
+\bigl(D+F\theta^2\bigr)^{d\over 2}}\,
+{\rm e}^{-P^2\theta^2{E+\theta^2\over D+F\theta^2}}
+\ee
+where 
+\bea 
+&& D\equiv (\a+\b+\c)(\zeta\d+\zeta\eta+\d\eta)
++\a\b(\zeta+\eta)+\nonumber\\
+&&\qquad\, + \b\c(\d+\eta)+\c\a(\d+\zeta)+\a\b\c\nonumber\\
+&& E\equiv (\a+\eta)(\b+\zeta)+\d(\a+\b+\zeta+\eta)\nonumber\\ 
+&& F\equiv \c+\eta+\zeta 
+\label{schwingerfunctions}
+\eea
+If the function $g(\a,\b,\c, \d, \eta, \zeta)$ is sufficiently
+regular at infinity, we can replace in Eq. (\ref{3loopsamplitude})
+the integral $I$ with its asymptotic expression for $\theta\to\infty$ 
+\be
+I(\a,\b,\c, \d, \eta, \zeta ;P) \,\mathrel{\mathop\rightarrow_{\theta\to\infty}}\, {\pi^{3d\over 2}\over
+F^{d\over 2}\theta^d}\,{\rm e}^{-{P^2\theta^2\over F}}
+\ee
+Note the $\theta$ dependence of this amplitude:
+first of all there is a multiplicative factor $1/\theta^d$, which 
+in the general case becomes $1/\theta^{dg}$. 
+The non-trivial dependence on the Schwinger parameters of
+the exponential factor ${\rm e}^{-{P^2\theta^2\over F}}$
+is the source of the IR-UV mixing effect: 
+if the external momenta are non-exceptional, $P\not=0$, the UV divergences
+at $F=0$ are regulated by the UV cut-off $1/(P\theta)$.
+This is what makes the limit $\theta\to\infty$ non-uniform in the
+external momenta. 
+
+Note that when
+the number $L$ of loop momenta equals $2g$ --- and thus the number
+of faces of the higher genus diagram is 1 ---
+the matrix $D_{AB}$ in Eq. (\ref{quadraticloop}) has {\it maximal} rank
+and, thus, in this case the Moyal factor regulates all the loop integrations. 
+For this special kind of diagrams the analogue of the function $F$ 
+appearing in (\ref{schwingerfunctions}) does not vanish for any value
+of the Schwinger parameters and hence there is no UV-IR mixing effect. 
+For example consider the
+amplitude, given in Figure~\ref{f:2loops}, 
+of genus 1, 2 loops and 2 external legs carrying momentum $\pm P$:
+\bea
+&&\int\!\! d\a \, d\b \, 
+d\c \, f(\a,\b,\c)\, \int\!d^dp\, d^dq
+\,{\rm e}^{-\bigl[\a p^2+\b q^2+\c(p+q)^2+ 2ip\wedge q + 2ip\wedge P\bigr]}\nonumber\\
+&&\qquad =\int\!\! d\a \, d\b \, 
+d\c \, f(\a,\b,\c)\,{\pi^d\over\bigl[\a\b+\a\c+\b\c+\theta^2\bigr]^{d\over2}}\,{\rm e}^{-{\theta^2\,P^2(\beta +\gamma)\over \a\b+\a\c+\b\c+\theta^2}}\nonumber\\&&\qquad \mathrel{\mathop\rightarrow_{\theta\to\infty}}\,
+{\pi^d\over\theta^d}\int\!\! d\a \, d\b \, 
+d\c \, f(\a,\b,\c)\,{\rm e}^{-(\beta+\gamma)\,P^2}
+\eea
+\begin{figure}
+\begin{center}
+\includegraphics*[scale=.23, clip=false]{2loops.eps}
+\end{center}
+\caption[x] {\footnotesize A genus 1 amplitude with
+2 loops and 2 external legs}
+\label{f:2loops}
+\end{figure}
+
+Summarizing, in the $\theta\to\infty$  
+limit, the integrated amplitudes go as
+$\theta^{-dg}$, while the non-integrated ones
+vanish exponentially. This is somewhat analogous
+to what happens in $N\times N$ matrix field theories,
+under the identification ${1\over N} \leftrightarrow {1\over \theta^d}$.  
+In this analogy the contributions to the non-commutative
+amplitudes coming from non-exceptional
+external momenta correspond to
+the ${\rm e}^{-N}$ non-perturbative instanton effects of matrix
+theory.
+
+\section{1PI RG equation in the planar limit}
+In this appendix we derive the RG equation (\ref{1PIlargenrg}) satisfied
+by the generating functional of spherical 1PI amplitudes of a non-commutative 
+scalar field theory. The derivation is done for $N\times N$ matrix field
+theory but the result also applies to the Moyal case.
+
+Let $F_\Lambda[J]$ be the functional of the $N\times N$ matrix source 
+$J(p)$ that generates connected amplitudes. $F_\Lambda[J]$ is related
+with the generating functional of connected and amputates amplitudes
+$H_\Lambda[\varphi]$ via
+\be
+F_\Lambda[J] = H_\Lambda[\Delta_\Lambda\,J] + {1\over 2 N}\int\!\! d p \,
+\Delta_\Lambda(p)\, {\rm Tr}\, J(p)\,J({\scriptstyle -}p)
+\ee
+and thus \cite{bgi} it satisfies the following finite $N$ RG equation
+\bea
+&&\Lambda\partial_\Lambda\,F_\Lambda = {1\over 2}\,\int\!\!d p\,\Ddot(p)\,
+\Delta_\Lambda^{-2}(p)\,\Bigl[ N\,{\rm Tr}\,\Bigl(
+{\delta F_\Lambda\over \delta J(p)}\,{\delta F_\Lambda\over \delta J({\scriptstyle -}p)}
+\Bigr) \nonumber \\
+&&\qquad\qquad\qquad + {1\over N}\,{\rm Tr}\,
+{\delta^2 F_\Lambda\over \delta J(p)\,\delta  J({\scriptstyle -}p)} - \Delta_\Lambda(p)
+\Bigr]
+\label{Frg}
+\eea
+The generating functional $\Gamma_\Lambda^\prime[\varphi]$ of 1PI amplitudes
+is the Legendre transform of $F_\Lambda[J]$:
+\bea
+&&\Gamma_\Lambda^\prime[\varphi] = 
+\Gamma_\Lambda[\varphi] - {1\over 2 N}\,\int\!\! d p \,
+\Delta^{-1}_\Lambda(p)\, {\rm Tr} \,\varphi(p)\,\varphi({\scriptstyle -}p)=\nonumber\\ 
+&&\qquad\,\, =  F_\Lambda[J] - {1\over N}\,\int\!\!d p 
+\,{\rm Tr}\, J(p)\,\varphi({\scriptstyle -}p)
+\label{legendre1}
+\eea
+where
+\be
+\varphi_{\sss i j}(p)= N\, 
+{\delta F_\Lambda \over \delta J_{\sss j i}({\scriptstyle -}p)}
+\label{legendre2}
+\ee
+By taking the $\Lambda$ derivative of $\Gamma_\Lambda[\varphi]$ and using 
+Eq.~(\ref{Frg}), one finds 
+\bea
+&&\!\!\!\!\!\!\!\!\Lambda\partial_\Lambda\,\Gamma_\Lambda = 
+\Lambda\partial_\Lambda\,F_\Lambda - {1\over 2} \int\!\! d p \,\Ddot(p)\,
+\Delta^{-2}_\Lambda(p)\, {\rm Tr} \,\varphi(p)\,\varphi({\scriptstyle -}p) =\nonumber\\
+&&\qquad\,
+= {1\over 2}\,\int\!\!d p\,\Ddot(p)\,
+\Delta_\Lambda^{-2}(p)\,\Bigl[ {1\over N}\,{\rm Tr}\,
+{\delta^2 F_\Lambda\over \delta J(p)\,\delta  J({\scriptstyle -}p)} - \Delta_\Lambda(p)
+\Bigr]
+\label{1PIfiniten1}
+\eea
+Let us introduce the matrices
+\bea
+&&\Bigl(\mathbb{F}^{(2)}_\Lambda\Bigr)_
+{\sss (i_1 j_1;\,p_1),(i_2 j_2;\,p_2)}\equiv
+{\delta^2 F_\Lambda\over \delta J_{\sss i_1 j_1}(p_1)\,\delta 
+J_{\sss j_2 i_2}({\scriptstyle -}p_2)}\nonumber\\
+&&\Bigl(\mathbb{G}^{\prime\,(2)}_\Lambda \Bigr)_
+{\sss (i_1 j_1;\,p_1),(i_2 j_2;\,p_2)}\equiv
+{\delta^2 \Gamma^\prime_\Lambda\over \delta 
+\varphi_{\sss i_1 j_1}(p_1)\,\delta 
+\varphi_{\sss j_2 i_2}({\scriptstyle -}p_2)}
+\eea
+whose row and column indices are given by the triples $(i j;\,p)$.  
+Taking the $J$ derivative of 
+Eq. (\ref{legendre2}) and the $\varphi$ derivative of (\ref{legendre1})
+one obtains
+\be
+\mathbb{F}^{(2)}_\Lambda\,
+\mathbb{G}^{\prime\,(2)}_\Lambda = \mathbb{I}
+\label{inverses}
+\ee
+where, here and in the following, matrix multiplication involves both a sum
+over double indices $(i j)$ and an integral over momentum $p$; furthermore 
+$\mathbb{I}\equiv \delta_{i_1 i_2}\,\delta_{j_1 j_2}\, \delta(p_1-p_2)$.
+The result (\ref{inverses}) together with (\ref{1PIfiniten1}) leads to the RG
+evolution equation for the 1PI generating functional at finite $N$:
+\bea
+&&\!\!\!\!\!\!\!\!\!\Lambda\partial_\Lambda\,\Gamma_\Lambda = {1\over 2 N^2}\,
+\mathbb{T}\mathrm{r}\,\Bigl[\dot{\mathbb{D}}_\Lambda\,
+\mathbb{D}_\Lambda^{-1}\,
+\Bigl(\mathbb{I}- N\,\mathbb{D}_\Lambda\,\mathbb{G}^{(2)}_\Lambda 
+\Bigr)^{-1}\Bigr] - {1\over 2 N^2}\,\mathbb{T}\mathrm{r}\,\dot{\mathbb{D}}_\Lambda\,\mathbb{D}_\Lambda^{-1} =\nonumber\\
+&&\qquad = {1\over 2}\sum_{n=1}^\infty N^{n-2}\,\mathbb{T}\mathrm{r}\,\Bigl[
+\dot{\mathbb{D}}_\Lambda\,\mathbb{D}_\Lambda^{-1}\,
+\Bigl(\mathbb{D}_\Lambda\,\mathbb{G}^{(2)}_\Lambda\Bigr)^n \Bigr]
+\label{1PIfiniten2}
+\eea
+where 
+\be
+\bigl(\mathbb{D}_\Lambda\bigr)_{\sss (i_1 j_1;\,p_1),(i_2 j_2;\,p_2)}
+\equiv  \Delta(p_1)\,\delta_{i_1 i_2}\,\delta_{j_1 j_2}\,\delta(p_1-p_2)
+\ee
+and $\mathbb{T}\mathrm{r}$ denotes the trace over the triple  $(i j;\,p)$.
+
+The large $N$ limit of Eq.~(\ref{1PIfiniten2}) is defined by taking the
+invariants
+\be
+\Omega_k (p_1\cdots
+p_k)= {1\over N}\, {\rm Tr} \Bigl(\varphi (p_1)\cdots
+\varphi (p_k)\Bigr)
+\ee
+fixed as $N\to\infty$. Hence one has to express derivatives with respect to 
+$\varphi$ in terms of $\Omega_k$-derivatives:
+\be
+{\delta \Gamma_\Lambda \over \delta \varphi_{\sss i j}(p)} =
+{1\over N}\,\sum_k k\,\int
+\prod_{\a=1}^{k-1} d q_{\a}\,
+\bigl(\varphi(q_1)\cdots\varphi(q_{k-1})\bigr)_{\sss j i}\,
+{\delta \Gamma_\Lambda \over \delta 
+\Omega_k(p,q_1,\ldots,q_{k-1})}
+\ee
+and
+\bea
+&&\!\!\!\!\!\!
+{\delta^2 \Gamma_\Lambda\over \delta\varphi_{\sss i_1 j_1}(p_1)\,
+\delta \varphi_{\sss j_2 i_2}({\scriptstyle -}p_2)} =
+{1\over N}\sum_k\sum_{I=0}^{k-2} k\!
+\int \!\prod_{\a=1}^{k-2} d q_{\a}\,\bigl(\varphi(q_1)\cdots\varphi(q_I)\bigr)_{\sss i_2 i_1}\times\\
+&&\qquad
+\times\bigl(\varphi(q_{I+1})\cdots\varphi(q_{k-2})\bigr)_{\sss j_1 j_2}\,
+{\delta \Gamma_\Lambda \over \delta 
+\Omega_k(p_1,q_1,\ldots,q_I,{\scriptstyle -}p_2,q_{I+1},\ldots,q_{k-2})}+\nonumber\\
+&&\qquad + {1\over N^2}\, \sum_{k,k^\prime} k\,k^\prime\!\int\!
+\prod_{\a=1}^{k-1} d q_{\a}\!\!\prod_{\b=1}^{k^\prime-1} d q^\prime_{\b}\,
+\bigl(\varphi(q_1)\cdots\varphi(q_{k-1})\bigr)_{\sss j_1 i_1}\times\nonumber\\
+&&\qquad\times \bigl(\varphi(q^\prime_1)\cdots\varphi(q^\prime_{k^\prime-1})
+\bigr)_{\sss i_2 j_2}\,
+{\delta^2 \Gamma_\Lambda \over \delta \Omega_k(p_1,q_1,\ldots,q_{k-1})\,
+\delta \Omega_{k^\prime}({\scriptstyle -}p_2,q^\prime_1,\ldots,q^\prime_{k-1})}
+\nonumber
+\eea
+The second addendum in the R.H.S. of the equation above if of sub-leading order
+in $1/N$ and must be discarded in the large $N$ limit. Thus we find:
+\bea
+\label{nproduct}
+&&\!\!\!\!\!\!\!\!
+N^{n-2}\,\mathbb{T}\mathrm{r}\Bigr(\mathbb{G}^{(2)}_\Lambda\Bigr)^n =  
+\int\! d{\rm P_0}\cdots d{\rm P_{n-1}}\,\prod_{i=1}^n
+\Biggl[ \sum_{k_i}\sum_{I_i=0}^{k_i-2}\int\! \!
+\prod_{\a_i=1}^{I_i} 
+\!\!dp^{(i)}_{\a_i} \!\!\prod_{\b_i=1}^{k_i-2-I_i}\!\! 
+dq^{(i)}_{\b_i}\times\\
+&&\quad\times\,k_i\, {\delta
+\Gamma_\Lambda\over\delta\Omega_{k_i}({\rm P_{i-1}}, C_i,
+{\scriptstyle -}{\rm P_{i}}, C^\prime_i)}\Biggr]\,
+\Omega_{\textstyle{\sss\sum_i I_i}}(C_n,\ldots, C_1)\,
+ \Omega_{\textstyle{\sss\sum_i k_i-2-I_i}}(C^\prime_1,\ldots, C^\prime_n)\nonumber
+\eea
+where $C_i\equiv \{p^{(i)}_{\a_i}\}$, $C^\prime_i\equiv \{q^{(i)}_{\b_i}\}$.
+Using the identity (\ref{nproduct}) in the flow equation (\ref{1PIfiniten2})
+we end up with the large $N$ (or large $\theta$) RG equation for the 1PI
+generating functional
+\bea
+&&\Lambda\partial_\Lambda \Gamma_\Lambda = {1\over2}\,\sum_{n=1}^\infty
+\int\! d{\rm P_0}\cdots d{\rm P_{n-1}}\,\Ddot({\rm P_0})\,\Del({\rm P_1})\cdots
+\Del({\rm P_{n-1}})\times\nonumber\\
+&&\qquad\times
+\prod_{i=1}^n\Biggl[ \sum_{k_i}\sum_{I_i=0}^{k_i-2}\int\! \!\prod_{\a_i=1}^{I_i} 
+\!\!dp^{(i)}_{\a_i} \!\!\prod_{\b_i=1}^{k_i-2-I_i}\!\! dq^{(i)}_{\b_i}\, k_i\, {\delta
+\Gamma_\Lambda\over\delta\Omega_{k_i}({\rm P_{i-1}}, C_i,
+{\scriptstyle -}{\rm P_{i}}, C^\prime_i)}\Biggr]\times\nonumber\\
+&&\qquad\times\, 
+\Omega_{\textstyle{\sss\sum_i I_i}}(C_n,\ldots, C_1)\,
+ \Omega_{\textstyle{\sss\sum_i k_i-2-I_i}}(C^\prime_1,\ldots, C^\prime_n)
+\eea
+which coincides with Eq.~(\ref{1PIlargenrg}) of Section 2.
+
+\begin{thebibliography}{10}
+\bibitem{seiberg} 
+S.~Minwalla, M.~Van Raamsdonk and N.~Seiberg,
+``Noncommutative perturbative dynamics,'' JHEP {\bf 0002} (2000) 020,
+{\tt hep-th/9912072};
+\\ M.~Van Raamsdonk and N.~Seiberg, ``Comments on
+noncommutative perturbative dynamics,'' JHEP {\bf 0003} (2000) 035,
+{\tt hep-th/0002186}.
+
+\bibitem{arefeva} 
+I.~Y.~Aref'eva, D.~M.~Belov and A.~S.~Koshelev,
+``Two-loop diagrams in noncommutative phi**4(4) theory,''
+Phys.\ Lett.\ B {\bf 476}, 431 (2000), {\tt hep-th/9912075}.
+
+\bibitem{micu}
+A.~Micu and M.~M.~Sheikh Jabbari,
+``Noncommutative phi**4 theory at two loops,''
+JHEP {\bf 0101}, 025 (2001), {\tt hep-th/0008057}.
+
+\bibitem{bgi} 
+C.~Becchi, S.~Giusto and C.~Imbimbo,
+``The Wilson-Polchinski renormalization group equation in the planar  limit,''
+Nucl.\ Phys.\ B {\bf 633}, 250 (2002),
+{\tt hep-th/0202155}.
+
+\bibitem{polchinski} J.~Polchinski, 
+``Renormalization And Effective Lagrangians,''
+Nucl.\ Phys.\ B {\bf 231} (1984) 269.
+
+\bibitem{griguolo}
+L.~Griguolo and M.~Pietroni,
+``Wilsonian renormalization group and the non-commutative IR/UV  connection,''
+JHEP {\bf 0105}, 032 (2001),
+{\tt hep-th/0104217}.
+
+\bibitem{ek}
+T.~Eguchi and H.~Kawai,
+``Reduction Of Dynamical Degrees Of Freedom In The Large N Gauge Theory,''
+Phys.\ Rev.\ Lett.\  {\bf 48}, 1063 (1982).
+
+\bibitem{theisen}
+A.~Armoni, E.~Lopez and S.~Theisen,
+``Nonplanar anomalies in noncommutative theories and the Green-Schwarz  
+mechanism,'' JHEP {\bf 0206}, 050 (2002), {\tt hep-th/0203165}.
+
+
+\end{thebibliography}
+
+\end{document}"
+5,\section{M
+6,\section{M
+7,\section{1

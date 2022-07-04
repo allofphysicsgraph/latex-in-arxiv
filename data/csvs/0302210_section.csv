@@ -1,0 +1,234 @@
+,section
+0,\section{Introduction}
+1,\section{Preliminaries}
+2,\section{Gauge identities and Dirac's conjecture}
+3,\section{Conclusion}
+4,"\section*{Appendix A}
+%%%%%%%%%%%%%%%%%%%%
+
+In this appendix we consider once more the Lagrangean (\ref{conjecture-Lagrangean}) and study the local symmetries of the corresponding action within the second order formalism.  While the equation of motion (\ref{qdot}) does not possess a local symmetry, the action does exhibit such a symmetry. The corresponding transformations of the coordinates are 
+not obvious, but may be easily obtained using the standard Lagrangean algorithm for a second order Lagrangean. 
+Connsider the Euler derivative (\ref{Euler-derivative}) with $\alpha \to i = 1,2$. 
+It has the form
+\be
+E^{(0)}_i = \sum_j F^{(0)}_{ij}\ddot q_j + K^{(0)}_i\,,
+\ee
+where
+\be
+F^{(0)} = \left(
+\begin{array}{cc}
+e^{q_2}&0\\
+0&0\\
+\end{array}\right)
+\ee
+and
+\be 
+\vec K^{(0)} = \left(
+\begin{array}{c}
+e^{q_2}\dot q_2\dot q_1\\
+-\frac{1}{2}e^{q_2}\dot q^2_1\\
+\end{array}\right)
+\ee
+The left zero mode of $F^{(0)}$ is given by 
+\be
+\vec v^{(0)} = (0,1)\,.
+\ee
+Hence 
+\be\label{varphi}
+\vec v^{(0)}\cdot\vec E^{(0)} = \varphi\,,
+\ee
+where 
+\be\label{varphi-constraint}
+\varphi = -\frac{1}{2}e^{q_2}\dot q_1^2
+\ee
+is a constraint which depends only on the $q_i$'s and the velocities, and 
+vanishes on shell. We now adjoin the time derivative of $\varphi$ to 
+$\vec E^{(0)}$ and construct $\vec E^{(1)}$, as well as the matrix $F^{(1)}$, searching again for new left eigenvectors of  $F^{(1)}$. One finds 
+\be\label{zeromode1}
+\vec v^{(1)} = (\dot q_1,0,1)\,.
+\ee
+The algorithm stops at this point since 
+\be
+\vec v^{(1)}\cdot \vec E^{(1)} = -\dot q_2\varphi\,,
+\ee
+which implies the gauge identity
+\be\label{gauge-identity4}
+\vec v^{(1)}\cdot \vec E^{(1)} + \dot q_2(\vec v^{(0)}\cdot\vec E^{(0)}) 
+\equiv 0\,.
+\ee
+Now
+\be
+ \vec v^{(1)}\cdot \vec E^{(1)} = \sum^2_{i=1} v^{(1)}_iE^{(0)}_i + \frac{d\varphi}{dt}\,.
+\ee
+Hence, upon making use of (\ref{varphi}), equation (\ref{gauge-identity4}) reduces to
+\be
+\sum_{i=1}^2\left[v^{(1)}_iE^{(0)}_i + (\frac{d}{dt}+\dot q_2)(v^{(0)}_iE^{(0)}_i)\right] \equiv 0\,.
+\ee 
+Multiplying this gauge identity by an arbitrary function of time $\epsilon(t)$ and making a partial differential decomposition, this identity takes the form
+\be
+\sum_iE^{(0)}_i\delta q_i + \frac{d}{dt}\left(\epsilon\varphi\right)\equiv 0\,,
+\ee
+where
+\be
+\delta q_i = \epsilon v^{(1)}_i + 
+(\dot q_2\epsilon - \dot{\epsilon})v^{(0)}_i
+\ee
+or
+\ba\label{deltaq12}
+\delta q_1 &=& \dot q_1\epsilon\,,\cr
+\delta q_2 &=& \dot q_2\epsilon - \dot{\epsilon}\,.
+\ea
+Consider now the variation $\delta L$. It is given by 
+\be
+\delta L(q,\dot q) = \frac{1}{2}e^{q_2}\dot q^2_1\delta q_2
++e^{q_2}\dot q_1\frac{d}{dt}\delta q_1\,. 
+\ee
+Upon making use of (\ref{deltaq12}) one then readily finds that
+\be
+\delta L = -\frac{d}{dt}(\epsilon\varphi)\,.
+\ee
+Hence the invariance of the action 
+requires both, $\delta q_1$ and $\delta q_2$ to be different from zero. 
+On the level of the equation of motion, on the other hand, $\delta q_1 = 0$, and $\delta q_2$ is an arbitrary function. Note that, in contrast to the 
+Hamiltonian formulation, we have only one constraint in the Lagrangean approach, since there the concept of a primary constraint does not enter. The 
+Lagrangean constraint $\varphi = 0$ is the analogue of the secondary 
+constraint $\phi^{(1)}=0$ on the Hamiltonian level, which was shown not to 
+generate a symmetry on 
+the level of the equations of motion.
+
+%%%%%%%%%%%%%%%%
+\section*{Appendix B} 
+%%%%%%%%%%%%%%%%
+
+A simple example of a system with one primary and two secondary 
+constraint is given by the following Lagrangean, considered in ref.
+\cite{6}. 
+\be
+L = \frac{1}{2}(\dot q_2-e^{q_1})^2 + \frac{1}{2}(\dot q_3-q_2)^2\,.
+\ee
+This model exhibits one primary constraint $\phi^{(0)}=0$, where
+\be
+\phi^{(0)} = p_1
+\ee
+The total Hamiltonian ist given by
+\be
+H_T = e^{q_1}p_2+q_2p_3+\frac{1}{2}p^2_2 + \frac{1}{2}p^2_3 + \lambda p_1\,.
+\ee
+The model exhibits two secondary constraints which, when generated in the 
+way described in section 3, take the form
+\be
+\phi^{(1)} = -e^{q_1}p_2\,,\quad \phi^{(2)} = e^{q_1}p_3\,.
+\ee
+These constraints are clearly first class, and their algebra is in strong involution. Following our general procedure 
+described in section 3, one is led to the following 
+gauge identity:
+\be\label{identity5}
+\vec v^{(3)}\cdot \vec E^{(3)} - \lambda \vec v^{(2)}\cdot \vec E^{(2)}
++ \lambda^2 \vec v^{(1)}\cdot \vec E^{(1)} \equiv 0\,,
+\ee
+where the zero modes are of the form (\ref{generic-eigenvectors}), that is,
+\bear 
+\vec v^{(0)} &=& (\vec 0,\vec 0,1)\,,
+\quad \vec v^{(1)} = (-{\tilde\nabla}\phi^{(0)},\nabla\phi^{(0)},0,1)\\
+\vec v^{(2)} &=& (-{\tilde\nabla}\phi^{(1)},\nabla\phi^{(1)},0,0,1)\,, 
+\quad\vec v^{(3)} = (-{\tilde\nabla}\phi^{(2)},\nabla\phi^{(2)},0,0,0,1)\,,
+\eear
+where $\vec 0$ is a three-component null vector, 
+and the $\vec E^{(\ell)}$ are given by expressions 
+of the form (\ref{El}). The gauge identity (\ref{identity5}) can be reduced to 
+\ba
+v^{(3)}_\alpha E^{(0)}_\alpha &+& 
+\frac{d}{dt}\left(v^{(2)}_\alpha E^{(0)}_\alpha\right)
+-\lambda v^{(2)}_\alpha E^{(0)}_\alpha 
++\frac{d^2}{dt^2}\left(v^{(1)}_\alpha E^{(0)}_\alpha
+ + \frac{d}{dt}(v^{(0)}_\alpha E^{(0)}_\alpha)\right)\nonumber\\
+&-&\frac{d}{dt}\left(\lambda v^{(1)}_\alpha E^{(0)}_\alpha
++ \lambda\frac{d}{dt}(v^{(0)}_\alpha E^{(0)}_\alpha)\right)
++ \lambda^2\left( v^{(1)}_\alpha E^{(0)}_\alpha 
++ \frac{d}{dt} (v^{(0)}_\alpha E^{(0)}_\alpha)\right)\nonumber\\
+ &&- \lambda\frac{d}{dt}\left( v^{(1)}_\alpha E^{(0)}_\alpha 
++ \frac{d}{dt} (v^{(0)}_\alpha E^{(0)}_\alpha)\right) \equiv 0\,,
+\ea
+where a summation over $\alpha =1,\cdots,7$ is understood.
+Multiplying this identity with $\epsilon(t)$ from the left, and performing the
+partial decomposition described in section 3, we may cast this identity into the form (\ref{EdeltaQ}). From there we deduce the transformation laws
+\ba
+\delta q_i &=& \sum_{\ell=0}^2 \epsilon^{(\ell)}\{q_i,\phi^{(\ell)}\}\,,\cr
+\delta p_i &=& \sum_{\ell=0}^2 \epsilon^{(\ell)}\{p_i,\phi^{(\ell)}\}\,,
+\ea
+where
+\ba\label{parametrization}
+\epsilon^{(0)} &=& -\ddot\epsilon - 2\lambda\dot\epsilon - \epsilon\dot\lambda - \epsilon\lambda^2\nonumber\,,\\
+\epsilon^{(1)} &=& \dot\epsilon + \lambda\epsilon\,,\\
+\epsilon^{(2)} &=& -\epsilon\nonumber\,,\\
+\delta\lambda &=& \dot\epsilon^{(0)}\,.
+\ea
+One now readily verifies that the above four parameters satisfy the equations 
+(\ref{recursion-relations}) and (\ref{deltalambda}), which in the present case read
+\ba\label{recursion}
+&&\frac{d \epsilon^{(\ell)}}{dt} + \sum_{\ell'=0}^2 \epsilon^{(\ell')}K^{[\ell'\ell]}=0
+\nonumber\,,\\
+&&\delta\lambda = \dot\epsilon^{(0)} + \sum_{\ell'=0}^2 \epsilon^{(\ell')}K^{[\ell'0]}=0\,,\nonumber
+\ea
+where
+$ K^{[00]} =  K^{[02]} =  K^{[10]} =  K^{[20]} =  K^{[21]} = 0$,
+$ K^{[01]} =  K^{[12]} = 1$ and $K^{[11]} =  K^{[22]} = \lambda$.
+This implies in turn, that
+$F$ in (\ref{EdeltaQ}) is given by
+\be\label{conjecture}
+F = -\sum_\ell \epsilon^{(\ell)}\phi^{(\ell)}\,,
+\ee
+in agreement with our conjecture (\ref{our-conjecture}).
+For the variation of the total Lagrangean one finds that $\delta L_T = 0$. 
+Note that, in contrast to the example discussed in section 3.2, all the variations
+$\delta Q_\alpha$ generate a symmetry of the Hamilton equations of motion,
+since they are not proportional to any constraints.
+In both examples, however, {\it all} first class constraints play a decisive role for 
+generating the symmetries of the total action, and in this sense the 
+Dirac conjecture holds for both systems, as expected from our general 
+analysis.
+
+
+\begin{thebibliography}{14}
+\bibitem{1}
+L. Castellani, Ann. Phys. {\bf 143} (1982) 357.
+\bibitem{2}
+M.E.V. Costa, H.O. Girotti and T.J.M. Simoes, Phys. Rev. {\bf D32} (1985) 405.
+\bibitem{3}
+X. Gracia and J.M. Pons, Ann. Phys. {\bf 187} (1988) 355.
+\bibitem{4}
+J. Gomis, M. Henneaux and J.M. Pons, Class. Quantum Grav {\bf 7} (1990) 1089.
+\bibitem{5}
+A. Cabo, M. Chaichian, and D. Louis Martinez, J. Math. Phys. {\bf 34} 
+(1993) 5646
+\bibitem{6}
+M. Henneaux, C. Teitelboim and J. Zanelli, Nucl. Phys. {\bf 332} (1990) 169.
+\bibitem{7}
+A. Shirzad and M. Shabani Moghadam, J. Phys. {\bf A}: Math. Gen. {\bf 32} (1999) 8185.
+\bibitem{8}
+P.A.M.Dirac, {\it Lectures on Quantum Mechanics} (Yesiva University Press, 1964).
+\bibitem{9}
+E.C.G. Sudarshan and N. Mukunda, ``Classical Dynamics. A Modern Perspective"",
+Wiley, New York (1974); 
+A.J. Hanson, T. Regge and C. Teidelboim, ``Constrained Hamiltonian Systems"",
+Academia Nazional dei Lincei (1976);
+D.M. Gitman. and I.V. Tyutin, {\it Quantization of Fields with Constraints}, 
+Springer (1980).
+\bibitem{10} 
+A. Shirzad, J. Phys. {\bf A}: Math. Gen. {\bf 31} (1998) 2747;  
+H. Montani, Int. J. Mod. Phys. {\bf 8A} (1993) 4319; 
+H.J. Rothe and K.D. Rothe, J. Phys. A: Math. Gen. {\bf 36} (2003) 1671.
+\bibitem{BRR} 
+R. Banerjee, H.J. Rothe and K.D. Rothe, J. Phys. A: Math. Gen. {\bf 33}
+(2000) 2059, and Phys. Lett. {\bf B463} (1999) 248.
+\bibitem{11}
+Heinz J. Rothe, Phys. Lett. {\bf B539} (2002) 296.
+\bibitem{Shirzad}
+F. Loran and A. Shirzad, Int. J. Mod. Phys. {\bf A17} (2002) 625. 
+\bibitem{12}
+M. Henneaux and C. Teitelboim, ``Quantization of gauge systems"", Princeton University Press (1992).
+
+\end{thebibliography}
+\end{document}
+"
+5,\section*{

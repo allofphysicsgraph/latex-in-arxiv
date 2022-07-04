@@ -1,0 +1,1532 @@
+,document
+0,"\begin{document}
+
+%Body
+
+%\parindent 0pt
+
+\section{Introduction}
+The BRST quantization of gauge theories was first applied to
+string theory in \cite{Kato:1982im}, where a proof of the no-ghost theorem
+was given in the BRST context. Once the physical space was identified with the cohomology
+of the BRST operator at a particular ghost number, the cohomology itself
+is built more or less explicitly,
+in order to show that it does not contain states of negative norm.
+In particular, in \cite{Kato:1982im} it was shown that, for strings in flat space, physical states
+can be isometrically identified with the excitations in
+the light-cone gauge.
+
+
+In \cite{FGZ} Frenkel, Garland and Zuckerman (FGZ) presented a
+technically simple but conceptually deep new proof of the no-ghost
+theorem in the BRST context, which relies heavily on the fact that the {\it relative}
+BRST cohomology\footnote{The relative BRST cohomology is defined imposing the additional constraints
+$b_0=L_0=0$ to the BRST cohomolgy (for fermionic strings in the Ramond sector, also $\beta_0=G_0=0$ ). See Appendix A.}
+at non-zero momentum
+is concentrated at one ghost number\footnote{As shown in \cite{FGZ}
+(and in \cite{Figueroa-O'Farrill:1988hu} for the NSR string), the cohomology
+of the {\it full} BRST complex at nonzero momentum  consists of two isomorphic copies at consecutive ghost numbers.},
+a result known as the ``vanishing theorem''.
+Once the latter holds\footnote{It should be noted
+that the vanishing theorem
+does not hold in less conventional settings.
+For example, the BRST analysis of 2D gravity
+coupled to $c \leq 1$ matter shows that physical states
+are distributed through several ghost numbers \cite{Bouwknegt:1991yg}.}, the proof of the no-ghost theorem is reduced
+to showing the equality between the  traces of two operators (the method was discussed in \cite{Spiegelglas}).
+The power of the FGZ method lies on its economy: it probes the
+unitarity of the physical sector without explicitly
+building it.
+The method was applied
+to bosonic strings in \cite{FGZ,Spiegelglas},
+to NRS strings in \cite{Figueroa-O'Farrill:1988hu},
+to ${\mathbb{R}}^{1,d-1} \times \cn$~$(d \geq 2)$ backgrounds in \cite{Zuckerman:1987ds}
+and to $\mathbb{R}^{1} \times \cn$ backgrounds in \cite{Asano}.
+
+The FGZ proof of the vanishing theorem \cite{FGZ} and its NSR extensions in \cite{Figueroa-O'Farrill:1988hu},
+use techniques of homological algebra
+and do not depend on the details of the chiral algebra of
+the matter conformal
+field theory (CFT).
+The only assumption needed is that the matter CFT should be an $L_-$-free
+Virasoro module\footnote{This means that the Hilbert space of the chiral CFT
+can be expressed as a direct sum of spaces, each of which is built by the
+action of Virasoro $L_{n <0}$ operators on a Virasoro highest-weight state, such that
+states with different $L_{n <0}$ content are linearly independent.
+In the superconformal case, the operators $G_{n<0}$ should be included.
+The importance of this condition can be seen in a hand-waving way as follows.
+Since the  BRST charge $Q$ is built out of the Virasoro modes only (and knows nothing about the
+worldsheet chiral algebra),
+certain homological statements about $Q$ (such as the vanishing theorem), can  be proved
+when a basis for the space upon which $Q$ acts, can itself be obtained from Virasoro modes only.}.
+For flat space worldsheet CFT, the latter was shown in \cite{Brower}.
+
+In this work we will apply the FGZ method to bosonic and NSR strings propagating in
+$AdS_3 \times \cn$ backgrounds \cite{Malda,Malda2}. Here $\cn$ is a compact unitary CFT,
+with the necessary central charge for  the worldsheet CFT to be critical.
+These vacua are relevant in the context of the $AdS/CFT$ correspondence \cite{Aharony:1999ti}.
+In the $AdS_3/CFT_2$ case, the infinite modes of  the two-dimensional (super)conformal algebras
+in the dual boundary CFT can be constructed explicitly
+(see \cite{GKS,Giveon:1999jg,Argurio:2000tb,Giveon:2003ku} and references therein).
+
+
+The vanishing theorem holds in $AdS_3 \times \cn$ vacua,
+because the worldsheet CFT is an $L_-$-free Virasoro module,
+as shown in \cite{Hwang:1991an,Evans:1998qu} for regular $\sl$ representations and
+in \cite{Malda,Pakman:2003cu}
+for the spectrally flowed cases\footnote{For fermionic strings, refs. \cite{Evans:1998qu,Pakman:2003cu} consider only the
+NS sector. The results can be easily extended to the R sector.
+Alternatively, one can consider the $AdS_3 \times \cn$ backgrounds as
+a particular case of the backgrounds studied in \cite{Asano},
+the timelike $U(1)$ current being the $J^3(z)$ current of  $\sl$.
+But since the whole $AdS_3 \times \cn$ CFT is an
+$L_-$-free Virasoro module,
+the new filtration introduced in \cite{Asano} (which
+considers only the timelike $U(1)$, $c=1$ CFT), is not strictly necessary.}.
+
+
+
+As in the $\mathbb{R}^{1} \times \cal{N}$ vacua studied in \cite{Asano},
+$AdS_3 \times \cn$ is a nontrivial setting to see the
+BRST quantization at work since, due to the absence of
+a lightcone direction in $AdS_3$,
+we cannot identify the action of the ghost degrees of freedom as annihilating
+the ``transversal'' string excitations.
+
+
+The unitarity puzzles posed by string theory in $AdS_3$ backgrounds \cite{Balog:1988jb}
+were settled in the old covariant quantization (OCQ) formalism
+in \cite{Hwang:1991an,Henningson:1990ua,Evans:1998qu,Pakman:2003cu}. It was shown there that physical states belong
+to the $\sl /U(1)$ coset, modulo spurious states. This reduces the problem to the unitarity of the
+coset representations, which was proved in \cite{DPL} and \cite{Pakman:2003cu}
+for the bosonic and fermionic cases, respectively. Coset unitarity requires a bound for the
+the spin of the discrete representations of $\sl$. This bound is rather ubiquitous, and we discuss it in Section 3.1.
+As we show in Section 4, one important point in which the OCQ formalism differs from the FGZ approach,
+is that for fermionic NRS strings, in the FGZ proof there is no need for the unitarity
+of the {\it supersymmetric} $\sl /U(1)$ coset \cite{Pakman:2003cu}, the bosonic results
+of  \cite{DPL} being sufficient.
+A different approach to string unitarity in $AdS_3$ has been advocated in \cite{Bars:1995mf}.
+
+
+
+
+Both in the OCQ and  FGZ approaches, the general results do not hold when $J^3_0=0$,
+since the matter CFT is no longer an $L_-$-free module.
+The unitarity of physical states must then be checked by hand\footnote{This is similar to the zero-momentum states in flat space.}.
+These exceptional cases have been already studied in \cite{Malda,Evans:1998qu,Pakman:2003cu} for
+different representations, and will not be considered here.
+
+
+
+The plan of this work is as follows.
+In Section 2 we
+review the string spectrum in $AdS_3$.
+In Section 3 we review the Hodge theory of the string BRST complex,
+which is an elegant and clear setting in which to formulate
+the FGZ method, which we do in Section 3.1.
+In Section 4 we calculate all the traces needed to prove the no-ghost theorem
+for the different representations.
+Finally, in Section 5 we discuss possible generalizations to other curved backgrounds.
+In Appendix A we summarize the essentials of the BRST formalism needed in this work.
+Appendices B and C are devoted to technical points
+used in the body of the paper. We work in the holomorphic sector.
+For closed strings, a similar antiholomorphic copy should be considered.
+
+
+\section{The affine $\sl$ theory}
+\subsection{The bosonic algebra}
+The space $AdS_3$ is the universal cover of the group manifold $\sl$, so the action
+of a string moving in an $AdS_3$ background is an $\sl$ WZW model. The symmetry
+algebra is the affine $\sl$ algebra at level $k$ ($k>2$), generated by three currents $J^{3,\pm}(z)$ satisfying the OPEs
+\eqn{opeads}{\eqalign{
+J^3(z) J^3(w) \sim & \, -{k/2 \over (z-w)^2} , \cr
+J^+(z) J^-(w) \sim & \, {k \over (z-w)^2} + {2 J^3(w) \over z-w},\cr
+J^3(z) J^{\pm}(w) \sim & \, \pm { J^{\pm}(w) \over z-w}.
+}}
+Using the Sugawara construction, the stress tensor is
+\eqn{sugawara}{
+T^{\ss{\sl}} = {1\over k-2} \frac12   \left(J^+J^- + J^+J^- -2J^3J^3 \right) .
+}
+and its modes close a Virasoro algebra with central charge $c_{\sl}={3k \over k-2}$.
+Expanding the currents in modes as
+\eqn{modos}{
+J^{3,\pm}(z)= \sum_{n \in \mathbb{Z}} {J^{3,\pm}_n \over z^{n+1}},
+}
+the current algebra \opeads\ can be written as
+\eqn{comm}{
+\eqalign{
+[J^3_n, J^3_m ]    &= - {k \over 2} n \delta_{n+m,0} \,,\cr
+          [J^3_n, J^\pm_m ]  &= \pm J^\pm_{n+m} \,,\cr
+          [J^+_n , J^-_m ]   &= -2J^3_{n+m} + kn\delta_{n+m,0}\,,
+}}
+with all other commutators vanishing.
+
+The highest weight representations of \opeads\ and \comm\,
+are built starting from
+unitary representations of the $\sl$ Lie algebra  $J^{3,\pm}_0$.
+These are characterized by the eigenvalues
+of the Casimir operator $\frac12 (J^+_0 \! J^-_0  \! + \! J^-_0 \! J^+_0 ) \! - \! (J^3_0)^2$, which
+will be denoted by  $-j(j-1)$, and the states within each representation are labelled by
+the eigenvalue of $J^3_0$, which will be denoted by $m$.
+These representations are the primary states for the current algebra.
+They are annihilated by $J^{3,\pm}_{n>0}$,
+and the Fock space of states is
+built by acting on them with $J^{3,\pm}_{n<0}$.
+
+The unitary representations of the $\sl$ Lie algebra $J^{3,\pm}_0$
+which appear in the spectrum of strings moving in an $AdS_3 \times {\cal N}$ background are \cite{Malda, Malda2}:
+
+\begin{enumerate}
+\item {\bf Highest weight discrete representations}
+\[ \cD{j}^+ = \left\{ |j;m \rangle : m=j,j+1, j+2, \cdots \right\} \]
+where $|j;j \rangle$ is annihilated by $J_0^-$ and $j$ is a  real number such that
+$1/2 < j < (k-1)/2$.
+
+\item {\bf Lowest weight discrete representations}
+\[ \cD{j}^- = \left\{ |j;m \rangle : m=-j,-j-1, -j-2, \cdots \right\} \]
+where $|j;-j \rangle$ is annihilated by $J_0^+$ and $j$ is a  real number such that
+$1/2 < j < (k-1)/2$.
+
+\item {\bf Continuous representations}
+\[ \cCo{j,\alpha} = \left\{ |j,\alpha;m \rangle : m= \alpha, \alpha \pm 1,\alpha \pm 2, \cdots \right\} \]
+where $0 \leq \alpha < 1$ and $j = 1/2 + i s $, where $s$ is a real number.
+\end{enumerate}
+
+
+The  bounds for  $j$ appearing for $\cD{j}^{\pm}$
+can be understood in terms of consistency conditions for the primary states.
+The lower bound, $ 1/2 < j$,  is necessary for the normalizability
+of the primary states when their norm is interpreted as the ${\cal L}^2$
+inner product of functions in the $\sl$ group manifold~\cite{DVV}.
+Regarding the upper bound, $ j < (k-1)/2$, in \cite{Giveon} it was noted that it is necessary
+for the unitarity of the primary states, when their
+norm is interpreted as the two-point function
+of the vertex operators creating them from the vacuum.
+Moreover, adopting either the upper or the lower bound for $j$, the other one
+appears when imposing the $w=\pm 1$ spectral flow (see below) to be a symmetry of the spectrum.
+Finally, the compelling evidence for the correctness of these bounds on $j$ comes from
+the fact that only this range of $j$ appears in the spectrum
+of the thermal partition function of the model, computed by
+path integral techniques in \cite{Malda2}.
+
+In the computations of Section 4, we will be interested in the characters
+of the representations \cite{Malda}, which are very easy to obtain
+because  the action of the $J_{n<0}^{3,\pm}$ modes
+is free for the representations considered \cite{Kac:fz}.
+For $\cD{j}^+$ we have
+\eqn{card}{\eqalign{
+\chi_j^+(q,z)={\textrm{Tr}}_{\cD{j}^+} \left( q^{L_0} z^{J_0^3} \right)
+= &\, { q^{- {j(j-1) \over k-2}} z^j \over \prod^{\infty}_{n=1}(1-q^n)(1-q^{n-1}z)(1-q^nz^{-1})} , \cr
+= &\, { q^{- {j(j-1) \over k-2}+ \frac18} z^{j - \frac12} \over i\Theta_1(q,z)}.
+}}
+Eq.\card\ should be understood as a formal series expansion
+which converges to \card\ \linebreak when $|q|<|z|<1$. The elliptic
+function $\Theta_1(q,z)$ is \cite{mumford}
+\eqn{thetauno}
+{\eqalign{
+\Theta_1(q,z)= & -i z^{-1/2}q^{1/8}\prod_{n=1}^{\infty}(1-q^n)(1-q^{n-1}z)(1-q^nz^{-1})\,, \cr
+= & -i \sum_{n \in \mathbb{Z}} (-1)^n z^{n-1/2} q^{{(n-1/2)^2 \over 2}}\,.
+}}
+For the ${\cal C}_{j,\alpha}$ representations, the character is
+\eqn{carc}{
+\hat{\chi}_{j=1/2+is,\alpha}(q,z)={\textrm{Tr}}_{{\cal C}_{j=1/2+is,\alpha}} \left( q^{L_0} z^{J_0^3} \right)=
+\, {q^{s^2 + 1/4 \over k-2} \over \prod^{\infty}_{n=1}(1-q^n)^3}
+\sum_{n \in \mathbb{Z}}z^{\alpha+n} \,.
+}
+The character of $\cD{j}^-$ can be obtained from the spectral flow of $\cD{j}^+$ (see below).
+
+
+
+\subsection{$\sl/U(1) \times U(1)$ decomposition and spectral flow}
+It will be convenient to decompose both the
+currents and the spectrum into the direct product of a
+parafermionic $\sl/U(1)$ model and the timelike $U(1)$ model
+corresponding to $J^3(z)$.
+For the currents $J^{3,\pm}(z)$, this can be performed by representing
+them~as
+\eqn{decomp}{\eqalign{
+J^3(z) = & - \sqrt{\frac{k}2} \d X(z) \,,\cr
+J^{\pm}(z) = & \psi^{\pm}(z) e^{\pm \sqrt{\frac2k} X} \,,
+}}
+with
+\eqn{equis}{\eqalign{
+X(z)X(w) \sim &  -\log (z-w) \,,\cr
+X(z) \psi^{\pm}(w) \sim & \, 0 \,.
+}}
+
+\ni
+Note that the field $X(z)$ is antihermitian, in order for  $J^3(z)$ to be hermitian
+and $J^+(z)^{\dagger}=J^-(z)$.
+The fields $\psi^{\pm}$ form an  $\sl/U(1)$ parafermionic theory introduced in \cite{Lykken},
+and are a non-minimal generalization of the $SU(2)/U(1)$ parafermions of \cite{Fateev}.
+The OPEs of $\psi^{\pm}$ can be read from \opeads\ and \equis.
+
+
+The stress tensor is similarly decomposed into
+\eqn{stressdeco}{
+T^{\ss{\sl}} = T^{\ss{\sl/U(1)}} + T^{\ss{U(1)}}\,,
+}
+with
+\eqn{stressuno}{
+T^{\ss{U(1)}}= - \frac1k J^3J^3 \,.
+}
+The decomposition can also be performed on the representations.
+Indeed, every representation $\cD{j}^+, \cCo{j}$ gives rise
+to an infinite number of parafermionic representations $\lambda_{j,n},\hat{\lambda}_{j,n}$ with
+$n \in \mathbb{Z}$.
+The $\cD{j}^+, \cCo{j}$ Hilbert spaces can be decomposed into
+\eqn{decompo}{
+\eqalign{
+\cD{j}^{+} & = \sum_{n \, \in \, \mathbb{Z}} \lambda_{j,n} \otimes \cU{j+n} \,, \cr
+\cCo{j,\alpha} & = \sum_{n \, \in \, \mathbb{Z}} \hat{\lambda}_{j,\alpha+n} \otimes \cU{\alpha+n} \,,
+}}
+where $\cU{m}$ is a highest-weight representation of the timelike current $J^3(z)$ with
+$J^3_0$ eigenvalue~$m$. The $\lambda_{j,n},\hat{\lambda}_{j,n}$ representations
+are built by acting with the modes of $\psi^{\pm}$ on para\-fer\-mio\-nic highest-weight states.
+The reader can find details in \cite{Lykken,Fateev,cha,sfetsos}.
+We will be mainly interested in their characters \cite{cha,sfetsos}, which are
+\eqn{carpf}{
+\eqalign{
+\lambda_{j,n}(q) & ={\textrm{Tr}}_{\lambda_{j,n}} \!\! \left( q^{L_0} \right) =
+{q^{- {j(j-1) \over k-2} + \frac{(j+n)^2}k} \over \prod_{n=1}^{\infty}(1-q^n)^2} \sum^{\infty}_{s=0}(-1)^s q^{\frac12 s(s+2n+1) } \,, \cr
+\hat{\lambda}_{j,\alpha+n}(q)&= {\textrm{Tr}}_{\hat{\lambda}_{j,\alpha+n}} \!\! \left( q^{L_0} \right) =
+{q^{- {j(j-1) \over k-2} + \frac{(\alpha+n)^2}k} \over \prod_{n=1}^{\infty}(1-q^n)^2} \,.
+}}
+In Appendix A we show explicitly that the decompositions \decompo\ are, in terms of the characters,
+\eqn{cardeco}{\eqalign{
+\chi^+_j(q,z) & = \sum_{n \, \in \, \mathbb{Z}} z^{j+n} \, \lambda_{j,n}(q)\, \zeta_{j+n}(q) \,, \cr
+\hat{\chi}_{j=1/2+is,\alpha}(q,z) & = \sum_{n \, \in \, \mathbb{Z}} z^{\alpha +n} \, \hat{\lambda}_{j,\alpha+n}(q)\, \zeta_{\alpha+n}(q) \,,
+}}
+where
+\eqn{pfuno}{
+\zeta_{m}(q)\equiv {\textrm{Tr}}_{\cU{m}} \left( q^{L_0} \right) = {q^{-{m^2 \over k}} \over \prod^{\infty}_{n=1}(1-q^n)} \,.
+}
+%Let's consider the $\cD{j}^+$ case. A vertex  operator
+%$\Phi_{j,m}$ which creates a highest weight state $|j;m \rangle$
+%can be represented by \eqn{vertex}{ \Phi_{j,m}=\Psi_{j,m} \,\,
+%e^{m \sqrt{\frac2{k}}X} } with \eqn{equisphi}{ X(z) \Psi_{j,m} (w)
+%\sim 0 } and $\Psi_{j,m}$ being a primary field for the
+%$\psi^{\pm}$ currents. The conformal dimensions  of these states
+%are \eqn{dimprim}{\eqalign{ \Delta(\Psi_{j,m}) & = -{j(j-1) \over
+%k-2} + {m^2 \over k } \cr \Delta(  e^{\ss{m \sqrt{\frac2{k}} X}} )
+%& = - {m^2 \over k } }}
+%
+%All the states in the $\sl$ spectrum with
+%$m \geq j$ can be obtained  from $|j;m \rangle$ by acting with the negative modes of
+%$J^3(z)$ and $\psi^{\pm}(z)$.
+%
+%As for the states with $m<j$, they can be obtained from the following
+%descendent of $\cD{j}^+$
+%\eqn{bajoeme}{
+%|j,j-n \rangle \equiv (J^-_{-1})^n |j,j \rangle \,.
+%}
+%The states \bajoeme\ are such that
+%\eqn{propbj}{\eqalign{
+%J^3_0 |j,j-n \rangle & = (j-n) |j,j-n \rangle \cr
+%J^3_n |j,j-n \rangle & = 0\,, \qquad n>0
+%}}
+%so they can be created from the vacuum by acting with an operator
+%\eqn{vertexdes}{
+%\Phi_{j,j-n}= \Psi_{j,j-n} \,\, e^{(j-n) \sqrt{\frac2{k}}X}
+%}
+%with
+%\eqn{equisphides}{
+%X(z) \Psi_{j,j-n} (w) \sim 0 \,\,.
+%}
+%The operators $\Psi_{j,j-n}$ are not parafermionic chiral primaries, but they are $\sl/U(1)$ Virasoro primaries,
+%as can be seen by applying the positive modes of $T^{\ss{\sl/U(1)}}$ on \bajoeme.
+%Their conformal dimension is
+%\eqn{dimprimdes}{
+%\Delta(\Psi_{j,j-n})  = -{j(j-1) \over k-2} + {(j-n)^2 \over k } + n
+%}
+%As in  the $m \geq j$ case, all the states with $m < j$ can be obtained by acting on $|j;j-n \rangle$ with the negative modes of
+%$J^3(z)$ and $\psi^{\pm}(z)$.
+Now, given any integer $w$, the algebra \comm\ is preserved by the
+spectral flow \cite{Malda, Malda2} $J_n^{3,\pm} \rightarrow
+\tilde{J}_n^{3,\pm}$ defined by
+\eqn{flow}{ \eqalign{
+\tilde{J}_n^3 & = J_n^3 - {k \over 2} w \delta_{n,0}  \,, \cr
+\tilde{J}_n^\pm & = J_{n \pm w}^\pm \,.
+}}
+This transformation maps  $L_0$ to
+\eqn{flowele}{
+\tilde{L}_0= L_0 + wJ^3_0 - \frac{k}4w^2 \,.
+}
+The spectral flow can be
+implemented in  \decomp\ by
+\eqn{flowx}{ X(z) \longrightarrow \tilde{X}(z)=X(z) + w \sqrt{\frac{k}{2}} \log z \,,
+}
+and leaving the
+parafermions $\psi^{\pm}(z)$ untouched. For $w=\pm 1$,
+the symmetry \flow\ maps the $\cD{j}^{\mp}$ representation
+into $\cD{k/2-j}^{\pm}$.
+Note that under this mapping the upper and lower bounds of $j$ are interchanged.
+Including the $w=\pm1$ spectrally flowed states, we can just consider $\cD{j}^{+}$ representations.
+
+For generic $w$,  it was shown in
+\cite{Malda,Malda2} that  the Hilbert space $\cD{j}^+$ is mapped into new
+representations which must be included in a consistent description
+of a string propagating in $AdS_3 \times {\cal N}$. The way to include these
+representations is to take usual representations $\cD{j}^+, \cCo{j,\alpha}$
+for flowed operators $\tilde{J}^{3,\pm}_n$,
+and measure their quantum numbers with unflowed $J^3_0,L_0$.
+Alternatively, instead of this {\it active} procedure, we can use a {\it passive} one,
+and obtain the flowed sectors by acting with the unflowed
+operators $J^{3,\pm}_n$ on flowed primaries. Starting with an $\sl$ vertex operator
+\eqn{vertex}{
+\Phi_{j,m}= \Psi_{j,m} \,\, e^{m \sqrt{\frac2{k}}X} \,,
+}
+where $\Psi_{j,m}$ is a parafermionic primary, the flowed vertex operator
+is obtained applying to it the mapping \flowx, yielding
+\eqn{vertexflow}{
+\Phi_{j,m}^{w}= \Psi_{j,m} \,\,
+e^{(m+wk/2) \sqrt{\frac2{k}}X} \,.
+}
+
+%The conformal dimension of
+%$\Phi_{j,m}^{w}$ can be read from \dimprim\ and \dimprimdes, and
+%the decomposition \decompo\ can be generalized to
+%\eqn{decompoflow}{ \cD{j}^{w} = \sum_{n \, \in \, \mathbb{Z}}
+%\ctD{j,n} \otimes \cU{j+n+kw/2} \,\,. }
+\ni
+Note that for $\cCo{j, \alpha}$ representations, all the excited physical states
+belong to flowed sectors.
+This can be seen from the mass-shell
+condition,
+\eqn{capademasa}{
+L_0={\frac14 + s^2 \over k-2} -w(\alpha + n) + \frac{kw^2}{4} + N + h^{{\cal N}} - 1 =0 \,,
+}
+where $h^{{\cal N}}$ is a highest weight of the inner theory and N is the level. It is
+clear that for $w=0$, eq. \capademasa\ can only be satisfied if $N=0$.
+
+The characters of the flowed $\cD{j}^w$ representations are
+\eqn{cardf}{\eqalign{
+\chi^w_j(q,z)= & {\textrm{Tr}}_{\cD{j}^w} \left( q^{L_0} z^{J_0^3} \right)
+= {\textrm{Tr}}_{\cD{j}^+} \left( q^{\tilde{L}_0-w\tilde{J}^3_0-kw^2/4} \, z^{\tilde{J}_0^3+kw/2} \right) ,\cr
+=& \, q^{-kw^2/4} z^{kw/2} \, {\textrm{Tr}}_{\cD{j}^+} \left( q^{\tilde{L}_0} \, (zq^{-w})^{\tilde{J}_0^3} \right), \cr
+= &\, { (-1)^w q^{\left[- {j(j-1) \over k-2} - (k-2)\frac{\,w^2}{4} -(2j -1)\frac{w}{2} + \frac18 \right]} \,
+z^{\left[j + (k-2)\frac{w}{2} - \frac12\right]} \over i\Theta_1(q,z)} \,.
+}}
+where we have used the property \cite{mumford}
+\eqn{pete}{
+\Theta_1(q,zq^{-w})=(-1)^w q^{-w^2/2}z^w \Theta_1(q,z) \,.
+}
+For the $\cCo{j,\alpha}^w$ representations we obtain similarly
+\eqn{carcf}{\eqalign{
+\hat{\chi}^w_{j=1/2+is,\alpha}(q,z)= & \,\,  {\textrm{Tr}}_{\cCo{j,\alpha}^w} \left( q^{L_0} z^{J_0^3} \right), \cr
+= & \, \, {q^{{s^2 + 1/4 \over k-2}-kw^2/4 -w\alpha} \over \prod^{\infty}_{n=1}(1-q^n)^3}
+\sum_{n \in \mathbb{Z}}z^{\alpha+n+ kw/2}q^{-wn} \,.
+}}
+
+\ni
+As is clear from \vertexflow, the effect of the spectral flow is to
+""dislocate"" the parafermionic and the $J^3_0$ quantum numbers by an amount $wk/2$.
+The decompositions \decompo\ are generalized to
+\eqn{decompoflow}{
+\eqalign{
+\cD{j}^{w} & = \sum_{n \, \in \, \mathbb{Z}} \lambda_{j,n} \otimes \cU{j+n+kw/2} \,,\cr
+\cCo{j,\alpha}^{w} & = \sum_{n \, \in \, \mathbb{Z}} \hat{\lambda}_{j,\alpha+n} \otimes \cU{\alpha+n+kw/2} \,.
+}}
+In Appendix C we show explicitly that, in terms of the characters, the decompositions \decompoflow\ are
+\eqn{cardecof}{\eqalign{
+\chi^w_j(q,z) & = \sum_{n \, \in \, \mathbb{Z}} z^{j+n+ kw/2} \, \lambda_{j,n}(q)\, \zeta_{j+n+kw/2}(q) \,,\cr
+\hat{\chi}^w_{j=1/2+is,\alpha}(q,z) & = \sum_{n \, \in \, \mathbb{Z}} z^{\alpha+n+ kw/2} \, \hat{\lambda}_{j,\alpha+n}(q)\, \zeta_{\alpha+n+kw/2}(q) \,.
+}}
+
+
+
+
+
+
+
+\subsection{The supersymmetric algebra}
+For fermionic strings in $AdS_3 \times {\cal N}$, we should consider
+the current algebra of affine supersymmetric $\sl$ at level k. It is generated by three
+dimension-$\frac12$  supercurrents  $\psi^{3,\pm}+ \theta J^{3,\pm}$,
+whose modes satisfy
+\eqn{commfer}{
+\eqalign{
+[J^3_n, J^3_m ]    &= - {k \over 2} n \delta_{n+m,0} \,, \cr
+          [J^3_n, J^\pm_m ]  &= \pm J^\pm_{n+m} \,,\cr
+          [J^+_n , J^-_m ]   &= -2J^3_{n+m} + kn\delta_{n+m,0} \,, \cr
+      [J^3_n, \psi^\pm_m]&=\pm \psi^\pm_{n+m} \,,\cr
+      [J^\pm_n,\psi^\mp_m]&=\mp 2\psi^3_{n+m} \,,\cr
+      [J^\pm_n, \psi^3_m]&=\mp \psi^\pm_{n+m} \,,\cr
+      \{ \psi^3_n,\psi^3_m \}&= -{k \over 2} \delta_{n+m,0}\,, \cr
+      \{ \psi^+_n,\psi^-_m \}&= k \delta_{n+m,0} \,,
+}}
+with all other (anti)commutators vanishing.
+The modding of $J^a_n$ is integer and that of $\psi^a_n$ half-integer (Neveu-Schwarz) or integer (Ramond).
+The worldsheet CFT is supersymmetric,
+the Sugawara stress tensor and the supercurrent being
+\eqn{tensorT}{
+\eqalign{ T^{\sl} &={1 \over 2k}[j^+j^- +j^-j^+] - {1 \over k}j^3j^3 -{1
+\over 2k}[\psi^+ \partial \psi^- + \psi^- \partial \psi^+] +{1
+\over k}\psi^3 \partial \psi^3  \,,\cr
+G^{\sl} &={1 \over k} [\psi^+j^- +
+\psi^-j^+] -{2 \over k}\psi^3j^3 - {2 \over k^2}
+\psi^+\psi^-\psi^3 \,.
+}}
+As usual, purely bosonic currents can be defined by
+\eqn{bosonicJ}{
+\eqalign{ j^a &= J^a - \hat{J}^a \,,  \cr
+      \hat{J}^a &= -{i \over k} f^a_{~bc} \psi^b \psi^c \,.
+}}
+The $j^a$ form an affine $\sl$ bosonic algebra at level $k+2$.
+The $\hat{J}^a$ and the $\psi^a$ form a supersymmetric affine $\sl$ algebra
+at level $-2$ which commutes with $j^a$. The spectrum
+of the theory is the direct product of the Hilbert spaces of both theories.
+In the bosonic sector, the reprentations are the ones considered above.
+For the $\psi^a$ currents, we have the usual representations for free fermions, for
+both Neveu-Schwarz and Ramond sectors. The spectral flow can be also defined
+in the $\psi^a,\hat{J}^a$ theory, but it just amounts
+to a rearrangement of the usual spectrum, as shown in~\cite{Pakman:2003cu}.
+
+
+
+
+
+
+
+
+
+
+\section{The Hodge theory of the BRST complex}
+The formalism reviewed below was developed in \cite{josebrst},
+and can be found in \cite{jose}.
+For similar results in the context of compact Lie algebras, see \cite{vanHolten:1990xd}.
+
+We will denote by ${\cal F}$ the Hilbert space composed of the ghost plus matter sectors, with the restriction
+$b_0=L_0=0$, and also $\beta_0=G_0=0$  for fermionic strings in the Ramond sector.
+Although ${\cal F}$ is infinite dimensional
+(due to the infinite degeneracy of the base states of the $\sl$ representations), it can be decomposed into
+\eqn{efesuma}{
+{\cal F} = \bigoplus_{m} {\cal F}(m) \,,
+}
+where each subspace ${\cal F} (m)$ has $J^3_0=m$ and is finite dimensional.
+In the following, we will consider each ${\cal F}(m)$ space separately, although
+we will keep the notation ${\cal F}$.
+
+
+The space ${\cal F}$ has a natural grading under $N_g$ as
+\eqn{sumag}{
+{\cal F} = \bigoplus_{g \in \mathbb{Z}} {\cal F}_g \,,
+}
+where ${\cal F}_g$ has ghost number $g$.
+The action induced by $Q$ in each ${\cal F}_g$ will de denoted by
+\eqn{qun}{
+Q_g: {\cal F}_g \rightarrow {\cal F}_{g+1} \,,
+}
+and the following sequence is a graded complex
+\eqn{secuencia}{
+\cdots
+{\longrightarrow} {\cal F}_{g-1} \stackrel{\ss Q_{g-1}}{\longrightarrow} {\cal F}_{g} \stackrel{Q_{g}}{\longrightarrow}{\cal F}_{g+1}{\longrightarrow}
+\cdots \,\,.
+}
+For each $g$ we define the kernel and the image of $Q$ as
+\eqn{kerima}{
+\eqalign{
+\textrm{Ker}\, Q_g & = \{\xi \in {\cal F}_g \, | \, Q \xi =0 \} \,, \cr
+\textrm{Im}\, Q_g & = \{ Q\xi \, | \, \xi \in {\cal F}_g \} \,.
+}}
+The cohomology of $Q$ in ${\cal F}$ is then defined as
+\eqn{defcoho}{
+{\textrm{H}}= \bigoplus_g {\textrm{H}}_g \,,
+}
+with
+\eqn{defcohog}{
+{\textrm{H}}_g = { \textrm{Ker}\, Q_g \over \textrm{Im}\, Q_{g-1}} \,.
+}
+Since the indefinite inner product in ${\cal F}$  is non-degenerate,
+an orthogonal basis in ${\cal F}$ can be constructed.
+Let us define the action of a linear hermitian operator ${\cal C}$ on the states of such a  basis
+as $1$ $(-1)$ if the state has positive (negative) norm.
+Then for any pair of states $\xi, \eta \in {\cal F}$ the inner product
+\eqn{inprodc}{
+\inc{\xi}{\eta} \equiv \inn{\xi}{{\cal C} \eta} \,,
+}
+is clearly positive definite.
+The latter implies that ${\cal C}$ maps ${\cal F}_g$ into ${\cal F}_{-g}$
+because the antihermitian character of $N_g$ implies that
+two states can have nonzero $\inn{}{}$ inner product only if they have opposite ghost number.
+Indeed, ${\cal C}$ interchanges the $b_n$ and the $c_n$ modes
+of any state (and the $\beta_n$ and $\gamma_n$ for fermionic strings), as we show explicitly
+in Appendix B. Moreover, this mapping from ${\cal F}_g$ to ${\cal F}_{-g}$ is a
+linear isomorphism because each ${\cal F}_g$ is finite dimensional
+and ${\cal C}$ has empty kernel because ${\cal C}^2=1$. Note that the action of ${\cal C}$ is
+similar to the action of the Hodge $*$ operator on p-forms.
+
+Under this new inner product $Q$ is no longer hermitian,
+but its conjugate $Q^*$ can be obtained from
+\eqn{qconj}{
+\inc{\xi}{Q\eta} = \inn{\xi}{{\cal C} Q \eta} = \inn{{\cal C} Q{\cal C} \xi}{{\cal C} \eta} = \inc{Q^*\xi}{\eta} \,,
+}
+where we have used ${\cal C}^2=1$,  so we have $Q^*= {\cal C} Q {\cal C}$. From its definition it is clear that
+$\left(Q^* \right)^2 = 0 $ and that $Q^*$ carries ghost number $-1$ and is hermitian under $\inn{}{}$.
+As for $Q$, we will denote by $Q^*_g$ the action of $Q^*$ on ${\cal F}_g$.
+
+The positive definiteness of \inprodc\ allows us to decompose ${\cal F}_g$ both as
+\eqn{decouno}{
+{\cal F}_g = \textrm{Im}\,Q_{g-1} \oplus ( \textrm{Im}\,Q_{g-1} )^{\perp} \,,
+}
+and as
+\eqn{decodos}{
+{\cal F}_g = \textrm{Im}\,Q^*_{g+1} \oplus ( \textrm{Im}\,Q^*_{g+1} )^{\perp} \,,
+}
+where $\left( \cdots \right) ^{\perp}$ means orthogonal with respect to $\inc{}{}$.
+But, as can be easily checked, we have $( \textrm{Im}\,Q^*_{g+1} )^{\perp} = \textrm{Ker}\,Q_{g}$
+and $( \textrm{Im}\,Q_{g-1} )^{\perp} = \textrm{Ker}\,Q^*_{g}$.
+Applying now the decomposition \decouno\ to  $\textrm{Ker}\,Q_{g}$ we have
+\eqn{decoker}{
+\textrm{Ker}\,Q_{g} = \textrm{Im}\,Q_{g-1} \oplus {\cal H}_g \,,
+}
+where we have defined
+\eqn{hache}{
+{\cal H}_g = \textrm{Ker}\,Q_g \cap \textrm{Ker}\,Q^*_g \,.
+}
+The elements of  ${\cal H}_g$  provide us with a  unique representative
+for each cohomology class $\textrm{H}_g$. Indeed, from \hache\  we
+see that the elements of ${\cal H}_g$ are annihilated by $Q_g$, and two representatives
+of the same class of
+$\textrm{H}_g$ always differ by an element belonging entirely to
+the first term of \decoker. Moreover, it is easy to check (using that $\inc{}{}$ is positive definite)
+that a state belongs to ${\cal H}_g$ iff it is {\bf harmonic}, i.e., it is annihilated by the {\bf Laplacian}
+\eqn{laplace}{
+\Delta \equiv Q Q^* + Q^* Q \,.
+}
+Inserting now \decoker\ into \decodos\ we obtain the {\bf Hodge decomposition}
+\eqn{hodge}{
+{\cal F}_g = \textrm{Im}\,Q_{g-1} \oplus \textrm{Im}\,Q^*_{g+1} \oplus {\cal H}_g \,.
+}
+It is easy to check that the isomorphism between ${\cal F}_g$ and ${\cal F}_{-g}$ provided by
+${\cal C}$ acts on the terms of \hodge\ as
+\eqn{mapeos}{\eqalign{
+{\cal C} : \, & \textrm{Im}\,Q_g \longleftrightarrow \textrm{Im}\,Q^*_{-g} \,,\cr
+{\cal C} : \, & {\cal H}_g \longleftrightarrow {\cal H}_{-g} \,,
+}}
+and from the second line of \mapeos\ we find that the
+cohomologies $\textrm{H}_g$ and $\textrm{H}_{-g}$ are isomorphic, a result known
+as {\bf Poincar\'e duality}.
+
+
+Now, it is clear that
+\eqn{dim}{
+{\textrm{dim}\,} {\cal F}_g = {\textrm{dim}\,} {\textrm{Ker}\,} Q_g + {\textrm{dim}\,} {\textrm{Im}\,} Q_g \,,
+}
+and from \decoker\ we have ${\textrm{dim}\,} {\textrm{Ker}\,} Q_g = {\textrm{dim}\,} {\textrm{Im}\,} Q_{g-1} + {\textrm{dim}\,} {\cal H}_g$, which implies
+\eqn{dimdos}{
+{\textrm{dim}\,} {\cal F}_g = {\textrm{dim}\,} {\cal H}_g + {\textrm{dim}\,} {\textrm{Im}\,} Q_g + {\textrm{dim}\,} {\textrm{Im}\,} Q_{g-1} \,.
+}
+Performing an alternating sum of \dimdos\ over all $g$, the last two terms cancel pairwise and we obtain
+the {\bf Euler-Poincar\'e identity}:
+\eqn{eulerpoincare}{
+\sum_g (-1)^g {\textrm{dim}\,} {\cal F}_g = \sum_g (-1)^g {\textrm{dim}\,} {\cal H}_g \,\,.
+}
+
+\subsection{The FGZ proof of the no-ghost theorem}
+The physical space of states is defined to be the $Q$ cohomology in ${\cal F}$.
+Since the latter is concentrated at zero ghost number,
+it can be identified with ${\cal H}_0$, and
+the no-ghost theorem asserts that states in ${\cal H}_0$ have positive norm under the
+usual inner product $\inn{}{}$.
+
+
+Note that  from the second line of \mapeos\ we see that ${\cal C}$ maps ${\cal H}_0$ to itself,
+so it can be diagonalized
+in ${\cal H}_0$ with eigenvalues $+1$ or $-1$ (because ${\cal C}^2=1$), corresponding to states
+with positive or negative $\inn{}{}$ norm, respectively.
+Calling $N_+$ $(N_-)$ to the number of
+$+1$ $(-1)$ eigenvalues, we have
+\eqn{des}{
+{\textrm{dim}\,} {\cal H}_0 \geq N_+ - N_- = {\textrm{Tr}}_{{\cal H}_0}{\cal C} \,,
+}
+and it is clear that the no-ghost theorem is proved iff the equality in \des\ holds.
+
+
+The centrality of the vanishing theorem
+comes now to the fore, since
+having  $\textrm{H}_{g \neq 0}= 0$ implies, through the Euler-Poincar\'e identity \eulerpoincare,
+\eqn{epdual}{
+\ind\equiv \sum_{g} (-1)^g {\textrm{dim}\,} {\cal F}_g = \sum_{g} (-1)^g {\textrm{dim}\,} {\cal H}_g = {\textrm{dim}\,} {\cal H}_0 \,,
+}
+where $\ind$ is the {\bf Euler index} of the BRST complex.
+As for ${\textrm{Tr}}_{{\cal H}_0}{\cal C}$, notice that the isomorphism \mapeos\ under ${\cal C}$ between
+${\textrm{Im}\,} Q_{-1}$ and ${\textrm{Im}\,} Q^*_1$ implies
+\eqn{trazanula}{
+{\textrm{Tr}}_{ \ss{ \{ {\textrm{Im}\,} Q_{-1} \oplus {\textrm{Im}\,} Q^*_1 \} } } \, {\cal C} = 0 \,,
+}
+so from \hodge\ we have
+\eqn{trazaefecero}{
+{\textrm{Tr}}_{{\cal H}_0}{\cal C} = {\textrm{Tr}}_{{\cal F}_0}{\cal C} \,.
+}
+Similarly, the isomorphism under ${\cal C}$ between ${\cal F}_g$ and ${\cal F}_{-g}$
+implies for $g \neq 0$ that
+\eqn{trazanulados}{
+{\textrm{Tr}}_{ \ss{ \{ {\cal F}_{g} \oplus {\cal F}_{-g} \} }} \, {\cal C} = 0 \,,
+}
+and from this we obtain
+\eqn{sign}{
+\sig \equiv {\textrm{Tr}}_{{\cal F}}\, {\cal C} = {\textrm{Tr}}_{\ss{{\bigoplus}_g {\cal F}_g}} \, {\cal C} = {\textrm{Tr}}_{{\cal H}_0}{\cal C} \,,
+}
+where $\sig$ is the {\bf signature} of the BRST complex. Putting \des\ -- \sign\ together,
+the no-ghost theorem is equivalent to the identity
+\eqn{nog}{
+\sig = \ind.
+}
+
+
+
+
+
+\section{No-ghost theorem for strings in $AdS_3$}
+We will prove the identity \nog\ by comparing
+\eqn{see}{\eqalign{
+\sig(q,z) =  &  {\textrm{Tr}} \left({\cal C} q^{L_0} z^{J_0^3}\right) \,, \cr
+\ind(q,t)  =  & {\textrm{Tr}} \left((-1)^{N_g} q^{L_0} z^{J_0^3}\right) \,,
+}}
+where the traces will be taken over the different representations.
+Note that for our purposes the formal expansions in $z$ and $q$ are of very different nature.
+Because of the mass shell condition $L_0=0$, in the expansion in $q$ we are only
+interested in the term independent of q.\footnote{Note that the condition $b_0=0$ (and $\beta_0=0$) is already taken into account
+by just ignoring the degeneracy of the ghost vacuum in the traces \see.}
+On the other hand, we need all the powers of $z$, since the decomposition \efesuma\
+was only done  in order to separate ${\cal F}$ into finite-dimensional subspaces.
+
+In the computation of \see, we will use the fact that the trace is multiplicative
+under tensor products and additive under direct sums.
+We will consider representations with arbitrary flow parameter $w$, which of
+course include the regular representations ($w=0$).
+
+
+\subsection{Bosonic strings}
+In \cite{DPL} it was shown that $\sl/U(1)$ representations coming from
+$\cCo{j,\alpha}$ representations with $k>2$, and those coming from $\cD{j}$ with $k>2, j < k/2$,
+are unitary.
+Since these bounds are satisfied in our case, the only
+source of negative norms are the modes of $J^3(z)$.
+The action of ${\cal C}$ in the $\sl$ sector should clearly be
+\eqn{accionc}{\eqalign{
+{\cal C} \psi^{\pm}(z) {\cal C} & = \psi^{\pm}(z) \,, \cr
+{\cal C} J^3_{-n} {\cal C} & = -J^3_{-n} \,.
+}}
+
+
+\ni
+We decompose ${\cal F}$ into
+\eqn{decfb}{
+{\cal F}={\cal F}_{(b,c)} \otimes {\cal F}_{\sl} \otimes {\cal F}_{{\cal N}} \,,
+}
+and we further decompose the representations of ${\cal F}_{\sl}$ as in \decompoflow-\cardecof.
+
+The signature of the $\cD{j}^w$ representations can now be computed as
+\eqn{signatura}{
+\sig_{\cD{j}^w} (q,z)
+ =   \, \sig_{(b,c)}(q)  \times \sum_{n \, \in \, \mathbb{Z}} z^{j+n+kw/2} \,\, \sig_{\lambda_{j,n}}(q) \, \sig_{\cU{j+n+kw/2}}(q) \times
+\sig_{{\cal N}}(q) \,.
+}
+The traces in \signatura\ can be computed as follows.
+In the ghost sector, using the decomposition (\ref{ghostdecom}), we have
+\eqn{signabc}{
+\sig_{(b,c)}(q) = {\textrm{Tr}}_{(b,c)} \left({\cal C} q^{L_0} \right)= q^{-1} \prod_{n=1}^{\infty}(1-q^n)(1+q^n) \,.
+}
+The signature of the timelike $U(1)$ is easily found from \accionc\ to be
+\eqn{signau}{
+\sig_{\cU{j+n+kw/2}}(q)=\textrm{Tr}_{{\cal U}_{j+n+kw/2}} \left( {\cal C} q^{L_0}  \right) = {q^{-{(j+n+kw/2)^2 \over k}} \over \prod_{n=1}^{\infty}(1+q^n)} \,.
+}
+Since the theories $SL(2,R)/U(1)$ and ${\cal N}$ are unitary, their signature is their character.
+So from \signatura --\signau\ the total signature is then
+\eqn{signais}{
+\sig_{\cD{j}^w} (q,z) =
+q^{-1}  \prod^{\infty}_{n=1}(1-q^n) \times \sum_{n \, \in \, \mathbb{Z}} q^{{(j+n+kw/2) \over k}^2}
+z^{j+n+kw/2} \lambda_{j,n}(q)
+\times {{\textrm{Tr}}_{{\cal N}}\left(q^{L_0}\right)} \,.
+}
+\vskip 1cm
+\ni
+The index of the $\cD{j}^w$ representation is
+\eqn{index}{
+\ind_{{\cD{j}^w}} (q,t)\,
+ = \ind_{(b,c)}(q) \, {\textrm{Tr}}_{\cD{j}^w} \left( q^{L_0} z^{J_0^3} \right) \, {{\textrm{Tr}}_{{\cal N}}\left(q^{L_0}\right)} \,.
+}
+In the ghost sector, decomposing ${\cal F}_{(b,c)}$ as
+\eqn{ghostdecomdos}{
+{\cal F}_{(b,c)} = \bigotimes_{n=1}^{\infty} \left\{ \, |0 \rangle_g, b_{-n}|0 \rangle_g \right\} \otimes \{ \, |0 \rangle_g, c_{-n}|0 \rangle_g \} \,,
+}
+we have
+\eqn{indexbc}{
+\ind_{(b,c)}(q)={\textrm{Tr}}_{(b,c)} \left((-1)^{N_g} q^{L_0} \right) = q^{-1} \prod^{\infty}_{n=1}(1-q^n)^2 \,,
+}
+and the index can be written as
+\eqn{indexis}{
+%\ind_{{\cD{j}^w}} =   \, {  z^{j+kw/2} q^{- {j(j-1) \over k-2} -1}  \prod^{\infty}_{n=1}(1-q^n) \over  \prod^{\infty}_{n=1}(1-q^{n-1}z)(1-q^nz^{-1})}
+\ind_{{\cD{j}^w}}= \, q^{-1} \prod^{\infty}_{n=1}(1-q^n)^2  \times \chi^w_j(q,z)\times {{\textrm{Tr}}_{{\cal N}}\left(q^{L_0}\right)} \,.
+}
+Finally, the equality between \signais\ and \indexis\ follows immediately from \pfuno\ and \cardecof.
+
+\vskip 1cm
+\ni
+Proceeding similarly for the ${\cal C}_{j,\alpha}^w$ representations, we obtain
+\eqn{sigcon}{\eqalign{
+\sig_{{\cal C}_{j,\alpha}^w}& =
+q^{-1}  \prod^{\infty}_{n=1}(1-q^n) \times \sum^{\infty}_{n=-\infty} q^{{(\alpha+n+kw/2) \over k}^2}
+z^{\alpha+n+kw/2} \hat{\lambda}_{j,\alpha+n}(q)
+\times {{\textrm{Tr}}_{{\cal N}}\left(q^{L_0}\right)}  \,, \cr
+\ind_{{\cal C}_{j,\alpha}^w}& = \, q^{-1} \prod^{\infty}_{n=1}(1-q^n)^2  \times \hat{\chi}^w_{j,\alpha}(q,z)\times {{\textrm{Tr}}_{{\cal N}}\left(q^{L_0}\right)} \,,
+}}
+and the equality follows again from \pfuno\ and \cardecof.
+
+\subsection{Fermionic strings}
+For NSR strings, the computation of the traces is greatly simplified
+by decomposing the $AdS_3$ sector at level $k$ into a purely bosonic $\sl$
+model at level $k+2$ and three free fermions $\psi^a \, (a=1,2,3)$ (See Section 3.3).
+From \commfer, we see that the action of ${\cal C}$ on the free fermions~is
+\eqn{accioncfer}{
+{\cal C} \psi^{a}_n {\cal C} = (-1)^{\delta_{a,3}} \, \psi^{a}_n(z) \,.
+}
+The total Hilbert space ${\cal F}$ can then be expressed as
+\eqn{decff}{
+{\cal F}={\cal F}_{(b,c)} \otimes {\cal F}_{(\beta,\gamma)} \otimes {\cal F}_{\sl} \otimes {\cal F}_{\psi^a} \otimes {\cal F}_{{\cal N}} \,.
+}
+Note that the traces on  ${\cal F}_{(b,c)}  \otimes {\cal F}_{\sl} \otimes {\cal F}_{{\cal N}}$ can be taken from the
+above bosonic computation, including there the fermionic sectors of ${\cal N}$.
+We will compute the traces for $\cD{j}^w$ representations, the $\cCo{j,\alpha}^w$ case being identical.
+
+
+\vskip 1cm
+\ni
+\textit{Neveu-Schwarz sector}
+
+\ni
+Using the decomposition (\ref{ghdemm}), and \accioncfer, we find
+\eqn{sigbg}{
+\sig_{(\beta,\gamma)}(q)={\textrm{Tr}}_{(\beta,\gamma)} \left({\cal C} q^{L_0} \right)= \prod_{r=\frac12}^{\infty} {q^{\frac12} \over (1-q^r)(1+q^r)} \,,
+}
+\eqn{sigpsi}{
+\sig_{\psi^a}(q) ={\textrm{Tr}}_{\psi^a} \left({\cal C} q^{L_0} \right)=\prod_{r=\frac12}^{\infty} (1-q^r)(1+q^r)^2 \,.
+}
+The total signature is then,
+\eqn{signs}{
+\sig^{NS}(q,z)=\sig_{\cD{j}^w}(q,z) \, \sig_{(\beta,\gamma)}(q) \, \sig_{\psi^a}(q)
+= q^{\frac12} \times \sig_{\cD{j}^w}(q,z) \times \prod_{r=\frac12}^{\infty} (1+q^r) \,.
+}
+To find $\ind_{(\beta,\gamma)}$, we decompose
+\eqn{bgdecdos}{
+{\cal F}_{(\beta,\gamma)} = \bigotimes_{r=1/2}^{\infty} \bigoplus_{N_r=0}^{\infty}
+\left\{ \beta^{N_r}_{-r}|0 \rangle_g \right\}
+\otimes
+\bigotimes_{r=1/2}^{\infty} \bigoplus_{N_r=0}^{\infty}
+\left\{  \gamma^{N_r}_{-r}|0 \rangle_g \right\} \,,
+}
+and then
+\eqn{indbg}{
+\ind_{(\beta,\gamma)}(q)={\textrm{Tr}}_{(\beta,\gamma)} \left((-1)^{N_g} q^{L_0} \right)=\prod_{r=\frac12}^{\infty} {q^{\frac12} \over(1+q^r)^2} \,.
+}
+We also need
+\eqn{indpsi}{
+{\textrm{Tr}}_{\psi^a} \left( q^{L_0}\right)= \prod_{r=\frac12}^{\infty} (1+q^r)^3 \,.
+}
+So the total index is
+\eqn{indns}{
+\ind^{NS}(q,z)=\ind_{\cD{j}^w}(q,z) \, \ind_{(\beta,\gamma)}(q) \, {\textrm{Tr}}_{\psi^a} \left( q^{L_0}\right)
+=q^{\frac12} \times \ind_{\cD{j}^w}(q,z) \times \prod_{r=\frac12}^{\infty}(1+q^r) \,.
+}
+The equality between \signs\ and \indns\ follows then from the bosonic results.
+
+
+\vskip 2cm
+\ni
+\textit{Ramond sector}
+
+\ni
+The traces are computed similarly, giving for the signatures
+\eqn{sigbgr}{
+\sig_{(\beta,\gamma)}(q)= \prod_{r=1}^{\infty} {q^{3 \over 8} \over (1-q^r)(1+q^r)} \,,
+}
+\eqn{sigpsir}{
+\sig_{\psi^a}(q)=q^{\frac3{16}} \times \prod_{r=1}^{\infty} (1-q^r)(1+q^r)^2 \,,
+}
+and
+\eqn{sigram}{
+\sig^{R}(q,z)=\sig_{\cD{j}^w}(q,z) \, \sig_{(\beta,\gamma)}(q) \, \sig_{\psi^a}(q)
+=q^{9 \over 16} \times \sig_{\cD{j}^w}(q,z) \times \prod_{r=1}^{\infty} (1+q^r) \,.
+}
+
+\ni
+For the computation of the index, we obtain
+\eqn{indbgr}{
+\ind_{(\beta,\gamma)}(q)= \prod_{r=1}^{\infty} {q^{3 \over 8}  \over(1+q^r)^2} \,,
+}
+\eqn{indpsir}{
+{\textrm{Tr}}_{\psi^a} \left( q^{L_0}\right)=q^{\frac3{16}} \times \prod_{r=1}^{\infty} (1+q^r)^3 \,,
+}
+and
+\eqn{indram}{
+\ind^{R}(q,z)=\ind_{\cD{j}^w}(q,z) \, \ind_{(\beta,\gamma)}(q) \, {\textrm{Tr}}_{\psi^a} \left( q^{L_0}\right)
+=q^{9 \over 16} \times \ind_{\cD{j}^w}(q,z) \times \prod_{r=1}^{\infty}(1+q^r) \,.
+}
+The equality between \sigram\ and \indram\ follows again from the bosonic results.
+
+Notice that for the computation of $\sig$ in the fermionic case,
+we have relied on the unitarity of the
+bosonic $\sl/U(1)$ coset, and we did not need the unitarity of the
+supersymmetric coset, as in the OCQ \cite{Pakman:2003cu}. This is related  to
+the fact that with the FGZ method we bypass the building of the
+physical states themselves, which do belong to the {\it supersymmetric} coset,
+modulo spurious states.
+
+
+
+\section{Discussion}
+The applicability of the FGZ method depends on two points.
+The first is expressing (a sector of) the matter chiral algebra as a free $L_-$-Virasoro
+module. This should be checked in each case, although
+the techniques of \cite{Asano,Brower,Malda,Hwang:1991an,Evans:1998qu,Pakman:2003cu}
+can be adapted or adopted for a wide family of backgrounds.
+
+The second point is having enough control over the representations of the
+worldsheet CFT, so as to compute the traces \see.
+Based on the results for $AdS_3 \times {\cal N}$, several related exact CFT backgrounds
+could be dealt with successfully. In particular, the BTZ black hole~\cite{Banados:wn} (an orbifold of $AdS_3$) and
+pp-waves backgrounds, obtained as Penrose limits of $AdS_3 \times S^3 \times M^4$
+(see \cite{Hikida:2003fp} and references therein).
+
+An additional class of related backgrounds are gauged WZW models including an
+\linebreak $\sl$ factor,
+such as the Lorentzian 2D black hole \cite{Witten:1991yr,DVV} (${\cal M}=\sl/U(1)$),
+the cosmological Nappi-Witten model \cite{Nappi:1992kv} (${\cal M}=\sl \times SU(2) /U(1)^2$)
+and the  generalization of the latter studied in \cite{Elitzur:2002vw}.
+These backgrounds are particularly interesting, because although the matter ${\cal M}$ CFT
+(the relative cohomology of the BRST complex in the gauged WZW model)
+contains negative-normed states,
+it cannot be decomposed as $U(1) \times {\cal M}/U(1)$.
+Here we can use to advantage the cohomological analysis of
+gauged WZW models in \cite{jose,Hwang:1993nc}, which show that a
+vanishing theorem holds in $G/H$ (for certain subgroups $H$).
+This allows to compute $\sig$ and $\ind$ on $G/H$ by taking the traces
+over $G \otimes  {\cal F}_{ghosts} \otimes H$,
+and following a chain of identities similar to those in \epdual\ and \sign.
+In this way, as we did in this work, the flowed sectors of the $\sl$ factor in G can be included.
+This will be worked out in detail in a future work.
+
+
+
+
+
+
+
+\section*{Acknowledgements}
+I thank for discussions G.~d'Appolonio, S.~Elitzur, A.~Giveon, D.~Kazhdan,
+B.~Kol, \linebreak A.~Konechny, B.~Pioline, P.A.G.~Pisani, A.~Sever and B.~Zwiebach,
+and especially \linebreak J.M.~Figueroa-O'Farrill.
+I also thank P.A.G.~Pisani for collaboration at the early stages
+of this work.
+This work is supported in part by the Israel Academy
+of Sciences and Humanities -- Centers of Excellence Program, the
+German-Israel Bi-National Science Foundation, and the European RTN
+network HPRN-CT-2000-00122.
+
+\vskip 1.5cm
+\ni
+{\bf Note added:}
+After this paper appeared in hep-th,
+the work \cite{Asano:2003qb} appeared, where
+the methods of \cite{Asano} are applied to $AdS_3 \times {\cal N}$ backgrounds.
+
+
+
+\newpage
+\appendix
+
+
+\setcounter{equation}{0}
+\section{BRST essentials}
+We review here the basics of the $(b,c)$ and $(\beta,\gamma)$ algebra that we need in this work.
+More details can be found in \cite{Polchinski:rq}. The zero-mode quantization
+has some subtleties, which have been discussed, {\it inter alia}, in \cite{henneaux}.
+
+
+\subsection{Bosonic strings}
+The anticommuting $(b,c)$ reparametrization ghosts, with conformal dimensions $(2,-1)$, have the OPEs
+\eqn{opebc}{\eqalign{
+b(z)c(w)  & \sim c(z)b(w) \sim  {1 \over z-w} \,,\cr
+b(z)b(w)  & \sim  c(z)c(w) \sim \, 0 \,.
+}}
+The ghost number operator is defined as
+\eqn{ng}{\eqalign{
+N_g & = - \oint dz \, b(z) c(z) \,, \cr
+    & = \sum_{n=1}^{\infty}\left( c_{-n}b_{n} - b_{-n}c_{n}\right) + c_0b_0 - \frac12 \,.
+}}
+The ordering constant $-\frac12$ can be fixed in several ways \cite{Polchinski:rq},
+the most immediate one being the requirement of $N_g$ being antihermitian,
+i.e., $N_g^\dagger = -N_g$. For this we use
+$b_n^{\dagger}=b_{-n}, c_n^{\dagger}=c_{-n}$.
+
+The charge of the $(b-c)$ modes under $N_g$ is
+\eqn{cargasbc}{\eqalign{
+[N_g,b_m]= - b_m \,,\cr
+[N_g,c_m]= + c_m \,.
+}}
+The zero modes $b_0, c_0$ satisfy the Clifford algebra $\{b_0,c_0 \}=1$,
+so there is a  double-degenerate vacuum $|\uparrow \rangle , |\downarrow \rangle$, which satisfies
+\eqn{ghvac}{\eqalign{
+c_0 |\downarrow \rangle & = |\uparrow \rangle  \qquad \qquad b_0|\uparrow \rangle  = |\downarrow \rangle \,,\cr
+c_0|\uparrow \rangle & = b_0|\downarrow \rangle = c_{n}|\uparrow,\downarrow \rangle  = b_{n}|\uparrow,\downarrow \rangle=0 \,, \qquad n>0.
+%c_{n}|\uparrow,\downarrow \rangle & = b_{n}|\uparrow,\downarrow \rangle=0 \qquad n>0.
+}}
+On the vacua $|\uparrow \rangle , |\downarrow \rangle$ we have $L_0^{(b,c)}=-1$.
+The zero-modes algebra implies that the inner product on the ghost space is consistently defined~by
+\eqn{ghinp}{\eqalign{
+\langle \uparrow | c_0|\uparrow \rangle & = \langle \uparrow | c_0|\uparrow \rangle =1 \,,\cr
+\langle \uparrow | c_0|\downarrow \rangle & = 0 \,,
+}}
+and from this follows the inner product of any exited state.
+
+The BRST charge
+\eqn{brstcharge}{
+Q = \oint dz \, c(z) \left( T^{M}(z) + \frac12 T^{(b,c)}(z) \right) \,,
+}
+is an hermitian operator which carries ghost number $+1$, and $Q^2=0$ if $c_M=26$. Here $T^M$ is the matter stress tensor.
+In this work we consider the restriction to the space ${\cal F}$ defined by $b_0=L_0=0$,
+where $L_0$ is the zero mode of $T=T^M + T^{(b,c)}$.
+This chooses the $|\downarrow \rangle$ vacuum,
+which will be denoted $|0 \rangle_g$. In ${\cal F}$ we redefine
+$N_g$ to be in $\mathbb{Z}$ by assigning ghost number $0$ to $|0 \rangle_g$ and ignoring the last two terms in the expansion \ng.
+The action of $Q$ is consistent with the restriction to ${\cal F}$  because $\{ Q,b_0 \} = L_0$.
+
+
+
+
+
+
+
+\subsection{Fermionic strings}
+For  NSR strings, we have, on top of the $(b,c)$ system,
+the super-reparametrization ghosts $(\beta,\gamma)$, with conformal dimensions $(\frac32,-\frac12)$ and OPEs
+\eqn{opebg}{\eqalign{
+\gamma(z)\beta(w) \sim \, & {1 \over z-w} \,, \cr
+\beta(z)\gamma(w) \sim \, & {-1 \over z-w} \,,\cr
+\beta(z)\beta(w) \sim \, & \gamma(z)\gamma(w) \sim \, 0 \,.
+}}
+The modes of $(\beta,\gamma)$ satisfy
+$\beta_r^{\dagger}=-\beta_{-r}, \gamma_r^{\dagger}=\gamma_{-r}$,
+where $ r \in \mathbb{Z} \, (r \in \mathbb{Z}+ 1/2)$ for the Ramond (Neveu-Schwarz) sector.
+In the Ramond sector, the zero modes again make the vacuum double-degenerate.
+We choose $\beta_0=0$ in ${\cal F}$, and denote the selected vacuum also by $|0 \rangle_g$.
+We have then,
+\eqn{vbg}{
+\beta_{r \geq 0}|0 \rangle_{g}  = \gamma_{r>0}|0 \rangle_{g} =0.
+}
+On $|0 \rangle_g$, we have $L_0^{(\beta,\gamma)}=\frac38 \,\, (L_0^{(\beta,\gamma)}=\frac12)$ for the Ramond (Neveu-Schwarz) sector.
+The $|0 \rangle_g$ ghost number is zero, and the operator $N_g$ in \ng\ is extended to satisfy
+\eqn{cargasbg}{\eqalign{
+[N_g,\beta_r]= - \beta_r \,, \cr
+[N_g, \gamma_r]= + \gamma_r \,.
+}}
+The BRST charge is now
+\eqn{brstchfer}{
+Q = \oint dz \, \left[ c(z) \left( T^{M}(z) + \frac12 T^{g}(z) \right) +
+\gamma(z)\left( G^{M}(z) + \frac12 G^{g}(z) \right) \right] \,,
+}
+with $Q^2=0$ if $c_M=10$. Here $G^M$ is the matter supercurrent,
+$T^{g}=T^{(b,c)} +T^{(\beta,\gamma)}$ and $G^g$ the supercurrent of the superconformal
+combined $(b,c)-(\beta,\gamma)$ systems. The $L_0=0$ condition is imposed with $T^M + T^g$.
+The space ${\cal F}$ is again defined by $b_0=L_0=0$. In the Ramond sector, also by $\beta_0=G_0=0$, where
+$G_0$ is the zero mode of  $G= G^M + G^{g}$. This
+restriction is consistent because $\{Q,\beta_0 \} = G_0$.
+
+
+
+
+
+
+
+
+\setcounter{equation}{0}
+\section{The action of ${\cal C}$ in the ghost sector}
+In this Appendix we will show that the operator ${\cal C}$, defined in Section 2, interchanges
+between $b_n$ and $c_n$ (and $\beta_r$ and $\gamma_r$) modes, thus
+mapping ${\cal F}_g$ to ${\cal F}_{-g}$.
+
+We can decompose the ghost sector ${\cal F}_{(b,c)}$ into
+\begin{equation}
+{\cal F}_{(b,c)} = \bigotimes_{n=1}^{\infty} \left\{ \, |0 \rangle_g, |+,n \rangle \right\} \otimes \{ \, |0 \rangle_g, |-,n \rangle \} \,,
+\label{ghostdecom}
+\end{equation}
+where
+\eqn{gemasmenos}{
+|\pm,n \rangle \equiv \frac{ ( b_{-n} \pm c_{-n}) }{\sqrt{2}} |0 \rangle_g \,,
+}
+satisfy
+\eqn{gein}{\eqalign{
+\langle \pm,n | \pm,m \rangle =&  \pm \delta_{n,m} \,, \cr
+\langle +,n | -,m \rangle =&  0 \,,
+}}
+so from $ {\cal C} | \pm,m \rangle= \pm | \pm,m \rangle$ we have
+\eqn{cenghost}{\eqalign{
+{\cal C} c_n {\cal C} & = b_n \,, \cr
+{\cal C} b_n {\cal C} & = c_n \,.
+}}
+For fermionic strings, we use the decomposition
+\begin{equation}
+{\cal F}_{(\beta,\gamma)} = \bigotimes_{r>0} \bigoplus_{N_r=0}^{\infty} \{  |+,N_r \rangle \} \otimes
+\bigotimes_{r>0} \bigoplus_{N_r=0}^{\infty} \{ |-,N_r \rangle \} \,,
+\label{ghdemm}
+\end{equation}
+where
+\eqn{gemm}{
+|\pm,N_r \rangle \equiv \frac{ ( \beta_{-r} \pm \gamma_{-r})^{N_r} }{\sqrt{2N_r!}} |0 \rangle_g \,,
+}
+satisfy
+\eqn{geimm}{\eqalign{
+\langle \pm,N_r | \pm,N_s \rangle =&  (\pm 1)^{N_r} \delta_{r,s}\delta_{N_r,N_s} \, \,, \cr
+\langle +,N_r | -,N_s \rangle =&  0 \,,
+}}
+so we have
+\eqn{cenghmm}{\eqalign{
+{\cal C} \beta_r {\cal C} & = (-1)^{S(r)} \gamma_r \,, \cr
+{\cal C} \gamma_r {\cal C} & = (-1)^{S(r)} \beta_r \,,
+}}
+where $S(r)$ equals $0 \, (1)$ if $r<0 \, (r>0)$.
+
+\setcounter{equation}{0}
+\section{$\sl/U(1) \times U(1)$ character decomposition}
+In this Appendix we will prove explicitly the character decompositions \cardeco\ and \cardecof.
+Let us start with the representation $\cD{j}^+$, whose character is
+\eqn{carchi}{
+\chi^+_j(q,z)= { q^{- {j(j-1) \over k-2}} z^j \over \prod^{\infty}_{n=1}(1-q^n)(1-q^{n-1}z)(1-q^nz^{-1})} \,.
+}
+We will use the technique of infinite partial fractions, which has been used in \cite{prod,thorn} in order
+to prove similar identities. Define
+\eqn{efene}{
+f_{N}(q,z)= {1 \over {\prod}_{n=1}^{N} \left( 1-q^{n-1}z\right) \left( 1-q^nz^{-1} \right) } \,,
+}
+which can be decomposed into partial fractions as
+\eqn{partialefe}{
+f_{N}(q,z)=\sum^N_{k=1} {a_k(q) \over ( 1 - q^{k-1}z )( 1 - q^kz^{-1} )}\,.
+}
+The coefficients $a_k(q)$ are
+\eqn{aka}{\eqalign{
+a_k(q) & = \lim_{z \rightarrow q^k} ( 1 - q^{k-1}z )(  1 - q^kz^{-1} ) f_{N}(q,z) \,, \cr
+       & = { 1 - q^{2k-1}  \over \prod_{n=k}^{N+k-1}(1-q^n)\prod^N_{n=1  n \neq k}(1-q^{n-k})} \,, \cr
+       & = {(1-q^{2k-1}) (-1)^{k-1} q^{{k(k-1) \over 2}} \over \prod^{N+k-1}_{n=1}(1-q^n) \prod^{N-k}_{n=1}(1-q^n)} \,,
+}}
+thus for $N \rightarrow \infty$ we have
+
+\eqn{efelimite}{\eqalign{
+\lim_{N \rightarrow \infty} f_N(q,z) & = {1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} \,, \cr
+ & = {1 \over \prod^{\infty}_{n=1}(1-q^n)^2 }
+\left[ \sum_{k=1}^{\infty} {(1-q^{2k-1})(-1)^{k-1} q^{{k(k-1)
+\over 2}} \over (1-q^{k-1}z)(1-q^kz^{-1})} \right] \,.
+}}
+The
+denominators in the sum of \efelimite\ can be expanded and
+resummed as
+\eqn{sumageo}{\eqalign{
+{1 \over (1-q^{k-1}z)(1-q^k z^{-1})} & = \sum^{\infty}_{m,n=0} q^{m(k-1)}z^m q^{nk}z^{-n} \,, \cr
+& = {1 \over (1-q^{2k-1})} \left[ \sum^{\infty}_{n=0} q^{n(k-1)}
+z^n + \sum^{-1}_{n=-\infty} q^{-nk} z^{n} \right] \,.
+}}
+Thus
+\efelimite\ can be written as
+\eqn{efelimitedos}{\eqalign{
+{1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} & =
+{1 \over \prod^{\infty}_{n=1}(1-q^n)^2 } \,\,\, \times \cr
+ \left[ \sum^{\infty}_{n=0} \sum_{k=1}^{\infty} \right.   z^n (-1)^{k-1} & q^{\frac12 (k - 2n)(k-1)}
+  \left. +  \sum_{n=-\infty}^{-1} \sum_{k=1+2n}^{\infty} \! \! \! \! z^n (-1)^{k-1} q^{\frac12 (k - 2n)(k-1)}
+\right] \,,
+}}
+where in the second term we have changed the index $k$ to $k+2n$ in order to make the exponents of $q$ be  the same in both terms.
+Now, using that for $n \in \mathbb{Z}$
+\eqn{sumacero}{
+\sum_{k=1}^{2n}  (-1)^{k-1} q^{\frac12 (k - 2n)(k-1)} = 0 \,,
+}
+and changing the index $k$ to $s=k-1$ we obtain finally
+\eqn{igualdadfinal}{
+{1 \over {\prod}_{n=1}^{\infty} ( 1-q^{n-1}z)(1-q^nz^{-1} )} =
+{1  \over \prod^{\infty}_{n=1}(1-q^n)^2} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0} z^{n}(-1)^s q^{\frac12 s(s+2n+1)} \,,
+}
+and
+multiplying both sides by
+$q^{- {j(j-1) \over k-2}} z^j  \prod^{\infty}_{n=1}(1-q^n)^{-1}$,
+the first line of \cardeco\ follows.
+
+From \cardf, we see that the flowed characters can be obtained from $\chi^+_j(q,z)$ by
+replacing $z \rightarrow zq^{-w}$, and multiplying the resulting expression by $z^{kw/2}q^{-kw^2/4}$.
+So we have,
+
+\eqn{uedt}{\eqalign{
+\chi^w_j(q,z)= &
+{q^{- {j(j-1) \over k-2}-kw^2/4} \, z^{kw/2} \over
+\prod^{\infty}_{n=1}(1-q^n)^3} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0} (zq^{-w})^{n+j}(-1)^s q^{\frac12 s(s+2n+1)} \,, \cr
+= &  {q^{- {j(j-1) \over k-2}} z^{j+kw/2}  \over
+\prod^{\infty}_{n=1}(1-q^n)^3} \sum^{\infty}_{n=-\infty} \sum^{\infty}_{s=0}
+q^{{(j+n)^2\over k}-{(j+n+kw/2)^2\over k}} z^n
+ (-1)^s q^{\frac12 s(s+2n+1)} \,,
+}}
+and this equality is the first line of \cardecof.
+
+The decompositions for $\cCo{j,\alpha}$ representations
+are immediate and are left as an exercise.
+
+
+
+\newpage
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{Kato:1982im}
+M.~Kato and K.~Ogawa,
+``Covariant Quantization Of String Based On BRS Invariance,''
+Nucl.\ Phys.\ B {\bf 212}, 443 (1983).
+%%CITATION = NUPHA,B212,443;%%
+
+\bibitem{FGZ}
+I.~B.~Frenkel, H.~Garland and G.~J.~Zuckerman,
+``Semiinfinite Cohomology And String Theory,''
+Proc.\ Nat.\ Acad.\ Sci.\  {\bf 83}, 8442 (1986).
+%%CITATION = PNASA,83,8442;%%
+
+
+
+
+\bibitem{Figueroa-O'Farrill:1988hu}
+J.~M.~Figueroa-O'Farrill and T.~Kimura,
+``The BRST Cohomology Of The NSR String: Vanishing And 'No Ghost' Theorems,''
+Commun.\ Math.\ Phys.\  {\bf 124}, 105 (1989);
+%%CITATION = CMPHA,124,105;%%
+B.~H.~Lian and G.~J.~Zuckerman,
+``BRST Cohomology Of The Supervirasoro Algebras,''
+Commun.\ Math.\ Phys.\  {\bf 125}, 301 (1989).
+%%CITATION = CMPHA,125,301;%%
+
+\bibitem{Bouwknegt:1991yg}
+P.~Bouwknegt, J.~G.~McCarthy and K.~Pilch,
+``BRST analysis of physical states for 2-D gravity coupled to $c \leq 1$ matter,''
+Commun.\ Math.\ Phys.\  {\bf 145}, 541 (1992).
+%%CITATION = CMPHA,145,541;%%
+
+\bibitem{Spiegelglas}
+M.~Spiegelglas,
+``Q BRST Cohomology: A Mechanism For Getting Rid Of Negative Norm States, With An Application To The Bosonic String,''
+Nucl.\ Phys.\ B {\bf 283}, 205 (1987).
+%%CITATION = NUPHA,B283,205;%%
+
+\bibitem{Zuckerman:1987ds}
+G.~J.~Zuckerman,
+``Modular Forms, Strings And Ghosts,''
+Proceedings of Symposia in Pure Mathematics {\bf 49}  Part 1, 273, (1989).
+
+\bibitem{Asano}
+M.~Asano and M.~Natsuume,
+``The no-ghost theorem for string theory in curved backgrounds with a  flat timelike direction,''
+Nucl.\ Phys.\ B {\bf 588}, 453 (2000)
+[arXiv:hep-th/0005002];
+%%CITATION = HEP-TH 0005002;%%
+M.~Asano and M.~Natsuume,
+``The no-ghost theorem in curved backgrounds with a timelike u(1): NSR string,''
+[arXiv:hep-th/0303051].
+%%CITATION = HEP-TH 0303051;%%
+
+
+\bibitem{Brower}
+R.~C.~Brower,
+``Spectrum Generating Algebra And No Ghost Theorem For The Dual Model,''
+Phys.\ Rev.\ D {\bf 6}, 1655 (1972);
+%%CITATION = PHRVA,D6,1655;%%
+R.~C.~Brower and K.~A.~Friedman,
+``Spectrum Generating Algebra And No Ghost Theorem For The Neveu-Schwarz Model,''
+Phys.\ Rev.\ D {\bf 7}, 535 (1973).
+%%CITATION = PHRVA,D7,535;%%
+
+\bibitem{Malda}
+J.~M.~Maldacena and H.~Ooguri,
+``Strings in AdS(3) and SL(2,R) WZW model. I,''
+J.\ Math.\ Phys.\  {\bf 42}, 2929 (2001)
+[arXiv:hep-th/0001053].
+%%CITATION = HEP-TH 0001053;%%
+
+\bibitem{Malda2}
+J.~M.~Maldacena, H.~Ooguri and J.~Son,
+``Strings in AdS(3) and the SL(2,R) WZW model. II: Euclidean black hole,''
+J.\ Math.\ Phys.\  {\bf 42}, 2961 (2001)
+[arXiv:hep-th/0005183].
+%%CITATION = HEP-TH 0005183;%%
+
+\bibitem{Aharony:1999ti}
+O.~Aharony, S.~S.~Gubser, J.~M.~Maldacena, H.~Ooguri and Y.~Oz,
+``Large N field theories, string theory and gravity,''
+Phys.\ Rept.\  {\bf 323}, 183 (2000)
+[arXiv:hep-th/9905111].
+%%CITATION = HEP-TH 9905111;%%
+
+
+\bibitem{GKS}
+A.~Giveon, D.~Kutasov and N.~Seiberg,
+``Comments on string theory on AdS(3),''
+Adv.\ Theor.\ Math.\ Phys.\  {\bf 2}, 733 (1998)
+[arXiv:hep-th/9806194].
+%%CITATION = HEP-TH 9806194;%%
+
+\bibitem{Giveon:1999jg}
+A.~Giveon and M.~Rocek,
+``Supersymmetric string vacua on AdS(3) x N,''
+JHEP {\bf 9904}, 019 (1999)
+[arXiv:hep-th/9904024];
+%%CITATION = HEP-TH 9904024;%%
+D.~Berenstein and R.~G.~Leigh,
+``Spacetime supersymmetry in AdS(3) backgrounds,''
+Phys.\ Lett.\ B {\bf 458}, 297 (1999)
+[arXiv:hep-th/9904040].
+%%CITATION = HEP-TH 9904040;%%
+
+\bibitem{Argurio:2000tb}
+R.~Argurio, A.~Giveon and A.~Shomer,
+``Superstrings on AdS(3) and symmetric products,''
+JHEP {\bf 0012}, 003 (2000)
+[arXiv:hep-th/0009242].
+%%CITATION = HEP-TH 0009242;%%
+
+\bibitem{Giveon:2003ku}
+A.~Giveon and A.~Pakman,
+``More on superstrings in AdS(3) x N,''
+JHEP {\bf 0303}, 056 (2003)
+[arXiv:hep-th/0302217].
+%%CITATION = HEP-TH 0302217;%%
+
+
+
+
+
+
+
+
+\bibitem{Hwang:1991an}
+S.~Hwang,
+``Cosets as gauge slices in SU(1,1) strings,''
+Phys.\ Lett.\ B {\bf 276}, 451 (1992)
+[arXiv:hep-th/9110039].
+%%CITATION = HEP-TH 9110039;%%
+
+
+
+
+\bibitem{Evans:1998qu}
+J.~M.~Evans, M.~R.~Gaberdiel and M.~J.~Perry,
+``The no-ghost theorem for AdS(3) and the stringy exclusion principle,''
+Nucl.\ Phys.\ B {\bf 535}, 152 (1998)
+[arXiv:hep-th/9806024].
+%%CITATION = HEP-TH 9806024;%%
+
+\bibitem{Pakman:2003cu}
+A.~Pakman,
+``Unitarity of supersymmetric SL(2,R)/U(1) and no-ghost theorem for fermionic strings in AdS(3) x N,''
+JHEP {\bf 0301}, 077 (2003)
+[arXiv:hep-th/0301110].
+%%CITATION = HEP-TH 0301110;%%
+
+
+\bibitem{Balog:1988jb}
+J.~Balog, L.~O'Raifeartaigh, P.~Forgacs and A.~Wipf,
+``Consistency Of String Propagation On Curved Space-Times: An SU(1,1) Based Counterexample,''
+Nucl.\ Phys.\ B {\bf 325}, 225 (1989).
+
+\bibitem{Henningson:1990ua}
+M.~Henningson and S.~Hwang,
+``The Unitarity Of SU(1,1) Fermionic Strings,''
+Phys.\ Lett.\ B {\bf 258}, 341 (1991).
+%%CITATION = PHLTA,B258,341;%%
+
+\bibitem{DPL}
+L.~J.~Dixon, M.~E.~Peskin and J.~Lykken,``N=2 Superconformal Symmetry And SO(2,1) Current Algebra,''
+Nucl.\ Phys.\ B {\bf 325}, 329 (1989);
+%%CITATION = NUPHA,B325,329;%%
+B.~H.~Lian and G.~J.~Zuckerman,
+``BRST Cohomology And Highest Weight Vectors. 1,''
+Commun.\ Math.\ Phys.\  {\bf 135}, 547 (1991).
+%%CITATION = CMPHA,135,547;%%
+
+\bibitem{Bars:1995mf}
+I.~Bars,
+``Ghost - free spectrum of a quantum string in SL(2,R) curved space-time,''
+Phys.\ Rev.\ D {\bf 53}, 3308 (1996)
+[arXiv:hep-th/9503205];
+%%CITATION = HEP-TH 9503205;%%
+Y.~Satoh,
+``Ghost-free and modular invariant spectra of a string in SL(2,R) and  three-dimensional black hole geometry,''
+Nucl.\ Phys.\ B {\bf 513}, 213 (1998)
+[arXiv:hep-th/9705208].
+%%CITATION = HEP-TH 9705208;%%
+
+
+
+\bibitem{josebrst}
+J.~M.~Figueroa-O'Farrill and T.~Kimura,
+``The Cohomology Of BRST Complexes,''
+ITP-SB-88-34-REV (unpublished).
+
+
+
+%%CITATION = NUPHA,B325,225;%%
+\bibitem{jose}
+J.~M.~Figueroa-O'Farrill, ``BRST Cohomology and Its Applications to
+Two-Dimensional Conformal Field Theory'', PhD Thesis, State University of New York at Stony Brook, 1989.
+http://www.maths.ed.ac.uk/\verb+~+jmf/English/PVBLICATIONS/thesis/thesis.ps.gz
+
+\bibitem{vanHolten:1990xd}
+J.~W.~van Holten,
+``The BRST Complex And The Cohomology Of Compact Lie Algebras,''
+Phys.\ Rev.\ Lett.\  {\bf 64}, 2863 (1990)
+[Nucl.\ Phys.\ B {\bf 339}, 158 (1990)].
+%%CITATION = PRLTA,64,2863;%%
+
+\bibitem{DVV}
+R.~Dijkgraaf, H.~Verlinde and E.~Verlinde,
+``String propagation in a black hole geometry,''
+Nucl.\ Phys.\ B {\bf 371}, 269 (1992).
+%%CITATION = NUPHA,B371,269;%%
+
+
+\bibitem{Giveon}
+A.~Giveon and D.~Kutasov,
+``Little string theory in a double scaling limit,''
+JHEP {\bf 9910}, 034 (1999)
+[arXiv:hep-th/9909110].
+%%CITATION = HEP-TH 9909110;%%
+
+\bibitem{Kac:fz}
+V.~G.~Kac and D.~A.~Kazhdan,
+``Structure Of Representations With Highest Weight Of Infinite Dimensional Lie Algebras,''
+Adv.\ Math.\  {\bf 34}, 97 (1979).
+%%CITATION = ADMTA,34,97;%%
+
+\bibitem{mumford}
+D.~Mumford, ``Tata Lectures on Theta I,'' Vol. 28, Progress in Mathematics, Birkhauser, Boston, 1983.
+
+
+\bibitem{Lykken}
+J.~D.~Lykken,
+``Finitely Reducible Realizations Of The N=2 Superconformal Algebra,''
+Nucl.\ Phys.\ B {\bf 313}, 473 (1989).
+%%CITATION = NUPHA,B313,473;%%
+
+\bibitem{Fateev}
+V.~A.~Fateev and A.~B.~Zamolodchikov,
+``Parafermionic Currents In The Two-Dimensional Conformal Quantum Field Theory And Selfdual Critical Points In Z(N) Invariant Statistical
+Systems,''
+Sov.\ Phys.\ JETP {\bf 62}, 215 (1985)
+[Zh.\ Eksp.\ Teor.\ Fiz.\  {\bf 89}, 380 (1985)].
+%%CITATION = SPHJA,62,215;%%
+
+
+
+\bibitem{cha}
+P.~A.~Griffin and O.~F.~Hernandez,
+``Feigin-Fuchs Derivation Of SU(1,1) Parafermion Characters,''
+Nucl.\ Phys.\ B {\bf 356}, 287 (1991).
+%%CITATION = NUPHA,B356,287;%%
+
+
+
+\bibitem{sfetsos}
+K.~Sfetsos,``Degeneracy of string states in 2-D black hole and a new derivation of SU(1,1) parafermion characters,''
+Phys.\ Lett.\ B {\bf 271}, 301 (1991).
+%%CITATION = PHLTA,B271,301;%%
+
+\bibitem{Polchinski:rq}
+J.~Polchinski,
+``String Theory. Vol. 1 \& 2,''
+Cambridge, UK: Univ. Pr. (1998).
+
+\bibitem{henneaux}
+M.~Henneaux,
+``Remarks On The Cohomology Of The BRS Operator In String Theory,''
+Phys.\ Lett.\ B {\bf 177}, 35 (1986);
+%%CITATION = PHLTA,B177,35;%%
+M.~Henneaux,
+``BRST Cohomology Of The Fermionic String,''
+Phys.\ Lett.\ B {\bf 183}, 59 (1987).
+%%CITATION = PHLTA,B183,59;%%
+
+
+
+\bibitem{prod}
+R.~Bellman, ``The expansions of some infinite products,''
+Duke  Math.\ J. {\bf 24}, 353 (1957).
+
+
+\bibitem{thorn}
+C.~B.~Thorn,
+``String Field Theory,''
+Phys.\ Rept.\  {\bf 175}, 1 (1989).
+%%CITATION = PRPLC,175,1;%%
+
+
+
+
+
+\bibitem{Banados:wn}
+M.~Banados, C.~Teitelboim and J.~Zanelli,
+``The Black Hole In Three-Dimensional Space-Time,''
+Phys.\ Rev.\ Lett.\  {\bf 69}, 1849 (1992)
+[arXiv:hep-th/9204099].
+%%CITATION = HEP-TH 9204099;%%
+
+\bibitem{Hikida:2003fp}
+Y.~Hikida,
+``Superstrings on NSNS pp-waves and their CFT duals,''
+arXiv:hep-th/0303222.
+%%CITATION = HEP-TH 0303222;%%
+
+
+\bibitem{Witten:1991yr}
+E.~Witten,
+``On string theory and black holes,''
+Phys.\ Rev.\ D {\bf 44}, 314 (1991).
+%%CITATION = PHRVA,D44,314;%%
+
+
+\bibitem{Nappi:1992kv}
+C.~R.~Nappi and E.~Witten,
+``A Closed, expanding universe in string theory,''
+Phys.\ Lett.\ B {\bf 293}, 309 (1992)
+[arXiv:hep-th/9206078];
+%%CITATION = HEP-TH 9206078;%%
+S.~Elitzur, A.~Giveon, D.~Kutasov and E.~Rabinovici,
+``From big bang to big crunch and beyond,''
+JHEP {\bf 0206}, 017 (2002)
+[arXiv:hep-th/0204189].
+%%CITATION = HEP-TH 0204189;%%
+
+\bibitem{Elitzur:2002vw}
+S.~Elitzur, A.~Giveon and E.~Rabinovici,
+``Removing singularities,''
+JHEP {\bf 0301}, 017 (2003)
+[arXiv:hep-th/0212242].
+%%CITATION = HEP-TH 0212242;%%
+
+\bibitem{Hwang:1993nc}
+S.~Hwang and H.~Rhedin,
+``The BRST Formulation of G/H WZNW models,''
+Nucl.\ Phys.\ B {\bf 406}, 165 (1993)
+[arXiv:hep-th/9305174].
+%%CITATION = HEP-TH 9305174;%%
+
+\bibitem{Asano:2003qb}
+M.~Asano and M.~Natsuume,
+``The BRST quantization and the no-ghost theorem for AdS(3),''
+arXiv:hep-th/0304254.
+%%CITATION = HEP-TH 0304254;%%
+
+
+\end{thebibliography}
+
+
+%\nocite{*}    %This command makes every ref in review.bib appear.
+
+
+
+
+
+\"

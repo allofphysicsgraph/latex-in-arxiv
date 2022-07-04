@@ -1,0 +1,407 @@
+,usepackage
+0,\usepackage{showkeys}
+1,"\usepackage[dvips]{graphicx,psfrag}
+\usepackage{amssymb}
+%\usepackage{amsmath}
+
+\makeatletter
+
+ \@addtoreset{equation}{section}
+\makeatother
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%% title %%%%%%%%%%%%%
+\begin{titlepage}
+
+\begin{flushright}
+OU-HET 436\\
+{\tt hep-th/0304047}\\
+April 2003
+\end{flushright}
+\bigskip
+
+\begin{center}
+{\LARGE\bf
+Unitarity Bound of the Wave Function Renormalization Constant 
+}
+\vspace{1cm}
+
+\setcounter{footnote}{0}
+\bigskip
+
+\bigskip
+{
+{\large\bf Kiyoshi Higashijima\footnote{
+     E-mail: {\tt higashij@phys.sci.osaka-u.ac.jp}} and
+ Etsuko Itou\footnote{
+     E-mail: {\tt itou@het.phys.sci.osaka-u.ac.jp}}
+}}
+
+\vspace{4mm}
+
+{\sl
+Department of Physics,
+Graduate School of Science, Osaka University,\\ 
+Toyonaka, Osaka 560-0043, Japan \\
+}
+
+\end{center}
+\bigskip
+
+%%%%%%%%% abstract %%%%%%%%
+\begin{abstract}
+The wave function renormalization constant $Z$, the probability to find the bare particle in the physical particle, usually satisfies the unitarity bound $0 \leq Z \leq 1$ in field theories without negative metric states. This unitarity bound implies the positivity of the anomalous dimension of the field in the one-loop approximation. In nonlinear sigma models, however, this bound is apparently broken because of the field dependence of the canonical momentum. The contribution of the bubble diagrams to the anomalous dimension can be negative, while the contributions from more than two particle states satisfies the positivity of the anomalous dimension as expected. 
+ We derive the genuine unitarity bound of the wave function renormalization constant.
+
+\end{abstract}
+
+\end{titlepage}
+
+\pagestyle{plain}
+
+%%%%%%    TEXT START    %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The wave function renormalization constant $Z$ satisfies the unitarity bound $0 \leq Z \leq 1$, because it is interpreted as the probability to find the bare particle in the physical one-particle state\cite{UK, KL, Nishijima, PS, Weinberg}. In perturbation theory, this bound implies the positivity of the coefficient $c$ in the one-loop contribution to the wave function renormalization constant
+\begin{equation}
+Z=1-cg^2\log{\frac{\Lambda^2}{\mu^2}}\leq 1, \qquad (c>0)\label{eqn:oneloop}
+\end{equation}
+where $g, \Lambda$ and $\mu$ denote the coupling constant, the ultraviolet cut-off and the renormalization mass scale, respectively. This inequality of $Z$ implies the positivity of the anomalous dimension in the one-loop approximation
+\begin{equation}
+\gamma =\frac{1}{2}\mu\frac{\partial}{\partial\mu}\log{Z}=cg^2 \ge 0 .
+\label{eqn:pos_anodim}
+\end{equation}
+The basic assumption of the unitarity bound is the positivity of the Hilbert space, which is often broken in the covariant quantization of gauge theories, where the time component of the gauge field has the negative signature relative to the transverse components. The anomalous dimension of the electron in the one-loop approximation, for example, 
+\begin{equation}
+\gamma_e=\frac{e^2\alpha}{(4 \pi)^2} \label{eqn:elanod}
+\end{equation}
+may have the negative sign, depending the choice of gauge parameter $\alpha$. Although the total Hilbert space has indefinite metric in gauge theories, the physical Hilbert space has the positive semidefinite norm and has the consistent probability interpretation\cite{Nishijima}. The anomalous dimensions of the physical operators, of course, satisfy the positivity and are gauge independent.
+
+We sometimes encounter negative anomalous dimensions in nonlinear sigma models (NL$\sigma$Ms), which are renormalizable in two dimensions\cite{HI, HI2}.
+For example, the $O(N+1)$ invariant NL$\sigma$M, defined on the sphere $S^N$, is described by a Lagrangian
+\begin{equation}
+{\cal L}=\frac{1}{2}\cdot\frac{\left(\partial_{\mu}\vec{\varphi}\right)^2}{\left(1+\frac{g^2}{4}\vec{\varphi}^2\right)^2} \qquad
+\left(\vec{\varphi}=(\varphi^1,\cdots, \varphi^N)\right),
+\label{eqn:lagrangian1}
+\end{equation}
+and has the negative anomalous dimension
+\begin{equation}
+\gamma_{\varphi}=-\frac{N}{8\pi}g^2<0 .\label{eqn:ON1gamma}
+\end{equation}
+There is neither higher derivative terms, which often introduce ghost with indefinite metric, nor gauge fields in this model. What is wrong in the proof of the unitarity bound of the wave function renormalization constant? This is the question we are going to study in this report. 
+
+
+This paper is organized as follow:
+In \S \ref{review}, we review briefly the unitarity bound of the wave function renormalization constant.
+In \S \ref{nlsm}, we discuss the wave-function renormalization constant in NL$\sigma$M in two dimensions.
+In \S \ref{summary}, we summarize our results.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Unitarity bound of the wave function renormalization constant}\label{review}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let us recapitulate the unitarity bound of the wave function renormalization constant.
+In the K\""{a}ll\'{e}n-Lehmann representation\cite{UK, KL, Nishijima, PS, Weinberg}, the commutation relation of the Heisenberg operators $\phi(x)$ and $\phi(y)$ is expressed as a superposition of the free commutator $i\Delta (x-y;m^2)$ for the particle with mass $m$
+%
+\begin{eqnarray}
+\bra{0} [\phi(x),\phi(y)] \ket{0}
+=\int_0^\infty \rho(m^2) i\Delta (x-y;m^2), \label{kallen-lehmann}
+\end{eqnarray}
+%
+where the spectral function 
+%
+\begin{equation}
+\rho (k^2)\equiv 2\pi \sum_n \delta ^{(2)}(p_n -k)|\bra{0} \phi(0)\ket{n}|^2\label{spectral_fn}
+\end{equation}
+%
+depends only on the invariant mass squared $m^2\equiv p_n^2$ of the complete set of states $\ket{n}$ and has the support for non-negative $m^2$. Positivity of the metric of the Hilbert space implies the positivity of the spectral function
+%
+\begin{equation}
+\rho(m^2)\ge 0 .\label{positivity}
+\end{equation}
+%
+
+The Jordan-Pauli invariant function $\Delta (x-y;m^2)$ is normalized by the equal-time commutation relation
+%
+\begin{equation}
+\Delta(x,m^2)|_{x^0=0}=0,\qquad
+\frac{\partial\Delta(x,m^2)}{\partial x^0} |_{x^0=0}=-\delta(\vec{x}).\label{ETC}
+\end{equation}
+%
+Now the canonical commutation relations for the unrenormalized Heisenberg operators
+%
+\begin{equation}
+[\phi(t,\vec{x}),\phi(t,\vec{y})]=0,\qquad 
+[\phi(t,\vec{x}),\dot{\phi}(t,\vec{y})]=i\delta(\vec{x}-\vec{y}),
+\label{CCR}
+\end{equation}
+%
+implies a sum-rule of the spectral function. In fact, differentiating (\ref{kallen-lehmann}) with respect to $x^0$ and taking the equal-time limit, we obtain
+%
+\begin{equation}
+\int_0^{\infty}\rho(m^2)dm^2=1.\label{sumrule}
+\end{equation}
+
+The one-particle state contributes the isolated delta function to the spectral function $\rho(m^2)$, while scattering states of more than two-particles contribute the continuous spectrum to the spectral function 
+%
+\begin{equation}
+\rho(m^2)=Z\delta(m^2-M^2)+\sigma(m^2),\label{sepation}
+\end{equation}
+%
+where wave function renormalization constant $Z$ represents the probability to find the bare particle in the dressed particle, while $\sigma(m^2)$ stands for the continuous spectrum of more than two particles. The sum-rule (\ref{sumrule}) for $\rho(m^2)$ reads
+%
+\begin{equation}
+Z+\int \sigma(m^2)dm^2=1.\label{sumrule2}
+\end{equation}
+%
+
+Since the positivity (\ref{positivity}) of $\rho(m^2)$ means the separate positivity of $Z\ge 0$ and $\sigma(m^2)\ge 0$, we find 
+\begin{equation}
+1-Z=\int \sigma(m^2)dm^2\ge 0 .\label{upperbound}
+\end{equation}
+The desired unitarity bound for the renormalization constant follows from 
+this inequality and the positivity of $Z$
+%
+\begin{equation}
+0\leq Z \leq 1  .\label{unitarity}
+\end{equation}
+From this unitarity bound, we usually conclude anomalous dimension of a field $\phi$ is positive in the one-loop approximation as was shown in the introduction.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wave function renormalization constant in NL$\sigma$M in two dimensions}\label{nlsm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Let us discuss the unitarity bound for the wave function renormalization constant in NL$\sigma$Ms described by a Lagrangian
+%
+\begin{equation}
+{\cal L}=\frac{1}{2}g_{ij}(\varphi)\partial_{\mu}\varphi^i\partial^{\mu}\varphi^j.\label{nlsm_lagrangian}
+\end{equation}
+%
+Here we assume the metric of the target space is positive definite to avoid the appearance of the negative norm states. Furthermore, we do not incorporate higher derivative terms in our Lagrangian, since higher derivative terms inevitably introduce negative norm states. In the example discussed in the introduction, the target space is the coset space $S^N=SO(N+1)/SO(N)$ parameterized by $\vec{\varphi}=(\varphi^1,\cdots, \varphi^N)$ and the metric of the target space is given by
+%
+\begin{equation}
+g_{ij}=\frac{\delta_{ij}}{\left(1+\frac{g^2}{4}\vec{\varphi}^2\right)^2}
+\qquad (i,j=1,2,\cdots,N)\label{metric}
+\end{equation}
+%
+In general, a NL$\sigma$M is defined on a coset space $G/H$. It describes the interaction of massless Nambu-Goldstone bosons that appears when the symmetry group $G$ breaks down to its subgroup $H\in G$. While the global symmetry is realized nonlinearly, its subgroup is realized linearly. We further assume that the fields $\vec{\varphi}=(\varphi^1,\cdots, \varphi^N)$ belong to some irreducible representation of the subgroup $H$.
+
+With these assumptions, the K\""{a}ll\'{e}n-Lehmann representation can be generalized to \footnote{Vacuum is invariant under the unbroken symmetry group $H$.}
+%
+\begin{equation}
+\bra{0} [\varphi^i(x),\varphi^j(y)] \ket{0}
+=\delta^{ij}\int_0^\infty \rho(m^2) i\Delta (x-y;m^2), \label{kallen-lehmann2}
+\end{equation}
+where the right-hand side is proportional to the $H$-invariant symmetric second-rank tensor $\delta^{ij}$ because the fields $\vec{\varphi}$ belong to an irreducible representation of $H$, otherwise we will have several independent spectral functions for various representations. 
+
+
+The essential ingredient of the unitarity bound for the wave-function renormalization constant is the positivity of the Hilbert space as well as the canonical commutation relation (\ref{CCR}). In NL$\sigma$Ms, the derivative interaction term changes the definition of the canonical momentum, so that the canonical commutation relation (\ref{CCR}) is no longer valid.
+
+\par
+The canonical commutation relation in this case reads
+%
+\begin{equation}
+[\varphi^i(t,\vec{x}),g_{jk}\dot{\varphi}^k(t,\vec{y})]=i\delta^i_j\delta(\vec{x}-\vec{y}),\label{CCR2}
+\end{equation}
+%
+or 
+%
+\begin{equation}
+[\varphi^i(t,\vec{x}),\dot{\varphi}^j(t,\vec{y})]=ig^{ij}\delta(\vec{x}-\vec{y}),\label{CCR3}
+\end{equation}
+%
+where we have used an identity
+%
+\begin{equation}
+g^{ik}g_{kj}=\delta^i_j.\label{raising}
+\end{equation}
+Taking the vacuum expectation value of (\ref{CCR3}), we find 
+%
+\begin{equation}
+\bra{0}[\varphi^i(t,\vec{x}),\dot{\varphi}^j(t,\vec{y})]\ket{0}
+=i\bra{0}g^{ij}\ket{0}\delta(\vec{x}-\vec{y}).\label{VEVCCR}
+\end{equation}
+%
+Because of the $H$-invariance of the vacuum, the right-hand side has to be proportional to $\delta^{ij}$
+%
+\begin{equation}
+\bra{0}g^{ij}(\varphi)\ket{0}=\delta^{ij}(1+B).\label{VEVmetric}
+\end{equation}
+%
+In the example of $S^N$ defined by eq.(\ref{metric}), $B$ is given by 
+%
+\begin{equation}
+B(S^N)=\bra{0}\left(1+\frac{g^2}{4}\vec{\varphi}^2\right)^2\ket{0}-1 \ge 0.\label{SNB}
+\end{equation}
+
+
+Differentiating (\ref{kallen-lehmann2}) with respect to $y^0$ and taking the equal-time limit, we obtain
+%
+\begin{equation}
+\bra{0}[\varphi^i(t,\vec{x}),\dot{\varphi}^j(t,\vec{y})]\ket{0}
+=i\delta^{ij}\delta(\vec{x}-\vec{y})\int\rho(m^2)dm^2.\label{VEVCCR2}
+\end{equation}
+%
+Comparing this result with eqs.(\ref{VEVCCR})(\ref{VEVmetric}), we find the sum-rule of the spectral function
+%
+\begin{equation}
+\int\rho(m^2)dm^2=1+B.\label{sumrule2}
+\end{equation}
+%
+The expression (\ref{sepation}) of the spectral function as a sum of contributions of a single particle and multi-particle states leads to 
+%
+\begin{eqnarray}
+Z&=&1+B-C\leq 1+B, \label{sumrule_NLSM}\\
+C&=&\int\sigma(m^2)dm^2 \ge 0.\label{multip}
+\end{eqnarray}
+
+When there are no derivative interactions, $B=0$ implies the unitarity bound $0\leq Z\leq 1$. In NL$\sigma$Ms, however, {\it the wave-function renormalization constant $Z$ can be greater than $1$}, since $B$ may be positive as was shown in the example (\ref{SNB}). $B$ comes from the matrix elements of local operators, so that it represents the contributions of bubble diagrams, while $\sigma(m^2)$ gives the positive contributions of multi-particle states. 
+%
+\begin{figure}
+\begin{center}
+\resizebox{!}{30mm}{\includegraphics{bubble.eps}}
+\end{center}
+\caption{The lowest order bubble diagram contributing to $B$}
+\label{fig1}
+\end{figure}
+%
+As an example, the lowest order contributions to $B$ and $C$ are shown in fig.\ref{fig1} and fig.\ref{fig2}. In the one-loop approximation, only $B$ in (\ref{SNB}) gets nonvanishing contribution \footnote{We use the Euclidean metric after the Wick rotation.}
+\begin{equation}
+B=\frac{g^2}{2}\int\frac{d^2k}{(2\pi)^2}\frac{N}{k^2}=\frac{Ng^2}{8\pi}\log{\frac{\Lambda^2}{\mu^2}}\label{SNB1}
+\end{equation}
+from the bubble diagram in fig.\ref{fig1}, while $C$ vanishes in this approximation. This $B$ and eqs.(\ref{eqn:pos_anodim})(\ref{sumrule_NLSM}) reproduce the negative one-loop anomalous dimension (\ref{eqn:ON1gamma}) given in the introduction. 
+%
+\begin{figure}
+\begin{center}
+\resizebox{!}{30mm}{\includegraphics{multip.eps}}
+\end{center}
+\caption{The lowest order contribution to $C$}
+\label{fig2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coordinate dependence of the anomalous dimension}\label{coordinate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+NL$\sigma$M is a field theory where field variables take values on a curved manifold like $S^N$. To describe the curved manifold, we have a freedom of choosing the favorite coordinate, in fact we used the stereographic projection to express the $S^N$ by the coordinates of $N$-dimensional Euclidean space. Instead, we could use other parameterizations. In this section, let us use the simplest coordinates to express $S^N$ defined by
+%
+\begin{equation}
+(\phi^1)^2+(\phi^2)^2+\cdots +(\phi^{N+1})^2=\frac{1}{g^2}.
+\label{Nsphere}
+\end{equation}
+%
+If we express $\phi^{N+1}$ by other variables $\vec{\phi}=(\phi^1,\phi^2,\cdots,\phi^N)$
+\begin{equation}
+\phi^{N+1}=\pm \sqrt{\frac{1}{g^2}-{\vec{\phi}}^2},
+\label{phi_N+1}
+\end{equation}
+the line-element is given by
+\begin{equation}
+ds^2=\sum_{i=1}^{N+1}(d\phi^i)^2=\sum_{i,j=1}^Ng_{ij}d\phi^id\phi^j
+\label{lineelement}
+\end{equation}
+where the metric in this coordinates reads
+\begin{equation}
+g_{ij}=\delta_{ij}+\frac{\phi^i\phi^j}{(\phi^{N+1})^2}.
+\label{metric2}
+\end{equation}
+Since the inverse of this metric is
+\begin{equation}
+g^{ij}=\delta^{ij}-g^2\phi^i\phi^j,\label{invmetric}
+\end{equation}
+the one-loop contribution to $B$ defined by (\ref{VEVmetric}) has the negative sign 
+\begin{equation}
+B=-g^2\int\frac{d^2k}{(2\pi)^2}\frac{1}{k^2}=-\frac{g^2}{4\pi}\log\frac{\Lambda^2}{\mu^2},\label{anotherb}
+\end{equation}
+which gives the positive anomalous dimension
+\begin{equation}
+\gamma_{\phi}=\frac{g^2}{4\pi}
+\label{anothergamma}
+\end{equation}
+contrary to the negative anomalous dimension (\ref{eqn:ON1gamma}).
+
+The anomalous dimension of the NL$\sigma$M changes sign depending on the parameterization of the manifold. How should we understand this fact? The anomalous dimension is an off-shell quantity describing the asymptotic behavior of the propagator in the ultraviolet region. Various parameterizations of a manifold give different metrics defining different field theories. There must be common quantities in these theories since all these theories describe the same target manifold. In fact, under the coordinate transformation from $\vec{\varphi}$ with the metric (\ref{metric}) to $\vec{\phi}$ with another metric (\ref{metric2}) 
+\begin{equation}
+\vec{\phi}=\frac{\vec{\varphi}}{1+\frac{g^2}{4}{\vec{\varphi}}^2},\label{coordinatetr}
+\end{equation}
+physical quantities defined on the mass-shell are invariant. This is the special case of the theorem due to Kamefuchi, O'Raifeartaigh and Salam\cite{KOS}, which says that S-matrix elements are invariant under transformations of the type
+\begin{equation}
+\phi^i(x)=\varphi^i(x)+\sum_{jk} a^i_{jk}\varphi^j(x)\varphi^k(x)+
+\sum_{jkl} a^i_{jkl}\varphi^j(x)\varphi^k(x)\varphi^l(x)+\cdots .
+\label{kostr}
+\end{equation}
+S-matrix elements are defined as pole residues of Green's functions. Only the linear term in the transformation (\ref{kostr}) contributes to the pole residues. The quadratic or higher terms do not contribute to poles unless there are bound states. Therefore, all S-matrix elements, namely, all physical quantities are invariant under the transformation (\ref{kostr}). 
+
+In our previous work\cite{HI}, we derived the Wilsonian renormalization group equation in two-dimensional NL$\sigma$Ms with ${\cal N}=2$ supersymmetry. We used the so-called K\""{a}hler normal coordinate\cite{KNC} to derive the anomalous dimensions. Since the anomalous dimensions depend on the choice of the coordinate, we should interpret that the results obtained in \cite{HI} are the anomalous dimensions in the K\""{a}hler normal coordinate system.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}\label{summary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The wave function renormalization constant $Z$ represents the probability to find the bare particle in the physical particle. It satisfies the unitarity bound $0 \leq Z \leq 1$ in field theories without 
+\begin{enumerate}
+\item gauge fields
+\item higher derivative terms 
+\item derivative interactions.
+\end{enumerate}
+This unitarity bound implies the positivity of the anomalous dimension of the field in the one-loop approximation. 
+
+In NL$\sigma$Ms, however, this bound is broken by the presence of the derivative interactions. The field dependence of the canonical momentum modify the canonical commutation relation to
+%
+\begin{equation}
+\bra{0}[\varphi^i(t,\vec{x}),\dot{\varphi}^j(t,\vec{y})]\ket{0}
+=i\delta^{ij}\delta(\vec{x}-\vec{y})(1+B).\label{MODCCR}
+\end{equation}
+%
+The genuine unitarity bound of the wave-function renormalization constant is 
+%
+\begin{equation}
+0\leq Z \leq 1+B.\label{UB}
+\end{equation}
+%
+The contribution of the bubble diagrams to the self-energy diagrams, $B$, can take either sign, while the contributions from multi-particle states $C$ satisfies the positivity as expected. When $B$ is positive, the anomalous dimension in the one-loop approximation becomes negative. The sign of the bubble diagrams $B$ depends on the choice of the coordinates parameterizing the target manifold.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This work was supported in part by the Grant-in-Aid for Scientific
+Research (\#13640283 and \#13135215) and Sasakawa Scientific Research Grant from The Japan Science Society. We would like to thank Kazuhiko Nishijima, Thomas E. Clark and Muneto Nitta for useful communications. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%               References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+
+\bibitem{UK} 
+H.~Umezawa and S.~Kamefuchi, Prog. Theor. Phys. {\bf 6} (1951) 543.
+
+\bibitem{KL}
+G.K\""{a}ll\'{e}n, Helv. Phys. Acta, {\bf 25} (1952) 417\\
+H.~Lehmann, Nuovo Cimento {\bf 11} (1954) 342.
+
+\bibitem{Nishijima} K.~Nishijima, Fields and Particles (W.A.~Benjamin Inc., New York, 1968).
+
+\bibitem{PS} M.~Peskin and D.~Schroeder, An Introduction to Quantum Field Theory (Westview Press, Boulder, 1995).
+
+\bibitem{Weinberg} S.~Weinberg, The Quantum Theory of Fields (Cambridge University Press, Cambridge, 1995).
+
+\bibitem{HI} K.~Higashijima and E.~Itou, 
+Prog. Theor. Phys.  {\bf 108} (2002) 737,
+ hep-th/0205036
+ 
+\bibitem{HI2} K.~Higashijima and E.~Itou, A New Class of Conformal Field Theories with Anomalous Dimensions, OU-HET 430, hep-th/0302090.
+
+\bibitem{KOS} S.~Kamefuchi, L.~O'Raifeartaigh and A.~Salam, Nucl. Phys. {\bf 28} (1961) 529.
+
+\bibitem{KNC}
+K.~Higashijima and M.~Nitta, Prog. Theor. Phys. {\bf 105} (2001) 243, hep-th/0006027. \\
+K.~Higashijima, E.~Itou and M.~Nitta, Prog. Theor. Phys. {\bf 108} (2002) 185, hep-th/0203081.
+
+\end{thebibliography}
+
+
+\end{document}"
+2,\usepackage{a
+3,\usepackage{a

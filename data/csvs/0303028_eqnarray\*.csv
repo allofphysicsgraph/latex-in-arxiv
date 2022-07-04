@@ -1,0 +1,190 @@
+,eqnarray\*
+0,"\begin{eqnarray*}
+n(t)&=&n_0(t)+n_1(t)+n_2(t)+\ldots
+\\
+&=&
+n_0(t)+ 4\pi \int_0^{t}n_{0}(t')(t-t')^2 dt'
++ 4\pi \int_0^{t}n_{1}(t')(t-t')^2 dt'+\ldots
+\\
+&=&
+n_0(t)+ 4\pi \int_0^{t}[n_0(t')+n_1(t')+n_2(t')+\ldots](t-t')^2 dt'
+\end{eqnarray*}
+Or:
+\begin{equation}\label{eq7}
+n(t)=4\pi t^2+ 4\pi\int_0^{t}n(t')(t-t')^2 dt'
+\end{equation}
+
+Calculating the third derivative over $t$ of $n(t)$ defined by eq. (\ref{eq7}),
+we get the equivalent differential equation:
+\begin{equation}\label{eq8}
+n'''(t)=8\pi n(t)
+\end{equation}
+with the initial conditions:
+     \begin{equation}\label{eq8a}
+n(0)=0,\quad n'(0)=0,\quad n''(0)=8\pi.
+     \end{equation}
+The solution of eq. (\ref{eq8}) satisfying the initial conditions (\ref{eq8a})
+has the form:
+\begin{equation}\label{eq8b}
+n(t)=\frac{2\pi^{1/3}}{3}\exp(2 \pi^{1/3} t)
+-\frac{2\pi^{1/3}}{3}\exp(- \pi^{1/3} t)\left[\cos(\sqrt{3}\pi^{1/3} t)
++\sqrt{3}\sin(\sqrt{3}\pi^{1/3} t)\right],
+\end{equation}
+that can be checked by the direct substitution.
+
+The decomposition of (\ref{eq8b}) in the Taylor series reads:
+$$
+n(t)=4\pi t^2+ (4\pi)^2\frac{t^5}{30} +(4\pi)^3\frac{t^8}{5040}+\ldots
+$$
+that indeed coincides with the sum $n(t)=n_0(t)+n_1(t)+n_2(t)+\ldots$.
+
+
+Now we calculate $k(t)=\sum_k k n_k(t)$.
+Namely, according to eq. (\ref{eq5}), $n(t)$ is given by the sum:
+$$
+n(t)= \sum_{k=0}^{\infty}  c_{k} t^{2+3k}
+$$
+and similarly for $k(t)$:
+$$
+k(t)=\sum_{k=0}^{\infty}  k n_k(t)=\sum_{k=0}^{\infty} k c_{k} t^{2+3k}.
+$$
+Calculating the first derivative of $n(t)$ over $t$, we get:
+$$
+n'(t)= \sum_{k=0}^{\infty} (2+3k) c_{k} t^{2+3k-1}=
+\frac{2}{t}\sum_{k=0}^{\infty} c_{k}  t^{2+3k}
++\frac{3}{t}\sum_{k=0}^{\infty} k c_{k} t^{2+3k}
+=\frac{2}{t}n(t)+\frac{3}{t}k(t).
+$$
+That is:
+\begin{equation}\label{eq9}
+k(t)=\frac{1}{3}\left[t n'(t)-2n(t)\right]
+\end{equation}
+    From (\ref{eq0}) and (\ref{eq9}) we find $\bar{k}(t)$:
+\begin{equation}\label{eq10}
+\bar{k}(t)=\sum_k k w_k(t)=\frac{\sum_k k n_k(t)}{n(t)}=
+\frac{k(t)}{n(t)}=\frac{1}{3}\left[\frac{t n'(t)}{n(t)}-2\right].
+\end{equation}
+Substituting here, for $t\to \infty$, the leading term of the
+expression (\ref{eq8b}) for $n(t)$:
+$$
+n(t)|_{t\to\infty}\approx\frac{2\pi^{1/3}}{3}\exp(2 \pi^{1/3} t)
+$$
+we get:
+$$
+\bar{k}(t)|_{t\to\infty}=\frac{2\pi^{1/3}}{3}t.
+$$
+For large $t$,  the average number of events linearly increases
+with $t$, like for the Poisson distribution.
+
+The average time between events is
+$$
+\bar{t}=\frac{t}{\bar{k}(t)}=\frac{3}{2\pi^{1/3}}.
+$$
+
+    From here we obtain the average distance between two events
+$\bar{r}=c\bar{t}$:
+\begin{equation}\label{eq11}
+\bar{r}=\frac{3}{2\pi^{1/3}} \ell_0.
+\end{equation}
+Numerically it gives:
+$$
+\bar{r}=1.02418 \,\ell_0,
+$$
+a value close to the Compton length.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+In conclusion, the following remarks seem relevant.
+
+     It turned out that we had to suppose that the scattering
+     wave v.s. the distance $r$ from the scattering center be decreased
+as $1/r$, eq. (\ref{rw1}).
+     It looks like the diffusion of a spherical wave which seems  natural,
+but, at first glance, it has no any hint to relativity.
+However, if, instead of $1/r$, we would take another function of $r$, we
+would not reproduce the propagator, but also would loose the relativistic
+invariance. In this case we would obtain an expression depending on $t$ and
+$r$ taken separately, not in the invariant combination $\tau^2=t^2-r^2$.
+This ``no choice'' seems unexpected and intriguing.
+
+      On the other hand, in the stochastic motion of our particle, at each
+change of its direction, we supposed that its scattering mimics
+resonance S-wave scattering with an amplitude $f=-1$ and a $ \pi/2
+$ phase shift. One can say that the ""scatterings"" which result in
+the propagator take place at very small distances, so that higher
+partial waves are suppressed.
+
+
+     Moreover it is interesting to compare the 1-D case with the 3-D one.
+     In the 1-D case the average path
+between events was found to be exactly the Compton length
+$\ell_0$, whereas in this 3-D study it gets
+$\dfrac{3}{2\pi^{1/3}}\ell_0 \approx 1.02418 \,\ell_0$. This gives
+an example, how a  fundamental characteristic of elementary
+particle can be calculated and expressed through simple  numbers,
+like $2,3,\pi, \ldots$. Other examples can be found in
+\cite{P.Noyes}.
+
+    We have clearly shown that the model is very constrained by our
+assumptions. We
+think that obtaining the same propagator for the particle as in
+standard  quantum
+fields theory is not a pure accident. For sure, one should try to find
+out physical reasons resulting in the scatterings of the propagating particle
+on its path. As already said, some  hypothesis have been advanced in many
+papers but it was, at present, beyond the scope of this work.  It would be also
+interesting to see how to introduce the spin property in our 3-D model .
+\bigskip
+
+{\bf Acknowledgments.}\; One of the authors (V.A.K.) is sincerely
+grateful for warm hospitality of the Laboratoire de Physique
+Corpusculaire, Universit\'e Blaise Pascal, Clermont-Ferrand,
+France, where this work was performed. This work is partially
+supported by the French-Russian PICS and RFBR grants Nos. 1172 and
+01-02-22002 as well as by the RFBR grant 02-02-16809.
+
+
+
+
+\begin{thebibliography}{10}
+\bibitem{Chandrasekhar}
+S. Chandrasekhar, Rev. of Mod. Rhys., {\bf 15} (1943) 1.
+\bibitem{Bohm52}
+D.Bohm, Phys. Rev., {\bf 85}  (1952) 166.
+
+D. Bohm, B.J. Hiley, Phys. Reports, {\bf 172} (1989) 93.
+\bibitem{Nelson84}
+E. Nelson, Physica {\bf 124A} (1984) 509.
+\bibitem{Karmanov93}
+V.A. Karmanov, Phys. Lett. {\bf A174} (1993) 371.
+\bibitem{Riazanov58}
+G.V. Riazanov, Sov. Phys. JETP, {\bf 6} (33), (1958) 1107.
+   \bibitem{Kirilyuk00}
+A.P. Kirilyuk, arXiv:quant-ph/0012069.
+\bibitem{bogol}
+N.N. Bogoliubov and D.V Shirkov, {\it Introduction to the Theory of
+Quantized Fields},
+3-d edition, A Wiley-Interscience Pub., N.Y., 1980.
+\bibitem{P.Noyes}H.P. Noyes, Bit-String Physics, ed. by J.C. van der
+Berg, Series
+on Knots and Everything, vol. 27, World Scientific, 2001.
+\end{thebibliography}
+\end{document}
+
+We can also,
+obtain the integral
+equation for the sum $S(\tau)=I_2(\tau)+I_3(\tau)+I_4(\tau)+\ldots$,
+using the recurrence relation (\ref{rw5}):
+$$
+S(\tau)=I_2 -\frac{1}{\ell_{0}^{2}} \int_{0}^{\tau}
+S\bigl({{\tau^{\prime}}}\bigr)\dfrac{(\tau^{2}-
+{\tau^{\prime}}^{2})}{2 \tau^{2}}\tau^{\prime}\text{d} {\tau^{\prime}}
+$$
+It is easy to check that the function $-4\pi\ell_{0}\tau S(\tau)$
+satisfies the equation for the Bessel function
+$J_{1}\left(\frac{\tau}{\ell_{0}}\right)$, that is:
+$$
+S(\tau)=-\frac{1}{4\pi{\ell_{0}}^{2}}
+\frac{\ell_{0}}{\tau} J_{1}\left(\frac{\tau}{\ell_{0}}\right)
+$$
+that again gives the equation (\ref{rw5c})."

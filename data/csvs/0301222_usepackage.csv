@@ -1,0 +1,369 @@
+,usepackage
+0,\usepackage{amsfonts}
+1,"\usepackage[nosumlimits]{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%\usepackage[mathscr]{eucal}
+
+\usepackage{feynmf}
+\usepackage{latexsym}
+\usepackage{mathrsfs} %EDIT mathrsfs.sty: \mathscr-->\mathrsfs
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setlength{\parindent}{1cm}
+\addtolength{\hoffset}{-1.4cm}\addtolength{\textwidth}{2.8cm}
+\addtolength{\voffset}{-2cm} %for DVI
+\addtolength{\textheight}{3cm}
+
+\linespread{1.2}
+\allowdisplaybreaks
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%% Abbreviated Commands %%%%%%%%%%%%%%%%%%%%%%%
+
+newcommand
+\nc{\rnc}\renewcommand\nc{\ph}\indent                \nc{\flush}\noindent
+\nc{\bfr}{\begin{flushright}}    \nc{\efr}{\end{flushright}}
+\nc{\bce}{\begin{center}}        \nc{\ece}{\end{center}}
+\nc{\bq}{\begin{quote}}        \nc{\eq}{\end{quote}}
+\nc{\vs}{\vspace}              \nc{\ms}{\mspace}
+
+\nc{\nn}\nonumber
+\nc{\bay}{\begin{array}}     \nc{\eay}{\end{array}}
+\nc{\bal}{\begin{align}}    %\nc{\eal}{\end{align}}      %AMS-LaTeX
+\nc{\bcs}{\begin{cases}}     \nc{\ecs}{\end{cases}}      %AMS-LaTeX
+\nc{\beq}{\begin{equation}}  \nc{\eeq}{\end{equation}}
+\nc{\bea}{\begin{eqnarray}}  \nc{\eea}{\end{eqnarray}}
+\nc{\bmx}{\begin{matrix}}   %\nc{\emx}{\end{matrix}}
+\nc{\bml}{\begin{multline}} %\nc{\eml}{\end{multline}}   %AMS-LaTeX
+\nc{\bp}{\begin{proof}}      \nc{\ep}{\end{proof}}       %AMS-LaTeX
+\nc{\bpmx}{\begin{pmatrix}}  \nc{\epmx}{\end{pmatrix}}
+\nc{\bsp}{\begin{split}}    %\nc{\esp}{\end{split}}      %AMS-LaTeX
+\nc{\beqs}{\beq\bsp}        %\def\eeqs{\end{split}\eeq}  %AMS-LaTeX
+
+
+                       \nc{\bs}\boldsymbol
+\nc{\tbf}\textbf       \nc{\mbf}\mathbf   %boldface
+                       \nc{\mfk}\mathfrak %fraktur
+\nc{\trm}\textrm       \nc{\mrm}\mathrm   %roman
+                       \nc{\mcl}\mathcal  %calligraphic
+                       %\nc{\mrs}\mathscr %euler
+                       \nc{\mrs}\mathscr  %ralph smith formal script
+                       %\nc{\msf}\mathsf  %san serif
+\nc{\tsl}\textsl
+                       \nc{\mbb}\mathbb   %blackboard bold
+\nc{\tit}\textit       \rnc{\mit}\mathit  %italic
+\nc{\ttt}\texttt       \nc{\mtt}\mathtt   %typewriter
+                       \nc{\mnl}\mathnormal
+\nc{\tx}\text
+\nc{\disp}\displaystyle
+
+\rnc{\(}{\left(}         \rnc{\[}{\left[}
+\rnc{\)}{\right)}        \rnc{\]}{\right]}
+\rnc{\>}{\;\,}           \nc{\spc}{\qquad\qquad}
+\nc{\2}{\;\,\;\,}        \nc{\bspc}{\qquad\qquad\qquad\qquad}
+\nc{\3}{\;\,\;\,\;\,}    \nc{\<}{\!\!\!\!\!}
+\nc{\ee}{\!\!\!=\!\!\!}
+
+\nc{\lh}{\lrcorner\,}
+
+
+                     \def\vph{\varphi}   \def\vPhi{\varPhi}
+                                         \def\vPsi{\varPsi}
+                     \def\vpi{\varpi}    \def\vPi{\varPi}
+                     \def\Sig{\Sigma}    \def\vSig{\varSigma}
+                     \def\Th{\Theta}     \def\vTh{\varTheta}
+
+
+
+
+\nc{\Sh}{\!\!\!\!/}   \nc{\sh}{\!\!\!/}   %Feynman slash big and small
+\nc{\half}{\frac{1}{2}}     \nc{\hal}{\tfrac{1}{2}}
+  \nc{\thrd}{\frac{1}{3}}     \nc{\thr}{\tfrac{1}{3}}
+    \nc{\qrtr}{\frac{1}{4}}     \nc{\qrt}{\tfrac{1}{4}}
+\nc{\Ad}{\ts\tsl{Ad}\ts}
+\nc{\ad}{\ts\tsl{ad}\ts}  \def\diag{\mrm{diag}}
+\nc{\const}{\trm{const}}  \nc{\spt}{\trm{spt}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\theoremstyle{definition}                %AMS-LaTeX
+%\theoremstyle{remark}
+%\theoremstyle{plain}
+
+
+\begin{document}
+
+
+\nc{\dep}[1]{\de_{\eps_{{}_{#1}}}}
+\nc{\tdep}[1]{{\tilde\de}_{\eps_{{}_{#1}}}}
+
+
+
+\bibliographystyle{perso}
+\numberwithin{equation}{section}
+
+\begin{titlepage}
+
+
+\hfill hep-th/0301222
+
+\vs{3cm}
+\bce
+\obeylines \tbf{\Large BRST Hamiltonian for Bulk Quantized
+Gauge Theory}
+\vs{.5cm} Alexander Rutenburg\\
+{\em
+Courant Institute, New York University,
+                  New York,  NY~10002,~USA }\\
+{\tt rutenbrg@cims.nyu.edu}
+\ece
+
+\begin{abstract}
+By treating the bulk--quantized Yang--Mills theory as a constrained
+system we obtain a consistent gauge--fixed BRST hamiltonian
+in the minimal sector.  This provides an independent
+derivation of  the 5--$d$ lagrangian bulk action.
+The ground state is independent of the (anti)ghosts
+and is interpreted as the solution
+of the Fokker--Planck equation, thus establishing a
+direct connection to the Fokker--Planck hamiltonian.
+The vacuum state correlators are shown to be in agreement
+with correlators in lagrangian 5--$d$ formulation.
+It is verified  that the complete propagators  remain parabolic
+in one--loop dimensional regularization.
+
+
+
+\end{abstract}
+
+\vfill\flushright \AmS-\LaTeX{}
+
+\end{titlepage}
+%\tableofcontents
+
+\section{\bf{Introduction}}
+
+The usual formulation~\cite{Pesk} of
+4--$d$ gauge theory is based on the free
+(euclidean) lagrangian action
+\bea
+S=\qrtr\int_{{\cal M}^4}dx\, F_{\mu\nu}F^{\mu\nu}
+\eea
+ where
+$F_{\mu\nu}=\p_{[\mu} A_{\nu]} + [A_\mu,A_\nu]$ is the curvature
+of an $\mrm{SU(N)}$ connection $A$.
+In recently introduced
+\emph{bulk quantization}~\cite{BaZwQCD,BaZwScal,BaGrZw,BaZwGauge}
+(that arose from stochastic quantization approaches
+based on ideas of Parisi and Wu~\cite{Stoch,Stoch2})
+ one adds an extra fifth nonphysical
+dimension $t$ to the spacetime $4$--manifold  ${\cal M}^4$.
+All the fields of the theory are then defined on
+the extended spacetime
+$$\vph(x), \> x \in {\cal M}^4 \>\lgra\>
+\vph(t,x), \> (t,x) \in {\mbf R} \cross {\cal M}^4$$
+(This $t$ corresponds to the stochastic evolution parameter
+or the Monte Carlo iteration time for numerical simulation).
+The connection $A_\mu dx^\mu$ is extended to include a fifth
+component $A_5dt$ and one has
+$F_{5\mu} = \p_5 A_\mu - \p_\mu A_5 +[A_5,A_\mu].$
+
+A set of ghost fields is introduced with two independent
+$\mbf Z$--gradings (ghost numbers) $\gh_s$ and $\gh_w$
+corresponding to BRST differentials $s$ and $w$, which
+raise the respective ghost numbers by one and satisfy
+\bea
+(s+w)^2=0\>\Ra \>s^2=0,\>w^2=0,\>sw=-ws
+\eea
+The operator $w$ provides a BRST implementation of the 5--$d$
+gauge symmetry, analogous to the usual BRST operator~\cite{Bert,Bau}
+(usually called $s$!) connected with
+Faddeev--Popov ghosts.  Its cohomology $H^0(w)$ defines
+observables. The operator $s$ acts like a rigid
+supersymmetry operator and has trivial cohomology.
+Observables are \emph{not} required to be $s$--exact.
+Fields with
+odd total ghost number $\gh \equiv\gh_s +\gh_w$ anticommute.
+The action of $s$ and $w$ on the fields is defined as
+\begin{align}\label{BrsAlg}
+  sA_\mu&=\Psi_\mu & s\Psi_\mu &=0 &
+  s\Psib_\mu &=\Pi_\mu & s\Pi_\mu&=0\nn\\
+  sA_5&=\Psi_5 & s\Psi_5&=0 &
+ s\Psib_5&=\Pi_5 & s\Pi_5&=0\nn\\
+   sc&=\Phi & s\Phi&=0 & s\Phib&=\bar c & s\bar c&=0\nn\\
+  s\lam&=\mu & s\mu&=0 & s\mub&=\lamb & s\lamb&=0\nn\\[-8pt]
+    & & & & & & &
+\end{align}\vspace{-34pt}
+\begin{align}
+ wA_\nu&=D_\nu\lam & w\Psi_\nu = -[&\lam,\Psi_\nu] -D_\nu\mu &
+   w\Psib_\nu =& -[\lam,\Psib_\nu]
+     & w\Pi_\nu =& -[\lam,\Pi_\nu] + [\mu,\Psib_\nu]\nn\\
+wA_5 &=D_5\lam & w\Psi_5 = -[&\lam,\Psi_5] -D_5\mu &
+   w\Psib_5 =& -[\lam,\Psib_5]
+     & w\Pi_5 =& -[\lam,\Pi_5] + [\mu,\Psib_5]\nn
+\end{align}
+\vspace{-32pt}
+\begin{align}
+ w c =& -[\lam,c] -\mu & w\Phi = -[\lam&,\Phi] + [\mu,c] &
+   w\Phib =- &[\lam,\Phib] & w\bar c =-&[\lam,\bar c,]
+         + [\mu,\Phib]\nn\\
+w\lam =& -\hal[\lam,\lam] & w\mu =-[\lam&,\mu] &
+   w\mub = -&[\lam,\mub] +\Psib_5 &
+   w\lamb = -&[\lam,\lamb] +[\mu,\mub]+\Pi_5\nn
+\end{align}
+
+\flush Here $D_\mu = \p_\mu + [A_\mu,\>]$ and
+$D_5 = \p_5 + [A_5,\>]$
+denotes the usual gauge covariant
+derivative.  With some obvious renaming of fields this is
+the BRST algebra of~\cite{BaZwGauge}, with a minor \emph{exception}.
+To make the action of $w$ on the
+quartet $A_5,\Psi_5,\Psib_5,\Pi_5$ symmetric in form,
+as it now is, to the action of $w$ on
+$A_\mu,\Psi_\mu,\Psib_\mu,\Pi_\mu$ we made the field redefinitions
+\beq
+\Psib_5 \equiv \bar m + [\lam,\mub] \2\trm{and}\2
+\Pi_5 \equiv -l - [\lam,\lamb] + [\mu,\mub].
+\eeq
+Otherwise one has in~\cite{BaZwGauge}
+\begin{align}%\label{     }
+  s\bar m&=l & s l &=0 \nn\\
+w\bar \lam &= -l & w l &=0 \nn\\
+w\mub &= \bar m & w\bar m &= 0\nn
+\end{align}
+which, although simpler, lacks the aforementioned symmetry and
+moreover leads to more cubic ghost interaction terms in $I_{\trm{gf}}$
+than our choice here.
+
+The 5--$d$ action for the theory is $s$--exact and $w$--closed
+\vspace{-8pt}\bea
+w I = 0\vspace{-18pt}
+\eea
+and is given by
+\bea\label{I}
+I \!&=&\! I_0 + I_{\mrm{gf}}\nn\\
+I_0 \!&\equiv&\! \int d^5x
+   s\Big[ \Psib_\mu\big(F^{5\mu} - D_\lam F^{\lam\mu} + \Pi^\mu
+    +[\Psib^\mu,c]\big) + \Phib\big(\Psi_5 - a'^{-1}D_\mu\Psi^\mu
+-(D_5  - a'^{-1}D^2)c\big)\Big]\nn\\
+I_{\mrm{gf}} \!&\equiv&\! \int d^5x\,
+      ws\Big[\mub\(A_5 - a^{-1}\p\!\cdot\!A\)\Big]
+\eea where $a$ and $a'$ are positive
+constant parameters.
+After expansion, the $w$--exact
+piece $I_{\mrm{gf}}$ fixes the gauge for $A_{\mu}$ and
+$\Psi_{\mu}$ to $A_5 = a^{-1}\p\!\cdot\! A$
+and $\Psi_5 = a^{-1}\p\!\cdot\! \Psi$.
+The theory is well--defined in this gauge
+and one has convergence of longitudinal modes.
+From the 4--$d$ point of view this
+axial type 5--$d$ gauge condition actually
+corresponds to an infinitesimal \emph{gauge transformation} $\de
+A_\mu = D_\mu a^{-1}\p\cdot A$, so there is no Gribov obstruction
+associated with gauge fixing (see~\cite{BaZwGauge}).
+
+Because all free
+ghost propagators are retarded, closed ghost loops
+vanish (except for tadpoles which can be ignored).  Since
+ghost number is conserved, as long as one doesn't compute ghost
+correlators the effect of integrating out the ghosts is simply to
+suppress the ghosts in the action which, after integrating
+out $\Pi_\mu$ as well and rescaling $t$, yields
+\beq
+I_{\mrm{red}}' = -\qrtr \int d^5x\,\big[
+a^{-1}(\p_tA_\mu - D_\mu\p\!\cdot\!A)^2
++ a(D_\lam F^{\lam\mu})^2\big]
+\eeq
+After analyzing this action in the Landau gauge limit
+$a\!\sea\!0$ one finds that the weight is concentrated
+in the Gribov region, i.e., where $\p\!\cdot\! A =0$ and
+the Faddeev operator is positive,
+$-\p\!\cdot\!D(A) \vgeq 0$.  The
+physical content of the 4--$d$ theory, such as correlators, is
+recovered by going to a time slice $t=\mrm{constant}$.
+The reader is referred to~\cite{BaZwGauge} for details.
+
+We will address here the question of finding the proper
+hamiltonian corresponding to (\ref{I}).  An outline of how we
+proceed is as follows.  We consider just $I_0$, the gauge non--fixed
+part of the action, and read off the hamiltonian, which has
+simple first class constraints.  One has a choice of whether or
+not to include $A_5, \Psi_5, \Psib_5, \Pi_5$ among the canonical
+variables; the phase space without these variables is called the
+the \emph{minimal sector}. In the hamiltonian formalism the first
+class constraints are generators of gauge transformations, and
+hence of $w$. To quantize the system one needs a
+BRST gauge--fixed hamiltonian. According to homological
+BRST theory,
+a ghost--antighost pair is introduced for each constraint and used
+to construct a BRST generator $\Om$ for $w$, which we choose to do
+in the minimal sector for reasons outlined below. We then
+obtain a gauge--fixed hamiltonian $\Hm=\Hm_C -\{\Om,K\}$, the gauge
+being fixed by the second term with $K$ chosen
+so as to give action $I^{\trm{min}}$ (a reduced form of $I$ that
+results after integrating out non--minimal fields).
+
+We then go on
+to show that the complete ghost propagators remain retarded
+in one--loop dimensional regularization.
+The retarded character of the full ghost propagators
+allows us to establish an equivalence between the
+quantum hamiltonian and lagrangian correlation functions.
+We also argue that the ground state wave function $P$
+has trivial ghost dependence, which provides a direct
+connection to the Fokker--Planck equation
+\bea
+-\int d^4x\, \frac{\delta {}}{\delta {A_\mu(x)}}
+\Big[\frac{\delta {}}{\delta {A^\mu(x)}} -"
+2,\usepackage{a
+3,\usepackage{a
+4,\usepackage[m
+5,\usepackage{f
+6,\usepackage{l
+7,\usepackage{m

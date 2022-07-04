@@ -1,0 +1,147 @@
+,eqnarray\*
+0,"\begin{eqnarray*}
+&& \hspace*{-8mm}
+A_k \equiv \sum_{i=1}^{K} a_i^k, \quad 
+B_k \equiv \sum_{i=1}^{J-1} b_i^k, \quad 
+C_k \equiv \sum_{i=1}^{K+L-R-2} c_i^k, \quad 
+D_k \equiv \sum_{i=1}^{L} d_i^k, \quad 
+E_k \equiv \sum_{i=1}^{R} e_i^k, \quad
+F_k \equiv \sum_{i=1}^{J} f_i^k, 
+\nonumber \\
+&& \hspace*{-8mm}
+T_k \equiv B_k + C_k + E_k - A_k - D_k - F_k, \quad
+U_k \equiv F_k - B_k, \quad
+W_k \equiv C_k - D_k. 
+\end{eqnarray*}
+Some results for separate terms 
+of expansion~(\ref{expansion}) are collected in Section~2.1. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For the sums of the type~(\ref{binsum}) with an arbitrary integer power 
+$c\geq 2$  and  $0 \leq u \leq 4$, the following one-fold integral 
+representation \cite{BBK} is useful:
+\begin{eqnarray}
+\sum_{j=1}^\infty  \frac{u^j}{j^c} \frac{f(j)}{\left( 2j\atop j\right)} =
+\frac{1}{(c-2)!} \int\limits_0^{\theta}
+{\rm d}\phi \frac{\cos {\textstyle{\frac{\phi}{2}}}}{\sin{\textstyle{\frac{\phi}{2}}}}
+\Bigl[\ln{u} - 2\ln \left(2 \sin {\textstyle{\frac{\phi}{2}}} \right)\Bigr]^{c-2} 
+\sum_{j=1}^\infty \frac{\left( 4 \sin^2{\textstyle{\frac{\phi}{2}}} \right)^{j}}{j} 
+\frac{f(j)}{\left( 2j\atop j\right)}  \; ,
+\label{higher_c}
+\end{eqnarray}
+where $f(j)$ stands for an arbitrary combination of the harmonic sums.
+In this manner, the original sum of the type~(\ref{binsum}) 
+with an arbitrary positive integer parameter $c\geq 2$ is reduced
+to a one-fold integral representation containing
+a sum with $c=1$ in the integrand. 
+Using the representation~(\ref{higher_c}) we can generalize our 
+results~(\ref{S2}), (\ref{S4}), (\ref{S1a})--(\ref{last4})
+to the case of an arbitrary integer $c>1$.
+However, only for special types of sums these results are 
+expressible in terms of generalized log-sine functions~(\ref{def_Ls}):
+\begin{eqnarray}
+&& \hspace*{-7mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{j=1}^\infty  \frac{u^j}{j^c} \frac{1}{\left( 2j\atop j\right)} S_2 =
+- {\textstyle{\frac{1}{6}}} \sum_{i=0}^{c-2} \frac{(-2)^i}{i!(c-2-i)!} 
+\left(\ln u \right)^{c-2-i} {\mbox{Ls}}_{i+4}^{(3)}\left(\theta\right) \;, 
+\label{S2G}
+\\ && \hspace*{-7mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{j=1}^\infty  \frac{u^j}{j^c} \frac{1}{\left( 2j\atop j\right)}
+\left( S_2^2-S_4 \right) =
+- {\textstyle{\frac{1}{60}}} \sum_{i=0}^{c-2} \frac{(-2)^i}{i!(c-2-i)!} 
+\left(\ln u \right)^{c-2-i} {\mbox{Ls}}_{i+6}^{(5)}\left(\theta\right) \;, 
+\label{S4G}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{eqnarray}
+where $c \geq 2$, $0 \leq u \leq 4$, and the angle $\theta$ is
+defined in Eq.~(\ref{def_theta}). 
+
+Further results can be extracted 
+from integral representation~(\ref{higher_c}) by using 
+the integration rules for Clausen's function~\cite{Lewin} and 
+the following relation:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\[
+k \int\limits_0^\theta {\rm d}\phi\;
+{\phi}^{k-1} {\mbox{Ls}}_{j}^{(i)}\left(m \phi\right)
+=  \theta^k {\mbox{Ls}}_{j}^{(i)}\left(m\theta\right) - \frac{1}{m^k} {\mbox{Ls}}_{j+k}^{(i+k)}\left(m \theta\right)
+\; . 
+\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this way, we obtain 
+\begin{eqnarray}
+\label{S1c2}
+\sum_{j=1}^\infty \frac{1}{\left( 2j \atop j\right) } 
+\frac{u^j}{j^2} S_1   &=&  
+  4 {\mbox{Cl}}_{3}\left(\pi - \theta\right) - 2 \theta {\mbox{Cl}}_{2}\left(\pi - \theta\right) + 3 \zeta_3 , 
+\\ 
+\sum_{j=1}^\infty \frac{1}{\left( 2j \atop j \right) } 
+\frac{u^j}{j^2} \bar{S}_1
+ &=&  -2 {\mbox{Cl}}_{3}\left(\theta\right) + 4  {\mbox{Cl}}_{3}\left(\pi-\theta\right)
+- 2 \theta {\mbox{Cl}}_{2}\left(\pi- \theta\right)
+-   \theta {\mbox{Cl}}_{2}\left(\theta\right)
++ 5 \zeta_3 \; , \hspace*{10mm}
+\\ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sum_{j=1}^\infty \frac{1}{\left( 2j\atop j\right)} 
+\frac{u^j}{j^2} S_1^2 
+&=&  
+4 \theta \left[ {\mbox{Ls}}_{3}\left(\pi-\theta\right) - {\mbox{Ls}}_{3}\left(\pi\right) \right]
+-  4\left[ {\mbox{Ls}}_{2}\left(\pi-\theta\right) \right]^2
++ {\textstyle{\frac{1}{24}}} \theta^4 \; ,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\  
+\sum_{j=1}^\infty \frac{1}{\left( 2j \atop j\right) } 
+      \frac{u^j}{j^2} S_1 \bar{S}_1
+&=& 
+ 5 \theta \left[{\mbox{Ls}}_{3}\left(\pi-\theta\right) - {\mbox{Ls}}_{3}\left(\pi\right) \right]
+- \theta {\mbox{Ls}}_{3}\left(\theta\right) 
++ {\textstyle{\frac{1}{2}}} \theta {\mbox{Ls}}_{3}\left(2 \theta\right)
+\nonumber \\ && 
+- 4 \left[{\mbox{Ls}}_{2}\left(\pi-\theta\right) \right]^2
++ {\textstyle{\frac{1}{48}}} \theta^4 
+- 2 {\mbox{Ls}}_{2}\left(\pi-\theta\right)  {\mbox{Ls}}_{2}\left(\theta\right) \; , 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\  
+\sum_{j=1}^\infty \frac{1}{\left( 2j \atop j\right) } 
+\frac{u^j}{j^2} 
+\left( \bar{S}_1^2 + \bar{S}_2 \right)
+&=& 
+  6 \theta \left[{\mbox{Ls}}_{3}\left(\pi-\theta\right) - {\mbox{Ls}}_{3}\left(\pi\right) \right]
+- 3 \theta {\mbox{Ls}}_{3}\left(\theta\right)
++  \theta {\mbox{Ls}}_{3}\left(2 \theta\right)
+\nonumber \\ &&
+- 4 \left[{\mbox{Ls}}_{2}\left(\pi-\theta\right) \right]^2
+- \left[{\mbox{Ls}}_{2}\left(\theta\right) \right]^2
++ {\textstyle{\frac{1}{48}}} \theta^4
+- 4 {\mbox{Ls}}_{2}\left(\pi-\theta\right)  {\mbox{Ls}}_{2}\left(\theta\right) \; .
+\label{S2bar_2}
+\end{eqnarray}
+
+However, other sums are not expressible in terms of 
+the generalized log-sine functions.
+One needs to introduce a new function\footnote{Alternatively,
+instead of $\Phi(\theta)$ one may introduce the generalized
+Glashier function ${\mbox{Gl}}_{4}\left(\theta;1\right)$, see Eq.~(\ref{Gl4(theta,1)}) 
+in Appendix~A.},
+\begin{equation}
+\label{def_Phi}
+\Phi(\theta) \equiv
+\int\limits_0^\theta {\rm d}\phi\; 
+{\mbox{Ls}}_{2}\left(\phi\right) \ln \left(2 \cos {\textstyle{\frac{\phi}{2}}} \right) \; , 
+\end{equation}
+which obeys the following symmetry property:
+\begin{equation}
+\label{sym_Phi}
+\Phi(\theta) + \Phi(\pi-\theta) 
+= \Phi(\pi) + {\mbox{Ls}}_{2}\left(\pi-\theta\right) {\mbox{Ls}}_{2}\left(\theta\right) \;, 
+\end{equation}
+where 
+\begin{eqnarray}
+\hspace{-10mm}
+\Phi(\pi) & = &  
+{\textstyle{\frac{1}{6}}} \ln^4 2 - \zeta_2 \ln^2 2 + {\textstyle{\frac{7}{2}}} \zeta_3 \ln 2 
+- {\textstyle{\frac{53}{16}}} \zeta_4 + 4 {\mbox{Li}}_{4}\left("

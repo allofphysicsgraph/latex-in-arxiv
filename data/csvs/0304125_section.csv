@@ -1,0 +1,457 @@
+,section
+0,\section{Introduction}
+1,\section{The model: classical kink degeneracy}
+2,\section{One-loop correction to the TK1 kink mass}
+3,\section{Semi-classical masses of kink families}
+4,\section{Classical versus semi-classical kink degeneracy}
+5,"\section{Jacobi fields, kink instability and resonances}"
+6,"\section*{Appendix: mode number cutoff regularization method}
+
+
+In this Appendix we offer a derivation of the basic equation
+(\ref{eq:dhn}) in Section \S 3. Given the ${\cal K}$ and ${\cal
+V}$ Schrodinger operators
+\[
+{\cal V}=-\frac{d^2}{dx^2}+v^2\hspace{0.5cm},\hspace{0.5cm}{\cal
+K}=-\frac{d^2}{dx^2}+v^2-V(x)  ,
+\]
+respectively ruling the small fluctuations around the vacuum and
+the kink, the renormalized zero point energy is:
+\begin{equation}
+\Delta_1\varepsilon^{\rm K}=\frac{\hbar m}{2}\left(\sum_{{\rm
+Spec}{\cal K}}\omega_n-\sum_{{\rm Spec}{\cal V}}{\bar\omega}_n\right)
+\label{eq:cas} \qquad .
+\end{equation}
+Here, $v^2=\frac{d^2U}{d\psi^2}|_{\psi_{\rm V}}$ is a constant,
+and $v^2-V(x)=\frac{d^2U}{d\psi^2}|_{\psi_{\rm K}}$ gives rise to
+a potential well $V(x)$, which rapidly decreases to its asymptotic
+value: $\displaystyle\lim_{x\rightarrow\pm\infty}V(x)=0$; note
+that as in the main text we use non-dimensional eigenvalues and we
+recover the dimension in the final response through the overall
+constant of (\ref{eq:cas}). The spectrum of both ${\cal K}$ and
+${\cal V}$ is continuous and some regularization is needed to
+compute the infinite sums in the Casimir energy (\ref{eq:cas}).
+Over the last few years it became clear that the correct
+regularization procedure is based on a cut-off in the number of
+fluctuation modes, a number that must be taken to be \lq\lq equal""
+in the vacuum and kink sectors, see \cite{Rebhan}. More recently,
+controversy arose about whether an energy cut-off regularization
+can yield the correct answer, see \cite{Flores} and \cite{vanN}.
+This is a subtle matter indeed, but all the evidence leads us to
+rely on the mode number regularization method.
+
+Before deriving (\ref{eq:dhn}), we outline the set-up pointed out
+in \cite{Barton} that underlies our approach below. The problem is
+discretised by confining the system to a box of length $2 L$,
+which is much greater than any length scale characteristic of the
+potential term or of any of its bound states - anticipating
+whenever convenient- the limit $L\rightarrow \infty$, which is
+understood to be taken at the end. Fictitious boundary conditions
+$\psi(\pm L)=0$ are imposed on the eigenstates, although the
+actual bound states are not affected since their eigenfunctions
+decrease exponentially. First, we shall approach the problem by
+focusing on operators ${\cal K}$ without bound states with $k=0$
+(half-bound states). This particular case (involving operators
+with reflectionless potential, such as those in the kink and
+soliton of the well known $\phi^4$ and Sine-Gordon model) will be
+dealt with later.
+
+
+Apart from restricting the spectra of ${\cal V}$ and ${\cal K}$
+\[
+{\cal V}\psi[k;x]={\bar\omega}^2(k)\psi[k;x]\qquad , \qquad {\cal
+K}\psi[q;x]=\omega^2(q)\psi[q;x]
+\]
+to those eigenfunctions satisfying Dirichlet boundary conditions
+$\psi(\pm L)=0$, we shall only consider symmetric potentials
+$V(x)=V(-x)$ which allows us the choice of  odd,
+$\psi(x)=-\psi(-x)$, and,  even, $\psi(x)=\psi(-x)$, eigenstates
+complying with the boundary conditions. This breaks the degeneracy
+that arises by imposing periodic conditions on eigenfunctions with
+non defined-parity (plane waves), and hence skips some problems
+arising when the number of bound states is odd.
+
+A brief description of the eigenvalues and eigenfunctions of
+${\cal V}$ and  ${\cal K}$ in a finite box follows.
+
+\begin{enumerate}
+\item Spectrum of ${\cal V}$
+
+\begin{itemize}
+
+\item Odd eigenfunctions
+
+If $n^-$ is a natural number and the wave vectors $k_{n^-}$
+satisfy
+\[
+k_{n^-}\cdot L=\pi n^- \hspace{1cm},\hspace{1cm} n^-\in {\Bbb
+N}\qquad ,
+\]
+then the odd functions, $\psi_{n^-}(x)=-\psi_{n^-}(-x)$,
+\[
+\psi_{n^-}(x)=A_{n^-}\cdot {\rm sin}(k_{n^-}\cdot x)
+\]
+belong to the spectrum of ${\cal V}$ with eigenvalue
+${\bar\omega}^2(k_{n^-})=k_{n^-}^2+v^2$. Since
+$(k_{n^-+1}-k_{n^-})L=\pi$ the density of odd eigenstates is:
+$\bar\rho^-(k)=\frac{L}{\pi}$.
+
+\item Even eigenfunctions
+
+If $n^+$ is a natural number and the wave vectors $k_{n^+}$
+satisfy
+\[
+k_{n^+}\cdot L=\pi(n^++\textstyle\frac{1}{2}) \hspace{1cm} ,
+\hspace{1cm} n^+\in {\Bbb N}\qquad ,
+\]
+then the even functions, $\psi_{n^+}(x)=\psi_{n^+}(-x)$,
+\[
+\psi_{n^+}(x)=A_{n^+}\cdot {\rm cos}(k_{n^+}\cdot x)
+\]
+belong to the spectrum of ${\cal V}$ with eigenvalue
+${\bar\omega}^2(k_{n^+})=k_{n^+}^2+v^2$. Now,
+$\bar\rho^+(k)=\frac{L}{\pi}$.
+
+\end{itemize}
+
+
+\item Spectrum of ${\cal K}$
+\begin{itemize}
+\item Bound states:
+
+We assume that there exist $l$ bound states with $\omega^2\leq
+v^2$. In particular we denote by $l^+$ the number of symmetric
+bound states and by $l^-$ the number of antisymmetric states,
+$l=l^+ + l^-$. If $\omega_{l}^2=v^2$, the highest bound state
+becomes a half-bound one and contributes with a weight of
+$s_{l}=\frac{1}{2}$ to the mass quantum correction.
+
+\item Odd eigenfunctions.
+
+There are odd eigenfunctions which asymptotically are of the form:
+\[
+\psi_{n^-}(x) \stackrel{x \rightarrow L}{\simeq} A_{n^-}\cdot{\rm
+sin}[q_{n^-}\cdot x+\delta^-(q_{n^-})] \qquad .
+\]
+The odd phase shifts $\delta^-(q_{n^-})$ are defined in terms
+of the transmission and reflection coefficients, see Section \S 3,
+but now the boundary conditions require:
+\begin{equation}
+q_{n^-}\cdot L+\delta^-(q_{n^-})=\pi n^- \hspace{1cm},\hspace{1cm}
+n^-\in {\Bbb N}\qquad . \label{eq:bouno}
+\end{equation}
+Unitarity, transparency at $q=\infty$, and, continuity of the wave
+function at $q=0$ (threshold) allow us to set the phase ambiguity
+as in \cite{Barton}:
+\[
+\lim_{q\rightarrow\infty}\delta^-(q)=0 \qquad , \qquad
+\lim_{q\rightarrow 0^+}\delta^-(q)=\pi\l^- \qquad .
+\]
+
+The question arises: what is the minimum value $n^-=n_0^-$? For
+very large $L$, $q_{n_0^-}$ is very small and (\ref{eq:bouno})
+becomes:
+\begin{equation}
+q_{n_0^-}\cdot (L+\delta^{\prime -}(0^+))+\delta^-(0^+)=\pi
+ n_0^- \qquad .
+\end{equation}
+Here, $\delta^{\prime -}(0^+)$ is the limit of the left-hand
+derivative of the antisymmetric phase shift when $q$ goes to zero
+from the right. The minimum value of $n^-=n_0^-$ is therefore
+$n_0^-=l^-$. Since
+$(q_{n^-+1}-q_{n^-})L+\delta^-(q_{n^-+1})-\delta(q_{n^-})=\pi$ the
+density of antisymmetric states is:
+\[
+\rho^-(q)=\frac{L}{\pi}+\frac{1}{\pi}\frac{\partial\delta^-(k)}{\partial
+k}\qquad .
+\]
+
+\item Even eigenfunctions.
+
+There are even eigenfunctions which asymptotically are of the
+form:
+\[
+\psi_{n^+}(x)\stackrel{x \rightarrow L}{\simeq} A_{n^+}\cdot{\rm
+cos}[q_{n^+}\cdot x+\delta^+(q_{n^+})] \qquad .
+\]
+The phase shifts $\delta^+(q_{n^+})$ are defined in terms of the
+transmission and reflection coefficients, see Section \S 3, and
+the boundary conditions require:
+\begin{equation}
+q_{n^+}\cdot L+\delta^+(q_{n^+})=\pi(n^++\textstyle\frac{1}{2})
+\hspace{1cm},\hspace{1cm} n^+\in {\Bbb N}\qquad .
+\end{equation}
+Again we set the phase ambiguity by invoking Levinson's theorem as
+in \cite{Barton}:
+\[
+\lim_{q\rightarrow\infty}\delta^+(q)=0 \qquad , \qquad
+\lim_{q\rightarrow 0^+}\delta^+(q)=\pi(\l^+-\textstyle\frac{1}{2})
+\]
+where $l^+$ is the number of even bound states.
+
+From
+\[
+q_{n_0^+}\cdot (L+\delta^{\prime +}(0^+))+\delta^+(0^+)=\pi
+(n_0^++\textstyle\frac{1}{2}) \qquad ,
+\]
+we read the minimum possible value of $q_{n_0^+}$: $n_0^+=l^+$.
+Now,
+\[
+\rho^+(q)=\frac{L}{\pi}+\frac{1}{\pi} \frac{\partial
+\delta^+(k)}{\partial k}\qquad .
+\]
+We stress that due to the parity of the eigenfunctions there is no
+need to consider negative values of $n^{\pm}$.
+\end{itemize}
+\end{enumerate}
+
+The regularized version of formula (\ref{eq:cas}) reads:
+\begin{eqnarray*}
+\Delta_1\varepsilon^K&=&\frac{\hbar
+m}{2}\sum_{i=1}^{l}\omega_i+\\
+&+&\frac{\hbar m}{2}\left[\sum^{N(\Lambda)}_{n^+=l^+}
+\sqrt{q_{n^+}^2+v^2}-\sum^{N_0(\Lambda)}_{n^+=0}\sqrt{k_{n^+}^2+v^2}\right] + \\
+&+&\frac{\hbar m}{2}\left[\sum^{N'(\Lambda)}_{n^-=l^-}\sqrt{q_{n^-}^2+v^2}-
+\sum^{N_0'(\Lambda)}_{n^-=0}\sqrt{k_{n^-}^2+v^2}\right]
+\end{eqnarray*}
+The first row collects the contributions of the $l=l^++l^-$ bound
+states of ${\cal K}$. In the other two rows, the contributions of
+even and odd eigenfunctions in the continuous spectra are
+accounted for. We obtain a mode number cut-off regularization from
+this approach if we choose $\Lambda$ such that
+$N(\Lambda)=N_0(\Lambda)$ and $N'(\Lambda)=N_0'(\Lambda)$. This
+choice balances the number of states of ${\cal K}$ and ${\cal V}$
+involved in the above formula. Notice that we have distinguished
+the number of symmetric and antisymmetric states, $N(\Lambda)$ and
+$N'(\Lambda)$; by slightly increasing  the value of $\Lambda$ we
+can add new states in one of the channels, giving rise to either
+$N'(\Lambda)=N(\Lambda)+1$ or $N'(\Lambda)=N(\Lambda)$.
+
+To measure the contribution of ${\cal K}$ with respect to the
+contribution of ${\cal V}$ to the Casimir energy mode by mode, we
+write the second row in the form:
+\begin{eqnarray*}
+&&\frac{\hbar m}{2}\left[\sum_{n^+=0}^{N(\Lambda)}
+\left(\sqrt{q_{n^+}^2+v^2}-\sqrt{k_{n^+}^2+v^2}\right)
+-\sum_{n^+=0}^{l^+-1}\sqrt{q_{n^+}^2+v^2}\right]\\
+&{\simeq}&\frac{\hbar m}{2}\left[-\sum_{n^+=0}^{N(\Lambda)}
+\frac{k_{n^+}\delta^+(k_{n^+})}{L\sqrt{k_{n^+}^2+v^2}}
+-\sum_{n^+=0}^{l^+-1}\sqrt{q_{n^+}^2+v^2}+
+\theta(\textstyle\frac{1}{L^2})\right]\\
+&\stackrel{{L\rightarrow\infty}
+\atop{N\rightarrow\infty}}{\simeq}&-\frac{\hbar
+m}{2}\left[\int_0^\infty \,\frac{dk}{\pi}\,
+\frac{d\omega(k)}{dk}\delta^+(k)+l^+v \right]\qquad .
+\end{eqnarray*}
+A similar process for the odd eigenfunctions gives:
+\begin{eqnarray*}
+&&\frac{\hbar m}{2}\left[\sum_{n^-=0}^{N'(\Lambda)}\left(\sqrt{q_{n^-}^2+v^2}
+-\sqrt{k_{n^-}^2+v^2}\right)
+-\sum_{n^-=0}^{l^--1}\sqrt{q_{n^-}^2+v^2}\right]\\
+&{\simeq} & \frac{\hbar m}{2}\left[-\sum_{n^-=0}^{N'(\Lambda)}
+\frac{k_{n^-}\delta^-(k_{n^-})}{L\sqrt{k_{n^-}^2+v^2}}
+-\sum_{n^-=0}^{l^--1}\sqrt{q_{n^-}^2+v^2}+\theta(\textstyle\frac{1}{L^2})\right]\\
+&\stackrel{{L\rightarrow\infty}\atop {N\rightarrow\infty}}{\simeq}&
+-\frac{\hbar m}{2}\left[\int_0^\infty \,\frac{dk}{\pi}\,
+\frac{d\omega(k)}{dk}\delta^-(k)+l^-v \right]\qquad .
+\end{eqnarray*}
+The sum of all contributions plus a partial integration,
+\begin{eqnarray*}
+\Delta_1 \varepsilon^{\rm K}&=& \frac{\hbar m}{2}  \sum_{i=1}^{l}
+\omega_i - \\ &&-\frac{\hbar m}{2} l^+ v -\left.\frac{\hbar
+m}{2\pi} \delta^+(k)\omega(k)\right|_0^\infty +\frac{\hbar m}{2
+\pi}\int_0^\infty dk \frac{d\delta^+(k)}{dk}\omega(k) \\
+&&-\frac{\hbar m}{2}l^-v -\left.\frac{\hbar m}{2\pi}
+\delta^-(k)\omega(k)\right|_0^\infty +\frac{\hbar
+m}{2\pi}\int_0^\infty dk \frac{d\delta^-(k)}{dk}\omega(k)\qquad ,
+\end{eqnarray*}
+and the asymptotic behaviour of the total phase
+shift,
+\[
+\delta^+(k)
+\stackrel{k\rightarrow\infty}{\cong} \frac{1}{k}\int_0^\infty dx
+V(x) \cos^2(k x)
+\hspace{1cm}
+\delta^-(k)
+\stackrel{k\rightarrow\infty}{\cong} \frac{1}{k}\int_0^\infty dx
+V(x) \sin^2(k x)
+\]
+show that:
+\begin{eqnarray*}
+\Delta_1 \varepsilon^{\rm K}&=& \frac{\hbar m}{2} \sum_{i=1}^{l}
+\omega_i -\frac{\hbar m}{2} l^+\, v +\frac{\hbar m}{2\pi}
+\delta^+(0) v-\frac{\hbar m}{2} l^-\, v +\frac{\hbar m}{2\pi}
+\delta^-(0) v -\\ && -\frac{\hbar m}{2\pi} \int_0^\infty dx V(x)
+[\cos^2(kx)+\sin^2(kx)] +\frac{\hbar m}{2\pi}\int_0^\infty dk
+\frac{d [\delta^+(k)+\delta^-(k)]}{dk}\omega(k) \qquad .
+\end{eqnarray*}
+From the 1D Levinson theorem we notice that the two last terms in
+the first line of the above formula cancel each other but the two
+preceding ones leave a contribution: $-\frac{v}{2}$. Therefore,
+the formula for the kink Casimir energy reads:
+\begin{equation}
+\Delta_1\varepsilon^{\rm K}=\frac{\hbar
+m}{2}\left[\sum_{i=1}^{l}\omega_i-\frac{v}{2}+\frac{1}{\pi}\int_0^\infty
+\!\! dk
+\frac{d\delta(k)}{dk}\omega(k)-\frac{\left<V(x)\right>}{2\pi}\right]\qquad
+, \label{onel}
+\end{equation}
+where $\left<V(x)\right>=\int_{-\infty}^\infty V(x) dx =2
+\int_0^\infty V(x) dx$ is the expectation value of the potential
+term and the contribution of the continuous spectrum is encoded in
+the total phase shift: $\delta(k)=\delta^+(k)+\delta^-(k)$. We
+call attention to the contribution $-\frac{\hbar mv}{4}$, which
+might be understood as coming from a half-bound state in ${\rm
+Spec}{\cal V}$.
+
+The generalization of this approach to tackle the presence of a
+bound state with $k=0$ and $\omega^2=v^2$ in ${\rm Spec}{\cal K}$
+(half-bound state) is direct. The Levinson theorem,
+\begin{equation}
+\delta_-(0^+)=l_-\pi \qquad , \qquad
+\delta_+(0^+)=l_+\pi-\frac{\pi}{2} \qquad , \label{eq:Levi}
+\end{equation}
+works as above, but there is now a half-bound state that
+contributes with $\frac{1}{2}$ to both the number $l=l_-+l_+$ and
+the mass quantum correction $\Delta_1 \varepsilon^K$, see
+\cite{Graham}. Thus, we write (\ref{eq:Levi}) as $\delta(0^+)=l
+\pi-\frac{\pi}{2}=n_b\pi$, and, bearing in mind the previous
+observation, the above calculations reproduce the results obtained
+in Reference \cite{Rebhan}. The tricky point to realize is how the
+contribution of the threshold state turns (\ref{eq:Levi}) into
+$\delta(q^+)=n_b \pi$, with $n_b$ the number of bound states with
+$\omega^2 < v^2$. In the kink mass formula, the contribution of
+the half-state would cancel out the term $-\frac{v}{2}$, and
+everything is okay. For this reason, the formula shown in
+\cite{Rebhan} is valid only for operators with reflectionless
+potentials. A final expression involving both of these cases
+becomes
+\begin{equation}
+\Delta_1\varepsilon^{\rm K}=\frac{\hbar
+m}{2}\left[\sum_{i=1}^{l-1}\omega_i+s_l \omega_l
+-\frac{v}{2}+\frac{1}{\pi}\int_0^\infty \!\! dk
+\frac{d\delta(k)}{dk}\omega(k)-\frac{\left<V(x)\right>}{2\pi}\right]\qquad
+, \label{one2}
+\end{equation}
+where $s_l=\frac{1}{2}$ if we deal with a reflectionless potential
+but $s_l=1$ if the reflection coefficient is non-zero.
+
+\section*{Acknowledgements}
+
+A.A.I. thanks to the  Secretaria de Estado de Educaci\'on y
+Universidades of Spain for financial support.
+
+\begin{thebibliography}{99}
+
+\addcontentsline{toc}{section}{References}
+
+\bibitem{Olive} D. Olive and E. Witten, Phys. Lett. {\bf B78} (1978) 97; N. Seiberg and E. Witten, Nucl. Phys. {\bf B246} (1994) 19.
+
+\bibitem{Duff} M. Duff, R. Khuri and J. Lu, Phys. Rep. {\bf 259} (1995) 213.
+
+\bibitem{Dvali} G. Dvali and M. Shifman, Nucl. Phys. ${\bf B504}$ (1997) 127; G. Gibbons and P. Townsend, Phys. Rev. Lett. ${\bf 83}$ (1999) 172.
+
+\bibitem{Dashen} R. Dashen, B. Hasslacher and A. Neveu, Phys. Rev. ${\bf D10}$ (1974) 4130; Phys. Rev. ${\bf D12}$ (1975) 3424.
+
+\bibitem{Fad} L. D. Faddeev and V. E. Korepin, Phys. Rep. {\bf 42C}
+(1978) 1-87
+
+\bibitem{Adda} A. D'Adda, R. Horsley and P. Di Vecchia, Phys. Lett. ${\bf B76}$ (1978) 298; J. Schonfeld, Nucl. Phys. ${\bf B161}$ (1979)
+125; A. D'Adda, R. Horslet and P. di Vecchia, Phys. Lett. ${\bf
+76B}$ (1978) 4130 and Phys. Rev. ${\bf D12}$ (1975) 3424; R.
+Horsley, Nucl. Phys. {\bf B151} (1979) 399
+
+\bibitem{Rou} S. Rouhani, Nucl. Phys. ${\bf B182}$ (1981) 462; H. Yamagishi, Phys. Lett. {\bf 147B}
+(1984) 425; A.K. Chatterjee and P. Majumdar, Phys. Rev. {\bf D30}
+(1984) 844; Phys. Lett. {\bf 159B} (1985) 37.
+
+\bibitem{Uchi} A. Uchiyama, Nucl. Phys. ${\bf B244}$ (1984) 57; Progr. Theor. Phys. {\bf 75}
+(1986) 1214; Nucl. Phys. {\bf B278} (1986) 121.
+
+\bibitem{Kaul} R. K. Kaul and R. Rajaraman, Phys. Lett. ${\bf B131}$ (1983) 357;
+J. F. Schonfeld, Nucl. Phys. ${\bf B161}$ (1979) 125.
+
+\bibitem{Imbi} C. Imbimbo and S. Mukhi, Nucl. Phys. ${\bf B247}$ (1984) 471.
+
+\bibitem{Shifman} M. Shifman, A. Vainshtein and M. Voloshin, Phys.
+Rev. {\bf D59} (1999) 45016
+
+\bibitem{Rebhan} A. Rebhan and P. van Nieuwenhuizen, Nucl. Phys. ${\bf B508}$ (1997) 449-467; H. Nastase, M. Stephanov, A. Rebhan and P. van Nieuwenhuizen, Nucl. Phys. ${\bf B542}$ (1999) 471-514
+
+\bibitem{Goldhaber} A. Goldhaber, A. Litvinsev and P.
+Nieuwenhuizen, Phys. Rev. ${\bf D}$ , to appear, hep-th/0109110;
+R. Wimmer, hep-th/0109119 .
+
+\bibitem{Rebhan1} A. Rebhan, P. van Nieuwenhuizen and R. Wimmer,
+New J. Phys. ${\bf 4:31}$ (2002) .
+
+\bibitem{Graham} N. Graham and R. Jaffe, Nucl. Phys. ${\bf B544}$ (1999)
+432 and Nucl. Phys. ${\bf B549}$ (1999) 516.
+
+\bibitem{Aai0} A. Alonso-Izquierdo, W. Garcia Fuertes, M.A. Gonzalez Leon and J. Mateos
+Guilarte, Nucl. Phys. ${\bf B635}$ (2002) 525-557.
+
+\bibitem{Gilkey} P. Gilkey, {\sl \lq\lq Invariance theory, the heat equation
+and the Atiyah-Singer index theorem""}, Publish or Perish,
+Delaware, 1984.
+
+\bibitem{Lima} G. S. Dias, E. L. Graca and R. de Lima Rodrigues,
+J. Phys. A , to appear, hep-th/0205195
+
+\bibitem{Aai1} A. Alonso-Izquierdo, M. A. Gonzalez Leon, J. Mateos
+Guilarte and M. de la Torre Mayado, Phys. Rev. {\bf D66} (2002)
+105022
+
+\bibitem{Aai2} A. Alonso-Izquierdo, W. Garcia Fuertes, M.A. Gonzalez Leon and J. Mateos
+Guilarte, Nucl. Phys. ${\bf B638}$ (2002) 378-40.
+
+\bibitem{MSTB}  C. Montonen, Nucl. Phys. {\bf B112}  (1976) 349 \,
+; \, S. Sarker, S.E. Trullinger and A. R. Bishop, Phys. Lett. {\bf
+59A} (1976) 255-258.
+
+
+\bibitem{Bordag} M. Bordag, J. Phys. {\bf A28}  (1995) 755; E. Elizalde et al,
+Zeta regularization techniques with applications, Singapore, World
+Scientifique, 1994.
+
+\bibitem{Bordag2} M. Bordag, A. Goldhaber, P. van Nieuwenhuizen and D. Vassilevich,
+hep-th/0203066
+
+\bibitem{B1} D. Bazeia , J.R.S. Nascimento,  R. Ribeiro, and, D. J. Toledo, Phys. {\bf A30}
+(1997) no. 23, 8157-8166; D. Bazeia, M.J. Dos Santos and R. F.
+Ribeiro, Phys. Lett. {\bf A208} (1995)  84-88.
+
+
+\bibitem{Voloshin} M. Shifman and M. Voloshin, Phys. Rev. {\bf
+D57} (1998) 2590
+
+\bibitem{Aai3}  A. Alonso Izquierdo, M.A. Gonzalez Leon and J. Mateos
+Guilarte, Phys. Rev. {\bf D65} (2002)085012
+
+\bibitem{Morse} P.M. Morse and H. Feshbach, {\it \lq\lq Methods of Theoretical Physics""}, McGraw-Hill Book Company, Inc., New York-Toronto-London, 1953.
+
+\bibitem{Drazin} Drazin, P.G. y Johnson, R.S., {\it \lq\lq Solitons: an introduction""}, Cambridge University Press, Cambridge, 1996.
+
+\bibitem{Abramowitz} M. Abramowitz, I. Stegun , Handbook of
+Mathematical Functions with Formulas, Graphs and Mathematical
+Tables, Dover, New York, 1992.
+
+\bibitem{Avra} I. Avramidi, R. Schimming, J. Math. Phys. {\bf
+36} (1995) 5042
+
+\bibitem{Aai4} A. Alonso Izquierdo, M.A. Gonzalez Leon and J. Mateos
+Guilarte, Nonlinearity {\bf 15} (2002)1097-1125
+
+\bibitem{Flores} G. Flores-Hidalgo, Phys. Lett. {\bf B542} (2002)
+282, hep-th/0206047, and hep-th/0212073 .
+
+\bibitem{vanN}  A. Rebhan, P. van Nieuwenhuizen, and, R. Wimmer,
+Phys. Lett. {\bf B552} (2003)17
+
+\bibitem{Barton} G. Barton, J. Phys. {\bf A18} (1985)479
+
+
+
+\end{thebibliography}
+\end{document}"
+7,\section*{

@@ -1,0 +1,140 @@
+,enumerate
+0,"\begin{enumerate}
+\item  The S-matrix is calculated by means of general properties such as
+unitarity and crossing, the Yang-Baxter equations (which are a consequence of
+integrability) and the additional assumption of `maximal analyticity'. This
+means that the two-particle S-matrix is an analytic function in the physical
+plane (of the Mandelstam variable $(p_{1}+p_{2})^{2}$) and possesses only
+those poles there which are of physical origin. The only input which depends
+on the model is the assumption of a particle spectrum. Usually it belongs to
+representations of a symmetry. Typically there is a correspondence of
+fundamental representations with multiplets of particles. A
+\emph{classification} of all S-matrices obeying the given properties is obtained.
+
+\item  Generalized form factors which are matrix elements of local operators
+\[
+^{out}\left\langle \,p_{m}^{\prime},\ldots,p_{1}^{\prime}\left|
+\mathcal{O}(x)\right|  p_{1},\ldots,p_{n}\,\right\rangle ^{in}\,
+\]
+are calculated by means of the S-matrix. More precisely, the equations
+$(i)-(v)$ as listed in section \ref{s3} are solved. These equations follow
+from LSZ-assumptions and again the additional assumption of `maximal
+analyticity' \cite{BFKZ}.
+
+\item  The Wightman functions are obtained by inserting a complete set of
+intermediate states. In particular the two point function for a hermitian
+operator $\mathcal{O}(x)$ reads
+\begin{multline*}
+\langle\,0\left|  \mathcal{O}(x)\,\mathcal{O}(0)\right|  0\,\rangle=\sum
+_{n=0}^{\infty}\frac{1}{n!}\idotsint\frac{dp_{1}\ldots dp_{n}}{\,(2\pi
+)^{n}2\omega_{1}\dots2\omega_{n}}\\
+\times\left|  \left\langle \,0\left|  \mathcal{O}(0)\right|  p_{1}%
+,\ldots,p_{n}\,\right\rangle ^{in}\right|  ^{2}e^{-ix\sum p_{i}}.
+\end{multline*}
+Up to now a proof that these sums converge exists only for the scaling Ising
+model \cite{B-J} and the `Yang-Lee' model \cite{Sm3}.
+\"
+1,"\begin{enumerate}
+\item {Unitarity:} $S(-\theta)S(\theta)=1$
+\begin{align*}
+u(-\theta)u(\theta)  &  =1\\
+t(-\theta)t(\theta)+r(-\theta)r(\theta)  &  =1\\
+t(-\theta)r(\theta)+r(-\theta)t(\theta)  &  =0
+\end{align*}
+
+\item {Crossing:}
+\[
+u(i\pi-\theta)=t(\theta)~,~~r(i\pi-\theta)=r(\theta)
+\]
+
+\item {Yang-Baxter:}
+\[
+r(\theta_{12})u(\theta_{13})r(\theta_{23})+t(\theta_{12})r(\theta
+_{13})t(\theta_{23})=u(\theta_{12})r(\theta_{13})u(\theta_{23})
+\]
+
+\item \emph{Maximal analyticity:}
+
+$S(\theta)$ is meromorphic in the `physical strip' $0\leq\operatorname{Im}%
+\theta\leq\pi$ and all poles there have a physical interpretation, in
+particular all bound states correspond to simple poles. An S-matrix satisfying
+this condition is also called `minimal'. For couplings $g<0$ (in the language
+of the massive Thirring model) there are no soliton anti-soliton bound states.
+Therefore in this region of the coupling constant $S(\theta)$ is holomorphic
+in the `physical strip' $0\leq\operatorname{Im}\theta\leq\pi$.
+\"
+2,"\begin{enumerate}
+\item [$(i)$]Watson's equations \cite{Wa}:
+\begin{equation}
+\mathcal{O}_{\dots ij\dots}(\dots,\theta_{i},\theta_{j},\dots)=\mathcal{O}%
+_{\dots ji\dots}(\dots,\theta_{j},\theta_{i},\dots)\,S_{ij}(\theta_{i}%
+-\theta_{j})\,.\label{pf1}%
+\end{equation}
+
+\item[$(ii)$] Crossing relation (for the connected part of the matrix
+element):
+\begin{align}
+_{\bar{\alpha}_{1}}\langle\,p_{1}\,|\,\mathcal{O}(0)\,|\,p_{2},\dots
+,p_{n}\,\rangle_{\alpha_{2}\dots\alpha_{n}}^{in,conn.} &  =\mathcal{O}%
+_{\alpha_{1}\alpha_{2}\dots\alpha_{n}}(\theta_{1}+i\pi,\theta_{2},\dots
+,\theta_{n})\label{pf2}\\
+&  =\mathcal{O}_{\alpha_{2}\dots\alpha_{n}\alpha_{1}}(\theta_{2},\dots
+,\theta_{n},\theta_{1}-i\pi)\,.\nonumber
+\end{align}
+
+\item[$(iii)$] Recursion relation:
+\begin{equation}
+\operatorname*{Res}_{\theta_{12}=i\pi}\mathcal{O}_{1\dots n}(\theta_{1}%
+,\dots)=2i\,\mathbf{C}_{12}\,\,\mathcal{O}_{3\dots n}(\theta_{3},\dots)\left(
+\mathbf{1}-S_{2n}\dots S_{23}\right)  \,,\label{pf3}%
+\end{equation}
+where $\mathbf{C}_{12}$ is the charge conjugation matrix.
+
+\item[$(iv)$] Bound state form factors equations:
+\begin{equation}
+\operatorname*{Res}_{\theta_{12}=ia}\mathcal{O}_{123\dots n}(\underline
+{\theta})=\mathcal{O}_{(12)3\dots n}(\theta_{(12)},\underline{\theta}^{\prime
+})\,\sqrt{2}\,\Gamma_{12}^{(12)}\,,\label{pf4}%
+\end{equation}
+where $a$ is the fusion angle and $\Gamma_{12}^{(12)}$ is the fusion
+intertwiner \cite{K1,BK1}.
+
+\item[$(v)$] Lorentz invariance:
+\begin{equation}
+\mathcal{O}_{1\dots n}(\theta_{1}+u,\dots,\theta_{n}+u)=e^{su}\,\mathcal{O}%
+_{1\dots n}(\theta_{1},\dots,\theta_{n})\,,\label{pf5}%
+\end{equation}
+where $s$ is the ``spin'' of $\mathcal{O}$.
+\"
+3,"\begin{enumerate}
+\item  The {normal ordered exponential of the field (see also \cite{BL})}
+\begin{equation}
+\mathcal{O}(x)=\,:\!e^{i\gamma\varphi(x)}\!:\quad\leftrightarrow
+p(\underline{\theta},\underline{l})=\left(  \frac{2}{F(i\pi)\sin\pi\nu
+}\right)  ^{\frac{n}{2}}\prod\limits_{i=1}^{n}e^{i\pi\nu\frac{\gamma}{\beta
+}(-1)^{l_{i}}} \label{pq}%
+\end{equation}
+
+\item  Expanding the last relation with respect to $\gamma$ one obtains the
+p-func\-tions for {normal ordered powers }$:\!\varphi(x)^{N}\!:$ in particular
+for $N=1$%
+\[
+\,:\!\varphi(x)\!:\quad\leftrightarrow p(\underline{\theta},\underline
+{l})=\frac{\pi\nu}{\beta}\left(  \frac{2}{F(i\pi)\sin\pi\nu}\right)
+^{\frac{n}{2}}\sum_{i=1}^{n}(-1)^{l_{i}}%
+\]
+which yields (for $n=1$) the `wave function renormalization constant'
+\[
+Z^{\varphi}=\langle\,0\,|\,\varphi(0)\,|p\,\rangle^{2}=\frac{8\pi^{2}\nu^{2}%
+}{F(i\pi)\beta^{2}\sin\pi\nu}%
+\]
+(see also \cite{KW}).
+
+\item  The {higher conserved currents} (which are typical for integrable
+quantum field theories)
+\[
+J_{L}^{\pm}(x)\leftrightarrow\pm N_{n}^{(J_{L})}\sum_{i=1}^{n}e^{\pm\theta
+_{i}}\sum_{i=1}^{n}e^{L\left(  \theta_{i}-\frac{i\pi}{2}(1-(-1)^{l_{i}}%
+\nu)\right)  }\,.
+\]
+\"

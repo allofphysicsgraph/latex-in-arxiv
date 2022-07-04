@@ -1,147 +1,486 @@
 ,equation
-0,"\begin{equation}\label{eomi}
-[W'(\phi)-W'(-\phi)]W'(\phi)=0
+0,"\begin{equation} \mathcal{W} = \tr ( W(\phi) + \bar{Q} \phi Q )\, ,
+\label{treelevelsupo}
 \"
-1,"\begin{equation}
-(a_i + a_j)Q_{ij}=0
+1,"\begin{equation}\label{eomi}
+[W'(\phi)-W'(-\phi)]W'(\phi)=0
 \"
 2,"\begin{equation}
-Q = \left(\begin{array}{cc} 0&q\\
-s  q^T &0 \end{array}\right)\qquad
-\bar Q = \left(\begin{array}{cc} 0&\bar q \\
-s  \bar{q}^T &0 \end{array}\right)\,.
-\"
-3,"\begin{equation}
-Q\rightarrow \left(\begin{array}{cc} 0&U_1 q U_2^T\\ s  U_2q^T U_1^T &0
-\end{array} \right)\qquad
-\"
-4,"\begin{equation}
-Q=\left(\begin{array}{cc} 0&{\bf 1}\\
-s  {\bf 1} &0 \end{array}\right)\,.
-\"
-5,"\begin{equation}
-\bar Q =-
-W'(b)\left(\begin{array}{cc} 0&s{\bf 1}\\
-{\bf 1} &0 \end{array}\right)\,.
-\"
-6,"\begin{equation}
-Q \rightarrow U Q U^T\,.
-\"
-7,"\begin{equation}
-Q = \left( \begin{array}{ccc} \eps & 0&\ldots \\
-0& \eps&\ldots\\
-\vdots & \vdots & \ddots
-\end{array}\right)\qquad \eps = \left(\begin{array}{cc} 0&1\\-1&0
-\end{array}\right)\,.
-\"
-8,"\begin{equation}
-W_{VY}^s = \frac{S_0}{2} \log\left( \frac{\Lambda^{3(N_0-2s)}_{\mathrm{low,0}}}{S_0^{N_0-2s}} \right) \,.
-\"
-9,"\begin{equation}
-W_{eff} = \sum_{j=1}^{n+k} W^j_{VZ} + W_{VZ}^s\,,
-\"
-10,"\begin{equation}\label{Mmatrixvevs}
-  \langle M \rangle = \mathrm{diag}({\bf 0}_{N_0},
-  a {\bf 1}_{N_1}, b {\bf 1}_{N_2}, -b {\bf 1}_{N_2})\,;
-\"
-11,"\begin{equation}\label{Qmatrixvevs}
-\langle Q \rangle  = \left( \begin{array}{cccc}
- \mathrm{\bf E}_s & & & \\
- & {\bf 0} & &  \\
- & & {\bf 0}& {\bf 1}_{N_2}   \\
- & & s {\bf 1}_{N_2}& {\bf 0}
-\end{array} \right) ; \qquad
-\langle \bar Q \rangle = \left( \begin{array}{cccc}
- -s W'(0)\mathrm{\bf E}_s & & & \\
- & {\bf 0} & &  \\
- & & {\bf 0}& -s W'(b){\bf 1}_{N_2}   \\
- & & -W'(b) {\bf 1}_{N_2}& {\bf 0}
-\end{array} \right)
-\"
-12,"\begin{equation}\label{gaugetrafos}
-\delta M = i [ \Lambda, M]\,, \qquad \delta Q = i ( \Lambda Q + Q \Lambda^T)
-\, \qquad \delta \bar Q = -i (\Lambda^T \bar Q + \bar Q \Lambda )
-\"
-13,"\begin{equation}
-S_{gf} = \mathbf{s}\, \Tr \left( \sum_{i\ne j} (\bar C_{ij} m_{ij}) + \bar
-C_{q} q_{23} + \bar C_{00} q_{00} \right)\,.
-\"
-14,"\begin{equation}
-G_s = U(N_1)\times U(N_2) \times \left\{ \begin{array}{cc} SO(N_0) & s=+1 \\
-Sp(\frac{N_0}{2}) & s=-1
-\end{array}\right.\,.
-\"
-15,"\begin{equation}\label{Mconstraints}
-m_{22} = - m_{33}^T \qquad \mathrm{and}\qquad m_{00}\mathrm{\bf E}_s +
-\mathrm{\bf E}_s m_{00}^T=0\,.
-\"
-16,"\begin{equation}
-Z = \frac{1}{\mathrm{vol}(G_s)} \int \prod_{i\in\{0,1,2\}}dm_{ii} \prod_{ij \ne
-{\tiny \left\{\begin{array}{c}(23)\\(00)\end{array}\right.}} dq_{ij}
-\;d C \;d\bar C \;e^{(S^{(2)}+S_{gf})}
-\"
-17,"\begin{equation}
-Z = \frac{1}{\mathrm{vol}(G_s)} Z_{M}\, Z_{ghosts}\, Z_{matter}\,,
-\"
-18,"\begin{equation}F= N^2 \left(F^0 + \frac{1}{N} F^1 + O(1/N^2) \right)\,.\"
-19,"\begin{equation}
-F=F_{M} + F_{ghosts} + F_{matter}
-\"
-20,"\begin{equation}\label{Weff}
-W_{eff} = \sum_{i\in\{1,2,0\}} N_i \frac{\partial F^0}{\partial S_i} + 4 F^1 + \alpha_i S_i\,,
-\"
-21,"\begin{equation}
-\alpha = (N-2s) \log\Big(\frac{\Lambda_{\mathrm{high}}}{\mu}\Big)\,.
-\"
-22,"\begin{equation}
-  \sum_{i=1}^n \tr Q_i^\dag M Q_i,
-\"
-23,"\begin{equation}\label{eomi}
-[W'(\phi)-W'(-\phi)]W'(\phi)=0
-\"
-24,"\begin{equation}
 (a_i + a_j)Q_{ij}=0
 \"
-25,"\begin{equation}
+3,"\begin{equation}
 Q = \left(\begin{array}{cc} 0&q\\
 s  q^T &0 \end{array}\right)\qquad
 \bar Q = \left(\begin{array}{cc} 0&\bar q \\
 s  \bar{q}^T &0 \end{array}\right)\,.
 \"
-26,"\begin{equation}
+4,"\begin{equation}
 Q\rightarrow \left(\begin{array}{cc} 0&U_1 q U_2^T\\ s  U_2q^T U_1^T &0
 \end{array} \right)\qquad
 \"
-27,"\begin{equation}
+5,"\begin{equation}
 Q=\left(\begin{array}{cc} 0&{\bf 1}\\
 s  {\bf 1} &0 \end{array}\right)\,.
 \"
-28,"\begin{equation}
+6,"\begin{equation}
 \bar Q =-
 W'(b)\left(\begin{array}{cc} 0&s{\bf 1}\\
 {\bf 1} &0 \end{array}\right)\,.
 \"
-29,"\begin{equation}
+7,"\begin{equation}
 Q \rightarrow U Q U^T\,.
 \"
-30,"\begin{equation}
-Q = \left( \begin{array}{ccc} \eps & 0&\ldots \\
-0& \eps&\ldots\\
+8,"\begin{equation}
+Q = \left( \begin{array}{ccc} \varepsilon & 0&\ldots \\
+0& \varepsilon&\ldots\\
 \vdots & \vdots & \ddots
-\end{array}\right)\qquad \eps = \left(\begin{array}{cc} 0&1\\-1&0
+\end{array}\right)\qquad \varepsilon = \left(\begin{array}{cc} 0&1\\-1&0
 \end{array}\right)\,.
 \"
-31,"\begin{equation}
+9,"\begin{equation} \prod_{i=1}^n U(N_i) \otimes \prod_{j=1}^k U(\tilde
+N_j)\otimes \left\{
+\begin{array}{cc} SO(N_0) & \mathrm{for}\, s=1 \\ Sp(\frac{N_0}{2})  & \mathrm{for}\, s=-1 \end{array}\right.
+\"
+10,"\begin{equation} W_{VY}^j =
+S_j \log\left( \frac{\Lambda^{3N_j}_{\mathrm{low,j}}}{S_j^{N_j}}
+\right)\,, \"
+11,"\begin{equation}
 W_{VY}^s = \frac{S_0}{2} \log\left( \frac{\Lambda^{3(N_0-2s)}_{\mathrm{low,0}}}{S_0^{N_0-2s}} \right) \,.
 \"
-32,"\begin{equation}
+12,"\begin{equation}
 W_{eff} = \sum_{j=1}^{n+k} W^j_{VZ} + W_{VZ}^s\,,
 \"
-33,"\begin{equation}\label{Mmatrixvevs}
+13,"\begin{equation} Z_{N,s,\varepsilon} = {1\over \Vol U(N)} \times \int \d
+M \d Q \exp\left[ -N \tr V(M) + i \tr Q^\dag M Q \right]~,
+\label{eq:Z-def}
+\"
+14,"\begin{equation} \mathcal{M} = \big\{ M \in
+\operatorname{Mat}_N(\mathbb{C}) \;\big|\; M-M^\dagger=2 i \varepsilon {\bf 1} \big\}~~,
+\label{setM}
+\"
+15,"\begin{equation}
+\mathcal{Q} = \big\{ Q \in \operatorname{Mat}_N(\mathbb{C}) \;\big|\; Q^T = s Q
+\;\big\}\; ,
+\label{setQ}
+\"
+16,"\begin{equation}
+\int_{\mathcal{Q}}\!\!\!dQ \; e^{ i \; \tr Q^\dagger M Q} = \big(i
+\pi\big)^{N(N+s)/2} \; \prod_{i<j} \frac{1}{\lambda_i+\lambda_j} \;
+\Big(\prod_i \frac{1}{\lambda_i} \Big)^{\delta_{s,1}}
+\"
+17,"\begin{equation} Z_{N,\varepsilon,\delta} = C_{N,s} \; \tilde
+Z_{N,s,\varepsilon} \;,
+\"
+18,"\begin{equation} \tilde Z_{N,s,\varepsilon} = \int_{\R +i\varepsilon\ } \prod_{k=1}^N d\lambda_k
+\, e^{-N^2 S} \quad {\rm and} \quad C_{N,s} = {2^{-N^2/2+N} \over \Vol
+  (U(1)^N\times S_N)} \big(i\pi\big)^{N(N+s)/2} ~~,
+\label{eq:Zt}
+\"
+19,"\begin{equation} S = \frac{1}{N} \sum_k V(\lambda_k) +
+\frac{s}{2N^2} \sum_k \ln\lambda_k - \frac{1}{2N^2} \sum_{k \neq l}
+\ln(\lambda_k{-}\lambda_l)^2 + \frac{1}{2N^2} \sum_{k,l} \ln(\lambda_k{+}\lambda_l)
+\;.
+\label{eq:action}
+\"
+20,"\begin{equation}
+\label{Sokh}
+\frac{1}{\lambda_k+\lambda_l + i 0^+} =
+\mathcal{P}\left(\frac{1}{\lambda_k+\lambda_l}\right) - i \pi
+\delta(\lambda_k+\lambda_l)\;, \"
+21,"\begin{equation} V(x)
+\;=\; t_{-1} \ln(x) + W(x) \qquad {\rm where} \quad W(x) \;=\;
+\sum_{k=0}^d \frac{t_k}{k{+}1} \, x^{k+1} \;.
+  \label{eq:potential}
+\"
+22,"\begin{equation} U(x) = V(x) +
+\frac{s}{2N} \ln(x)
+\label{eq:U-def}
+\"
+23,"\begin{equation} \langle \mathcal{O}
+\rangle = \frac{1}{\tilde Z} \int_{\R +i\varepsilon\ } \prod_{k=1}^N d\lambda_k
+\; \mathcal{O}(\lambda_1,\dots,\lambda_N) \; e^{-N^2 S}
+\"
+24,"\begin{equation} \rho(\lambda) = \frac1N \sum_k \delta(\lambda{-}\lambda_k)
+\quad{\rm and}\quad \omega(z) = \frac1N \sum_k \frac{1}{z-\lambda_k} \;.
+\"
+25,"\begin{equation} \rho(\lambda) = \lim_{\nu\rightarrow
+  0} \frac{ \omega(\lambda{+}i\nu) - \omega(\lambda{-}i\nu) }{2 \pi i} \quad ,
+\qquad \omega(z) = \int_{\R +i\varepsilon\ } \!\!\! d\lambda \,
+\frac{\rho(\lambda)}{z{-}\lambda} ~.
+\"
+26,"\begin{equation}
+\Delta_1 \cup \cdots \cup \Delta_r = \R+i \varepsilon \;.
+\"
+27,"\begin{equation} f_\alpha = \frac1N \sum_k \chi_\alpha(\lambda_k)~~.
+\"
+28,"\begin{equation}
+f_\alpha =\int{d\lambda \rho(\lambda)\chi_\alpha(\lambda)}=
+\int_{\Delta_\alpha}{d\lambda \rho(\lambda)}=
+\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}\omega(z)}~~,
+\"
+29,"\begin{equation} {\cal Z}(t, \mu) =
+\int_{\R + i \varepsilon\ } \prod_{k=1}^N d\lambda_k \, e^{-N^2 S_\mu } \quad
+{\rm where} \quad S_\mu = S + \sum_{\alpha=1}^r \mu_\alpha f_\alpha ~.
+\"
+30,"\begin{equation} {\cal
+  F}(t,\mu) \;=\; -\frac{1}{N^2}\ln {\cal Z}(t,\mu)~~,
+\"
+31,"\begin{equation}
+\label{cfractions}
+\frac{\partial}{\partial \mu_\alpha}{\cal F}=\langle f_\alpha\rangle =
+\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}\langle \omega(z)\rangle}~~.
+\"
+32,"\begin{equation} 
+\sum_{\alpha=1}^r \langle f_\alpha \rangle = 1 \;.
+  \label{norm}
+\"
+33,"\begin{equation}
+\label{S_def}
+S_\alpha:=\frac{\partial}{\partial\mu_\alpha}{\cal F}
+\"
+34,"\begin{equation}
+\label{F_def}
+F(t, S):=\sum_{\alpha = 1}^r S_\alpha \mu_\alpha( t, S) -{\cal
+  F}(t,\mu(t, S))~~.
+\"
+35,"\begin{equation}
+\label{Snorm}
+\sum_{\alpha=1}^r{S_\alpha}=1~~,
+\"
+36,"\begin{equation}
+\label{quantum_periods}
+\mu_\alpha-\mu_r=\frac{\partial F}{\partial
+  S_\alpha}~{\rm~for~}\alpha= 1,\dots,r-1~~.
+\"
+37,"\begin{equation}
+\label{fconstraint}
+\langle f_\alpha \rangle= \oint_{\gamma_\alpha}{\frac{dz}{2\pi
+    i}\langle \omega(z)\rangle}=S_\alpha~~,
+\"
+38,"\begin{equation} N
+\frac{\partial S}{\partial\lambda_k} = U'(\lambda_k) - \frac1N \sum_{l(\neq
+  k)} \frac{2}{\lambda_k{-}\lambda_l} + \frac1N \sum_l \frac{1}{\lambda_k{+}\lambda_l}
+\;.
+  \label{eq:EOM}
+\"
+39,"\begin{equation} \frac{1}{N^2} \, \frac{1}{\tilde
+  Z} \int_{\mathbb{R}+i\varepsilon} \prod_{i=1}^N d\lambda_i \; \sum_k
+\frac{\partial}{\partial \lambda_k} \Big( \psi_k(\lambda_1,\dots,\lambda_N) \;
+e^{-N^2 S} \Big) \;= 0 \;
+\label{eq:frel-1}
+\"
+40,"\begin{equation} \frac1N \sum_k \Big\langle \Big( U'(\lambda_k) - \frac
+1N\sum_{l(\neq k)} \frac{2}{\lambda_k{-}\lambda_l} + \frac1N \sum_l
+\frac{1}{\lambda_k{+}\lambda_l} \Big) \psi_k - \frac1N \frac{\partial
+  \psi_k}{\partial \lambda_k} \Big\rangle \;=\; 0\;.
+\label{eq:Ward}
+\"
+41,"\begin{equation} 2 \sum_{k\neq l}
+\frac{1}{\lambda_k{-}\lambda_l}\, \frac{1}{z{-}\lambda_k} + \sum_k
+\frac{1}{(z{-}\lambda_k)^2} = \sum_{k,l}
+\frac{1}{z{-}\lambda_k}\,\frac{1}{z{-}\lambda_l}
+ \label{eq:2lam-ident}
+\"
+42,"\begin{equation} \Big\langle \omega(z)^2 - \frac1N\sum_k
+\frac{U'(\lambda_k)}{z{-}\lambda_k} - \frac{1}{N^2} \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \frac{1}{z{-}\lambda_k} \Big\rangle \;=\; 0\;.
+\label{eq:half-q-loop}
+\"
+43,"\begin{equation} \big\langle \omega(z)^2 +
+\omega(z)\omega(-z) + \omega(-z)^2 - U'(z) \omega(z) - U'(-z) \omega(-z) + f(z) +
+f(-z) \big\rangle = 0 \;.
+\label{eq:l2}
+\"
+44,"\begin{equation} \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \, \frac{1}{z{-}\lambda_k} + \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \, \frac{1}{-z{-}\lambda_k} = - \sum_{k,l}
+\frac{1}{z{-}\lambda_k} \, \frac{1}{-z{-}\lambda_l}
+\label{eq:other_identity}
+\"
+45,"\begin{equation} f(z) = \frac 1N \sum_k \frac{U'(z) -
+  U'(\lambda_k)}{z-\lambda_k} \;.
+  \label{eq:f-fbar}
+\"
+46,"\begin{equation} f(z) = \bar f(z) - \phi \cdot
+\frac{t_{-1}+s/(2N)}z \qquad {\rm where} \quad \phi = \frac1N \sum_k
+\lambda_k^{-1} = -\omega(0) \;.
+\label{eq:f-decomp}
+\"
+47,"\begin{equation}
+\bar f(z) = \frac1N \sum_k \frac{W'(z) - W'(\lambda_k)}{z-\lambda_k}\;.
+  \label{eq:fbar-deg}
+\"
+48,"\begin{equation} \frac1N \sum_k \frac{1}{\lambda_k^{\,2}\,(z{-}\lambda_k)} \; = \;
+\frac{\omega(z){-}\omega(0)}{z^2} \;+\; \frac1z\,\frac1N\sum_k
+\frac1{\lambda_k^{\,2}}
+\label{eq:cub-2b}
+\"
+49,"\begin{equation} g(z) =
+\frac{1}{N^2}\sum_{k,l}
+\frac{U'(z)-U'(\lambda_k)}{(\lambda_l{+}\lambda_k)(z{-}\lambda_k)} \;.
+\"
+50,"\begin{equation} \big\langle g(z) \big\rangle =
+\Big\langle - \frac{1}{N^2}\sum_{k,l}
+\frac{U'(\lambda_k)}{(\lambda_l{+}\lambda_k)(z{-}\lambda_k)} + U'(z) \Big( \omega(z)^2 +
+f(z) - U'(z) \omega(z) \Big) \Big\rangle
+\label{eq:cub-3}
+\"
+51,"\begin{equation} \langle \omega(z) \rangle = \omega_{0}(z) +{1\over
+  N} \omega_{1}+ O(1/N^2) \"
+52,"\begin{equation}
+\label{shiftomega}
+\omega_0(z)=u(z)-t(z)~~,~~\omega_0(-z)=u(-z)-t(-z)~~, \"
+53,"\begin{equation}
+\label{tdef}
+t(z)=\frac{-2V'(z)+V'(-z)}{3}~~, ~~t(-z)=\frac{-2V'(-z)+V'(z)}{3}~~.
+\"
+54,"\begin{equation}
+\label{curve}
+\prod_{i=0}^2 (u(z)-u_i(z)) \;=\; u^3-p(z)u-q(z)\;=\;0~~.
+\"
+55,"\begin{equation}
+\label{enumeration}
+\omega_0(z)=u_0(z)-t(z) \quad{\rm and}\quad \omega_0(-z)=u_1(z)-t(-z)
+\;.
+\"
+56,"\begin{equation}
+\nu(z,u)=(-z,u) \ ,
+  \label{eq:u-aut}
+\"
+57,"\begin{equation} g_{ev}(z):=\frac{1}{2}\left[g(z)+g(-z)\right] =
+\frac{1}{2}\left[\bar g(z)+\bar g(-z)\right]
+\"
+58,"\begin{equation}
+(u-t_0(z))(u-t_1(z))(u-t_2(z))=0~~,
+\label{curve0}
+\"
+59,"\begin{equation} \delta =
+\big[\tfrac{d{-}1}2\big] \;.
+\"
+60,"\begin{equation} \#(\,{\rm
+  coefficients~in~}f,\,g_{ev}\,) = \begin{cases}
+  d + \delta + 1 & ; t_{-1} = 0 \qquad \qquad \qquad a.) \\
+  d + \delta + 2 & ; t_{-1} \neq 0 \qquad \qquad \qquad b.)
+  \end{cases}
+  \label{eq:f-gev-coeff}
+\"
+61,"\begin{equation}
+W'_{odd}(z):=\frac{1}{2}[W'(z)-W'(-z)]=\sum_{k=0}^{\delta}
+{t_{2k+1}z^{2k+1}}=zv(z^2)~~, \"
+62,"\begin{equation} W'(z)=t_d(z-z_1^+)\dots (z-z_d^+)~~\rightarrow
+W'(-z)=t_d (-1)^d(z-z_1^-)\dots (z-z_d^-) \"
+63,\begin{equation} v(x)=t_{2\delta+1}(x-x_1)\dots (x-x_\delta)~~.  \
+64,"\begin{equation}
+W'_{odd}(z)=t_{2\delta+1} z(z^2-x_1)\dots (z^2-x_\delta)=
+t_{2\delta+1} z (z-{\tilde z}_1^+)(z-{\tilde z}_1^-)\dots (z-{\tilde
+  z}_\delta^+)(z-{\tilde z}_\delta^-)~~, \"
+65,"\begin{equation}
+\label{RH}
+g=\frac{1}{2}(4\delta +4d+6)-3+1=2(d+\delta)+1~~.  \"
+66,"\begin{equation} \lambda={1\over 2
+  \pi i} \, u \, dz , \"
+67,"\begin{equation}
+2t(z)+t(-z)=-W'(z)~~.  \"
+68,"\begin{equation}
+\label{rho_sym}
+\rho(\lambda)=\rho(-\lambda)~~,~~\lambda \in {\tilde I}_j~~, \"
+69,"\begin{equation}
+\label{rho_omega}
+u_0(\lambda-i0)-u_0(\lambda+i0)=2\pi i \rho(\lambda)~~,~~\lambda \in
+\R~~.  \"
+70,"\begin{equation}
+\label{polycurve}
+y^3-P(z)y-zQ(z)=(y-y_0(z))(y-y_1(z))(y-y_2(z))=0~~, \"
+71,"\begin{equation} (z,y)\rightarrow (-z,-y)~~.  \"
+72,"\begin{equation}
+\label{barcurvey}
+{\bar y}^3-z^2{\bar p}(z){\bar y} -z^3{\bar q}(z)= ({\bar y}-{\bar
+  y}_0(z))({\bar y}-{\bar y}_1(z)) ({\bar y}-{\bar y}_2(z))=0\ , \"
+73,"\begin{equation}
+\label{barcurve}
+u^3-{\bar p}(z)u -{\bar q}(z)=(u-{\bar u}_0(z))(u-{\bar u}_1(z))
+(u-{\bar u}_2(z))=0\ , ~~ \"
+74,"\begin{equation} \oint_{{\tilde
+    \gamma}_0^{-}}{\frac{dz}{2\pi i}\omega_0(z)}= \oint_{{\tilde
+    \gamma}_0^{+}}{\frac{dz}{2\pi i}\omega_0(z)}~~.  \"
+75,"\begin{equation} \oint_{{\tilde \gamma}^+_0}{\frac{dz}{2\pi
+    i}\langle \omega(z)\rangle}= \frac{1}{2}{\tilde S}_0~~.  \"
+76,"\begin{equation} {\cal
+  K}(\lambda,\lambda')=2\ln|\lambda-\lambda'|-\ln|\lambda+\lambda'|~~.
+\"
+77,"\begin{equation}
+\label{F_0}
+F_0(t,S)=\frac{1}{2}\int{d\lambda}\int{d\lambda'{\cal
+    K}(\lambda,\lambda')
+  \rho_0(\lambda)\rho_0(\lambda')}-\int{d\lambda
+  W(\lambda)\rho_0(\lambda)}~~, \"
+78,"\begin{equation} {\tilde {\cal
+    K}}(\lambda,\lambda')= {\cal K}(\lambda, \lambda')+{\cal
+  K}(-\lambda,\lambda')=
+\ln|\lambda+\lambda'|+\ln|\lambda-\lambda'|~~.  \"
+79,"\begin{equation}
+\kappa_p(\lambda)=\frac{1}{2}\left[\kappa(\lambda+i0)+\kappa(\lambda-i0)\right]
+\"
+80,"\begin{equation} \kappa_p(\lambda):=\int{d\lambda'
+  \rho_0(\lambda')K(\lambda,\lambda')}-W'(\lambda)~~, \"
+81,"\begin{equation}
+\label{phi_def}
+\phi(\lambda):=\int{d\lambda'{\cal K}(\lambda,\lambda')
+  \rho_0(\lambda')}-W(\lambda)~~.
+\"
+82,"\begin{equation}
+\label{dphi}
+\frac{d\phi}{d\lambda}=\kappa_p~~.
+\"
+83,"\begin{equation} \kappa_p(\lambda)=0~~{\rm
+  for}~~\lambda \in I=\cup_{i=1}^d{I_i}~~.  \"
+84,"\begin{equation}
+\label{constancy}
+\phi(\lambda)=\xi_i={\rm~constant~for~}\lambda\in I_i~~.  \"
+85,"\begin{equation}
+\tau_p(\lambda)=\frac{1}{2}\left[\tau(\lambda+i0)+\tau(\lambda-i0)\right]=
+\int{d\lambda' \rho_0(\lambda'){\tilde K}(\lambda,\lambda')}-
+[W'(z)-W'(z')]~~, \"
+86,"\begin{equation}
+\label{psi_def}
+\psi(\lambda):=\int{d\lambda'{\tilde {\cal K}}(\lambda,\lambda')
+  \rho_0(\lambda')}-W(\lambda)-W(\lambda')~~ \"
+87,"\begin{equation} \tau_p(\lambda)=0~~{\rm
+  for}~~\lambda\in {\tilde I}= \cup_{j=-\delta\dots \delta}{{\tilde
+    I}_j}~~.  \"
+88,"\begin{equation}
+\label{mu_xi}
+\mu^{(0)}_i-\mu_d^{(0)}=\frac{\partial}{\partial S_i}F_0(t,S)=
+\int_{I\cup {\tilde I}} {d\lambda \frac{\partial
+    \rho_0(\lambda)}{\partial S_i}\phi(\lambda)}= \xi_i-\xi_d~~,
+\"
+89,"\begin{equation}
+\label{xi_int1}
+\mu^{(0)}_{i+1}-\mu^{(0)}_i=\int_{b_i}^{a_{i+1}}{d\lambda
+  \kappa(\lambda)} \"
+90,"\begin{equation}
+\label{xi_int_more}
+{\tilde \mu}^{(0)}_{j+1}-{\tilde \mu}^{(0)}_j= \int_{{\tilde
+    b}_j}^{{\tilde a}_{j+1}}{d\lambda \tau(\lambda)}~~.  \"
+91,"\begin{equation}
+\label{xi_int}
+\mu^{(0)}_{i}-\mu^{(0)}_{i+1}= \int_{b_i}^{a_{i+1}}{dz
+  [u_2(z)-u_0(z)]} =\oint_{{\bar B}_i}{dz u(z)}~~,
+\"
+92,"\begin{equation}
+\label{xi_int_less}
+{\tilde \mu}^{(0)}_{j}-{\tilde \mu}^{(0)}_{j+1}= \int_{{\tilde
+    b}_j}^{{\tilde a}_{j+1}}{dz [u_1(z)-u_0(z)]} =\oint_{{\tilde {\bar
+      B}}_j}{dz u(z)}~~, \"
+93,"\begin{equation}
+\label{foo}
+\mu^{(0)}_i=\mu^{(0)}_d+ \oint_{{\hat B}_i}{dz
+  u(z)}~~{\rm~for~}~~i=1\dots d-1~~.
+\"
+94,"\begin{equation}
+\label{mu_Pi}
+\mu^{(0)}_i=\Pi_i {\rm~~for~~}i=1\dots d~~,
+\"
+95,"\begin{equation}
+\label{Pi}
+\Pi_i:=\int_{B_i}{dz u(z)}~~.
+\"
+96,"\begin{equation}
+\label{mu_Pi_more}
+{\tilde \mu}^{(0)}_j={\tilde \Pi}_j {\rm~~for~~}j=0\dots \delta~~, \"
+97,"\begin{equation}
+\label{Pi_more}
+{\tilde \Pi}_j:=\int_{{\tilde B}_j}{dz u(z)}~~, \"
+98,"\begin{equation} {\tilde
+  B}_j={\tilde B}_\delta (\Lambda)+ \sum_{k=j}^{\delta-1}{{\tilde
+    {\bar B}}_k}~~.  \"
+99,"\begin{equation}
+S_\alpha=\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}
+  \omega_0(z)}=\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}u_0(z)}=
+\oint_{A_\alpha}{\frac{dz}{2\pi i}u(z)}~~.
+\"
+100,"\begin{equation} 
+{\cal A}_\alpha\cap {\cal B}_\beta=- {\cal B}_\alpha\cap {\cal
+  A}_\beta=\delta_{\alpha,\beta}~~,~~ {\cal A}_\alpha\cap {\cal A}_\beta=
+  {\cal B}_\alpha\cap {\cal B}_\beta=0 ~~{\rm for~all}~~ \alpha=-q\dots q~~.
+\"
+101,"\begin{equation}
+\label{l_def}
+\frac{\partial}{\partial t_m}F(t,S) =-\frac{\partial}{\partial
+  t_m}{\cal F}(t,\mu)|_{\mu_\alpha=\mu_\alpha(t,S)} =l_m~~, \"
+102,"\begin{equation}
+\label{l_m}
+-l_m=
+\begin{cases}
+  \frac{1}{m+1}\int{d\lambda \langle \rho(\lambda)\rangle
+    \lambda^{m+1}}= \frac{1}{m+1}\oint_{\gamma} {\frac{dz}{2\pi
+      i}{z^{m+1}\langle \omega(z)\rangle }}
+  ~{\rm~~if~~} m>0\\
+  \int{d\lambda \langle \rho(\lambda)\rangle \log \lambda}=
+  \oint_{\gamma}{\frac{dz}{2\pi i}{\langle \omega(z)\rangle \ln z}}
+  ~{\rm~~if~~} m=-1
+\end{cases}~~,
+\"
+103,"\begin{equation}
+\label{l_as}
+l_m=\frac{1}{m+1}Res_{\zeta=0} \left[\frac{\langle
+    \omega(1/\zeta)\rangle }{\zeta^{m+3}}\right]~~{\rm for}~~m>0~~,
+\"
+104,"\begin{equation} F(t, S) \;
+= \; F_0(t,S) \;+\; \tfrac{1}{N} \; F_1(t,S) \;+\; O(N^{-2}) \;.  \"
+105,"\begin{equation} F_1(t,S) \;=\; \frac{s}{2} \;
+\frac{\partial F_0(t,S)}{\partial t_{-1}}+\Psi(t_{-1},S_0)~~.  \"
+106,"\begin{equation} \langle \omega(z)^2 \rangle =
+\langle \omega(z)\rangle^2 + O(1/N^2) \quad , \qquad \langle
+\omega(z)^2 \omega(-z) \rangle = \langle \omega (z)\rangle^2 \langle \omega
+(-z) \rangle + O(1/N^2)
+  \label{eq:1st-order-corr}
+  \"
+107,"\begin{equation} \langle \omega
+  (z) \rangle = \omega_0(z) + \frac{1}{N} \omega_1(z) + {\cal
+    O}(1/N^2)~~.  \"
+108,"\begin{equation} \oint_{\gamma_i}{\frac{dz}{2\pi
+      i}\,\omega_1}=0~~(i=0\dots d)~~, ~~ \oint_{{\tilde
+      \gamma}_j}{\frac{dz}{2\pi i}\,\omega_1}=0~~ (j=1\dots
+  \delta)~~,~~ \oint_{{\tilde \gamma}^+_0}{\frac{dz}{2\pi
+      i}\,\omega_1}=0~~.
+  \label{fc1}
+  \"
+109,"\begin{equation} \langle
+  \omega(z)\rangle=\omega_0(z)+\frac{1}{N}\omega_1(z)+{\cal
+    O}(1/N^2)~~, \"
+110,"\begin{equation}
+\label{rel}
+\omega_1(z)=\frac{s}{2}\frac{\partial \omega_0(z)}{\partial t_{-1}}~~.
+\"
+111,"\begin{equation} \langle
+\omega(z)\rangle=-\frac{d}{dW(z)}F~~ \"
+112,"\begin{equation}
+\label{F_10}
+F_1(t_{-1},\dots t_\infty,S_0\dots S_\infty)=
+\frac{s}{2}\frac{\partial F_0(t_{-1}\dots t_\infty, S_0\dots
+  S_\infty)}{\partial t_{-1}}+ \Psi(t_{-1},S_0\dots S_\infty)~~, \"
+113,"\begin{equation}
+\label{F_1more}
+F_1(t_{-1},t_0\dots t_d,S_0\dots S_{d+\delta+1})=
+\frac{s}{2}\frac{\partial F_0(t_{-1},t_0\dots t_{d}, S_0\dots
+  S_{d+\delta+1})}{\partial t_{-1}}+ \Psi(t_{-1},S_0)~~.  \"
+114,"\begin{equation} 
+F_1(0,t_0\dots t_d,0,S_1\dots S_{d+\delta+1})= \frac{s}{2}
+\left[\frac{\partial F_0(t_{-1},t_0\dots t_d, S_0\dots
+S_{d+\delta+1})}{\partial t_{-1}}\right]
+\Big{|}_{t_{-1}=0,S_0=0}+ \Psi(0,0)~~. 
+\"
+115,"\begin{equation}
+\label{F_1}
+F_1=\frac{s}{2}\frac{\partial F_0}{\partial t_{-1}}
+\Big{|}_{t_{-1}=0}+{\rm  constant}~~.
+\"
+116,"\begin{equation}\label{Mmatrixvevs}
   \langle M \rangle = \mathrm{diag}({\bf 0}_{N_0},
   a {\bf 1}_{N_1}, b {\bf 1}_{N_2}, -b {\bf 1}_{N_2})\,;
 \"
-34,"\begin{equation}\label{Qmatrixvevs}
+117,"\begin{equation}\label{Qmatrixvevs}
 \langle Q \rangle  = \left( \begin{array}{cccc}
  \mathrm{\bf E}_s & & & \\
  & {\bf 0} & &  \\
@@ -155,41 +494,630 @@ W_{eff} = \sum_{j=1}^{n+k} W^j_{VZ} + W_{VZ}^s\,,
  & & -W'(b) {\bf 1}_{N_2}& {\bf 0}
 \end{array} \right)
 \"
-35,"\begin{equation}\label{gaugetrafos}
+118,"\begin{equation}\label{gaugetrafos}
 \delta M = i [ \Lambda, M]\,, \qquad \delta Q = i ( \Lambda Q + Q \Lambda^T)
 \, \qquad \delta \bar Q = -i (\Lambda^T \bar Q + \bar Q \Lambda )
 \"
-36,"\begin{equation}
+119,"\begin{equation}
 S_{gf} = \mathbf{s}\, \Tr \left( \sum_{i\ne j} (\bar C_{ij} m_{ij}) + \bar
 C_{q} q_{23} + \bar C_{00} q_{00} \right)\,.
 \"
-37,"\begin{equation}
+120,"\begin{equation}
 G_s = U(N_1)\times U(N_2) \times \left\{ \begin{array}{cc} SO(N_0) & s=+1 \\
 Sp(\frac{N_0}{2}) & s=-1
 \end{array}\right.\,.
 \"
-38,"\begin{equation}\label{Mconstraints}
+121,"\begin{equation}\label{Mconstraints}
 m_{22} = - m_{33}^T \qquad \mathrm{and}\qquad m_{00}\mathrm{\bf E}_s +
 \mathrm{\bf E}_s m_{00}^T=0\,.
 \"
-39,"\begin{equation}
+122,"\begin{equation}
 Z = \frac{1}{\mathrm{vol}(G_s)} \int \prod_{i\in\{0,1,2\}}dm_{ii} \prod_{ij \ne
 {\tiny \left\{\begin{array}{c}(23)\\(00)\end{array}\right.}} dq_{ij}
 \;d C \;d\bar C \;e^{(S^{(2)}+S_{gf})}
 \"
-40,"\begin{equation}
+123,"\begin{equation}
 Z = \frac{1}{\mathrm{vol}(G_s)} Z_{M}\, Z_{ghosts}\, Z_{matter}\,,
 \"
-41,"\begin{equation}F= N^2 \left(F^0 + \frac{1}{N} F^1 + O(1/N^2) \right)\,.\"
-42,"\begin{equation}
+124,"\begin{equation}F= N^2 \left(F^0 + \frac{1}{N} F^1 + O(1/N^2) \right)\,.\"
+125,"\begin{equation}
 F=F_{M} + F_{ghosts} + F_{matter}
 \"
-43,"\begin{equation}\label{Weff}
+126,"\begin{equation}\label{Weff}
 W_{eff} = \sum_{i\in\{1,2,0\}} N_i \frac{\partial F^0}{\partial S_i} + 4 F^1 + \alpha_i S_i\,,
 \"
-44,"\begin{equation}
+127,"\begin{equation}
 \alpha = (N-2s) \log\Big(\frac{\Lambda_{\mathrm{high}}}{\mu}\Big)\,.
 \"
-45,"\begin{equation}
+128,"\begin{equation}
   \sum_{i=1}^n \tr Q_i^\dag M Q_i,
 \"
+129,"\begin{equation} S_{\mathrm{ADE}}=\sum_{i=1}^r \tr
+W_{(i)}(M^{(i)}) + \sum_{i,j=1}^r s_{ij}\tr Q_{(ij)} M^{(j)} Q_{(ji)}\ 
+.
+\label{quiveraction}\"
+130,"\begin{equation} N^2 S_{\mathrm{ADE}}=N\sum_{i=1}^r
+\sum_{k=1}^{N^{(i)}} W_{(i)} (\lambda_k^{(i)})- \sum_{i=1}^r
+\sum_{k\neq l}\ln(\lambda_k^{(i)}-\lambda_l^{(i)})+\sum_{i<j}^r
+\sum_{k,l}\ln(\lambda_k^{(i)}- \lambda_l^{(j)})^{|s_{ij}|}\ .
+\label{intquiveraction}\"
+131,"\begin{equation} 
+N{\partial
+  S_{\mathrm{ADE}} \over \partial \lambda^{(1)}_k}=W_{(1)}'(\lambda^{(1)}_k) 
+-{1\over
+  N} \sum_{l(\neq k)}^{N_1} {2 \over \lambda^{(1)}_k -
+  \lambda^{(1)}_l} +{1\over N} \sum_{l}^{N_2} {1 \over \lambda^{(1)}_k
+  - \lambda^{(2)}_l}, 
+\"
+132,"\begin{equation}
+\langle \omega_1(z)^2 - \omega_1(z)\omega_2(z) + \omega_2(z)^2 -
+W'_1(z)\omega_1(z) - W'_2(z) \omega_2(z)+f_1(z) + f_2 (z)\rangle=0 \ .
+\label{quadraticloopA2}
+\"
+133,"\begin{equation} f_i(z)={1\over N} \sum_{k=1}^{N_i} {W'_i(z) -
+  W'_i (\lambda^{(i)}_k) \over z- \lambda^{(i)}_k}, \quad i=1,2\ .
+\"
+134,"\begin{equation} g_i(z)={1\over N^2} \sum_{k=1}^{N_1} \sum_{m=1}^{N_2}
+{W'_i(z)-W'_i(\lambda^{(i)}_k)\over (\lambda^{(i)}_k-\lambda^{(j\neq
+    i)}_m)(z-\lambda_k^{(i)})}\ , \"
+135,"\begin{equation} \mathcal{W} = \tr ( W(\phi) + \bar{Q} \phi Q )\, ,
+\label{treelevelsupo}
+\"
+136,"\begin{equation}\label{eomi}
+[W'(\phi)-W'(-\phi)]W'(\phi)=0
+\"
+137,"\begin{equation}
+(a_i + a_j)Q_{ij}=0
+\"
+138,"\begin{equation}
+Q = \left(\begin{array}{cc} 0&q\\
+s  q^T &0 \end{array}\right)\qquad
+\bar Q = \left(\begin{array}{cc} 0&\bar q \\
+s  \bar{q}^T &0 \end{array}\right)\,.
+\"
+139,"\begin{equation}
+Q\rightarrow \left(\begin{array}{cc} 0&U_1 q U_2^T\\ s  U_2q^T U_1^T &0
+\end{array} \right)\qquad
+\"
+140,"\begin{equation}
+Q=\left(\begin{array}{cc} 0&{\bf 1}\\
+s  {\bf 1} &0 \end{array}\right)\,.
+\"
+141,"\begin{equation}
+\bar Q =-
+W'(b)\left(\begin{array}{cc} 0&s{\bf 1}\\
+{\bf 1} &0 \end{array}\right)\,.
+\"
+142,"\begin{equation}
+Q \rightarrow U Q U^T\,.
+\"
+143,"\begin{equation}
+Q = \left( \begin{array}{ccc} \varepsilon & 0&\ldots \\
+0& \varepsilon&\ldots\\
+\vdots & \vdots & \ddots
+\end{array}\right)\qquad \varepsilon = \left(\begin{array}{cc} 0&1\\-1&0
+\end{array}\right)\,.
+\"
+144,"\begin{equation} \prod_{i=1}^n U(N_i) \otimes \prod_{j=1}^k U(\tilde
+N_j)\otimes \left\{
+\begin{array}{cc} SO(N_0) & \mathrm{for}\, s=1 \\ Sp(\frac{N_0}{2})  & \mathrm{for}\, s=-1 \end{array}\right.
+\"
+145,"\begin{equation} W_{VY}^j =
+S_j \log\left( \frac{\Lambda^{3N_j}_{\mathrm{low,j}}}{S_j^{N_j}}
+\right)\,, \"
+146,"\begin{equation}
+W_{VY}^s = \frac{S_0}{2} \log\left( \frac{\Lambda^{3(N_0-2s)}_{\mathrm{low,0}}}{S_0^{N_0-2s}} \right) \,.
+\"
+147,"\begin{equation}
+W_{eff} = \sum_{j=1}^{n+k} W^j_{VZ} + W_{VZ}^s\,,
+\"
+148,"\begin{equation} Z_{N,s,\varepsilon} = {1\over \Vol U(N)} \times \int \d
+M \d Q \exp\left[ -N \tr V(M) + i \tr Q^\dag M Q \right]~,
+\label{eq:Z-def}
+\"
+149,"\begin{equation} \mathcal{M} = \big\{ M \in
+\operatorname{Mat}_N(\mathbb{C}) \;\big|\; M-M^\dagger=2 i \varepsilon {\bf 1} \big\}~~,
+\label{setM}
+\"
+150,"\begin{equation}
+\mathcal{Q} = \big\{ Q \in \operatorname{Mat}_N(\mathbb{C}) \;\big|\; Q^T = s Q
+\;\big\}\; ,
+\label{setQ}
+\"
+151,"\begin{equation}
+\int_{\mathcal{Q}}\!\!\!dQ \; e^{ i \; \tr Q^\dagger M Q} = \big(i
+\pi\big)^{N(N+s)/2} \; \prod_{i<j} \frac{1}{\lambda_i+\lambda_j} \;
+\Big(\prod_i \frac{1}{\lambda_i} \Big)^{\delta_{s,1}}
+\"
+152,"\begin{equation} Z_{N,\varepsilon,\delta} = C_{N,s} \; \tilde
+Z_{N,s,\varepsilon} \;,
+\"
+153,"\begin{equation} \tilde Z_{N,s,\varepsilon} = \int_{\R +i\varepsilon\ } \prod_{k=1}^N d\lambda_k
+\, e^{-N^2 S} \quad {\rm and} \quad C_{N,s} = {2^{-N^2/2+N} \over \Vol
+  (U(1)^N\times S_N)} \big(i\pi\big)^{N(N+s)/2} ~~,
+\label{eq:Zt}
+\"
+154,"\begin{equation} S = \frac{1}{N} \sum_k V(\lambda_k) +
+\frac{s}{2N^2} \sum_k \ln\lambda_k - \frac{1}{2N^2} \sum_{k \neq l}
+\ln(\lambda_k{-}\lambda_l)^2 + \frac{1}{2N^2} \sum_{k,l} \ln(\lambda_k{+}\lambda_l)
+\;.
+\label{eq:action}
+\"
+155,"\begin{equation}
+\label{Sokh}
+\frac{1}{\lambda_k+\lambda_l + i 0^+} =
+\mathcal{P}\left(\frac{1}{\lambda_k+\lambda_l}\right) - i \pi
+\delta(\lambda_k+\lambda_l)\;, \"
+156,"\begin{equation} V(x)
+\;=\; t_{-1} \ln(x) + W(x) \qquad {\rm where} \quad W(x) \;=\;
+\sum_{k=0}^d \frac{t_k}{k{+}1} \, x^{k+1} \;.
+  \label{eq:potential}
+\"
+157,"\begin{equation} U(x) = V(x) +
+\frac{s}{2N} \ln(x)
+\label{eq:U-def}
+\"
+158,"\begin{equation} \langle \mathcal{O}
+\rangle = \frac{1}{\tilde Z} \int_{\R +i\varepsilon\ } \prod_{k=1}^N d\lambda_k
+\; \mathcal{O}(\lambda_1,\dots,\lambda_N) \; e^{-N^2 S}
+\"
+159,"\begin{equation} \rho(\lambda) = \frac1N \sum_k \delta(\lambda{-}\lambda_k)
+\quad{\rm and}\quad \omega(z) = \frac1N \sum_k \frac{1}{z-\lambda_k} \;.
+\"
+160,"\begin{equation} \rho(\lambda) = \lim_{\nu\rightarrow
+  0} \frac{ \omega(\lambda{+}i\nu) - \omega(\lambda{-}i\nu) }{2 \pi i} \quad ,
+\qquad \omega(z) = \int_{\R +i\varepsilon\ } \!\!\! d\lambda \,
+\frac{\rho(\lambda)}{z{-}\lambda} ~.
+\"
+161,"\begin{equation}
+\Delta_1 \cup \cdots \cup \Delta_r = \R+i \varepsilon \;.
+\"
+162,"\begin{equation} f_\alpha = \frac1N \sum_k \chi_\alpha(\lambda_k)~~.
+\"
+163,"\begin{equation}
+f_\alpha =\int{d\lambda \rho(\lambda)\chi_\alpha(\lambda)}=
+\int_{\Delta_\alpha}{d\lambda \rho(\lambda)}=
+\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}\omega(z)}~~,
+\"
+164,"\begin{equation} {\cal Z}(t, \mu) =
+\int_{\R + i \varepsilon\ } \prod_{k=1}^N d\lambda_k \, e^{-N^2 S_\mu } \quad
+{\rm where} \quad S_\mu = S + \sum_{\alpha=1}^r \mu_\alpha f_\alpha ~.
+\"
+165,"\begin{equation} {\cal
+  F}(t,\mu) \;=\; -\frac{1}{N^2}\ln {\cal Z}(t,\mu)~~,
+\"
+166,"\begin{equation}
+\label{cfractions}
+\frac{\partial}{\partial \mu_\alpha}{\cal F}=\langle f_\alpha\rangle =
+\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}\langle \omega(z)\rangle}~~.
+\"
+167,"\begin{equation} 
+\sum_{\alpha=1}^r \langle f_\alpha \rangle = 1 \;.
+  \label{norm}
+\"
+168,"\begin{equation}
+\label{S_def}
+S_\alpha:=\frac{\partial}{\partial\mu_\alpha}{\cal F}
+\"
+169,"\begin{equation}
+\label{F_def}
+F(t, S):=\sum_{\alpha = 1}^r S_\alpha \mu_\alpha( t, S) -{\cal
+  F}(t,\mu(t, S))~~.
+\"
+170,"\begin{equation}
+\label{Snorm}
+\sum_{\alpha=1}^r{S_\alpha}=1~~,
+\"
+171,"\begin{equation}
+\label{quantum_periods}
+\mu_\alpha-\mu_r=\frac{\partial F}{\partial
+  S_\alpha}~{\rm~for~}\alpha= 1,\dots,r-1~~.
+\"
+172,"\begin{equation}
+\label{fconstraint}
+\langle f_\alpha \rangle= \oint_{\gamma_\alpha}{\frac{dz}{2\pi
+    i}\langle \omega(z)\rangle}=S_\alpha~~,
+\"
+173,"\begin{equation} N
+\frac{\partial S}{\partial\lambda_k} = U'(\lambda_k) - \frac1N \sum_{l(\neq
+  k)} \frac{2}{\lambda_k{-}\lambda_l} + \frac1N \sum_l \frac{1}{\lambda_k{+}\lambda_l}
+\;.
+  \label{eq:EOM}
+\"
+174,"\begin{equation} \frac{1}{N^2} \, \frac{1}{\tilde
+  Z} \int_{\mathbb{R}+i\varepsilon} \prod_{i=1}^N d\lambda_i \; \sum_k
+\frac{\partial}{\partial \lambda_k} \Big( \psi_k(\lambda_1,\dots,\lambda_N) \;
+e^{-N^2 S} \Big) \;= 0 \;
+\label{eq:frel-1}
+\"
+175,"\begin{equation} \frac1N \sum_k \Big\langle \Big( U'(\lambda_k) - \frac
+1N\sum_{l(\neq k)} \frac{2}{\lambda_k{-}\lambda_l} + \frac1N \sum_l
+\frac{1}{\lambda_k{+}\lambda_l} \Big) \psi_k - \frac1N \frac{\partial
+  \psi_k}{\partial \lambda_k} \Big\rangle \;=\; 0\;.
+\label{eq:Ward}
+\"
+176,"\begin{equation} 2 \sum_{k\neq l}
+\frac{1}{\lambda_k{-}\lambda_l}\, \frac{1}{z{-}\lambda_k} + \sum_k
+\frac{1}{(z{-}\lambda_k)^2} = \sum_{k,l}
+\frac{1}{z{-}\lambda_k}\,\frac{1}{z{-}\lambda_l}
+ \label{eq:2lam-ident}
+\"
+177,"\begin{equation} \Big\langle \omega(z)^2 - \frac1N\sum_k
+\frac{U'(\lambda_k)}{z{-}\lambda_k} - \frac{1}{N^2} \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \frac{1}{z{-}\lambda_k} \Big\rangle \;=\; 0\;.
+\label{eq:half-q-loop}
+\"
+178,"\begin{equation} \big\langle \omega(z)^2 +
+\omega(z)\omega(-z) + \omega(-z)^2 - U'(z) \omega(z) - U'(-z) \omega(-z) + f(z) +
+f(-z) \big\rangle = 0 \;.
+\label{eq:l2}
+\"
+179,"\begin{equation} \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \, \frac{1}{z{-}\lambda_k} + \sum_{k,l}
+\frac{1}{\lambda_k{+}\lambda_l} \, \frac{1}{-z{-}\lambda_k} = - \sum_{k,l}
+\frac{1}{z{-}\lambda_k} \, \frac{1}{-z{-}\lambda_l}
+\label{eq:other_identity}
+\"
+180,"\begin{equation} f(z) = \frac 1N \sum_k \frac{U'(z) -
+  U'(\lambda_k)}{z-\lambda_k} \;.
+  \label{eq:f-fbar}
+\"
+181,"\begin{equation} f(z) = \bar f(z) - \phi \cdot
+\frac{t_{-1}+s/(2N)}z \qquad {\rm where} \quad \phi = \frac1N \sum_k
+\lambda_k^{-1} = -\omega(0) \;.
+\label{eq:f-decomp}
+\"
+182,"\begin{equation}
+\bar f(z) = \frac1N \sum_k \frac{W'(z) - W'(\lambda_k)}{z-\lambda_k}\;.
+  \label{eq:fbar-deg}
+\"
+183,"\begin{equation} \frac1N \sum_k \frac{1}{\lambda_k^{\,2}\,(z{-}\lambda_k)} \; = \;
+\frac{\omega(z){-}\omega(0)}{z^2} \;+\; \frac1z\,\frac1N\sum_k
+\frac1{\lambda_k^{\,2}}
+\label{eq:cub-2b}
+\"
+184,"\begin{equation} g(z) =
+\frac{1}{N^2}\sum_{k,l}
+\frac{U'(z)-U'(\lambda_k)}{(\lambda_l{+}\lambda_k)(z{-}\lambda_k)} \;.
+\"
+185,"\begin{equation} \big\langle g(z) \big\rangle =
+\Big\langle - \frac{1}{N^2}\sum_{k,l}
+\frac{U'(\lambda_k)}{(\lambda_l{+}\lambda_k)(z{-}\lambda_k)} + U'(z) \Big( \omega(z)^2 +
+f(z) - U'(z) \omega(z) \Big) \Big\rangle
+\label{eq:cub-3}
+\"
+186,"\begin{equation} \langle \omega(z) \rangle = \omega_{0}(z) +{1\over
+  N} \omega_{1}+ O(1/N^2) \"
+187,"\begin{equation}
+\label{shiftomega}
+\omega_0(z)=u(z)-t(z)~~,~~\omega_0(-z)=u(-z)-t(-z)~~, \"
+188,"\begin{equation}
+\label{tdef}
+t(z)=\frac{-2V'(z)+V'(-z)}{3}~~, ~~t(-z)=\frac{-2V'(-z)+V'(z)}{3}~~.
+\"
+189,"\begin{equation}
+\label{curve}
+\prod_{i=0}^2 (u(z)-u_i(z)) \;=\; u^3-p(z)u-q(z)\;=\;0~~.
+\"
+190,"\begin{equation}
+\label{enumeration}
+\omega_0(z)=u_0(z)-t(z) \quad{\rm and}\quad \omega_0(-z)=u_1(z)-t(-z)
+\;.
+\"
+191,"\begin{equation}
+\nu(z,u)=(-z,u) \ ,
+  \label{eq:u-aut}
+\"
+192,"\begin{equation} g_{ev}(z):=\frac{1}{2}\left[g(z)+g(-z)\right] =
+\frac{1}{2}\left[\bar g(z)+\bar g(-z)\right]
+\"
+193,"\begin{equation}
+(u-t_0(z))(u-t_1(z))(u-t_2(z))=0~~,
+\label{curve0}
+\"
+194,"\begin{equation} \delta =
+\big[\tfrac{d{-}1}2\big] \;.
+\"
+195,"\begin{equation} \#(\,{\rm
+  coefficients~in~}f,\,g_{ev}\,) = \begin{cases}
+  d + \delta + 1 & ; t_{-1} = 0 \qquad \qquad \qquad a.) \\
+  d + \delta + 2 & ; t_{-1} \neq 0 \qquad \qquad \qquad b.)
+  \end{cases}
+  \label{eq:f-gev-coeff}
+\"
+196,"\begin{equation}
+W'_{odd}(z):=\frac{1}{2}[W'(z)-W'(-z)]=\sum_{k=0}^{\delta}
+{t_{2k+1}z^{2k+1}}=zv(z^2)~~, \"
+197,"\begin{equation} W'(z)=t_d(z-z_1^+)\dots (z-z_d^+)~~\rightarrow
+W'(-z)=t_d (-1)^d(z-z_1^-)\dots (z-z_d^-) \"
+198,\begin{equation} v(x)=t_{2\delta+1}(x-x_1)\dots (x-x_\delta)~~.  \
+199,"\begin{equation}
+W'_{odd}(z)=t_{2\delta+1} z(z^2-x_1)\dots (z^2-x_\delta)=
+t_{2\delta+1} z (z-{\tilde z}_1^+)(z-{\tilde z}_1^-)\dots (z-{\tilde
+  z}_\delta^+)(z-{\tilde z}_\delta^-)~~, \"
+200,"\begin{equation}
+\label{RH}
+g=\frac{1}{2}(4\delta +4d+6)-3+1=2(d+\delta)+1~~.  \"
+201,"\begin{equation} \lambda={1\over 2
+  \pi i} \, u \, dz , \"
+202,"\begin{equation}
+2t(z)+t(-z)=-W'(z)~~.  \"
+203,"\begin{equation}
+\label{rho_sym}
+\rho(\lambda)=\rho(-\lambda)~~,~~\lambda \in {\tilde I}_j~~, \"
+204,"\begin{equation}
+\label{rho_omega}
+u_0(\lambda-i0)-u_0(\lambda+i0)=2\pi i \rho(\lambda)~~,~~\lambda \in
+\R~~.  \"
+205,"\begin{equation}
+\label{polycurve}
+y^3-P(z)y-zQ(z)=(y-y_0(z))(y-y_1(z))(y-y_2(z))=0~~, \"
+206,"\begin{equation} (z,y)\rightarrow (-z,-y)~~.  \"
+207,"\begin{equation}
+\label{barcurvey}
+{\bar y}^3-z^2{\bar p}(z){\bar y} -z^3{\bar q}(z)= ({\bar y}-{\bar
+  y}_0(z))({\bar y}-{\bar y}_1(z)) ({\bar y}-{\bar y}_2(z))=0\ , \"
+208,"\begin{equation}
+\label{barcurve}
+u^3-{\bar p}(z)u -{\bar q}(z)=(u-{\bar u}_0(z))(u-{\bar u}_1(z))
+(u-{\bar u}_2(z))=0\ , ~~ \"
+209,"\begin{equation} \oint_{{\tilde
+    \gamma}_0^{-}}{\frac{dz}{2\pi i}\omega_0(z)}= \oint_{{\tilde
+    \gamma}_0^{+}}{\frac{dz}{2\pi i}\omega_0(z)}~~.  \"
+210,"\begin{equation} \oint_{{\tilde \gamma}^+_0}{\frac{dz}{2\pi
+    i}\langle \omega(z)\rangle}= \frac{1}{2}{\tilde S}_0~~.  \"
+211,"\begin{equation} {\cal
+  K}(\lambda,\lambda')=2\ln|\lambda-\lambda'|-\ln|\lambda+\lambda'|~~.
+\"
+212,"\begin{equation}
+\label{F_0}
+F_0(t,S)=\frac{1}{2}\int{d\lambda}\int{d\lambda'{\cal
+    K}(\lambda,\lambda')
+  \rho_0(\lambda)\rho_0(\lambda')}-\int{d\lambda
+  W(\lambda)\rho_0(\lambda)}~~, \"
+213,"\begin{equation} {\tilde {\cal
+    K}}(\lambda,\lambda')= {\cal K}(\lambda, \lambda')+{\cal
+  K}(-\lambda,\lambda')=
+\ln|\lambda+\lambda'|+\ln|\lambda-\lambda'|~~.  \"
+214,"\begin{equation}
+\kappa_p(\lambda)=\frac{1}{2}\left[\kappa(\lambda+i0)+\kappa(\lambda-i0)\right]
+\"
+215,"\begin{equation} \kappa_p(\lambda):=\int{d\lambda'
+  \rho_0(\lambda')K(\lambda,\lambda')}-W'(\lambda)~~, \"
+216,"\begin{equation}
+\label{phi_def}
+\phi(\lambda):=\int{d\lambda'{\cal K}(\lambda,\lambda')
+  \rho_0(\lambda')}-W(\lambda)~~.
+\"
+217,"\begin{equation}
+\label{dphi}
+\frac{d\phi}{d\lambda}=\kappa_p~~.
+\"
+218,"\begin{equation} \kappa_p(\lambda)=0~~{\rm
+  for}~~\lambda \in I=\cup_{i=1}^d{I_i}~~.  \"
+219,"\begin{equation}
+\label{constancy}
+\phi(\lambda)=\xi_i={\rm~constant~for~}\lambda\in I_i~~.  \"
+220,"\begin{equation}
+\tau_p(\lambda)=\frac{1}{2}\left[\tau(\lambda+i0)+\tau(\lambda-i0)\right]=
+\int{d\lambda' \rho_0(\lambda'){\tilde K}(\lambda,\lambda')}-
+[W'(z)-W'(z')]~~, \"
+221,"\begin{equation}
+\label{psi_def}
+\psi(\lambda):=\int{d\lambda'{\tilde {\cal K}}(\lambda,\lambda')
+  \rho_0(\lambda')}-W(\lambda)-W(\lambda')~~ \"
+222,"\begin{equation} \tau_p(\lambda)=0~~{\rm
+  for}~~\lambda\in {\tilde I}= \cup_{j=-\delta\dots \delta}{{\tilde
+    I}_j}~~.  \"
+223,"\begin{equation}
+\label{mu_xi}
+\mu^{(0)}_i-\mu_d^{(0)}=\frac{\partial}{\partial S_i}F_0(t,S)=
+\int_{I\cup {\tilde I}} {d\lambda \frac{\partial
+    \rho_0(\lambda)}{\partial S_i}\phi(\lambda)}= \xi_i-\xi_d~~,
+\"
+224,"\begin{equation}
+\label{xi_int1}
+\mu^{(0)}_{i+1}-\mu^{(0)}_i=\int_{b_i}^{a_{i+1}}{d\lambda
+  \kappa(\lambda)} \"
+225,"\begin{equation}
+\label{xi_int_more}
+{\tilde \mu}^{(0)}_{j+1}-{\tilde \mu}^{(0)}_j= \int_{{\tilde
+    b}_j}^{{\tilde a}_{j+1}}{d\lambda \tau(\lambda)}~~.  \"
+226,"\begin{equation}
+\label{xi_int}
+\mu^{(0)}_{i}-\mu^{(0)}_{i+1}= \int_{b_i}^{a_{i+1}}{dz
+  [u_2(z)-u_0(z)]} =\oint_{{\bar B}_i}{dz u(z)}~~,
+\"
+227,"\begin{equation}
+\label{xi_int_less}
+{\tilde \mu}^{(0)}_{j}-{\tilde \mu}^{(0)}_{j+1}= \int_{{\tilde
+    b}_j}^{{\tilde a}_{j+1}}{dz [u_1(z)-u_0(z)]} =\oint_{{\tilde {\bar
+      B}}_j}{dz u(z)}~~, \"
+228,"\begin{equation}
+\label{foo}
+\mu^{(0)}_i=\mu^{(0)}_d+ \oint_{{\hat B}_i}{dz
+  u(z)}~~{\rm~for~}~~i=1\dots d-1~~.
+\"
+229,"\begin{equation}
+\label{mu_Pi}
+\mu^{(0)}_i=\Pi_i {\rm~~for~~}i=1\dots d~~,
+\"
+230,"\begin{equation}
+\label{Pi}
+\Pi_i:=\int_{B_i}{dz u(z)}~~.
+\"
+231,"\begin{equation}
+\label{mu_Pi_more}
+{\tilde \mu}^{(0)}_j={\tilde \Pi}_j {\rm~~for~~}j=0\dots \delta~~, \"
+232,"\begin{equation}
+\label{Pi_more}
+{\tilde \Pi}_j:=\int_{{\tilde B}_j}{dz u(z)}~~, \"
+233,"\begin{equation} {\tilde
+  B}_j={\tilde B}_\delta (\Lambda)+ \sum_{k=j}^{\delta-1}{{\tilde
+    {\bar B}}_k}~~.  \"
+234,"\begin{equation}
+S_\alpha=\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}
+  \omega_0(z)}=\oint_{\gamma_\alpha}{\frac{dz}{2\pi i}u_0(z)}=
+\oint_{A_\alpha}{\frac{dz}{2\pi i}u(z)}~~.
+\"
+235,"\begin{equation} 
+{\cal A}_\alpha\cap {\cal B}_\beta=- {\cal B}_\alpha\cap {\cal
+  A}_\beta=\delta_{\alpha,\beta}~~,~~ {\cal A}_\alpha\cap {\cal A}_\beta=
+  {\cal B}_\alpha\cap {\cal B}_\beta=0 ~~{\rm for~all}~~ \alpha=-q\dots q~~.
+\"
+236,"\begin{equation}
+\label{l_def}
+\frac{\partial}{\partial t_m}F(t,S) =-\frac{\partial}{\partial
+  t_m}{\cal F}(t,\mu)|_{\mu_\alpha=\mu_\alpha(t,S)} =l_m~~, \"
+237,"\begin{equation}
+\label{l_m}
+-l_m=
+\begin{cases}
+  \frac{1}{m+1}\int{d\lambda \langle \rho(\lambda)\rangle
+    \lambda^{m+1}}= \frac{1}{m+1}\oint_{\gamma} {\frac{dz}{2\pi
+      i}{z^{m+1}\langle \omega(z)\rangle }}
+  ~{\rm~~if~~} m>0\\
+  \int{d\lambda \langle \rho(\lambda)\rangle \log \lambda}=
+  \oint_{\gamma}{\frac{dz}{2\pi i}{\langle \omega(z)\rangle \ln z}}
+  ~{\rm~~if~~} m=-1
+\end{cases}~~,
+\"
+238,"\begin{equation}
+\label{l_as}
+l_m=\frac{1}{m+1}Res_{\zeta=0} \left[\frac{\langle
+    \omega(1/\zeta)\rangle }{\zeta^{m+3}}\right]~~{\rm for}~~m>0~~,
+\"
+239,"\begin{equation} F(t, S) \;
+= \; F_0(t,S) \;+\; \tfrac{1}{N} \; F_1(t,S) \;+\; O(N^{-2}) \;.  \"
+240,"\begin{equation} F_1(t,S) \;=\; \frac{s}{2} \;
+\frac{\partial F_0(t,S)}{\partial t_{-1}}+\Psi(t_{-1},S_0)~~.  \"
+241,"\begin{equation} \langle \omega(z)^2 \rangle =
+\langle \omega(z)\rangle^2 + O(1/N^2) \quad , \qquad \langle
+\omega(z)^2 \omega(-z) \rangle = \langle \omega (z)\rangle^2 \langle \omega
+(-z) \rangle + O(1/N^2)
+  \label{eq:1st-order-corr}
+  \"
+242,"\begin{equation} \langle \omega
+  (z) \rangle = \omega_0(z) + \frac{1}{N} \omega_1(z) + {\cal
+    O}(1/N^2)~~.  \"
+243,"\begin{equation} \oint_{\gamma_i}{\frac{dz}{2\pi
+      i}\,\omega_1}=0~~(i=0\dots d)~~, ~~ \oint_{{\tilde
+      \gamma}_j}{\frac{dz}{2\pi i}\,\omega_1}=0~~ (j=1\dots
+  \delta)~~,~~ \oint_{{\tilde \gamma}^+_0}{\frac{dz}{2\pi
+      i}\,\omega_1}=0~~.
+  \label{fc1}
+  \"
+244,"\begin{equation} \langle
+  \omega(z)\rangle=\omega_0(z)+\frac{1}{N}\omega_1(z)+{\cal
+    O}(1/N^2)~~, \"
+245,"\begin{equation}
+\label{rel}
+\omega_1(z)=\frac{s}{2}\frac{\partial \omega_0(z)}{\partial t_{-1}}~~.
+\"
+246,"\begin{equation} \langle
+\omega(z)\rangle=-\frac{d}{dW(z)}F~~ \"
+247,"\begin{equation}
+\label{F_10}
+F_1(t_{-1},\dots t_\infty,S_0\dots S_\infty)=
+\frac{s}{2}\frac{\partial F_0(t_{-1}\dots t_\infty, S_0\dots
+  S_\infty)}{\partial t_{-1}}+ \Psi(t_{-1},S_0\dots S_\infty)~~, \"
+248,"\begin{equation}
+\label{F_1more}
+F_1(t_{-1},t_0\dots t_d,S_0\dots S_{d+\delta+1})=
+\frac{s}{2}\frac{\partial F_0(t_{-1},t_0\dots t_{d}, S_0\dots
+  S_{d+\delta+1})}{\partial t_{-1}}+ \Psi(t_{-1},S_0)~~.  \"
+249,"\begin{equation} 
+F_1(0,t_0\dots t_d,0,S_1\dots S_{d+\delta+1})= \frac{s}{2}
+\left[\frac{\partial F_0(t_{-1},t_0\dots t_d, S_0\dots
+S_{d+\delta+1})}{\partial t_{-1}}\right]
+\Big{|}_{t_{-1}=0,S_0=0}+ \Psi(0,0)~~. 
+\"
+250,"\begin{equation}
+\label{F_1}
+F_1=\frac{s}{2}\frac{\partial F_0}{\partial t_{-1}}
+\Big{|}_{t_{-1}=0}+{\rm  constant}~~.
+\"
+251,"\begin{equation}\label{Mmatrixvevs}
+  \langle M \rangle = \mathrm{diag}({\bf 0}_{N_0},
+  a {\bf 1}_{N_1}, b {\bf 1}_{N_2}, -b {\bf 1}_{N_2})\,;
+\"
+252,"\begin{equation}\label{Qmatrixvevs}
+\langle Q \rangle  = \left( \begin{array}{cccc}
+ \mathrm{\bf E}_s & & & \\
+ & {\bf 0} & &  \\
+ & & {\bf 0}& {\bf 1}_{N_2}   \\
+ & & s {\bf 1}_{N_2}& {\bf 0}
+\end{array} \right) ; \qquad
+\langle \bar Q \rangle = \left( \begin{array}{cccc}
+ -s W'(0)\mathrm{\bf E}_s & & & \\
+ & {\bf 0} & &  \\
+ & & {\bf 0}& -s W'(b){\bf 1}_{N_2}   \\
+ & & -W'(b) {\bf 1}_{N_2}& {\bf 0}
+\end{array} \right)
+\"
+253,"\begin{equation}\label{gaugetrafos}
+\delta M = i [ \Lambda, M]\,, \qquad \delta Q = i ( \Lambda Q + Q \Lambda^T)
+\, \qquad \delta \bar Q = -i (\Lambda^T \bar Q + \bar Q \Lambda )
+\"
+254,"\begin{equation}
+S_{gf} = \mathbf{s}\, \Tr \left( \sum_{i\ne j} (\bar C_{ij} m_{ij}) + \bar
+C_{q} q_{23} + \bar C_{00} q_{00} \right)\,.
+\"
+255,"\begin{equation}
+G_s = U(N_1)\times U(N_2) \times \left\{ \begin{array}{cc} SO(N_0) & s=+1 \\
+Sp(\frac{N_0}{2}) & s=-1
+\end{array}\right.\,.
+\"
+256,"\begin{equation}\label{Mconstraints}
+m_{22} = - m_{33}^T \qquad \mathrm{and}\qquad m_{00}\mathrm{\bf E}_s +
+\mathrm{\bf E}_s m_{00}^T=0\,.
+\"
+257,"\begin{equation}
+Z = \frac{1}{\mathrm{vol}(G_s)} \int \prod_{i\in\{0,1,2\}}dm_{ii} \prod_{ij \ne
+{\tiny \left\{\begin{array}{c}(23)\\(00)\end{array}\right.}} dq_{ij}
+\;d C \;d\bar C \;e^{(S^{(2)}+S_{gf})}
+\"
+258,"\begin{equation}
+Z = \frac{1}{\mathrm{vol}(G_s)} Z_{M}\, Z_{ghosts}\, Z_{matter}\,,
+\"
+259,"\begin{equation}F= N^2 \left(F^0 + \frac{1}{N} F^1 + O(1/N^2) \right)\,.\"
+260,"\begin{equation}
+F=F_{M} + F_{ghosts} + F_{matter}
+\"
+261,"\begin{equation}\label{Weff}
+W_{eff} = \sum_{i\in\{1,2,0\}} N_i \frac{\partial F^0}{\partial S_i} + 4 F^1 + \alpha_i S_i\,,
+\"
+262,"\begin{equation}
+\alpha = (N-2s) \log\Big(\frac{\Lambda_{\mathrm{high}}}{\mu}\Big)\,.
+\"
+263,"\begin{equation}
+  \sum_{i=1}^n \tr Q_i^\dag M Q_i,
+\"
+264,"\begin{equation} S_{\mathrm{ADE}}=\sum_{i=1}^r \tr
+W_{(i)}(M^{(i)}) + \sum_{i,j=1}^r s_{ij}\tr Q_{(ij)} M^{(j)} Q_{(ji)}\ 
+.
+\label{quiveraction}\"
+265,"\begin{equation} N^2 S_{\mathrm{ADE}}=N\sum_{i=1}^r
+\sum_{k=1}^{N^{(i)}} W_{(i)} (\lambda_k^{(i)})- \sum_{i=1}^r
+\sum_{k\neq l}\ln(\lambda_k^{(i)}-\lambda_l^{(i)})+\sum_{i<j}^r
+\sum_{k,l}\ln(\lambda_k^{(i)}- \lambda_l^{(j)})^{|s_{ij}|}\ .
+\label{intquiveraction}\"
+266,"\begin{equation} 
+N{\partial
+  S_{\mathrm{ADE}} \over \partial \lambda^{(1)}_k}=W_{(1)}'(\lambda^{(1)}_k) 
+-{1\over
+  N} \sum_{l(\neq k)}^{N_1} {2 \over \lambda^{(1)}_k -
+  \lambda^{(1)}_l} +{1\over N} \sum_{l}^{N_2} {1 \over \lambda^{(1)}_k
+  - \lambda^{(2)}_l}, 
+\"
+267,"\begin{equation}
+\langle \omega_1(z)^2 - \omega_1(z)\omega_2(z) + \omega_2(z)^2 -
+W'_1(z)\omega_1(z) - W'_2(z) \omega_2(z)+f_1(z) + f_2 (z)\rangle=0 \ .
+\label{quadraticloopA2}
+\"
+268,"\begin{equation} f_i(z)={1\over N} \sum_{k=1}^{N_i} {W'_i(z) -
+  W'_i (\lambda^{(i)}_k) \over z- \lambda^{(i)}_k}, \quad i=1,2\ .
+\"
+269,"\begin{equation} g_i(z)={1\over N^2} \sum_{k=1}^{N_1} \sum_{m=1}^{N_2}
+{W'_i(z)-W'_i(\lambda^{(i)}_k)\over (\lambda^{(i)}_k-\lambda^{(j\neq
+    i)}_m)(z-\lambda_k^{(i)})}\ , \"

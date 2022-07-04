@@ -4,18 +4,460 @@
     d\hat{s}^2= e^{2\sigma(y)}\eta_{\mu\nu}dx^\mu dx^\nu
     + e^{2\rho(y)} g^{\Sigma}_{ij}dX^idX^j + dy^2 ,
 \"
-1,"\begin{equation}
+1,"\begin{equation} \sigma(y)=\rho(y)=-k|y|,
+\label{type1}
+\"
+2,"\begin{equation} \rho(y)=0,
+\sigma(y)=-k|y| .
+\label{type2}
+\"
+3,"\begin{equation} S_{BG}=\int d^Dx
+\sqrt{\hat{g}} \left\{ \hat{M}^{D-2} \hat{{\cal R}} - \hat{\Lambda} -{1\over
+      4\hat{g}_*^2} \hat{{\cal F}}_{IJ}\hat{{\cal F}}^{IJ} \right\}~.
+\label{bulk}
+\"
+4,"\begin{equation}
+k^2 = -{\hat{M}^{2-D}\hat{\Lambda}\over D_1(D-2)} + {\hat{M}^{2-D}\over D_1(D-2)}{\hat{F}^2\over
+  4\hat{g}_*^2R^4}~,  
+\label{eqmunu}
+\"
+5,"\begin{equation}
+{\Omega\over R^2}={\hat{M}^{2-D}\over D-2} \left\{\hat{\Lambda}+{2D-D_2-4\over
+      D_2}{\hat{F}^2\over 4\hat{g}_*^2R^4}\right\}~, 
+\label{eqij}
+\"
+6,"\begin{equation}
+\tau^{\cal M}_{\pm}= {D_1-1\over D_1}\tau^{\Sigma}_{\pm} =
+{D_1 -1\over D_1}\left( \mp 4D_1k\hat{M}^{D-2} \right)~.
+\"
+7,"\begin{equation}
+m_{P}^2 = {v_\Sigma \over D_1 -2} (\hat{M} R)^{D_2} {\hat{M}\over k} \hat{M}^{D_1 -2}~, 
+\"
+8,"\begin{equation}
+h^2\equiv a^2{\hat{M}^2\over m_P^2} \sim {a^2 \over (R\hat{M})^{D_2}}{k\over \hat{M}} \sim 10^{-32}~.
+\label{h}
+\"
+9,"\begin{equation}
+\hat{\Lambda} \sim \lambda^2 \hat{M}^{D-2}~,
+\"
+10,"\begin{equation}
+R \sim \hat{M}^{-1}~,
+\label{R}
+\"
+11,"\begin{equation}
+(kR)^2 \sim {k^2 \over \lambda^2 + k^2} << 1~.
+\"
+12,"\begin{equation}
     \left[-\Box_{D} + m^2 + \xi \hat{{\cal R}}\right] 
     \Phi =0~,
 \label{eq3}
 \"
-2,"\begin{equation}
+13,"\begin{equation}
+\Phi(x,X,y) = \sum_{l,n} \Psi_l(X)
+\varphi_{l,n}(x)Z_{l,n}(y)~,
+\label{eq6}
+\"
+14,"\begin{equation}
+  \left[- \Box + m^2_{l,n}\right]
+  \Phi_{l,n}(x)=0~,
+\label{eq8}
+\"
+15,"\begin{equation}
+    {\cal D}_y^{(l)} Z_{l,n} =
+    m_{l,n}^2 Z_{l,n}~,
+    \label{eq10}
+\"
+16,"\begin{equation}
+{\cal D}_y^{(l)}= e^{2\sigma}\left[ -e^{-D_1\sigma} \partial_y e^{D_1\sigma} 
+\partial_y  +
+        \mu_l^2   - 2D_1 \xi \sigma'' \right]~,
+\"
+17,"\begin{equation}
+\mu_l^2 = m^2 + {1\over R^2} \lambda_l^2 - D_1(D_1+1)k^2 \xi~.
+\label{eq11}
+\"
+18,"\begin{equation}
+F_{\nu_l}^\beta\left({m_{n,l}\over k a}\right)=0~.
+\label{masses}
+\"
+19,"\begin{equation}
+\nu_l^2 = {\mu_l^2 \over k^2}+{D_1^2 \over 4}~,
+\label{eq13}
+\"
+20,"\begin{equation}
+J^\beta_{\nu_l} (z) =  J_{\nu_l} (z)
+\"
+21,"\begin{equation}
+J^\beta_{\nu_l} (z) =  j_{\nu_l} (z) = {1\over 2}D_1(1-4\xi)J_{\nu_l}(z) +zJ_{\nu_l}'(z)~,
+\"
+22,"\begin{equation} 
+\Gamma^{(1)}= - \int d^{4-2\epsilon}x \;V(s)~,
+\label{eq15}
+\"
+23,"\begin{equation}
+  V(s) = -{\mu^{2\epsilon}\over 2(4 \pi)^{2}} 
+  \Gamma(s) 
+  {\sum_{n,l}}' g_l 
+  m_{n,l}^{-2s}~,
+  \label{eq16}
+\"
+24,"\begin{equation}
+V(s) = V_{RS}(s) + V_{*}(s)~.
+\label{vsplit}
+\"
+25,"\begin{equation}
+V_{RS}(s)=- {(ka)^{4}\over 2(4\pi)^2}(ka/\mu)^{-2\epsilon}\Gamma(s){\sum_n}'  g_0
+x_{n,0}^{-2s}~, 
+\label{vrs}
+\"
+26,"\begin{equation} 
+{\cal V}(a)= \int_0^\infty dz z^3 
+\ln\left(1-{k_\nu( z)\over k_\nu( a z)} {i_\nu( a  z)\over i_\nu( z)}\right)
+\"
+27,"\begin{equation}
+  V_{*}(s) = -{(ka)^{4}\over 2(4\pi)^2}(ka/\mu)^{-2\epsilon}
+  \Gamma(s) 
+  \sum_{n,l=1}^{\infty} g_l 
+  x_{n,l}^{-2s}~,
+  \label{eqv*}
+\"
+28,"\begin{equation}
+P_{\nu_l}(z) = F_{\nu_l}(iz) = i_{\nu_l}(az)k_{\nu_l}(z)-i_{\nu_l}(z)k_{\nu_l}(az)~,
+\"
+29,"\begin{equation}
+V_{*}(s) = V_{1}+V_{2}+V_{3}~,
+\label{split123}
+\"
+30,"\begin{equation}
+\hat{\zeta} (s) = \sum_{l=1}^\infty g_l \nu_l^{-2s}~.
+\label{zed}
+\"
+31,"\begin{equation}
+V_{3} = {(ka)^{4}\over (4\pi)^2} 
+\sum_{l=1}^\infty g_l {\cal V}_l(a) 
+\label{v3}
+\"
+32,"\begin{equation}
+{\cal V}_l(a) =  
+\int_0^\infty dz z^{3}
+\ln \left\{1- {i_{\nu_l}(az) k_{\nu_l}(z)
+\over i_{\nu_l}(z) k_{\nu_l}(az)}
+\right\}~.
+\"
+33,"\begin{equation}
+\hat{\zeta} (s) = {\left(kR\right)^{2s} \over \Gamma(s)} \sum_{q=0}^\infty
+{(-1)^q\over q!}(kR\nu)^{2q} 
+\Gamma(s+q) \zeta(s+q)
+\label{zetahat}
+\"
+34,"\begin{equation}
+\zeta(s) = \sum_{l=1}^\infty g_l \lambda_l^{-2s}
+\label{zeta}
+\"
+35,"\begin{equation}
+\zeta(s) = {1\over \Gamma(s)}\left\{ \sum_{p=0}^\infty {\tilde{C}_p \over s-D_2/2+p} + f(s)\right\}~,
+\label{ML}
+\"
+36,"\begin{equation}
+{\bf a}_{n,q} = {(-1)^q\over q!}\nu^{2q} \tilde{C}_{2+D_2/2-n/2-q} {\bf A}_n
+\"
+37,"\begin{equation}
+\hat\kappa^{(n,q)}_-=(-1)^n \hat\kappa^{(n,q)}_+ =k^{2q+n}\kappa^{(n,q)}~,
+\"
+38,"\begin{equation}
+S= S_{BG} + \Gamma^{(1)} ,
+\label{full}
+\"
+39,"\begin{equation}
+\Gamma^{(1)} = -\int d^4x \sqrt{\tilde{g}} V(a) .
+\"
+40,"\begin{equation}
+{\delta S \over \delta \tilde{g}_{\mu\nu}}= 0~,
+\label{scsol}
+\"
+41,"\begin{equation}
+{\delta S \over \delta a}= 0~,
+\label{a}
+\"
+42,"\begin{equation}
+(1-a^4)V'(a) + 4a^3V(a)=0~,
+\label{stabi}
+\"
+43,"\begin{equation}
+A_\mu = A_{\mu}^{C} + A_{\mu}^{Q}~,
+\"
+44,"\begin{equation}
+V(a) = {k^4 \over 32 \pi^2}\Bigl\{
+%{1\over (kR)^4}(
+\Gamma_1 + a^4\Gamma_2%)
+ + \Gamma_{NL}(a) \Bigr\}
+\label{potpot}
+\"
+45,"\begin{equation}
+\Gamma_{NL}(a) = a^4 {\cal V}(a) + a^4 \sum_{l=1}^\infty g_l
+{\cal V}_{l}(a)~,
+\label{gammanl}
+\"
+46,"\begin{equation}
+\Gamma_{NL}(a) \simeq a^4 {\cal V}(a)~.
+\"
+47,"\begin{equation}
+{\cal V}(a) = {\gamma \over \ln a}~,
+\label{nonloclog}
+\"
+48,"\begin{equation}
+\xi = {4m^2+D_1^2k^2\over 4D_1(D_1+1)k^2} ,
+\label{nuzero}
+\"
+49,"\begin{equation}
+{\cal V}(a) = {\beta \over \alpha + \ln a}~,
+\"
+50,"\begin{equation}
+a \sim e^{-{\gamma / (\Gamma_1 + \Gamma_2})}
+\"
+51,"\begin{equation}
+\Sigma_{\nu_l}^{(I)}(z)={1\over 2\nu_l \sqrt{1+z^2}}D_1(1-4\xi) \Sigma_1 + \Sigma_2~,
+\"
+52,"\begin{equation}
+\Sigma_{\nu_l}^{(K)}(z)={1\over 2\nu_l \sqrt{1+z^2}}D_1(1-4\xi) \Sigma_3 - \Sigma_4~,
+\"
+53,"\begin{equation}
+\Sigma_{\nu_l}^{(I)}(z) = 1 + \sum_{j=1}^\infty {p_j(t)\over \nu_l^j}~,
+\"
+54,"\begin{equation}
+\Sigma_{\nu_l}^{(K)}(z) = 1+ \sum_{j=1}^\infty (-1)^j {p_j(t)\over \nu_l^j}~,
+\"
+55,"\begin{equation}
+p_j(t)= {D_1 (1-4\xi)\over 2} tu_{j-1} +v_j~.
+\"
+56,"\begin{equation}
     \label{metric}
     d\hat{s}^2= e^{2\sigma(y)}\eta_{\mu\nu}dx^\mu dx^\nu
     + e^{2\rho(y)} g^{\Sigma}_{ij}dX^idX^j + dy^2 ,
 \"
-3,"\begin{equation}
+57,"\begin{equation} \sigma(y)=\rho(y)=-k|y|,
+\label{type1}
+\"
+58,"\begin{equation} \rho(y)=0,
+\sigma(y)=-k|y| .
+\label{type2}
+\"
+59,"\begin{equation} S_{BG}=\int d^Dx
+\sqrt{\hat{g}} \left\{ \hat{M}^{D-2} \hat{{\cal R}} - \hat{\Lambda} -{1\over
+      4\hat{g}_*^2} \hat{{\cal F}}_{IJ}\hat{{\cal F}}^{IJ} \right\}~.
+\label{bulk}
+\"
+60,"\begin{equation}
+k^2 = -{\hat{M}^{2-D}\hat{\Lambda}\over D_1(D-2)} + {\hat{M}^{2-D}\over D_1(D-2)}{\hat{F}^2\over
+  4\hat{g}_*^2R^4}~,  
+\label{eqmunu}
+\"
+61,"\begin{equation}
+{\Omega\over R^2}={\hat{M}^{2-D}\over D-2} \left\{\hat{\Lambda}+{2D-D_2-4\over
+      D_2}{\hat{F}^2\over 4\hat{g}_*^2R^4}\right\}~, 
+\label{eqij}
+\"
+62,"\begin{equation}
+\tau^{\cal M}_{\pm}= {D_1-1\over D_1}\tau^{\Sigma}_{\pm} =
+{D_1 -1\over D_1}\left( \mp 4D_1k\hat{M}^{D-2} \right)~.
+\"
+63,"\begin{equation}
+m_{P}^2 = {v_\Sigma \over D_1 -2} (\hat{M} R)^{D_2} {\hat{M}\over k} \hat{M}^{D_1 -2}~, 
+\"
+64,"\begin{equation}
+h^2\equiv a^2{\hat{M}^2\over m_P^2} \sim {a^2 \over (R\hat{M})^{D_2}}{k\over \hat{M}} \sim 10^{-32}~.
+\label{h}
+\"
+65,"\begin{equation}
+\hat{\Lambda} \sim \lambda^2 \hat{M}^{D-2}~,
+\"
+66,"\begin{equation}
+R \sim \hat{M}^{-1}~,
+\label{R}
+\"
+67,"\begin{equation}
+(kR)^2 \sim {k^2 \over \lambda^2 + k^2} << 1~.
+\"
+68,"\begin{equation}
     \left[-\Box_{D} + m^2 + \xi \hat{{\cal R}}\right] 
     \Phi =0~,
 \label{eq3}
+\"
+69,"\begin{equation}
+\Phi(x,X,y) = \sum_{l,n} \Psi_l(X)
+\varphi_{l,n}(x)Z_{l,n}(y)~,
+\label{eq6}
+\"
+70,"\begin{equation}
+  \left[- \Box + m^2_{l,n}\right]
+  \Phi_{l,n}(x)=0~,
+\label{eq8}
+\"
+71,"\begin{equation}
+    {\cal D}_y^{(l)} Z_{l,n} =
+    m_{l,n}^2 Z_{l,n}~,
+    \label{eq10}
+\"
+72,"\begin{equation}
+{\cal D}_y^{(l)}= e^{2\sigma}\left[ -e^{-D_1\sigma} \partial_y e^{D_1\sigma} 
+\partial_y  +
+        \mu_l^2   - 2D_1 \xi \sigma'' \right]~,
+\"
+73,"\begin{equation}
+\mu_l^2 = m^2 + {1\over R^2} \lambda_l^2 - D_1(D_1+1)k^2 \xi~.
+\label{eq11}
+\"
+74,"\begin{equation}
+F_{\nu_l}^\beta\left({m_{n,l}\over k a}\right)=0~.
+\label{masses}
+\"
+75,"\begin{equation}
+\nu_l^2 = {\mu_l^2 \over k^2}+{D_1^2 \over 4}~,
+\label{eq13}
+\"
+76,"\begin{equation}
+J^\beta_{\nu_l} (z) =  J_{\nu_l} (z)
+\"
+77,"\begin{equation}
+J^\beta_{\nu_l} (z) =  j_{\nu_l} (z) = {1\over 2}D_1(1-4\xi)J_{\nu_l}(z) +zJ_{\nu_l}'(z)~,
+\"
+78,"\begin{equation} 
+\Gamma^{(1)}= - \int d^{4-2\epsilon}x \;V(s)~,
+\label{eq15}
+\"
+79,"\begin{equation}
+  V(s) = -{\mu^{2\epsilon}\over 2(4 \pi)^{2}} 
+  \Gamma(s) 
+  {\sum_{n,l}}' g_l 
+  m_{n,l}^{-2s}~,
+  \label{eq16}
+\"
+80,"\begin{equation}
+V(s) = V_{RS}(s) + V_{*}(s)~.
+\label{vsplit}
+\"
+81,"\begin{equation}
+V_{RS}(s)=- {(ka)^{4}\over 2(4\pi)^2}(ka/\mu)^{-2\epsilon}\Gamma(s){\sum_n}'  g_0
+x_{n,0}^{-2s}~, 
+\label{vrs}
+\"
+82,"\begin{equation} 
+{\cal V}(a)= \int_0^\infty dz z^3 
+\ln\left(1-{k_\nu( z)\over k_\nu( a z)} {i_\nu( a  z)\over i_\nu( z)}\right)
+\"
+83,"\begin{equation}
+  V_{*}(s) = -{(ka)^{4}\over 2(4\pi)^2}(ka/\mu)^{-2\epsilon}
+  \Gamma(s) 
+  \sum_{n,l=1}^{\infty} g_l 
+  x_{n,l}^{-2s}~,
+  \label{eqv*}
+\"
+84,"\begin{equation}
+P_{\nu_l}(z) = F_{\nu_l}(iz) = i_{\nu_l}(az)k_{\nu_l}(z)-i_{\nu_l}(z)k_{\nu_l}(az)~,
+\"
+85,"\begin{equation}
+V_{*}(s) = V_{1}+V_{2}+V_{3}~,
+\label{split123}
+\"
+86,"\begin{equation}
+\hat{\zeta} (s) = \sum_{l=1}^\infty g_l \nu_l^{-2s}~.
+\label{zed}
+\"
+87,"\begin{equation}
+V_{3} = {(ka)^{4}\over (4\pi)^2} 
+\sum_{l=1}^\infty g_l {\cal V}_l(a) 
+\label{v3}
+\"
+88,"\begin{equation}
+{\cal V}_l(a) =  
+\int_0^\infty dz z^{3}
+\ln \left\{1- {i_{\nu_l}(az) k_{\nu_l}(z)
+\over i_{\nu_l}(z) k_{\nu_l}(az)}
+\right\}~.
+\"
+89,"\begin{equation}
+\hat{\zeta} (s) = {\left(kR\right)^{2s} \over \Gamma(s)} \sum_{q=0}^\infty
+{(-1)^q\over q!}(kR\nu)^{2q} 
+\Gamma(s+q) \zeta(s+q)
+\label{zetahat}
+\"
+90,"\begin{equation}
+\zeta(s) = \sum_{l=1}^\infty g_l \lambda_l^{-2s}
+\label{zeta}
+\"
+91,"\begin{equation}
+\zeta(s) = {1\over \Gamma(s)}\left\{ \sum_{p=0}^\infty {\tilde{C}_p \over s-D_2/2+p} + f(s)\right\}~,
+\label{ML}
+\"
+92,"\begin{equation}
+{\bf a}_{n,q} = {(-1)^q\over q!}\nu^{2q} \tilde{C}_{2+D_2/2-n/2-q} {\bf A}_n
+\"
+93,"\begin{equation}
+\hat\kappa^{(n,q)}_-=(-1)^n \hat\kappa^{(n,q)}_+ =k^{2q+n}\kappa^{(n,q)}~,
+\"
+94,"\begin{equation}
+S= S_{BG} + \Gamma^{(1)} ,
+\label{full}
+\"
+95,"\begin{equation}
+\Gamma^{(1)} = -\int d^4x \sqrt{\tilde{g}} V(a) .
+\"
+96,"\begin{equation}
+{\delta S \over \delta \tilde{g}_{\mu\nu}}= 0~,
+\label{scsol}
+\"
+97,"\begin{equation}
+{\delta S \over \delta a}= 0~,
+\label{a}
+\"
+98,"\begin{equation}
+(1-a^4)V'(a) + 4a^3V(a)=0~,
+\label{stabi}
+\"
+99,"\begin{equation}
+A_\mu = A_{\mu}^{C} + A_{\mu}^{Q}~,
+\"
+100,"\begin{equation}
+V(a) = {k^4 \over 32 \pi^2}\Bigl\{
+%{1\over (kR)^4}(
+\Gamma_1 + a^4\Gamma_2%)
+ + \Gamma_{NL}(a) \Bigr\}
+\label{potpot}
+\"
+101,"\begin{equation}
+\Gamma_{NL}(a) = a^4 {\cal V}(a) + a^4 \sum_{l=1}^\infty g_l
+{\cal V}_{l}(a)~,
+\label{gammanl}
+\"
+102,"\begin{equation}
+\Gamma_{NL}(a) \simeq a^4 {\cal V}(a)~.
+\"
+103,"\begin{equation}
+{\cal V}(a) = {\gamma \over \ln a}~,
+\label{nonloclog}
+\"
+104,"\begin{equation}
+\xi = {4m^2+D_1^2k^2\over 4D_1(D_1+1)k^2} ,
+\label{nuzero}
+\"
+105,"\begin{equation}
+{\cal V}(a) = {\beta \over \alpha + \ln a}~,
+\"
+106,"\begin{equation}
+a \sim e^{-{\gamma / (\Gamma_1 + \Gamma_2})}
+\"
+107,"\begin{equation}
+\Sigma_{\nu_l}^{(I)}(z)={1\over 2\nu_l \sqrt{1+z^2}}D_1(1-4\xi) \Sigma_1 + \Sigma_2~,
+\"
+108,"\begin{equation}
+\Sigma_{\nu_l}^{(K)}(z)={1\over 2\nu_l \sqrt{1+z^2}}D_1(1-4\xi) \Sigma_3 - \Sigma_4~,
+\"
+109,"\begin{equation}
+\Sigma_{\nu_l}^{(I)}(z) = 1 + \sum_{j=1}^\infty {p_j(t)\over \nu_l^j}~,
+\"
+110,"\begin{equation}
+\Sigma_{\nu_l}^{(K)}(z) = 1+ \sum_{j=1}^\infty (-1)^j {p_j(t)\over \nu_l^j}~,
+\"
+111,"\begin{equation}
+p_j(t)= {D_1 (1-4\xi)\over 2} tu_{j-1} +v_j~.
 \"

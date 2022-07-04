@@ -1,0 +1,2112 @@
+,section
+0,"\section*{I. Introduction}
+
+
+
+
+The business of covariant string field theory began with a simple
+insight, due to Witten\cite{Witten}: If a string field is imagined
+as a matrix whose indices correspond to the left and right halves
+of the string, matrix multiplication generates an associative
+algebra suitable for describing string interactions. While this is
+an intuitive and fundamental insight, Witten himself was the first
+to warn that it should be taken with a grain of salt. A string
+field is really a functional of a full and continuous string; to
+make it a matrix we would have to split the string into halves,
+which brings up all sorts of uncomfortable questions, for example
+how to set boundary conditions at the midpoint, how to treat the
+midpoint itself, what the left/right splitting does to the kinetic
+term, midpoint anomalies, etc. Ghosts complicate the picture even
+more, since in the ghost sector star multiplication is not really
+matrix multiplication at all, even heuristically.
+
+Nevertheless, the possibility that the algebra of string fields
+could be understood in terms of operator algebras is too
+compelling to ignore. A vast literature, both old\cite{Old} and
+new explores the ramifications of this idea, but for some reason
+the approach has always seemed to fall short of the mark. The
+general feeling has been that an operator algebraic formulation is
+too singular, essentially for reasons mentioned above. Much
+preferred has been the more reliable oscillator/conformal field
+theory methods\cite{LeClair, Vertices}, and numerical analysis,
+particularly level truncation\cite{Level-Truncation}.
+
+Still, over the last two years the matrix string field idea has
+been taken further than ever before, due both to a deepening
+appreciation of the relationship between noncommutative geometry
+and string theory\cite{Aref'eva_review, Douglas} and to the
+development of vacuum string field theory (VSFT)\cite{VSFT}, a
+model string field theory with a simple enough kinetic term that
+it seemed possible to formulate VSFT in a matrix language without
+having too much trouble with the
+midpoint\cite{Split-strings,Gross-Taylor}. Central to these
+developments was the realization, from two different standpoints,
+that an operator formulation of the star product could be related
+in a well-defined way to the three-string interaction vertex
+$|V_3\rangle$ of \cite{Vertices}, which has been taken as the
+basis for nearly all numerical and much analytical work in string
+field theory. One way to see this was demonstrated by Bars and
+Matsuo\cite{Bars-Matsuo}, who started from a regulated split
+string\cite{Split-strings,Gross-Taylor,Bars} formalism and
+constructed an oscillator vertex which agrees with the usual
+$|V_3\rangle$ as the regulator is taken to
+infinity\footnote{Bars\cite{Bars} was the first author to
+formulate the open string star product explicitly as a Moyal
+product, while previous authors had formulated the star product as
+matrix multiplication on the space of half-string states. The
+Moyal product is, of course, isomorphic to the operator/matrix
+product, at least naively. However we will see that, because the
+phase space of string field theory is infinite dimensional, the
+Moyal perspective has subtle advantages over the split string
+approach.}. We call their perspective, which expands the string in
+a countable (and when regulated, finite) number of string modes,
+the {\it discrete Moyal formalism}. A second approach was
+developed by Douglas et al\cite{Moyal}, who found a particular
+basis for which $|V_3\rangle$ factorized into a continuous tensor
+product of vertices, each describing an operator/Moyal product
+with a continuously varying noncommutativity parameter,
+$\theta(\k)=2\tanh\frac{\pi\k}{4}$, $0\leq\k<\infty$. We call
+their perspective the {\it continuous Moyal formalism}.
+%Recently there has been progress in understanding the structure of
+%string field theory from both perspectives, but they are not quite
+%equivalent, interestingly enough; the discrete Moyal formalism is
+%related to the continuous through a singular change of basis.
+
+Despite these interesting developments, skeptics may still suspect
+that the operator/Moyal approach is too singular. The discrete
+Moyal formalism attempts to deal with midpoint singularities, but
+in a seemingly drastic way: one must according to
+ref.\cite{Bars-Matsuo,MSFT} carefully define string field theory
+as a ``large $N$'' limit of an infinite sequence of theories, each
+of which is defined with a finite number $N$ of string modes; in
+this way, many subtle midpoint issues can be satisfactorily
+resolved. However, even if one could explicitly construct such an
+infinite list of regulated theories and show that Witten's axioms
+are satisfied (this remains a challenge), one feels that the whole
+issue could be avoided by simply not using the operator/Moyal
+language to start with. Yet, from the perspective of the
+continuous Moyal formalism, the operator description of the
+algebra doesn't look that bad; the basis seems less singular than
+the discrete basis\cite{Moyal} and there is no obvious need to
+regulate. But here too there are subtle singularities whose
+relation to the midpoint has not been fully clarified.
+
+In this paper we offer a few simple observations which will
+hopefully bring these issues into sharper focus. Our essential
+perspective is that all operator/Moyal formulations of the star
+product are in a sense ``singular,'' but these singularities have
+a physical origin in the definition of the star algebra itself;
+they are not a priori the ``fault'' of the operator/Moyal
+description. Therefore, the operator/Moyal approach brings a
+particularly clear perspective into the role of midpoint
+singularities in open string field theory. A fascinating aspect of
+these methods is that they also suggest a natural way to formulate
+the kinetic operator---the BRST operator and/or the Virasoro
+generators---purely algebraically in terms of the star product.
+Such formulations have recently featured prominently in studies of
+nonperturbative solutions to the string field
+equations\cite{Bars-SFE}. Such formulations are necessarily
+singular, but for an understandable reason which we can hope to
+control. Further investigations into the operator/Moyal approach
+will undoubtedly bring a unique perspective on the subtle tension
+and interplay between the BRST operator and the star product.
+
+This paper is organized as follows: In the first section, we
+review the mixed and discrete Moyal bases, mostly to remind the
+reader of important concepts and to fix notation. In the second
+section we focus on the continuous Moyal formalism and attempt to
+illuminate its midpoint structure from a split string perspective.
+In the third we argue that singularities in different
+operator/Moyal formalisms can all be traced to physical
+ambiguities of the star algebra itself, in particular the
+Horowitz-Strominger associativity anomaly\cite{Horowitz}. This
+anomaly is one of the more mysterious and elusive aspects of
+string field theory, so we try to give a more careful treatment
+than in other literature. In the third section we discuss some
+interesting additional singularities in the ghost sector. Finally,
+we investigate the Hamiltonian in Siegel gauge, $L_0$, formulated
+algebraically in terms of the open string star product.
+
+\section*{II. Basic concepts}
+A classical open string field $|\Psi\rangle$ is an element of the
+Fock space of a particular matter-ghost boundary conformal field
+theory(BCFT):
+$$|\Psi\rangle\in\mathcal{H}_\mathrm{BCFT}=\mathcal{H}_{matter}
+\otimes\mathcal{H}_{ghost}$$ Typically, we are interested in the
+BCFT corresponding to an open string living on a space-filling
+D-25 brane, in which case we have Neumann boundary conditions in
+all directions at the string endpoints. We can then expand the
+worldsheet position and momentum operators on the semicircle
+$|z|=1,\ \Im(z)>0$ in terms of $\cos n\sigma$ for $\sigma \in
+[0,\pi]$:
+\begin{eqnarray}&\ &\ \ x(\sigma)=x_0+\sqrt{2}\sum_{n=1}^\infty x_n\cos
+n\sigma\ \ \ \ \
+x_n=\frac{i}{n\sqrt{2}}(\alpha_n-\alpha_{-n})\nonumber\\
+&\ &\pi p(\sigma)=p+\sqrt{2}\sum_{n=1}^\infty p_n\cos n\sigma\ \ \
+\ \ \ \ p_n=\frac{1}{\sqrt{2}}(\alpha_n+\alpha_{-n}),\nonumber
+\end{eqnarray} where $\alpha_n$ are the standard string mode oscillators
+$[\alpha_m,\alpha_n]=m\delta_{m,-n}$ (suppressing Lorentz
+indices). The operators $x_n$ and $p_n$ have associated
+eigenstates:
+\begin{eqnarray}&\ &\langle x_n|=\langle 0|_n
+\exp\left[-\frac{n}{2}(x_n^2-2\sqrt{2}i\alpha_n x_n
+-\alpha_n^2)\right]\nonumber\\ &\ &\langle p_n|=\langle 0|_n
+\exp\left[-\frac{1}{2n}(p_n^2-2\sqrt{2}\alpha_n p_n
++\alpha_n^2)\right]\nonumber\end{eqnarray} where $x_n,p_n$ now
+refers to the eigenvalue and $\langle 0|_n$ is the vacuum of the
+Hilbert space generated by the $\alpha_n$'s. Focussing for the
+moment to the matter sector, we find it extremely convenient to
+express a string field as a functional of the {\it even} position
+Fourier modes and the {\it odd} momentum Fourier modes:
+\begin{equation}\Psi[x_{2n},p_{2n-1}]=\langle p|\prod_{n=1}^\infty \langle
+x_{2n}|\langle p_{2n-1}| |\Psi\rangle
+\label{eq:field}\end{equation} In this paper we will be interested
+in singularities characterized by very large mode numbers, so we
+might as well avoid the complication of zero modes and restrict
+ourselves to zero momentum\footnote{In the context of the
+continuous Moyal formalism, zero modes are discussed in
+\cite{Belov}. In the discrete Moyal formalism zero modes do not
+present so much of a complication.}. Given two string fields
+expressed as in \EQN{field}, we can calculate their star
+product\cite{Bars,Moyal} with the equation,
+$$\Psi*\Phi[x_{2n},p_{2n-1}]=\mathcal{N}\ \Psi\star\Phi[x_{2n},p_{2n-1}],$$
+where $\mathcal{N}$ is a normalization\footnote{This normalization
+constant is quite troublesome, since it appears to be infinite. It
+was hoped\cite{Moyal} that the constant would cancel between the
+matter and ghosts in $D=26$, but the analytic work of
+ref.\cite{Belov-Konechny} shows that this does not happen. The
+author is not sure how this result should be interpreted, and how
+much of a problem it truly represents. It was suggested in
+ref.\cite{Moyal} that the normalization might be regulated by
+deforming the Witten vertex into a vertex defined with a slightly
+different set of conformal maps onto the unit disk, so that the
+regulated open string algebra would be {\it non-associative}.
+(Specifically, it would be a homotopy associative $A_\infty$
+algebra\cite{Tensor}). The necessity of such a deformation would
+obviously be quite unfortunate from the standpoint of the
+operator/Moyal approach to string field theory.} and $\star$
+denotes a canonically normalized Moyal product satisfying,
+\begin{equation}[x_{2n},p_{2m-1}]_\star=2i\ T_{2n,2m-1}\label{eq:mixed}
+\end{equation} where $T$ is a noncommutativity parameter,
+\begin{eqnarray} T_{2n,2m-1}&=&\frac{4}{\pi}\int_0^{\pi/2}d\sigma
+\cos 2n\sigma \cos(2n-1)\sigma\nonumber\\ &=&
+\frac{2(-1)^{m+n+1}}{\pi}\left(\frac{1}{2m-1+2n}+
+\frac{1}{2m-1-2n}\right)\label{eq:T-matrix}\end{eqnarray} This is
+the most basic formulation of the open string star algebra in a
+Moyal language, often referred to as the ``mixed basis.'' The
+continuous and discrete Moyal formulations are more ambitious and
+attempt a choice of basis for which the noncommutativity parameter
+is diagonal.
+
+The matrix $T$ is obviously important, so let's say a few more
+words about it. We can think of $T$ as a linear map between two
+half order Sobelev spaces, one of ``odd moded'' sequences,
+$\mathcal{H}_{odd}$, and the other of ``even moded'' sequences
+$\mathcal{H}_{even}$:
+$$T:\mathcal{H}_{odd}\to\mathcal{H}_{even},$$
+with,
+\begin{eqnarray}&\
+&\langle a,b\rangle=\sum_{n=1}^\infty (2n-1)a_{2n-1}b_{2n-1} \ \ \
+\ a,b\in\mathcal{H}_{odd}\nonumber\\ &\ &\langle
+s,t\rangle=\sum_{n=1}^\infty 2n s_{2n} t_{2n}\ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \
+s,t\in\mathcal{H}_{even}\label{eq:Sobelev}\end{eqnarray} As an
+operator on $\mathcal{H}_{odd}$, $T$ has an
+inverse\cite{Bars,Associative}, a matrix often called $R$ in the
+literature:
+\begin{eqnarray}R_{2m-1,2n}&=&\frac{4}{\pi}\int_0^{\pi/2}d\sigma
+\cos(2m-1)\sigma[\cos 2n\sigma-(-1)^{n}]\nonumber\\
+&=&\frac{4n(-1)^{n+m}}{\pi
+(2m-1)}\left(\frac{1}{2m-1+2n}-\frac{1}{2m-1-2n}\right)\nonumber\\
+&=&\frac{(2n)^2}{(2n-1)^2}T_{2n,2m-1}
+\end{eqnarray} and
+\begin{equation}R:\mathcal{H}_{even}\to\mathcal{H}_{odd},\ \ \ \ \
+RT=1_{odd},\ \ \ TR=1_{even}\label{eq:T-inv}\end{equation} $T$ has
+a natural domain $D(T)$ when extended to be a linear operator on
+the Banach space of bounded sequences $\ell^\infty$. $D(T)$ is a
+much larger space than $\mathcal{H}_{odd}$, and surprisingly $T$
+has a zero mode in $D(T)$ \cite{Associative}:
+\begin{equation}v_{2n-1}=\frac{2\sqrt{2}}{\pi}\frac{(-1)^{n+1}}{2n-1},
+\ \ \ \ Tv=0\
+\end{equation} This zero mode is not normalizable\footnote{The
+normalization is chosen, as in \cite{Associative} so that
+$\sum_{n=1}^\infty v_{2n-1}^2=1$.} in $\mathcal{H}_{odd}$,
+consistent with the fact that $T$ is invertible there. Outside of
+$\mathcal{H}_{odd}$ the equation $RT=1$ is simply no longer true.
+Only when we are considering the action of bounded operators on a
+Hilbert space can we multiply operators unambiguously before
+evaluating their action on a particular state. In our case, on any
+Hilbert space larger than $\mathcal{H}_{even}$, $R$ will not be a
+bounded operator, so \EQN{T-inv} is not meaningful. The situation
+is similar to the equation $\frac{1}{x}x=1$: when acting on a
+suitably well-behaved space of functions, the equation makes
+perfect sense; but if we allow it to act on a delta function, for
+example, the equation is simply wrong: $\frac{1}{x}(x\delta(x))=0
+\neq \delta(x)$. However, given the fact that $RT=1$ in
+$\mathcal{H}_{odd}$, we can by extension naturally define
+$RT\equiv 1$ on all of $D(T)$; but then, in some sense, we loose
+associativity in operator/vector multiplication,
+$$R(Tv)\equiv RTv=0\ \ \ \ (RT)v=v$$
+These ``associativity anomalies''\cite{Associative} are deeply
+connected with midpoint singularities, and play an important role
+in our analysis.
+
+Alternatively, we could define an operator $\bar{T}$, with the
+same entries as $T$, but which conversely maps from even moded
+sequences to odd moded sequences. In this case, however, it is
+more natural to define the even/odd mode Hilbert spaces
+$\mathcal{H}'_{even}$ and $\mathcal{H}'_{odd}$ to be $-\half$
+order Sobelev spaces. On $\mathcal{H}'_{even}$, $\bar{T}$ has an
+inverse, $\bar{R}$; but outside of $\mathcal{H}'_{odd}$, $\bar{R}$
+has a zero mode,
+\begin{equation}v'_{2n-1}=\frac{2\sqrt{2}}{\pi}(2n-1)
+(-1)^{n+1}\label{eq:R-zero}\end{equation} as is readily seen from
+\EQN{T-inv}. Again we run into problems with a zero mode. Note
+that the completion of $\mathcal{H}'_{even}$ and
+$\mathcal{H}'_{odd}$ with respect to the $\ell^\infty$ norm is the
+dual space of $\mathcal{H}_{even}$ and $\mathcal{H}_{odd}$,
+respectively; we write
+$\overline{\mathcal{H}'_{even}}=\mathcal{H}^*_{even}$ and likewise
+for $\mathcal{H}'_{odd}$.
+
+Let us now briefly describe the discrete Moyal basis, which gives
+the oldest and in some sense the best understood Moyal formulation
+of the open string star product\cite{Bars,Bars-Matsuo}. There are
+actually two convenient choices of basis, the discrete even and
+the discrete odd: \begin{eqnarray}\mathrm{even:} &\
+&x_{2n}=x_{2n}^D\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \
+p_{2n-1}=\half \sum_{m=1}^{\infty}p_{2m}^D T_{2m,2n-1}\nonumber\\
+\mathrm{odd:}&\ & x_{2n-1}^D=\half \sum_{m=1}^\infty
+R_{2n-1,2m}x_{2m}\ \ \ \ \ \ \
+p_{2n-1}^D=p_{2m-1}\label{eq:discrete}
+\end{eqnarray} Substituting these relations into \EQN{mixed}, bearing in mind
+\EQN{T-inv}, we find the simple result\footnote{Almost all of the
+work in the discrete Moyal formalism has focused on the even
+basis. The reason for this is mostly historical, since it was the
+basis first considered in ref.\cite{Bars}. Ironically, this basis
+is also perhaps the most problematic when unregulated.}
+$$[x_{2n}^D,p_{2m}^D]_\star=i\delta_{2n,2m}\ \ \ \ \ \ \
+[x_{2n-1}^D,p_{2m-1}^D]_\star=i\delta_{2n-1,2m-1}$$ An innocent
+but very important assumption in this construction is that the
+transformations \EQN{discrete} are invertible. As our previous
+discussion makes clear, they are indeed invertible provided that
+the odd indices operate in $\mathcal{H}_{odd}$ and the even
+indices operate in $\mathcal{H}_{even}$. This is only true
+provided that states in the open string star algebra satisfy
+certain conditions. Whether or not these conditions are physically
+reasonable is not clear, but it was shown for instance in
+ref.\cite{Bars-Matsuo} that the perturbative vacuum is a
+well-defined functional after the change of basis \EQN{discrete}
+but the sliver\cite{K&P} is not.
+
+Whatever the precise definition of the algebra of string fields
+ends up being, it is clear that at least sometimes it is useful to
+think about fields for which the transformation \EQN{discrete} is
+not invertible. This is where problems arise. Consider, for
+example, the half-string momentum functional rewritten in the even
+basis: \begin{equation}P_L=\int_0^{\pi/2}d\sigma
+p(\sigma)=\frac{\sqrt{2}}{\pi}\sum_{n=1}^\infty
+\frac{(-1)^{n+1}}{2n-1}p_{2n-1}\ \ \Longrightarrow\ \
+P_L=\sum_{n=1}^{\infty}0 p^D_{2n}=0\label{eq:P_L}\end{equation}
+This unfortunate result is a direct consequence of the fact that
+$T$ has a zero mode. In ref.\cite{Associative} this singularity
+was explained as arising from the fact that the discrete even
+basis imposes Neumann boundary conditions at the midpoint, making
+it impossible to describe a string configuration with a midpoint
+discontinuity. Therefore, the generator of this discontinuity,
+$P_L$, vanishes. The discrete odd basis has an analogous problem:
+\begin{equation} D=\frac{2\sqrt{2}}{\pi}\sum_{n=1}^\infty
+\frac{(-1)^{n+1}}{2n-1}x_{2n-1}^D\ \ \Longrightarrow\ \
+D=\sum_{n=1}^\infty 0x_{2n}=0 \label{eq:D}\end{equation} This
+singularity occurs because the discrete odd basis can describe an
+unphysical string configuration where the midpoint has
+disconnected from the rest of the string\cite{Associative}. In the
+next section we will discover analogous singularities to these in
+the continuous Moyal formalism.
+
+The strategy for dealing with midpoint singularities in the
+discrete Moyal formalism has been to carefully regulate/deform the
+theory into a theory containing only a finite number of string
+modes. Then the analogue of $T$ is a finite dimensional invertible
+matrix, and our previous remarks concerning subtleties of infinite
+dimensional Hilbert spaces and zero modes does not apply. At the
+end of our calculations, we take the number of string modes to
+infinity to recover physical results. Much more detailed
+discussion of this approach can be found elsewhere\cite{Bars,
+Associative, Bars-Matsuo, MSFT}, but this is sufficient background
+for our purposes.
+
+We should mention another basis which has sometimes been discussed
+in the literature\cite{PP,MSFT}, the string bit basis:
+\begin{equation}x^b(\sigma)=\sqrt{\frac{8}{\pi}}\sum_{n=1}^\infty x^D_{2n-1}
+\cos(2n-1)\sigma\ \ \
+p^b(\sigma)=\sqrt{\frac{8}{\pi}}\sum_{n=1}^\infty p_{2n-1}
+\cos(2n-1)\sigma \label{eq:bit}\end{equation} for
+$\sigma\in[0,\frac{\pi}{2}]$, satisfying,
+$$ [x^b(\sigma),p^b(\sigma')]_\star=2i\delta(\sigma-\sigma')$$ While this
+basis might be useful for studying tensionless
+strings\cite{PP,MSFT}, it is probably the most problematic of all
+the bases discussed in this paper, principally because it does not
+unambiguously impose the correct open string boundary conditions.
+Equation (\ref{eq:bit}) defines the boundary conditions
+implicitly, but other mode expansions could be used and the basis
+would have identical appearance. To see why this is a problem,
+consider the the tachyon mass-shell constraint:
+$$ L_0\left[x(\sigma),\fraction{\delta}{\delta
+x(\sigma)}\right]\langle x(\sigma)|p\rangle=0 $$ This equation is
+not strictly meaningful unless we consistently expand $x(\sigma)$
+in terms of functions with a particular set of boundary conditions
+appropriate for the BCFT in question. Otherwise, for example, we
+could expand $x(\sigma)$ with Neumann boundary in $L_0$, but then
+with periodic boundary conditions in $\langle x(\sigma)|p\rangle$;
+the above equation will then clearly not work. Therefore the bit
+basis can only work effectively when expanded in a set of
+functions with specific boundary conditions, such as in \EQN{bit}.
+But of course, in doing this we are not really working in the bit
+basis anymore.
+
+\section*{III. The continuous Moyal basis and the midpoint}
+Having described some background, let us turn to the continuous
+Moyal formalism. This approach was originally derived from the
+zero momentum three string vertex $|V_3\rangle$ \cite{Vertices},
+specifically by choosing a basis of oscillators which diagonalized
+the quadratic form defining the squeezed state expression of the
+vertex\cite{Spectroscopy}. In this form, the vertex factorized
+into a continuous tensor product of vertices, each of which
+described a Moyal product. This approach has since been extended
+to include zero modes\cite{Zero-spectroscopy,Belov},
+ghosts\cite{Erler,Belov-Konechny}, superstring
+interactions\cite{Aref'eva}, and interactions in the presence of
+NS-NS flux\cite{B-field}. In the original form of \cite{Moyal} the
+the continuous basis is defined by the coordinates,
+\begin{eqnarray} &\
+&x(\k)=\sqrt{2}\sum_{n=1}^\infty v_{2n}(\k)\sqrt{2n}x_{2n}\nonumber\\
+&\ &y(\k)=-\sqrt{2}\sum_{n=1}^\infty
+\frac{v_{2n-1}(\k)}{\sqrt{2n-1}}p_{2n-1}\label{eq:continuous}
+\end{eqnarray} where $\k\in[0,\infty)$ and the functions $v_n(\k)$
+are defined implicitly through the generating
+function\cite{Spectroscopy},
+\begin{equation}\sum_{n=1}^\infty
+\frac{z^n}{\sqrt{n}}v_n(\k)=\frac{1-e^{-\k\tan^{-1}z}}{\k N(\k)},\
+\ \ N(\k)=\left(\frac{2}{\k}\sinh\frac{\pi
+\k}{4}\right)^{1/2}\label{eq:gen-func}\end{equation} In
+ref.\cite{Okuyama} the $v_n(\k)$'s were shown to be complete and
+orthonormal on the interval $\k\in(-\infty,\infty)$. In fact,
+noting that $v_n(-\k)=(-1)^{n+1}v_n(\k)$ we can write:
+$$\sum_{m=1}^\infty v_{2m-1}(k)v_{2m-1}(k')=\half\delta(k-k')\ \ \
+\ \int_0^\infty \ dk\ v_{2m-1}(k)v_{2n-1}(k)=\half\delta_{2m-1,
+2n-1}$$
+\begin{equation}\sum_{m=1}^\infty v_{2m}(k)v_{2m}(k')=\half\delta(k-k')\
+\ \ \ \int_0^\infty \ dk\
+v_{2m}(k)v_{2n}(k)=\half\delta_{2m,2n}\label{eq:vprop2}\end{equation}
+These equations only strictly hold when $\k>0$. More information
+about these very special functions can be found in the appendix.
+Equation (\ref{eq:continuous}) is an orthogonal change of basis
+with respect to the inner product,
+$$\langle x_1,x_2 \rangle=\int_0^\pi d\sigma x_1(\sigma)
+\sqrt{-\frac{\partial^2}{\partial\sigma^2}}x_2(\sigma)=\int_0^\infty
+d\k [x_1(\k)x_2(\k)+y_1(\k)y_2(\k)]$$ After invoking the
+formula\cite{Moyal},
+\begin{equation}T_{2m-1,2n}= -2\sqrt{\frac{2m-1}{2n}}\int_0^\infty d\k\
+\tanh \fraction{\pi \k}{4}
+v_{2m-1}(\k)v_{2n}(\k)\label{eq:T-cont}\end{equation} it is simple
+to show from \EQN{mixed} that the Moyal coordinates satisfy
+commutation relations,
+\begin{equation}[x(\k),y(\k')]_\star=2i\tanh\fraction{\pi \k}{4}\delta(\k-\k')
+\label{eq:continuous-com}\end{equation} The noncommutativity
+parameter\footnote{To avoid ugly factors of $\half$ we will define
+the noncommutativity parameter so that $[x,p]=2i\theta$, so that
+it differs by a factor of one half from the more standard
+convention.} $\theta(\k)=\tanh\frac{\pi \k}{4}$ is diagonal, but
+its magnitude varies as a function of $\k$. Most significantly,
+$\theta(\k)$ vanishes continuously toward $\k=0$, so the
+associated coordinates become commutative. At $\k=0$, $x(\k)=0$
+while interestingly $y(\k)$ becomes proportional to the momentum
+of a half-string, \EQN{P_L}. The fact that the half-string
+momentum emerges naturally as the commutative coordinate has been
+considered a powerful argument in favor of the continuous Moyal
+formalism, since in a naive treatment of the discrete basis the
+significance of this coordinate is easily missed.
+
+Let us now take a moment to gain a little more insight into the
+structure of the continuous Moyal formalism. Our approach will be
+to recast the formalism in an (almost) equivalent split string
+description, where the midpoint structure is more apparent. A much
+more in depth treatment of the continuous half string formalism
+will appear soon in ref.\cite{continuous-half}.
+
+Often it is convenient to represent multiplication in the algebra
+of functions on noncommutative $\Re^2$ as a nonlocal Moyal product
+between otherwise commutative functions on $\Re^2$. However,
+another useful perspective is the ``split string'' matrix-like
+representation of the algebra. This is can be related to the Moyal
+perspective as follows: Given a function $\psi(x,p)$ with
+$[\hat{x},\hat{p}]=2i\theta$, define,
+$$\hat{\psi}(\theta z+x,-\theta z+x)=\bar{\psi}(z+\fraction{x}{\theta},
+-z+\fraction{x}{\theta})=\int_{-\infty}^\infty dp e^{ipz}
+\psi(x,p)$$ A simple excercise\cite{Bars} shows that calculating
+the ``matrix product'' of these objects,
+\begin{eqnarray}\hat{A}\star\hat{B}(l,r)=\theta\int_{-\infty}^\infty dw
+\hat{A}(l,w)\hat{B}(w,r) \nonumber\\
+\bar{A}\star\bar{B}(l,r)=\int_{-\infty}^\infty dw
+\bar{A}(l,w)\bar{B}(w,r) \end{eqnarray} is isomorphic to
+calculating the Moyal product of $A(x,p)$ and $B(x,p)$. Note that
+when $\theta\neq 1$ there are two ``natural'' split string
+representations of the product. We distinguish between them by
+writing fields alternatively with a hat or with a bar (the
+significance of this distinction will be clear soon).
+
+We can easily follow this recipe to construct a split string
+representation of the continuous basis. Write,
+\begin{eqnarray}\Psi[x_n]&=&\int\prod_{n=1}^\infty \left(\frac{dp_{2n-1}}{2\pi}
+e^{ip_{2n-1}x_{2n-1}}\right)\Psi[x_{2n},p_{2n-1}]\nonumber\\
+&=&\int [dy(\k)]_1 \exp\left(\int_0^\infty d\k
+y(\k)z(\k)\right) \Psi^M[x(\k),y(\k)]\nonumber\\
+&=&\hat{\Psi}[l(\k),r(\k)]=\bar{\Psi}[\bar{l}(\k),\bar{r}(\k)]\nonumber
+\end{eqnarray}
+with \begin{eqnarray} &\ &l(\k)=\theta(\k)z(\k)+x(\k),\ \ \ \ \
+r(\k)=-\theta(\k)z(\k)+x(\k)\nonumber\\
+&\ &\bar{l}(\k)=z(\k)+\frac{x(\k)}{\theta(\k)}\ \ \ \ \ \ \ \ \ \
+\bar{r}(\k)=-z(\k)+\frac{x(\k)}{\theta(\k)}\label{eq:half}\end{eqnarray}
+We can then calculate the open string star product as,
+\begin{eqnarray}\hat{A}*\hat{B}[l(\k),r(\k)]=
+\mathcal{N}\int [dw(\k)]_2
+\hat{A}[l(\k),w(\k)]\hat{B}[w(\k),r(\k)] \nonumber\\
+\bar{A}*\bar{B}[\bar{l}(\k),\bar{r}(\k)]= \mathcal{N}\int
+[dw(\k)]_3 \bar{A}[\bar{l}(\k),w(\k)]\bar{B}[w(\k),\bar{r}(\k)]
+\end{eqnarray} The measures in the previous formulae are
+normalized so that,
+\begin{eqnarray}1&=&\int[dw(\k)]_1 \exp\left[-\frac{1}{2\pi}\int_0^\infty
+dk dk'K_{-1}(\k,\k')w(\k)w(\k')\right]\nonumber\\
+&=&\int[dw(\k)]_2 \exp\left[-\frac{\pi}{2}\int_0^\infty dk
+dk'K_{-1}(\k,\k')w(\k)w(\k')\right]\nonumber\\ &=&\int[dw(\k)]_3
+\exp\left[-\frac{\pi}{2}\int_0^\infty dk
+dk'\frac{K_{-1}(\k,\k')}{\theta(\k)\theta(\k')}w(\k)w(\k')\right]
+\end{eqnarray} These expressions can all be derived by
+translating from the corresponding measures in the mode basis. The
+kernel $K_{-1}(k,k')$ is given by the sum $\sum_{n=1}^\infty
+(2n-1)^{-1}v_{2n-1}(\k)v_{2n-1}(\k')$. An explicit formula for
+$K_{-1}$ was found in \cite{Virasoro,Small}, but we will not need
+it.
+
+It is instructive to relate \EQN{half} to other half-string bases.
+A simple computation shows,
+\begin{eqnarray}l(\k)&=&\sqrt{2}\sum_{n=1}^\infty
+\left(\sqrt{2n}v_{2n}(\k)x_{2n}-\sqrt{2n-1}v_{2n-1}(\k)\tanh\frac{\pi
+\k}{4} x_{2n-1}\right)\nonumber\\
+&=&\sqrt{2}\sum_{n=1}^\infty
+\sqrt{2n}v_{2n}(\k)\left(x_{2n}+\sum_{m=1}^\infty
+T_{2n,2m-1}x_{2n-1}\right)\nonumber\\ &=&\sqrt{2}\sum_{n=1}^\infty
+\sqrt{2n}v_{2n}(\k)l_{2n}=-\tanh\frac{\pi \k}{4}
+\sqrt{2}\sum_{n=1}^\infty \sqrt{2n-1}v_{2n-1}(\k)l_{2n-1}\nonumber
+\end{eqnarray}
+where $l_{2n}$ denotes even cosine half-string Fourier modes and
+$l_{2n-1}$ denotes odd cosine half-string Fourier modes. Another
+simple computation can relate $l(\k)$ to the left half of the
+string, $l(\sigma)=x(\sigma),\ \sigma\in[0,\frac{\pi}{2})$:
+\begin{eqnarray}&\ &l(\k)=-\frac{2}{\sqrt{\pi}}\frac{\sinh\frac{\pi
+\k}{4}}{N(\k)}\int_0^{\pi/2}d\sigma \sec\sigma
+M(\k,\sigma)l(\sigma)\nonumber\\
+&\ &\bar{l}(\k)=-\frac{2}{\sqrt{\pi}}\frac{\cosh\frac{\pi
+\k}{4}}{N(\k)}\int_0^{\pi/2}d\sigma \sec\sigma
+M(\k,\sigma)l(\sigma)\label{eq:halfsigma}\end{eqnarray} where
+$M(\k,\sigma)$ can be derived by using the generating function
+\EQN{gen-func} to evaluate the sum,
+\begin{eqnarray}M(\k,\sigma)&=&\frac{2N(\k)\cos\sigma}{\sqrt{\pi}\cosh\frac{\pi
+\k}{4}}\sum_{n=1}^\infty \sqrt{2n-1}v_{2n-1}(\k)\cos
+(2n-1)\sigma\nonumber\\&=&\frac{1}{\sqrt{\pi}}\cos\left(\frac{\k}{2}\tanh^{-1}
+\sin\sigma\right)\label{eq:M}\end{eqnarray} The $M$'s obey
+orthogonality relations:
+\begin{eqnarray}\int_0^{\pi/2} d\sigma\sec\sigma M(\k,\sigma)M(\k',\sigma)
+=\delta(\k-\k')\nonumber\\ \int_0^\infty d\k
+M(\k,\sigma)M(\k,\sigma')=\cos\sigma\delta(\sigma-\sigma')\end{eqnarray}
+These functions $M$ are a little perplexing. It seems reasonable
+to expand a half string in a basis of cosines, as one does in the
+discrete Moyal formalism, but
+\begin{center}\resizebox{2.5in}{1.5in}{\includegraphics{M.eps}}
+\end{center}
+Figure1: An example, $M(10,\sigma)$.
+\bigskip
+
+\noindent why would anyone expand with these functions? Actually,
+the $M$'s are somewhat special; they are eigenfunctions of the
+midpoint preserving reparameterization generator,
+$$ \mathcal{K}_1=L_1+L_{-1}=-2i\cos\sigma\der{\sigma}$$
+Specifically, $$(\mathcal{K}_1)^2 M(\k,\sigma)=-\k^2 M(\k,\sigma)
+$$ This is not surprising, since the continuous basis
+is defined by the eigenvectors of the Neumann coefficients, which
+in turn were derived in ref.\cite{Spectroscopy} from the
+observation that a matrix $\mathrm{K}_1$, describing the action of
+$\mathcal{K}_1$ on $|V_3\rangle$, possessed the same eigenvectors
+as the Neumann coefficients.
+
+$\mathcal{K}_1$ acts like a generator of translations, but
+translations whose length becomes increasingly shrunk towards the
+midpoint; so in a sense the midpoint appears infinitely ``far
+away.'' Correspondingly, the eigenfunctions $M(\k,\sigma)$ look
+locally like sine waves, but their frequency is position-dependent
+and blows up towards $\sigma=\frac{\pi}{2}$. (See figure 1a). The
+situation is therefore quite different from the discrete Moyal
+formalism, which imposes very specific boundary conditions at the
+midpoint; the value of $M$ and its derivative at the midpoint is
+completely undefined. Actually, in the continuous Moyal formalism
+we should really think of the midpoint boundary condition in the
+sense of a singular Sturm-Liouville system\footnote{Perhaps it's
+amusing to mention that $M(\k,\sigma)$ would describe the
+vibrational modes of a string with linear mass density
+$\sec\sigma$ and stiffness $\cos\sigma$. Of course, the strings in
+string theory have mass density and stiffness equal to $1$, in
+suitable units.}; one should require that the eigenfunctions
+remain bounded as $\sigma$ goes to $\frac{\pi}{2}$. This
+effectively fixes $\k$ to be real.
+
+It's also worth noticing is that \EQN{M} implies that a pure
+cosine wave in $\k$ space corresponds to a position eigenstate on
+the half-string. The frequency of the cosine wave and the position
+on the string are related: $\tanh\omega = \sin\sigma$. In
+particular, the ultraviolet in $\k$ space describes phenomena
+close to the string midpoint. Indeed, most singularities in the
+continuous Moyal formalism manifest themselves in the apparent
+need to invoke functions whose frequency is formally infinite. We
+will see more of this in the following sections.
+
+A simple but profound question is how the variables $l(\k)$ and
+$\bar{l}(\k)$ represent the half string configuration
+$l(\sigma)=1$ (or, equivalently, how $r(\k)$ and $\bar{r}(\k)$
+represent $r(\sigma)=x(\pi-\sigma)=1$). The relevance of this
+question should be explained. First, note that since we are
+working at zero momentum, we can for definiteness fix the string
+midpoint to be at zero: $x(\frac{\pi}{2})=0$. Then a string
+configuration with a kink discontinuity at the midpoint is,
+$$x(\sigma)=\left\{\matrix{+1 \ \ \ \ \mathrm{for}\
+\sigma\in[0,\frac{\pi}{2})\cr \!\!\!\!0\ \ \ \ \mathrm{for}\
+\sigma=\frac{\pi}{2}\cr -1 \ \ \ \ \mathrm{for}\
+\sigma\in(\frac{\pi}{2},\pi]}\right. $$ Obviously, to describe
+this we need to use a basis capable of describing the function
+$l(\sigma)=1$. There is reason to believe that such a
+configuration may be useful in string field theory, even though it
+looks somewhat singular; for instance it was shown in
+ref.\cite{Singular} that the sliver functional, which is the
+canonical projector solution of VSFT, is independent of
+transformations which break a string at its midpoint. These
+considerations were further studied in
+ref.\cite{Spectroscopy,GMS}. The discrete even Moyal basis, as
+mentioned before, cannot describe such phenomena. However, if we
+choose a half-string basis which {\it could} describe
+$l(\sigma)=1$ we run into another ugly problem: the basis
+accommodates configurations like:
+\begin{equation}x(\sigma)=\left\{\matrix{+1 \ \ \ \ \mathrm{for}\
+\sigma\in[0,\frac{\pi}{2})\cr \!\!\!\!0\ \ \ \ \mathrm{for}\
+\sigma=\frac{\pi}{2}\cr +1 \ \ \ \ \mathrm{for}\
+\sigma\in(\frac{\pi}{2},\pi]}\right.\label{eq:discontinuity}\end{equation}
+This pathological situation describes a string which has become
+estranged from its midpoint. There is no evidence that such
+configurations have any realization in string field theory, in
+fact there is some evidence to the contrary\cite{Spectroscopy}.
+But now we seem to be stuck in a catch-22: if we cannot describe
+$l(\sigma)=1$ we have too little freedom, but if we can we have
+too much\footnote{Another interpretation of \EQN{discontinuity}
+advocated in ref.\cite{Gross-Taylor} is that it really represents
+a string which has been translated to $x(\sigma)=1$, and
+$x(\pi/2)=0$ is a residual artifact. So in this perspective the
+unwanted degree of freedom can be used to describe strings at
+nonzero momentum. This is an interesting point of view, but it is
+probably better to represent nonzero momentum directly with string
+zero modes, rather than somewhat dubiously as a singular limit of
+the higher mode excitations.}. This issue is at the heart of the
+difficulty with the operator/Moyal approach to string field
+theory.
+
+So back to the question: how does the continuous Moyal formalism
+deal with this? It is simple to plug $l(\sigma)=1$ into
+\EQN{halfsigma},
+\begin{eqnarray}&\ &\bar{l}(\k)=-\frac{2}{\sqrt{\pi}}\frac{\cosh\frac{\pi
+\k}{4}}{N(\k)}\int_0^{\pi/2}d\sigma \sec\sigma
+M(\k,\sigma)=-\frac{2}{\pi}\delta(\k)\nonumber\\
+&\ &l(\k)=-\frac{2}{\sqrt{\pi}}\frac{\sinh\frac{\pi
+\k}{4}}{N(\k)}\int_0^{\pi/2}d\sigma \sec\sigma
+M(\k,\sigma)=-\frac{2}{\pi}\sinh\frac{\pi\k}{4}\delta(\k)=0\nonumber\end{eqnarray}
+The situation is similar to the discrete Moyal formalism: In one
+basis you can represent $l(\sigma)=1$ but in the other you can't.
+Are we just back to the same problem we had with the discrete
+basis? The answer is no, because neither of the half string bases
+in \EQN{half} is really equivalent to the continuous Moyal
+formalism as it was first conceived. The reason is that, in order
+to construct a split string description, we implicitly had to make
+a change of basis which normalized the noncommutativity parameter
+to one. There are two ways to do this, corresponding to the two
+half string formalisms:
+\begin{eqnarray} \tilde{x}(\k)=\frac{x(\k)}{\theta(\k)}\ \ \ \ \ \
+[\tilde{x}(\k),y(\k')]_\star=2i\delta(\k-\k')\Longrightarrow
+\bar{l}(\k),\bar{r}(\k)\nonumber\\
+\tilde{y}(\k)=\frac{y(\k)}{\theta(\k)}\ \ \ \ \ \
+[x(\k),\tilde{y}(\k')]_\star=2i\delta(\k-\k')\Longrightarrow
+l(\k),r(\k)\nonumber \end{eqnarray} The problem is that
+$\theta(\k)$ possesses a zero mode, $\theta(\k)\delta(\k)=0$, so
+we cannot really invert it to make this change of basis. The zero
+mode of $\theta(\k)$ is the twin brother of the zero mode of $T$,
+and as we can see it causes the same problems.
+
+This clearly explains why the noncommutativity parameter in the
+continuous Moyal formalism vanishes continuously towards $\k=0$:
+If it did not, the formalism would either have too many or too few
+degrees of freedom to describe a reasonable string. This also
+sheds some light on why the Moyal formulation of the star algebra
+is slightly preferable to the matrix/split string approach. With a
+Moyal product, we have a deformation parameter $\theta$ which can
+be taken to zero in a meaningful way to recover a purely
+commutative algebra. This is not true for a matrix algebra. While
+the matrix and Moyal descriptions are indeed isomorphic for
+$\theta\neq 0$, they are not equivalent when $\theta=0$ and this
+is why the split string formalism in any basis always has too many
+or too few degrees of freedom\footnote{It should be noted that the
+discrete Moyal formalism does not make use of this subtle
+difference between matrix and Moyal representations. As far as the
+author can tell, the discrete Moyal formalism is completely
+equivalent to the split string formalism. The major breakthrough
+in the approach of ref.\cite{Bars-Matsuo} is not so much the use
+of the Moyal product, but the construction of a consistent
+regulator which resolves the type of midpoint ambiguities we have
+been discussing.}.
+
+It was shown in ref.\cite{Spectroscopy} that the Neumann matrix
+$M=CV^{11}$ (using standard notation) has a doubly degenerate
+spectrum of eigenvectors, $v_{2n}(\k)$ and $v_{2n-1}(\k)$, for
+$\k$ strictly greater than zero; however for $\k=0$ they argued
+that it has only {\it one} twist odd eigenvector with eigenvalue
+$-\frac{1}{3}$:
+$$v_{2n-1}(0)=\frac{1}{\sqrt{\pi}} \frac{(-1)^{n+1}}{\sqrt{2n-1}}$$
+which in the continuous basis \EQN{continuous} gives us the
+half-string momentum. The twist even counterpart of this should
+be, after normalizing by a vanishing factor of $\k$,
+\begin{equation}
+v_{2n}'(0)=\frac{1}{\sqrt{\pi}}\frac{(-1)^{n+1}}{\sqrt{2n}}
+\left(1+\frac{1}{3}+\frac{1}{5}+
+...+\frac{1}{2n-1}\right)\label{eq:v'}\end{equation} However, the
+authors of ref.\cite{Spectroscopy} gave several reasons for
+believing that this vector was in fact not an eigenvector of $M$.
+If true, this implies that the corresponding Moyal coordinate,
+\begin{eqnarray} x'(0)&=&\lim_{\k\to
+0}\frac{x(\k)}{\k}=\sqrt{2}\sum_{n=1}^\infty
+\sqrt{2n}v_{2n}'(0)x_{2n}\nonumber\\
+&=&-\frac{1}{4\sqrt{\pi}}\int_0^\pi d\sigma
+|\sec\sigma|x(\sigma)\end{eqnarray} should somehow be physically
+pathological. Our discussion shows why this is the case, since we
+can easily see that $x'(0)$ is responsible for the isolated
+midpoint singularity \EQN{discontinuity},
+$$\frac{x(\k)}{\theta(\k)}=\half\left
+[\bar{l}(\k)+\bar{r}(\k)\right]=
+-\frac{2}{\pi}\delta(\k)=\frac{4}{\pi}x'(\k)$$ This gives a
+concrete justification of why the twist even vector should be
+excluded from the spectrum of $M$ at $-\frac{1}{3}$.
+
+However, this brings up a thorny issue. In a certain sense, it is
+not really meaningful to simply ``remove'' $v_{2n}'(0)$ from the
+spectrum, since it can always be recovered as a suitable limit of
+vectors which {\it are} in the spectrum. Though you can never
+``get'' to $v_{2n}'(0)$, you can get as close as you want, and
+this is enough to cause trouble. Such limits, as we will see, are
+the direct cause of the Horowitz-Strominger associativity anomaly.
+
+\section*{IV. Philosophy of associativity anomalies}
+Consider the following two Moyal coordinates: $P_L$, the momentum
+of the half string, and $\bar{x}$, the ``center of mass'' position
+relative to $x(\frac{\pi}{2})\equiv 0$. These are explicitly,
+\begin{eqnarray}&\ &P_L=\frac{\sqrt{2}}{\pi}\sum_{n=1}^\infty
+\frac{(-1)^{n+1}}{2n-1}p_{2n-1}=\int_0^{\pi/2}d\sigma
+p(\sigma)=-\frac{1}{\sqrt{\pi}}y(0)\nonumber\\
+&\ &\bar{x}=\sqrt{2}\sum_{n=1}^\infty
+(-1)^{n+1}x_{2n}=\frac{1}{\pi}\int_0^\pi d\sigma
+x(\sigma)=-2\int_0^\infty \frac{d\k}{\k N(\k)}x(\k)\ \ \ \ \
+\label{eq:Px} \end{eqnarray} It would seem simple enough to
+calculate the Moyal-star commutator, $$[\bar{x},P_L]_\star$$ but
+if we attempt to do this, say in the mixed basis, we immediately
+run into a problematic double sum, \begin{equation} i
+\frac{4}{\pi}\sum_{m,n=1}^\infty (-1)^{m+1}T_{2m,2n-1}
+\frac{(-1)^{n+1}}{2n-1}\label{eq:ambsum}\end{equation} As observed
+numerous times\cite{Gross-Taylor,Associative,Bars-Matsuo}, the
+value of this sum depends on the order in which the summation is
+carried out. We can see the ambiguity in the continuous basis
+too\cite{MSFT}:
+$$[\bar{x},P_L]_\star=\frac{2}{\sqrt{\pi}}\int_0^\infty\frac{d\k}{\k
+N(\k)}2i\tanh\frac{\pi \k}{4}\delta(\k)$$ Again, this integral is
+difficult to define, since the integrand has delta function
+support on the boundary of the region of integration. One could
+simply declare that the commutator is zero by definition, since we
+have explicitly removed the unphysical coordinate $x'(0)$ from our
+theory. However, it would have been difficult to see this just by
+inspecting the integral or the sum.
+
+It is probably meaningless to talk about the value of this
+commutator without specifying a prescription for regulating and
+resolving these ambiguous expressions. One approach would be to
+impose a mode number cutoff $N$ to $P_L$ and $N'$ to $\bar{x}$,
+and then take $N,\ N'$ to infinity in a way which specifies an
+order for evaluating the double sum:
+\begin{eqnarray}&\ &\lim_{N'\to\infty}\lim_{N\to\infty}[\bar{x}(N'),P_L(N)]_\star=i
+wTv=0\nonumber\\
+&\
+&\lim_{N\to\infty}\lim_{N'\to\infty}[\bar{x}(N'),P_L(N)]_\star=i
+v\bar{T}w =i vv=i\ \ \ \ \ \label{eq:ff}\end{eqnarray} Here, in
+the notation of ref.\cite{Associative}, we introduced an even
+moded vector $w_{2n}=\sqrt{2}(-1)^{n+1}\in\mathcal{H}^*_{even}$
+satisfying $\bar{T}w=v$. The ambiguity above comes about because
+$w$ and $v$ are not in $\mathcal{H}'_{even}$ and
+$\mathcal{H}_{odd}$ respectively.  This mode number regulator
+plays a central role in regulating and defining the discrete Moyal
+formalism, though it is equally well-suited for the mixed basis.
+
+We could try to impose the mode number cutoff in the continuous
+basis, as suggested in ref.\cite{MSFT}, but this would be
+unpleasantly inelegant. To make sense of $[\bar{x},P_L]_\star$ in
+this context we should take a more refined point of view. The key
+point is to notice that coordinates of the form
+$$C=\int_0^\infty d\k\left[f(\k)y(\k)+g(\k)x(\k)\right]$$
+will only have a well-defined Moyal-star commutator if $f(\k)$ and
+$g(\k)$ live in a sufficiently smooth space of test functions,
+since calculating the commutator inevitably involves integrating
+$f$ and $g$ against a delta function. The problem with calculating
+$[P_L,\bar{x}]$ is that $f$ and $g$ in this case are {\it not}
+smooth functions; they are distributions. We can see this clearly
+by regulating the formulas for $P_L$ and $\bar{x}$ as follows:
+\begin{eqnarray}&\ &P_L(\omega)=\frac{\sqrt{2}}{\pi i}\sum_{n=1}^\infty
+\frac{(i
+\tanh\omega)^{2n-1}}{2n-1}p_{2n-1}=-\frac{1}{\pi}\int_{-\infty}^{\infty}
+\frac{d\k}{\k N(\k)}\sin\omega\k y(\k)
+\nonumber\\
+&\ &\bar{x}(\omega)=-\sqrt{2}\sum_{n=1}^\infty
+(i\tanh\omega)^{2n}x_{2n}=-2\int_0^\infty \frac{d\k}{\k N(\k)}
+[1-\cos\omega\k]x(\k)\ \ \ \ \ \ \ \label{eq:regPx}
+\end{eqnarray} Taking $\omega$ to infinity we should recover
+$P_L$ and $\bar{x}$, but the coefficients in the integrand
+oscillate with infinite frequency and diverge. What should we make
+of this? The wild oscillation of $\sin\omega\k$ and
+$1-\cos\omega\k$ is not necessarily a problem, if these singular
+objects always appear integrated against a nicely behaved test
+function; in this case the regulated formulas \EQN{regPx} converge
+to \EQN{Px} in the sense of distributions. Unfortunately, when
+calculating $[\bar{x},P_L]_\star$ we must integrate $\sin\omega\k$
+against $1-\cos\omega\k$, and neither of them is smooth as
+$\omega\to\infty$; formally, we are trying to integrate over a
+product of distributions, which is mathematical nonsense. Still,
+one can use the regulated formulas to calculate
+$[\bar{x}(\omega),P_L(\omega')]_\star$, and take $\omega, \omega'$
+to infinity in different orders,
+\begin{eqnarray}\lim_{\omega'\to\infty}\lim_{\omega\to\infty}
+[\bar{x}(\omega'),P_L(\omega)]_\star&=&2i \lim_{\omega'\to\infty}
+\frac{2}{\sqrt{\pi}}\int_0^\infty d\k\frac{\tanh\frac{\pi
+\k}{4}}{\k N(\k)}[1-\cos\omega'\k]\delta(\k)=0
+\nonumber\\
+\lim_{\omega\to\infty}\lim_{\omega'\to\infty}[\bar{x}(\omega'),
+P_L(\omega)]_\star&=& 2i
+\lim_{\omega\to\infty}\frac{2}{\pi}\int_{-\infty}^\infty d\k
+\frac{\tanh\frac{\pi \k}{4}}{2\k \sinh \frac{\pi
+\k}{2}}\sin\omega\k =i\nonumber\end{eqnarray} Consistently, we
+find the same answers as we did in the mixed basis \EQN{ff}. This
+is a concrete realization of our earlier observation that infinite
+frequencies in $\k$ space are associated with midpoint
+singularities.
+
+Notice that, even though our calculation did not explicitly invoke
+the unphysical coordinate $x'(0)$, we were still able to construct
+an apparently reasonable limit where the value of
+$[\bar{x},P_L]_\star$ was nonzero. Essentially, this limit allowed
+us to get ``close enough'' to $x'(0)$ to effectively reintroduce
+it into the theory. This might rightfully seem dubious, but it is
+not {\it a priori} preventable. Strangely enough, in the regulated
+discrete Moyal formalism\cite{Bars-Matsuo} the commutator
+$[\bar{x},P_L]_\star$ always evaluates to $i$, not zero. This is
+probably not really correct, at least not under all circumstances.
+The difficulty is that usually when imposing the mode number
+cutoff it is assumed that $T$ should be replaced by it's $N\times
+N$ truncated version, $T_{N\times N}$. In fact it could equally
+well be replaced by\footnote{In the truncated
+theory\cite{Associative}, $T_{N\times N} v_N=v_N/(1+w_N^2)$.},
+$$T_{N\times N}^{\mathrm{zero}}=T_{N\times N} -\frac{w_N v_N}{1+w_N^2}$$
+which has a zero mode even at finite $N$. In this regularization,
+$[\bar{x},P_L]_\star=0$. The fact that the space of Moyal
+coordinates is infinite dimensional is important, and one should
+be careful not to ``overregulate'' and gain false confidence into
+the meaning of expressions which are intrinsically ill-defined.
+
+The lesson we have learned is that the coordinates $\bar{x}$ and
+$P_L$ do not really exist in the continuous/discrete Moyal
+formalisms, unless multiplied with a sufficiently ``well-behaved''
+string functional. This motivates the
+definition,\begin{eqnarray}\Psi*P_L&\equiv &
+\lim_{\rho\to\infty}\Psi*P_L(\rho)\nonumber\\\bar{x}*\Psi&\equiv &
+\lim_{\rho\to\infty}\bar{x}(\rho)*\Psi\label{eq:dert}\end{eqnarray}
+where $\rho$ is a regulator appropriate for the basis in question.
+An important consequence of this definition is that star
+multiplication of fields involving both $\bar{x}$ and $P_L$ is
+generically {\it non-associative}. This phenomenon was observed
+many years ago in a paper by Horowitz and
+Strominger\cite{Horowitz}, and has long been a source of
+puzzlement and speculation\cite{Associative, Strominger, Qiu,
+Rakowski, Schnabl}. The anomaly in the guise we will consider
+concerns the product $\bar{x}*\Psi*P_L$ where $\Psi$ is a
+sufficiently well-behaved string functional, such as one in the
+perturbative Fock space:
+\begin{eqnarray}
+(\bar{x}*\Psi)*P_L&= &
+\lim_{\rho'\to\infty}\left[\lim_{\rho\to\infty}
+[\bar{x}(\rho)*\Psi]*P_L(\rho')\right]\nonumber\\
+\bar{x}*(\Psi*P_L)&= &\lim_{\rho\to\infty}
+\left[\bar{x}(\rho)*\lim_{\rho'\to\infty}[\Psi*P_L(\rho')]\right]\
+\ \ \ \label{eq:assoc}
+\end{eqnarray} The product $\bar{x}*\Psi*P_L$ fails to be
+associative because these two limits are not the same\footnote{The
+limits differ if we calculate in the Moyal formalism, but they are
+the same if we calculate in position space. See next paragraph.}.
+Let's see how this comes about explicitly. The calculation is
+simplified by noting,
+\begin{eqnarray}\bar{x}(\rho)\star A &=& \bar{x}(\rho) A +\half[\bar{x}(\rho), A]_\star\nonumber\\
+A\star P_L(\rho) &=& A P_L(\rho)
++\half[A,P_L(\rho)]_\star\nonumber
+\end{eqnarray} Multiplying and writing out the terms, \begin{eqnarray}
+\bar{x}(\rho)\star \Psi \star P_L(\rho') &=& \bar{x}(\rho)\Psi
+P_L(\rho') + \half [\bar{x}(\rho),\Psi]_\star
+P_L(\rho')\nonumber\\
+&\ &+\half \bar{x}(\rho)[\Psi,
+P_L(\rho')]_\star+\fraction{1}{4}[\bar{x}(\rho),[\Psi,
+P_L(\rho')]_\star]_\star\nonumber\\
+&\ &+\half[\bar{x}(\rho), P_L(\rho')]_\star\Psi
+\label{eq:reg_prod}
+\end{eqnarray}
+We can now calculate the associator, cancelling terms which are
+manifestly equal regardless of the order of limits:
+\begin{eqnarray}
+&\ &(\bar{x}\star\Psi)\star P_L-\bar{x}\star(\Psi\star
+P_L)=\nonumber\\ &\ &\half
+\left[\lim_{\rho'\to\infty}\lim_{\rho\to\infty}
+-\lim_{\rho\to\infty}\lim_{\rho'\to\infty}\right]\left(\half[\bar{x}(\rho),[\Psi,
+P_L(\rho')]_\star]_\star +[\bar{x}(\rho), P_L(\rho')]_\star\Psi
+\right)\nonumber
+\end{eqnarray}
+For a well behaved string functional we can argue that the first
+term on the right hand side vanishes. For example, in the mixed
+basis this term looks like,
+\begin{eqnarray}&\ &\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!
+[\bar{x}(N),[\Psi,
+P_L(N')]_\star]_\star\nonumber\\
+&\ &=\frac{2}{\pi}\sum_{n=1}^N\sum_{n'=1}^{N'}
+\sum_{k,l=1}^\infty\frac{(-1)^{n'+1}(-1)^{n+1}}{2n'-1}T_{2n,2k-1}T_{2l,2n'-1}
+\frac{\partial^2 \Psi}{\partial p_{2k-1}\partial
+x_{2l}}\label{eq:double-com}
+\end{eqnarray} Depending on how the mixed partial derivative evaluates,
+this expression might have an ambiguous $N,N'\to\infty$ limit.
+However, for the ground state wavefunctional,
+\begin{equation}\frac{\partial^2
+\Psi_{|0\rangle}}{\partial p_{2k-1}\partial x_{2l}}=4 \frac{
+2l}{2k-1} p_{2k-1}x_{2l}\Psi_{|0\rangle}\nonumber
+\end{equation}
+and noting that $\Psi_{|0\rangle}$ only has support on
+configurations satisfying
+$$\sum_{n=1}^\infty \frac{p_{2k-1}^2}{2k-1}<\infty\ \
+\ \ \sum_{n=1}^\infty 2l x_{2l}^2<\infty $$ we can see that the
+$N,N'\to\infty$ of \EQN{double-com} limit is unambiguous (in fact,
+it is zero). Therefore, the ambiguity of $[\bar{x},P_L]_\star$
+gives us the only contribution to the associator,
+\begin{equation}(\bar{x}\star\Psi)\star P_L-\bar{x}\star(\Psi\star
+P_L)=\fraction{i}{2}\Psi \label{eq:anomaly}
+\end{equation} Hence associativity is anomalous.
+
+This calculation makes the associativity anomaly appear
+deceptively straightforward. For example, if we repeat the
+argument in the coordinate space basis $x(\sigma)$, the anomaly
+disappears altogether. To see this consider,
+\begin{eqnarray}\bar{x}(\rho)\star A[x(\sigma)]&=&
+\frac{2}{\pi}\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma)A[x(\sigma)]\nonumber\\
+A[x(\sigma)]\star P_L(\rho)&=& i\int_{\pi/2}^{\pi}d\sigma\
+g_\rho(\sigma)\frac{\delta}{\delta x(\sigma)}A[x(\sigma)]
+\label{eq:35}\end{eqnarray} where
+$\lim_{\rho\to\infty}f_\rho=\lim_{\rho\to\infty}g_\rho=1$. For
+finite values of $\rho$, these formulas involve integrals of the
+position $x(\sigma)$ and the momentum
+$p(\sigma)=-i\frac{\delta}{\delta x(\sigma)}$ over opposite halves
+of the string. This is no accident, otherwise multiplication would
+not be associative. On the other hand, when $\rho$ is strictly
+infinite, $A\star P_L$ involves $p(\sigma)$ integrated over {\it
+both} halves of the string, with opposite sign:
+\begin{eqnarray}
+A[x(\sigma)]\star P_L&=& i\int_{\pi/2}^{\pi}d\sigma\
+\frac{\delta}{\delta x(\sigma)}A[x(\sigma)]\nonumber\\
+&=&-\frac{i}{2}\left[\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}-\int_{\pi/2}^{\pi}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}\right]A[x(\sigma)]\nonumber
+\end{eqnarray}
+This is because when $\rho\to\infty$, $A \star P_L(\rho)$
+describes a differential where the right half of the string is
+broken away from the midpoint (see figure 2). This is the same as
+breaking the left and right halves symmetrically away from each
+other, since the difference involves the unphysical string
+configuration \EQN{discontinuity}, or equivalently the Moyal
+coordinate $x'(0)$, which apparently reasonable string functionals
+can't see. Keeping this in mind, we can calculate,
+\begin{eqnarray}\bar{x}\star (\Psi\star P_L)&=&\lim_{\rho\to\infty}
+\frac{2i}{\pi}\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma)\left[\int_{0}^{\pi/2}d\sigma\
+\frac{\delta}{\delta x(\sigma)}-\int_{\pi/2}^{\pi}d\sigma\
+\frac{\delta}{\delta x(\sigma)}\right]\Psi[x(\sigma)]\nonumber\\
+&=&-\frac{i}{\pi}\int_0^{\pi/2}d\sigma
+x(\sigma)\left[\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}-\int_{\pi/2}^{\pi}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}\right]\Psi[x(\sigma)]\nonumber
+\end{eqnarray}
+Now let's consider $(\bar{x}\star\Psi)\star P_L$. According to
+\EQN{35}, $\bar{x}(\rho)\star A$ multiplies $A$ by the average
+value of $x(\sigma)$ on the left half of the string, weighted by
+$f_\rho(\sigma)$ (see
+\begin{center}a) \resizebox{2in}{1.3in}{\includegraphics{J.eps}}
+\ \ \ \ \ \ \ \ b)
+\resizebox{2in}{1.3in}{\includegraphics{K.eps}}\end{center} Figure
+2: Graphs of the magnitude of the action of $p(\sigma)$ on the
+string when calculating $A\star P_L(\rho)$, as a function of the
+regulator in a) the discrete/Mixed basis and b) in the continuous
+basis. a) shows values for the mode number cutoff $N=1,3,5,7,9,11$
+and b) shows $4\omega= 1,2,3,4,5,6$ with $\omega$ as in
+\EQN{regPx}.
+\bigskip
+
+\begin{center} \resizebox{2in}{1.3in}{\includegraphics{L.eps}}\end{center}
+\noindent Figure 3: $f_\rho$ in the continuous basis, for
+$\rho=2\omega=1,...,9$ with $\omega$ as in \EQN{regPx}. For
+$\omega<\infty$ the area under the curve vanishes.
+\bigskip
+
+
+
+\noindent figure 3). For finite values of $\rho$,
+$\bar{x}(\rho)\star A$ has no functional dependence on $x'(0)$ or
+\EQN{discontinuity}, because $\int_0^{\pi/2}d\sigma f_\rho=0$. In
+fact, $f_\rho$ approaches $1$ as $\rho$ gets large, but in such a
+way that there is an increasingly narrow and deep ``well'' near
+$\sigma=\frac{\pi}{2}$ which cancels off the area under the curve.
+When $\rho$ is strictly infinite, the ``well'' becomes a delta
+function at $\frac{\pi}{2}$, which can be ignored since
+$x(\frac{\pi}{2})=0$ by definition. But then in this limit
+$\bar{x}\star A$ has a nontrivial dependence on $x'(0)$, as is
+easy to see; therefore we cannot argue that star multiplication by
+$P_L$ will multiply $\bar{x}\star \Psi$ by $-i\frac{\delta}{\delta
+x(\sigma)}$ integrated over both halves of the string. In fact,
+\begin{eqnarray}(\bar{x}\star \Psi)\star P_L
+&=&\lim_{\rho\to\infty} \frac{2i}{\pi}\int_{\pi/2}^{\pi}d\sigma\
+g_\rho(\sigma)\frac{\delta}{\delta x(\sigma)}\int_0^{\pi/2}d\sigma
+x(\sigma)\Psi[x(\sigma)]\nonumber\\
+&=&-\frac{i}{\pi}\int_0^{\pi/2}d\sigma
+x(\sigma)\left[\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}-\int_{\pi/2}^{\pi}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}\right]\Psi[x(\sigma)]\nonumber
+\end{eqnarray} Therefore, $(\bar{x}\star\Psi)\star P_L=\bar{x}\star(\Psi\star
+P_L)$ and the associator vanishes!
+
+How do we reconcile this with \EQN{anomaly}? The problem is that
+the limit $\rho\to\infty$ does not commute with the the operation
+of taking the Fourier transform. Translating \EQN{reg_prod} into
+position space, we see that the offending term is, $$\half
+[\bar{x}(\rho),\Psi]_\star P_L(\rho')=-\frac{i}{2\pi} \int_0^\pi
+g_{\rho'}(\sigma) \frac{\delta}{\delta x(\sigma)} \left[\int_0^\pi
+d\sigma f_\rho(\sigma)x(\sigma) \right] \Psi$$ where in our
+notation $f_\rho$ and $g_\rho$ are odd functions around
+$\sigma=\frac{\pi}{2}$. In the phase space of even coordinates and
+odd momenta, the limits $\rho,\rho'\to\infty$ commute because,
+$$\lim_{\rho\to\infty}\lim_{\rho'\to\infty}\half
+[\bar{x}(\rho),\Psi]_\star P_L(\rho')=\half\left(
+\lim_{\rho\to\infty}[\bar{x}(\rho),\Psi]_\star\right)
+\left(\lim_{\rho'\to\infty}P_L(\rho')\right)$$ However, in
+coordinate space, $P_L$ is a differential operator whose action on
+$[\bar{x}(\rho),\Psi]_\star$ needs to be evaluated before we take
+can take $\rho\to\infty$. Taking the derivative gives us an extra
+term, $$-\frac{2i}{\pi}\int_0^{\pi/2} d\sigma f_\rho(\sigma)
+g_{\rho'}(\sigma)\Psi $$ which has an ambiguous $\rho,\rho'\to
+\infty$ limit, cancelling the contribution to the associator from
+$[\bar{x},P_L]_\star \Psi$.
+
+To make matters more complicated, we should note that the products
+$\bar{x}\star\Psi$ and $\Psi\star P_L$ need not be defined in
+regulated form through \EQN{dert}; $\bar{x}$ and $P_L$ are not
+singular in every basis. For instance in the mixed basis, they
+exist directly $N\to\infty$ limit, which means we can construct
+these operators explicitly {\it before} multiplying them with a
+state. Calculating in this order, we find:
+\begin{eqnarray}\Psi\star P_L &=& \Psi P_L\nonumber\\
+\bar{x}\star\Psi &=& \bar{x}\Psi+i\frac{2\sqrt{2}}{\pi}
+\sum_{m=1}^\infty \frac{(-1)^{m+1}}{2m-1}
+\frac{\partial\Psi}{\partial p_{2m-1}}\nonumber
+\end{eqnarray} Then, \begin{eqnarray}
+\bar{x}\star(\Psi\star P_L)& =& \bar{x}\Psi P_L
++i\frac{2\sqrt{2}}{\pi} \sum_{m=1}^\infty \frac{(-1)^{m+1}}{2m-1}
+\frac{\partial\Psi}{\partial p_{2m-1}}+\frac{i}{2}\Psi\nonumber\\
+(\bar{x}\star\Psi)\star P_L & =& \bar{x}\Psi P_L
++i\frac{2\sqrt{2}}{\pi} \sum_{m=1}^\infty \frac{(-1)^{m+1}}{2m-1}
+\frac{\partial\Psi}{\partial p_{2m-1}}P_L\nonumber \end{eqnarray}
+So,
+$$(\bar{x}\star\Psi)\star P_L-\bar{x}\star(\Psi\star P_L)=-\fraction{i}{2}\Psi$$
+Now the associator has {\it opposite} sign from \EQN{anomaly}.
+Apparently the limit $\rho\to\infty$ does not commute with star
+multiplication either.
+
+It has been suggested in the literature many
+times\cite{Horowitz,Strominger,Qiu,Associative} that the failure
+of associativity in the star algebra is a necessary feature
+indicating the emergence of closed string physics from open string
+field theory. Bars and Matsuo have recently argued that the
+anomaly is needed in VSFT too\cite{Bars-Matsuo}, in order to
+ensure that D-brane vacua have a nontrivial spectrum of
+fluctuations. These ideas are interesting, but they are based on
+the assumption that when associativity fails, it does so in a
+consistent and physically meaningful way. This seems not to be the
+case, at least from the perspective of our analysis. A more sober
+point of view is that associativity anomalies indicate that we are
+attempting to multiply objects which are outside the algebra of
+string fields, and really the star product of such objects should
+not be defined. It might be possible that one day physical
+considerations will dictate an unambiguous procedure for
+regulating and calculating the star product when associativity no
+longer holds, but at this point the definition of products like
+$\bar{x}\star\Psi\star P_L$ is rather a question for philosophy,
+not physics.
+
+\section*{V. Ghosts\footnote{This discussion is borrowed
+and improved from and earlier discussion in ref.\cite{Erler}}}
+Sofar, our analysis has dealt with the matter sector exclusively.
+In bosonized form\cite{Belov-Konechny}, the star algebra of ghosts
+is identical\footnote{Restricting to the subalgebra of fields with
+ghost momentum $-3/2$ is equivalent to studying zero momentum in
+the matter sector} to the algebra in the matter sector,
+\EQN{mixed}. However, in the $bc$ ghost language, the algebra of
+string fields looks quite different from the matter sector because
+the ghost coordinates, $\partial_\sigma b(\sigma)$ and $c(\sigma)$
+are identified using half-string {\it anti}overlap conditions
+(overlap with a sign)\cite{Vertices,Erler,Bars_amplitudes}. This
+leads to some novel structures beyond what we've seen. Expand the
+worldsheet ghosts $b_{zz},c^z$ on the unit semicircle $|z|=1,
+\Im(z)>0$ in terms of Fourier modes as follows:
+\begin{eqnarray}b(\sigma)&=&i\sqrt{2}\sum_{n=1}^\infty x_{n}\sin
+n\sigma\ \ \ \ \ \ \ \ \ \spaces x_n=\frac{i}{\sqrt{2}}(b_n-b_{-n})\nonumber\\
+\pi_c(\sigma)&=&\frac{1}{\pi}\left(b_0+\sqrt{2}\sum_{n=1}^\infty
+q_{n}\cos n\sigma\right)
+\ \ \ \ \ \ q_n=\frac{1}{\sqrt{2}}(b_n+b_{-n})\nonumber\\
+c(\sigma)&=&c_0+\sqrt{2}\sum_{n=1}^\infty y_{n}\cos n\sigma
+\ \ \ \ \spaces y_n=\frac{1}{\sqrt{2}}(c_n+c_{-n})\nonumber\\
+\pi_b(\sigma)&=&\frac{i\sqrt{2}}{\pi}\sum_{n=1}^\infty p_{n}\sin
+n\sigma \ \ \ \ \ \ \ \ \ \ \spaces
+p_n=\frac{1}{\sqrt{2}}(c_n-c_{-n}) \nonumber\end{eqnarray} where
+$b_n$ and $c_n$ are the anti-commuting $bc$ ghost oscillators
+satisfying $\{b_n,c_{-m}\}=\delta_{m,n}$ (note that our use of the
+$x_n$ and $p_n$ differs from previous sections). Restricting
+ourselves to Siegel gauge\cite{Erler}, we will think of the string
+field in the ghost sector as a functional of the eigenvalues of
+$x_{2n-1},p_{2n},y_{2n-1},q_{2n}$ for $n\geq 1$, in which case we
+can calculate the reduced star product\cite{Okuyama2} ($=b_0$
+times the full star product) as: $$
+\Psi*_{b_0}\Phi[x_{2n-1},p_{2n},y_{2n-1},q_{2n}]=\mathcal{N}_{ghost}
+\Psi\star\Phi[x_{2n-1},p_{2n},y_{2n-1},q_{2n}]$$ where
+$\mathcal{N}_{ghost}$ is a normalization\cite{Erler} and $\star$
+is a non-anticommutative ``Moyal product''\cite{Ferrara} (i.e. a
+product of elements in a Clifford Algebra) satisfying,
+\begin{equation}\{y_{2m-1},q_{2n}\}_\star=2 R_{2m-1,2n}\ \ \
+\{x_{2m-1},p_{2n}\}_\star=2\frac{2m-1}{2n}R_{2m-1,2n}
+\label{eq:mixed_ghost} \end{equation} with $R$ the matrix in
+\EQN{T-inv}. The appearance of $R$ here is interesting, since $R$
+has a much more restricted domain than $T$; this is a reflection
+of the fact that the anti-overlap is more singular than the simple
+matrix-like overlap in the matter sector. We can make a change of
+basis into $\kappa$ space:
+\begin{eqnarray}x_\e(\k)&=&-\sqrt{2}\sum_{n=1}^\infty \frac{1}{\sqrt{2n}}v_{2n}(\kappa)q_{2n}\nonumber\\
+x_\o(\k)&=&\sqrt{2}\sum_{n=1}^\infty \frac{1}{\sqrt{2n-1}}v_{2n-1}(\kappa)x_{2n-1}\nonumber\\
+y_\e(\k)&=&\sqrt{2}\sum_{n=1}^\infty \sqrt{2n}v_{2n}(\kappa)p_{2n}\nonumber\\
+y_\o(\k)&=&\sqrt{2}\sum_{n=1}^\infty
+\sqrt{2n-1}v_{2n-1}(\kappa)y_{2n}\label{eq:k-ghost}
+\end{eqnarray} Writing $\vec{x}=(x_\e,x_\o)$ and similarly for
+$\vec{y}$,
+\begin{equation}\{\vec{x}(\k),\vec{y}(\k')\}_\star=2i\sigma_y \coth\fraction{\pi \k}{4}
+\left[\delta(\k-\k')+\delta(\k+\k')\right]\label{eq:continuous-gcom}\end{equation}
+with $\sigma_y$ the $y$th Pauli matrix. The extra $\delta(\k+\k')$
+is put there since we will be letting $\k$ range over the whole
+real line (even though negative $\k$s don't give independent
+coordinates) for reasons that will be clear in a minute.
+
+In contrast to the matter sector, where the continuous basis gives
+a smooth noncommutativity parameter and Moyal coordinates with a
+nice physical interpretation, the algebra \EQN{continuous-gcom} is
+perplexing. First, the metric/non-anticommutativity parameter
+$g(\k)=\coth\fraction{\pi \k}{4}$ {\it diverges} towards
+$k=0$---in fact, the quantity $\coth\fraction{\pi
+\k}{4}[\delta(\k-\k')+\delta(\k+\k')]$ is not a well defined
+Schwartz distribution, since its inner product with a $C^\infty$
+function generically diverges. Even more confusing is the fact
+that the even coordinates vanish at $\k=0$,
+\begin{eqnarray}x_\o(0)&=&\sqrt{\frac{2}{\pi}}\left(\hat{x}_1-
+\fraction{1}{3}\hat{x}_3+\fraction{1}{5}\hat{x}_5-... \right)\ \ \
+\ y_\o(0)=\sqrt{\frac{2}{\pi}}\left(\hat{y}_1-
+\hat{y}_3+\hat{y}_5-... \right) \nonumber\\
+y_\e(0)&=&0\spaces\spaces\spaces\ \ \ \ \ \ \ \ x_\e(0)=0
+\end{eqnarray}
+yet they are somehow supposed to have {\it infinite}
+non-anticommutativity with the odd coordinates! Furthermore, the
+odd coordinates at $\k=0$ don't seem to have any obvious physical
+interpretation.
+
+The problems of the vanishing coordinates and the diverging metric
+are actually connected. Note that the odd coordinates at $\k=0$
+generically have finite and nonzero non-anticommutativity:
+$$\{y_\o(0),q_{2n}\}_\star=-2\sqrt{\frac{2}{\pi}}\sum_{m=1}^\infty(-1)^m
+R_{2m-1,2n}=-\frac{\pi\sqrt{2}}{2}\sqrt{2n}\ v_{2n}'(0)$$ which is
+not zero, in contrast to what we found in the matter
+sector\footnote{This result may be derived independently from the
+continuous basis from the manipulation,
+\begin{eqnarray}\{y_\o(0),\sum_{n=1}^\infty z^{2n}q_{2n}\}_\star
+&=& -2\sqrt{\frac{2}{\pi}}\sum_{m,n=1}^\infty (-1)^m z^{2n}
+R_{2m-1,2n}\nonumber\\ &=& \frac{4}{\pi}\sqrt{\frac{2}{\pi}}
+\int_0^{\pi/2}d\sigma
+(\sec\sigma)\left(\frac{2z^2}{(1+z^2)(1-z^2)}\frac{\cos^2\sigma}{
+1+(\fraction{2z}{1-z^2}\sin\sigma)^2} \right)\nonumber\\
+&=&\frac{4}{\pi}\sqrt{\frac{2}{\pi}}
+\frac{z}{1+z^2}\int_0^{\fraction{2z}{1-z^2}}\frac{du}{1+u^2}\nonumber\\&=&
+\frac{8}{\pi}\sqrt{\frac{2}{\pi}}\frac{z
+\tan^{-1}z}{1+z^2}\nonumber
+\end{eqnarray} Taylor expanding in $z$ and recalling \EQN{v'} we get the answer.}. Translating this
+equation into the continuous basis,
+\begin{eqnarray}\{y_\o(0),q_{2n}\}_\star&=
+&-\frac{1}{\sqrt{2}}\sqrt{2n}\int_{-\infty}^\infty dk
+v_{2n}(k) \{y_\o(0),x_\e(k)\}_\star\nonumber\\
+&=&-2\sqrt{2}\sqrt{2n}\int_{-\infty}^\infty dk v_{2n}(k)
+\coth(\fraction{\pi k}{4})\delta(k)\nonumber\\
+&=&-\frac{\pi\sqrt{2}}{2}\sqrt{2n}\ v_{2n}'(0)
+\nonumber\end{eqnarray} The divergence of $\coth\frac{\pi \k}{4}$
+cancels against the vanishing of $v_{2n}(\k)$, giving a finite
+answer. Apparently, the diverging metric serves to compensate for
+the disappearance of the even coordinates, so that $x_\o(0)$ and
+$y_\o(0)$ can still have finite non-anticommutativity. Note that
+$\k$ was assumed to range over the whole real line, otherwise our
+calculation would have been ambiguous.
+
+Though $\coth\fraction{\pi \k}{4}[\delta(\k-\k')+\delta(\k+\k')]$
+is not a Schwartz distribution, it is a valid distribution in the
+topological dual of the vector space of $C^\infty$ functions which
+vanish at $\k=0$. We should really think of \EQN{continuous-gcom}
+as being defined in this sense. However, this means we need to be
+careful, since many products we would not have suspected to be
+problematic are actually singular---for instance, $x_\e(\k)\star
+y_{2n-1}$ is undefined near $\k=0$.
+
+The remaining question is how the the $\k=0$ coordinates should be
+interpreted physically. Let's write $x_\o(\k)$ and $y_\o(\k)$
+explicitly in terms of $c(\sigma)$ and $b(\sigma)$:
+\begin{eqnarray}y_\o(\k)=\frac{\cosh\frac{\pi \k}{4}}{\sqrt{\pi}N(\k)}
+\int_0^\pi d\sigma \sec\sigma M(\k,\sigma)\ c(\sigma)\nonumber\\
+x_\o(\k)=\frac{\cosh\frac{\pi \k}{4}}{\sqrt{\pi}N(\k)}\int_0^\pi
+d\sigma \sec\sigma M(\k,\sigma)\ \tilde{b}(\sigma)\nonumber
+\end{eqnarray} where we define,
+$$\tilde{b}(\sigma)=\int_{\pi/2}^\sigma d\sigma' b(\sigma')$$
+With this formula it is simple to see that $x_\o(0)$ and $y_\o(0)$
+are responsible for describing string configurations where
+$c(\sigma)$ and $\tilde{b}(\sigma)$ have a kink discontinuity at
+the midpoint\footnote{The derivatives of the even coordinates at
+$\k=0$
+are,\begin{eqnarray}x_\e'(0)&=&\frac{1}{\sqrt{\pi}}\int_0^\pi
+d\sigma
+\left[\left(\frac{\pi}{4}\right)^2+(\half\tanh^{-1}\sin\sigma)^2\right]\pi_c(\sigma)\nonumber\\
+y_\e'(0)&=&\frac{i}{2\sqrt{\pi}}\int_0^\pi d\sigma \sec\sigma
+\tanh^{-1}\sin\sigma\ \pi_b(\sigma)
+\end{eqnarray} The author has not succeeded in finding
+a particularly compelling interpretation for these coordinates.}.
+Suppose for example that $c(\sigma)$ is a step function which
+jumps from $1$ to $-1$ at the midpoint. Then,
+\begin{eqnarray}y_\o(\k)=\frac{2\cosh\frac{\pi
+\k}{4}}{\sqrt{\pi}N(\k)} \int_0^{\pi/2} d\sigma \sec\sigma
+M(\k,\sigma)=\frac{2}{\sqrt{\pi}}\delta(\k)\nonumber
+\end{eqnarray} so the configuration is described solely with the
+$y_\o(0)$. We may also write,
+\begin{eqnarray}\frac{\delta}{\delta y_\o(0)}&=&\frac{\sqrt{\pi}}{2}
+\left(\int_0^{\pi/2} d\sigma\pi_c(\sigma)- \int_{\pi/2}^\pi
+d\sigma\pi_c(\sigma)\right) \nonumber\\ \frac{\delta}{\delta
+x_\o(0)}&=&\frac{\sqrt{\pi}}{2}\pi_b(\fraction{\pi}{2})\end{eqnarray}
+In the last equation we noted that a kink in $\tilde{b}(\sigma)$
+translates into a delta function in $b(\sigma)$.
+
+The $\k=0$ coordinates in the ghost sector are probably not as
+physically important as they were in the matter sector, since they
+have no particularly special algebraic properties (the fact that
+$x_\e'(0)$ and $y_\e'(0)$ have ``infinite'' non-anticommutativity,
+for instance, is a property shared by uncountably many other
+coordinates). Much more interesting are,
+\begin{eqnarray} b(\fraction{\pi}{2})&=&i\sqrt{2}\sum_{n=1}^\infty
+(-1)^{n+1}
+x_{2n-1}\nonumber\\
+c'(\fraction{\pi}{2})&=&\sqrt{2}\sum_{n=1}^\infty (2n-1)(-1)^{n+1}
+y_{2n-1}\nonumber \\
+A &=& -\frac{i\sqrt{2}}{\pi}\sum_{n=1}^\infty
+\frac{(-1)^{n+1}}{2n} p_{2n}\nonumber\\ B &=&
+\frac{\sqrt{2}}{\pi}\sum_{n=1}^\infty \frac{(-1)^{n+1}}{(2n)^2}
+q_{2n}
+\end{eqnarray} The first two of these are especially important
+since they are purely {\it anticommutative} under the open string
+product:
+\begin{equation} \{b(\fraction{\pi}{2}),\ p_{2n}
+\}_\star=0\ \ \  \{c'(\fraction{\pi}{2}),\ q_{2n}
+\}_\star=0\nonumber
+\end{equation} since $\bar{R}$ has a zero mode, \EQN{R-zero}. The
+second two coordinates, $A$ and $B$, are analogous to $\bar{x}$ in
+the matter sector since they have ambiguous star-anticommutator
+with  $b(\fraction{\pi}{2})$ and $c'(\fraction{\pi}{2})$
+\begin{eqnarray}\{b(\fraction{\pi}{2}),\ A
+\}_\star=\{c'(\fraction{\pi}{2}),\ B\}_\star=\left\{\matrix{
+w'\cdot \bar{R}v'=w\cdot Tv=0 \cr v'\cdot Rw'=v\cdot \bar{T}w=1
+}\right.\label{eq:amb-gcom}\end{eqnarray} where
+$w'_{2n}=\sqrt{2}\frac{(-1)^{n+1}}{(2n)^2}\in
+\mathcal{H}_{even}'^*$. Apparently associativity anomalies occur
+in the ghost sector just as they do in the matter sector.
+
+From the perspective of the continuous basis, the existence
+anticommutative coordinates is startling. Indeed,
+$\coth\fraction{\pi \k}{4}$ has no zeros, so it seems impossible
+that any linear combination of $x_\o(\k)$ and $y_\o(\k)$ could
+anticommute with {\it all} $x_\e(\k)$ and $y_\e(\k)$. The
+unexpected twist here, however, is that $b(\p2)$ and $c(\p2)$ are
+actually described by Moyal coordinates with an {\it imaginary
+argument}, and for imaginary $\k$, $\coth\fraction{\pi \k}{4}$ has
+zeros. To explain this, it is convenient to define,
+$$X_\o(\k)=N(\k)x_\o(\k)\ \ \ Y_\o(\k)=N(\k)y_\o(\k)$$
+This scaling is useful since $X_\o$ and $Y_\o$ are analytic
+everywhere on the complex plane, unlike $x_\o$ and $y_\o$; in
+particular, the change of basis \EQN{k-ghost} becomes defined in
+terms of functions $N(\k)v_n(\k)=\Tch_n(\k)/\sqrt{n}$, which as
+discussed in the appendix are just polynomials. So write $b(\p2)$
+in this basis: $$b(\p2)=2i\int_0^\infty d\k
+\left(\sum_{n=1}^\infty(-1)^{n+1}\Tch_{2n-1}(\k)\right)\frac{X_\o(\k)}{\frac{2}{\k}\sinh\frac{\pi
+\k}{2}}$$ We can immediately see that something strange is going
+on, since the above series doesn't converge. However, the authors
+of ref.\cite{Virasoro} showed how this type of divergence could be
+handled, at least formally: One writes,
+\begin{eqnarray}b(\p2)&=&2i\int_0^\infty d\k
+\half\sin\left(2\frac{d}{d\k}\right)\k
+\left[\sum_{n=1}^\infty\frac{(-1)^{n+1}}{2n-1}\Tch_{2n-1}(\k)\right]\frac{X_\o(\k)}{\frac{2}{\k}\sinh\frac{\pi
+\k}{2}}\nonumber\\ &=&2i\sqrt{\pi}\int_0^\infty d\k
+\left[\half\sin\left(2\frac{d}{d\k}\right)\k
+N(\k)\delta(\k)\right]\frac{X_\o(\k)}{\frac{2}{\k}\sinh\frac{\pi
+\k}{2}}\label{eq:dist}\end{eqnarray} The strange object in the
+brackets is some type of distribution---let us hold off on this a
+moment, and assume this makes sense. Integrating by parts,
+\begin{eqnarray}b(\p2)&=&-\frac{i\sqrt{\pi}}{2}\int_{-\infty}^\infty d\k
+\delta(\k)N(\k)\k\Im\left[\frac{X_\o(\k+2i)}{\frac{2}{\k+2i}\sinh\frac{\pi
+(\k+2i)}{2}}\right]\nonumber\end{eqnarray} Cancelling the pole at
+$\k=0$ zero gives, \begin{equation}b(\p2)=i X_\o(2i)\ \ \ c'(\p2)=
+Y_\o(2i)\label{eq:z-bc}\end{equation} An identical calculation
+follows for $c'(\p2)$. Note that the argument of $X_\o$ and $Y_\o$
+is evaluated precisely where $\coth\fraction{\pi \k}{4}$ has a
+zero! Yet, it is still not clear that these coordinates are
+anticommutative, since when plugging in to \EQN{continuous-gcom}
+we have to evaluate a delta function with an imaginary argument,
+which makes no sense. The way to see the anticommutative nature of
+$b(\p2)$ and $c'(\p2)$ is to represent them as in \EQN{dist}, and
+calculate the anticommutator this way:
+\begin{eqnarray}\{b(\p2),p_{2n}\}_\star&=&-\frac{4i\sqrt{2\pi}}{2n}
+\int_{-\infty}^\infty d\k
+\left[\half\sin\left(2\frac{d}{d\k}\right)\k
+N(\k)\delta(\k)\right]\frac{\Tch_{2n}(\k)\coth\frac{\pi
+\k}{4}}{\frac{4}{\k}\sinh\frac{\pi \k}{2}}\nonumber\\
+&=&-\frac{4i\sqrt{2\pi}}{2n} \int_{-\infty}^\infty d\k
+\delta(\k)N(\k)\k \Im\left[\frac{\Tch_{2n}(\k+2i)\coth\frac{\pi
+(\k+2i)}{4}}{\frac{4}{\k+2i}\sinh\frac{\pi
+(\k+2i)}{2}}\right]\nonumber\\ &=&0\nonumber\end{eqnarray} This
+vanishes, as claimed, because $\coth\fraction{\pi \k}{4}$ has a
+zero at $\k=2i$.
+
+But what sort of horrible thing is the distribution in \EQN{dist}?
+It is certainly not a Schwartz distribution, since for a general
+$C^\infty$ function the infinite rank differential operator
+$\sin(2\frac{d}{dk})$ does not converge. The convergence of
+$\sin(2\frac{d}{dk})$ on a function $f(\k)$ is determined by the
+sum,
+$$ \sum_{n=0}^\infty \frac{f^{(2n+1)}(\k)}{(2n+1)!} 2^{2n+1}< \infty $$
+This says that a Taylor expansion of $f$ around any particular
+$\k$ must converge at least within a radius of $2$; thinking of
+$f$ as a function in the complex plane, this means that $f$ must
+be analytic inside a band outside the real axis extending from
+$-2<\Im(\k)<2$. On this restricted space of test functions (much
+more restricted than $C^\infty$ functions), \EQN{dist} is a
+perfectly well defined distribution, and our formal calculations
+have a rigorous meaning. Actually, \EQN{dist} is in a class of
+generalized functions which have been studied by mathematicians,
+called ``ultradistributions''\cite{text}.
+
+For those who are uncomfortable with these formal arguments, we
+can explicitly regulate and show that everything works fine.
+Define,
+\begin{equation} b_\omega(\p2)=i\sqrt{2}\sum_{n=1}^\infty
+\fraction{1}{i}(i\tanh\omega)^{2n-1}x_{2n-1}\sim i
+\int_{-\infty}^\infty d\k
+\frac{e^{2\omega}\cos\omega\k}{4N(\k)}x_\o(\k)
+\end{equation} We recover $b(\p2)$ in the limit $\omega\to \infty$. (The $\sim$ here means that this formula
+gives only the leading order correction for large $\omega$, but
+this is all we need). This is similar to what we saw earlier in
+\EQN{regPx}; when regulating we encounter an infinitely
+oscillatory divergence in the integrand. Here the divergence seems
+much worse, since the {\it amplitude} of the oscillations diverge
+as well as the frequency. A very similar class of divergences
+emerge when formulating the Virasoro generators in the continuous
+basis\cite{Virasoro,Moyal}. In order to understand how $b(\p2)$
+functions in the continuous basis, we need to see how
+$e^{2\omega}\cos\omega\k$ behaves under an integral as $\omega$ is
+taken to infinity. Consider a function $f(\k)$ which has simple
+poles at $\k_n=a_n+i b_n$ (no branch points, for the sake of
+argument) and for which we can close the contour in the upper half
+plane. Then,
+$$\int_{-\infty}^\infty d\k e^{i\omega(\k-2i)} f(\k)=2\pi i\sum_{n=1}^{N}
+e^{-\omega(b_n-2)}e^{i\omega a_n}\mathrm{Res}(f,\k_n)$$ Taking the
+large $\omega$ limit, we have the following possibilities: If $0<
+b_n <2$ the answer will diverge; if $2<b_n<\infty$ the answer
+vanishes; if $b_n=2$ but $a_n\neq 0$ the integral also vanishes
+because it is washed out by the oscillating exponential; only when
+$b_n=2$ and $a_n=0$ do we get a nonzero and finite answer. A
+simple extension of this argument allows us to include branch
+points too, and we see
+\begin{equation}\lim_{\omega\to \infty}\int_{-\infty}^\infty d\k
+e^{i\omega(\k-2i)} f(\k)=\left\{ \matrix{\infty \mathrm{\ if\ } f
+\mathrm{\ has\ poles\ or\ branch\ cuts\ on\ or\ between\ }\cr \ \
+\ \mathrm{ the\ real\ line\ and\ the\ line\ } \Im(\k)=2i \cr 2\pi
+i\mathrm{Res}(f,2) \mathrm{\ otherwise}\spaces\spaces\spaces\ \ \
+\ }\right.\label{eq:Kint}\end{equation} This thankfully agrees
+with our earlier more abstract discussion. We can use this
+integral to evaluate the anticommutator,
+\begin{eqnarray}\{b(\p2),p_{2n}\}_\star=\frac{i\sqrt{2}}{2n}
+\lim_{\omega\to\infty}\int_{-\infty}^\infty d\k
+\frac{\Tch_{2n}(\k)\coth\frac{\pi
+\k}{4}}{\frac{4}{\k}\sinh\frac{\pi \k}{2}}e^{i\omega(k-2i)}
+\end{eqnarray} The integrand is analytic for $0\leq \Im(\k)\leq
+2$; the divergence of $\coth\fraction{\pi \k}{4}$ is cancelled by
+the vanishing of $\Tch_{2n}(\k)$, and the pole from the
+$\sinh\fraction{\pi \k}{2}$ in the denominator at $\k=2i$ is
+cancelled by the vanishing of $\coth\fraction{\pi \k}{4}$.
+Therefore, by \EQN{Kint} the anticommutator is zero as claimed. An
+identical reasoning applies to $c'(\p2)$.
+
+However, as mentioned earlier, the anticommutator
+$\{b(\p2),A\}_\star$ is ambiguous. How does this come about in the
+continuous basis? Again, we regulate\footnote{This equation
+follows from the following asymptotic formulas for large $\omega$,
+which we list for reference:
+\begin{eqnarray}\sum_{n=1}^\infty\frac{(i\tanh
+\omega)^{2n}}{(2n)^{3/2}}v_{2n}(\k)&\sim & \frac{1}{\k
+N(\k)}\left[\half \psi(\half+\fraction{i \k}{4})+\half
+\psi(\half-\fraction{i \k}{4})+\gamma+2\ln
+2-2e^{-2\omega}\frac{1+(\fraction{\k}{2})^2-\cos\omega\k
++\fraction{\k}{2}\sin\omega\k}{1+(\fraction{\k}{2})^2}\right]\nonumber\\
+\fraction{1}{i}\sum_{n=1}^\infty\frac{(i\tanh
+\omega)^{2n-1}}{(2n-1)^{3/2}}v_{2n-1}(\k)&\sim& \frac{2}{\k
+N(\k)}\left[\fraction{\pi}{2} \tanh\fraction{\pi
+\k}{4}+e^{-2\omega}\frac{\sin\omega\k+\fraction{\k}{2}\cos
+\omega\k}{1+(\frac{\k}{2})^2}\right]\nonumber\end{eqnarray}The
+exact formulas are transcendental integrals which we will not
+need.}:
+\begin{eqnarray}A_\omega &=& \frac{i\sqrt{2}}{\pi}\sum_{n=1}^\infty
+\frac{(i\tanh\omega)^{2n}}{2n}p_{2n}\nonumber\\
+&\sim& \frac{i}{\pi}\int_{-\infty}^\infty \frac{d\k}{\k
+N(\k)}\left[\half \psi(\half+\fraction{i \k}{4})+\half
+\psi(\half-\fraction{i \k}{4})+\gamma+2\ln 2\right. \nonumber\\
+&\ & \spaces\spaces
+\left.-2e^{-2\omega}\frac{1+(\fraction{\k}{2})^2-\cos\omega\k
++\fraction{\k}{2}\sin\omega\k}{1+(\fraction{\k}{2})^2}\right]y_\e(\k)
+\nonumber \end{eqnarray} where $\psi(z)=\frac{d}{dz}\ln\Gamma(z)$
+denotes the digamma function and $\gamma$ is Euler's constant.
+Here too we have an oscillating ``divergence,'' bit curiously it
+actually disappears as $\omega\to\infty$. Calculating the
+anticommutator with $b_\omega(\p2)$ we are lead to consider the
+integral,\begin{eqnarray}\{b_\omega(\p2), A_{\omega'}\}_\star&\sim
+&\frac{1}{2\pi}\int_{-\infty}^\infty d\k \frac{\coth\frac{\pi
+\k}{4}}{\sinh \frac{\pi \k}{4}}e^{i\omega(\k-2i)}\Big[\half
+\psi(\half+\fraction{i \k}{4})+\half
+\psi(\half-\fraction{i \k}{4}) \nonumber\\
+&\ & \spaces \left.+\gamma+2\ln
+2-2e^{-2\omega'}\frac{1+(\fraction{\k}{2})^2-\cos\omega'\k
++\fraction{\k}{2}\sin\omega'\k}{1+(\fraction{\k}{2})^2}\right]
+\nonumber\end{eqnarray} Taking $\omega'\to\infty$ first, we must
+evaluate ,\begin{eqnarray}\{b_\omega(\p2), A\}_\star&\sim
+&\frac{1}{2\pi}\int_{-\infty}^\infty d\k \frac{\coth\frac{\pi
+\k}{4}}{\sinh \frac{\pi
+\k}{4}}e^{i\omega(\k-2i)}\left[\psi(\half-\fraction{i \k}{4})-
+\psi(\half)+\frac{\pi i}{4}\tanh\fraction{\pi \k}{4}\right]
+\nonumber\end{eqnarray} Closing the contour in the upper half
+plane, and keeping in mind \EQN{Kint}, we see two possible
+relevant singularities: a double pole from $\frac{\coth\frac{\pi
+\k}{4}}{\sinh \frac{\pi \k}{4}}$ at zero and a simple pole from
+$\frac{\pi i}{4}\tanh\fraction{\pi \k}{4}$ at $2i$ (the
+$\psi(\half-\fraction{i \k}{4})$ is analytic in the upper half
+plane). The double pole at $\k=0$ is cancelled by a second order
+zero in $\psi(\half+\fraction{i \k}{4})+ \psi(\half-\fraction{i
+\k}{4})-\psi(\half)$. The pole in the integrand at $2i$ gives the
+only nonzero contribution to the $\omega\to\infty$ limit,
+$$\lim_{\omega\to\infty}\lim_{\omega'\to\infty}
+\{b_\omega(\p2), A_{\omega'}\}_\star=\frac{1}{2\pi}(2\pi
+i)(-\half)(2i)=1$$ in agreement with \EQN{amb-gcom}. Let's now
+evaluate the limits in the opposite order:
+\begin{eqnarray}&\ &\lim_{\omega'\to\infty}\lim_{\omega\to\infty}
+\{b_\omega(\p2), A_{\omega'}\}_\star=\nonumber\\
+&\ &\ \ \ \ \ \ 1-
+\frac{1}{\pi}\lim_{\omega'\to\infty}\lim_{\omega\to\infty}
+\int_{-\infty}^\infty d\k \frac{\coth\frac{\pi \k}{4}}{\sinh
+\frac{\pi \k}{4}}e^{i\omega(\k-2i)}e^{-2\omega'}\left[1-
+\frac{\cos\omega'\k
+-\fraction{\k}{2}\sin\omega'\k}{1+(\fraction{\k}{2})^2}\right]
+\nonumber\end{eqnarray} The integrand has a pole at $2i$ which
+contributes as $\omega\to\infty$:
+\begin{eqnarray}\lim_{\omega'\to\infty}\lim_{\omega\to\infty}
+\{b_\omega(\p2), A_{\omega'}\}_\star&=&1-
+\frac{1}{\pi}\lim_{\omega'\to\infty}2\pi
+i\left[e^{-2\omega'}(-\half)(-1)\fraction{1}{i}(\cos 2i\omega'-i
+\sin 2i\omega')\right]\nonumber\\ &=&1-\lim_{\omega'\to
+\infty}e^{-2\omega'}(\cosh 2\omega'+\sinh
+2\omega')=0\end{eqnarray} The answer is again in agreement with
+\EQN{amb-gcom}.
+
+\section*{VI. The Hamiltonian}
+
+One of the most interesting aspects of operator/Moyal formulation
+is that it provides a way to represent the Hamiltonian in Siegel
+gauge algebraically in terms of the star
+product\cite{Bars-Matsuo,Bars_amplitudes,Bars-SFE}. To see how
+this is done, write the zeroth Virasoro generator in the mixed
+basis $x_{2n}$ $p_{2n-1}$:
+$$L_0=\half\sum_{n=1}^\infty \left[-\frac{\partial^2}{\partial
+x_{2n}^2}+(2n)^2 x_{2n}^2\right]+\half\sum_{n=1}^\infty
+\left[-(2n-1)^2\frac{\partial^2}{\partial p_{2n-1}^2}+
+p_{2n-1}^2\right]$$ This is not normal ordered, so the action of
+$L_0$ on the vacuum gives a sum of the zero point energies for
+every string oscillator,
+$$L_0\Psi_{|0\rangle}=\half\sum_{n=1}^\infty n\ \Psi_{|0\rangle}$$
+where, $$\Psi_{|0\rangle}=\exp\left[-\half \sum_{n=1}^\infty 2n
+x_{2n}^2-\half \sum_{n=1}^\infty \frac{p_{2n-1}^2}{2n-1}\right]$$
+To represent $L_0$ using the star product, the trick is to define
+a deformed Moyal star algebra satisfying,
+\begin{equation}[x_{2n},p_{2m-1}]_\star = 2i T^{N\times
+N}_{2n,2m-1}\label{eq:deformed}\end{equation} where $T^{N\times
+N}$ is a matrix with nonzero entries only inside an $N\times N$
+block, and $\lim_{N\to\infty} T^{N\times N}=T$, the matrix we know
+from \EQN{T-matrix}. For now we will suppress the $N$ dependence
+and write $T^{N\times N}$ as $T$. Bars and Matsuo showed that one
+can define $N\times N$ matrices $R,n_\e,n_\o$\footnote{Bars and
+Matsuo denote $n_\e$ and $n_\o$ by $\k_\e$ and $\k_\o$
+respectively.} and $N$ component vectors $v,w$ satisfying the
+properties (bar denotes transpose),
+\begin{eqnarray}&\ &RT=TR=1\ \ \ T\bar{T}=
+1-\frac{w\bar{w}}{1+w^2}\ \ \ R\bar{R}=1+(1+w^2)v\bar{v}\nonumber\\
+&\ &\bar{T}T= 1-v\bar{v}\ \ \ \bar{R}R=1+w\bar{w}\ \ \ R=n_e^{-2}T
+n_\o^2 \nonumber\\&\ &\bar{T}w=v\ \ \ Tv=\frac{w}{1+w^2}\ \ \
+Rw=(1+w^2)v \ \ \ Tv=w \label{eq:Bars-relations}\end{eqnarray}
+which, when $N\to\infty$ become equal to the $R$, $v$ and $w$
+introduced before\footnote{Note that the entries of the deformed
+matrices/vectors are not in general equal to the truncation of the
+infinite $N$ matrices/vectors. However, we will for simplicity
+define our regularization so that this is true for $n_\e$ and
+$n_\o$.}, and $n_{\o,2m-1,2n-1}=(2m-1)\delta_{2m-1,2n-1}$,
+$n_{\e,2m,2n}=2m\delta_{2m,2n}$. All the above equations have
+analogues when $N=\infty$, except that the norm of $w$ diverges
+for infinite $N$. If one imposes a mode number cutoff $N$ on
+$L_0$, a short calculation reveals that one can represent $L_0(N)$
+using the deformed algebra \EQN{deformed}:
+\begin{eqnarray}L_0(N) \Psi = \{\mathcal{L}_0,\Psi\}_\star +\half
+(1+w^2)[[\Psi,P_L]_\star,P_L]_\star\label{eq:L_0}\end{eqnarray}
+with,
+\begin{eqnarray}
+\mathcal{L}_0=\fraction{1}{4}\sum_{n=1}^N (p_{2n-1}^2+(2n)^2
+x_{2n}^2)\nonumber \\ P_L=\half \sum_{n=1}^N
+v_{2n-1}p_{2n-1}\end{eqnarray} Taking $N\to\infty$, on the left
+hand side we get $L_0$; on the right hand side, the deformed
+products become identical to the open string star product. We have
+therefore found an explicit representation of $L_0$ in terms of
+the star algebra.
+
+B8ut there's a problem: the second term on the right hand side of
+\EQN{L_0} makes no sense at infinite $N$. The factor $(1+w^2)$
+blows up, but it is multiplied by an expression which naively
+vanishes because $P_L$ becomes commutative. The best way to
+understand the role of this singular term is to apply the formula
+in a concrete example, like the ground state functional:
+\begin{eqnarray}\{\fraction{1}{4}\sum_{n=1}^N
+(2n)^2 x_{2n}^2,\Psi_{|0\rangle}\}_\star &=& \half
+\sum_{n=1}^N\left[(2n)^2x_{2n}^2-p_{2n-1}^2+(2n-1)\right]\Psi_{|0\rangle}
+\nonumber\\ \{\fraction{1}{4}\sum_{n=1}^N
+p_{2n-1}^2,\Psi_{|0\rangle}\}_\star &=& \half
+\left[\sum_{n=1}^N(p_{2n-1}^2-(2n)^2x_{2n}^2)+\frac{\left(
+\sum_{l=1}^N  2l w_{2l} x_{2l}\right)^2}{1+w^2}\right.\nonumber\\
+&\ &\spaces \left.+\sum_{n=1}^N 2n
+\left(1-\frac{1}{1+w^2}\right)\right]\Psi_{|0\rangle}\nonumber\\
+\half (1+w^2)[[\Psi,P_L]_\star,P_L]_\star&=
+&-\half\frac{1}{1+w^2}\left[\left(\sum_{l=1}^N 2l w_{2l}
+x_{2l}\right)^2-\sum_{n=1}^N 2n \right]\Psi_{|0\rangle}\nonumber
+\end{eqnarray} Adding these pieces up we get the sum of string zero
+point energies. At $N=\infty$, the singular term makes an infinite
+contribution to the answer, but the infinity is subleading to the
+infinity of zero point energies.
+
+What is the meaning of this? We will argue that the singular term
+computes the midpoint contribution to the zero point energy.
+Consider the following ``almost ground state'' functional:
+$$\Psi=\exp\left[-\frac{1}{\pi}\int_0^\pi d\sigma
+x(\sigma)\sqrt{-\frac{d^2}{d\sigma^2}}x(\sigma)+\frac{1}{\pi}
+\int_{\pi/2-\epsilon}^{\pi/2+\epsilon} d\sigma
+x(\sigma)\sqrt{-\frac{d^2}{d\sigma^2}}x(\sigma)\right]
+$$ where $\epsilon<<1$. The second integral in the exponential
+serves to cancel off the midpoint dependence of this functional.
+Translating this to the mixed basis gives, to leading order in
+$\epsilon$, $$\Psi=\exp\left[-\half \sum_{m,n=1}^\infty 2n
+x_{2m}x_{2n}(\delta_{2m,2n}-4\epsilon w_{2n}w_{2m})-\half
+\sum_{n=1}^\infty \frac{p_{2n-1}^2}{2n-1}\right]$$ Acting on this
+with $L_0$, $$L_0\Psi=\half\sum_{n=1}^\infty
+\left[2n+(2n-1)-4\epsilon 2n+ 4\epsilon\left(\sum_{l=1}^\infty 2l
+x_{2l}w_{2l} \right)^2\right] \Psi$$ Comparing this to our
+previous calculation, we see that this is precisely the answer we
+would have gotten if we had ignored the singular term in
+\EQN{L_0}. Apparently, $\{\mathcal{L}_0,\ \}_\star$ does not see
+the energy of the midpoint.
+
+\section{VII. Conclusion}
+In this paper we have studied midpoint structure of the open
+string star product, in both the matter and ghost sectors, and
+have shown explicitly how the resulting singularities are
+manifested in differing operator/Moyal formulations of the star
+algebra. Many of the issues we've been talking about are
+intricate, both conceptually and mathematically, but we believe
+that they are of fundamental importance, since they give us a
+clear view into the structure of what is arguably our best
+candidate for a nonperturbative, background independent
+formulation of string theory. However, we certainly do not claim
+to have come to a definitive understanding; some other directions
+of future research are as follows:
+
+\bigskip \noindent$\bullet$ Little work has been devoted to
+understanding the Moyal formulation of the open superstring star
+algebra and it's relation to the midpoint. One approach was
+developed in the continuous basis in ref.\cite{Aref'eva} but no
+corresponding formulation has been codified in the discrete/mized
+basis
+\bigskip
+
+\noindent$\bullet$ The other Virasoro generators can also be
+formulated singularly in terms of the star product
+\cite{Bars-Matsuo}, and it would be very interesting to understand
+what these singularities mean physically and how they should be
+properly regulated. A related question is that of midpoint anomaly
+cancellation, either for the midpoint preserving
+reparameterizations $\mathcal{K}_n$ or for the BRST operator.
+\bigskip
+
+
+\noindent$\bullet$ The work of ref.\cite{Belov-Konechny} it was
+shown that, including ghost contributions, the open string star
+product is related to a Moyal product only up to an infinite
+normalization. It is important to understand the physical meaning
+of this divergent normalization and how it should be properly
+handled
+\bigskip
+
+\noindent$\bullet$ Finally, more thought needs to be devoted to
+the definition of the algebra of string fields. The basic
+criterion for this definition (if it exists) is that the algebra
+is closed and that Witten's axioms hold. The associativity axiom,
+for instance, essentially amounts to requiring that the matrix $T$
+always acts in a suitably defined Hilbert space of even/odd moded
+sequences. However, it is not yet clear how this observation can
+be realized as a concrete restriction on the function space of
+string functionals.
+
+I would like to thank I.Bars, D.Belov, D.Gross, A.Konechny, and
+D.Reynolds for many useful discussions. I would also like
+especially M.Putinar for helping me gain a deeper appreciation of
+the subject from the perspective of functional analysis.
+
+\section*{Appendix: more about the $v_n$'s}
+The harmonic oscillator Hamiltonian is $$H=a^+ a +\half{}.$$ This
+operator has a discrete spectrum of eigenvectors $|n\rangle$ (in
+our conventions $1\leq n<\infty$) corresponding to the $n-1$st
+excited state of the harmonic oscillator. On the other hand, the
+position operator,
+$$X=\frac{i}{\sqrt{2}}(a-a^+)$$ has a continuous spectrum of
+eigenvectors, $|x\rangle$ ($-\infty<x<\infty$). In quantum
+mechanics we are often interested in the inner product,
+$$\phi_{n}(x)=\langle x|n-1\rangle=H_n(x)\frac{e^{-x^2/2}}{(\pi
+4^n(n!)^2)^{\frac{1}{4}}}.$$  The $\phi_n$'s are of course the
+familiar Hermite functions and the $H_n$'s are the Hermite
+polynomials. But in this paper we do not care so much about $X$
+and its eigenvalues. More interesting is the
+operator\cite{Spectroscopy},
+$$\mathrm{K}_1=-\sqrt{aa^+}a^+ -a\sqrt{aa^+}$$
+$\mathrm{K}_1$ has a continuous spectrum of eigenvectors
+conventionally labelled by $\k$ for $-\infty<\k<\infty$. Consider
+wavefunctions formed from the inner product,
+$$v_n(\k)=\langle \k|n\rangle=\frac{\Tch_n(\k)}{
+\sqrt{n}\sqrt{\frac{2}{\k}\sinh\frac{\pi\k}{2}}}$$ The functions
+$\Tch_n$ are simply a set of polynomials, like the Hermite
+polynomials, but orthogonal with respect to the weight
+function\cite{Okuyama},
+$$w(\k)=\left(\frac{2}{\k}\sinh\frac{\pi \k}{2}\right)^{-1}$$ The
+$\Tch_n$'s are unfortunately not one of the classical orthogonal
+polynomials we would easily find in a handbook. Therefore it's
+worthwhile cataloging a few of their properties:
+
+\bigskip
+\noindent {\bf Differential equation}: The statement that the
+$v_n$'s are eigenstates of $H$ translates to the differential
+equation\cite{Virasoro,Small}: $$\sin\left(2\frac{d}{d\k}\right)\k
+\Tch_n(\k)=2n\Tch_n(\k)$$
+
+\bigskip
+\noindent {\bf Generating function}\cite{Spectroscopy}:
+$$\sum_{n=1}^\infty \frac{z^n}{n}\Tch_n(\k)=\frac{1}{\k}(1-e^{-\k\tan^{-1}z})
+=f_{\k}(z) $$
+
+\bigskip
+\noindent {\bf Recurrence relations}: The polynomials can be
+systematically generated from the relation
+$$\Tch_{n+1}(\k)+\Tch_{n-1}(\k)=
+-\frac{\k}{n}\Tch_{n}(\k);\ \ \ $$ after defining $\Tch_0(\k)=0$
+and $\Tch_1(k)=1$. The first few polynomials are explicitly:
+\begin{eqnarray}
+&\ &\Tch_1(\k)=1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \Tch_4(\k)=
+-\fraction{1}{6}\k^3 + \fraction{4}{3}\k\nonumber\\ &\
+&\Tch_2(\k)=-\k\ \ \ \ \ \ \ \ \ \ \ \ \ \
+\Tch_5(\k)=\fraction{1}{24}\k^4-\fraction{5}{6}\k^2+1\nonumber\\
+&\ &\Tch_3(\k)=\half \k^2-1\ \ \ \ \ \ \ \
+\Tch_6(\k)=-\fraction{1}{120}\k^5+\fraction{1}{3} \k^3
+-\fraction{23}{15} \k  \nonumber
+\end{eqnarray}
+Here is a graph of the first five $v_n(\k)$'s:
+
+
+\resizebox{4.5in}{1.5in}{\includegraphics{v.eps}}
+
+
+\bigskip
+\noindent{\bf Ladder operators}:
+$$\cos^2\left(\frac{d}{d\k}\right) \k \Tch_n(\k)=-n\Tch_{n+1}(\k)$$
+$$\sin^2\left(\frac{d}{d\k}\right) \k \Tch_n(\k)=-n\Tch_{n-1}(\k)$$
+
+\bigskip\noindent {\bf Special values}:
+\begin{eqnarray} &\ &\Tch_{2n}(0)=0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \
+\Tch_{2n-1}(0)=(-1)^{n+1}\nonumber\\
+&\ &\Tch'_{2n}(0) =(-1)^n \sum_{m=1}^n\frac{1}{2m-1}\ \ \ \ \
+\Tch'_{2n-1}(0)=0\nonumber\\
+&\ &\Tch_n(2im)=-\frac{n}{m}(-i)^{m+n}\Tch_m(-2in)
+\nonumber\end{eqnarray}
+
+\bigskip
+\noindent {\bf Derivative}:
+$$\Tch_{2n}'(\k)=-\frac{\Tch_{2n}(\k)}{\k}+2n
+\sum_{m=1}^{n}\frac{(-1)^{m-n+1}}{2n-(2m-1)}\frac{\Tch_{2m-1}(\k)}{2m-1}$$
+$$\Tch_{2n-1}'(k)=\frac{(-1)^{n+1}-\Tch_{2n-1}(\k)}{\k}+
+(2n-1)\sum_{m=1}^{n-1}\frac{(-1)^{m-n}}{(2n-1)-2m}\frac{\Tch_{2m}(\k)}{2m}$$
+
+\bigskip
+\noindent {\bf Integral representations}\cite{Virasoro,squeezed}:
+
+\begin{eqnarray} \Tch_{n}(\k)&=&\frac{n}{2\pi}i^{n-1}w(\k)\int_{-\infty}^{\infty}du\
+e^{i\k u} \frac{\tanh^{n-1}u}{\cosh^2 u}\nonumber\\
+&=&\frac{n}{2\pi}i^{n-1}w(\k)\left(\int_1^\infty+
+\int_{-\infty}^{-1}\right)dx\
+\frac{e^{i\k\coth^{-1}x}}{x^{n+1}}\nonumber\\ &=&\frac{n}{2\pi
+i}\oint_{z=0} dz\ \frac{f_\k(z)}{z^{n+1}}
+\end{eqnarray}
+
+\bigskip\noindent {\bf Darboux-Christoffel Formula}:
+$$ \sum_{n=1}^N\frac{1}{n}\Tch_n(\k)\Tch_n(\k')=-\frac{\Tch_{N+1}(\k)\Tch_N(\k')
+-\Tch_{N+1}(\k')\Tch_N(\k)}{\k-\k'}$$
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Witten} E. Witten, ``Noncommutative Geometry
+and String Field Theory,'' Nucl. Phys. B {\bf 268}, 253 (1986).
+
+\bibitem{Old} H. Chan and S. Tsun, ``String Theory considered
+as a Local Gauge Theory of an Extended Object,'' Phys. Rev. D {\bf
+35} (1987) 2474; J. Bordes, H. Chan, L. Nellen and S. Tsou, ``Half
+String Oscillator Approach to string Field Theory,'' Nucl. Phys. B
+{\bf 387} (1993) 260;  A. Abdurrahman, F. Anton and J. Bordes,
+``Half string oscillator approach to string field theory (ghost
+sector 2),'' Nucl. Phys. B {\bf 411} (1994) 693.
+
+\bibitem{LeClair} A. Leclair, M. E. Peskin, and C. R.
+Preitschopf ``String field theory on the conformal plane, I, II,''
+Nucl. Phys. B {\bf 317} 411,464, (1989).
+
+\bibitem{Vertices} D. J. Gross and A. Jevicki,
+``Operator Formulation of Interacting String Field Theory, I,II''
+Nucl. Phys. B {\bf 283}, 1 (1987), Nucl. Phys. B {\bf 283}, 1
+(1987); S. Samuel, ``The physical and ghost vertices in Witten's
+string field theory,'' Phys. Lett. {\bf B181} 255 (1986).
+
+\bibitem{Level-Truncation}  V. A. Kostelecky and S. Samuel,
+``The static tachyon potential in the open bosonic string
+theory,'' Phys. Lett. {\bf B207} (1988) 169.
+
+\bibitem{Aref'eva_review} I. Aref'eva, D.Belov, A. Giryavets, A.
+Koshelev and P. Medvedev, ``Noncommutative Field Theories and
+(Super)string Field Theories.'' [arXiv:hep-th/0111208]
+
+\bibitem{Douglas} M. R. Douglas and N. Nekrasov,
+``Noncommutative Field theory,'' Rev. Mod. Phys. {\bf 73}, 977
+(2002) [arXiv:hep-th/0106048].
+
+\bibitem{VSFT} L. Rastelli, A. Sen, B. Zeibach,
+``String field theory around the tachyon vacuum,''
+[arXiv:hep-th/0012251]; D. Gaiotto, L. Rastelli, A. Sen, and B.
+Zwiebach, ``Ghost Structure and Closed Strings in Vacuum String
+Field Theory,'' [arXiv: hep-th/0111087].
+
+\bibitem{Split-strings} L. Rastelli, A. Sen, and B. Zeibach, ``Half strings,
+projectors, and multiple D-branes in vacuum string field theory,''
+JHEP {\bf 0111} (2001) 035 [arXiv:hep-th/0105058];  T. Kuwano and
+K. Okuyama, ``Open String Fields as Matrices,'' [arXiv:
+hep-th/0105129].
+
+\bibitem{Gross-Taylor} D. J. Gross and W. Taylor, ``Split String
+Field Theory. I,II'' JHEP {\bf 0108}, 009 (2001)
+[arXiv:hep-th/0105059], JHEP {\bf 0108}, 010 (2001)
+[arXiv:hep-th/0106036]
+
+\bibitem{Bars-Matsuo} I. Bars, Y. Matsuo, ``Computing
+in String Field Theory using the Moyal Star Product.'' [arXiv:
+hep-th/0204260].
+
+\bibitem{Bars} I. Bars, ``Map of Witten's $\star$ to
+Moyal's $\star$,'' Phys.Lett. {\bf B517} (2001) 436-444
+[arXiv:hep-th/0106157].
+
+\bibitem{Moyal} M. R. Douglas, H. Liu, G. Moore and B.
+Zweibach, ``Open String Star as a Continuous Moyal Product,'' JHEP
+{\bf 0204} (2002) 022 [arXiv:hep-th/0202087].
+
+\bibitem{MSFT} I. Bars, ``MSFT: Moyal star formulation of string
+field theory,'' [arXiv:hep-th/0211238].
+
+\bibitem{Bars-SFE} I. Bars, I. Kishimoto and Y. Matsuo, ``Analytic
+study of nonperturbative solutions in Open String Field Theory,''
+[arXiv:hep-th/0302151].
+
+\bibitem{Horowitz} G. Horowitz and A. Strominger, ``Translations
+as inner derivations and associativity anomalies in Open String
+Field Theory,'' Phys. Lett. {\bf B185} (1987) 45-51.
+
+\bibitem{Belov} D. Belov, ``Diagonal Representation of
+Open String Star and Moyal Product,'' [arXiv: hep-th/0204164].
+
+\bibitem{Belov-Konechny} D. Belov and A. Konechny, ``On continuous
+Moyal product structure in string field theory,'' JHEP {\bf 0210}
+(2002) 049 [arXiv:hep-th/0207174].
+
+\bibitem{Tensor} M. Gaberdiel and B. Zwiebach, ``Tensor
+constructions of Open string theories, I, II'' Nucl.Phys. {\bf
+B505} (1997) 569-624 [arXiv:hep-th/9705038], Phys. Lett. {\bf
+B410} (1997) 151-159, [arXiv:hep-th/9707051].
+
+\bibitem{Associative} I. Bars and Y. Matsuo,
+``Associativity anomaly in string field theory,'' [arxiv:
+hep-th/0202030].
+
+\bibitem{K&P} A. Kostelecky and R. Potting, ``Analytical
+construction of a nonperturbative vacuum for the open bosonic
+string,'' Phys. Rev. {\bf D63} (2001) 046007
+[arXiv:hep-th/0008252].
+
+\bibitem{PP} C. Chun, P. Ho, and F. Lin, ``Cubic String Field
+Theory in pp-wave background and background idependent Moyal
+structure,'' JHEP {\bf 0209} (2002) 003 [arXiv:hep-th/0205218].
+
+\bibitem{Spectroscopy} L. Rastelli, A. Sen, and B.
+Zweibach, ``Star Algebra Spectroscopy,'' JHEP {\bf 0203} (2002)
+029 [arXiv:hep-th/0111281].
+
+\bibitem{Zero-spectroscopy} B. Feng, Y. He and N. Moeller, ``The
+spectrum of the Neumann matrix with zero modes,'' JHEP {\bf 0204}
+(2002) 038 [arXiv:hep-th/0202176].
+
+\bibitem{Erler} T. Erler, ``Moyal formulation of Witten's star
+product in the fermionic ghost sector,'' [arXiv:hep-th/0205107]
+
+\bibitem{Aref'eva} I. Aref'eva and A.
+Giryavets, ``Open Superstring Star as a continuous Moyal
+Product,'' [arXiv: hep-th/0204239].
+
+\bibitem{B-field} Y. Wu and T. Zhuang, ``Moyal representation of
+the string field star product in the presence of a B-background,''
+[arXiv:0211199].
+
+\bibitem{continuous-half} E. Fuchs, M. Kroyter and A. Marcus,
+``Continuous half-string representation of string field theory,''
+to appear.
+
+\bibitem{Singular} G. Moore and W. Taylor, ``The singular geometry
+of the sliver,'' JHEP {\bf 0201} (2002) 004
+[arXiv:hep-th/0111069].
+
+\bibitem{GMS} B. Chen and F. Lin, ``D-Branes as GMS solitons in vacuum string
+field theory,'' [arXiv: hep-th/0204233].
+
+\bibitem{Strominger} A. Strominger, ``Closed string field theory,''
+Nucl. Phys. {\bf B294} 93-112.
+
+\bibitem{Qiu} Z. Qiu and A. Strominger, ``Gauge symmetries in
+(super)string field theory,'' Phys. Rev. D {\bf 36} (1987)
+1794-1799.
+
+\bibitem{Rakowski} M. Rakowski and G. Thompson, ``On the
+associativity anomaly in open string field theory,'' Phys. Lett.
+{\bf B197} (1987) 339-341.
+
+\bibitem{Schnabl} M. Schnabl, ``Wedge states in string field
+theory,'' JHEP {\bf 0301} (2003) 004 [arXiv: hep-th/0201095]
+
+\bibitem{Bars_amplitudes} I. Bars, I. Kishimoto, Y. Matsuo,
+``String Amplitudes from MSFT,'' Phys. Rev. {\bf D67} (2003)
+066002 [arXiv: hep-th/0211131].
+
+\bibitem{Okuyama2} K. Okuyama, ``Siegel Gauge in
+Vacuum String Field Theory,'' JHEP {\bf 0201} (2002) 043 [arXiv:
+hep-th/0111087].
+
+\bibitem{Ferrara} S. Ferrara, M.A. Lledó, ``Some
+Aspects of Deformations of Supersymmetric Field Theories,'' JHEP
+{\bf 0005} (2000) 008 [arXiv: hep-th/0002084]
+
+\bibitem{text} H. Komatsu, ``Ultradistributions I, Structure
+theorems and characterization,'' J. Fac. Sci. Univ. Tokyo Section
+IA, 24:607-628,1977.
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+\bibitem{Okuyama} K. Okuyama, ``Ghost Kinetic Operator
+of Vacuum String Field Theory,'' JHEP {\bf 0201} (2002) 027
+[arXiv: hep-th/0201015].
+
+\bibitem{Virasoro} Fuchs et al.
+
+\bibitem{Small} Belov small conformal algebra
+
+\bibitem{squeezed} Fuchs et al, earlier
+
+\bibitem{Myself} Myself
+
+
+
+\bibitem{Sen-conjectures} A. Sen ``Universality of the
+tachyon potential,'' JHEP {\bf 9912} (1999) 027 [arXiv:
+hep-th/9911116].
+
+
+
+
+\bibitem{Samuel}
+
+
+
+\bibitem{GSW} M. B. Green, J. H. Schwarz, and E.
+Witten, 1987, {\em Superstring theory} (Cambridge University
+Press, Cambridge, England).
+
+
+\bibitem{Hata} H. Hata and T. Kuwano, ``Open String
+States around a Classical Solution in Vaccuum String Field
+Theory,'' JHEP {\bf 0111} (2001) {\bf 038}  [arXiv:
+hep-th/0111034].
+
+
+Whether and how open string field theory\cite{Witten} may be
+formulated as a noncommutative field theory remains a compelling
+open question\cite{Aref'eva_review}. At stake is a systematic
+framework for understanding nonperturbative string physics and
+ultimately defining string theory itself. The past two years have
+seen a proliferation of alternative operator/Moyal approaches to
+string field theory: split strings\cite{half-strings}, the
+discrete Moyal formalism\cite{Bars,Bars-Matsuo,MSFT}, the mixed
+basis \cite{Moyal,MSFT}, the string bit basis\cite{PP,MSFT}, the
+continuous Moyal formalism\cite{Moyal,Belov,
+various,Erler,Virasoro}, the continuous half-string
+formalism\cite{Myself,continuous-half}. So many formalisms now
+exist that one seriously questions whether any physical principle
+distinguishes them or whether we are just playing games
+translating between equivalent bases.
+
+&\ &
+\Tch_n(2iM)=\left\{\matrix{\frac{(-i)^{n-1}}{2}\frac{n}{M}\sum_{k=0}^M\pmatrix{M
+\cr M-k}\pmatrix{k+n-1 \cr M-1}\ \ \ \mathrm{for}\ n\geq M \cr
+\frac{(-i)^{n-1}}{2}\frac{n}{M}\sum_{k=0}^n\pmatrix{M \cr
+n-k}\pmatrix{k+n-1 \cr n-1}\ \ \ \mathrm{for}\ n<M}
+\right.\nonumber
+
+One could try to explicitly remove $v_{2n}'(0)$ from the space,
+but since it can be approximated to any accuracy by vectors
+$v_{2n}(\k)/\k$ which {\it are} in the space, anyone sufficiently
+determined could effectively recover $v_{2n}'(0)$ by taking an
+appropriate limit. In some sense, this is analogous to considering
+\EQN{discontinuity} to be the limit of a sequence of smooth
+functions $f_n(\sigma)$ which vanish at the midpoint but approach
+$1$ monotonically towards the endpoints.
+
+
+
+ , like the ground state, the first term above does not
+contribute Well behaved string functionals (like the ground state)
+should satisfy,
+$$P_L\star\Psi=\lim_{N\to\infty}P_L(N)\star\Psi=P_L\Psi$$
+Then we can calculate,
+\begin{eqnarray}
+(P_L\star\Psi)\star x_{2n} &=& P_L\Psi x_{2n}-i\sum_{k=1}^\infty
+T_{2n,2k-1}P_L\frac{\partial\Psi}{\partial p_{2k-1}}\nonumber\\
+(P_L\star\Psi)\star \bar{x} &=&
+\lim_{N\to\infty}(P_L\star\Psi)\star\bar{x}(N)=P_L\Psi
+\bar{x}-i\frac{2\sqrt{2}}{\pi}\sum_{k=1}^\infty
+\frac{(-1)^{k+1}}{2k-1} P_L\frac{\partial\Psi}{\partial
+p_{2k-1}}\nonumber\end{eqnarray} On the other hand, we
+have,\begin{eqnarray}p_{2n-1}\star(\Psi\star\bar{x})&=&
+p_{2n-1}\star(\lim_{N\to\infty}\Psi\star\bar{x}(N))\nonumber\\
+&=& p_{2n-1}\Psi\bar{x}\nonumber\\ &\
+&-i\frac{2\sqrt{2}}{\pi}\sum_{k=1}^\infty\frac{(-1)^{k+1}}{2k-1}
+p_{2n-1}\frac{\partial\Psi}{\partial p_{2k-1}} -i\sum_{k=1}^\infty
+T_{2l,2n-1}\frac{\partial\Psi}{\partial{x_{2l}}}\bar{x}\nonumber\\
+&\ &-\frac{2\sqrt{2}}{\pi}\sum_{k,l=1}^\infty
+\frac{(-1)^{k+1}}{2k-1}T_{2l,2m-1}\frac{\partial^2\Psi}{\partial
+p_{2k-1}\partial x_{2l}} \nonumber\\ &\
+&-i\frac{2\sqrt{2}}{\pi}\frac{(-1)^{n+1}}{2n-1}\Psi\nonumber\\
+P_L\star(\Psi\star\bar{x})&=&\lim_{N\to\infty}P_L(N)\star(\Psi\star\bar{x}) \nonumber\\
+&=&P_L\Psi \bar{x}-i\frac{2\sqrt{2}}{\pi}\sum_{k=1}^\infty
+\frac{(-1)^{k+1}}{2k-1} P_L\frac{\partial\Psi}{\partial
+p_{2k-1}}-\frac{i}{2}\Psi\end{eqnarray} Bringing these two results
+together,
+ Note that the anomaly comes
+directly from the ambiguous double sum discussed just a moment ago
+in \EQN{ambsum}; the same sum appears {\it both} in
+$(P_L*\Psi)*\bar{x}$ and $P_L*(\Psi*\bar{x})$, but evaluated in a
+different order so that the difference is nonzero. The same
+computation can be repeated in the continuous basis with the
+$\omega$ regulator, with identical results.
+
+ for instance in the mixed basis.
+
+\begin{eqnarray}
+&\ &\bar{x}(\rho)\Psi P_L(\rho')=-\frac{i}{2\pi} \int_0^\pi
+d\sigma |f_\rho(\sigma)|x(\sigma)\ \left[\int_0^\pi
+g_{\rho'}(\sigma) \frac{\delta}{\delta x(\sigma)}\right] \Psi
+\nonumber\\
+&\ & \half [\bar{x}(\rho),\Psi]_\star P_L(\rho')=-\frac{i}{2\pi}
+\int_0^\pi g_{\rho'}(\sigma) \frac{\delta}{\delta x(\sigma)}
+\left[\int_0^\pi d\sigma f_\rho(\sigma)x(\sigma)
+\right] \Psi\nonumber\\
+&\ &\half \bar{x}(\rho)[\Psi, P_L(\rho')]_\star=\frac{i}{2\pi}
+\int_0^\pi d\sigma |f_\rho(\sigma)|x(\sigma)\left[\int_0^\pi
+|g_{\rho'}(\sigma)| \frac{\delta}{\delta x(\sigma)}\right] \Psi
+\nonumber\\
+&\ &\fraction{1}{4}[\bar{x}(\rho),[\Psi,
+P_L(\rho')]_\star]_\star=\frac{i}{2\pi} \int_0^\pi d\sigma
+f_\rho(\sigma)x(\sigma)\ \left[\int_0^\pi
+|g_{\rho'}(\sigma)| \frac{\delta}{\delta x(\sigma)}\right] \Psi\nonumber\\
+&\ &\half[\bar{x}(\rho), P_L(\rho')]_\star\Psi=\frac{i}{2\pi}
+\int_0^\pi d\sigma f_\rho(\sigma)g_{\rho'}(\sigma) \Psi\nonumber
+\end{eqnarray}
+
+
+
+
+
+\noindent
+\begin{eqnarray} \bar{x}(\rho)\star(\Psi\star
+P_L(\rho'))&=&\frac{2}{\pi}\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma)\ i\int_{\pi/2}^{\pi}d\sigma\
+g_{\rho'}(\sigma)\frac{\delta}{\delta x(\sigma)}\Psi\nonumber\\
+&=&i\int_{\pi/2}^{\pi}d\sigma\
+g_{\rho'}(\sigma)\frac{\delta}{\delta x(\sigma)}\
+\frac{2}{\pi}\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma)\Psi\nonumber\\&=&
+(\bar{x}(\rho)\star\Psi)\star
+P_L(\rho')\label{eq:36}\end{eqnarray} i.e. since the integrals
+have no overlap they commute with each other, implying
+associativity.  Multiplication with $P_L$ is still associative,
+$$(\bar{x}(\rho)\star\Psi)\star
+P_L=\bar{x}(\rho)\star(\Psi\star P_L)$$ because we can see that
+the integrals involved commute,
+\begin{equation}\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma)=\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)x(\sigma) \int_{0}^{\pi/2}d\sigma\
+\frac{\delta}{\delta x(\sigma)}\label{com_int}\end{equation}
+
+\noindent bearing in mind that $f_\rho(\sigma)$ has a Fourier
+decomposition in terms of $\cos 2n\sigma$ for $n\geq 1$, so that,
+$$\int_0^{\pi/2}d\sigma f_\rho(\sigma)=0$$ Now, however, we have
+a small paradox. How is the above equation consistent with the
+fact that $\lim_{\rho\to\infty} f_\rho=1$?
+
+
+
+
+This in turn implies:
+$$\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta
+x(\sigma)}\int_0^{\pi/2}d\sigma f_\rho(\sigma)x(\sigma) \
+\Psi[x(\sigma)]=\int_0^{\pi/2}d\sigma f_\rho(\sigma)x(\sigma)
+\int_{0}^{\pi/2}d\sigma\ \frac{\delta}{\delta x(\sigma)}\
+\Psi[x(\sigma)]$$ which by an argument similar to \EQN{36} implies
+associativity. Note that we still have associativity:
+
+However, in this particular case the fact that $A\star P_L$
+involves an integral of $p(\sigma)$ over both halves of the string
+does not in this particular case imply that associativity is lost,
+since $P_L$ is a commutative coordinate\footnote{In particular,
+note that $f_\rho(\sigma)=\sqrt{2}\sum_{n=1}^\infty
+f_{2n}(\rho)\cos 2n\sigma$. Therefore $\int_0^{\pi/2}d\sigma
+f_\rho(\sigma)=0$ and associativity follows along the lines of
+\EQN{36}.} (assuming, again, that $x'(0)$ is excluded). However,
+we have seen that $P_L$ may appear noncommutative if the proper
+limit is taken, and in such situations associativity might fail.
+
+
+no longer involves an integral over only half the string. However,
+associativity is more delicate when we take the regulator to
+infinity. In this limit, $f_\rho$ and $g_\rho$ approach $1$, and
+\EQN{A} reduces to,
+
+Apparently the anomaly is sensitive not only to the grouping of
+parentheses, but also the way in which the multiplication is
+carried out. A priori, there is no reason why we should favor
+multiplying the fields either before or after taking the regulator
+to infinity. In the previous paragraph we chose to multiply
+before, because $P_L$ and $\bar{x}$ do not necessarily exist in
+other bases (such as the continuous or discrete basis) before they
+are multiplied with a sufficiently well-behaved state. However,
+this just a matter of convenience, and is not an objectively valid
+argument in favor of the prescription \EQN{assoc}.
+
+It is interesting to try to translate the above computations into
+position space, where they can be given a clearer visual
+interpretation. Performing a fourier transform on the odd momenta,
+$$p_{2n-1}\star\Psi\star x_{2m}=i\left(-\der{x_{2n-1}}-
+\sum_{l=1}^\infty
+T_{2l,2n-1}\der{x_{2l}}\right)\left(-\sum_{k=1}^\infty
+T_{2m,2k-1}x_{2k-1}+x_{2m}\right)\Psi $$
+
+
+
+
+
+ in other bases, such as the
+continuous basis, we chose the former prescription we multiplied
+This lends credence to the viewpoint that associativity anomalies
+are really an indication that the formalism is being stretched
+beyond its limits, and probably not and has become ambiguous."
+1,\section*{
+2,\section*{
+3,\section*{
+4,\section*{
+5,\section*{
+6,\section{V
+7,\section*{

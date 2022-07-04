@@ -1,0 +1,201 @@
+,section
+0,\section{Introduction}
+1,\section{The transmission and reflection coefficients}
+2,\section{Comparison to numerical results}
+3,\section{Conclusions}
+4,"\section*{Acknowledgements}
+
+I thank N. Arkani-Hamed, A. Ashtekar, E. Berti, O. Dreyer, E. Flanagan, C. Herzog, K. Kokkotas, K. Krasnov, 
+A. Maassen van den Brink, A. Maloney, 
+S. Minwalla, S. Mukohyama, H. Nastase, M. Schnabl, 
+M. Schwartz, D. Son, A. Starinets, A. Strominger and C. Vafa for discussions.  I especially want to 
+thank Lubo\v{s} Motl for numerous discussions and continuous prodding, as well as for a continuing stimulating 
+collaboration.  I also thank California Institute of Technology for kind hospitality while this work was being
+finished.  My research is supported by an NDSEG Graduate Fellowship.
+
+\appendix
+\section{Generalities on one-dimensional wave equations} \label{appendix-generalities}
+
+The notions of transmission and reflection coefficient for a one-dimensional wave equation are well known, at
+least for real frequencies.  However, there are some subtleties associated with analytic 
+continuation to complex frequencies.  Under fairly general conditions this analytic continuation does
+exist; the questions are what its singularities are and whether we can construct it in a way which facilitates
+explicit computation.
+
+Suppose given a wave equation on the real line $-\infty < x < \infty$
+with the form of \eqref{wave-equation},
+\begin{equation} \label{wave-equation-repeated}
+\left[ - \frac{d^2}{dx^2} + V(x) - \omega^2 \right] \psi(x) = 0,
+\end{equation}
+where $V(x) \to 0$ faster than $1/\lvertx\rvert$ as $x \to \pm \infty$.
+We can then define $T(\omega), R(\omega)$ for waves of real frequency $\omega \neq 0$
+by fixing the boundary conditions 
+\begin{equation}
+\psi(x) \sim
+\begin{cases}
+T(\omega) e^{+i \omega x}  \label{transmission-boundary} & \textrm{\ as\ } x \to -\infty, \\
+e^{+i \omega x} + R(\omega) e^{-i \omega x} & \textrm{\ as\ } x \to +\infty. 
+\end{cases}
+\end{equation}
+
+The boundary conditions 
+\eqref{transmission-boundary} also suffice to extend
+$T(\omega)$ and $R(\omega)$ to 
+complex-analytic functions on the lower half-plane $\textrm{Im\ } \omega < 0$.  Furthermore these functions
+are nonsingular; there cannot be any poles because they would imply the existence 
+of a normalizable solution to \eqref{wave-equation-repeated}
+with complex $\omega$, which is impossible because of the self-adjointness of $- d^2/dx^2 + V(x)$.\footnote{This 
+self-adjointness fails for non-normalizable $\psi(x)$, which formally explains the existence of quasinormal modes,
+i.e. poles of $T(\omega)$ and $R(\omega)$ in the upper half-plane.}
+
+It is not straightforward to define
+$T(\omega)$ or $R(\omega)$ 
+for $\omega$ in the upper half-plane, because in that case the boundary condition 
+\eqref{transmission-boundary} as $x \to +\infty$ 
+does not give a constraint on the solution; the solution $e^{+i \omega x}$ 
+is exponentially small compared to $e^{-i \omega x}$ as $x \to +\infty$, so adding $e^{+i \omega x}$ 
+with an arbitrary coefficient does not affect the asymptotics as $x \to +\infty$, and there is no way to
+define what we mean by requiring this coefficient to be $1$.  In some cases we
+can nevertheless analytically continue $T(\omega)$ to the upper half-plane; 
+the existence and singularity structure of such a
+continuation depend on the properties of $V(x)$.  We now turn to some examples.
+
+The simplest possibility is $V(x) = 0$ for all $x$.  In this case
+the prescription above gives simply $T(\omega) = 1, R(\omega) = 0$ for 
+all $\omega$ in the lower half-plane, which has the obvious analytic 
+continuation $T(\omega) = 1, R(\omega) = 0$ for all $\omega$.
+
+Another possibility is that $V(x) \neq 0$ but $V(x)$ strictly vanishes as $x \to \pm \infty$ (e.g. a finite 
+square well).  In that case, for any $\omega$, the solutions of \eqref{wave-equation-repeated} near $\pm \infty$ 
+are strict 
+linear combinations of $e^{\pm i \omega x}$.  Therefore $T(\omega)$ can be uniquely defined for any $\omega$ 
+just by replacing the asymptotic relation $\sim$ by exact equality in \eqref{transmission-boundary}.  
+This prescription defines $T(\omega)$ and $R(\omega)$ univalently for any $\omega \neq 0$, so $T(\omega)$ 
+and $R(\omega)$ are single-valued, although they can have isolated singularities at $\omega = 0$ and in 
+the upper half-plane.
+
+A third possibility is that $V(x)$ admits analytic continuation to complex $x$ and furthermore 
+$V(x) \to 0$ faster than $1 / \lvertx\rvert$ as $x \to \infty$ in any direction (e.g. $V(x) = 1/(x^2+1)$.)  
+Note that this case and the one
+just considered are mutually exclusive.  In this case we can define $T(\omega)$ by
+setting our boundary conditions on the line $\omega x \in {\mathbb R}$ rather than $x \in {\mathbb R}$:
+\begin{equation}
+\psi(x) \sim \begin{cases}
+T(\omega) e^{+i \omega x}  \label{transmission-boundary-complex} & \textrm{\ as\ } \omega x \to -\infty, \\
+e^{+i \omega x} + R(\omega) e^{-i \omega x} & \textrm{\ as\ } \omega x \to +\infty. 
+\end{cases}
+\end{equation}
+The advantage of \eqref{transmission-boundary-complex} over \eqref{transmission-boundary}
+is that the solutions are oscillatory on the line $\omega x \in {\mathbb R}$ and hence the asymptotics \eqref{transmission-boundary-complex} determine $T(\omega)$ and $R(\omega)$.  
+There is one additional complication:  if $V(x)$ has singularities along the line 
+$\omega x \in {\mathbb R}$, then $\psi(x)$ will generally be 
+multivalued, so we have to specify the contour along which we travel from one side of the line $\omega x \in {\mathbb R}$
+to the other.  To make $T(\omega)$ and $R(\omega)$ holomorphic in $\omega$ the only option is to continuously
+deform the contour by ``Wick rotation'' from the real axis; but then after a full $2 \pi$ rotation
+the contour will hang on the singularities, so $T(\omega)$ and $R(\omega)$ are potentially 
+multivalued.
+
+Finally we come to the case which actually occurs for black hole transmission coefficients, say for $d=4$ Schwarzschild.
+Here the analytic structure of $T(\omega)$ and $R(\omega)$ has been extensively studied because it is relevant for
+the long time behavior of black hole perturbations; see in particular \cite{leaverbranchcut}.
+In this case $V(x) = V[r(x)]$, with $r(x)$ defined implicitly by \eqref{tortoise-definition},
+and while $V(r)$ is manifestly single-valued all over the complex $r$-plane,
+$r(x)$ generally has multiple branches (because of the logarithm in \eqref{tortoise-definition}).
+  So the analytic continuation of $V(x)$ is a multivalued 
+function of $x$.  Nevertheless, since the only singularity of $V(r)$ occurs 
+at $r=0$, the singularities of $V[r(x)]$ can only occur at
+$x$ for which some branch of $r(x)$ has $r(x) = 0$, namely at $x = 2\pi i n$.  So $T(\omega)$, $R(\omega)$ can be
+defined by Wick rotation of the $x$-plane contour to any $\omega$ with $\textrm{Re\ } \omega \neq 0$.  However, at $\textrm{Re\ }
+\omega = 0$ we encounter an infinite chain of singularities and we have to choose which way to go around them;
+our choice will depend on which way we made the Wick rotation (i.e. whether we are coming from $\textrm{Re\ } \omega > 0$ 
+or $\textrm{Re\ } \omega < 0$).  $T(\omega), R(\omega)$ therefore have branch cuts at positive imaginary $\omega$.
+In the body of the paper we compute these functions for $\omega$ on the right side of the cut, 
+i.e. $\textrm{Re\ } \omega$ infinitesimally positive; in that case, after performing the Wick rotation in the $x$-plane, 
+\eqref{transmission-boundary-complex}
+corresponds to (see Figure \ref{r-plane} in Section \ref{section-transmission-schwarzschild-4d})
+\begin{equation}
+\psi(r) \sim
+\begin{cases}
+T(\omega) e^{+i \omega x} & \textrm{\ as\ } r \to r_H, \\
+e^{i \omega x} + R(\omega) e^{-i \omega x} & \textrm{\ as\ } r \to \ensuremath{\bigstar}\xspace. \label{imaginary-transmission-boundary-repeated}
+\end{cases}
+\end{equation}
+If we had assumed $\textrm{Re\ } \omega < 0$ instead, we would have put \ensuremath{\bigstar}\xspace at the north of Figure \ref{r-plane} instead
+of the south.
+
+
+
+\section{Asymptotics of solutions to the wave equation} \label{appendix-asymptotics}
+
+In our analysis of the solutions of \eqref{wave-equation} along the line $\textrm{Re\ } x = 0$ we need to 
+know their asymptotics in the limit $\omega \to i \infty$.  In this limit the term $\omega^2$ dominates
+the potential everywhere except 
+near $r=0$, so we expect that the interesting behavior will occur there.
+Near $r=0$ we have from \eqref{tortoise-definition}
+\begin{equation}
+x/r_H = r/r_H + \log (1-r/r_H) = -\ensuremath{\frac{1}{2}}(r/r_H)^2 - \frac{1}{3}(r/r_H)^3 + {\mathcal O}\left((r/r_H)^4\right)
+\end{equation}
+which can be inverted to obtain
+\begin{equation}
+r/r_H = \pm i \sqrt{2x/r_H} + 2x/3r_H + {\mathcal O}\left((x/r_H)^{3/2}\right)
+\end{equation}
+Substituting this in \eqref{wave-equation}, \eqref{schwarzschild-4d-potential} we obtain
+the leading-order behavior of \eqref{wave-equation} near the $r=0$ singularity together
+with its first correction:
+\begin{equation} \label{wave-equation-singularity-corrected}
+\left[ -\frac{d^2}{dx^2} + \frac{j^2-1}{4x^2} \pm i \frac{\eta}{x^{3/2} \sqrt{r_H}} + {\mathcal O}\left((x r_H)^{-1}\right) - \omega^2) \right] \psi = 0,
+\end{equation}
+with
+\begin{equation} \label{eta-definition}
+\eta = \frac{(j^2 - 1) - 3l(l+1)}{6 \sqrt{2}}.
+\end{equation}
+Further setting $\rho = \omega x$,
+\begin{equation} \label{wave-equation-rho}
+\left[ -\frac{d^2}{d\rho^2} + \frac{j^2-1}{4 \rho^2} \pm i \frac{\eta}{\rho^{3/2}\sqrt{\omega r_H}} + {\mathcal O}\left(\frac{1}{\rho \omega r_H}\right) - 1 \right] \psi = 0
+\end{equation}
+Integrating the subleading terms twice in $\rho$ shows they can at
+worst give corrections where $\delta \psi / \psi$ scales as a power of $\rho/\omega r_H$.
+Then in the $\omega \to i \infty$ limit with
+$\rho \ll 1$, one may neglect this term as well as the constant term $1$
+and write simply
+\begin{equation}
+\left[ \frac{d^2}{d\rho^2} + \frac{1-j^2}{4 \rho^2} \right] \psi = 0.
+\end{equation}
+So when $\rho \ll 1$ there are two possibilities for the asymptotics: 
+\begin{equation} \label{small-rho-power-law}
+\psi(\rho) \sim \rho^{(1 \pm j) /2}.
+\end{equation}
+It turns out that both possibilities occur and 
+we can pick two linearly independent solutions $\psi_\pm$ by fixing their
+rotation properties (at least for non-integer $j$):
+\begin{equation} \label{solution-rotation}
+\psi_\pm(e^{i \theta} \rho) = e^{(1 \pm j) i \theta / 2} \psi_\pm(\rho).
+\end{equation}
+On the other hand, for $1 \ll \rho$,
+\eqref{wave-equation-rho} is simply
+\begin{equation}
+\left[ \frac{d^2}{d\rho^2} + 1\right] \psi = 0
+\end{equation}
+and so the solutions are asymptotic to free waves $e^{\pm i \rho}$.  The issue is now to
+interpolate between these two regions.  To leading order in $\omega$ this
+can be done by neglecting the $1/\sqrt{\omega}$ term in \eqref{wave-equation-rho};
+one then finds that $\psi_\pm$ are asymptotic to $\sqrt{\rho} J_{\pm j/2}(\rho)$ in the region
+$\rho \ll \lvert\omega\rvert r_H$, and since this region overlaps with the region 
+$1 \ll \rho$ in the limit of large $\omega$, one can match the known 
+asymptotics of Bessel functions to the free wave propagation.  
+This was the approach taken in \cite{Motl:2003cd} and it gives for $1 \ll \rho$
+\begin{equation} \label{solution-asymptotics}
+\psi_\pm(\rho) \sim \cos(\rho - (1 \pm j)\pi / 4) + \ensuremath{{\mathcal O}\left(1/\sqrt{\lvert\omega\rvert r_H}\right)}\xspace.
+\end{equation}
+From \eqref{eta-definition}, \eqref{wave-equation-rho} we see that the \ensuremath{{\mathcal O}\left(1/\sqrt{\lvert\omega\rvert r_H}\right)}\xspace correction to
+\eqref{solution-asymptotics} should be proportional to $(j^2-1) - 3l(l+1)$; in the case
+$j=2$ this dependence 
+was also found in \cite{MaassenvandenBrink:2003as}, where in addition the exact numerical coefficient
+was evaluated.
+
+
+\bibliography{physics}
+
+\end{document}"
+5,\section{G
+6,\section{A

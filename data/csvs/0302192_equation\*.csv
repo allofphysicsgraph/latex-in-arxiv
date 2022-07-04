@@ -1,0 +1,1557 @@
+,equation\*
+0,"\begin{equation*}
+  \{\gamma^M,\gamma^N\}=2g^{MN},~~~
+  \gamma^\mu = -i e^{\sigma(y)} 
+    \left( \begin{array}{cc} 
+      0 & \sigma^\mu \\ \bar{\sigma}^\mu & 0
+    \end{array} \right)
+    \equiv e^{\sigma(y)} \hat{\gamma}^\mu,~~~
+  \gamma^5 = \gamma_5 = 
+    -i\hat{\gamma}^0\hat{\gamma}^1\hat{\gamma}^2\hat{\gamma}^3
+    = \left( \begin{array}{cc} 
+      1 & 0 \\ 0 & -1
+    \end{array} \right),
+\end{equation*}
+%
+where $\sigma^\mu=(1,\vec{\sigma})$ and 
+$\bar{\sigma}^\mu=(1,-\vec{\sigma})$.  The Dirac conjugate 
+is defined as $\bar{\Psi} \equiv \Psi^\dagger i\hat{\gamma}^0$.}
+acts on the coordinates $x^M$ as
+%
+\begin{eqnarray}
+  x^M &\longrightarrow& x^M + \epsilon^M, 
+\nonumber\\
+  &\mbox{where}& [\delta_\eta,\delta_\xi] 
+    = 2(\bar{\eta} \gamma^M \xi -\bar{\xi} \gamma^M \eta)\partial_M 
+    \equiv \epsilon^{M}\partial_M .
+\label{eq:susycomm}
+\end{eqnarray}
+%
+Under this coordinate transformation, the metric $g_{MN}$ changes as
+%
+\begin{equation}
+  g_{MN} \longrightarrow g_{MN} + \epsilon^L \partial_L g_{MN}
+    + g_{LN} \partial_M \epsilon^L + g_{ML} \partial_N \epsilon^L.
+\end{equation}
+%
+
+Now, a global supersymmetry transformation is defined as the 
+supersymmetry transformation which leads to $\epsilon^M$ that leaves 
+$g_{MN}$ unchanged. Namely, we require $\epsilon^M$ to satisfy
+%
+\begin{equation}
+  \epsilon^L \partial_L g_{MN}
+    + g_{LN} \partial_M \epsilon^L + g_{ML} \partial_N \epsilon^L = 0,
+\end{equation}
+%
+or more explicitly
+%
+\begin{eqnarray}
+  && \partial_5 \epsilon^5 = 0,
+\label{eq:killingvector1} \\
+  && g_{\mu\nu}\partial_5\epsilon^\nu 
+     + \partial_\mu\epsilon^5 = 0,
+\label{eq:killingvector2} \\
+  && -2\sigma' g_{\mu\nu} \epsilon^5 
+     + g_{\rho\nu}\partial_\mu\epsilon^\rho
+     +g_{\mu\rho}\partial_\nu\epsilon^\rho = 0,
+\label{eq:killingvector3}
+\end{eqnarray}
+%
+where $\sigma' \equiv \partial\sigma/\partial y$.  The vector 
+$\epsilon^M$ is called a Killing vector, and the above equations are 
+called Killing vector equations.
+
+By replacing $\epsilon^M$ in 
+Eqs.~(\ref{eq:killingvector1}~--~\ref{eq:killingvector3}) by 
+Eq.~(\ref{eq:susycomm}), we find that the Killing vector equations 
+are satisfied if $\xi$ (and $\eta$) satisfies certain conditions. 
+Such a spinor is called a Killing spinor.  We write these conditions, 
+called Killing spinor equations, using the symplectic Majorana 
+spinor notation: we express the 5D supersymmetry transformation 
+parameter $\xi$ by two Dirac spinors $\xi^1$ and $\xi^2$ obeying 
+a single relation.\footnote{
+Here, $\xi^1$ and $\xi^2$ {\it together} correspond to a {\it single} 
+Dirac spinor $\xi$. They are related as
+%
+\begin{equation*}
+  \xi^1 \equiv \xi, ~~~ \xi^2 \equiv -C\xi^*,
+  \quad \mbox{so that} ~~ \xi^i = \epsilon^{ij}C\xi^*_j 
+  ~~ \mbox{and} ~~ \xi^*_i = (\xi^i)^*,
+\end{equation*}
+%
+where $C \equiv -\hat{\gamma^2}\gamma^5$ is the 5D charge conjugation 
+matrix and has properties, $C^2=-1$ and $C \gamma^M C^{-1} 
+= -\gamma^{M*}$. Thus both $\xi^1$ and $\xi^2$ properly transform 
+as 5D Dirac spinors, and simultaneously they form a doublet under the 
+$SU(2)_R$ automorphism group of the 5D supersymmetry. In terms of more 
+familiar two component notation, they are:
+%
+\begin{equation*}
+  \xi^1 = \left(
+    \begin{array}{c} 
+      \xi_{L\alpha} \\ \bar{\xi}_R^{\dot{\alpha}}
+    \end{array} \right), 
+~~~ 
+  \xi^2 = \left(
+    \begin{array}{c}
+      -\xi_{R\alpha} \\ \bar{\xi}_L^{\dot{\alpha}}
+    \end{array} \right).
+\end{equation*}
+%
+There is one convenient identity for these spinors: 
+$\bar{\xi}_i\gamma^M\cdots\gamma^K\eta^j = 
+\bar{\eta}^j\gamma^K\cdots\gamma^M\xi_i$, for any 
+$\xi^i$ and $\eta^i$.}
+In this notation, Eq.~(\ref{eq:susycomm}) simply becomes 
+$\epsilon^M=\bar{\eta}_i\gamma^M\xi^i$. First, we find 
+that the most general form for the constraint that solves 
+Eq.~(\ref{eq:killingvector1}) and is consistent with the 
+4D Lorentz invariance is given by
+%
+\begin{equation}
+  \partial_5 \xi^i 
+    = -\frac{\sigma'}{2} H^i_j \gamma_5\xi^j
+      -\frac{i\sigma'}{2} K^i_j \xi^j,
+\label{eq:killingspinoransatz1}
+\end{equation}
+%
+where $\xi^i$ represents a general Killing spinor, and $H^i_j$ and 
+$K^i_j$ are $2\times2$ arbitrary Hermitian matrices which can even 
+depend on positions in spacetime. At this stage, the only constraints 
+for these matrices come from differentiating the identity 
+$\xi^i=\epsilon^{ij}C(\xi^j)^*$ by $y$, which leads to
+%
+\begin{equation}
+  \mbox{Tr}[H] = \mbox{Tr}[K] = 0.
+\end{equation}
+%
+We next consider Eq.~(\ref{eq:killingvector2}) and find that, in order 
+to solve this, we need an equation for $\partial_\mu\xi^i$ as well as 
+Eq.~(\ref{eq:killingspinoransatz1}).  The most general form of this is
+given by
+%
+\begin{equation}
+  \partial_\mu\xi^i 
+    = -\frac{\sigma'}{2} H^i_j\gamma_\mu\xi^j
+      -\frac{\sigma'}{2} \gamma_5\gamma_\mu\xi^i
+      -\frac{i\sigma'}{2} L^i_j\gamma_\mu\xi^j,
+\label{eq:killingspinoransatz2}
+\end{equation}
+%
+where $L^i_j$ is a new arbitrary $2\times2$ Hermitian matrix. Finally, 
+we consider the last equation, Eq.~(\ref{eq:killingvector3}). We find 
+that this equation is satisfied if and only if
+%
+\begin{equation}
+  L^i_j = 0.
+\end{equation}
+%
+Therefore, we find that the Killing spinor must satisfy the equations
+%
+\begin{eqnarray}
+  \partial_5 \xi^i 
+  &=& -\frac{\sigma'}{2} H^i_j \gamma_5\xi^j
+      -\frac{i\sigma'}{2} K^i_j \xi^j,
+\label{eq:naivekillingspinorequ1} \\
+  \partial_\mu \xi^i 
+  &=& -\frac{\sigma'}{2} H^i_j\gamma_\mu\xi^j
+      -\frac{\sigma'}{2} \gamma_5 \gamma_\mu \xi^i,
+\label{eq:naivekillingspinorequ2}
+\end{eqnarray}
+%
+where $H^i_j$ and $K^i_j$ are arbitrary $2\times2$ traceless Hermitian 
+matrices.
+
+Let us now examine whether 
+Eqs.~(\ref{eq:naivekillingspinorequ1},~\ref{eq:naivekillingspinorequ2}) 
+have a non-trivial solution or not.  If there exists a non-trivial 
+and reasonable $\xi$, it must satisfy
+%
+\begin{equation}
+  [\partial_M, \partial_N] \xi^i = 0.
+\end{equation}
+%
+Evaluating the above commutator for $M=\mu$ and $N=\nu$ gives the 
+following constraints on the matrix $H$:
+%
+\begin{eqnarray}
+  H^2 &=& {\bf 1},
+\label{eq:const-1} \\
+  \partial_\mu H &=& {\bf 0},
+\label{eq:const-2}
+\end{eqnarray}
+%
+where ${\bf 1}$ and ${\bf 0}$ are the unit and zero $2 \times 2$ 
+matrices.  On the other hand, $[\partial_\mu,\partial_5]\xi^i=0$ gives
+the following constraints on $H$ and $K$:
+%
+\begin{eqnarray}
+  \partial_\mu K &=& {\bf 0},
+\label{eq:const-3} \\
+  -i\partial_5 H &=& \left[ -\frac{\sigma'}{2}K, H \right],
+\label{eq:const-4}
+\end{eqnarray}
+%
+and the conditions for $\xi^i$:
+%
+\begin{equation}
+  H^i_j(y) \xi^j = \gamma_5 \xi^i \qquad 
+  \mbox{at } y=0 \mbox{ and } \pi R.
+\label{eq:basicboundarycondition}
+\end{equation}
+%
+Because the form of Eq.~(\ref{eq:const-4}) is identical to the 
+Heisenberg equation of motion for the operator $H$ with ``time"" $y$ 
+and ``Hamiltonian"" $-(\sigma'/2)K$, we can write the general 
+solution as:
+%
+\begin{equation}
+   H(y) = U(y) H(0) U^\dagger(y),
+\end{equation}
+%
+where, having Eqs.~(\ref{eq:const-1},~\ref{eq:const-3}) in mind, $H(0)$ and 
+$U(y)$ are given by
+%
+\begin{eqnarray}
+  H(0) &=& n^a \sigma_a,
+\\
+  U(y) &=& \hat{\mbox{{\bf Y}}} 
+    \exp\left[ -\frac{i}{2} \int^y_0 \sigma' K(y') dy' \right],
+\end{eqnarray}
+%
+where $n^a$ ($a=1,2,3$) is a constant real vector with unit 
+length $n^an^a=1$, $\sigma_a$ are the Pauli spin matrices, and 
+$\hat{\mbox{{\bf Y}}}$ is the ``time""-ordering operator. We can 
+check that this solution solves all the constraints on $H$ and 
+$K$, Eqs.~(\ref{eq:const-1}~--~\ref{eq:const-4}).  Note also that
+$U(y)$ belongs to $SU(2)$ because $K$ is Hermitian and traceless. 
+
+The above Killing spinor equation contains important information 
+about the symmetry structure of the theory.  We consider the 
+$SU(2)_R$ automorphism group of the 5D supersymmetry, under which 
+$\xi^1$ and $\xi^2$ form a doublet.  In flat space ($\sigma' = 0$), 
+this $SU(2)_R$ is a symmetry of the algebra and thus respected 
+by the whole theory.  In AdS, however, we find that it 
+is broken by the presence of the matrices $H$ and $K$ in 
+Eqs.~(\ref{eq:naivekillingspinorequ1},~\ref{eq:naivekillingspinorequ2}). 
+Now, we consider redefining the fields by a twist inside $SU(2)_R$. 
+This results in the redefinition of $\xi^i$ according to
+%
+\begin{equation}
+   \xi^i(y) \longrightarrow \tilde{U}(y)^i_j \xi^j(y),
+\label{eq:redef}
+\end{equation}
+%
+where $\tilde{U}(y)$ is a $y$-dependent matrix taking arbitrary 
+values in $SU(2)$. Note that, since we are just redefining 
+the name of the fields, this does not change any physics. 
+Then, substituting Eq.~(\ref{eq:redef}) into 
+Eqs.~(\ref{eq:naivekillingspinorequ1},~\ref{eq:naivekillingspinorequ2}) 
+and choosing $\tilde{U}(y) = U(y)$, we find that $H(y)$ is replaced 
+by $H(0)$ and the $K(y)$ term is canceled.  We can further make 
+a $y$-independent $SU(2)_R$ rotation and choose $(n^1,n^2,n^3) = (0,0,1)$ 
+for $H(0)$. Therefore, we finally obtain the following simple form for 
+the Killing spinor equations in AdS$_5$:
+%
+\begin{eqnarray}
+  \partial_5 \xi^i 
+  &=& -\frac{\sigma'}{2} (\sigma_3)^i_j \gamma_5 \xi^j,
+\label{eq:killingspeq-1} \\
+  \partial_\mu \xi^i 
+  &=& -\frac{\sigma'}{2} (\sigma_3)^i_j \gamma_\mu \xi^j 
+     - \frac{\sigma'}{2} \gamma_5 \gamma_\mu \xi^i.
+\label{eq:killingspeq-2}
+\end{eqnarray}
+%
+These equations show that a $U(1)_R$ subgroup of $SU(2)_R$ remains 
+unbroken in the AdS background.  The constraint on $\xi^i$, 
+Eq.~(\ref{eq:basicboundarycondition}), now becomes
+%
+\begin{equation}
+  (\sigma_3)^i_j \xi^j = \gamma_5 \xi^i \qquad 
+  \mbox{at } y=0 \mbox{ and } \pi R.
+\label{eq:xi-cond}
+\end{equation}
+%
+These three equations define global supersymmetry in the truncated 
+AdS$_5$ on $S^1/Z_2$. The form of the bulk Lagrangian is determined by
+Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2}). 
+The Killing spinor boundary constraint of Eq.~(\ref{eq:xi-cond}) 
+is crucially important when we consider the effect of the boundaries 
+in the next sub-section. In particular it requires that 
+$\xi_{R\alpha} = 0$ at both boundaries.
+
+Finally, we write down the off-shell bulk Lagrangians (in 
+the basis where the Killing spinor equations take the form of
+Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2})).
+Effects of boundaries, including Eq.~(\ref{eq:xi-cond}), will be 
+considered in the next sub-section.  We begin with a hypermultiplet, 
+which consists of two complex scalars, $\phi^1$ and $\phi^2$, and 
+a Dirac spinor, $\Psi$, and two complex auxiliary fields, $F^1$ 
+and $F^2$. The kinetic part of the action is given by
+%
+\begin{equation}
+  {\cal S}_{\rm hyp.kin.} 
+    \equiv \int\!\!d^4x \int\!\!dy \, \sqrt{-g} \, {\cal L}_{\rm hyp.kin.},
+\label{eq:def-s}
+\end{equation}
+%
+\begin{equation}
+  {\cal L}_{\rm hyp.kin.}
+    = -g^{MN} \partial_M\phi^*_i \partial_N\phi^i
+      -\frac12 \bar{\Psi} \gamma^M \partial_M\Psi
+      +\frac12 \partial_M\bar{\Psi} \gamma^M \Psi
+      +F^*_iF^i + \frac{15}{4}k^2 \phi^*_i\phi^i,
+\label{eq:hyperaction}
+\end{equation}
+%
+where $i=1,2$ and both $\phi^i$ and $F^i$ are doublets under $SU(2)_R$; 
+in particular $\phi_i=\epsilon_{ij}\phi^j$, $\phi^*_i=(\phi^i)^*$, 
+and so on. This action is invariant under the following global 
+supersymmetry transformation:
+%
+\begin{eqnarray}
+  && \delta\phi^i 
+    = \sqrt2 \epsilon^{ij}\bar{\xi}_j\Psi, 
+\nonumber\\
+  && \delta\Psi 
+    = \sqrt2 \left( \gamma^M \xi^i \partial_M\phi_i 
+        - \frac32 \sigma' \xi^i \phi_j (\sigma_3)^j_i 
+        + \xi^i F_i \right),
+\label{eq:hypertrans}\\
+  && \delta F^i 
+    = \sqrt2 \epsilon^{ij}\left( \bar{\xi}_j \gamma^M \partial_M\Psi 
+        - 2\sigma' \bar{\xi}_j \gamma_5 \Psi \right),
+\nonumber
+\end{eqnarray}
+%
+where the global supersymmetry transformation parameter $\xi^i$ 
+satisfies Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2}).
+In addition to the above kinetic part, Eq.~(\ref{eq:hyperaction}), 
+we can also add a mass to the hypermultiplet:
+%
+\begin{equation}
+  {\cal L}_{\rm hyp.mass} 
+  = - c \sigma' \bar{\Psi} \Psi 
+    + c \sigma' (F^*_i\phi^i + \phi^*_iF^i)
+    - ck^2 (\sigma_3)^i_j \phi^*_i \phi^j,
+\label{eq:hypermass}
+\end{equation}
+%
+where $c$ is a dimensionless real constant. This by itself 
+is invariant (up to a total derivative) under the global 
+supersymmetry transformation, Eqs.~(\ref{eq:hypertrans}) with 
+Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2}).
+
+The gauge supermultiplet consists of a vector field $A_M$, a Dirac 
+gaugino $\Psi_\lambda$, a real scalar $\Sigma$, and three real 
+auxiliary fields $X^a$ ($a=1,2,3$). The Lagrangian is given by
+%
+\begin{eqnarray}
+  {\cal L}_{\rm gauge}
+    &=& \frac{1}{g^2} \biggl[ -\frac{1}{4}g^{ML}g^{NK}F_{MN}F_{KL}
+      -\frac12 g^{MN} \partial_M\Sigma \> \partial_N\Sigma
+      -\frac12 \bar{\lambda}_i \gamma^M \partial_M\lambda^i
+      +\frac12 X^a X^a 
+\nonumber\\
+  && {} +2k^2 \Sigma^2 
+      -\frac14 \sigma' (\sigma_3)^i_j \bar{\lambda}_i \lambda^j \biggr],
+\label{eq:gaugelag}
+\end{eqnarray}
+%
+where we have chosen the gauge group to be $U(1)$ for simplicity.
+We have also used the symplectic Majorana notation for the gaugino: 
+$\Psi_\lambda$ is represented by the two Dirac spinors $\lambda^1$ 
+and $\lambda^2$.  Note that the gaugino and the auxiliary fields 
+form a doublet and a triplet, respectively, under $SU(2)_R$. 
+This Lagrangian is supersymmetric under the following global 
+supersymmetry transformation:
+%
+\begin{eqnarray}
+  && \delta A_M = -\bar{\xi}_i\gamma_M\lambda^i,
+\nonumber\\
+  && \delta \Sigma = i \bar{\xi}_i\lambda^i,
+\nonumber\\
+  && \delta \lambda^i = -i\gamma^M\xi^i \partial_M\Sigma
+    -\frac12 \gamma^M\gamma^N \xi^i F_{MN}
+    +2i\sigma'\Sigma(\sigma_3)^i_j\xi^j
+    -i(\sigma_a)^i_j \xi^j X^a,
+\label{eq:gaugetrans}\\
+  && \delta X^a = i\bar{\xi}_i\gamma^M\partial_M\lambda^j (\sigma^a)^i_j
+    -2i\sigma' \bar{\xi}_i\gamma_5\lambda^j (\sigma^a)^i_j,
+\nonumber
+\end{eqnarray}
+%
+where $\xi$ satisfies the condition 
+Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2}).
+Generalization to a non-Abelian group is fairly straightforward 
+(giving the appropriate gauge structure, adding certain 
+gaugino-gaugino-scalar interactions, changing the derivatives 
+to gauge covariant derivatives, and so on).  These bulk Lagrangians, 
+Eqs.~(\ref{eq:hyperaction},~\ref{eq:hypermass},~\ref{eq:gaugelag}), 
+reproduce the on-shell bulk Lagrangians given in 
+Refs.~\cite{Shuster:1999zf}, after integrating out the auxiliary 
+fields (assuming no boundaries).
+
+\subsection{Effects of the boundaries}
+\label{subsec:boundary}
+
+In this sub-section we consider the effects of the boundaries.
+We follow the discussion in section~\ref{sec:defect} and consider 
+the symmetry structure of the theory.  A new ingredient compared 
+with the previous case is the constraint coming from the Killing 
+spinor equation, Eq.~(\ref{eq:xi-cond}).  This additional complication 
+arises from the fact that supersymmetry is a spacetime symmetry. 
+The other parts of the discussion, however, are quite analogous 
+to the previous case.
+
+We begin by considering the boundary conditions on the fields. 
+As explained in the previous section, the boundary conditions are 
+written as Eq.~(\ref{eq:bc-fields}), where $\varphi$ is a column 
+vector collecting all the fields in the theory, including the metric 
+$g_{MN}$.  Since the matrices $\mbox{\bf{Z}}$ and $\mbox{\bf{Z}}'$ must 
+be representations of the two reflections ${\cal Z}: y \rightarrow -y$ 
+and ${\cal Z}': y' \rightarrow -y'$, respectively, they must obey 
+the relations:
+%
+\begin{equation}
+  \mbox{\bf{Z}}^{2} = {\bf 1}, \qquad
+  \mbox{\bf{Z}}^{\prime 2} = {\bf 1}.
+\label{eq:zz-z'z'}
+\end{equation}
+%
+Thus we find that the general boundary conditions are given as 
+follows. Under the reflection ${\cal Z}$, the fields obey 
+%
+\begin{eqnarray}
+  && \phi^i(y) = P_\Phi U^i_j (\sigma_3)^j_k \phi^k(-y),
+\nonumber\\
+  && \Psi(y) = P_\Phi \gamma_5 \Psi(-y),
+\label{eq:hyperparity}\\
+  && F^{i}(y) = P_\Phi U^{i}_j (\sigma_3)_k^j F^k(-y),
+\nonumber
+\end{eqnarray}
+%
+and
+%
+\begin{eqnarray}
+  && A_\mu(y) = A_\mu(-y), \qquad A_5(y) = -A_5(-y),
+\nonumber\\
+  && \lambda^i(y) = U^i_j (\sigma_3)^j_k \gamma_5 \lambda^k(-y),
+\nonumber\\
+  && \Sigma(y) = -\Sigma(-y),
+\label{eq:gaugeparity}\\
+  && X^a(y) = \frac12{\rm tr}
+    [\sigma^aU\sigma^3\sigma^b\sigma^3U^\dagger]X^b(-y),
+\nonumber
+\end{eqnarray}
+%
+where $U = \exp[2\pi i(\alpha_1\sigma_1+\alpha_2\sigma_2)]$ with $0 \leq 
+\alpha_{1,2} < 1$, and each hypermultiplet can have its own 
+parity $P_\Phi = \pm 1$.  The boundary conditions under ${\cal Z}'$ 
+is also given similarly, by the replacement $y \rightarrow y'$, 
+$U \rightarrow U'$ ($\alpha_{1,2} \rightarrow \alpha'_{1,2}$) 
+and $P_\Phi \rightarrow P'_\Phi$ in 
+Eqs.~(\ref{eq:hyperparity},~\ref{eq:gaugeparity}), 
+where $0 \leq \alpha'_{1,2} < 1$ and $P'_\Phi = \pm 1$.\footnote{
+Here we have assumed the boundary conditions do not break the gauge
+symmetry, although including such breaking is straightforward. The 
+procedure is exactly identical to that in flat space.}
+
+Now, we study the supersymmetry structure of the theory: 
+a conservation law for the supercurrent. Following the discussion 
+in section~\ref{sec:defect}, we consider the Noether procedure 
+in the path integral formalism. What position dependence should 
+we allow for the supersymmetry transformation parameter, and 
+how many supersymmetries are preserved in each point in the extra 
+dimension?  First, we can easily see that there are 4D $N=2$ 
+supersymmetries in the bulk, because in any local neighborhood 
+of the bulk we can solve the Killing spinor equation, 
+Eqs.~(\ref{eq:killingspeq-1},~\ref{eq:killingspeq-2}), as 
+$\xi^1(x^\mu,y) = \exp(-\sigma\gamma_5/2) (1 - \sigma'\exp(\sigma)
+\gamma_\mu x^\mu (1-\gamma_5)/2) \xi_0$, which is parameterized by 
+an arbitrary constant Dirac spinor $\xi_0$. A non-trivial question 
+is the number of supersymmetries on the boundaries.  At the 
+boundaries $y=0$ and $\pi R$, the supersymmetry transformation 
+parameter must obey the condition Eq.~(\ref{eq:xi-cond}).
+On the other hand, the boundary conditions for the fields, 
+Eqs.~(\ref{eq:hyperparity},~\ref{eq:gaugeparity}) implies that 
+the supersymmetry transformation parameter must obey
+%
+\begin{equation}
+  \xi^i(y)  = U^i_j (\sigma_3)^j_k \gamma_5 \xi^k(-y), \qquad
+  \xi^i(y') = U^{\prime i}_j (\sigma_3)^j_k \gamma_5 \xi^k(-y'),
+\label{eq:orbixi}
+\end{equation}
+%
+to preserve the boundary conditions of the fields. The number of 
+supersymmetries on the boundaries is then determined by these two 
+conditions, Eq.~(\ref{eq:xi-cond},~\ref{eq:orbixi}).
+
+Let us focus on the $y=0$ boundary (the discussion for the $y=\pi R$ 
+boundary is identical).  We first consider the case $\alpha_1 
+= \alpha_2 = 0$.  In this case, Eq.~(\ref{eq:xi-cond}) and 
+Eq.~(\ref{eq:orbixi}) become identical; in other words, the Killing 
+spinor equation does not give an additional constraint on the 
+transformation parameter $\xi^i$ beyond the one arising from the 
+boundary conditions, Eq.~(\ref{eq:orbixi}).  This situation 
+is similar to the $SU(5)$ example discussed in 
+sub-section~\ref{subsec:type1-defect}.  In fact, we find 
+that the $y=0$ brane is supersymmetry breaking defect of 
+type~I, on which the 4D $N=2$ supersymmetry in the bulk is 
+broken to 4D $N=1$. The number of supersymmetries can easily be 
+understood from Eq.~(\ref{eq:orbixi}): $\xi^i(y) = (\sigma_3)^i_j 
+\gamma_5 \xi^j(-y)$ requires half of $\xi^i$ to vanish at $y=0$. 
+A defect of type~I implies that the symmetries can be consistently 
+gauged, {\it i.e.} the theory can be embedded into supergravity. 
+In supergravity, the gravitino $\psi_{3/2}$ obeys the boundary 
+conditions analogous to Eq.~(\ref{eq:orbixi}). Thus, when expanded 
+into 4D modes, the number of $\psi_{3/2}$'s and the number of 
+$\xi$'s are the same (there is no need to impose any extra constraint 
+on the gravitino field), ensuring the consistency of the theory with 
+local supersymmetry.  In particular, if we choose $\alpha_1 = \alpha_2 
+= \alpha'_1 = \alpha'_2 = 0$, the resulting theory possesses unbroken 
+4D $N=1$ supersymmetry, whose transformation parameter is given 
+by $\xi^1(x^\mu,y) = \exp(-\sigma/2)\xi_L$ where $\xi_L$ is 
+a spinor (dependent on coordinates in supergravity) subject to 
+the condition $\gamma_5 \xi_L = \xi_L$.  The explicit realization 
+of this case in the context of supergravity has been extensively 
+studied~\cite{Altendorfer:2000rr}.
+
+We next consider the case where either $\alpha_1$ or $\alpha_2$ is 
+non-zero. In this case Eq.~(\ref{eq:xi-cond}) and Eq.~(\ref{eq:orbixi}) 
+give different conditions, and we find that the solution to both 
+equations is only the trivial one, $\xi^i = 0$.  This implies that 
+we do not have any supersymmetry on the $y=0$ brane.  Since the 
+constraint $\xi^i(y=0) = 0$ is an extra condition imposed on $\xi$, 
+additional to the one arising from the boundary conditions, 
+the situation is similar to the $U(1)$ example discussed in 
+sub-section~\ref{subsec:type2-defect} with $\xi^i(y=0)=0$ 
+corresponding to Eq.~(\ref{eq:u1-gtp-const}). The defect is type~II 
+and does not allow gauging of the supersymmetry of the theory.
+The argument is similar to the previous $U(1)$ case. When we gauge 
+supersymmetry, we must introduce the gravitino field and impose 
+boundary conditions like Eqs.~(\ref{eq:orbixi}). Since the 
+gravitino is a dynamical field, we cannot impose any additional 
+constraint by hand.  This implies that the number of $\xi$'s is one 
+smaller than that of $\psi_{3/2}$'s (in the 4D picture) due to 
+the extra constraint $\xi^i(y=0)=0$. Since the consistent treatment 
+of a spin-$3/2$ field requires a supersymmetry, this leads to 
+an inconsistency; for instance, in such theories ghosts can be 
+physically produced and certain scattering amplitudes lead to negative 
+probabilities (the presence of such ghosts was also noted in 
+Ref.~\cite{Gherghetta:2002nr}).
+
+Why do we insist on gauging supersymmetry?  If supersymmetry were 
+not a spacetime symmetry, we would be able to consider only global 
+supersymmetry. We would be able to use arbitrary values for 
+$\alpha_{1,2}$ and $\alpha'_{1,2}$ to construct models, in 
+which supersymmetry is broken by boundary conditions.  However, 
+supersymmetry {\it is} spacetime symmetry.  When we include gravity, 
+we have to consider supergravity, in which supersymmetry is gauged.
+This means that the boundaries at $y=0$ and $\pi R$ must be symmetry 
+breaking defects of type~I: $\alpha_{1,2}$ and $\alpha'_{1,2}$ must 
+be zero.  Therefore, we arrive at the following conclusion. 
+{\it In AdS$_5$ the compactification on $S^1/Z_2$ is unique: 
+we cannot use boundary conditions to break all bulk supersymmetries 
+in a warped extra dimension}.
+
+Nevertheless, in the next section we consider models on the truncated 
+AdS$_5$ in which supersymmetry is broken by boundary conditions. 
+As mentioned at the end of sub-section~\ref{subsec:type2-defect}, 
+we do this because some theories can mimic certain properties of the 
+theory with boundary condition supersymmetry breaking.  For instance, 
+consider a theory with $\alpha_1 = \alpha_2 = \alpha'_1 = \alpha'_2 
+= 0$ and break supersymmetry spontaneously by the expectation value 
+for the $F$-component of a brane-localized chiral superfield $Z$ 
+at $y=\pi R$. Then, if this expectation value is large (we formally 
+take $F_Z \rightarrow \infty$), we find that some properties of 
+the boundary condition breaking, such as strict relations between 
+supersymmetry breaking masses and the KK mass scale, are 
+recovered~\cite{Arkani-Hamed:2001mi}. Thus, although the models 
+presented in section~\ref{sec:model} do not allow consistent inclusion
+of gravity as they are, we think that it is worthwhile constructing some 
+representative models and exploring their phenomenology.
+
+We note that the case of supersymmetry breaking by boundary conditions
+in flat space is now very simple to analyze. The Killing spinor
+equations become trivial, with $\xi^i$ becoming constant for a global
+transformation; crucially there is no Killing spinor constraint at the
+boundary, such as Eq.~(\ref{eq:xi-cond}).  Therefore, the issue we have 
+in AdS space, {\it i.e.} the incompatibility of Eq.~(\ref{eq:orbixi}) 
+with Eq.~(\ref{eq:xi-cond}), does not exist in flat space.  Thus, 
+any choices for the matrices $U^i_j$ and $U^{\prime i}_j$ in 
+Eq.~(\ref{eq:orbixi}) yield type~I defects at both boundaries, where 
+each boundary preserves a single 4D supersymmetry, with the orientation 
+of the supersymmetry in $SU(2)_R$ space depending on the parameter 
+$\alpha$ relevant at that boundary. The entire system preserves 
+a supersymmetry in 4D only if the two boundaries preserve the same 
+supersymmetry, $\alpha = \alpha'$, otherwise supersymmetry is completely 
+broken by the boundary conditions. If either boundary is allowed to 
+have a Lagrangian which is not invariant under any supersymmetry, the 
+resulting $N=0$ defect is of type~II, so that the resulting theories 
+are inconsistent with supergravity. 
+
+Finally in this section, we complete the Lagrangian in the case of 
+$\alpha_1 = \alpha_2 = \alpha'_1 = \alpha'_2 = 0$.  The bulk Lagrangian 
+of Eqs.~(\ref{eq:hyperaction},~\ref{eq:hypermass},~\ref{eq:gaugelag}) 
+is not invariant under the supersymmetry transformation at $y=0$ 
+and $\pi R$.  For instance, when we vary the hypermultiplet action 
+Eqs.~(\ref{eq:def-s},~\ref{eq:hyperaction}), we find that the terms 
+that spoil invariance appear from $\partial_y$ acting on $\sigma'$:
+%
+\begin{equation}
+  \sqrt{-g}\delta{\cal L}_{\rm hyp.kin.} 
+    = \sqrt{-g}\left[\cdots 
+    + \frac32 \sigma''\sqrt2 \bar{\Psi}\xi^i\phi_i + \mbox{h.c.} \right],
+\end{equation}
+%
+where $\sigma'' = 2k(\cdots+\delta(y)-\delta(y-\pi R)+\cdots)$. 
+However, these terms can be canceled if we add brane mass terms 
+for the scalars:
+%
+\begin{equation}
+  {\cal L}_{\rm hyp.kin.} \rightarrow 
+  {\cal L}_{\rm hyp.kin.} - \frac32 \sigma'' \phi^*_i \phi^i.
+\end{equation}
+%
+This gives the correct supersymmetric Lagrangian on AdS$_5$ 
+compactified on $S^1/Z_2$. A similar analysis for 
+Eqs.~(\ref{eq:hypermass},~\ref{eq:gaugelag}) leads to 
+%
+\begin{eqnarray}
+  && {\cal L}_{\rm hyp.mass} \rightarrow 
+  {\cal L}_{\rm hyp.mass} + c \sigma'' (\sigma_3)^i_j \phi^*_i \phi^j,
+\\
+  && {\cal L}_{\rm gauge} \rightarrow
+  {\cal L}_{\rm gauge} - \frac{1}{g^2} \sigma'' \Sigma^2.
+\end{eqnarray}
+%
+After integrating out the auxiliary fields, these Lagrangians agree 
+with the on-shell Lagrangian given in Ref.~\cite{Gherghetta:2000qt}.
+
+
+\section{Models}
+\label{sec:model}
+
+\subsection{Warped constrained standard model}
+\label{subsec:wcsm}
+
+Consider an $SU(3)_C \times SU(2)_L \times U(1)_Y$ supersymmetric gauge
+theory on truncated AdS$_5$ space. Each 4D boundary is necessarily a
+defect in the space of supersymmetries, since the two bulk supersymmetries
+cannot coexist on a 4D boundary. In the last section we have shown that 
+if both defects are of type~I, then the supersymmetries preserved at 
+each boundary must align with each other, so that the entire system
+preserves a 4D supersymmetry.  To break supersymmetry by boundary
+conditions, we must consider supersymmetry breaking by means of 
+a defect of type~II.  Furthermore, we assume that the Planck brane 
+located at $y=0$ is a type~I defect preserving one supersymmetry, since, 
+if it were type~II, all supersymmetries would be broken at the Planck 
+scale.\footnote{
+We could instead choose the Planck brane to be a type~II defect, if 
+we localize the Higgs fields to the TeV brane. Such a construction 
+can lead to theories where there is a little hierarchy between the 
+electroweak and new physics scales~\cite{Gherghetta:2003wm}.}
+Therefore the TeV brane at $y=\pi R$ must be of type~II, so that 
+couplings on this brane explicitly break all supersymmetries.
+
+The field content and boundary conditions are chosen to be identical 
+to those of the constrained standard model \cite{Barbieri:2000vh}, 
+so that gauge, matter, and a single Higgs hypermultiplet all propagate 
+in the bulk. Since there is a single zero-mode Higgs boson, we 
+expect a Higgs sector far more constrained than that of the MSSM. 
+The supersymmetry breaking boundary conditions are those of 
+Eqs.~(\ref{eq:hyperparity},~\ref{eq:gaugeparity}) with $\alpha'_2=1/2$, 
+$\alpha_{1,2} = \alpha'_1 = 0$ and $P_{\rm matter}=P'_{\rm matter}=+1$, 
+$P_{\rm Higgs}=-P'_{\rm Higgs}=+1$.  The mass spectrum for both 
+matter-like and Higgs-like boundary conditions are shown in 
+Fig.~\ref{fig:spectrum}. While these boundary conditions are identical 
+to those of the flat space constrained standard model, we stress 
+that in that theory both boundary defects were of type~I preserving 
+orthogonal supersymmetries, so that the structure of supersymmetry 
+breaking differs greatly in the warped case. We assume that all matter 
+hypermultiplets have a bulk mass $c_M=1/2$, ensuring that the quark 
+and lepton zero modes are conformally flat. This is analogous to the 
+flat space theory in the absence of bulk masses. We expect that 
+deviations from $c_M= 1/2$ would be analogous to introducing bulk 
+masses in the flat case~\cite{Marti:2002ar}. To obtain a predictive 
+theory of electroweak symmetry breaking with a single Higgs boson, 
+the Higgs must propagate in the bulk. If we had instead placed the 
+Higgs boson on the Planck brane, then 4D supersymmetry on that brane 
+would have prevented it from generating down-type masses.  If we had 
+placed it on the non-supersymmetric TeV brane, the quartic coupling 
+would be arbitrary and there would be no prediction for the physical 
+Higgs boson mass.  A bulk Higgs boson, however, is able to generate 
+up-type masses at the $y=0$ brane and all masses at the $y=\pi R$ 
+brane, and to a large extent radiative corrections are controlled 
+by the unbroken bulk supersymmetry.
+%
+\begin{figure}
+\begin{center}
+\begin{picture}(300,150)(0,0)
+%
+ \SetOffset(0,5)
+ \LinAxis(10,10)(10,150)(2,5,2,0,2)
+ \Line(10,10)(150,10)
+ \Vertex(28,10){2}
+ \Line(12,65)(45,65) \Vertex(28,65){2}
+ \Line(117,65)(150,65) \Vertex(132,65){2}
+ \Line(12,132)(45,132) \Vertex(28,132){2}
+ \Line(117,132)(150,132) \Vertex(132,132){2}
+ \Line(82,53)(115,53) \Vertex(99,53){2}
+ \Line(82,113)(115,113) \Vertex(99,113){2}
+ \Line(47,15)(80,15) \Vertex(64,15){2}
+ \Line(47,97)(80,97) \Vertex(64,97){2}
+ \Text(28,2)[t]{$\psi^{(+,+)}$}
+ \Text(64,2)[t]{$\phi^{(+,-)}$}
+ \Text(96,2)[t]{$\phi^{(-,+)}$}
+ \Text(132,2)[t]{$\psi^{(-,-)}$}
+ \Text(3,80)[r]{$\pi$t}
+ \Text(3,150)[r]{$2\pi$t}
+%
+ \LinAxis(160,10)(160,150)(2,5,2,0,2)
+ \Line(160,10)(300,10)
+ \Line(162,14)(195,14) \Vertex(178,14){2}
+ \Line(162,77)(195,77) \Vertex(178,77){2}
+ \Line(267,65)(300,65) \Vertex(282,65){2}
+ \Line(162,141)(195,141) \Vertex(178,141){2}
+ \Line(267,134)(300,134) \Vertex(282,134){2}
+ \Line(232,15)(265,15) \Vertex(249,15){2}
+ \Line(232,96)(265,96) \Vertex(249,96){2}
+ \Line(197,15)(230,15) \Vertex(214,15){2}
+ \Line(197,96)(230,96) \Vertex(214,96){2}
+ \Text(178,2)[t]{$\phi^{(+,+)}$}
+ \Text(214,2)[t]{$\psi^{(+,-)}$}
+ \Text(246,2)[t]{$\psi^{(-,+)}$}
+ \Text(282,2)[t]{$\phi^{(-,-)}$}
+\end{picture}
+\caption{Mass spectrum for matter-like fields (left) with $c_M=1/2$ 
+ and for Higgs-like fields (right) with $c=1/2$ and $r'=-1$.}
+\label{fig:spectrum}
+\end{center}
+\end{figure}
+%
+
+The bulk mass for the Higgs hypermultiplet, $c$, is still free as 
+is the Higgs boson brane mass term at the TeV brane ${\cal L} 
+= r'(\phi^{1*}\phi^{1}) 2k\delta(y-\pi R)$, where $\phi^{1}$ is 
+the first component of a complex $\mathrm{SU}(2)_R$ doublet and gauge 
+indices are contracted.  These two parameters in turn determine the 
+profile of the Higgs boson KK modes in the bulk, and the tree-level 
+mass of the Higgs boson KK modes.  In particular the lightest mode 
+mass is approximately given by:
+%
+\begin{equation}
+  m_{\rm tree} 
+    \simeq 2 \sqrt{(c^2-1/4)\frac{3/2-r'-c}{5/2-r'+c}}
+      \left( \frac{t}{k}\right) ^{c-1/2}t,
+\end{equation}
+%
+for $(t/k)^{c-1/2} \ll 1$, where $t=e^{-k\pi R}k$ is the scale of 
+physics at the $y=\pi R$ brane. An important result is that for 
+$c>1/2$ the tree-level mass is much smaller than the typical KK mass 
+scale $t$ so that the full Higgs mass parameter becomes only weakly 
+sensitive to $r'$. This is because the lowest level wavefunction is 
+strongly peaked around the $y=0$ brane. Therefore, while we have 
+no knowledge of the TeV brane parameters (and radiative corrections 
+to some of these parameters are even power divergent), the low energy 
+physics is largely insensitive to their values.
+
+Since the tree level mass of the Higgs boson rapidly becomes 
+small for $c>1/2$, electroweak symmetry breaking is triggered 
+radiatively via the top Yukawa coupling, which we assume to be 
+located dominantly on the Planck brane.  As discussed in 
+section~\ref{subsec:boundary}, the supercurrent is conserved 
+locally in the bulk, so radiative effects must respect supersymmetry 
+there.  Therefore, supersymmetry guarantees that the bulk Higgs 
+mass is not renormalized. Thus, as in models of boundary condition 
+supersymmetry breaking on flat extra dimension, we expect corrections 
+to the 4D Higgs boson mass to be finite, except for the contribution 
+from the $y=\pi R$ brane, which we have argued is small. Therefore, 
+by taking $r'$ to be the renormalized brane mass we are able to 
+calculate the physical Higgs mass in terms of $c$ and $r'$. 
+We have computed radiative corrections from the top quark Yukawa 
+coupling to the Higgs boson effective potential. After minimizing 
+this effective potential, the mass scale of the KK modes is 
+determined from $M_Z$, and the resulting prediction for the Higgs 
+boson mass is shown in Fig.~\ref{fig:higgsmass}, for a range of 
+$c$ and for three values of $r'$.  The insensitivity to $r'$ as $c$ 
+increases above $1/2$ is striking, but not unexpected as in this 
+region the tree-level mass effectively vanishes.  For the same reason, 
+the physical Higgs boson mass becomes constant for large $c$ at about 
+$100~{\rm GeV}$.  One might worry that direct searches rule out 
+a single Higgs boson with mass less than $115~{\rm GeV}$, and the 
+model requires a large degree of fine tuning to reach such a mass. 
+However, since $r'$ is not the only TeV brane operator that affects 
+the Higgs mass, we expect that there are $O(15\%)$ corrections 
+to our calculation.  For example, there can be additional quartic 
+interactions, top Yukawa couplings and terms involving the $F$-fields 
+of the matter multiplets, on the TeV brane. Although all of these 
+terms are suppressed by the wavefunction overlaps of the various 
+fields with the TeV brane and thus introduce only small corrections, 
+they can give non-negligible effects on the physical Higgs boson mass; 
+for example, a brane-localized quartic coupling is expected to 
+introduce a $\simlt 15\%$ correction in the physical Higgs mass in the 
+limit of strong coupling. Therefore, taking note of these possible 
+corrections, the model is not ruled out for a reasonably wide range 
+of parameter space. Notice that for a given $r'$, electroweak symmetry 
+is not broken for all $c$.  Below a certain $c$, the radiative 
+corrections are unable to overcome the positive tree level mass
+squared and electroweak symmetry breaking does not occur. Thus the 
+curves in Fig.~\ref{fig:higgsmass} end at these points.
+%
+\begin{figure}
+\begin{center}
+  \includegraphics[width=10cm]{higgsmass.eps}
+\caption{Physical Higgs boson mass in GeV for $r'=-1$ (dash-dot-dot), 
+ $r'=0$ (dashed) and $r'=0.5$ (solid).}
+\label{fig:higgsmass}
+\end{center}
+\end{figure}
+%
+
+%
+\begin{figure}[tbh]
+\begin{center}
+  \includegraphics[width=10cm]{nlsp.eps}
+\caption{Lightest neutralino (solid) and lightest chargino (dashed) 
+ masses in GeV for $r'=-1$ and $z=-0.75$.}
+\label{fig:nlsp}
+\end{center}
+\end{figure}
+%
+Taking $c>1/2$ also leads to light Higgsinos. The lightest Higgsino 
+mass is approximately
+%
+\begin{equation}
+  m_{\tilde{h}} \simeq 2\sqrt{c^2 -1/4}\left( \frac{t}{k}\right) ^{c-1/2}t.
+\end{equation}
+%
+Notice that no brane mass term can be written for the Higgsinos because
+$\tilde{h}^{1}$ vanishes at $y=\pi R$.  The masses of the lightest
+neutralino and lightest chargino therefore place a bound on $c$. 
+However, this bound is weak because it depends on the size of the 
+brane-localized kinetic term for $\tilde{h}^{2}$
+%
+\begin{equation}
+  S_{4} = -\int d^{4}x
+    (k/t)^{-1}Z\bar{\tilde{h}}^{2}\partial_{\mu}\hat{\gamma}^{\mu}
+    \tilde{h}^{2}\left( \eta_{\tilde{h}^{2}}(\pi R) \right)^2,
+\end{equation}
+%
+where indices are raised and lowered with $\eta^{\mu\nu}$ and 
+$\hat{\gamma}^{\mu}$ are the four dimensional Dirac gamma matrices. 
+$\eta_{\tilde{h}^{2}}(y)$ is the wavefunction of the lightest 
+right-handed Higgsino. If we consider the dimensionless combination 
+$z=Z(k/t)^{-1}\left( \eta_{\tilde{h}^{2}}(\pi R)\right) ^2$ we find 
+that the four dimensional kinetic term for the lightest $\tilde{h}^{2}$ 
+has a coefficient $\simeq 1+z$ and that going to canonical normalization 
+the lightest Higgsino mass is
+%
+\begin{equation}
+  m_{\rm canonical} \simeq \frac{m_{\tilde{h}}}{\sqrt{1+z}}.
+\end{equation}
+%
+Notice that the strong peaking of the wavefunction enhances the effect 
+due to the brane kinetic term, so that a correction to the Higgsino 
+mass of order unity is expected.  As an example, we show in 
+Fig.~\ref{fig:nlsp} the lightest chargino and neutralino for the 
+case that $z=-0.75$ and $r'=-1$, though there is only weak sensitivity 
+to $r'$.  In this case, the chargino mass is not ruled out by direct 
+searches for $c \simlt 0.55$. 
+
+By introducing a type~II supersymmetry breaking defect on a warped 
+background, we are able to construct a predictive theory of electroweak 
+symmetry breaking with one Higgs doublet. The theory requires 
+a moderate peaking of the Higgs boson on the $y=0$ brane, which could 
+be the origin of the $m_t/m_b$ ratio. While the Higgs boson is expected 
+to be close to its experimental limit of $115~{\rm GeV}$, a precise 
+prediction is not possible because of the degree of peaking of the 
+Higgs boson wavefunction and the supersymmetry breaking interactions 
+on the TeV brane. The lightest chargino and neutralino are also close 
+to their experimental bounds.
+
+\subsection{Twisted warped grand unified theory}
+%
+
+
+
+
+
+
+
+While the theory just described has logarithmic running of gauge
+couplings up to the mass scale of the Planck brane, it is not a
+theory of gauge coupling unification, since nothing in the theory
+requires the bulk gauge couplings to be unified.  In order to
+construct such a theory we must consider a model in which the bulk
+Lagrangian is symmetric under some grand unified group.  Here we 
+consider an $SU(5)$ supersymmetric gauge theory on a slice of 
+$\mathrm{AdS}_5$.  We take the warped supersymmetric grand unified 
+theory of Ref.~\cite{Goldberger:2002pc}, with all matter and Higgs 
+in the bulk, and break the $SU(5)$ symmetry by boundary conditions 
+imposed at the Planck brane.  Each generation contains 
+${\cal F}: \{ F(\bar{\bf 5}), F^c({\bf 5}) \} + {\cal F}': 
+\{ F'(\bar{\bf 5}), F^{\prime c}({\bf 5})\}$ and 
+${\cal T}: \{ T({\bf 10}), T^c(\bar{\bf 10})\} + {\cal T}': 
+\{ T'({\bf 10}), T^{\prime c}(\bar{\bf 10})\}$ where 
+$\Phi(R)$ represents a chiral supermultiplet in the $R$ 
+representation of $SU(5)$. There are, in addition, two Higgs 
+hypermultiplets ${\cal H}: \{ H({\bf 5}), H^c(\bar{\bf 5})\}$ and 
+$\bar{\cal H}: \{ \bar{H}(\bar{\bf 5}), \bar{H}^{c}({\bf 5})\}$.
+In this model, the boundary conditions are given such that each brane 
+is a symmetry breaking defect of type~I with respect to supersymmetry.
+The Planck brane is additionally a symmetry breaking defect of type~I
+with respect to the gauge group, breaking $SU(5) \rightarrow SU(3)_C
+\times SU(2)_L \times U(1)_Y$. The TeV brane respects the full $SU(5)$
+group. (The boundary conditions for some of the bulk fields are 
+given explicitly in Table~\ref{fig:notwist}.)  The zero-mode particle 
+content of the model is the same as in the MSSM, while the KK towers 
+consist of $SU(5)$ symmetric particles of masses around TeV.  It was 
+shown in \cite{Goldberger:2002pc} that, if all bulk fields carry 
+$c \geq 1/2$, only the zero modes contribute to the differential 
+gauge coupling running, so that the model leads to the same beta 
+functions as in the MSSM.  Therefore, despite the drastic departure 
+from the MSSM particle content at the TeV scale, the theory preserves 
+logarithmic gauge coupling unification at a high scale.
+%
+\begin{table}
+\begin{center}
+\begin{tabular}{|lcc|lcc|} \hline
+  \multicolumn{3}{|c|}{Matter} & \multicolumn{3}{c|}{Higgs} \\
+  \cline{1-6} 
+    &  $F_{++}({\bf 1},{\bf 2})_{-\frac12}$  &  $F_{-+}(\bar{\bf 3},{\bf 1})_{\frac13~}$  &
+    &  $H_{++}({\bf 1},{\bf 2})_{\frac12~}$     &  $H_{-+}({\bf 3},{\bf 1})_{-\frac13}$    \\ 
+  $\mathcal{F}'$  &  $F^c_{--}({\bf 1},{\bf 2})_{\frac12~}$     &  $F^c_{+-}({\bf 3},{\bf 1})_{-\frac13}$ & 
+  $\mathcal{H}$   &  $H^c_{--}({\bf 1},{\bf 2})_{-\frac12}$  &  $H^c_{+-}(\bar{\bf 3},{\bf 1})_{\frac13~}$
+    \\ \cline{1-6} 
+    &  $F_{-+}({\bf 1},{\bf 2})_{-\frac12}$  &  $F_{++}(\bar{\bf 3},{\bf 1})_{\frac13~}$  &
+    &  $H_{++}({\bf 1},{\bf 2})_{-\frac12}$  &  $H_{-+}(\bar{\bf 3},{\bf 1})_{\frac13~}$  \\ 
+  $\mathcal{F}$        &  $F^c_{+-}({\bf 1},{\bf 2})_{\frac12~}$  &  $F^c_{--}({\bf 3},{\bf 1})_{-\frac13}$  &
+  $\bar{\mathcal{H}}$  &  $H^c_{--}({\bf 1},{\bf 2})_{\frac12~}$  &  $H^c_{+-}({\bf 3},{\bf 1})_{-\frac13}$  \\ \hline
+\end{tabular}
+\caption{Superfields from matter and Higgs fields are listed by 
+ their quantum numbers and parity assignments before the supersymmetry 
+ breaking twist.  The quantum numbers represent those under 
+ $SU(3)_C \times SU(2)_L \times U(1)_Y$. The far left column 
+ indicates what hypermultiplet the fields are contained in. 
+ $\mathcal{F}$ and $\mathcal{F}'$ are $\bar{\bf 5}$'s of matter 
+ while $\mathcal{H}$ and $\bar{\mathcal{H}}$ are Higgs multiplets.}
+\label{fig:notwist}
+\end{center}
+\end{table}
+%
+
+With the boundary conditions described above, both branes are defects 
+of type~I respecting the same 4D $N=1$ supersymmetry, so that there 
+exists unbroken $N=1$ supersymmetry in the low-energy 4D theory. 
+One way of breaking this remaining supersymmetry is to consider 
+a supersymmetry breaking VEV located on the TeV brane. Instead, here 
+we consider breaking the remaining supersymmetry by modifying the 
+boundary conditions such that the brane at $y=\pi R$ becomes a 
+supersymmetry breaking defect of type~II, as in the previous 
+sub-section.  This is accomplished by introducing non-zero $\alpha'$ 
+parameters in Eqs.~(\ref{eq:hyperparity},~\ref{eq:gaugeparity}). 
+Without loss of generality, we can take $\alpha'_1=\alpha_{1,2}=0$.
+We here choose the supersymmetry breaking parameter $\alpha'_2=1/2$.
+We also choose $P'_{\rm Higgs}=-1$ so that there are light Higgs 
+scalars from the Higgs hypermultiplets.
+
+%
+\begin{table}
+\begin{center}
+\begin{tabular}{|lcc|lcc|} \hline
+  \multicolumn{3}{|c|}{Matter} & \multicolumn{3}{c|}{Higgs} \\
+    \cline{1-6} 
+  & $\phi_{+-}({\bf 1},{\bf 2})_{-\frac12}$    & $\phi_{--}(\bar{\bf 3},{\bf 1})_{\frac13~}$ &
+  & $\phi_{++}({\bf 1},{\bf 2})_{\frac12~}$       & $\phi_{-+}({\bf 3},{\bf 1})_{-\frac13}$    \\ 
+  $\mathcal{F}'$   & $\psi_{++}({\bf 1},{\bf 2})_{-\frac12}$ & $\psi_{-+}(\bar{\bf 3},{\bf 1})_{\frac13~}$ & 
+  $\mathcal{H}$          & $\psi_{+-}({\bf 1},{\bf 2})_{\frac12~}$    & $\psi_{--}({\bf 3},{\bf 1})_{-\frac13}$ \\
+  & $\phi^c_{-+}({\bf 1},{\bf 2})_{\frac12~}$   &
+  $\phi^c_{++}({\bf 3},{\bf 1})_{-\frac13}$    & & $\phi^c_{--}({\bf 1},{\bf 2})_{-\frac12}$ &
+  $\phi^c_{+-}(\bar{\bf 3},{\bf 1})_{\frac13~}$ \\ 
+  & $\psi^c_{--}({\bf 1},{\bf 2})_{\frac12~}$   &
+  $\psi^c_{+-}({\bf 3},{\bf 1})_{-\frac13}$    & & $\psi^c_{-+}({\bf 1},{\bf 2})_{-\frac12}$ &
+  $\psi^c_{++}(\bar{\bf 3},{\bf 1})_{\frac13~}$ \\  \cline{1-6} 
+  & $\phi_{--}({\bf 1},{\bf 2})_{-\frac12}$  & $\phi_{+-}(\bar{\bf 3},{\bf 1})_{\frac13~}$     &
+  & $\phi_{++}({\bf 1},{\bf 2})_{-\frac12}$  & $\phi_{-+}(\bar{\bf 3},{\bf 1})_{\frac13~}$     \\ 
+  $\mathcal{F}$        & $\psi_{-+}({\bf 1},{\bf 2})_{-\frac12}$     &  $\psi_{++}(\bar{\bf 3},{\bf 1})_{\frac13~}$&
+  $\bar{\mathcal{H}}$  & $\psi_{+-}({\bf 1},{\bf 2})_{-\frac12}$     &  $\psi_{--}(\bar{\bf 3},{\bf 1})_{\frac13~}$ \\ 
+  & $\phi^c_{++}({\bf 1},{\bf 2})_{\frac12~}$   &
+  $\phi^c_{-+}({\bf 3},{\bf 1})_{-\frac13}$    & & $\phi^c_{--}({\bf 1},{\bf 2})_{\frac12~}$  & 
+  $\phi^c_{+-}({\bf 3},{\bf 1})_{-\frac13}$  \\ 
+  & $\psi^c_{+-}({\bf 1},{\bf 2})_{\frac12~}$   & $\psi^c_{--}({\bf 3},{\bf 1})_{-\frac13}$   &
+  & $\psi^c_{-+}({\bf 1},{\bf 2})_{\frac12~}$   & $\psi^c_{++}({\bf 3},{\bf 1})_{-\frac13}$ \\ \hline
+\end{tabular}
+\caption{Fields from $\bar{\bf 5}$ matter and Higgs multiplets are 
+ listed by their quantum numbers and parity assignments after the 
+ supersymmetry breaking twist. $\phi$ and $\phi^c$ ($\psi$ and $\psi^c$) 
+ represent complex scalar (Weyl fermion) fields in $\Phi$ and $\Phi^c$ 
+ superfields, respectively, where $\Phi = F, F', H, \bar{H}$.}
+\label{fig:twist}
+\end{center}
+\end{table}
+%
+We first consider the effect of the supersymmetry breaking twist, 
+$\alpha'_2 \neq 0$, on the matter multiplets.  Here, the net effect 
+is that the parity under $y' \rightarrow -y'$, $Z'$, changes sign 
+for the $SU(2)_R$ doublet scalars. As a consequence, the MSSM sfermions 
+no longer possess a zero mode while their first KK modes appear at 
+$O(\mathrm{TeV})$.  However, a new scalar zero mode now appears. 
+As shown in Tables~\ref{fig:twist} and \ref{fig:zeromodes}, these 
+scalars are related to the standard model fermions by the broken 
+generators of $SU(5)$ and by the supersymmetry broken at the Planck 
+brane.  We will call these the $SU(5)$, $N=2$ partners of the standard 
+model fermions.  Notice that a full generation will possess both a 
+fermion and a scalar with conjugate quantum numbers.  Therefore, 
+mere observation of quantum numbers and the mass spectrum (before 
+electroweak symmetry breaking) could mimic the presence of an unbroken 
+supersymmetry.  However, the fermion and scalar originate from 
+different hypermultiplets and thus there is no supersymmetry that 
+relates the two.  For example, the two fields will not be coupled 
+by the gauginos.  The extra bosonic fields can be made heavy by mass 
+terms located on the $y=\pi R$ brane.  In order for these fields 
+to become sufficiently heavy their wavefunctions must have 
+a sizable overlap with the TeV brane.  This translates into 
+the requirement that $c_{\rm matter} \geq 1/2$, in accordance 
+with the requirement for gauge coupling unification and stability 
+of the proton~\cite{Goldberger:2002pc}.  The resulting masses are 
+naturally in the TeV region.\footnote{
+The extra scalars can also obtain masses through radiative corrections 
+from gaugino masses. In the case where these masses are sufficiently 
+large, we do not necessarily satisfy the conditions $c_{\rm matter} 
+\geq 1/2$ to make these fields heavy, and the scalar mass squareds 
+are one-loop smaller than the supersymmetry breaking scale $\sim t^2$.}
+
+In the Higgs sector, because of the change in sign of $P'_{\rm Higgs}$ 
+in addition to the supersymmetry breaking twist, the $Z'$ parities of 
+the fermions change sign.  As a result, the doublet Higgsino becomes 
+heavy. However, as in the matter sector, the $SU(5)$, $N=2$ partners 
+of the two Higgs bosons, a pair of color triplet fermions, now possess 
+zero modes. Again, as in the matter sector, these unwanted fields can be 
+made massive via a TeV brane localized mass term: a Dirac mass for the 
+two colored Higgsinos. Again, to give sufficient mass for the undesired 
+states, the wavefunction overlaps of these states with the TeV brane 
+must be sizable, requiring $c_{\rm Higgs} \geq 1/2$. Note that larger 
+values of $c_{\rm Higgs}$, $c_{\rm Higgs} > 1/2$, have the added 
+benefit of minimizing the influence of the supersymmetry breaking 
+brane on the Higgs bosons as discussed in the previous sub-section. 
+We expect electroweak symmetry breaking to proceed much like in the
+previous sub-section including the issue of too light Higgsino 
+doublets. To illustrate the effects of the supersymmetry breaking
+boundary conditions, both the zero and non-zero modes of the $\bf 5$'s 
+and $\bar{\bf 5}$'s of the $F$,$F'$ matter and Higgs fields are 
+shown in Tables~\ref{fig:notwist} and \ref{fig:twist} both before 
+and after the supersymmetry breaking twist.
+
+We finally consider the gauge sector. This sector has a quite similar 
+structure to the Higgs sector. The boundary condition twist at $y=\pi R$, 
+$\alpha'_2=1/2$, acts on the $SU(2)_R$ doublets, so the $Z'$ parities 
+for the gauginos change sign. The MSSM gauginos become heavy while the 
+$SU(5)$, $N=2$ partners of the gauge bosons are made light by the 
+supersymmetry breaking twist. However, these undesired fields can 
+gain masses via a mass term on the TeV brane.  In the case of the 
+gauge multiplets the bulk mass is required to be $c_{\rm gauge}=1/2$ 
+by gauge invariance, and thus the zero-mode fermions have conformally 
+flat wavefunctions, insuring that they have sizable wavefunction 
+overlaps with the TeV brane.
+%
+\begin{table}
+\begin{center}
+\begin{tabular}{|cccccc|} \hline
+  Standard Model Matter & $\psi({\bf 3},{\bf 2})_{\frac16~}$ 
+  & $\psi(\bar{\bf 3},{\bf 1})_{-\frac23}$ 
+  & $\psi(\bar{\bf 3},{\bf 1})_{\frac13~}$ 
+  & $\psi({\bf 1},{\bf 2})_{-\frac12}$ 
+  & $\psi({\bf 1},{\bf 1})_{1}$
+  \\ \cline{1-6}
+  $SU(5), N=2$ Partners 
+  & $\phi^{c}({\bar{\bf 3}},{\bf 2})_{-\frac16}$ 
+  & $\phi^{c}({\bf 3},{\bf 1})_{\frac23~}$ 
+  & $\phi^{c}({\bf 3},{\bf 1})_{-\frac13}$ 
+  & $\phi^{c}({\bf 1},{\bf 2})_{\frac12~}$ 
+  & $\phi^{c}({\bf 1},{\bf 1})_{-1}$
+  \\ \hline
+\end{tabular}
+\caption{Matter fields which have zero modes: standard model quarks 
+ and leptons and their $SU(5)$, $N=2$ partners.}
+\label{fig:zeromodes}
+\end{center}
+\end{table}
+%
+
+Now, we consider the effect of supersymmetry breaking twist, 
+$\alpha'_2 \neq 0$, on the gauge coupling unification. A theory 
+on the truncated AdS$_5$ space has a different description in terms 
+of a 4D quasi-conformal field theory~\cite{Arkani-Hamed:2000ds}. 
+In this dual 4D picture, changing the boundary conditions at the 
+TeV brane corresponds to changing the TeV physics, so that it can 
+be viewed as an IR effect.  Therefore, the boundary condition breaking 
+twist at the TeV brane is expected not to change the differential 
+running above the TeV scale, and the model is expected to preserve the 
+successful prediction for $\sin^2\theta_w$~\cite{Goldberger:2002pc}. 
+This expectation can be confirmed by direct calculation of the beta 
+functions with the twists, $\alpha'_2 = 1/2$ and $P'_{\rm Higgs} = -1$, 
+using the formulae found in Ref.~\cite{Choi:2002ps}. Notice, however, 
+that there is no energy range in which our theory mimics the MSSM 
+particle content. If the brane mass terms are smaller than the 
+KK mass gap, then the first new particles to be created will 
+include the $SU(5)$, $N=2$ partners of the standard model particles. 
+These include colored Higgsinos and gauginos of the broken $SU(5)$ 
+generators. If the brane mass terms are larger than the KK mass gap, 
+then the first new particles to be created will be the first KK mode 
+which contains many states in addition to those of the MSSM. The model 
+makes the same prediction for $\sin^2 \theta_w$ as the MSSM, despite 
+these drastic departures from the MSSM particle content at the TeV scale.
+
+We may also wish to maintain the feature of gauge coupling unification 
+in the context of a theory with one Higgs doublet. In this case, 
+it is easiest to return to the situation before the supersymmetry 
+breaking twist was made. We can then imagine removing the 
+$\{ \bar{H}(\bar{\bf 5}), \bar{H}^c({\bf 5})\}$, which contained 
+the $\bar{H}({\bf 1},{\bf 2})_{-1/2}$ Higgs doublet as a zero mode. 
+This change in the zero-mode particle content will change the beta 
+function; we therefore also remove the $\{ F(\bar{\bf 5}), 
+F^{c}({\bf 5})\}$ that had contained the third generation 
+$F(\bar{\bf 3},{\bf 1})_{1/3}$.  The sum of these two zero-mode fields 
+contribute to the differential running of the gauge couplings the 
+same as a single $\bar{\bf 5}$, and therefore their removal does 
+not affect gauge unification.  We will not worry about the missing 
+$b_{R}$ at this stage; it will reappear after we break the remaining 
+$N=1$ supersymmetry.
+
+Now let us consider the $\bf 5$'s and $\bar{\bf 5}$'s of the third 
+generation matter and Higgs fields after breaking supersymmetry. 
+Notice that the $SU(5), N=2$ partner of the remaining Higgs
+boson ({\it i.e.} the $\psi^c_{++}$ component of the ${\cal H}$ 
+hypermultiplet) is a fermion with the same quantum numbers as $b_{R}$. 
+We may identify this field as the right-handed bottom quark thereby 
+completing the third generation. This identification points out the
+fact that there no longer exists any distinction between Higgs-like
+and matter-like boundary conditions.  Instead, we have unified matter
+and Higgs in the context of an $SU(5)$ model: from the 5D point of 
+view the quantum numbers and boundary conditions for the ${\cal H}$ 
+hypermultiplet and the two ${\cal F}$ hypermultiplets are the same.
+There are three potential Higgs bosons, each one an $SU(5),N=2$ 
+partner of a right-handed down-type quark.  However, since the 
+${\cal H}$ hypermultiplet has the bulk mass parameter such that 
+the zero-mode doublet scalar is localized toward the Planck brane 
+while the zero-mode scalars from the ${\cal F}$ hypermultiplets 
+are localized to the TeV brane, it is natural that only two of these 
+scalars receive $O(\mathrm{TeV})$ masses from the $y=\pi R$ brane, 
+leaving one light Higgs doublet. This light Higgs field will develop 
+an electroweak breaking expectation value through radiative corrections, 
+as in the previous models. Therefore, we can naturally obtain the 
+theory with logarithmic gauge coupling unification, which effectively 
+has only a single Higgs boson. Note that the Yukawa couplings for the 
+up-type quarks can be located both on the Planck and TeV branes but 
+those for the down-type quarks (and charged leptons) can be located 
+only on the TeV brane.  Thus we naturally understand the origin of 
+the $m_t/m_b$ ratio in this theory through a moderate peaking of the 
+Higgs wavefunction toward the Planck brane.
+
+
+\section{Conclusions}
+\label{conclusion}
+
+In this paper we have studied the properties of boundaries in higher 
+dimensional theories that do not respect the full symmetries of 
+the bulk.  Such defects break symmetries explicitly, but since all the 
+breakings are localized on boundaries, local counterterms in the bulk 
+are restricted in exactly the same manner as they would be in the 
+absence of the defects.  In particular, the effects of explicit 
+breaking are suppressed by the volume of the extra dimensions and/or 
+small wavefunction overlaps in the low energy 4D theories. Therefore, 
+symmetry breaking by point defects provides an interesting alternative 
+to spontaneous symmetry breaking, in which we can systematically 
+suppress the size of explicit breaking and can use the symmetry 
+to control radiative corrections.
+
+There are two different classes of symmetry breaking defects. 
+A type~I defect possesses the maximum symmetry allowed by the boundary
+conditions of the fields. Put another way, if the symmetry is made
+local the boundary conditions of the gauge parameters and gauge fields
+coincide.  The two therefore have the same KK decomposition, and there
+exists a gauge transformation corresponding to each gauge field in the
+4D theory. Such a theory can therefore be consistently gauged.  If 
+a theory possesses a defect of type~II, then the symmetry may not be
+gauged.  Type~II defects arise by requiring the brane Lagrangian to
+be invariant under a smaller symmetry than that allowed by the
+boundary conditions. In order to enforce this, one must impose
+additional constraints on the symmetry transformation parameters at 
+the boundaries. If one were to attempt to gauge such a theory, the
+additional boundary conditions on the gauge parameters, as compared to
+the gauge fields, would result in gauge fields without corresponding
+gauge transformations.  This will therefore result in inconsistencies
+such as states with negative norm. These results apply to any theory in 
+which a symmetry is broken by boundary conditions on extra dimensions.
+
+In particular, these ideas may be applied to supersymmetry 
+breaking on a slice of $\mathrm{AdS}_5$.  In this case, the Killing
+spinor equations result in a non-trivial constraint on the
+supersymmetry transformation parameters at the boundaries of 
+the space.  If only half of the supersymmetry is broken, reducing 
+the four dimensional $N=2$ to $N=1$, then the Killing spinor
+condition coincides with the conditions required by the boundary
+conditions of the fields, and the boundaries become symmetry 
+breaking defects of type~I.  However, if one attempts to break 
+all of the supersymmetries, then the Killing spinor equations do 
+in fact constitute an additional constraint and at least one boundary 
+must be a type~II defect.  As a consequence, unlike flat space, 
+breaking supersymmetry by boundary conditions on a warped background 
+is not consistent with supergravity.
+
+Despite this difficulty, we argue that a theory with supersymmetry
+breaking boundary conditions may approximate a theory that is
+consistent with gravity. We therefore presented two models that
+make use of this mechanism. First, we constructed a theory of
+electroweak symmetry breaking with a single Higgs doublet: a warped
+version of the constrained standard model. Supersymmetry greatly
+constrains the Higgs potential, while a bulk mass for the Higgs
+hypermultiplet reduces the sensitivity to the dynamics of the
+supersymmetry breaking brane.  As a result, we have succeeded in
+constructing a predictive theory leading to a Higgs boson mass that 
+may be close to its experimental lower bound.
+
+In our second model we constructed a theory of gauge coupling
+unification in which both the grand unified group and supersymmetry
+are broken by boundary conditions on the same extra dimension. While
+gauge coupling unification occurs as in the MSSM, the low energy
+particle content may deviate drastically from that of the MSSM.
+Depending on the mass parameters of the supersymmetry breaking brane,
+it is possible that the lowest mass gaugino may be the super partner
+of the broken gauge bosons. It is also possible that the lightest
+Higgsinos are colored.  We have also shown that it is possible to 
+remove the Higgs hypermultiplets from this model and identify the 
+Higgs boson as one of the $SU(5), N=2$ partners of the right handed 
+down-type quarks and in this way unify the Higgs and matter 
+in the context of an $SU(5)$ grand unified theory.
+
+
+\section*{Acknowledgements}
+\label{acknowledgements}
+
+The work of L.H., T.O. and S.O. was supported in part by the Director, 
+Office of Science, Office of High Energy and Nuclear Physics, of the
+U.S. Department of Energy under Contract DE-AC03-76SF00098, and in
+part by the National Science Foundation under grant PHY-00-98840.
+The work of S.O. was also supported by a National Science Foundation 
+Graduate Research Fellowship.
+
+
+\newpage
+
+\begin{thebibliography}{99}
+
+\bibitem{Antoniadis:1998sd}
+I.~Antoniadis, S.~Dimopoulos, A.~Pomarol and M.~Quiros,
+%``Soft masses in theories with supersymmetry breaking by TeV-compactification,''
+Nucl.\ Phys.\ B {\bf 544}, 503 (1999)
+[arXiv:hep-ph/9810410].
+%%CITATION = HEP-PH 9810410;%%
+
+\bibitem{Barbieri:2000vh}
+R.~Barbieri, L.~J.~Hall and Y.~Nomura,
+%``A constrained standard model from a compact extra dimension,''
+Phys.\ Rev.\ D {\bf 63}, 105007 (2001)
+[arXiv:hep-ph/0011311].
+%%CITATION = HEP-PH 0011311;%%
+
+\bibitem{Arkani-Hamed:2001mi}
+N.~Arkani-Hamed, L.~J.~Hall, Y.~Nomura, D.~R.~Smith and N.~Weiner,
+%``Finite radiative electroweak symmetry breaking from the bulk,''
+Nucl.\ Phys.\ B {\bf 605}, 81 (2001)
+[arXiv:hep-ph/0102090].
+%%CITATION = HEP-PH 0102090;%%
+
+\bibitem{Pomarol:1998sd}
+A.~Pomarol and M.~Quiros,
+%``The standard model from extra dimensions,''
+Phys.\ Lett.\ B {\bf 438}, 255 (1998)
+[arXiv:hep-ph/9806263];\\
+%%CITATION = HEP-PH 9806263;%%
+%\bibitem{Delgado:1998qr}
+A.~Delgado, A.~Pomarol and M.~Quiros,
+%``Supersymmetry and electroweak breaking from extra dimensions at the TeV-scale,''
+Phys.\ Rev.\ D {\bf 60}, 095008 (1999)
+[arXiv:hep-ph/9812489].
+%%CITATION = HEP-PH 9812489;%%
+
+\bibitem{Arkani-Hamed:1998rs}
+N.~Arkani-Hamed, S.~Dimopoulos and G.~R.~Dvali,
+%``The hierarchy problem and new dimensions at a millimeter,''
+Phys.\ Lett.\ B {\bf 429}, 263 (1998)
+[arXiv:hep-ph/9803315];
+%%CITATION = HEP-PH 9803315;%%
+%\bibitem{Arkani-Hamed:1998nn}
+%N.~Arkani-Hamed, S.~Dimopoulos and G.~R.~Dvali,
+%``Phenomenology, astrophysics and cosmology of theories with sub-millimeter dimensions and TeV scale quantum gravity,''
+Phys.\ Rev.\ D {\bf 59}, 086004 (1999)
+[arXiv:hep-ph/9807344];\\
+%%CITATION = HEP-PH 9807344;%%
+%\bibitem{Antoniadis:1998ig}
+I.~Antoniadis, N.~Arkani-Hamed, S.~Dimopoulos and G.~R.~Dvali,
+%``New dimensions at a millimeter to a Fermi and superstrings at a TeV,''
+Phys.\ Lett.\ B {\bf 436}, 257 (1998)
+[arXiv:hep-ph/9804398].
+%%CITATION = HEP-PH 9804398;%%
+
+\bibitem{Randall:1999ee}
+L.~Randall and R.~Sundrum,
+%``A large mass hierarchy from a small extra dimension,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 3370 (1999)
+[arXiv:hep-ph/9905221];
+%%CITATION = HEP-PH 9905221;%%
+%\bibitem{Randall:1999vf}
+%L.~Randall and R.~Sundrum,
+%``An alternative to compactification,''
+Phys.\ Rev.\ Lett.\  {\bf 83}, 4690 (1999)
+[arXiv:hep-th/9906064].
+%%CITATION = HEP-TH 9906064;%%
+
+\bibitem{Barbieri:2001yz}
+R.~Barbieri, L.~J.~Hall and Y.~Nomura,
+%``Softly broken supersymmetric desert from orbifold compactification,''
+Phys.\ Rev.\ D {\bf 66}, 045025 (2002)
+[arXiv:hep-ph/0106190].
+%%CITATION = HEP-PH 0106190;%%
+
+\bibitem{Pomarol:2000hp}
+A.~Pomarol,
+%``Grand unified theories without the desert,''
+Phys.\ Rev.\ Lett.\  {\bf 85}, 4004 (2000)
+[arXiv:hep-ph/0005293].
+%%CITATION = HEP-PH 0005293;%%
+
+\bibitem{Randall:2001gc}
+\label{Randall:2001gc:X}
+L.~Randall and M.~D.~Schwartz,
+%``Unification and the hierarchy from AdS5,''
+Phys.\ Rev.\ Lett.\  {\bf 88}, 081801 (2002)
+[arXiv:hep-th/0108115];
+%%CITATION = HEP-TH 0108115;%%
+%\bibitem{Randall:2001gb}
+%L.~Randall and M.~D.~Schwartz,
+%``Quantum field theory and unification in AdS5,''
+JHEP {\bf 0111}, 003 (2001)
+[arXiv:hep-th/0108114];
+%%CITATION = HEP-TH 0108114;%%
+
+\bibitem{Goldberger:2002cz}
+W.~D.~Goldberger and I.~Z.~Rothstein,
+%``High energy field theory in truncated AdS backgrounds,''
+Phys.\ Rev.\ Lett.\  {\bf 89}, 131601 (2002)
+[arXiv:hep-th/0204160];
+%%CITATION = HEP-TH 0204160;%%
+%\bibitem{Goldberger:2002hb}
+%W.~D.~Goldberger and I.~Z.~Rothstein,
+%``Effective field theory and unification in AdS backgrounds,''
+arXiv:hep-th/0208060.
+%%CITATION = HEP-TH 0208060;%%
+
+\bibitem{Agashe:2002bx}
+K.~Agashe, A.~Delgado and R.~Sundrum,
+%``Gauge coupling renormalization in RS1,''
+Nucl.\ Phys.\ B {\bf 643}, 172 (2002)
+[arXiv:hep-ph/0206099].
+%%CITATION = HEP-PH 0206099;%%
+
+\bibitem{Choi:2002wx}
+K.~w.~Choi, H.~D.~Kim and Y.~W.~Kim,
+%``Gauge coupling renormalization in orbifold field theories,''
+JHEP {\bf 0211}, 033 (2002)
+[arXiv:hep-ph/0202257];\\
+%%CITATION = HEP-PH 0202257;%%
+%\bibitem{Choi:2002zi}
+%K.~w.~Choi, H.~D.~Kim and I.~W.~Kim,
+%``Radius dependent gauge unification in AdS(5),''
+arXiv:hep-ph/0207013.
+%%CITATION = HEP-PH 0207013;%%
+
+\bibitem{Contino:2002kc}
+R.~Contino, P.~Creminelli and E.~Trincherini,
+%``Holographic evolution of gauge couplings,''
+JHEP {\bf 0210}, 029 (2002)
+[arXiv:hep-th/0208002].
+%%CITATION = HEP-TH 0208002;%%
+
+\bibitem{Choi:2002ps}
+\label{Choi:2002ps:X}
+K.~w.~Choi and I.~W.~Kim,
+%``One loop gauge couplings in AdS(5),''
+arXiv:hep-th/0208071.
+%%CITATION = HEP-TH 0208071;%%
+
+\bibitem{Goldberger:2002pc}
+W.~D.~Goldberger, Y.~Nomura and D.~R.~Smith,
+%``Warped supersymmetric grand unification,''
+arXiv:hep-ph/0209158.
+%%CITATION = HEP-PH 0209158;%%
+
+\bibitem{Gherghetta:2000qt}
+T.~Gherghetta and A.~Pomarol,
+%``Bulk fields and supersymmetry in a slice of AdS,''
+Nucl.\ Phys.\ B {\bf 586}, 141 (2000)
+[arXiv:hep-ph/0003129].
+%%CITATION = HEP-PH 0003129;%%
+
+\bibitem{Gherghetta:2000kr}
+T.~Gherghetta and A.~Pomarol,
+%``A warped supersymmetric standard model,''
+Nucl.\ Phys.\ B {\bf 602}, 3 (2001)
+[arXiv:hep-ph/0012378].
+%%CITATION = HEP-PH 0012378;%%
+
+\bibitem{Gherghetta:2002nr}
+T.~Gherghetta and A.~Pomarol,
+%``A Stueckelberg formalism for the gravitino from warped extra dimensions,''
+Phys.\ Lett.\ B {\bf 536}, 277 (2002)
+[arXiv:hep-th/0203120].
+%%CITATION = HEP-TH 0203120;%%
+
+\bibitem{Hall:2001pg}
+L.~J.~Hall and Y.~Nomura,
+%``Gauge unification in higher dimensions,''
+Phys.\ Rev.\ D {\bf 64}, 055003 (2001)
+[arXiv:hep-ph/0103125].
+%%CITATION = HEP-PH 0103125;%%
+
+\bibitem{Arkani-Hamed:2001is}
+N.~Arkani-Hamed, A.~G.~Cohen and H.~Georgi,
+%``Anomalies on orbifolds,''
+Phys.\ Lett.\ B {\bf 516}, 395 (2001)
+[arXiv:hep-th/0103135].
+%%CITATION = HEP-TH 0103135;%%
+
+\bibitem{Hall:2001tn}
+L.~J.~Hall, H.~Murayama and Y.~Nomura,
+%``Wilson lines and symmetry breaking on orbifolds,''
+Nucl.\ Phys.\ B {\bf 645}, 85 (2002)
+[arXiv:hep-th/0107245].
+%%CITATION = HEP-TH 0107245;%%
+
+\bibitem{Kawamura:2000ev}
+Y.~Kawamura,
+%``Triplet-doublet splitting, proton stability and extra dimension,''
+Prog.\ Theor.\ Phys.\  {\bf 105}, 999 (2001)
+[arXiv:hep-ph/0012125].
+%%CITATION = HEP-PH 0012125;%%
+
+\bibitem{Hall:2001xb}
+L.~J.~Hall and Y.~Nomura,
+%``Gauge coupling unification from unified theories in higher dimensions,''
+Phys.\ Rev.\ D {\bf 65}, 125012 (2002)
+[arXiv:hep-ph/0111068].
+%%CITATION = HEP-PH 0111068;%%
+
+\bibitem{Nomura:2001mf}
+Y.~Nomura, D.~R.~Smith and N.~Weiner,
+%``GUT breaking on the brane,''
+Nucl.\ Phys.\ B {\bf 613}, 147 (2001)
+[arXiv:hep-ph/0104041].
+%%CITATION = HEP-PH 0104041;%%
+
+\bibitem{Shuster:1999zf}
+E.~Shuster,
+%``Killing spinors and supersymmetry on AdS,''
+Nucl.\ Phys.\ B {\bf 554}, 198 (1999)
+[arXiv:hep-th/9902129].
+%%CITATION = HEP-TH 9902129;%%
+
+\bibitem{Altendorfer:2000rr}
+R.~Altendorfer, J.~Bagger and D.~Nemeschansky,
+%``Supersymmetric Randall-Sundrum scenario,''
+Phys.\ Rev.\ D {\bf 63}, 125025 (2001)
+[arXiv:hep-th/0003117];\\
+%%CITATION = HEP-TH 0003117;%%
+%\bibitem{Falkowski:2000er}
+A.~Falkowski, Z.~Lalak and S.~Pokorski,
+%``Supersymmetrizing branes with bulk in five-dimensional supergravity,''
+Phys.\ Lett.\ B {\bf 491}, 172 (2000)
+[arXiv:hep-th/0004093];
+%%CITATION = HEP-TH 0004093;%%
+%\bibitem{Falkowski:2000yq}
+%A.~Falkowski, Z.~Lalak and S.~Pokorski,
+%``Five-dimensional gauged supergravities with universal hypermultiplet and warped brane worlds,''
+Phys.\ Lett.\ B {\bf 509}, 337 (2001)
+[arXiv:hep-th/0009167];\\
+%%CITATION = HEP-TH 0009167;%%
+%\bibitem{Bergshoeff:2000zn}
+E.~Bergshoeff, R.~Kallosh and A.~Van Proeyen,
+%``Supersymmetry in singular spaces,''
+JHEP {\bf 0010}, 033 (2000)
+[arXiv:hep-th/0007044];\\
+%%CITATION = HEP-TH 0007044;%%
+%\bibitem{Zucker:2000ks}
+M.~Zucker,
+%``Supersymmetric brane world scenarios from off-shell supergravity,''
+Phys.\ Rev.\ D {\bf 64}, 024024 (2001)
+[arXiv:hep-th/0009083];\\
+%%CITATION = HEP-TH 0009083;%%
+%\bibitem{Fujita:2001bd}
+T.~Fujita, T.~Kugo and K.~Ohashi,
+%``Off-shell formulation of supergravity on orbifold,''
+Prog.\ Theor.\ Phys.\  {\bf 106}, 671 (2001)
+[arXiv:hep-th/0106051];\\
+%%CITATION = HEP-TH 0106051;%%
+%\bibitem{Bagger:2002rw}
+J.~Bagger and D.~V.~Belyaev,
+%``Supersymmetric branes with (almost) arbitrary tensions,''
+Phys.\ Rev.\ D {\bf 67}, 025004 (2003)
+[arXiv:hep-th/0206024].
+%%CITATION = HEP-TH 0206024;%%
+
+%\cite{Gherghetta:2003wm}
+\bibitem{Gherghetta:2003wm}
+T.~Gherghetta and A.~Pomarol,
+%``The standard model partly supersymmetric,''
+arXiv:hep-ph/0302001.
+%%CITATION = HEP-PH 0302001;%%
+
+\bibitem{Marti:2002ar}
+D.~Marti and A.~Pomarol,
+%``Fayet-Iliopoulos terms in 5d theories and their phenomenological implications,''
+Phys.\ Rev.\ D {\bf 66}, 125005 (2002)
+[arXiv:hep-ph/0205034];\\
+%%CITATION = HEP-PH 0205034;%%
+%\bibitem{Barbieri:2002uk}
+R.~Barbieri, G.~Marandella and M.~Papucci,
+%``Breaking the electroweak symmetry and supersymmetry by a compact extra dimension,''
+Phys.\ Rev.\ D {\bf 66}, 095003 (2002)
+[arXiv:hep-ph/0205280];\\
+%%CITATION = HEP-PH 0205280;%%
+%\bibitem{Barbieri:2002sw}
+R.~Barbieri, L.~J.~Hall, G.~Marandella, Y.~Nomura, T.~Okui, S.~J.~Oliver and M.~Papucci,
+%``Radiative electroweak symmetry breaking from a quasi-localized top quark,''
+arXiv:hep-ph/0208153.
+%%CITATION = HEP-PH 0208153;%%
+
+\bibitem{Arkani-Hamed:2000ds}
+N.~Arkani-Hamed, M.~Porrati and L.~Randall,
+%``Holography and phenomenology,''
+JHEP {\bf 0108}, 017 (2001)
+[arXiv:hep-th/0012148];\\
+%%CITATION = HEP-TH 0012148;%%
+%\bibitem{Rattazzi:2000hs}
+R.~Rattazzi and A.~Zaffaroni,
+%``Comments on the holographic picture of the Randall-Sundrum model,''
+JHEP {\bf 0104}, 021 (2001)
+[arXiv:hep-th/0012248];\\
+%%CITATION = HEP-TH 0012248;%%
+%\bibitem{Perez-Victoria:2001pa}
+M.~Perez-Victoria,
+%``Randall-Sundrum models and the regularized AdS/CFT correspondence,''
+JHEP {\bf 0105}, 064 (2001)
+[arXiv:hep-th/0105048].
+%%CITATION = HEP-TH 0105048;%%
+
+\end{thebibliography}
+
+\end{document}
+"
+1,"\begin{equation*}
+ "
+2,"\begin{equation*}
+ "

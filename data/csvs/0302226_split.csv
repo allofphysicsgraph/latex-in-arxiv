@@ -1,0 +1,138 @@
+,split
+0,"\begin{split}
+  L(z) &= \frac{1}{2} \mathord{:\negthickspaceG(\partial X(z), \partial X(z))\negthickspace:} -
+  \frac{1}{2} \mathord{:\negthickspaceG(\psi(z), \partial \psi(z))\negthickspace:}, \\
+  G(z) &= \frac{i}{2\sqrt{2}} \mathord{:\negthickspaceG(\psi(z), \partial X(z))\negthickspace:},
+\"
+1,"\begin{split}
+  \begin{twomatrix} k_L \\ k_R \end{twomatrix}
+  = \begin{twomatrix}
+       Gw - Bw + m \\
+      -Gw - Bw + m
+    \end{twomatrix}  
+  = 2 \begin{twomatrix} G & 0 \\ 0 & -G \end{twomatrix}
+  \mathcal{R}(G,B) \begin{twomatrix} w \\ m \end{twomatrix}.
+\"
+2,"\begin{split}
+  \tfrac{1}{2} (k_L^2 - k_R^2)
+  &:= \tfrac{1}{2} \bigl ( \begin{matrix} k_L^t & k_R^t \end{matrix} \bigr )
+    \begin{twomatrix} 
+      G^{-1} &    0 \\ 
+         0   & -G^{-1}
+    \end{twomatrix} 
+    \begin{twomatrix} k_L \\ k_R \end{twomatrix}
+    = \bigl ( \begin{matrix} w^t & m^t \end{matrix} \bigr )
+      q \begin{twomatrix} w \\ m \end{twomatrix}, \\
+  \tfrac{1}{2} (k_L^2 + k_R^2)
+  &:= \tfrac{1}{2} \bigl ( \begin{matrix} k_L^t & k_R^t \end{matrix} \bigr )
+    \begin{twomatrix} 
+      G^{-1} &   0 \\ 
+        0    & G^{-1}
+    \end{twomatrix} 
+    \begin{twomatrix} k_L \\ k_R \end{twomatrix}
+    = \bigl ( \begin{matrix} w^t & m^t \end{matrix} \bigr )
+      qK \begin{twomatrix} w \\ m \end{twomatrix}
+\"
+3,"\begin{split}
+  \begin{twomatrix} \alpha_s' f_g \\ \bar{\alpha}_s' f_g \end{twomatrix}
+  &= \begin{twomatrix} 
+       (a + b E) f_g \alpha_s \\ 
+       (a - b E^t) f_g \bar{\alpha}_s
+     \end{twomatrix}
+   = M(g,E) \begin{twomatrix} 
+              f_g \alpha_s \\ 
+              f_g \bar{\alpha}_s
+            \end{twomatrix}, \\
+  \begin{twomatrix} \psi_s' f_g \\ \bar{\psi}_s' f_g \end{twomatrix}
+  &= \begin{twomatrix}
+       (a + b E) f_g \psi_s \\
+       (a - b E^t) f_g \bar{\psi}_s
+     \end{twomatrix}
+   = M(g, E) \begin{twomatrix} f_g \psi_s \\ f_g \bar{\psi}_s \end{twomatrix}.
+\"
+4,"\begin{split}
+  g \mathcal{R}(G,B)^{-1} &= 
+  \begin{twomatrix}
+    a + b E & a - b E^t \\
+    c + d E & c - d E^t
+  \end{twomatrix}
+  = \begin{twomatrix}
+      \operatorname{Id}_m &  \operatorname{Id}_m \\
+        E'  & -{E'}^t
+    \end{twomatrix}
+    \begin{twomatrix}
+      a + b E &     0 \\
+         0    & a - b E^t
+    \end{twomatrix} \\
+  &= \mathcal{R}(G',B')^{-1} M(g,E).
+\"
+5,"\begin{split}
+  f^{-1} J'(z) f &= \epsilon_L J(z),\\
+  f^{-1} \bar{J}'(\bar{z}) f &= \epsilon_R \bar{J}(\bar{z}),
+\"
+6,"\begin{split}
+    q \bigl (\bigl(\begin{smallmatrix}w^{\vphantom{\prime%
+                                 \end{smallmatrix}\bigr)}\\m^{\vphantom{\prime}}}, 
+             \bigl(\begin{smallmatrix}w'\\m'%
+                                 \end{smallmatrix}\bigr) \bigr ) 
+    &= \langle w, m' \rangle + \langle w', m \rangle 
+     = \langle w_V^{\vphantom{\prime}}, m_{V^*}' \rangle 
+       + \langle w_W^{\vphantom{\prime}}, m_{W^*}' \rangle 
+       + \langle w_V', m_{V^*}^{\vphantom{\prime}} \rangle
+       + \langle w_W', m_{W^*}^{\vphantom{\prime}} \rangle\\
+    &= \langle w_W^{\vphantom{\prime}}, F w_W' \rangle 
+       + \langle w_W', F w_W^{\vphantom{\prime}} \rangle = 0.
+  \"
+7,"\begin{split}
+    g(L_{R,K}) &= g \mathcal{R}(G,B)^{-1} \begin{twomatrix} \operatorname{Id} & 0 \\ 
+          0 & R^{-1} \end{twomatrix} \Delta
+     = \mathcal{R}(G',B')^{-1} \begin{twomatrix} (a+bE) & 0 \\ 
+          0 & (a-bE^t) R^{-1} \end{twomatrix} \Delta \\
+    &= \mathcal{R}(G',B')^{-1} \begin{twomatrix} \operatorname{Id} & 0 \\ 
+          0 & {R'}^{-1} \end{twomatrix} \Delta
+     = L_{R',K'}.
+  \"
+8,"\begin{split}
+  \mathord{:\negthickspacee^{2\pi i \langle k, X \rangle\negthickspace:}} \lVert R, \xi \rangle\!\rangle 
+  &= \sum_{m \in \Gamma^*} e^{-2\pi i \langle m, \xi_X \rangle} 
+     \mathord{:\negthickspacee^{2\pi i \langle k, X \rangle\negthickspace:}} \lvert R, 0,m \rangle\!\rangle 
+   = \sum_{m \in \Gamma^*} e^{-2\pi i \langle m, \xi_X \rangle}
+     \lvert R, 0,m+k \rangle\!\rangle \\
+  &= e^{2\pi i \langle k, \xi_X \rangle} \lVert R, \xi \rangle\!\rangle.
+\"
+9,"\begin{split}
+  f_g \lvert R,w,m \rangle\!\rangle &= \exp \bigl (-\sum_{\ell=1}^\infty
+  \frac{1}{\ell} G(f_g \alpha_{-\ell} f_g^{-1}, R f_g
+  \bar{\alpha}_{-\ell} f_g^{-1} ) \bigr )
+  f_g \lvert w,m \rangle \\
+  &= \exp \bigl (-\sum_{\ell=1}^\infty
+  \frac{1}{\ell} G((a+bE)^{-1} \alpha'_{-\ell}, R (a-bE^t)^{-1}
+  \bar{\alpha}'_{-\ell}) \bigr ) \lvert g(w,m) \rangle\\
+  &= \lvert R',g(w,m) \rangle\!\rangle.
+\"
+10,"\begin{split}
+  \phi(\nabla s(x)) &= \phi(\dop s(x) + 2\pi i \langle F x + \Xi_{W^*},
+  \dop x \rangle s(x)) \\
+  &= (e^{\langle \frac{\partial}{\partial x}, \Xi'_W - \xi_W \rangle})
+  (\dop (e^{-\langle \frac{\partial}{\partial x}, \Xi_W \rangle} s(x))\\
+  & \qquad + 2\pi i \langle Fx-F\Xi_W  + \Xi_{W^*}, \dop x \rangle 
+    (e^{-\langle \frac{\partial}{\partial x}, \Xi_W \rangle} s(x)))\\
+  &= (e^{\langle \frac{\partial}{\partial x}, \Xi'_W - \xi_W \rangle})
+  (\dop (e^{-\langle \frac{\partial}{\partial x}, \Xi_W \rangle} s(x))\\ 
+  &\qquad + 2\pi i \langle Fx-F\Xi'_W+\Xi'_{W^*}+F\xi_W -\xi_{W^*}, 
+    \dop x \rangle 
+    (e^{-\langle \frac{\partial}{\partial x}, \Xi_W \rangle} s(x)))\\
+  &= \dop (\phi(s(x))) + 2\pi i \langle Fx+\Xi'_{W^*} - \xi_{W^*},
+    \dop x \rangle \phi(s(x)).
+\"
+11,"\begin{split}
+  \phi(f \cdot s(x)) &= (e^{\langle \frac{\partial}{\partial x},
+    \Xi'_W - \xi_W \rangle}) (e^{-\langle \frac{\partial}{\partial x}, 
+    \Xi_W \rangle}) ((e^{\langle \frac{\partial}{\partial x}, 
+    \Xi_X \rangle}f)(x) s(x)) \\
+  &= (e^{\langle \frac{\partial}{\partial x}, \Xi'_W - \xi_W \rangle})
+    ((e^{\langle \frac{\partial}{\partial x}, \Xi_V \rangle}f)(x) 
+    (e^{-\langle \frac{\partial}{\partial x}, \Xi_W \rangle}) s(x))\\
+  &= (e^{\langle \frac{\partial}{\partial x}, \Xi'_X - \xi_X \rangle}
+     f)(x) \phi(s(x)) = f \cdot \phi(s(x)).
+\"

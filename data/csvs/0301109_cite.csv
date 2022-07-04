@@ -1,0 +1,871 @@
+,cite
+0,"\cite{Green,Mitchell,Dai,Okada,Sundborg,Turok,Amati2,IK,Manes,IR}"
+1,\cite{Green}
+2,\cite{IR}
+3,"\cite. 
+The self-energy is expressed as an integral of a certain combination of theta functions,
+and we developed a very efficient algorithm to derive the contribution of 
+the intermediate states of definite mass, which included the sum over their degeneracies.
+  
+%In this note we compare in detail the relevant aspects of the 
+%classical and quantum computation.
+
+The comparison will show a surprisingly good agreement 
+between the semiclasssical and quantum calculation,
+despite the fact they involve completely different computations.
+%The surprising agreement between the results of the two 
+%very different computations represents a strong check on their soundness.
+
+A striking result is  that very massive states of maximal
+angular momentum can be long lived, the lifetime being proportional to their mass.
+While the quantum computation was performed so far in ten flat uncompactified
+dimensions,  the semiclassical computation appears to be independent of possible
+compactifications. Thus, long-lived very massive string states could be present in the 
+description of spacetime based on string theory. 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Splitting of a rotating string }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The rotating closed string solution is given by:
+\begin{equation}
+X=L \cos(2\sigma  ) \cos(2 \tau) \ ,\ \ \ Y=L\cos(2 \sigma  )\sin(2\tau ) \ ,\ \ \ \ X^0=2L\tau \ ,
+\label{ccero}
+\end{equation}
+where $\sigma  \in [0,\pi)$. This represents a spinning folded closed string with maximum angular momentum.
+The coefficient $2L$ in $X^0$ is fixed  by the constraint
+$\dot X \cdot \dot X + {X'\cdot X'}=0$ (the other constraint $\dot X\cdot X'=0$ is also satisfied).
+The string has energy and angular momentum given by
+\begin{equation}
+E=M={L\over\a '}\ ,\ \ \ \ \ J={L^2\over 2\a'}\ ,
+\end{equation}
+so that one has the usual Regge relation $\a'M^2=2J$.
+
+
+The closed string (\ref{ccero}) contains two segments, the ``upper'' 
+segment described by $0<\sigma  < {\pi\over 2}$ and the ``lower'' 
+segment described by ${\pi\over 2} <\sigma  < {\pi}$. The full length 
+of the string is $4L$. We assume that at $\tau=0 $ the string 
+splits into two pieces of lengths $4L_\I $ and $4L_{\II }$, 
+$X^\mu (\sigma  )\to \{ X^\mu_\I (\sigma  ), X^\mu_{\II } (\sigma  ) \} \ ,$ 
+with $L_\I+L_\II=L$. The initial conditions for the strings I and 
+II are given by the string (\ref{ccero}) at $\tau=0 $. 
+ The splitting occurs at $\sigma  ={a\pi \over 2}$
+for the upper segment, with $a$ defined as
+\begin{equation}
+\cos a\pi \equiv -{L_\I-L_{\II}\over L}\ , \ \ \ \ 0<a<1\ .
+\end{equation}
+{}For the lower segment, the splitting is at $\sigma =\pi -{a\pi\over 2} $.
+Thus the initial conditions are: 
+\begin{equation}
+X^\mu_\I (\sigma  ,0)=X^\mu (\sigma , 0)\ ,\ \ \ 
+\dot X^\mu_\I (\sigma  ,0)=\dot X^\mu (\sigma , 0)\ ,\
+\label{cdoz}
+\end{equation}
+for $ 0<\sigma < {a\pi\over 2}$ (upper segment) and 
+for $\pi >\sigma > \pi -{a\pi\over 2} $ (lower segment),
+while for the string II we have
+\begin{equation}
+X^\mu_{\II }(\sigma  ,0)=X^\mu (\sigma , 0)\ ,\ \ \ 
+\dot X^\mu_{\II }(\sigma  ,0)=\dot X^\mu (\sigma , 0)\ ,\ 
+\label{cunos}
+\end{equation}
+for ${a\pi\over 2} <\sigma < {\pi\over 2}$ (upper segment) and   
+for ${\pi\over 2} <\sigma < \pi -{a\pi\over 2} $ (lower segment).
+These boundary conditions uniquely determine the solution
+describing the two closed string final states.
+
+We shall determine the solution describing the two outgoing solutions
+in two different ways: 
+
+\smallskip
+
+\noindent a) By explicitly finding the Fourier modes. This will show, in particular,
+that the outgoing strings are in a highly excited state which is not of
+maximum angular momentum.
+
+\noindent b) By a direct matching with the original solution and imposing the new
+periodicity. By construction, the resulting solutions
+coincide with the explicit calculation of a), and thus this method provides a 
+simple closed analytic formula for the
+resummation of the Fourier expansion. This form of the solution also exhibits the
+nature of the motion of the outgoing strings I and II.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fourier analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Let us consider the string I. To find the explicit solution,
+ we start with the general solution to the string equations 
+for the closed string. The condition (\ref{cdoz}) can be equivalently imposed 
+in the interval $-{a\pi\over 2} >\sigma > {a\pi\over 2}$,
+since the original solution is periodic in $\sigma  $ with period $\pi $.
+The most general closed string solution satisfying the periodicity condition 
+$X^\mu_\I(\sigma +\pi a)=X^\mu_\I(\sigma  )$ is given by
+\begin{equation}
+X_\I (\sigma ,\tau )=x_{0\I}+ 2\a' p_\I ^x\ {\tau \over a}+
+i \sum_{n\neq 0} \bigg( x_n e^{-2i {n\over a}(\tau -\sigma  )}+
+\td x_n e^{-2i {n\over a}(\tau +\sigma  )} \bigg) \ ,
+\label{ffz}
+\end{equation}
+\begin{equation}
+Y_\I (\sigma ,\tau )=y_{0\I}+ 2\a' p_\I ^y\ {\tau \over a} +
+i \sum_{n\neq 0} \bigg( y_n e^{-2i {n\over a}(\tau -\sigma  )}+
+\td y_n e^{-2i {n\over a}(\tau +\sigma  )} \bigg) \ .
+\label{ggz}
+\end{equation}
+Note that the constraints
+$$
+\dot X\cdot X' =0\ ,\ \ \ \ \dot X \cdot \dot X + {X'\cdot X'}=0\ ,
+$$
+are satisfied automatically once we impose the initial conditions. 
+Indeed,  they are satisfied at $\tau =0$, because there
+the solutions $X_I^\mu, \ X_{II}^\mu$ and their first derivatives
+coincide with the original solution $X^\mu $, which already satisfies the constraints.
+Since they are a constant of motion, then they are satisfied for all $\tau $
+(using the fact that $T_{++}=T_{++}(\sigma ^+)\ ,\ \ T_{--}=T_{--}(\sigma ^-)$, one sees that
+the condition $T_{++}=T_{--}=0$ at $\tau=0$ implies that they vanish for any $\tau $). 
+
+
+
+ Let us first 
+ determine the conserved quantum numbers, energy, linear momentum and
+angular momentum of each string. Since they are conserved 
+quantities, they can be found at $\tau =0$, where the solution is 
+given by eq.~(\ref{cdoz}), (\ref{cunos}). The energy  and  linear 
+momentum components are given by 
+\begin{eqnarray} 
+E_\I &=& {2\over 2\pi \a' 
+}\int_0^{{\pi a\over 2} } d\sigma \ \dot X^0_\I ={La\over \a' }\ ,
+\\ 
+p_\I^x &=& 0\ ,\ 
+\\
+p_\I^y &=& {2\over 2\pi \a' } 
+\int_0^{{\pi a\over 2}}d\sigma \ \dot Y_\I={4L\over 2\pi \a'} 
+\int_0^{{\pi a\over 2}} d\sigma \ \cos(2\sigma  )={L\sin(\pi a)\over \pi 
+\a' }\ . 
+\end{eqnarray}
+There is an extra factor of two in the above expressions, which takes into account 
+that there are two segments of string giving the same contribution.
+The angular momentum is 
+\begin{equation} 
+J_\I={2\over 2\pi 
+\a'}\int_0^{{\pi a\over 2} }(X_\I\dot Y_\I-\dot X_\I 
+Y_\I)={L^2a\over 2 \a'}\ \left (1+{\sin(2\pi a)\over 2\pi 
+a}\right)\ . 
+\end{equation} 
+This has an orbital component $l_\I $ and spin 
+component $S_\I$. Since $p^x_\I=0$, the orbital component is just 
+$l_\I=x_{0\I}p^y_\I$, where $x_{0\I}$ is the center of mass 
+coordinate of the string I, 
+\begin{equation} 
+x_{0\I}={2\over \pi 
+a}\int_0^{{\pi a\over 2}} d\sigma \ X_\I ={L\sin(\pi a)\over \pi a 
+}={\a' \over a}\ p^y_\I \ .
+\end{equation} 
+Therefore $J_\I=l_\I+S_\I$ with 
+\begin{equation} 
+l_\I={L^2a\over \a' }\ {\sin^2(\pi a)\over (\pi a)^2} \ ,\ \ \ \ 
+S_\I ={L^2a\over 2 \a'}\ \left (1- {2\sin^2(\pi a)\over (\pi a)^2} 
++{\sin(2\pi a)\over 2\pi a}\right) \ .
+\label{orbe}
+\end{equation} 
+The mass of the string I 
+is thus given by 
+\begin{equation} 
+M^2_\I= E_\I^2- p_\I^2={L^2\over  {\a'}^2} 
+\left( a^2 - {\sin^2(\pi a)\over \pi ^2} \right) \ .
+\end{equation} 
+
+Let us now 
+determine the oscillator modes. {}From the conditions $\dot X_\I 
+(\sigma  ,0)=\dot X (\sigma , 0)=0$, $Y_\I (\sigma  ,0)=Y (\sigma , 0)=0$, it follows 
+that 
+\begin{equation} 
+x_n=\td x_{-n}\ ,\ \ \ \ \ y_n=-\td y_{-n}\ .\ 
+\end{equation} 
+To 
+find $x_n$, $y_n$, we multiply the two remaining boundary conditions $ X_\I (\sigma  
+,0)= X (\sigma , 0)$, $\dot Y_\I (\sigma  ,0)=\dot Y (\sigma , 0)=0$ by 
+$e^{-2i{n\over a}\sigma  }$ and perform the integral over $\sigma  $ from 
+$-{a\pi\over 2}$ to ${a\pi\over 2}$ , using the expansions 
+(\ref{ffz}), (\ref{ggz}) and the solution (\ref{ccero}). We find 
+\begin{equation} 
+X_\I={L\sin(\pi a)\over \pi a} \left( 1+2\sum_{n=1}^\infty 
+{(-1)^n\over 1-{n^2\over a^2} } \cos({2n\tau\over a})  
+\cos({2n\sigma \over a}) \right) \ ,
+\label{solux} 
+\end{equation} 
+\begin{equation} 
+Y_\I={L\sin(\pi a)\over \pi a} \left( 2\tau +2a \sum_{n=1}^\infty 
+{(-1)^n\over n(1-{n^2\over a^2}) } \sin({2n\tau\over a})  
+\cos({2n\sigma \over a}) \right) \ ,
+\label{soluy} 
+\end{equation} 
+where $-{\pi a\over 2}<\sigma <{\pi a\over 2}$ (note that the factor 
+$(-1)^n$ can be removed byshifting $\sigma  $ so that
+ $0<\sigma <{\pi a}$).
+Finally, we have 
+$X^0_\I=2L\tau $.
+
+Let us now consider the string II.
+The solution is readily found by noting that the Fourier analysis become the same in terms of
+ $a'=1-a$ and $\sigma '=\sigma -{\pi\over 2}$.
+We have to take into account that the shift in $\sigma  $ produces a change of sign in the solution 
+(\ref{ccero}).
+We get
+\begin{equation}
+X_\II=-{L\sin(\pi a)\over \pi (1-a)} \left( 1+2\sum_{n=1}^\infty {(-1)^n\over 1-{n^2\over (1-a)^2} } 
+\cos({2n\tau\over (1-a)})  \cos({2n\sigma \over (1-a)}) \right)
+\label{dsolux}
+\end{equation}
+\begin{equation}
+Y_\II=-{L\sin(\pi a)\over \pi (1-a)} \left( 2\tau +2(1-a) \sum_{n=1}^\infty 
+{(-1)^n\over n(1-{n^2\over (1-a)^2}) } \sin({2n\tau\over (1-a)})  \cos({2n\sigma \over (1-a)}) \right)
+\label{dsoluy}
+\end{equation}
+with $-{\pi (1-a)\over 2}<\sigma <{\pi (1-a)\over 2}$, and $X^0_\II=2L\tau $.
+
+The conserved quantities for the 
+string II are
+\begin{equation} 
+E_{\II } 
+={L(1-a)\over \a' }\ ,\ \ \ \ p_{\II }^y=-{L\sin(\pi a)\over \pi 
+\a' } \ ,
+\end{equation} 
+\begin{equation} 
+J_{\II }=l_{\II }+S_{\II }\ ,\ \ \ \  
+l_{\II }={L^2(1-a)\over \a' }\ {\sin^2(\pi a)\over (\pi (1-a))^2} \ 
+,\ 
+\label{orbis}
+\end{equation} 
+\begin{equation}  
+S_{\II }={L^2(1-a)\over 2 \a'}\ \left (1- 
+{2\sin^2(\pi a)\over (\pi (1-a))^2} - {\sin(2\pi a)\over 2\pi 
+(1-a)}\right) \ ,
+\end{equation} 
+\begin{equation} M^2_{\II }= E_\II^2- p_\II^2={L^2\over  
+{\a'}^2} \left( (1-a)^2 - {\sin^2(\pi a)\over \pi ^2} \right) \ .
+\end{equation}
+
+One easily checks that energy, linear momentum and angular momentum
+are conserved in the process of splitting,
+\begin{equation}
+E_\I+E_\II ={L\over\a '}=E\ ,\ \ \ \ p_\I^y+p_\II^y=0\ ,\ \ \ \ \ 
+J_\I+J_\II={L^2\over 2\a'}=J\ .
+\end{equation}
+We stress that the outgoing strings represent excited string states which do not 
+have maximum angular momentum.
+
+%%%%%%%%%%%%%%%%%%%
+%\section{Open strings}
+%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+
+{}For completeness, we also give the results in the case of open strings. 
+The solutions are simply obtained by the formal substitution $2\sigma  \to \sigma  ,\ 2\tau\to \tau $ 
+in eqs.~(\ref{ccero}), (\ref{solux}) -- (\ref{dsoluy}),
+with the new $\sigma  $ defined in the intervals $0<\sigma <\pi a$ 
+and $0<\sigma <\pi (1-a)$, respectively. 
+The expressions for $E_I,\ p_I^y,\ J_I,\ l_I,\ S_I$
+are the same as above with an extra factor 1/2, and similarly for the string II.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Closed formulas for the outgoing string solutions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+We can describe the classical closed-string dynamics by means of left and right motion,
+in terms of the coordinates $\sigma ^{\pm}=\sigma \pm \t $:
+\begin{equation}
+X^{\mu}(\sigma ,\t )=X^{\mu}_{+}(\sigma ^{+})+X^{\mu}_{-}(\sigma ^{-}) \ .
+\label{motion} 
+\end{equation}
+The constraint is $\eta_{\mu\nu}\partial_{\pm}X^{\mu}_{\pm}\partial_{\pm }X^{\nu}_{\pm}=0$.
+
+The initial string (\ref{ccero}) 
+%$X=L\cos(s)\cos(t)$, $Y=L\cos(s)\sin(t)$, $X^0=Lt$ 
+is described by:
+\begin{equation}
+X_{\pm}(\sigma ^\pm )={L\over  2}\cos(2\sigma ^\pm )\ ,\ \ \ Y_{\pm}(\sigma ^\pm )=\pm {L\over  2}\sin(2\sigma ^\pm)\ , \ \ \ 
+X^0_{\pm}(\sigma ^\pm )=\pm {L}\sigma ^\pm\ . 
+\label{rotating}
+\end{equation}
+As before, $\sigma  \in [0,\pi )$.  
+%It is a rotating string folded into two segments: $0\leq \s\leq {\pi\over 2}$ 
+%and ${\pi\over 2}\leq \s\leq \pi$.
+%It has energy and angular momentum given by
+%\beq
+%E=M={L\over\a '}\ ,\ \ \ \ \ J={L^2\over 2\a'}\ ,
+%\eeq
+%so that  the usual Regge relation $\a'M^2=2J$ holds.
+
+At  $\t=0$ the string splits into two pieces:
+$X^\mu _{\pm}( \sigma ^\pm)\to \{ X^\mu_{\I\pm} ( \sigma ^\pm ), X^\mu_{\II\pm } (\sigma ^\pm ) \} $.
+The two pieces are folded like the initial string and the splitting occurs 
+at $\sigma ={a\pi\over 2}$ in the upper segment and at $\sigma =\pi-{a\pi\over 2}$ in the lower segment,
+with $0<a<1$. The two resulting strings are determined as in the previous subsection
+by requiring continuity
+of the string coordinates and their first derivatives in $\t$ at $\t=0$, and by requiring 
+periodicity in $\sigma $:   $X^{\mu}_{\I}$ with period $\Delta \sigma =a\pi$ and  
+$X^{\mu}_{\II}$ with period $\Delta \sigma =(1-a)\pi$.
+
+The resulting expressions for $Y_{\I,\II}$ are the sum of two terms.
+One term corresponds to the momentum carried by the string:  
+$\pm L{2\sin(a\pi )\over \pi}\tau$. 
+The other term is periodic in $\sigma $ and its derivative in $\sigma $ has zero average.
+
+
+It is convenient to rescale the world-sheet parameters of the resulting strings
+$\sigma ^ {\pm}\to a \sigma ^{\pm}$ for the string $\I$, 
+and $\sigma ^ {\pm}\to (1-a) \sigma ^{\pm}$ for
+the string $\II$, in such a way that the period is $\Delta \sigma  =\pi$
+for both. 
+
+We get for the string $\I$:
+\begin{eqnarray}
+X^0_{\I\pm}(\sigma ^\pm)&=&\pm {L}a\sigma ^\pm \ ,
+\nonumber \\
+X_{\I\pm}(\sigma ^\pm)&=&{L\over  2}C_\I(\sigma ^\pm ) \ , \
+Y_{\I\pm}(\sigma ^\pm )=\pm {L\over  2}\big[ {2\sin(a\pi )\over \pi}\sigma ^\pm +S_\I(\sigma ^\pm )\big]
+\label{stringauno}
+\end{eqnarray}
+where
+\begin{eqnarray}
+&C_\I(\sigma  )&=\cos(2a\sigma  ) \ , \ \ S_\I (\sigma  )=\sin(2a\sigma  )-{2\sin(a\pi )\over \pi}\sigma   \nonumber\\
+&{\rm for}& \ \  0\leq \sigma  < {\pi\over 2} \ , \nonumber \\
+&C_\I(\sigma  )&=\cos(2a\sigma -a2\pi) \ , \ \ S_\I(\sigma  )=\sin(2a\sigma -a2\pi )-{2\sin(a\pi )\over \pi}(\sigma  -\pi )
+ \nonumber\\
+&{\rm for}&  \ {\pi\over 2}\leq \sigma  < \pi\ . 
+\end{eqnarray}
+
+Similarly for the string $\II$ we get:
+\begin{eqnarray}
+&&X^0_{\II\pm}(\sigma ^\pm )=\pm {L}(1-a)\sigma ^\pm \ ,
+\nonumber \\
+&&X_{\II\pm}(\sigma ^\pm )={L\over  2}C_{\II}(\sigma ^\pm )  , \
+\nonumber\\
+&&Y_{\II\pm}(\sigma ^\pm )=\pm {L\over  2}\big[ -{2\sin(a\pi )\over \pi}\sigma ^\pm+S_{\II}(\sigma ^\pm )\big]  
+\label{stringadue} 
+\end{eqnarray}
+where
+\begin{eqnarray}
+&&C_{\II}(\sigma  )=\cos(2(1-a)\sigma  + a\pi) \ , \ \
+\nonumber\\ 
+&&S_{\II}(\sigma  )=\sin(2(1-a)\sigma  + a\pi)+{2\sin(a\pi )\over \pi}\sigma  
+\nonumber\\
+ &&{\rm for} \  \ 0\leq \sigma  < \pi \ .
+\end{eqnarray}
+These definitions are extended to any $\sigma $ by declaring that  
+$$
+C_{\I,\II}(\sigma  +\pi )=C_{\I,\II }(\sigma  )\ ,\ \ \ \ 
+S_{\I ,\II } (\sigma  +\pi )=S_{\I,\II}(\sigma  )\ .
+$$
+These expressions automatically satisfy the constraints.
+By construction, these solutions are equivalent to the solutions given by 
+the Fourier expansion in the previous section (one can also check this numerically).
+
+
+The derivative in $\sigma  $ of both $X_{\I},Y_{\I}$ and $X_{\II},Y_{\II}$ 
+has a discontinuity
+at $\sigma ^\pm =\pi/2$ and $\sigma ^\pm =0$ respectively. 
+This discontinuity will appear as an angular bending  in the
+(folded) shape of the strings $\I$ and $\II$. Since $\sigma ^{\pm}=\sigma \pm \t$, this angular
+bending will
+move along the string, as a function of $\tau $.
+We will return to this point in the last section.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comparison with the superstring  quantum calculation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The decay process described above by semiclassical splitting predicts that masses will 
+be related by the following formulas:
+\begin{equation} 
+M_\I= M_\I (a)= {L\over  {\a'}} \sqrt{a^2 - {\sin^2(\pi 
+a)\over \pi ^2} }\ ,
+\label{asd}
+\end{equation} 
+\begin{equation} M_{\II }=M_{\II}(a ) ={L\over  
+{\a'}} \sqrt{ (1-a)^2 - {\sin^2(\pi a)\over \pi ^2} }\ .
+\label{zxc}
+\end{equation}
+These relations define a function $M_\I=M_\I(M_\II )$.
+ 
+In ref.~\cite{IR},
+the full quantum calculation of the decay was done in the ten dimensional type II superstring theory.
+The decay rate is obtained by extracting the imaginary part of
+the genus one self-energy of the massive particle:
+$\Gamma ={\rm Im}{\Delta M^2\over 2M}$. 
+
+This calculation is complicated: it combines expansions of theta functions and resummations, 
+saddle-point   evaluation of some integrals. Nevertheless, it is an exact genus one result 
+in the large $M$ limit, since the only approximation involved are saddle-point approximations, 
+which become exact as $\a'M^2\gg 1$. 
+
+Here we explain briefly the idea of the method and the result. 
+We compute the contribution to ${\rm Im}(\Delta M^2)$ of the decay channel 
+corresponding to the states with masses $M_1, M_2$: let us call  
+${d^2{\rm Im}(\Delta M^2)\over  dM^2_1dM^2_2}$ that contribution per unit  $ dM^2_1dM^2_2$.
+The one-loop self-energy, derived first in \cite{IK}, 
+is represented as an integral of some combination of theta functions, 
+the integration being over the torus complex modulus and over a complex 
+(vertex position) coordinate on the torus surface. The integration is formally divergent,
+and it is computed by a standard analytic continuation. 
+
+A key point is to write the integrand as a sum of holomorphically factorized quantities.
+The selection of a particular decay channel corresponds to a particular
+ term in the Taylor expansion of the holomorphic factors, as it is recognized
+by comparison with field theory Feynman diagrams. 
+Cauchy contour integrals and  saddle point techniques 
+are used for getting the holomorphic expansion, similarly to the well known
+procedure for computing the entropy of a state in string theory.    
+In this way we obtained:
+\begin{equation}
+{d^2{\rm Im}(\Delta M^2)\over  dM^2_1dM^2_2}\sim M^{-3}\exp[2M^2 S_0(M_1/M,M_2/M)]\ ,
+\label{quantum}
+\end{equation}
+with $S_0\leq 0$ (given in fig.~1 of \cite{IR}). 
+
+
+
+Therefore in the large mass limit the dominant decay channel corresponds to values 
+of $M_{1,2}$
+for which $S_0=0$, i.e. the masses of the 
+decay products are correlated, modulo processes which are 
+exponentially suppressed. 
+This effect may come as a surprise, 
+since one might have expected a sizable string vertex coupling
+three string states of arbitrary masses $M,\ M_1,\ M_2$.
+
+Figure 1 shows the relation $M_\I=M_\I^{\rm quantum }(M_\II )$, 
+corresponding to $S_0=0$, found numerically in \cite{IR} (and shown there in fig.~3).
+. 
+In the same figure, 
+we have superposed the analytic function $M_\I=M_\I(M_\II )$ 
+defined by (\ref{asd}), (\ref{zxc}).
+We see that they 
+%exactly 
+coincide, the analytic semiclassical curve fully matches the curve of \cite{IR}
+obtained by a one-loop calculation.
+
+\bigskip
+
+\begin{figure}[hbt]
+\label{fig1} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=semicl.eps,height=7truecm}}
+%
+%\label{fig.1}\vskip -0.5cm \hskip -1cm
+%\centerline{\includegraphics[width=3in]{comparing}}
+\caption{\footnotesize 
+The curve $M_\I =M_\I (M_\II)$ defined by eqs.~(\ref{asd}), (\ref{zxc}).
+It is superposed with the similar curve obtained in \cite{IR} from the direct
+quantum one-loop calculation.}
+\end{figure}
+
+
+This precise match is also surprising.
+Although one expects that for a  large mass  the initial highly 
+excited quantum string state is well described by a classical solution, 
+it is not a priori obvious that the precise relation 
+between masses should be implied  by a classical spontaneous splitting process.
+Moreover, the decay products are not states of maximum angular momentum and it is not obvious 
+that a semiclassical description would be applicable for them. 
+The accurate coincidence of the two curves in figure 1 also confirms the results of \cite{IR}.
+
+%Let us also remark that the classical solution is located in a plane $X,Y$ and therefore
+%it is independent on whether and how other dimensions might be compactified.
+%That, together with the fact that the classical solution reproduces exactly the quantum pattern,
+%makes us speculate that the our result for the decay of a string of maximal angular momentum
+%located in the noncompact part of the space might be independent of the compactification.
+
+Further, in the calculation of \cite{IR}, it is also possible to isolate the contribution 
+of a given orbital angular momentum $l_0$. In fact, by
+comparison with the field theory expressions for one-loop 
+Feynman diagrams, one learns that the sum over  the possible
+ $l_0$ contributions  corresponds to the sum over the holomorphically factorized terms
+(in eq. (5.4) of \cite{IR}, a term with given $l_0$ has 
+$l_0=2N-(m_1+m_2)-2={\rm fixed},\ N=J/2$).
+
+However, $l_0$ is not a quantum number of the final states,
+and in fact the quantum computation of ${\rm Im}(\Delta M^2)$ is expressed as the modulus 
+square of a sum over amplitudes which are alternating in sign.
+Therefore, the classical value of $l_0$ does not correspond to a well defined
+mean value.  In order to compare the quantum computation with the classical
+configuration of outgoing states $M_1,M_2$ with given $l_0$, 
+we have taken as quantum value of $l_0$  the one for which
+the amplitude is maximal in absolute value.
+That maximal amplitude corresponds  to a value of $l_0$ which depends on $M_1,M_2$. 
+We take the relevant values for $M_{1,2}$ to be those along the curve of
+Figure 1,  and then compare this result to $l_\I(a)+l_\II (a)$ 
+computed semiclassically (see eqs. (\ref{orbe}), (\ref{orbis})~). 
+This comparison is shown in Figure 2. 
+
+\bigskip
+
+\begin{figure}[hbt]
+\label{fig2} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=lzero3.eps,height=7truecm}}
+%\centerline{\includegraphics[width=3in]{bestetacompare}}
+
+\caption{\footnotesize
+Plot of the classical (dashed line) and quantum (solid line) value for
+$(1-l_0/J)$ ($l_0$ = orbital angular momentum) 
+as a function of the parameter 
+$a$ (which defines the breaking point of the string). }
+\end{figure}
+
+
+%Caption:
+%Orbital angular momenta computed by the 
+%semiclassical and quantum methods as a function of the parameter 
+%$a$ (which defines the breaking point of the string). 
+
+
+We see that the two curves are  quite close.
+% but there is some difference.
+%discrepancy. 
+We think that the small discrepancy is due 
+to the fact that there is not a well defined quantum value of $l_0$. 
+It is still remarkable that the semiclassical and quantum calculation give  
+so close results, with the correct normalization which comes 
+automatically without any tuning.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Decay rate and description of the motion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There is a simple semiclassical argument which gives directly the
+decay rate.
+
+Consider the rotating string (\ref{rotating}). The solution is periodic
+with period $T=2\pi L$.
+%, and therefore the total probability of splitting 
+%in a full cycle must be the same as the total 
+% probability of splitting in each cycle.
+The probability of splitting per cycle is by definition proportional to the string coupling $g_s^2$.
+Thus, the total decay rate per unit time is given by
+\begin{equation}
+\Gamma ={\rm probability\ per\ cycle \over period  }= {\rm const.} \ 
+{g_s^2\over 2\pi L}= {\rm const.}\ {g_s^2\over \a' M} \ .
+\end{equation}
+Thus the lifetime of a massive string with maximum angular momentum is given by
+\begin{equation}
+{\cal T}= \Gamma^{-1}= {\rm const.}\ {\a '\over g_s^2}\ M\ .
+\end{equation}
+
+This result for the lifetime  coincides with that of the quantum calculation 
+performed in \cite{IR}:
+in fact this is what is obtained by computing  ${\rm Im}(\Delta M^2)$ 
+as the sum over $M^2_1,M^2_2$
+of the result (\ref{quantum}). 
+Thus, a classical estimate confirms the surprising result of \cite{IR}, that is 
+a string with maximum angular momentum becomes more stable the more massive it is.
+
+
+Let us also remark that, independently of any computation, a strictly classical
+estimate for the string lifetime can only be ${\cal T} \sim L$, because $L$ is the
+only time scale of the classical string (in units $c=1$); indeed the classical
+string solution does not know $\hbar$ nor $\a'$, which only appear in the 
+interpretation of classical parameters as quantities having dimensions of energy, like
+for instance $M=\hbar L/\a'$. An exponential factor containing $\a'$ in the denominator
+of the exponent can be expected in a semiclassical computation. In fact, this is the
+form of our result, the sum over $M^2_1,M^2_2$ of (\ref{quantum}): 
+\begin{equation}
+{\cal T}=  {\rm const.}L \exp[-2{L^2\over  \a'}S_0^{Max}]\ .
+\end{equation}
+We have seen that in general $S_0\leq 0$ and that the maximum of $S_0$  
+corresponds to the classical solution for which $S_0^{Max}=0$.
+
+
+Having the exact semiclassical solutions for the outgoing strings I and II, 
+it is interesting to describe the main features of their motion.
+Figures 3 and 4 are  plots of a sequence of pictures of the string I 
+and II after the splitting, for different breaking points: $a=0.4$, $a=0.15$ respectively.
+We see that the outgoing closed string remain folded, exhibiting a rotating motion.
+The figures 3 and 4 were made using the Fourier series formulas of section 2.1.
+One can check  that the same plot is obtained using the
+formulas of section 2.2.
+Figures 5,6,7 are a plot of the world-sheet for the breaking point at $a=0.4$.
+
+
+
+
+
+The most salient feature that can be observed from the figure is that  
+the breaking of the strings creates  an angular bending, or kink, which 
+then travels back and forth all along each string.
+Remarkably, each string is straight except at the bending point.
+One might wonder whether this feature is generic, at least 
+for the breaking of an open string:
+the kink is produced by the jump of the first derivative at the splitting point; it
+is locally created, thus its
+occurrence should not depend on whether the string has maximum angular momentum 
+(i.e. whether it is straight or  curved).
+
+
+Another important feature is that the angles of the bendings of the strings I and II
+sum up $180^{\rm o}$, and they are given by
+\begin{equation}
+\theta_\I = a\pi\ ,\ \ \  \theta_\II=(1-a) \pi \ .
+\label{angulos}
+\end{equation} 
+Note that they are in relation with the energies of the strings.
+When $a=1/2$  both angles are $\pi/2$.
+
+
+
+The formulas (\ref{angulos}) can be proved by using the solutions of section 2.2.
+Consider the string I at a given instant $\tau $. 
+The derivative ${dY_\I\over dX_\I}$ has the same discontinuity in both upper 
+and lower segments of the closed string. In one segment the discontinuity
+ originates from the discontinuity in $\partial_\sigma  X_{\I +}$ at 
+$\sigma _1 ={\pi\over 2}-\tau $. In the other segment, it originates 
+from the discontinuity of 
+$\partial_\sigma  X_{\I -}$ at $\sigma _2 ={\pi\over 2}+\tau $.
+
+{}For $a<1/2$, the bending angle $\theta_I$ of the string I is an acute angle.
+It can be computed in particular at $\sigma _1 $, where it is given by
+\begin{equation}
+\theta_\I=\arctan{dY_\I\over dX_\I}\bigg|_{\sigma _1-\epsilon}
+ -\arctan{dY_\I\over dX_\I}\bigg|_{\sigma _1+\epsilon} \ .
+\end{equation}
+Using the explicit form of the solutions, we obtain
+$$
+{dY_\I\over dX_\I}\bigg|_{\sigma _1-\epsilon} = 
+{\partial_\sigma  Y\over \partial_\sigma  X}\bigg|_{\sigma _1-\epsilon}=\tan(2a \tau)\ ,
+$$
+\begin{equation}
+{dY_\I\over dX_\I}\bigg|_{\sigma _1+\epsilon} = \tan(2a \tau-a\pi  )\ .
+\end{equation}
+Thus
+\begin{equation}
+\theta_\I=2a\tau-(2a\tau-a\pi)  =a\pi\ .
+\end{equation}
+Similarly, one finds $\theta_\II $ as in (\ref{angulos}).
+
+
+\bigskip
+\bigskip
+
+\noindent {\bf Acknowledgements:} 
+
+We thank J. Maldacena for suggesting the basic idea that led to this investigation, 
+namely
+that the relation between the masses $M_1,M_2$ of the decay products found in 
+\cite{IR} could be explained in terms of spontaneous splitting 
+of the rotating string solution. R.I. acknowledges partial support 
+by the EEC grant HPRN-CT-2000-00131.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}  
+
+\bibitem{Green}
+M.~B.~Green and G.~Veneziano,
+``Average Properties Of Dual Resonances,''
+Phys.\ Lett.\ B {\bf 36}, 477 (1971).
+%%CITATION = PHLTA,B36,477;%%
+
+\bibitem{Mitchell}
+D.~Mitchell, N.~Turok, R.~Wilkinson and P.~Jetzer,
+``The Decay Of Highly Excited Open Strings,''
+Nucl.\ Phys.\ B {\bf 315}, 1 (1989)
+[Erratum-ibid.\ B {\bf 322}, 628 (1989)].
+%%CITATION = NUPHA,B315,1;%%
+
+\bibitem{Dai}
+J.~Dai and J.~Polchinski,
+``The Decay Of Macroscopic Fundamental Strings,''
+Phys.\ Lett.\ B {\bf 220}, 387 (1989).
+%%CITATION = PHLTA,B220,387;%%
+
+\bibitem{Okada}
+H.~Okada and A.~Tsuchiya,
+``The Decay Rate Of The Massive Modes In Type I Superstring,''
+Phys.\ Lett.\ B {\bf 232}, 91 (1989).
+%%CITATION = PHLTA,B232,91;%%
+
+\bibitem{Sundborg}
+B.~Sundborg,
+``Selfenergies Of Massive Strings,''
+Nucl.\ Phys.\ B {\bf 319}, 415 (1989).
+%%CITATION = NUPHA,B319,415;%%
+
+
+\bibitem{Turok}
+D.~Mitchell, B.~Sundborg and N.~Turok,
+%``Decays Of Massive Open Strings,''
+Nucl.\ Phys.\ B {\bf 335}, 621 (1990).
+%%CITATION = NUPHA,B335,621;%%
+
+\bibitem{Amati2}
+D.~Amati and J.~G.~Russo,
+%``Fundamental strings as black bodies,''
+Phys.\ Lett.\ B {\bf 454}, 207 (1999)
+[arXiv:hep-th/9901092].
+%%CITATION = HEP-TH 9901092;%%
+
+
+\bibitem{IK}
+R.~Iengo and J.~Kalkkinen,
+``Decay modes of highly excited string states and Kerr black holes,''
+JHEP {\bf 0011}, 025 (2000)
+[arXiv:hep-th/0008060].
+%%CITATION = HEP-TH 0008060;%%
+
+
+
+
+\bibitem{Manes}
+J.~L.~Manes,
+``Emission spectrum of fundamental strings: An algebraic approach,''
+Nucl.\ Phys.\ B {\bf 621}, 37 (2002)
+[arXiv:hep-th/0109196].
+%%CITATION = HEP-TH 0109196;%%
+
+
+\bibitem{IR}
+R.~Iengo and J.~G.~Russo,
+``The decay of massive closed superstrings with maximum angular momentum,''
+JHEP {\bf 0211}, 045 (2002)
+[arXiv:hep-th/0210245].
+%%CITATION = HEP-TH 0210245;%%
+
+
+
+
+\vskip2.0truecm
+
+
+\begin{figure}[hbt]
+\label{fig3} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=breaking2.eps,height=10truecm}}
+%\centerline{\includegraphics[width=1in]{splittingt}}
+\caption{\footnotesize
+Sequences of pictures of the closed string after the splitting for $a=0.4$. }
+\end{figure}
+
+\begin{figure}[hbt]
+\label{fig4} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=breakito.eps,height=10truecm}}
+%\centerline{\includegraphics[width=1in]{splittingt}}
+\caption{\footnotesize
+Sequences of pictures of the closed string after the splitting for $a=0.15$. 
+One can see the slow translational motion of the large string, which is a
+small deformation of the original rotating string solution, with a benging angle
+$0.85\pi $. The small string moves very fast and the bending angle is acute,
+equal to $0.15 \pi $.}
+\end{figure}
+
+
+
+%\vskip.2truecm
+\begin{figure}[hbt]
+\label{fig6} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=lesswsheet0.eps,height=10truecm}}
+%\centerline{\includegraphics[width=2in]{worldsheet0}}
+\caption{\footnotesize
+Surface swept by the strings during the splitting process (lateral view) . }
+\end{figure}
+
+
+
+%\vskip.2truecm
+\begin{figure}[hbt]
+\label{fig7} 
+\vskip -0.5cm \hskip -1cm
+%\centerline{\includegraphics[width=2in]{worldsheet2}}
+\centerline{\epsfig{figure=lesswsheet2.eps,height=10truecm}}
+\caption{\footnotesize
+Surface swept by the strings during the splitting process (view from the top, larger time interval) . }
+\end{figure}
+
+
+%\vskip.2truecm
+\begin{figure}[hbt]
+\label{fig8} 
+\vskip -0.5cm \hskip -1cm
+\centerline{\epsfig{figure=40wsheet3.eps,height=12truecm}}
+%\centerline{\includegraphics[width=2in]{worldsheet3}}
+\caption{\footnotesize
+Surface swept by the strings during the splitting process (lateral view, even larger time interval) . }
+\end{figure}
+
+
+
+
+\end{thebibliography}  
+
+
+%\vfill\eject
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%\cite{Schwarz:1982jn} \bibitem{Schwarz:1982jn} J.~H.~Schwarz, ``Superstring Theory,'' Phys.\ Rept.\  {\bf 89} (1982) 223. %%CITATION = PRPLC,89,223;%%  
+
+
+\end{thebibliography}  
+
+
+\end{document}   
+\end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\bibitem{Bala} V.~Balasubramanian and I.~R.~Klebanov, ``Some Aspects of Massive World-Brane Dynamics,'' Mod.\ Phys.\ Lett.\  {\bf A11} (1996) 2271 [hep-th/9605174]. %%CITATION = HEP-TH 9605174;%%  
+
+
+\bibitem{szego}  G.~Szeg\""o, {\em Orthogonal Polynomials}, AMS Colloqium publications Vol.~XXIII \\ (AMS, Providence, 1939)  %
+
+\bibitem{Feinstein:2000ja} A.~Feinstein, K.~E.~Kunze and M.~A.~Vazquez-Mozo, %%%%``Initial conditions and the structure of the singularity in pre-big-bang  cosmology,'' \hepth{0002070}. %%CITATION = HEP-TH 0002070;%% %\href{\wwwspires?eprint=HEP-TH/0002070}{SPIRES}  %
+\bibitem{Gross} D.~J.~Gross and P.~F.~Mende, ``String Theory Beyond The Planck Scale,'' Nucl.\ Phys.\  {\bf B303}{1988}{407}. %%CITATION = NUPHA,B303,407;%%  
+\bibitem{Damour} T.~Damour and G.~Veneziano, ``Self-gravitating fundamental strings and black holes,'' Nucl.\ Phys.\  {\bf B568} (2000) 93,
+[hep-th/9907030]. %%CITATION = HEP-TH 9907030;%% 
+\bibitem{Amati} D.~Amati, M.~Ciafaloni and G.~Veneziano, ``Superstring Collisions At Planckian Energies,'' Phys.\ Lett.\  {\bf B197} (1987) 81. %%CITATION = PHLTA,B197,81;%% 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"
+4,\cite{I
+5,\cite{I
+6,\cite{I
+7,\cite{I
+8,\cite{I
+9,\cite{I
+10,\cite{I
+11,\cite{I
+12,\cite{I
+13,\cite{I
+14,\cite{I
+15,\cite{I
+16,\cite{S

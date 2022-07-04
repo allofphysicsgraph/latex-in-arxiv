@@ -1,0 +1,856 @@
+,cite
+0,"\cite{SF,STF,Sk,TF2,F}"
+1,"\cite{MS,KMT,MT}"
+2,"\cite{KMT,MT}"
+3,"\cite{KMT,KMST,KMST2}"
+4,\cite{MT}
+5,"\cite{TTF,AL,IK,IK2,IK3,BK,KIB,C,KR}"
+6,"\cite{STF,IK4,IK5,IK2}"
+7,\cite{S}
+8,"\cite{S1,S2}"
+9,\cite{S}
+10,"\cite{TW,CTW,HWW,Th}"
+11,"\cite[Theorem 3]{TTF}
+\begin{equation}
+U \left( \prod_{l=1}^M B(\lambda_l) \right) | \Omega \rangle
+= \left( \prod_{j=1}^M r_1(\lambda_j) \right)
+\left( \prod_{l=1}^M B(\lambda_l) \right) | \Omega \rangle,
+\end{equation}
+where $r_1(\lambda) = a_1(\lambda)/d_1(\lambda)$.
+
+Thus, the form factors of $Q_n$ (resp. $P_n$) are easily represented 
+by the form factors of $D^{-1}(\nu) C(\nu)$ (resp. $B(\nu) D^{-1}(\nu)$).
+These form factors can be calculated by using the
+algebraic commutation relations. 
+
+The time evolution of these operators is controlled by the
+Hamiltonian operators of the models. The Hamiltonian
+operator is also diagonalized on the Bethe eigenstates.
+The form factors of operators at any time can be easily 
+expressed by those of the operators at a time (e.g. at $t=0$).
+We do not discuss the time evolution in this paper. 
+
+Consideration for other points 
+at which $A(\nu)$ is invertible is quite similar.
+Therefore we omit these cases.
+
+\setcounter{equation}{0}\section{Form Factors}
+
+In this section, we calculate the form factors of $D^{-1}(\nu) C(\nu)$
+in general setting. The calculation for $B(\nu) D^{-1}(\nu)$
+is similar. So we omit the case of $B(\nu) D^{-1}(\nu)$. 
+
+We forget the lattice structure (\ref{latT})
+for a while and treat the matrix elements $A(\lambda)$, $B(\lambda)$,
+$C(\lambda)$ and $D(\lambda)$ as abstract objects. Let
+\begin{equation}
+A(\lambda) | \Omega \rangle = a(\lambda) | \Omega \rangle, \qquad
+D(\lambda) | \Omega \rangle = d(\lambda) | \Omega \rangle.
+\end{equation}
+We assume that there is at least one zero for $a(\lambda)$: $a(\nu_A)=0$.
+Also, we assume that $D(\nu_A)$ is an invertible operator.
+
+The action of $A(\lambda)$ on the Bethe states is well known:
+\begin{equation}
+A(\mu) \prod_{l=1}^M B(\lambda_l) | \Omega \rangle
+= a^{(M)}(\mu| \{ \lambda_l \} ) 
+\prod_{l=1}^M B(\lambda_l) | \Omega \rangle 
++ \sum_{j=1}^M b^{(M)}(\mu | \lambda_j | \{ \lambda_l \}_{l \neq j})
+B(\mu) \prod_{\stackrel{\scriptstyle l=1}{l \neq j}}^M 
+B(\lambda_l) | \Omega \rangle,
+\end{equation}
+where
+\begin{equation}
+a^{(M)}(\mu| \{ \lambda_l \} ) =
+a(\mu) \prod_{l=1}^M f(\lambda_l, \mu), \qquad
+b^{(M)}(\mu|\lambda_j| \{\lambda_l \}_{l\neq j})
+= a(\lambda_j) g(\mu, \lambda_j)
+\prod_{\stackrel{\scriptstyle l=1}{l \neq j}}^{M}
+f(\lambda_l, \lambda_j).
+\end{equation}
+Here $f(\lambda,\mu) = 1/c(\lambda,\mu)$ and $g(\lambda,\mu) =
+b(\lambda,\mu)/ c(\lambda,\mu)$.
+
+For generic $\mu$, $\lambda$, we have the following lemma:
+\begin{equation}\label{lemma}
+\begin{split}
+D^{-1}(\mu) C(\mu) B(\lambda) 
+&= f(\lambda, \mu) B(\lambda) D^{-1}(\mu) C(\mu) 
+- g(\lambda, \mu) A(\lambda)\cr
+& \qquad + g(\lambda,\mu) D^{-1}(\mu) D(\lambda)
+\left( A(\mu) - B(\mu) D^{-1}(\mu) C(\mu) \right).
+\end{split}
+\end{equation}
+The proof is simple:
+\begin{equation}
+\begin{split}
+& D^{-1}(\mu) C(\mu) B(\lambda) \cr
+&= D^{-1}(\mu) {[} C(\mu), B(\lambda) {]}
++ D^{-1}(\mu) B(\lambda) D(\mu) D^{-1}(\mu) C(\mu) \cr
+&= D^{-1}(\mu) g(\lambda,\mu) \left(
+D(\lambda) A(\mu) - D(\mu) A(\lambda)  
+\right) \cr
+& \qquad + D^{-1}(\mu) \left(
+f(\lambda, \mu) D(\mu) B(\lambda) - g(\lambda, \mu)
+D(\lambda) B(\mu) \right) D^{-1}(\mu) C(\mu) \cr
+&= f(\lambda, \mu) B(\lambda) D^{-1}(\mu) C(\mu) 
+ -g(\lambda,\mu) A(\lambda) \cr
+& \qquad + g(\lambda,\mu) D^{-1}(\mu) D(\lambda)
+\left( A(\mu) - B(\mu) D^{-1}(\mu) C(\mu) \right).
+\end{split}
+\end{equation}
+Then using this lemma and by induction, we can prove that
+$D^{-1}(\nu_A) C(\nu_A)$ acts on the right Bethe states as follows:
+\begin{equation}\label{DCact}
+D^{-1}(\nu_A) C(\nu_A) \prod_{l=1}^M B(\lambda_l) | \Omega \rangle 
+= \sum_{j=1}^M b^{(M)}(\nu_A|\lambda_j|\{\lambda_l \}_{l \neq j})
+\prod_{\stackrel{\scriptstyle l=1}{l\neq j}}^M B(\lambda_l) | \Omega \rangle.
+\end{equation}
+This is quite similar to the action of the nonlinear Schr\""{o}dinger
+field $\Psi(0)$ on the Bethe states \cite{IKR}. 
+Therefore, the calculation procedure for the form factors of $\Psi(0)$
+\cite{KKS,KS} can be also applied to the following form factors: 
+\begin{equation}
+F_M:= \langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right)
+D^{-1}(\nu_A) C(\nu_A) \left( \prod_{l=1}^{M+1} B(\lambda_l) \right)
+| \Omega \rangle \Big/ \langle \Omega | \Omega \rangle.
+\end{equation}
+Here $\{ \mu_k \}$ and $\{\lambda_l \}$
+are solutions of the Bethe equations respectively.
+
+After some calculations which are a slight modification of \cite{KKS,KS}, 
+we have
+\begin{equation}\label{sumFF}
+\begin{split}
+F_M&= \prod_{k=1}^{M+1} \prod_{l=1}^{M+1} h(\lambda_k, \lambda_l) 
+\prod_{1 \leq k < l \leq M}
+g(\mu_l, \mu_k) \prod_{1 \leq k < l \leq M+1}
+g(\lambda_k, \lambda_l) \cr
+& \qquad \times \prod_{l=1}^M d(\mu_l) \prod_{l=1}^{M+1} d(\lambda_l)
+\left( \sum_{j=1}^{M+1}
+(-1)^{j-1} g(\nu_A, \lambda_j)
+\mathrm{det}_M S^{(j)} \right).
+\end{split}
+\end{equation}
+Here $S^{(j)}$ ($j=1,2,\dots,M+1$) is an $M \times M$ matrix
+obtained by removing $j$-th row from an $(M+1) \times M$ matrix 
+$S$ whose matrix
+elements are defined by
+\begin{equation}
+S_{kl} = t(\lambda_k,\mu_l) 
+\frac{\displaystyle \prod_{m=1}^M h(\lambda_k,\mu_m)}
+{\displaystyle \prod_{m=1}^{M+1} h(\lambda_k,\lambda_m)}
+- t(\mu_k, \lambda_k)
+\frac{\displaystyle \prod_{m=1}^M h(\mu_m,\lambda_k)}
+{\displaystyle \prod_{m=1}^{M+1} h(\lambda_m,\lambda_k)},
+\end{equation}
+($k=1,2,\dots, M+1$, $l=1,2,\dots,M$). 
+Also, $t(\lambda,\mu)= b^2(\lambda,\mu)/c(\lambda,\mu)$
+and $h(\lambda,\mu) = 1/b(\lambda,\mu)$.
+
+In the following, we will show that the sum in the right hand side
+of eq.(\ref{sumFF}) 
+can be rewritten by using a single determinant.
+
+
+By using the Cauchy determinant identity or by evaluating the residues,
+we can prove the following identity:
+\begin{equation}\label{gg}
+\sum_{j=1}^{M+1} g(\eta,\lambda_j) \xi_j
+=\prod_{j=1}^{M+1} g(\eta,\lambda_j)
+\prod_{i=1}^M \frac{1}{g(\eta,\mu_i)},
+\end{equation}
+where
+\begin{equation}
+\xi_k:= \prod_{\stackrel{\scriptstyle l=1}{l \neq k}}^{M+1} g(\lambda_l,\lambda_k)
+\prod_{l=1}^M \frac{1}{g(\mu_l,\lambda_k)}.
+\end{equation}
+ 
+With help of this identity, 
+it is possible to check that the $(M+1)$-dimensional vector $\xi_k$
+is a left null vector of the matrix $S$: 
+$\sum_{k=1}^{M+1} \xi_k S_{kl} = 0$.
+The substitution of $S_{M+1,l}=- \sum_{k=1}^M (\xi_k/\xi_{M+1}) S_{kl}$
+into $\mathrm{det}_M S^{(j)}$ leads to
+\begin{equation}\label{detS}
+(-1)^{j-1} \mathrm{det}_M S^{(j)} 
+= (-1)^M \frac{\xi_j}{\xi_{M+1}} \mathrm{det}_M S^{(M+1)}.
+\end{equation}
+In other words, the combination of 
+$(-1)^{j-1} \mathrm{det}_M S^{(j)}/\xi_j$ is $j$-independent quantity:
+\begin{equation}
+\begin{split}
+& \left( \mathrm{det}_M S^{(1)} \right)/\xi_1
+= -\left( \mathrm{det}_M S^{(2)} \right)/\xi_2
+= \ldots \cr
+& = (-1)^{j-1} \left( \mathrm{det}_M S^{(j)} \right)/\xi_j
+= \ldots 
+= (-1)^M \left( \mathrm{det}_M S^{(M+1)} \right)/\xi_{M+1}.
+\end{split}
+\end{equation}
+
+By virtue of eq.(\ref{detS}) and eq.(\ref{gg}) for $\eta = \nu_A$,
+we have the final result for the form factors:
+\begin{equation}\label{FFF}
+\begin{split}
+& \langle \Omega | \left(
+\prod_{l=1}^M C(\mu_l) \right) D^{-1}(\nu_A) C(\nu_A)
+\left( \prod_{l=1}^{M+1} B(\lambda_l) \right) | \Omega \rangle 
+\Big/ \langle \Omega | \Omega \rangle \cr
+&= (-1)^M \mathrm{det}_M (S_{kl})_{1 \leq k,l \leq M}
+\prod_{l=1}^M d(\mu_l) \prod_{l=1}^{M+1} d(\lambda_l)
+\prod_{k=1}^{M+1} \prod_{l=1}^{M+1} h(\lambda_k, \lambda_l) \cr
+& \qquad \times \prod_{1 \leq k<l \leq M} g(\mu_l, \mu_k)
+\prod_{1 \leq k<l \leq M} g(\lambda_k,\lambda_l) 
+\prod_{l=1}^M g(\mu_l, \lambda_{M+1})
+\frac{\displaystyle \prod_{j=1}^{M+1} g(\nu_A, \lambda_j)}
+{\displaystyle \prod_{i=1}^M g(\nu_A, \mu_i)}.
+\end{split}
+\end{equation}
+Here we have used the relation $\mathrm{det}_M S^{(M+1)}
+= \mathrm{det}_M( S_{kl} )_{1 \leq k,l \leq M}$.
+
+\setcounter{equation}{0}\section{Some properties of $Q_n$ and $P_n$}
+
+In this section, we discuss some properties of the local operators
+$Q_n$ and $P_n$.
+
+For a spectral parameter $\mu$, let us define $\mu^{\vee}:= \mu +i\kappa$
+for the rational case and $\mu^{\vee}:= \mu - i\gamma$ for the
+trigonometric case. Then
+\begin{equation}
+T(\mu) \sigma_2 T^t(\mu^{\vee}) \sigma_2 = \mathrm{det}_q (T(\mu)) I_2.
+\end{equation}
+Here $t$ denotes the transpose for the auxiliary space and
+$\mathrm{det}_q(T(\mu))$ is a central element called 
+\textit{quantum determinant}.
+
+The lemma (\ref{lemma}) can be rewritten as follows:
+\begin{equation}\label{lemma2}
+\begin{split}
+D^{-1}(\mu) C(\mu) B(\lambda)
+&= f(\lambda,\mu) B(\lambda) D^{-1}(\mu) C(\mu) 
+- g(\lambda, \mu) A(\lambda)\cr
+& \qquad + g(\lambda,\mu) D(\lambda) D^{-1}(\mu) D^{-1}(\mu^{\vee})
+\mathrm{det}_q (T(\mu)).
+\end{split}
+\end{equation}
+At $\mu = \nu_A$, the quantum determinant vanishes in the
+module constructed over the reference state. Without loss of
+generality, we can set $\mathrm{det}_q(T(\nu_A))=0$.
+
+The following relation comes from the intertwining property:
+\begin{equation}\label{sublemma}
+D^{-1}(\mu) C(\mu) D(\lambda) = f(\lambda,\mu) D(\lambda) D^{-1}(\mu)
+C(\mu) - g(\lambda,\mu) C(\lambda).
+\end{equation}
+Now let us recall the lattice structure (\ref{latT}) 
+and the definition of the local operator 
+$Q_1 = D^{-1}(\nu_A) C(\nu_A)$. 
+From eqs.(\ref{lemma2}) and (\ref{sublemma}), we immediately have
+\begin{equation}
+Q_1 B(\lambda) = f(\lambda,\nu_A) B(\lambda) Q_1 
+- g(\lambda,\nu_A) A(\lambda),
+\end{equation}
+\begin{equation}
+Q_1 D(\lambda) =  f(\lambda,\nu_A) D(\lambda) Q_1 
+- g(\lambda,\nu_A) C(\lambda).
+\end{equation}
+It turns out that these relations arise as a consequence of
+\begin{equation}
+Q_1 ( L_1(\lambda) )_{i2} = f(\lambda,\nu_A)
+( L_1(\lambda) )_{i2} Q_1 - g(\lambda, \nu_A) ( L_1(\lambda) )_{i1},
+\qquad i=1, 2.
+\end{equation}
+Applying the shift operator to this equation, we have
+\begin{equation}\label{Qn}
+Q_n ( L_n(\lambda) )_{i2} = f(\lambda,\nu_A)
+( L_n(\lambda) )_{i2} Q_n - g(\lambda, \nu_A) ( L_n(\lambda) )_{i1}.
+\end{equation}
+
+Compare to the action of $Q_1=D^{-1}(\nu_A)C(\nu_A)$ on the
+right Bethe states (\ref{DCact}), the action on the left Bethe
+states are complicated. For a spectral parameter $\mu$, 
+let $\mu^{(m)}:= \mu + im \kappa$ for
+LNS model and $\mu^{(m)}:= \mu - i m \gamma$ for LSG model. (Note
+that $\mu^{(1)}=\mu^{\vee}$).  
+From
+\begin{equation}
+\langle \Omega | \prod_{k=1}^M C(\mu_k) D(\lambda) 
+= d^{(M)}(\lambda| \{ \mu_k \} ) \langle \Omega | 
+\prod_{k=1}^M C(\mu_k) 
++ \sum_{j=1}^M c^{(M)}(\lambda|\mu_j| \{ \mu_k \}_{k\neq j})
+\langle \Omega | C(\lambda)
+\prod_{\stackrel{\scriptstyle k=1}{k \neq j}}^M C(\mu_k),
+\end{equation}
+\begin{equation}
+d^{(M)}(\lambda|\{\mu_k\})=d(\lambda) \prod_{k=1}^M
+f(\lambda,\mu_k), \qquad
+c^{(M)}(\lambda|\mu_j|\{\mu_k\}_{k\neq j})
+= d(\mu_j) g(\mu_j,\lambda) 
+\prod_{\stackrel{\scriptstyle k=1}{k \neq j}}^M
+f(\mu_j, \mu_k),
+\end{equation}
+we have
+\begin{equation}
+\begin{split}
+\langle \Omega |
+\left( \prod_{k=1}^M C(\mu_k) \right) D^{-1}(\lambda) 
+&= \left( d^{(M)}(\lambda|\{\mu_k\}) \right)^{-1}
+\langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right) \cr
+&- \sum_{j=1}^M \frac{c^{(M)}(\lambda|\mu_j|\{\mu_k\}_{k\neq j})}
+{ d^{(M)}(\lambda|\{\mu_k \})}
+\langle \Omega | \left( 
+\prod_{\stackrel{\scriptstyle k=1}{k\neq j}}^M
+C(\mu_k) \right) D^{-1}(\lambda^{(-1)}) C(\lambda^{(-1)}).
+\end{split}
+\end{equation}
+Here we have used $C(\lambda) D^{-1}(\lambda) = 
+D^{-1}(\lambda^{(-1)}) C(\lambda^{(-1)})$.
+If we use these relations recursively, we can see that 
+the result of the action of $D^{-1}(\nu_A) C(\nu_A)$ on the
+left Bethe state yields 
+terms which contain operators $C(\nu_A^{(-m)})$ for $m=0,1,\dots,M$.
+
+The origin of these complicated action is
+the following commutation relation
+\begin{equation}
+C(\mu) D^{-1}(\lambda) = 
+c(\lambda,\mu) D^{-1}(\lambda) C(\mu)
++ b(\lambda, \mu) D^{-1}(\lambda) D(\mu) D^{-1}(\lambda^{(-1)})
+C(\lambda^{(-1)})
+\end{equation}
+which can be derived from the intertwining properties.
+ 
+To conclude, the local operator $Q_n$ has nice commutation relations
+with the half of the matrix elements of the infinitesimal monodromy
+matrix.
+
+Similarly, from
+\begin{equation}
+\begin{split}
+C(\lambda) B(\mu) D^{-1}(\mu)
+&= f(\lambda,\mu) B(\mu) D^{-1}(\mu) C(\lambda) - g(\lambda,\mu)
+A(\lambda) \cr
+& \qquad + g(\lambda, \mu) \mathrm{det}_q(T(\mu))
+D^{-1}(\mu^{\vee}) D^{-1}(\mu) D(\lambda),
+\end{split}
+\end{equation}
+\begin{equation}
+D(\lambda) B(\mu) D^{-1}(\mu) = f(\lambda,\mu) B(\mu) 
+D^{-1}(\mu) D(\lambda) - g(\lambda,\mu) B(\lambda),
+\end{equation}
+we can derive the following property of the local operator 
+$P_n = U^n B(\nu_A) D^{-1}(\nu_A) U^{-n}$:
+\begin{equation}\label{Pn}
+( L_n(\lambda) )_{2j} P_n = f(\lambda,\nu_A) P_n (L_n(\lambda))_{2j}
+-g(\lambda, \nu_A) ( L_n(\lambda))_{1j}, \qquad j=1, 2.
+\end{equation}
+The operator $P_N$ acts nicely on the left Bethe states
+and has complicated action on the right Bethe states. 
+
+\setcounter{equation}{0}\section{Lattice Nonlinear Schr\""{o}dinger model}
+
+The Hamiltonian of the quantum nonlinear Schr\""{o}dinger model
+is given by
+\begin{equation}
+H^{(\text{NLS})} = \int dx\left( 
+\frac{\partial \psi^*}{\partial x}
+\frac{\partial \psi}{\partial x}
++ \kappa \psi^* \psi^* \psi \psi \right).
+\end{equation}
+Various types of LNS models have been proposed 
+\cite{TTF,AL,IK,IK2,IK3,BK,KIB,C,KR}.
+
+For simplicity, we use the LNS model of \cite{IK,IK2} as an example.
+Let put the system in a box of length $2L$:
+($-L < x \leq L$), and discretize it to the lattice with $N$-sites:
+$x_n = - L + n\Delta$, ($n= 1, 2, \ldots, N$). Here the lattice
+spacing is given by $\Delta = 2L/N$. The elementary operators for this
+lattice model are constructed from original fields as follows:
+\begin{equation}
+\psi_n = \int_{x_n-\Delta}^{x_n} \psi(x, 0) dx, \qquad
+\psi_n^* = \int_{x_n-\Delta}^{x_n} \psi^*(x,0) dx.
+\end{equation}
+They satisfy the canonical commutation relations:
+${[} \psi_m, \psi^*_n {]} = \Delta \delta_{m,n}$.
+
+The infinitesimal monodromy matrix is given by \cite{IK,IK2}
+\begin{equation}\label{LNSLn}
+L_n(\lambda) = \begin{pmatrix}  1 - i(\lambda/2) \Delta 
++ (\kappa/2) \psi_n^* \psi_n & \ \ &
+\sqrt{\kappa \end{pmatrix} \psi_n^* ( 1 + (\kappa/4) \psi_n^* \psi_n)^{1/2} \cr
+\sqrt{\kappa} (1 + (\kappa/4) \psi_n^* \psi_n)^{1/2} \psi_n & & 
+1 + i(\lambda/2) \Delta +(\kappa/2) \psi_n^* \psi_n }.
+\end{equation}
+For example, at $\lambda = \nu_A:= -2i/\Delta$, the
+infinitesimal monodromy matrix factorizes into
+the quantum projectors: $(L_n(\nu_A))_{ij} = P_i(n) Q_j(n)$ where
+\begin{equation}
+P_1(n) = \sqrt{\kappa/2} \psi_n^*, \qquad
+P_2(n) = \sqrt{2} \left( 1 + (\kappa/4) \psi_n^* \psi_n \right)^{1/2},
+\end{equation}
+\begin{equation}
+Q_1(n) = \sqrt{\kappa/2} \psi_n, \qquad
+Q_2(n) = \sqrt{2} \left( 1 + (\kappa/4) \psi_n^* \psi_n \right)^{1/2}.
+\end{equation}
+Thus, for generic coupling constant $\kappa$,
+\begin{equation}
+w(n+1|n) = 2 \left( 1 + (\kappa/4) \psi_{n+1}^* \psi_{n+1} \right)^{1/2}
+\left( 1 + (\kappa/4) \psi_n^* \psi_n \right)^{1/2}
++ (\kappa/2) \psi_{n+1} \psi_n^*
+\end{equation}
+is an invertible operator. There exists $D^{-1}(\nu_A)$.
+
+The corresponding local operators are
+\begin{equation}\label{LNSQP}
+Q_n = \frac{\sqrt{\kappa}}{2} 
+\left( 1 + (\kappa/4) \psi_n^* \psi_n \right)^{-1/2} \psi_n, \qquad
+P_n = \frac{\sqrt{\kappa}}{2} \psi_n^*
+\left( 1 + (\kappa/4) \psi_n^* \psi_n \right)^{-1/2}.
+\end{equation}
+In the continuum limit $\Delta \rightarrow 0$, they become the
+field operators of the quantum nonlinear Schr\""{o}dinger model:
+\begin{equation}
+Q_n \rightarrow \frac{\sqrt{\kappa}}{2} \Delta \psi(x,0), \qquad
+P_n \rightarrow \frac{\sqrt{\kappa}}{2} \Delta \psi^*(x,0), \qquad
+x = -L + n \Delta,
+\end{equation}
+and the form factors (\ref{FFF}) give consistent results with
+\cite{KS}.
+
+
+\setcounter{equation}{0}\section{Application to the lattice sine-Gordon model}
+
+The Hamiltonian of the quantum sine-Gordon model is given by
+\begin{equation}
+H^{(\text{SG})} = \int dx \left(
+\frac{1}{2} \pi^2 
++ \frac{1}{2} \left(\frac{\partial u}{\partial x} \right)^2 
++ \frac{m^2}{\beta^2}
+\left( 1- \cos \beta u \right) \right).
+\end{equation}
+The infinitesimal monodromy matrix is given by \cite{IK4,IK5,IK2}
+\begin{equation}
+L_n(\lambda) = \begin{pmatrix} 
+\pi_n^{-1/2 \end{pmatrix} \varphi(u_n) \pi_n^{-1/2} & \ & 
+-i(m\Delta/2)\sin((\beta/2) u_n + i\lambda) \cr
+-i(m\Delta/2)\sin((\beta/2) u_n - i\lambda) & & 
+\pi_n^{1/2} \varphi(u_n) \pi_n^{-1/2} },
+\end{equation}
+\begin{equation}
+\pi_n = \exp\left( \frac{i}{4} \beta p_n \right), \qquad
+\varphi(u_n) = \left( 1 + 2r \cos \beta u_n \right)^{1/2}, \qquad
+r = \left( \frac{m\Delta}{4} \right)^2.
+\end{equation}
+Here $\gamma = \beta^2/8$ and
+the lattice operators $u_n$ and $p_n$ ($n=1,2,\dots, N$)
+satisfy the canonical 
+commutation relations:
+${[} u_n, p_m {]} = i \delta_{nm}$.
+In the continuum limit $\Delta \rightarrow 0$,
+$u_n \rightarrow u(x)$, 
+$p_n \rightarrow \pi(x) \Delta$,
+($-L < x=-L + n\Delta \leq L$). 
+
+In order to construct the reference
+state $|\Omega \rangle$, the elementary monodromy matrix
+should be taken as a composite of the infinitesimal monodromy matrices of
+two-adjacent sites \cite{STF}:
+\begin{equation}
+\mathcal{L}_k(\lambda) = L_{2k}(\lambda) L_{2k-1}(\lambda),
+\qquad k=1,2,\ldots, N/2.
+\end{equation}
+Here we assume the number of sites $N$ is even.
+Then
+\begin{equation}
+( \mathcal{L}_k(\lambda) )_{11} | \Omega \rangle = a_1(\lambda)
+| \Omega \rangle, \qquad
+( \mathcal{L}_k(\lambda) )_{22} | \Omega \rangle = d_1(\lambda)
+| \Omega \rangle,
+\end{equation}
+\begin{equation}
+a_1(\lambda) = 1 + 2r\cosh(2\lambda-i\gamma), \qquad
+d_1(\lambda) = 1 + 2r\cosh(2\lambda+i\gamma).
+\end{equation}
+
+Thus, the shift operator is defined by
+\begin{equation}
+U \mathcal{L}_k U^{-1} = \mathcal{L}_{k+1}, \qquad
+U | \Omega \rangle = | \Omega \rangle.
+\end{equation}
+In other words, 
+it acts as two-site shift for the local variables:
+$U u_n U^{-1} = u_{n+2}$,
+$U p_n U^{-1} = p_{n+2}$. 
+In general, the periodic boundary condition
+has the form: $u_{n+N} = u_n + (2\pi/\beta) \mathcal{Q}$,
+$p_{n+N} = p_n$ where $\mathcal{Q}$ is the topological 
+charge. In this paper, we only consider 
+the sector with $\mathcal{Q}=0$ for simplicity.
+ 
+Let us introduce a positive ``momentum cutoff'' parameter $\Lambda$ by
+$2r \cosh \Lambda =1$. 
+
+At $\lambda = \nu_A^{(\epsilon,\epsilon')}
+:=(1/2)(i \gamma + \epsilon \Lambda + i \epsilon' \pi)$, 
+$(\epsilon, \epsilon' = \pm 1)$, $a_1(\lambda)$ vanishes
+and the infinitesimal monodromy matrix factorizes 
+into the quantum projectors:
+\begin{equation}
+\left( L_n(\nu_A^{(\epsilon,\epsilon')}) \right)_{ij}
+= P^{(\epsilon,\epsilon')}_i(n) Q^{(\epsilon,\epsilon')}_j(n).
+\end{equation}
+These quantum projectors are proportional to
+unitary operators. From 
+$(\mathcal{L}_k(\lambda))_{21} | \Omega \rangle =0$, 
+we can see that the operator
+\begin{equation}
+w^{(\epsilon,\epsilon')}(2k|2k-1) 
+= \sum_{i=1}^2 Q_i^{(\epsilon,\epsilon')}(2k) 
+P_i^{(\epsilon,\epsilon')} (2k-1)
+\end{equation}
+has a zero eigenvalue. So, $w^{(\epsilon,\epsilon')}(2k|2k-1)$
+is not invertible and consequently, $D(\nu_A^{(\epsilon, \epsilon')})$
+is also not invertible. The assumption in section 3 that
+$D(\nu_A)$ has the inverse does not hold.
+We should modify the argument of section 3.
+
+Although $D^{-1}(\nu_A^{(\epsilon, \epsilon')})$ does not exist,
+we can define the following unitary operators:
+\begin{equation}
+P_n^{(\epsilon)}:= \epsilon' P_1^{(\epsilon,\epsilon')}(n)
+\left( P_2^{(\epsilon,\epsilon')}(n) \right)^{-1}, \qquad
+Q_n^{(\epsilon)}:= 
+\epsilon' \left( Q_2^{(\epsilon,\epsilon')}(n) \right)^{-1}
+Q_1^{(\epsilon,\epsilon')}(n).
+\end{equation}
+The left hand sides of the above equations do not
+depend on a choice of $\epsilon'=\pm 1$. Without loss of
+generality, we set $\epsilon'=1$. Let $\nu_A^{(\epsilon)}:=
+\nu_A^{(\epsilon,+1)}$.
+
+Let us introduce the following unitary operators:
+\begin{equation}\label{On}
+\mathcal{O}_n^{(\epsilon)}:=
+\pi_{n}^{-1/2}
+\left[ \frac{\cos (1/2)(\beta u_n - i \epsilon \Lambda)}
+{\cos(1/2) (\beta u_n + i \epsilon \Lambda)} \right]^{1/2}
+\pi_{n}^{-1/2}, \qquad \epsilon = \pm 1.
+\end{equation}
+Then $P_n^{(\epsilon)} = i \mathcal{O}_n^{(-\epsilon)}$
+and $Q_n^{(\epsilon)} = -i \mathcal{O}_n^{(\epsilon)}$.
+
+By using the explicit expressions, we can check that
+these operators satisfy eqs.(\ref{Qn}) and (\ref{Pn}).
+
+Therefore, in place of $D^{-1}(\nu_A) C(\nu_A)$, 
+we can use the well-defined operator $Q_1^{(\epsilon)}$. 
+Because the unitary operator $Q_1^{(\epsilon)}$ does not annihilate 
+the reference state, the action of $Q_1^{(\epsilon)}$ 
+on the Bethe state has an ``anomalous'' term:
+\begin{equation}
+\begin{split}
+Q_1^{(\epsilon)} \prod_{l=1}^{M+1} B(\lambda_l) | \Omega \rangle
+&= \sum_{j=1}^{M+1} b^{(M+1)}(\nu_A^{(\epsilon)}| \lambda_j
+| \{ \lambda_l \}_{l\neq j} ) 
+\prod_{\stackrel{\scriptstyle l=1}{l\neq j}}^{M+1} B(\lambda_l) 
+| \Omega \rangle \cr
+& \qquad + \left( \prod_{k=1}^{M+1} f(\lambda_k, \nu_A^{(\epsilon)}) \right)
+\left( \prod_{l=1}^{M+1} B(\lambda_l) \right) Q_1^{(\epsilon)}
+| \Omega \rangle.
+\end{split}
+\end{equation}
+But because of
+\begin{equation}
+\langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right)
+\left( \prod_{l=1}^{M+1} B(\lambda_l) \right) =0,
+\end{equation}
+the anomalous term gives no contribution
+to the form factors
+\begin{equation}
+\langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right)
+Q_1^{(\epsilon)} \left( \prod_{l=1}^{M+1} B(\lambda_l) \right)
+| \Omega \rangle.
+\end{equation}
+The formula (\ref{FFF}) gives the correct result even for
+$Q_1^{(\epsilon)}$.
+
+It may seem that the anomalous term would contribute to
+the form factors for the same numbers of $C(\mu)$ and $B(\lambda)$. 
+If we recall
+\begin{equation}
+\langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right)
+\left( \prod_{l=1}^{M} B(\lambda_l) \right) =
+\mathcal{N}^{(M)}(\{\lambda_l \}) \delta_{\{\mu_k\}, \{\lambda_l\}}
+\langle \Omega |,
+\end{equation}
+where $\mathcal{N}^{(M)}(\{\lambda_l \})$ is 
+the norm of the Bethe eigenstate: 
+\begin{equation}
+\mathcal{N}^{(M)}(\{\lambda_l \})=
+\langle \Omega | \left( \prod_{k=1}^M C(\lambda_k) \right)
+\left( \prod_{l=1}^{M} B(\lambda_l) \right) | \Omega \rangle \Big/ 
+\langle \Omega | \Omega \rangle,
+\end{equation}
+(for the explicit form, see \cite{K,Slav}),
+then 
+\begin{equation}
+\begin{split}
+& \langle \Omega | \left( \prod_{k=1}^M C(\mu_k) \right)
+Q_1^{(\epsilon)} \left( \prod_{l=1}^M B(\lambda_l) \right)
+| \Omega \rangle  \cr 
+&= \delta_{\{\mu_k\}, \{\lambda_l\}}
+\mathcal{N}^{(M)}(\{\lambda_l \})
+\left( \prod_{l=1}^M f(\lambda_l, \nu_A^{(\epsilon)}) \right) 
+\langle \Omega | Q_1^{(\epsilon)} | \Omega \rangle =0.
+\end{split}
+\end{equation} 
+$\langle \Omega | Q_1^{(\epsilon)} | \Omega \rangle$ vanishes
+due to the factor $\exp(-i(\beta/4) p_1)$ in $Q_1^{(\epsilon)}$.
+
+We conclude that although $D^{-1}(\nu_A^{(\epsilon)})$
+does not exist, the result of section 3 is still correct for the
+LSG model. Thus, as a mnemonic, we can write:
+\begin{equation}
+Q_1^{(\epsilon)} = D^{-1}(\nu_A^{(\epsilon)}) C(\nu_A^{(\epsilon)}).
+\end{equation}
+By means of this mnemonic, 
+we can make clear that the operators (\ref{On}) have 
+different character depending on whether $n$ is even or not:
+\begin{equation}
+\mathcal{O}_{2k}^{(\epsilon)}
+= - i  U^k B(\nu_A^{(-\epsilon)})
+D^{-1}(\nu_A^{(-\epsilon)}) U^{-k}, \qquad
+\mathcal{O}_{2k+1}^{(\epsilon)}
+= i  U^k 
+D^{-1}(\nu_A^{(\epsilon)}) 
+C(\nu_A^{(\epsilon)})
+U^{-k}.
+\end{equation}
+The operators at even sites (resp. odd sites) 
+are creation-type (resp. annihilation-type) operators.
+
+
+\setcounter{equation}{0}\section{Discussion}
+
+In this paper, we showed that a certain class of local 
+operators can be constructed by using the quantum projectors.
+The form factors of
+these operators were calculated by using the techniques
+of the algebraic Bethe ansatz.
+
+For LNS model, these local operators (\ref{LNSQP}) are
+lattice analogues of the continuum nonlinear Schr\""{o}dinger
+fields $\psi(x)$ and $\psi^*(x)$. Because the inputs
+are the elementary monodromy matrix $L_n(\lambda)$ (\ref{LNSLn}),
+the ``dressing'' of the output
+by a factor $(1 +(\kappa/4) \psi^*_n \psi_n)^{-1/2}$
+seems unavoidable if one try to keep simplicity of the
+inverse mapping.
+
+For LSG model, we considered the local operators 
+$\mathcal{O}_n^{(\epsilon)}$ in the sector of the zero topological 
+charge $\mathcal{Q}$. Consideration for the sector $\mathcal{Q} \neq 0$ 
+is necessary.
+Moreover, in order to make connection with the quantum sine-Gordon model,
+we should consider the thermodynamic limit.
+Notice that
+\begin{equation}
+\lim_{\Delta \rightarrow 0}
+e^{i\epsilon \gamma}
+\mathcal{O}_n^{(\epsilon)}
+\left( \mathcal{O}_n^{(-\epsilon)} \right)^{-1}
+=
+\lim_{\Delta \rightarrow 0}
+e^{-i\epsilon \gamma}\left( \mathcal{O}_n^{(-\epsilon)} \right)^{-1}
+\mathcal{O}_n^{(\epsilon)}
+= e^{i \epsilon \beta u(x)}.
+\end{equation}
+Therefore, in principle, the form factors of the exponential
+operators $e^{\pm i\beta u(x)}$ can be 
+evaluated using those of $\mathcal{O}_n^{(\epsilon)}$.
+Also, the results may be used to consider the form factors
+in the finite volume.
+
+%%%%%%%%%%%%%%%%%%%  Acknowledgements %%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1cm}
+
+{\bf Acknowledgments}\\
+The author would like to thank M. Bellacosa and F. Ravanini 
+for helpful discussions and INFN for financial support.
+This work is partially supported by the EU network EUCLID, 
+no. HPRN-CT-2002-00325.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+\bibitem{SF}
+E. K. Sklyanin and L. D. Faddeev,
+Dokl. Akad. Nauk SSSR {\bf 243} (1978) 1430,
+Sov. Phys. Dokl. {\bf 23} (1978) 902.
+
+\bibitem{STF}
+E. K. Sklyanin, L. A. Takhtadzhyan and L. D. Faddeev,
+Teor. Mat. Fiz. {\bf 40} (1979) 194,
+Theor. Math. Phys. {\bf 40} (1980) 688.
+
+\bibitem{Sk}
+E. K. Sklyanin,
+Zap. Nauchn. Semin. LOMI {\bf 95} (1980) 55,
+J. Sov. Math. {\bf 19} (1982) 1546.
+
+\bibitem{TF2}
+L. A. Takhtajan and L. D. Faddeev,
+Usp. Mat. Nauk. {\bf 34} (1979) 13,
+Russ. Math. Surveys {\bf 34} (1979) 11.
+
+\bibitem{F}
+L. D. Faddeev,
+Sov. Sci. Rev. Math. Phys. {\bf C1} (1981) 107.
+
+\bibitem{MS}
+J. M. Maillet and J. Sanchez de Santos,
+``Drinfel'd Twists and Algebraic Bethe Ansatz'',
+q-alg/9612012.
+
+\bibitem{MT}
+J. M. Maillet and V. Terras,
+Nucl. Phys. {\bf 575} (2000) 627,
+hep-th/9911030.
+
+\bibitem{KMT}
+N. Kitanine, J. M. Maillet and V. Terras,
+Nucl. Phys. {\bf B554} (1999) 647,
+math-ph/9807020.
+
+\bibitem{KMST}
+N. Kitanine, J. M. Maillet, N. A. Slavnov and V. Terras,
+Nucl. Phys. {\bf B641} (2002) 487,
+hep-th/0201045.
+
+\bibitem{KMST2}
+N. Kitanine, J. M. Maillet, N. A. Slavnov and V. Terras,
+Nucl. Phys. {\bf B642} (2002) 433,
+hep-th/0203169.
+
+\bibitem{TTF}
+V. O. Tarasov, L. A. Takhtadzhyan and L. D. Faddeev,
+Teor. Mat. Fiz. {\bf 57} (1983) 163,
+Theor. Math. Phys. {\bf 57} (1984) 1059.
+
+\bibitem{AL}
+M. J. Ablowitz and J. F. Ladik,
+Stud. Appl. Math. {\bf 55} (1976) 213.
+
+\bibitem{IK}
+A. G. Izergin and V. E. Korepin,
+Dokl. Akad. Nauk SSSR {\bf 259} (1981) 76,
+Sov. Phys. Dokl. {\bf 26} (1981) 653.
+
+\bibitem{IK2}
+A. G. Izergin and V. E. Korepin,
+Nucl. Phys. {\bf B205} (1982) 401.
+
+\bibitem{IK3}
+A. G. Izergin and V. E. Korepin,
+Lett. Math. Phys. {\bf 8} (1984) 259.
+
+\bibitem{BK}
+N. M. Bogolyubov and V. E. Korepin,
+Theor. Mat. Phys. {\bf 66} (1986) 455,
+Theor. Math. Phys. {\bf 66} (1986) 300.
+
+\bibitem{KIB}
+V. E. Korepin, N. M. Bogoliubov and A. G. Izergin,
+``Quantum Inverse Scattering Method and
+Correlation Functions'',
+Cambridge Univ. Press (1993).
+
+\bibitem{C}
+D. A. Coker,
+Int. J. Mod. Phys. {\bf B6} (1992) 2893.
+
+\bibitem{KR}
+A. Kundu and O. Ragnisco,
+J. Phys. {\bf A27} (1994) 6335,
+hep-th/9401066.
+
+\bibitem{IK4}
+A. G. Izergin and V. E. Korepin,
+Vestn. Leningr. Univ. {\bf 22} (1981) 84.
+
+\bibitem{IK5}
+A. G. Izergin and V. E. Korepin,
+Lett. Math. Phys. {\bf 5} (1981) 199.
+
+\bibitem{S}
+F. A. Smirnov,
+``Form factors in completely integrable models of 
+quantum field theory'', World Scientific (1992).
+
+\bibitem{S1}
+F. A. Smirnov,
+Dokl. Akad. Nauk SSSR {\bf 262} (1982) 78,
+Sov. Phys. Dokl. {\bf 27} (1982) 34.
+
+\bibitem{S2}
+F. A. Smirnov,
+Teor. Mat. Fiz. {\bf 60} (1984) 356,
+Theor. Math. Phys. {\bf 60} (1985) 871.
+
+\bibitem{TW}
+H. B. Thacker, D. Wilkinson,
+Phys. Rev. {\bf D19} (1979) 3660.
+
+\bibitem{CTW}
+D. B. Cremmer, H. B. Thacker and D. Wilkinson,
+Phys. Rev. {\bf D21} (1980) 1523.
+
+\bibitem{HWW}
+J. Honerkamp, P. Weber and A. Wiesler,
+Nucl. Phys. {\bf B152} (1979) 266.
+
+\bibitem{Th}
+H. B. Thacker,
+in Lecture Notes in Physics {\bf 151}, Springer-Verlag (1982).
+
+\bibitem{IKR}
+A. G. Izergin, V. E. Korepin and N. Yu. Reshetikin,
+J. Phys. {\bf A20} (1987) 4799.
+
+\bibitem{KKS}
+T. Kojima, V. E. Korepin and N. A. Slavnov,
+Commun. Math. Phys. {\bf 188} (1997) 657,
+hep-th/9611216.
+
+\bibitem{KS}
+V. E. Korepin and N. A. Slavnov,
+Int. J. Mod. Phys. {\bf B13} (1999) 2933,
+math-ph/9812026. 
+
+\bibitem{K}
+V. E. Korepin,
+Commun. Math. Phys. {\bf 86} (1982) 391.
+
+\bibitem{Slav}
+N. A. Slavnov,
+Teor. Mat. Fiz. {\bf 79} (1989) 232,
+Theor. Math. Phys. {\bf 79} (1989) 502.
+   
+\end{thebibliography}
+
+\end{document}"
+12,\cite{I
+13,\cite{K
+14,\cite{K
+15,\cite{T
+16,\cite{I
+17,\cite{I
+18,\cite{K
+19,\cite{I
+20,\cite{S
+21,\cite{K

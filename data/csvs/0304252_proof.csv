@@ -1,0 +1,152 @@
+,proof
+0,"\begin{proof} 
+  Let $X\in\CX(\S)$ be a point in the image of $\CX$. We first assume
+  that $X$ is a regular point of the foliation of $M$ into symplectic
+  leaves, i.e.\ that $X$ lying in a symplectic leaf $L$ has a
+  neighborhood $\CU$ homeomorphic to $(\CU\cap L)_X\times\dR^k$ with
+  $k=\dim\mathop{\mathrm{ker}}\CP(X)$ where $(\CU\cap L)_X$ denotes the connected
+  component of $\CU\cap L$ containing $X$ (only in the case of a leaf
+  $L$ which lies densely in a part of $M$ do we have $(\CU\cap
+  L)_X\not=\CU\cap L$ for all $\CU$).  After choosing local
+  coordinates in $\CU$ adapted to the decomposition into $\CU\cap L$
+  and $\mathop{\mathrm{ker}}\CP\cong\dR^k$, it is immediate to see that the components
+  of $\CX$ along $\mathop{\mathrm{ker}}\CP$ have to be constant in $\CU$ owing to Eq.\
+  (\ref{eqs1}). Therefore, the image of $\CX$ lies in $L$ in a
+  neighborhood of any regular point and the first assertion follows
+  for the case of a regular foliation of $M$.
+  
+  In general, however, $M$ is not foliated regularly into symplectic
+  leaves, meaning that there are also lower dimensional leaves which
+  then lie in the boundary of a higher dimensional one. For $X$ lying
+  in a lower dimensional leaf $L\subset\partial L'$, where $L'$ is a
+  higher dimensional one, the above reasoning shows that all
+  derivatives of components of adapted coordinates ``normal'' to $L$
+  have to vanish. But this information alone is not sufficient to
+  ensure that the image of $\CX$ lies entirely in $L$, for there are
+  directions normal to $L$ but tangential to $L'$ leading to
+  derivatives of $\CX$ which have to vanish only in $L$, not in
+  $L'$. It is then possible to construct smooth maps $\CX\colon \S\to
+  M$ which connect $L'$ with $L$. Using the complete field equations
+  (\ref{eqs1}) for $\CX$, however, we can exclude such maps thanks to
+  the uniqueness theorem for solutions of first order differential
+  equations: Suppose there is a solution $\CX$ of (\ref{eqs1})
+  connecting $L'$ with $L$ and a corresponding smooth solution $A$ of
+  (\ref{eqs2}).  We can then find a smooth path $c$ of finite
+  parameter length in $\S$ such that the interior of $\CX(c)$ lies in
+  $L'$ and its endpoint in $L$. Eq.\ (\ref{eqs1}) then implies that
+  the restriction of $\CX$ to $c$ is the integral curve of a smooth
+  vector field (determined by $A$) vanishing at the endpoint of
+  $\CX(c)$. The existence of such an integral curve reaching the
+  singularity of the smooth vector field in a finite parameter
+  distance is a contradiction.  This proves our first assertion in the
+  general case.
+
+  Using again local coordinates adapted to the foliation, it is
+  easy to see that the gauge transformations (\ref{symmetries}) are
+  infinitesimal homotopies of the map $\CX\colon \S\to M$, immediately
+  leading to the second assertion.
+\"
+1,"\begin{proof} 
+ Let $A$ be a solution to the equations (\ref{eqs1}) and (\ref{eqs2})
+ and $\wtO$ be a presymplectic form compatible with $\CP$. We first
+ introduce coordinates $(X^{\alpha},X^I)$ on the neighborhood $U$ of
+ $L$ in $M$ adapted to the foliation such that the $X^{\alpha}$
+ coordinatize a leaf $L$ and the $X^I$ are transversal, and show that
+ in these coordinates $\underline{i}\in (\alpha,I)$
+\begin{equation}\label{dA}
+ \mathrm{d}(A_{\underline{i}}+\CX^\ast(\partial_{\underline{i}}\lrcorner\wtO))=0\,.  
+\end{equation} 
+ Using that $\wtO$ is compatible with $\CP$, Eq.\
+ (\ref{eqs1}) immediately implies \begin{equation}\label{Aalpha}
+ A_{\alpha}=-\wtO_{\alpha\beta}\mathrm{d}
+ X^{\beta}=-\CX^{\ast}(\partial_{\alpha}\lrcorner\wtO) \end{equation}
+ which shows (\ref{dA}) for tangential components.
+
+ For transversal components, Eq.\ (\ref{eqs2}) with the expression for
+ $A_{\alpha}$ leads to 
+\[ 
+ \mathrm{d} A_I+ \CP^{\alpha\beta}{},_{I}
+ \wtO_{\gamma\alpha} \wtO_{\delta\beta} \mathrm{d} X^{\gamma}\mathrm{d} X^{\delta}=0
+\] 
+ where tangential components of the matrix $-\wtO\CP,_{I}\wtO$ appear.
+ Owing to compatibility of $\wtO$, which for tangential components
+ implies inverseness $(\CP\wtO)^\alpha_\beta= \delta^\alpha_\beta=
+ (\wtO\CP)^\alpha_\beta$, as well as adaptedness of the coordinates,
+ which implies $\CP^{\alpha I}=0=\CP^{IJ}$, the tangential components
+ fulfill the equation $(\wtO\CP\wtO)_{\alpha\beta}=
+ \wtO_{\alpha\beta}$. Taking a derivative with respect to $X^I$ yields
+ $-(\wtO\CP,_{I}\wtO)_{\alpha\beta}= \wtO_{\alpha\beta,I}$ and thus
+\[
+ \mathrm{d} A_I+ \wtO_{\gamma\delta,I}\mathrm{d} X^{\gamma}\mathrm{d} X^{\delta}=0\,.  
+\]
+ Note that when we take the derivative, we need $\wtO$ to be compatible
+ with $\CP$ in a whole neighborhood of the leaf and not just on the
+ leaf itself. Using that the second term
+ is nothing but the Lie derivative of $\wtO$ with respect to
+ $\partial_I$ and that $\wtO$ is closed, we can reexpress this term as
+ $\mathrm{d}\partial_I\lrcorner\wtO$. This proves Eq.\ (\ref{dA}) for all
+ adapted coordinates.
+
+ It now follows directly from \re{dA}) that
+\[
+ A_{\underline{i}}= -\CX^\ast(\partial_{\underline{i}}\lrcorner\wtO)+
+ \alpha_{\underline{i}}
+\] 
+ for a set of closed 1-forms $\alpha_{\underline{i}}$ on
+ $\S$. According to Eq.\ \re{Aalpha}) these 1-forms have to vanish for
+ components of $A$ tangential to $L$. This then establishes Eq.\
+ \re{solu}) as a necessary condition for the solutions
+ $A_{\underline{i}}$ and also for $A_i$ in arbitrary coordinates since
+ Eq.~(\ref{solu}) as well as Eqs.\ (\ref{eqs1}), (\ref{eqs2}) are
+ target-space covariant.
+
+  Sufficiency follows from the equivalence of Eqs.\ (\ref{eqs1}),
+  (\ref{eqs2}) with (\ref{Aalpha}), (\ref{dA}) and the restriction on
+  $X(x)$ found in Theorem \ref{sol1}.
+
+  Eq.\ \re{solu}) is already covariant with respect to the gauge
+  transformations of Theorem \ref{sol1} (a change of $X^\alpha(x)$
+  induces the corresponding change of $A_\a$ according to this
+  equation, which reduces to Eq.\ (\ref{Aalpha})). As seen best in
+  adapted coordinates, independently of those transformations, the
+  gauge transformations (\ref{symmetries}) allow us to change the
+  transversal components $A_I$ by adding exact 1-forms (analogously to
+  the discussion in Sec.\ \ref{Trivial}).  Thus, for a fixed map
+  $\CX$, gauge equivalence classes of solutions are given by the
+  cohomology classes $H^1(\S)$ of $\alpha_I$.  This demonstrates the
+  last assertion of the Theorem.
+\"
+2,"\begin{proof}
+ For any cotangent vector $\omega\in T^*_XM$ the vector
+ $v:=\CP^{\#}(\omega)$ is tangential to $L$ such that
+ $\CP(\alpha,\omega)=\alpha(v)=0$ for all $\omega\in T_X^*M$ proving
+ that $\mathfrak{a}_X$ is contained in the kernel of $\CP$. Equality of the
+ vector spaces then follows from a dimensional argument.
+\"
+3,"\begin{proof}
+ As a subspace of the cotangent bundle of $\mathfrak{g}^*$, $\mathfrak{a}_X$ is
+ naturally identified with a subspace of
+ $\mathfrak{g}^{**}\equiv\mathfrak{g}$. Furthermore, it follows from the definition
+ that $\mathfrak{a}_X$ is also a subalgebra of $\mathfrak{g}$: if $\alpha=\mathrm{d}
+ f_X=f,_{i}\mathrm{d} X^i$ and $\beta=\mathrm{d} g_X=g,_{i}\mathrm{d} X^i$ are in the
+ kernel of $\CP_X^{\sharp}$, we have
+\[
+ \mathrm{d} \{f,g\}=\mathrm{d} (f^{ij}{}_{k}X^kf,_{i}g,_{j})=
+ f^{ij}{}_kf,_{i}g,_{j}\mathrm{d} X^k
+\]
+ which implies
+\[
+ [\alpha,\beta]_X=\mathrm{d}\{f,g\}=f^{ij}{}_k \alpha_i\beta_j\mathrm{d} X^k\equiv
+ [\alpha,\beta]_{\mathfrak{g}}
+\]
+ where the last bracket denotes the usual bracket in the Lie algebra
+ $\mathfrak{g}$ and $\mathrm{d} X^k$ are identified with the generators of
+ $\mathfrak{g}^{**}\equiv\mathfrak{g}$.
+
+ The condition for $\mathfrak{a}_X$ of Lemma \ref{PoissKern} now reads
+\[
+ \CP_X(\alpha,\omega)=X([\alpha,\omega]_{\mathfrak{g}})=({\rm
+ coad}_{\alpha}X)(\omega)=0
+\]
+ for all $\omega\in\mathfrak{g}$ which concludes the proof.
+\"

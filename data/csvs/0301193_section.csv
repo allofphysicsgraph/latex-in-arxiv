@@ -1,0 +1,399 @@
+,section
+0,\section{Introduction}
+1,\section{Preliminaries}
+2,"\section{Clebsch-Gordan coefficients and Racah-Wigner symbol for a
+continuous series of representations of $\uq$ \cite{PT1,PT2}}"
+3,\section{Application: Boundary three point function \cite{PT3}}
+4,"\section*{Acknowledgements}
+The author gives heartfelt thanks to the organizers of the conference, in
+particular to Sasha Belavin, for the invitation to participate.  A.~Butscher
+is acknowledged for improving the English of this manuscript.
+
+
+
+
+\appendix
+
+\section*{Appendix A. Some
+residues of the Liouville fusion matrix}
+
+It is well known that in the case where one of $\al_1,
+\dots,\al_4$, say $\al_i$ equals $-\frac{n}{2}b-\frac{m}{2}b^{-1}$
+where $n,m \in \mathbb{N}$ and where
+a triple $(\Delta_{\al_4},\Delta_{\al_3},\Delta_{\al_{21}})$, $(\Delta_{\al_{21}},\Delta_{\al_2},\Delta_{\al_{1}})$
+ which contains $\Delta_{\al_i}$ satisfies the fusion rules of \cite{BPZ,FF},
+ one will find that the fusion coefficients that multiply the conformal blocks are residues of the
+  general fusion coefficient.\\
+In the case where $\al_2=-\frac{1}{2}b$, the fusion rules are:
+$$\left\lbrace
+\begin{array}{l}
+\alpha_{21} = \alpha_{1} -s\frac{b}{2} \, ,\\
+\alpha_{32} = \alpha_{3} -s'\frac{b}{2} \, , \quad s,s' =\pm \; .\\
+\end{array}\right.$$
+There are four entries for the fusion matrix in this special case
+$$
+\fus{\al_1}{-b/2}{\al_3}{\al_4}{\al_1-sb/2,}{\al_3-s'b/2} \equiv
+F^{L}_{s,s'}
+$$
+which expressions are well known to be:
+\begin{eqnarray}
+F_{++}&=&\frac{\Gamma(b(2\al_1-b))\Gamma(b(b-2\al_3)+1)}
+{\Gamma(b(\al_1-\al_3-\al_4+b/2)+1)\Gamma(b(\al_1-\al_3+\al_4-b/2))} \nonumber \\
+F_{+-}&=& \frac{\Gamma(b(2\al_1-b))\Gamma(b(2\al_3-b)-1)}
+{\Gamma(b(\al_1+\al_3+\al_4-3b/2)-1)\Gamma(b(\al_1+\al_3-\al_4-b/2))} \nonumber \\
+F_{-+}&=&\frac{\Gamma(2-b(2\al_1-b))\Gamma(b(b-2\al_3)+1)}
+{\Gamma(2-b(\al_1+\al_3+\al_4-3b/2))\Gamma(1-b(\al_1+\al_3-\al_4-b/2))} \nonumber \\
+F_{--}&=& \frac{\Gamma(2-b(2\al_1-b))\Gamma(b(2\al_3-b)-1)}
+{\Gamma(b(-\al_1+\al_3+\al_4-b/2))\Gamma(b(-\al_1+\al_3-\al_4+b/2)+1)} \nonumber \\
+\label{f1/2} \nonumber
+\end{eqnarray}
+The dual case where $\al_2=-b^{-1}/2$ is obtained by substituting
+$b$ by $b^{-1}$.
+
+\section*{Appendix B. Special functions}
+\begin{itemize}
+\item{$\Ga(x)$ function}\\
+The Double Gamma function introduced by Barnes \cite{Barnes} is
+defined by:
+\begin{eqnarray}
+\nonumber \\
+&&
+\text{log}\Gamma_{2}(s|\omega_1,\omega_2)=\left(\frac{\partial}{\partial
+t}
+\sum_{n_1,n_2=0}^{\infty}(s+n_1\omega_1+n_2\omega_2)^{-t}\right)_{t=0}
+\nonumber
+\end{eqnarray}
+Definition: $\Gamma_b(x) \equiv \frac{\Gamma_2(x|b,b^{-1})}{\Gamma_2(Q/2|b,b^{-1})}$.\\
+Functional relations:
+\begin{eqnarray}
+\nonumber \\
+&&\Ga(x+b)= \frac{\sqrt{2\pi}b^{bx-\frac{1}{2}}}{\Gamma(bx)}\Ga(x), \nonumber \\
+&&\Ga(x+1/b)=
+\frac{\sqrt{2\pi}b^{-\frac{x}{b}+\frac{1}{2}}}{\Gamma(x/b)}\Ga(x).
+\nonumber
+\end{eqnarray}
+$\Ga(x)$ is a meromorphic function of $x$, whose poles are located
+at
+$x=-nb-mb^{-1}, n,m \in \mathbb{N}$.\\
+Integral representation convergent for $0<\mathrm{Re}x$
+\begin{eqnarray}
+&&\text{log}\Ga(x)=\int_{0}^{\infty}\frac{dt}{t}\left\lbrack\frac{e^{-xt}-e^{-Qt/2}}{(1-e^{-bt})(1-e^{-t/b})}
+-\frac{(Q/2-x)^{2}}{2}e^{-t}-\frac{Q/2-x}{t}\right\rbrack\nonumber
+\end{eqnarray}
+\item{$S_b(x)$ function}\\
+Definition: $S_b(x)\equiv \frac{\Ga(x)}{\Ga(Q-x)}$ \nonumber\\
+Functional relations:
+\begin{eqnarray}
+&& S_b(x+b) = 2\text{sin}(\pi bx)S_b(x),  \nonumber \\
+&& S_b(x+1/b) = 2\text{sin}(\pi x/b)S_b(x). \nonumber
+\end{eqnarray}
+$S_b(x)$ is a meromorphic function of $x$, whose poles are located
+at $x=-nb-mb^{-1}, n,m \in \mathbb{N}$,
+and whose zeros are located at $x=Q+nb+mb^{-1}, n,m \in \mathbb{N}$.\\
+Integral representation convergent in the strip $0<\mathrm{Re}x<Q$
+\begin{eqnarray}
+&&\text{log}S_b(x)=\int_{0}^{\infty}\frac{dt}{t}\left\lbrack\frac{\text{sinh}(\frac{Q}{2}-x)t}
+{2\text{sinh}(\frac{bt}{2})\text{sinh}(\frac{t}{2b})}-
+\frac{(Q-2x)}{t}\right\rbrack\nonumber
+\end{eqnarray}
+\item{$\up(x)$ function}\\
+Definition: $\up(x)^{-1} \equiv \Ga(x)\Ga(Q-x)$ \nonumber \\
+Functional relations:
+\begin{eqnarray}
+&&\up(x+b)=\frac{\Gamma(bx)}{\Gamma(1-bx)}b^{1-2bx}\up(x),\nonumber \\
+&&\up(x+1/b)=\frac{\Gamma(x/b)}{\Gamma(1-x/b)}b^{2x/b-1}\up(x).
+\nonumber
+\end{eqnarray}
+$\up(x)$ is an entire function of $x$ whose zeros are located at $x=-nb-mb^{-1}$ and $x=Q+nb+mb^{-1}$,
+ $n,m \in \mathbb{N}$.\\
+Integral representation convergent in the strip $0<\mathrm{Re}x<Q$
+\begin{eqnarray}
+&&\text{log}\up(x)=\int_{0}^{\infty}\frac{dt}{t}\left\lbrack\left(\frac{Q}{2}-x\right)^{2}e^{-t}-
+\frac{\text{sinh}^{2}(\frac{Q}{2}-x)\frac{t}{2}}{\text{sinh}\frac{bt}{2}\text{sinh}\frac{t}{2b}}
+\right\rbrack \nonumber
+\end{eqnarray}
+\end{itemize}
+
+
+
+\section*{Appendix C. $b$-deformed hypergeometric function}
+ The results
+presented here come mainly from \cite{Ueno}. The
+$b$-hypergeometric function $F_b(\al,\beta;\gamma;-ix)$ is
+solution of the second order finite difference equation:
+\begin{equation}
+\left([\del+\al]_{b}[\del+\beta]_{b}-e^{-2\pi
+bx}[\del]_{b}[\del+\gamma-Q]_{b}\right)F_b(\al,\beta;\gamma;-ix)=0
+\label{equ. q hyp} \nonumber
+\end{equation}
+where $\delta_x=\frac{1}{2\pi}\partial_x,\; [x]_{b}=\frac{\text{sin}(\pi bx)}{\text{sin}\pi b^{2}}$.\\
+Remark: In the following limits, the equation becomes:
+$$\left\lbrace
+\begin{array}{l}
+b \rightarrow 0, \\
+z=-e^{2\pi bx}, \\
+\al = bA, \beta = bB, \gamma = bC.
+\end{array}\right.$$
+
+$$
+z(1-z)\frac{d^{2}u}{dz^{2}} + [C-(A+B+1)z]\frac{du}{dz}-ABu =
+0.\nonumber
+$$
+which is the usual hypergeometric equation. Note that in the
+deformed case, there is no singularity at $z=1$ anymore.
+
+Integral representations:
+\begin{itemize}
+\item
+Analogue of the Barnes representation:
+\begin{eqnarray}
+F_b(\al,\beta;\gamma;-ix)=\frac{1}{i}\frac{S_b(\gamma)}{S_b(\al)S_b(\beta)}
+\int_{-i\infty}^{+i\infty}dse^{2\pi
+sx}\frac{S_b(\al+s)S_b(\beta+s)}{S_b(\gamma+s)S_b(Q+s)}\nonumber
+\end{eqnarray}
+The integration contour is located to the right of the poles:
+$$
+\left\lbrace
+\begin{array}{l}
+s =-\al -nb-mb^{-1}\, , \\
+s =-\beta -nb-mb^{-1}\, . \\
+\end{array}
+\right.
+$$
+and to the left of the poles:
+$$
+\left\lbrace
+\begin{array}{l}
+s =Q-\gamma+nb+mb^{-1}\, , \\
+s =nb+mb^{-1}\, . \\
+\end{array}
+\right.
+$$
+where $n,m \in \mathbb{N}$.\\
+The integral is uniformely convergent in the set of $x \in
+\mathbb{C}$ such that  $|\mathrm{Im}x|<\frac{1}{2}
+\mathrm{Re}(Q+\gamma-\beta-\alpha)$.
+\item
+Analogue of the Euler representation:\\
+Let $G_b(x)=e^{\frac{i\pi}{2}x(x-Q)}S_b(x)$.
+\begin{eqnarray}
+F_b(\al,\beta;\gamma;-ix)=\frac{1}{i}\frac{G_b(\gamma)}{G_b(\beta)G_b(\gamma-\beta)}
+\int_{-i\infty}^{+i\infty}dse^{2i\pi
+s\beta}\frac{G_b(s-ix')G_b(s+\gamma-\beta)}{G_b(s-ix'+\al)G_b(s+Q)}
+\nonumber
+\end{eqnarray}
+where $ix'=ix+\frac{1}{2}(\al+\beta-\gamma-Q).$\\
+The integration contour is located to the right of the poles:
+$$
+\left\lbrace
+\begin{array}{l}
+s =ix'-nb-mb^{-1}\, , \\
+s =\beta-\gamma-nb-mb^{-1}\, . \\
+\end{array}
+\right.
+$$
+and to the left of the poles:
+$$
+\left\lbrace
+\begin{array}{l}
+s =nb+mb^{-1} \\
+s =ix'-\alpha+Q+nb+mb^{-1} \\
+\end{array}
+\right.
+$$
+with $n,m \in \mathbb{N}$.
+\end{itemize}
+
+
+\underline{A useful transformation:}
+\begin{eqnarray}
+F_{b}(\al,\beta;\gamma;-ix)= e^{\pi
+x(\gamma-\al-\beta)}\frac{S_b(-ix
++\frac{\gamma-\al-\beta+Q}{2})}{S_b(-ix
++\frac{-\gamma+\al+\beta+Q}{2})}F_{b}(\gamma
+-\al,\gamma-\beta;\gamma;-ix) \nonumber
+\end{eqnarray}
+
+
+This is the equivalent in the deformed case of the classical
+transformation:
+\begin{equation}
+{}_2F_1(a,b;c;z) = (1-z)^{c-a-b}{}_2F_{1}(c-a,c-b;c,z).\nonumber
+\end{equation}
+
+\underline{Two identities:}
+\begin{eqnarray}
+&&F_{b}(0,\beta;\gamma;-ix) =1,  \nonumber\\
+\label{simple1} &&F_{b}(-b,\beta;\gamma;-ix)= 1+e^{2\pi
+bx}\frac{\text{sin}\pi b\beta}{\text{sin}\pi b\gamma}.\nonumber
+\label{simple2}
+\end{eqnarray}
+
+
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Polyakov} A.~Polyakov, Phys.~Lett.~\textbf{B103} (1981)
+207
+
+\bibitem{curtright}T.~Curtright, C.~Thorn, ""Conformally invariant quantization of Liouville
+theory"" Phys.~Rev.~Lett.~\textbf{48} (1982) 1309
+
+
+
+\bibitem{GN} J.-L.~Gervais, A.~Neveu, Nucl.~Phys.~\textbf{B224} (1982) 329; Nucl.~Phys.~\textbf{B238} (1984)
+3125; Nucl.~Phys.~\textbf{B238} (1984) 396;
+Nucl.~Phys.~\textbf{B257}[FS14] (1985) 59
+
+
+\bibitem{Kazakov} V.~Kazakov, Phys.~Lett.~\textbf{B150} (1985)
+282; F.~David, Nucl.~Phys.~\textbf{B257} (1985) 45;  V.~Kazakov,
+I.~Kostov and A.~Migdal, Phys.~Lett.~\textbf{B157} (1985)
+
+
+\bibitem{Malda} O.~Aharony, S.~S.~Gubser, J.~Maldacena, H.~Ooguri
+and Y.~Oz, ""Large N field theories, string theory and gravity"",
+Phys.~Rept.~\textbf{323} (2000) 183, hep-th/9905111
+
+\bibitem{Takh} L.~D.~Faddeev, L.~A.~Takhtadjan, ""Liouville model on
+the lattice"", Lect.~Notes in Physics \textbf{246},
+Springer-Verlag, Berlin, 1986, 166-179
+
+\bibitem{Takh2} L.~A.~Takhtadjan, ""Topics in quantum geometry of
+Riemann surfaces: Two dimensional gravity"", in: Quantum groups and
+their applications in physics, Proceedings of Enrico Fermi summer
+school, Como 1994. Edited by L.~Castellani and J.~Wess. IOS Press,
+1996, hep-th/9409088
+
+
+
+\bibitem{bab} O.~Babelon,  ""Extended conformal algebra and Yang-Baxter equation"", Phys.~Lett.~\textbf{B215}
+(1988) 523-529
+
+
+\bibitem {G}J.-L.~Gervais, Comm.~Math.~Phys.~\textbf{130} (1990) 252
+
+\bibitem{GS} J.-L.~Gervais and J.~Schnittger, Phys.~Lett.~\textbf{B315} (1993) 258,  Nucl.~Phys.~\textbf{B413}
+(1994) 433, Nucl.~Phys.~\textbf{B431} (1994) 273
+
+\bibitem{CGR}E.~Cremmer, J.-L.~Gervais and J.-F.~Roussel,
+Comm.~Math.~Phys.~\textbf{161} (1994) 597
+
+\bibitem{GR} J.-L.~Gervais and J.-F.~Roussel, Nucl.~Phys.~\textbf{B426}
+(1994) 140
+
+\bibitem {PT1}B.~Ponsot, J.~Teschner, ``Liouville bootstrap via harmonic analysis on a noncompact quantum group.'',
+ hep-th/9911110
+
+\bibitem {PT2}B.~Ponsot, J.~Teschner, ``Clebsch-Gordan and Racah-Wigner coefficients for a
+continuous series of representations of $\uq$'',  Comm.~Math.~Phys
+\textbf{224} (2001) 3, math-QA/0007097
+
+
+\bibitem {PT3}B.~Ponsot, J.~Teschner, ``Boundary Liouville Field Theory: Boundary three point function'',
+  Nucl. Phys. \textbf{B622} (2002) 309, hep-th/0110244
+
+\bibitem{T}J.~Teschner, ""Liouville theory revisited"", Class.~Quant.~Grav. \textbf{18}: R153-R222 (2001),
+ hep-th/0104158
+
+\bibitem{R}I.~Runkel, ""Boundary structure constant for the A-series Virasoro
+ minimal models"", Nucl.~Phys.~\textbf{B549} (1999) 563, hep-th/9811178
+
+\bibitem{BPZ}A.~A.~Belavin, A.~M.~Polyakov and A.~B.~Zamolodchikov, ``Infinite conformal symmetry in 2D
+ quantum field theory'', Nucl.~Phys.~\textbf{B241} (1984) 333
+
+
+\bibitem {FF}B.~L.~Feigin, D.~B.~Fuchs,
+ Representation of the Virasoro algebra, in: A.~M.~Vershik, D.~P.~Zhelobenko (Eds),
+  Representations of Lie groups and related topics, Gordon and Breach, London, 1990.
+
+\bibitem{DF}V.~S.~Dotsenko and V.~A.~Fateev, ""Four point correlations
+functions and the operator algebra in the two dimensional
+conformal invariant theories with the central charge $c<1$""
+Nucl.~Phys.~\textbf{B251} (1985) 691
+
+
+
+
+\bibitem {Dorn}H.~Dorn and H.-J.~Otto, Nucl.~Phys.~\textbf{B429} (1994) 375, hep-th/9403141
+
+\bibitem {ZZ}A.~B.~Zamolodchikov and Al.~B.~Zamolodchikov, Nucl.~Phys.~\textbf{B477} (1996) 577, hep-th/9506136
+
+\bibitem{Barnes}E.~W.~Barnes, ""The theory of the double
+gamma function"", Phil.~Trans.~Roy.~Soc. A\textbf{196} (1901) 265
+
+
+
+\bibitem{Pol} J.~Polchinski, ""Remarks on Liouville field theory""
+in Strings'90, R.~Arnowitt {\it et. al.} eds, World Scientific
+1991; Nucl.~Phys.~\textbf{B357} (1991) 241
+
+
+
+\bibitem{N} A.~Neveu, unpublished
+
+
+
+
+
+
+\bibitem {MS}G.~Moore, N.~Seiberg. ""Classical and quantum conformal field theory"", Comm.~Math.~Phys. \textbf{123}
+(1989) 177
+
+\bibitem {schmudgen2}K. Schmuedgen, Lett.~Math.~Phys.~\textbf{37} (1996) 211-222
+
+\bibitem{Faddeev}L.~D.~Faddeev, ""Modular Double of Quantum Group"", math.QA/9912078
+
+
+\bibitem{FZZ}V.~A.~Fateev, A.~B.~Zamolodchikov and Al.~B.~Zamolodchikov, ``Boundary Liouville field theory I'',
+hep-th/0001012
+
+\bibitem {tesch1}J.~Teschner, ""Remarks on Liouville theory with boundary"", hep-th/0009138
+
+%\bibitem{CL} J. Cardy,  Nucl.~Phys.~\textbf{B324} (1989) 581;
+%J. Cardy, D. Lewellen, Phys.~Lett.~\textbf{B259} (1991) 274; D.
+%Lewellen,
+% Sewing Constraints for Conformal Field Theories
+%on Surfaces with Boundaries,
+% Nucl.~Phys.~\textbf{B372} (1992) 654
+
+\bibitem {T3}J.~Teschner, unpublished
+
+\bibitem{hosomichi}K.~Hosomichi, ""Bulk-Boundary Propagator in Liouville Theory on a Disc"", JHEP \textbf{0111}
+ 044 (2001), hep-th/0108093.\\
+Al.~B.~Zamolodchikov, conference on Liouville field theory,
+Montpellier January 1998, unpublished.
+
+
+
+
+
+
+
+%\bibitem {kakehi}T.~Kakehi. Duke.~Math.~J. 80 (1995) 535-573
+%\bibitem {Ueno}T.~Masuda, K.~Mimachi, Y.~Nakagami, M Noumi, Y.Saburi, K.Ueno. Lett. Math. Phys 19 (1990) 187-194, Lett. Math. Phys 19 (1990) 195-204
+
+
+%\bibitem {schmudgen}K. Schmuedgen. Comm.~Math.~Phys.~\textbf{159} (1994) 217-237
+
+
+
+
+\bibitem {Ueno}M.~Nishizawa, K.~Ueno, Integral solutions of q-difference equations
+ of the hypergeometric type with $|q|=1$, q-alg/9612014
+
+
+
+\end{thebibliography}
+
+
+
+
+
+\end{document}
+"
+5,\section*{
+6,\section*{
+7,\section*{

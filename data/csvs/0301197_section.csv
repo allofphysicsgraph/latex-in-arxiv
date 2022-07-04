@@ -1,0 +1,105 @@
+,section
+0,\section{Introduction}
+1,\section{Two-point $QED_2$ fermion Green's function}
+2,\section{Effective IR worldline action for $QED_2$}
+3,"\section{The gauge invariant, string independent $QED_2$ correlator and its IR behavior}"
+4,\section{Discussion}
+5,"\section*{Acknowledgements}
+
+The Conselho Nacional de Desenvolvimento Cient\'{\i }fico e Tecnol\'{o}gico
+CNPq-Brazil, the Funda{\c{c}}{\~{a}}o de Amparo {\`{a}} Pesquisa do Estado
+do Rio de Janeiro (Faperj) and the SR2-UERJ are acknowledged for the
+financial support.
+
+\section*{Appendix}
+
+Here, for completness, we compute the path integral over the strings in the second line of (\ref{invapprox}). In general, we have
+\begin{eqnarray}
+\lefteqn{\int [d\varepsilon]\, \exp {\left( -\int_{\tau_i}^{\tau_f} d\tau\, 
+\frac{1}{2}\mu \dot{\varepsilon}^2+ \frac{i\lambda}{2}[\dot{\varepsilon}(\tau_i)+\dot{\varepsilon}(\tau_f)]\right)}=}\nonumber \\ 
+&&=const \int \prod_{k=1}^{n-1}d\varepsilon_k\, \exp{\left[-\frac{\mu}{2} \sum_{j=0}^{n-1}\frac{(\varepsilon_{j+1}-\varepsilon_j)^2}{\delta}+\frac{i\lambda}{2}\left(\frac{\varepsilon_1-\varepsilon_0}{\delta}+\frac{\varepsilon_n-\varepsilon_{n-1}}{\delta}\right)\right]},\nonumber \\
+\label{pinte}
+\end{eqnarray}
+where $\varepsilon_0=\varepsilon_i$, $\varepsilon_n=\varepsilon_f$, and the limit $\delta\to 0$ 
+($ n\delta=\tau_f-\tau_i$) is understood. We can also write,
+\begin{eqnarray}
+(\ref{pinte})&=&const \int \prod_{k=1}^{n-1}d\varepsilon_k \prod_{j=0}^{n-1}dp_j\, e^{-\frac{1}{2\mu}p_j^2\delta}
+e^{i(\varepsilon_{j+1}-\varepsilon_j)p_j} 
+e^{\frac{i\lambda}{2}\left(\frac{\varepsilon_1-\varepsilon_0}{\delta}+\frac{\varepsilon_n-\varepsilon_{n-1}}{\delta}\right)}\nonumber \\
+&=&const \int \prod_{k=1}^{n-1}d\varepsilon_k \prod_{j=0}^{n-1}dp_j\, e^{-\frac{1}{2\mu}p_j^2\delta}
+e^{-i\varepsilon_0(p_0+\frac{\lambda}{2\delta})}e^{i\varepsilon_n(p_{n-1}+\frac{\lambda}{2\delta})}\times \nonumber \\
+&&\times e^{i\varepsilon_1(p_0-p_1+\frac{\lambda}{2\delta})}e^{i\varepsilon_2(p_1-p_2)}\dots
+e^{i\varepsilon_{n-2}(p_{n-3}-p_{n-2})}e^{i\varepsilon_{n-1}(p_{n-2}-p_{n-1}-\frac{\lambda}{2\delta})}
+\nonumber \\
+&=&const \int \prod_{j=0}^{n-1}dp_j\, e^{-\frac{1}{2\mu}p_j^2\delta}
+e^{-i\varepsilon_0(p_0+\frac{\lambda}{2\delta})}e^{i\varepsilon_n(p_{n-1}+\frac{\lambda}{2\delta})}\times \nonumber \\
+&&\times \delta(p_0-p_1+\lambda/2\delta)\delta(p_1-p_2)\dots
+\delta(p_{n-3}-p_{n-2})\delta(p_{n-2}-p_{n-1}-\lambda/2\delta).\nonumber
+\end{eqnarray}
+Now, we can change variables $p_0+\frac{\lambda}{2\delta}\to p_0$ and $p_{n-1}+\frac{\lambda}{2\delta}\to 
+p_{n-1}$, and integrate the $\delta$-functions:
+\begin{eqnarray}
+(\ref{pinte})&=&const \int dp_0 dp_{n-1}\prod_{j=1}^{n-2}dp_j\, 
+\delta(p_0-p_1)\dots \delta(p_{n-2}-p_{n-1})\times
+\nonumber \\
+&&\times\, e^{-\frac{1}{2\mu}p_j^2\delta}
+e^{-\frac{1}{2\mu}(p_0-\frac{\lambda}{2\delta})^2\delta}
+e^{-\frac{1}{2\mu}(p_{n-1}-\frac{\lambda}{2\delta})^2\delta}
+e^{-i\varepsilon_0 p_0}e^{i\varepsilon_n p_{n-1}}\nonumber \\
+%&=&const \int dp_0\, e^{-\frac{1}{2\mu}(p_0-\frac{\lambda}{2\delta})^2\delta}
+%e^{-\frac{1}{2\mu}p_0^2\delta (n-2)}
+%e^{-\frac{1}{2\mu}(p_0-\frac{\lambda}{2\delta})^2\delta}
+%e^{-i\varepsilon_0 p_0}e^{i\varepsilon_n p_0}\nonumber \\
+&=&const \int dp_0\, e^{-\frac{1}{\mu}(p_0-\frac{\lambda}{2\delta})^2\delta}
+e^{-\frac{1}{2\mu}p_0^2 (n-2)\delta}
+e^{ip_0(\varepsilon_n-\varepsilon_0)}\nonumber \\
+&=&const \int dp_0\, e^{-\frac{1}{2\mu}p_0^2 n\delta+p_0[\frac{\lambda}{\mu}+i(\varepsilon_n-\varepsilon_0)]-\frac{1}{\mu\delta}(\lambda/2)^2},
+\end{eqnarray}
+and performing the quadratic integral, we get
+\begin{equation}
+(\ref{pinte})=\frac{const}{|\Delta\tau|^{1/2}} \exp {\frac{-\mu(\Delta\varepsilon)^2 }{2|
+\Delta\tau|}}\exp\left( i\lambda \frac{\Delta\varepsilon}{\Delta\tau}+\frac{\lambda^2}{2\mu\Delta\tau}\right),
+\end{equation}
+where $\Delta\tau=\tau_f-\tau_i$, and $\Delta\varepsilon=\varepsilon_f-\varepsilon_i$.   
+Of course, when $\lambda=0$ we have the usual free particle propagator. 
+In the case we are interested (see Eq.(\ref{invapprox})) we have $\lambda=1$, $\tau_i=0$, $\tau_f=|y-x|$, and $\varepsilon(\tau_f)=0=\varepsilon(\tau_i)$, the path integral factor is real and coincides with the result showed in (\ref{K}).
+
+
+\begin{thebibliography}{99}
+
+\bibitem{rw1} W. Rantner and X.-G. Wen, Phys. Rev. Lett. {\bf 86} 3871 (2001).
+
+\bibitem{yft} J. Ye, Phys. Rev. Lett. {\bf 87}, 227003 (2001); Z. Tesanovic and M. Franz, {\it ibid} {\bf 87}, 257003 (2001).
+
+\bibitem{ftv1}  M. Franz, Z. Tesanovic, O. Vafek,
+Phys. Rev. {\bf B66}, 054535 (2002), cond-mat/0204536.
+
+\bibitem{rw2} W. Rantner and X.-G. Wen, cond-mat/0105540.
+
+\bibitem{k2} D.V. Khveshchenko, Nucl. Phys. {\bf B642}, 515 (2002).
+
+\bibitem{k1} D.V. Khveshchenko, Phys. Rev. {\bf B65}, 235111 (2002); cond-mat/0205106.
+
+\bibitem{gkr} V.P. Gusynin, D.V. Khveshchenko, M. Reenders, cond-mat/0207372.
+
+\bibitem{fpst} M.Franz, T. Pereg-Barnea, D.E. Sheehy and Z. Tesanovic, cond-mat/0211119.
+
+\bibitem{sch} J. Schwinger, Phys. Rev. {\bf 128}, 2425 (1962).
+
+\bibitem{rscha} R. Roskies and F.A. Schaposnik, Phys. Rev. {\bf D23}, 558
+(1981).
+
+\bibitem{n} C.M. Naon, Phys. Rev. {D31}, 2035 (1985). 
+
+\bibitem{f} K. Fujikawa, Phys. Rev. Lett. {\bf 42} 1195 (1979) ; Phys. Rev. {\bf D21}, 2848 (1980).
+
+\bibitem{st} K. Stam, J. Phys. {\bf G9}, L229 (1983).
+
+\bibitem{sw} I. Sachs and A. Wipf, Helv. Phys. Acta {\bf 65}, 652 (1992).
+
+\bibitem{svz} J.V. Steele, J.J.M. Verbaarschot and I. Zahed, Phys. Rev. {\bf D51}, 5915
+(1995).
+
+\end{thebibliography}
+\end{document}"
+6,\section*{

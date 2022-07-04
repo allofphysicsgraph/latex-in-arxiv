@@ -4,17 +4,17 @@
 (t,x^a) \sim (-t,-x^a) \ .
 \"
 1,"\begin{equation}
-  G_{\mu\nu} = -8\pi G_N\bra T_{\mu\nu} \ket_{ren}.
+  G_{\mu\nu} = -8\pi G_N\langle T_{\mu\nu} \rangle_{ren}.
 \"
 2,"\begin{equation}
-T_{uu}(u) = :\pat_u \phi (u) \pat_u \phi (u): \ ,
+T_{uu}(u) = :\partial_u \phi (u) \partial_u \phi (u): \ ,
 \"
 3,"\begin{equation}
-T_{uu}(u) = \left.\lim_{u'\rightarrow u} \pat_u \phi (u)
-\pat_{u'} \phi (u')\right|_{ren}
+T_{uu}(u) = \left.\lim_{u'\rightarrow u} \partial_u \phi (u)
+\partial_{u'} \phi (u')\right|_{ren}
 \"
 4,"\begin{equation}
-G(u,u') = \bra 0 |\phi (u)\phi (u')|0\ket \sim -\ln (u-u') \ .
+G(u,u') = \langle 0 |\phi (u)\phi (u')|0\rangle \sim -\ln (u-u') \ .
 \"
 5,"\begin{equation}
   \tilde{\phi}(u) = \frac{1}{\sqrt{2}} (\phi (u)+\phi (-u)) \ .
@@ -25,121 +25,121 @@ G(u,u') = \bra 0 |\phi (u)\phi (u')|0\ket \sim -\ln (u-u') \ .
  \int d\omega~(a_\omega + a^\dagger_\omega)\cos(\omega u)
 \"
 7,"\begin{equation}
-  |\psi \ket_S = \left( \alpha^{\mu_1}_{-n_1}\cdots
-  \tilde{\alpha}^{\nu_1}_{-m_1}\cdots \right)_{S,A}~(|0,k\ket
-  \pm |0,-k\ket ) \ ,
+  |\psi \rangle_S = \left( \alpha^{\mu_1}_{-n_1}\cdots
+  \tilde{\alpha}^{\nu_1}_{-m_1}\cdots \right)_{S,A}~(|0,k\rangle
+  \pm |0,-k\rangle ) \ ,
 \"
 8,"\begin{equation}
-   |\omega_k , \vek \ket = a^{\dagger}_{\vek} | 0 \ket \ \ {\rm
+   |\omega_k , \vec{k} \rangle = a^{\dagger}_{\vec{k}} | 0 \rangle \ \ {\rm
    with} \ k^0 = \omega_k >0.
 \"
 9,"\begin{equation}
-  \Hcal = \Hcal^+ \oplus \Hcal^- \ .
+  {\cal H} = {\cal H}^+ \oplus {\cal H}^- \ .
 \"
 10,"\begin{equation}
-    \Hcal_{inv} = \Hcal / \Zmath_2 \ .
+    {\cal H}_{inv} = {\cal H} / \mathbb{Z}_2 \ .
 \"
 11,"\begin{equation}
-  Z[J] = \int \Dcal \phi~\exp \left\{ i \int_C d^4x~[\Lcal (\phi (x))
+  Z[J] = \int {\cal D} \phi~\exp \left\{ i \int_C d^4x~[{\cal L} (\phi (x))
   + J(x)\phi (x)] \right\}
 \label{ZFT}
 \"
 12,"\begin{equation}
-  \phi (t_i-i\beta ,\vex ) = \phi (t_i,\vex ) \ .
+  \phi (t_i-i\beta ,\vec{x} ) = \phi (t_i,\vec{x} ) \ .
 \"
 13,"\begin{equation}
-    iD_C(x-x')= \bra T_C \phi (x)\phi (x') \ket \ ,
+    iD_C(x-x')= \langle T_C \phi (x)\phi (x') \rangle \ ,
 \"
 14,"\begin{equation}
    D^{rs}(t-t') = D_C (t_r - t_s)
 \"
 15,"\begin{equation}
-  Z[J_1,J_2] = \int \Dcal \phi_1\Dcal \phi_2~\exp
+  Z[J_1,J_2] = \int {\cal D} \phi_1{\cal D} \phi_2~\exp
   \left\{ i\int^{\infty}_{-\infty} d^4x~[\phi_r (D^{-1})^{rs} \phi_s
-  + \Lcal_{int} (\phi_1)-\Lcal_{int} (\phi_2) + J_r\phi_r] \right\} \
+  + {\cal L}_{int} (\phi_1)-{\cal L}_{int} (\phi_2) + J_r\phi_r] \right\} \
 \label{ZFT2}
 \"
 16,"\begin{equation}
-  Z = \int \Dcal \phi_+ \Dcal \phi_-~\exp \left\{
-  i \int^{\infty}_{-\infty}dt \int d^d\vex~[\Lcal (\phi_+)-\Lcal (\phi_-)]
+  Z = \int {\cal D} \phi_+ {\cal D} \phi_-~\exp \left\{
+  i \int^{\infty}_{-\infty}dt \int d^d\vec{x}~[{\cal L} (\phi_+)-{\cal L} (\phi_-)]
   \right\} \ ,
 \label{Zorbi}
 \"
 17,"\begin{equation}
- \Lcal (\phi) = \half (\pat \phi )^2 -\half m^2 \phi^2
+ {\cal L} (\phi) = \frac{1}{2} (\partial \phi )^2 -\frac{1}{2} m^2 \phi^2
  -V_{int}(\phi) \ .
 \"
 18,"\begin{equation}
 x>0:\ \ \ \phi_+(0,x)=\phi_+(0,-x)=\phi_-(0,x)=\phi_-(0,-x)=\phi_0 (x)
 \"
 19,"\begin{equation}
-  \phi_+ (t,\vex ) = \int \frac{d^d\vek}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
-  \left\{ a_{\vek}~e^{-i\omega_{\vek} t + i\vek \cdot \vex }
-  +  a^{\dagger}_{\vek}~e^{+i\omega_{\vek} t - i\vek \cdot \vex }
+  \phi_+ (t,\vec{x} ) = \int \frac{d^d\vec{k}}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
+  \left\{ a_{\vec{k}}~e^{-i\omega_{\vec{k}} t + i\vec{k} \cdot \vec{x} }
+  +  a^{\dagger}_{\vec{k}}~e^{+i\omega_{\vec{k}} t - i\vec{k} \cdot \vec{x} }
   \right\} \ ,
 \"
 20,"\begin{equation}
- \phi_- (t,\vex ) = \int \frac{d^d\vek}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
-  \left\{ \atilde_{\vek}~e^{+i\omega_{\vek} t - i\vek \cdot \vex }
-  +  \atilde^{\dagger}_{\vek}~e^{-i\omega_{\vek} t + i\vek \cdot \vex }
+ \phi_- (t,\vec{x} ) = \int \frac{d^d\vec{k}}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
+  \left\{ \tilde{a}_{\vec{k}}~e^{+i\omega_{\vec{k}} t - i\vec{k} \cdot \vec{x} }
+  +  \tilde{a}^{\dagger}_{\vec{k}}~e^{-i\omega_{\vec{k}} t + i\vec{k} \cdot \vec{x} }
   \right\} \ .
 \"
 21,"\begin{equation}
-   [a_{\vek},\atilde_{\vek'}]=[a_{\vek},\atilde^\dagger_{\vek'}]
-   = [a^{\dagger}_{\vek},\atilde_{\vek'}]
-   =[a^{\dagger}_{\vek},\atilde^\dagger_{\vek'}]=0 \ .
+   [a_{\vec{k}},\tilde{a}_{\vec{k}'}]=[a_{\vec{k}},\tilde{a}^\dagger_{\vec{k}'}]
+   = [a^{\dagger}_{\vec{k}},\tilde{a}_{\vec{k}'}]
+   =[a^{\dagger}_{\vec{k}},\tilde{a}^\dagger_{\vec{k}'}]=0 \ .
 \"
 22,"\begin{equation}
-  [\atilde_{\vek},\atilde^{\dagger}_{\vek'}] =
-  (2\pi)^d\delta^{(d)}(\vek -\vek') \ .
+  [\tilde{a}_{\vec{k}},\tilde{a}^{\dagger}_{\vec{k}'}] =
+  (2\pi)^d\delta^{(d)}(\vec{k} -\vec{k}') \ .
 \"
 23,"\begin{equation}
-     |\omega_{\vek},\vek\ket_{inv}   = \frac{1}{\sqrt{2}}
-      (|+\omega_{\vek},+\vek\ket \otimes |\tilde{0}\ket
-      + |0\ket\otimes  |-\omegak ,-\vek\ket )
+     |\omega_{\vec{k}},\vec{k}\rangle_{inv}   = \frac{1}{\sqrt{2}}
+      (|+\omega_{\vec{k}},+\vec{k}\rangle \otimes |\tilde{0}\rangle
+      + |0\rangle\otimes  |-\omega_{\vec{k}} ,-\vec{k}\rangle )
       = \frac{1}{\sqrt{2}}
-     \left( \begin{array}{l} |+\omega_{\vek},+\vek\ket \\
-     |-\omegak ,-\vek\ket \end{array} \right) \ .
+     \left( \begin{array}{l} |+\omega_{\vec{k}},+\vec{k}\rangle \\
+     |-\omega_{\vec{k}} ,-\vec{k}\rangle \end{array} \right) \ .
 \"
 24,"\begin{equation}
-   N^{inv}_{\vek} = a^\dagger_{\vek}a_{\vek} \oplus \atilde^\dagger_{\vek}
-   \atilde_{\vek}
-   \mbox{} = \left( \begin{array}{cc} a^\dagger_{\vek}a_{\vek} &
-   \mbox{} \\ \mbox{} & \atilde^\dagger_{\vek}
-   \atilde_{\vek} \end{array} \right) \ .
+   N^{inv}_{\vec{k}} = a^\dagger_{\vec{k}}a_{\vec{k}} \oplus \tilde{a}^\dagger_{\vec{k}}
+   \tilde{a}_{\vec{k}}
+   \mbox{} = \left( \begin{array}{cc} a^\dagger_{\vec{k}}a_{\vec{k}} &
+   \mbox{} \\ \mbox{} & \tilde{a}^\dagger_{\vec{k}}
+   \tilde{a}_{\vec{k}} \end{array} \right) \ .
 \"
 25,"\begin{equation}
-  N^{inv}_{\vek}~|\omegak ,\vek\ket_{inv} = 1\cdot |\omegak
-  ,\vek\ket_{inv} \ .
+  N^{inv}_{\vec{k}}~|\omega_{\vec{k}} ,\vec{k}\rangle_{inv} = 1\cdot |\omega_{\vec{k}}
+  ,\vec{k}\rangle_{inv} \ .
 \"
 26,"\begin{equation}
- H_{inv} = \sum_{\vek}N_{\vek}\omega_{\vek}
+ H_{inv} = \sum_{\vec{k}}N_{\vec{k}}\omega_{\vec{k}}
  \mbox{} = \left( \begin{array}{cc}
- \sum_{\vek} \omega_{\vek} a^\dagger_{\vek}a_{\vek} & \mbox{} \\
- \mbox{} & \sum_{\vek} \omega_{\vek}\atilde^\dagger_{\vek}
- \atilde_{\vek}  \end{array} \right) \ .
+ \sum_{\vec{k}} \omega_{\vec{k}} a^\dagger_{\vec{k}}a_{\vec{k}} & \mbox{} \\
+ \mbox{} & \sum_{\vec{k}} \omega_{\vec{k}}\tilde{a}^\dagger_{\vec{k}}
+ \tilde{a}_{\vec{k}}  \end{array} \right) \ .
 \label{enop}
  \"
 27,"\begin{equation}
- S = \int^{\infty}_{-\infty}dt\int d^{d}x~[\Lcal (\phi_+)
- -\Lcal (\phi_-)]
+ S = \int^{\infty}_{-\infty}dt\int d^{d}x~[{\cal L} (\phi_+)
+ -{\cal L} (\phi_-)]
  \"
 28,"\begin{equation}
-  H = \half \sum_{\vek}
-   \omegak [a^\dagger_{\vek}a_{\vek}+a_{\vek}a^{\dagger}_{\vek}]
-   -\half \sum_{\vek}
-   \omegak [\atilde^\dagger_{\vek}\atilde_{\vek}
-   +\atilde_{\vek}\atilde^{\dagger}_{\vek}] \ ,
+  H = \frac{1}{2} \sum_{\vec{k}}
+   \omega_{\vec{k}} [a^\dagger_{\vec{k}}a_{\vec{k}}+a_{\vec{k}}a^{\dagger}_{\vec{k}}]
+   -\frac{1}{2} \sum_{\vec{k}}
+   \omega_{\vec{k}} [\tilde{a}^\dagger_{\vec{k}}\tilde{a}_{\vec{k}}
+   +\tilde{a}_{\vec{k}}\tilde{a}^{\dagger}_{\vec{k}}] \ ,
 \"
 29,"\begin{equation}
-    :\atilde_{\vek}\atilde^\dagger_{\vek}: = \atilde^\dagger_{\vek}
-    \atilde_{\vek} \ ,
+    :\tilde{a}_{\vec{k}}\tilde{a}^\dagger_{\vec{k}}: = \tilde{a}^\dagger_{\vec{k}}
+    \tilde{a}_{\vec{k}} \ ,
 \"
 30,"\begin{equation}
- H = \sum_{\vek}  \omegak a^\dagger_{\vek}a_{\vek}
-   +\half \sum_{\vek}\omegak
-   - \sum_{\vek} \omegak \atilde^\dagger_{\vek}\atilde_{\vek}
-   -\half \sum_{\vek}\omegak \equiv H^+ - H^- \ .
+ H = \sum_{\vec{k}}  \omega_{\vec{k}} a^\dagger_{\vec{k}}a_{\vec{k}}
+   +\frac{1}{2} \sum_{\vec{k}}\omega_{\vec{k}}
+   - \sum_{\vec{k}} \omega_{\vec{k}} \tilde{a}^\dagger_{\vec{k}}\tilde{a}_{\vec{k}}
+   -\frac{1}{2} \sum_{\vec{k}}\omega_{\vec{k}} \equiv H^+ - H^- \ .
 \"
 31,"\begin{equation}
 H_{inv} = \left( \begin{array}{cc} H^+ & \mbox{} \\
@@ -147,84 +147,84 @@ H_{inv} = \left( \begin{array}{cc} H^+ & \mbox{} \\
 \label{enop2}
 \"
 32,"\begin{equation}
-  \bra 0 | H | 0 \ket = \bra 0 | (H ^+-H^-)| 0 \ket
-  =\half \sum_{\vek} \omegak
-   -\half \sum_{\vek} \omegak =0 \ ,
+  \langle 0 | H | 0 \rangle = \langle 0 | (H ^+-H^-)| 0 \rangle
+  =\frac{1}{2} \sum_{\vec{k}} \omega_{\vec{k}}
+   -\frac{1}{2} \sum_{\vec{k}} \omega_{\vec{k}} =0 \ ,
 \"
 33,"\begin{equation}
-  T^{inv}_{\mu\nu}(t,\vex) = \left( \begin{array}{cc}
-  T^+_{\mu\nu} (t,\vex) & \mbox{} \\ \mbox{} & T^-_{\mu\nu} (-t,-\vex)
+  T^{inv}_{\mu\nu}(t,\vec{x}) = \left( \begin{array}{cc}
+  T^+_{\mu\nu} (t,\vec{x}) & \mbox{} \\ \mbox{} & T^-_{\mu\nu} (-t,-\vec{x})
   \end{array} \right) % \nonumber \\
 \mbox{} = \left( \begin{array}{cc}
-  \pat_\mu \phi_+ \pat_\nu \phi_+ & \mbox{} \\ \mbox{} &
-  \pat_\mu \phi_- \pat_\nu \phi_-
+  \partial_\mu \phi_+ \partial_\nu \phi_+ & \mbox{} \\ \mbox{} &
+  \partial_\mu \phi_- \partial_\nu \phi_-
   \end{array} \right) \ .
 \"
 34,"\begin{equation}
-  \phi_{+,A} (t,\vex ) = (1-\theta(t))~f_+(\vex ) \ ; \
-  \phi_{-,A} (-t,-\vex ) = (1-\theta(-t))~f_-(-\vex)  \ ,
+  \phi_{+,A} (t,\vec{x} ) = (1-\theta(t))~f_+(\vec{x} ) \ ; \
+  \phi_{-,A} (-t,-\vec{x} ) = (1-\theta(-t))~f_-(-\vec{x})  \ ,
 \"
 35,"\begin{equation}
-\bra T_{\mu\nu}\ket = -i\frac{\delta}{\delta g^{\mu\nu}}\ln
+\langle T_{\mu\nu}\rangle = -i\frac{\delta}{\delta g^{\mu\nu}}\ln
 Z^{2nd}_{EFT}|_{h^{\mu\nu}=0} = -\frac{i}{2\kappa}\frac{\delta
 Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 \"
 36,"\begin{equation}
   Z^{ST}_{1-loop}[g] = \int \frac{d\tau d\bar{\tau}}{4\tau_2}~Z(\tau)
   = \int \frac{d\tau d\bar{\tau}}{4\tau_2} \int_{T^2}
-  \Dcal X~e^{i\frac{T}{2}\int d^2w~g_{\mu\nu}(X)\pat X^\nu \patb
+  {\cal D} X~e^{i\frac{T}{2}\int d^2w~g_{\mu\nu}(X)\partial X^\nu \bar{\partial}
   X^\nu} \ .
 \"
 37,"\begin{equation}
   Z^{ST}_{1-loop} = \int
-  \Dcal X~e^{i\frac{T}{2}\int d^2w~\eta_{\mu\nu}\pat X^\mu \patb X^\nu}
-  \left\{ 1+i\frac{g_{str}}{\alpha'}\int d^2w~h_{\mu\nu}(X)\pat X^\mu \patb
+  {\cal D} X~e^{i\frac{T}{2}\int d^2w~\eta_{\mu\nu}\partial X^\mu \bar{\partial} X^\nu}
+  \left\{ 1+i\frac{g_{str}}{\alpha'}\int d^2w~h_{\mu\nu}(X)\partial X^\mu \bar{\partial}
   X^\nu +\cdots \right\} \ .
 \"
 38,"\begin{equation}
  h_{\mu\nu}(X) = \int \frac{d^{D+1}k}{(2\pi)^{D+1}}~e_{\mu\nu}(k)e^{ik\cdot X}
 \"
 39,"\begin{equation}
-  V_{\mu\nu}(k) = \pat X^\mu \patb X^\nu e^{ik\cdot X} \ ,
+  V_{\mu\nu}(k) = \partial X^\mu \bar{\partial} X^\nu e^{ik\cdot X} \ ,
 \"
 40,"\begin{equation}
   Z^{ST}_{1-loop} [g] =
    Z^{ST}_{1-loop} [\eta ] +
   i\frac{g_{str}}{\alpha'} \int \frac{d^{D+1}k}{(2\pi)^{D+1}}\int d^2w~e_{\mu\nu}(k)
-  \bra V^{\mu\nu}(k;w) \ket +\cdots \ .
+  \langle V^{\mu\nu}(k;w) \rangle +\cdots \ .
 \label{Z}
 \"
 41,"\begin{equation}
-\bra T^{\mu\nu}(x) \ket = \frac{1}{4\pi \alpha'}
+\langle T^{\mu\nu}(x) \rangle = \frac{1}{4\pi \alpha'}
 \int \frac{d^{D+1}k}{(2\pi)^{D+1}}\int d^2w
-\bra V^{\mu\nu}(k;w) \ket e^{-ik\cdot x}
+\langle V^{\mu\nu}(k;w) \rangle e^{-ik\cdot x}
 \"
 42,"\begin{equation}
- \bra V^{\mu\nu}(k)\ket = -\left( \frac{g_{str}}{4\pi\tau_2} \right)
+ \langle V^{\mu\nu}(k)\rangle = -\left( \frac{g_{str}}{4\pi\tau_2} \right)
  \frac{\delta^{(D+1)}(\sqrt{\alpha'}k)}{V_{D+1}}
  \eta^{\mu\nu} Z_{1-loop} \ ,
 \"
 43,"\begin{equation}
-  \bra T_{\mu\nu}\ket \sim \frac{1}{{\alpha'}^{13}V_{26}} Z_{1-loop} \times
+  \langle T_{\mu\nu}\rangle \sim \frac{1}{{\alpha'}^{13}V_{26}} Z_{1-loop} \times
   \eta_{\mu\nu}
 \"
 44,"\begin{equation}
-   \bra T_{\mu\nu}(X)\ket + \bra T_{\mu\nu}(-X)\ket ,
+   \langle T_{\mu\nu}(X)\rangle + \langle T_{\mu\nu}(-X)\rangle ,
 \label{Tsum}
 \"
 45,"\begin{equation}
-  \bra T^+_{\mu\nu}\ket + \bra T^-_{\mu\nu} \ket \ .
+  \langle T^+_{\mu\nu}\rangle + \langle T^-_{\mu\nu} \rangle \ .
 \"
 46,"\begin{equation}
-  Z[J] = \bra \exp \{ i\int d^2w J_\mu (w,\wbar ) X^{\mu}(w,\wbar )
-  \} \ket \ .
+  Z[J] = \langle \exp \{ i\int d^2w J_\mu (w,\bar{w} ) X^{\mu}(w,\bar{w} )
+  \} \rangle \ .
 \label{genfun}
 \"
 47,"\begin{equation}\label{eq:modes}
-  X^\mu (w,\wbar ) = \sqrt{4\pi^2\alpha'}\sum_I x^\mu_I X_I(w,\wbar )\ .
+  X^\mu (w,\bar{w} ) = \sqrt{4\pi^2\alpha'}\sum_I x^\mu_I X_I(w,\bar{w} )\ .
 \"
 48,"\begin{equation}
-      J_{\mu, I}=  \sqrt{4\pi^2\alpha'}\int d^2 w J_\mu (w,\wbar ) X_I(w,\wbar ) \ .
+      J_{\mu, I}=  \sqrt{4\pi^2\alpha'}\int d^2 w J_\mu (w,\bar{w} ) X_I(w,\bar{w} ) \ .
 \"
 49,"\begin{equation}
 %  Z[J]= N[J_0]\left[ \det \left( \frac{-\nabla^2}{4\pi^2
@@ -233,7 +233,7 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 %\"
 50,"\begin{equation}
   Z[J]= N[J_0]\left[ {\det}'  \left( -\nabla_w^2\right) \right]^{-d/2}
-  \exp \left\{ -\half \int d^2 w
+  \exp \left\{ -\frac{1}{2} \int d^2 w
   \int d^2 w' J(w)\cdot G'(w,w')\cdot J(w') \right\} \ ,
 \"
 51,"\begin{equation}
@@ -290,11 +290,11 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
   G'_{(g,h),ren} =-\frac{\alpha'}{2}\ln |\theta_{gh}(0|\tau)|^4
 \"
 63,"\begin{equation}
-  \pat_{w_1}\patb_{w_2} G'(w_1,w_2)=
-  -\pat_{w_1}\patb_{w_1}G'(w_1,w_2)\ .
+  \partial_{w_1}\bar{\partial}_{w_2} G'(w_1,w_2)=
+  -\partial_{w_1}\bar{\partial}_{w_1}G'(w_1,w_2)\ .
 \"
 64,"\begin{equation}
- \pat_w\patb_w G'(w,w') =
+ \partial_w\bar{\partial}_w G'(w,w') =
  -\pi\alpha'\delta^2(w-w')+\frac{\pi\alpha'}{2}X^2_0 \ .
 \"
 65,"\begin{equation}
@@ -302,14 +302,14 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 % -\frac{\pi}{\alpha'}X^2_0 \ .
 %\"
 66,"\begin{equation}
-  \pat_{w_1}\patb_{w_2}G'_{ren}(w_1,w_2) = -\frac{\pi\alpha'}{2}X^2_0 \ .
+  \partial_{w_1}\bar{\partial}_{w_2}G'_{ren}(w_1,w_2) = -\frac{\pi\alpha'}{2}X^2_0 \ .
 \"
 67,"\begin{equation}
-   \pat G'_{(g,h)} (w,w') \approx_{w\rightarrow w'} -\frac{\alpha'}{2}(w-w')^{-1}
+   \partial G'_{(g,h)} (w,w') \approx_{w\rightarrow w'} -\frac{\alpha'}{2}(w-w')^{-1}
    + C_{(g,h)}(\tau) (w-w') + {\cal O}((w-w')^3)
 \"
 68,"\begin{equation}
-  \bra V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \ket_{1-loop} =
+  \langle V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \rangle_{1-loop} =
  -\frac{g_{str}}{4\pi\tau_2} \frac{\delta^{(25-d)}(k)}{V_\perp}\times
  Z_\perp[\tau]\sum_{g,h} Z_{\parallel,(g,h)}[\tau ]~\eta^{\mu\nu} \ .
 \"
@@ -320,13 +320,13 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 % \right)^{24}~\eta^{\mu\nu}
 %\"
 70,"\begin{equation}
-  \bra V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \ket_{1-loop} =
+  \langle V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \rangle_{1-loop} =
  -\frac{g_{str}}{4\pi\tau_2}
  \frac{\delta^{(26)}(k)}{V_{26}}~Z_\perp(\tau)
  Z_{\parallel, (1,1)}[\tau]~\eta^{\mu\nu} \ .
 \"
 71,"\begin{equation}
-T(\tau)=\frac{1}{2}\tr_{U+T} \left[\left( 1+\hat g\right)
+T(\tau)=\frac{1}{2}{\rm tr}_{U+T} \left[\left( 1+\hat g\right)
 \int d^2z V(z,\bar z)\  q^{L_o-a}\bar q^{\tilde L_o-\tilde a}\right]
 \"
 72,"\begin{equation}
@@ -348,9 +348,9 @@ e^{-\sqrt{\alpha'/2}\tilde k_\mu \alpha_{n}^\mu z^{-n}/n}|-q^n\rho)
 \frac{1}{1\mp q^n} e^{\mp \alpha'k_\mu k^\mu \frac{q^n}{2n(1\mp q^n)}}
 \"
 76,"\begin{equation}
-\prod_{n\in\ZZ^+}e^{\frac{1}{n}\frac{q^n}{1+q^n}} =
+\prod_{n\in{\mathbb{Z}}^+}e^{\frac{1}{n}\frac{q^n}{1+q^n}} =
 \frac{\theta_2(\tau)}{q^{1/8}},\ \ \ \ \ \
-\prod_{n\in\ZZ^+-1/2}e^{\frac{1}{n}\frac{q^n}{\pm 1+q^n}} = \theta_{3,4}(\tau)
+\prod_{n\in{\mathbb{Z}}^+-1/2}e^{\frac{1}{n}\frac{q^n}{\pm 1+q^n}} = \theta_{3,4}(\tau)
 \"
 77,"\begin{equation}
 \sum_{m>0}\int \frac{d^2\rho}{\pi}\ e^{-|\rho|^2} (\rho|
@@ -373,8 +373,8 @@ T^{\mu\nu}_0=-\left(\frac{g_{str}\alpha'}{2}\right)^2
 X_{1,1}+\frac{k_\mu k_\nu}{ 4} 2^{-(d+1)} X_{1,0}\right)
 \"
 80,"\begin{equation}
-V=\alpha \pa X^\mu\bar\pa X^\nu e^{ik.X}+\beta \pa X^\mu e^{ik.X}\bar\pa X^\nu+
-e^{ik.X} \pa X^\mu\bar\pa X^\nu
+V=\alpha \partial X^\mu\bar\partial X^\nu e^{ik.X}+\beta \partial X^\mu e^{ik.X}\bar\partial X^\nu+
+e^{ik.X} \partial X^\mu\bar\partial X^\nu
 \"
 81,"\begin{equation}
 T^{\mu\nu}_0=-\left(\frac{g_{str}}{4\pi \tau_2}\right)\eta^{\mu\nu}
@@ -385,17 +385,17 @@ T^{\mu\nu}_0=-\left(\frac{g_{str}}{4\pi \tau_2}\right)\eta^{\mu\nu}
 (t,x^a) \sim (-t,-x^a) \ .
 \"
 83,"\begin{equation}
-  G_{\mu\nu} = -8\pi G_N\bra T_{\mu\nu} \ket_{ren}.
+  G_{\mu\nu} = -8\pi G_N\langle T_{\mu\nu} \rangle_{ren}.
 \"
 84,"\begin{equation}
-T_{uu}(u) = :\pat_u \phi (u) \pat_u \phi (u): \ ,
+T_{uu}(u) = :\partial_u \phi (u) \partial_u \phi (u): \ ,
 \"
 85,"\begin{equation}
-T_{uu}(u) = \left.\lim_{u'\rightarrow u} \pat_u \phi (u)
-\pat_{u'} \phi (u')\right|_{ren}
+T_{uu}(u) = \left.\lim_{u'\rightarrow u} \partial_u \phi (u)
+\partial_{u'} \phi (u')\right|_{ren}
 \"
 86,"\begin{equation}
-G(u,u') = \bra 0 |\phi (u)\phi (u')|0\ket \sim -\ln (u-u') \ .
+G(u,u') = \langle 0 |\phi (u)\phi (u')|0\rangle \sim -\ln (u-u') \ .
 \"
 87,"\begin{equation}
   \tilde{\phi}(u) = \frac{1}{\sqrt{2}} (\phi (u)+\phi (-u)) \ .
@@ -406,121 +406,121 @@ G(u,u') = \bra 0 |\phi (u)\phi (u')|0\ket \sim -\ln (u-u') \ .
  \int d\omega~(a_\omega + a^\dagger_\omega)\cos(\omega u)
 \"
 89,"\begin{equation}
-  |\psi \ket_S = \left( \alpha^{\mu_1}_{-n_1}\cdots
-  \tilde{\alpha}^{\nu_1}_{-m_1}\cdots \right)_{S,A}~(|0,k\ket
-  \pm |0,-k\ket ) \ ,
+  |\psi \rangle_S = \left( \alpha^{\mu_1}_{-n_1}\cdots
+  \tilde{\alpha}^{\nu_1}_{-m_1}\cdots \right)_{S,A}~(|0,k\rangle
+  \pm |0,-k\rangle ) \ ,
 \"
 90,"\begin{equation}
-   |\omega_k , \vek \ket = a^{\dagger}_{\vek} | 0 \ket \ \ {\rm
+   |\omega_k , \vec{k} \rangle = a^{\dagger}_{\vec{k}} | 0 \rangle \ \ {\rm
    with} \ k^0 = \omega_k >0.
 \"
 91,"\begin{equation}
-  \Hcal = \Hcal^+ \oplus \Hcal^- \ .
+  {\cal H} = {\cal H}^+ \oplus {\cal H}^- \ .
 \"
 92,"\begin{equation}
-    \Hcal_{inv} = \Hcal / \Zmath_2 \ .
+    {\cal H}_{inv} = {\cal H} / \mathbb{Z}_2 \ .
 \"
 93,"\begin{equation}
-  Z[J] = \int \Dcal \phi~\exp \left\{ i \int_C d^4x~[\Lcal (\phi (x))
+  Z[J] = \int {\cal D} \phi~\exp \left\{ i \int_C d^4x~[{\cal L} (\phi (x))
   + J(x)\phi (x)] \right\}
 \label{ZFT}
 \"
 94,"\begin{equation}
-  \phi (t_i-i\beta ,\vex ) = \phi (t_i,\vex ) \ .
+  \phi (t_i-i\beta ,\vec{x} ) = \phi (t_i,\vec{x} ) \ .
 \"
 95,"\begin{equation}
-    iD_C(x-x')= \bra T_C \phi (x)\phi (x') \ket \ ,
+    iD_C(x-x')= \langle T_C \phi (x)\phi (x') \rangle \ ,
 \"
 96,"\begin{equation}
    D^{rs}(t-t') = D_C (t_r - t_s)
 \"
 97,"\begin{equation}
-  Z[J_1,J_2] = \int \Dcal \phi_1\Dcal \phi_2~\exp
+  Z[J_1,J_2] = \int {\cal D} \phi_1{\cal D} \phi_2~\exp
   \left\{ i\int^{\infty}_{-\infty} d^4x~[\phi_r (D^{-1})^{rs} \phi_s
-  + \Lcal_{int} (\phi_1)-\Lcal_{int} (\phi_2) + J_r\phi_r] \right\} \
+  + {\cal L}_{int} (\phi_1)-{\cal L}_{int} (\phi_2) + J_r\phi_r] \right\} \
 \label{ZFT2}
 \"
 98,"\begin{equation}
-  Z = \int \Dcal \phi_+ \Dcal \phi_-~\exp \left\{
-  i \int^{\infty}_{-\infty}dt \int d^d\vex~[\Lcal (\phi_+)-\Lcal (\phi_-)]
+  Z = \int {\cal D} \phi_+ {\cal D} \phi_-~\exp \left\{
+  i \int^{\infty}_{-\infty}dt \int d^d\vec{x}~[{\cal L} (\phi_+)-{\cal L} (\phi_-)]
   \right\} \ ,
 \label{Zorbi}
 \"
 99,"\begin{equation}
- \Lcal (\phi) = \half (\pat \phi )^2 -\half m^2 \phi^2
+ {\cal L} (\phi) = \frac{1}{2} (\partial \phi )^2 -\frac{1}{2} m^2 \phi^2
  -V_{int}(\phi) \ .
 \"
 100,"\begin{equation}
 x>0:\ \ \ \phi_+(0,x)=\phi_+(0,-x)=\phi_-(0,x)=\phi_-(0,-x)=\phi_0 (x)
 \"
 101,"\begin{equation}
-  \phi_+ (t,\vex ) = \int \frac{d^d\vek}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
-  \left\{ a_{\vek}~e^{-i\omega_{\vek} t + i\vek \cdot \vex }
-  +  a^{\dagger}_{\vek}~e^{+i\omega_{\vek} t - i\vek \cdot \vex }
+  \phi_+ (t,\vec{x} ) = \int \frac{d^d\vec{k}}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
+  \left\{ a_{\vec{k}}~e^{-i\omega_{\vec{k}} t + i\vec{k} \cdot \vec{x} }
+  +  a^{\dagger}_{\vec{k}}~e^{+i\omega_{\vec{k}} t - i\vec{k} \cdot \vec{x} }
   \right\} \ ,
 \"
 102,"\begin{equation}
- \phi_- (t,\vex ) = \int \frac{d^d\vek}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
-  \left\{ \atilde_{\vek}~e^{+i\omega_{\vek} t - i\vek \cdot \vex }
-  +  \atilde^{\dagger}_{\vek}~e^{-i\omega_{\vek} t + i\vek \cdot \vex }
+ \phi_- (t,\vec{x} ) = \int \frac{d^d\vec{k}}{(2\pi )^d}~\frac{1}{\sqrt{2\omega_k}}
+  \left\{ \tilde{a}_{\vec{k}}~e^{+i\omega_{\vec{k}} t - i\vec{k} \cdot \vec{x} }
+  +  \tilde{a}^{\dagger}_{\vec{k}}~e^{-i\omega_{\vec{k}} t + i\vec{k} \cdot \vec{x} }
   \right\} \ .
 \"
 103,"\begin{equation}
-   [a_{\vek},\atilde_{\vek'}]=[a_{\vek},\atilde^\dagger_{\vek'}]
-   = [a^{\dagger}_{\vek},\atilde_{\vek'}]
-   =[a^{\dagger}_{\vek},\atilde^\dagger_{\vek'}]=0 \ .
+   [a_{\vec{k}},\tilde{a}_{\vec{k}'}]=[a_{\vec{k}},\tilde{a}^\dagger_{\vec{k}'}]
+   = [a^{\dagger}_{\vec{k}},\tilde{a}_{\vec{k}'}]
+   =[a^{\dagger}_{\vec{k}},\tilde{a}^\dagger_{\vec{k}'}]=0 \ .
 \"
 104,"\begin{equation}
-  [\atilde_{\vek},\atilde^{\dagger}_{\vek'}] =
-  (2\pi)^d\delta^{(d)}(\vek -\vek') \ .
+  [\tilde{a}_{\vec{k}},\tilde{a}^{\dagger}_{\vec{k}'}] =
+  (2\pi)^d\delta^{(d)}(\vec{k} -\vec{k}') \ .
 \"
 105,"\begin{equation}
-     |\omega_{\vek},\vek\ket_{inv}   = \frac{1}{\sqrt{2}}
-      (|+\omega_{\vek},+\vek\ket \otimes |\tilde{0}\ket
-      + |0\ket\otimes  |-\omegak ,-\vek\ket )
+     |\omega_{\vec{k}},\vec{k}\rangle_{inv}   = \frac{1}{\sqrt{2}}
+      (|+\omega_{\vec{k}},+\vec{k}\rangle \otimes |\tilde{0}\rangle
+      + |0\rangle\otimes  |-\omega_{\vec{k}} ,-\vec{k}\rangle )
       = \frac{1}{\sqrt{2}}
-     \left( \begin{array}{l} |+\omega_{\vek},+\vek\ket \\
-     |-\omegak ,-\vek\ket \end{array} \right) \ .
+     \left( \begin{array}{l} |+\omega_{\vec{k}},+\vec{k}\rangle \\
+     |-\omega_{\vec{k}} ,-\vec{k}\rangle \end{array} \right) \ .
 \"
 106,"\begin{equation}
-   N^{inv}_{\vek} = a^\dagger_{\vek}a_{\vek} \oplus \atilde^\dagger_{\vek}
-   \atilde_{\vek}
-   \mbox{} = \left( \begin{array}{cc} a^\dagger_{\vek}a_{\vek} &
-   \mbox{} \\ \mbox{} & \atilde^\dagger_{\vek}
-   \atilde_{\vek} \end{array} \right) \ .
+   N^{inv}_{\vec{k}} = a^\dagger_{\vec{k}}a_{\vec{k}} \oplus \tilde{a}^\dagger_{\vec{k}}
+   \tilde{a}_{\vec{k}}
+   \mbox{} = \left( \begin{array}{cc} a^\dagger_{\vec{k}}a_{\vec{k}} &
+   \mbox{} \\ \mbox{} & \tilde{a}^\dagger_{\vec{k}}
+   \tilde{a}_{\vec{k}} \end{array} \right) \ .
 \"
 107,"\begin{equation}
-  N^{inv}_{\vek}~|\omegak ,\vek\ket_{inv} = 1\cdot |\omegak
-  ,\vek\ket_{inv} \ .
+  N^{inv}_{\vec{k}}~|\omega_{\vec{k}} ,\vec{k}\rangle_{inv} = 1\cdot |\omega_{\vec{k}}
+  ,\vec{k}\rangle_{inv} \ .
 \"
 108,"\begin{equation}
- H_{inv} = \sum_{\vek}N_{\vek}\omega_{\vek}
+ H_{inv} = \sum_{\vec{k}}N_{\vec{k}}\omega_{\vec{k}}
  \mbox{} = \left( \begin{array}{cc}
- \sum_{\vek} \omega_{\vek} a^\dagger_{\vek}a_{\vek} & \mbox{} \\
- \mbox{} & \sum_{\vek} \omega_{\vek}\atilde^\dagger_{\vek}
- \atilde_{\vek}  \end{array} \right) \ .
+ \sum_{\vec{k}} \omega_{\vec{k}} a^\dagger_{\vec{k}}a_{\vec{k}} & \mbox{} \\
+ \mbox{} & \sum_{\vec{k}} \omega_{\vec{k}}\tilde{a}^\dagger_{\vec{k}}
+ \tilde{a}_{\vec{k}}  \end{array} \right) \ .
 \label{enop}
  \"
 109,"\begin{equation}
- S = \int^{\infty}_{-\infty}dt\int d^{d}x~[\Lcal (\phi_+)
- -\Lcal (\phi_-)]
+ S = \int^{\infty}_{-\infty}dt\int d^{d}x~[{\cal L} (\phi_+)
+ -{\cal L} (\phi_-)]
  \"
 110,"\begin{equation}
-  H = \half \sum_{\vek}
-   \omegak [a^\dagger_{\vek}a_{\vek}+a_{\vek}a^{\dagger}_{\vek}]
-   -\half \sum_{\vek}
-   \omegak [\atilde^\dagger_{\vek}\atilde_{\vek}
-   +\atilde_{\vek}\atilde^{\dagger}_{\vek}] \ ,
+  H = \frac{1}{2} \sum_{\vec{k}}
+   \omega_{\vec{k}} [a^\dagger_{\vec{k}}a_{\vec{k}}+a_{\vec{k}}a^{\dagger}_{\vec{k}}]
+   -\frac{1}{2} \sum_{\vec{k}}
+   \omega_{\vec{k}} [\tilde{a}^\dagger_{\vec{k}}\tilde{a}_{\vec{k}}
+   +\tilde{a}_{\vec{k}}\tilde{a}^{\dagger}_{\vec{k}}] \ ,
 \"
 111,"\begin{equation}
-    :\atilde_{\vek}\atilde^\dagger_{\vek}: = \atilde^\dagger_{\vek}
-    \atilde_{\vek} \ ,
+    :\tilde{a}_{\vec{k}}\tilde{a}^\dagger_{\vec{k}}: = \tilde{a}^\dagger_{\vec{k}}
+    \tilde{a}_{\vec{k}} \ ,
 \"
 112,"\begin{equation}
- H = \sum_{\vek}  \omegak a^\dagger_{\vek}a_{\vek}
-   +\half \sum_{\vek}\omegak
-   - \sum_{\vek} \omegak \atilde^\dagger_{\vek}\atilde_{\vek}
-   -\half \sum_{\vek}\omegak \equiv H^+ - H^- \ .
+ H = \sum_{\vec{k}}  \omega_{\vec{k}} a^\dagger_{\vec{k}}a_{\vec{k}}
+   +\frac{1}{2} \sum_{\vec{k}}\omega_{\vec{k}}
+   - \sum_{\vec{k}} \omega_{\vec{k}} \tilde{a}^\dagger_{\vec{k}}\tilde{a}_{\vec{k}}
+   -\frac{1}{2} \sum_{\vec{k}}\omega_{\vec{k}} \equiv H^+ - H^- \ .
 \"
 113,"\begin{equation}
 H_{inv} = \left( \begin{array}{cc} H^+ & \mbox{} \\
@@ -528,84 +528,84 @@ H_{inv} = \left( \begin{array}{cc} H^+ & \mbox{} \\
 \label{enop2}
 \"
 114,"\begin{equation}
-  \bra 0 | H | 0 \ket = \bra 0 | (H ^+-H^-)| 0 \ket
-  =\half \sum_{\vek} \omegak
-   -\half \sum_{\vek} \omegak =0 \ ,
+  \langle 0 | H | 0 \rangle = \langle 0 | (H ^+-H^-)| 0 \rangle
+  =\frac{1}{2} \sum_{\vec{k}} \omega_{\vec{k}}
+   -\frac{1}{2} \sum_{\vec{k}} \omega_{\vec{k}} =0 \ ,
 \"
 115,"\begin{equation}
-  T^{inv}_{\mu\nu}(t,\vex) = \left( \begin{array}{cc}
-  T^+_{\mu\nu} (t,\vex) & \mbox{} \\ \mbox{} & T^-_{\mu\nu} (-t,-\vex)
+  T^{inv}_{\mu\nu}(t,\vec{x}) = \left( \begin{array}{cc}
+  T^+_{\mu\nu} (t,\vec{x}) & \mbox{} \\ \mbox{} & T^-_{\mu\nu} (-t,-\vec{x})
   \end{array} \right) % \nonumber \\
 \mbox{} = \left( \begin{array}{cc}
-  \pat_\mu \phi_+ \pat_\nu \phi_+ & \mbox{} \\ \mbox{} &
-  \pat_\mu \phi_- \pat_\nu \phi_-
+  \partial_\mu \phi_+ \partial_\nu \phi_+ & \mbox{} \\ \mbox{} &
+  \partial_\mu \phi_- \partial_\nu \phi_-
   \end{array} \right) \ .
 \"
 116,"\begin{equation}
-  \phi_{+,A} (t,\vex ) = (1-\theta(t))~f_+(\vex ) \ ; \
-  \phi_{-,A} (-t,-\vex ) = (1-\theta(-t))~f_-(-\vex)  \ ,
+  \phi_{+,A} (t,\vec{x} ) = (1-\theta(t))~f_+(\vec{x} ) \ ; \
+  \phi_{-,A} (-t,-\vec{x} ) = (1-\theta(-t))~f_-(-\vec{x})  \ ,
 \"
 117,"\begin{equation}
-\bra T_{\mu\nu}\ket = -i\frac{\delta}{\delta g^{\mu\nu}}\ln
+\langle T_{\mu\nu}\rangle = -i\frac{\delta}{\delta g^{\mu\nu}}\ln
 Z^{2nd}_{EFT}|_{h^{\mu\nu}=0} = -\frac{i}{2\kappa}\frac{\delta
 Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 \"
 118,"\begin{equation}
   Z^{ST}_{1-loop}[g] = \int \frac{d\tau d\bar{\tau}}{4\tau_2}~Z(\tau)
   = \int \frac{d\tau d\bar{\tau}}{4\tau_2} \int_{T^2}
-  \Dcal X~e^{i\frac{T}{2}\int d^2w~g_{\mu\nu}(X)\pat X^\nu \patb
+  {\cal D} X~e^{i\frac{T}{2}\int d^2w~g_{\mu\nu}(X)\partial X^\nu \bar{\partial}
   X^\nu} \ .
 \"
 119,"\begin{equation}
   Z^{ST}_{1-loop} = \int
-  \Dcal X~e^{i\frac{T}{2}\int d^2w~\eta_{\mu\nu}\pat X^\mu \patb X^\nu}
-  \left\{ 1+i\frac{g_{str}}{\alpha'}\int d^2w~h_{\mu\nu}(X)\pat X^\mu \patb
+  {\cal D} X~e^{i\frac{T}{2}\int d^2w~\eta_{\mu\nu}\partial X^\mu \bar{\partial} X^\nu}
+  \left\{ 1+i\frac{g_{str}}{\alpha'}\int d^2w~h_{\mu\nu}(X)\partial X^\mu \bar{\partial}
   X^\nu +\cdots \right\} \ .
 \"
 120,"\begin{equation}
  h_{\mu\nu}(X) = \int \frac{d^{D+1}k}{(2\pi)^{D+1}}~e_{\mu\nu}(k)e^{ik\cdot X}
 \"
 121,"\begin{equation}
-  V_{\mu\nu}(k) = \pat X^\mu \patb X^\nu e^{ik\cdot X} \ ,
+  V_{\mu\nu}(k) = \partial X^\mu \bar{\partial} X^\nu e^{ik\cdot X} \ ,
 \"
 122,"\begin{equation}
   Z^{ST}_{1-loop} [g] =
    Z^{ST}_{1-loop} [\eta ] +
   i\frac{g_{str}}{\alpha'} \int \frac{d^{D+1}k}{(2\pi)^{D+1}}\int d^2w~e_{\mu\nu}(k)
-  \bra V^{\mu\nu}(k;w) \ket +\cdots \ .
+  \langle V^{\mu\nu}(k;w) \rangle +\cdots \ .
 \label{Z}
 \"
 123,"\begin{equation}
-\bra T^{\mu\nu}(x) \ket = \frac{1}{4\pi \alpha'}
+\langle T^{\mu\nu}(x) \rangle = \frac{1}{4\pi \alpha'}
 \int \frac{d^{D+1}k}{(2\pi)^{D+1}}\int d^2w
-\bra V^{\mu\nu}(k;w) \ket e^{-ik\cdot x}
+\langle V^{\mu\nu}(k;w) \rangle e^{-ik\cdot x}
 \"
 124,"\begin{equation}
- \bra V^{\mu\nu}(k)\ket = -\left( \frac{g_{str}}{4\pi\tau_2} \right)
+ \langle V^{\mu\nu}(k)\rangle = -\left( \frac{g_{str}}{4\pi\tau_2} \right)
  \frac{\delta^{(D+1)}(\sqrt{\alpha'}k)}{V_{D+1}}
  \eta^{\mu\nu} Z_{1-loop} \ ,
 \"
 125,"\begin{equation}
-  \bra T_{\mu\nu}\ket \sim \frac{1}{{\alpha'}^{13}V_{26}} Z_{1-loop} \times
+  \langle T_{\mu\nu}\rangle \sim \frac{1}{{\alpha'}^{13}V_{26}} Z_{1-loop} \times
   \eta_{\mu\nu}
 \"
 126,"\begin{equation}
-   \bra T_{\mu\nu}(X)\ket + \bra T_{\mu\nu}(-X)\ket ,
+   \langle T_{\mu\nu}(X)\rangle + \langle T_{\mu\nu}(-X)\rangle ,
 \label{Tsum}
 \"
 127,"\begin{equation}
-  \bra T^+_{\mu\nu}\ket + \bra T^-_{\mu\nu} \ket \ .
+  \langle T^+_{\mu\nu}\rangle + \langle T^-_{\mu\nu} \rangle \ .
 \"
 128,"\begin{equation}
-  Z[J] = \bra \exp \{ i\int d^2w J_\mu (w,\wbar ) X^{\mu}(w,\wbar )
-  \} \ket \ .
+  Z[J] = \langle \exp \{ i\int d^2w J_\mu (w,\bar{w} ) X^{\mu}(w,\bar{w} )
+  \} \rangle \ .
 \label{genfun}
 \"
 129,"\begin{equation}\label{eq:modes}
-  X^\mu (w,\wbar ) = \sqrt{4\pi^2\alpha'}\sum_I x^\mu_I X_I(w,\wbar )\ .
+  X^\mu (w,\bar{w} ) = \sqrt{4\pi^2\alpha'}\sum_I x^\mu_I X_I(w,\bar{w} )\ .
 \"
 130,"\begin{equation}
-      J_{\mu, I}=  \sqrt{4\pi^2\alpha'}\int d^2 w J_\mu (w,\wbar ) X_I(w,\wbar ) \ .
+      J_{\mu, I}=  \sqrt{4\pi^2\alpha'}\int d^2 w J_\mu (w,\bar{w} ) X_I(w,\bar{w} ) \ .
 \"
 131,"\begin{equation}
 %  Z[J]= N[J_0]\left[ \det \left( \frac{-\nabla^2}{4\pi^2
@@ -614,7 +614,7 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 %\"
 132,"\begin{equation}
   Z[J]= N[J_0]\left[ {\det}'  \left( -\nabla_w^2\right) \right]^{-d/2}
-  \exp \left\{ -\half \int d^2 w
+  \exp \left\{ -\frac{1}{2} \int d^2 w
   \int d^2 w' J(w)\cdot G'(w,w')\cdot J(w') \right\} \ ,
 \"
 133,"\begin{equation}
@@ -671,11 +671,11 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
   G'_{(g,h),ren} =-\frac{\alpha'}{2}\ln |\theta_{gh}(0|\tau)|^4
 \"
 145,"\begin{equation}
-  \pat_{w_1}\patb_{w_2} G'(w_1,w_2)=
-  -\pat_{w_1}\patb_{w_1}G'(w_1,w_2)\ .
+  \partial_{w_1}\bar{\partial}_{w_2} G'(w_1,w_2)=
+  -\partial_{w_1}\bar{\partial}_{w_1}G'(w_1,w_2)\ .
 \"
 146,"\begin{equation}
- \pat_w\patb_w G'(w,w') =
+ \partial_w\bar{\partial}_w G'(w,w') =
  -\pi\alpha'\delta^2(w-w')+\frac{\pi\alpha'}{2}X^2_0 \ .
 \"
 147,"\begin{equation}
@@ -683,14 +683,14 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 % -\frac{\pi}{\alpha'}X^2_0 \ .
 %\"
 148,"\begin{equation}
-  \pat_{w_1}\patb_{w_2}G'_{ren}(w_1,w_2) = -\frac{\pi\alpha'}{2}X^2_0 \ .
+  \partial_{w_1}\bar{\partial}_{w_2}G'_{ren}(w_1,w_2) = -\frac{\pi\alpha'}{2}X^2_0 \ .
 \"
 149,"\begin{equation}
-   \pat G'_{(g,h)} (w,w') \approx_{w\rightarrow w'} -\frac{\alpha'}{2}(w-w')^{-1}
+   \partial G'_{(g,h)} (w,w') \approx_{w\rightarrow w'} -\frac{\alpha'}{2}(w-w')^{-1}
    + C_{(g,h)}(\tau) (w-w') + {\cal O}((w-w')^3)
 \"
 150,"\begin{equation}
-  \bra V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \ket_{1-loop} =
+  \langle V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \rangle_{1-loop} =
  -\frac{g_{str}}{4\pi\tau_2} \frac{\delta^{(25-d)}(k)}{V_\perp}\times
  Z_\perp[\tau]\sum_{g,h} Z_{\parallel,(g,h)}[\tau ]~\eta^{\mu\nu} \ .
 \"
@@ -701,13 +701,13 @@ Z_{1st}}{\delta h^{\mu\nu}}|_{h^{\mu\nu}=0} \ . \label{T1}
 % \right)^{24}~\eta^{\mu\nu}
 %\"
 152,"\begin{equation}
-  \bra V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \ket_{1-loop} =
+  \langle V^{\mu \nu}(k)+  V^{\mu \nu}(-k) \rangle_{1-loop} =
  -\frac{g_{str}}{4\pi\tau_2}
  \frac{\delta^{(26)}(k)}{V_{26}}~Z_\perp(\tau)
  Z_{\parallel, (1,1)}[\tau]~\eta^{\mu\nu} \ .
 \"
 153,"\begin{equation}
-T(\tau)=\frac{1}{2}\tr_{U+T} \left[\left( 1+\hat g\right)
+T(\tau)=\frac{1}{2}{\rm tr}_{U+T} \left[\left( 1+\hat g\right)
 \int d^2z V(z,\bar z)\  q^{L_o-a}\bar q^{\tilde L_o-\tilde a}\right]
 \"
 154,"\begin{equation}
@@ -729,9 +729,9 @@ e^{-\sqrt{\alpha'/2}\tilde k_\mu \alpha_{n}^\mu z^{-n}/n}|-q^n\rho)
 \frac{1}{1\mp q^n} e^{\mp \alpha'k_\mu k^\mu \frac{q^n}{2n(1\mp q^n)}}
 \"
 158,"\begin{equation}
-\prod_{n\in\ZZ^+}e^{\frac{1}{n}\frac{q^n}{1+q^n}} =
+\prod_{n\in{\mathbb{Z}}^+}e^{\frac{1}{n}\frac{q^n}{1+q^n}} =
 \frac{\theta_2(\tau)}{q^{1/8}},\ \ \ \ \ \
-\prod_{n\in\ZZ^+-1/2}e^{\frac{1}{n}\frac{q^n}{\pm 1+q^n}} = \theta_{3,4}(\tau)
+\prod_{n\in{\mathbb{Z}}^+-1/2}e^{\frac{1}{n}\frac{q^n}{\pm 1+q^n}} = \theta_{3,4}(\tau)
 \"
 159,"\begin{equation}
 \sum_{m>0}\int \frac{d^2\rho}{\pi}\ e^{-|\rho|^2} (\rho|
@@ -754,8 +754,8 @@ T^{\mu\nu}_0=-\left(\frac{g_{str}\alpha'}{2}\right)^2
 X_{1,1}+\frac{k_\mu k_\nu}{ 4} 2^{-(d+1)} X_{1,0}\right)
 \"
 162,"\begin{equation}
-V=\alpha \pa X^\mu\bar\pa X^\nu e^{ik.X}+\beta \pa X^\mu e^{ik.X}\bar\pa X^\nu+
-e^{ik.X} \pa X^\mu\bar\pa X^\nu
+V=\alpha \partial X^\mu\bar\partial X^\nu e^{ik.X}+\beta \partial X^\mu e^{ik.X}\bar\partial X^\nu+
+e^{ik.X} \partial X^\mu\bar\partial X^\nu
 \"
 163,"\begin{equation}
 T^{\mu\nu}_0=-\left(\frac{g_{str}}{4\pi \tau_2}\right)\eta^{\mu\nu}

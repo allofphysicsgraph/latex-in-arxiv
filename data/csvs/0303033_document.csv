@@ -1,0 +1,664 @@
+,document
+0,"\begin{document}
+
+\section{Introduction}
+
+
+Recent developments on supersymmetric gauge theories have shown
+that there is a deep relationship between SUSY theories that admit a large $N$
+limit and
+zero dimensional matrix models \cite{DV,DV2,DV3}.
+The
+connection between these seemingly different physical systems arose from
+the study of topological string theory amplitudes for open
+strings, but now there are purely field-theoretic arguments that show
+this connection.
+Of the two available proofs \cite{DGLVZ,CDSW} of the correspondence
+(for a $U(N)$ gauge theory),
+ the most compelling one was given in the
+paper \cite{CDSW}, as it gave a full dictionary between loop operators
+on the matrix model and certain elements of the chiral ring of the
+gauge theory, as well as
+a proof that can be argued to be valid non-perturbatively.
+Part of the setup  includes a correspondence between the
+ gaugino condensate of the SUSY gauge theory and the
+'t Hooft coupling of the matrix model \cite{DV3}.
+
+Having this connection makes it possible to solve for the vacuum
+structure of the supersymmetric gauge field theory if one knows
+how to solve the matrix model in the large $N$ limit.
+We will refer the reader to \cite{DGZ,GM} for reviews of matrix 
+models. A more recent list of solvable models appears in \cite{Ka}
+
+
+
+The most successful and studied example to date has been given by
+deforming the $U(N)$ ${\cal N}=2$ gauge theory, whose solution was given by 
+Seiberg and Witten \cite{SW} to an ${\cal N}=1$
+gauge theory by adding a superpotential ${\rm tr}~ (V(X))$, where $X$ is
+the chiral field superpartner of the vector multiplet and $V(X)$
+is a polynomial in $X$, see for example \cite{CV, DV3, 
+Chek, F, F2, Fuji, Gop, IM, CDSW, CSW}. This theory is
+related to the one matrix model with potential $V(X)$. The
+classical vacua of the gauge theory are described by distributing
+eigenvalues on the roots of the polynomial $V'(X)$ giving rise to
+a theory whose classically unbroken gauge group is $\prod U(N_i)$,
+where
+ there are $N_i$ eigenvalues in the $i$-th root of the polynomial
+ $V'(X)$.
+
+Similarly, in the matrix model, the vacua are also described by
+distributing (an infinite number of) eigenvalues over the
+classical saddle points of the matrix model. Each of these
+classical points in the eigenvalue plane becomes a cut in the
+eigenvalue plane due to quantum effects, when one considers the
+spectral curve of the matrix model. For each cut there is an
+associated 't Hooft coupling which counts how many eigenvalues end
+up in the given cut. This information is related to a partial
+gaugino condensate \cite{DV3}, whose holomorphic definition was
+given nonperturbatively in \cite{CDSW}.
+
+One of the advantages of this new method of computing gauge theory
+results is that it does not assume S-duality like symmetries to
+solve the theory, so it can provide tests of these highly
+non-trivial symmetries. For example, aspects of the ${\cal N}=1^*$
+vacuum structure have been studied in this way \cite{DHKS,DHKS2}, but a general
+solution of the vacua of the theory in terms of matrix models is
+not yet available.
+ \footnote{This theory can also be solved by
+first turning on a mass term deformation that gives rise to an
+${\cal N}=2$ gauge theory, and finding the associated integrable
+system \cite{DW,DHK,Hollow}. In principle, it is possible to evaluate all of
+the holomorphic information by going to the appropriate point in
+the moduli space of vacua.}
+
+ Part of the failure to obtain the full solution of the matrix model
+comes
+from the fact that the classical ${\cal N}=1^*$ gauge theory vacua
+is described by a decomposition into irreducible representations
+of $SU(2)$, and there are an infinite number of such
+representations. In the associated matrix model, this translates
+into an infinite number of classical saddle points for the
+eigenvalues of one of the matrices, let us call it $X$, and to
+each such classical saddle point for the eigenvalue $x$ of $X$ one
+can associate a cut in a spectral curve of the quantum theory (at
+least, this is what experience dictates from the one-matrix
+model). In particular, one has a potentially infinite number of
+cuts. This suggests that one can not solve the loop equations of
+the matrix model in a straightforward fashion, as there will be an
+infinite number of unknown parameters: one can take these
+parameters to be the number of eigenvalues in each cut $N_i$, but
+more to the point, the one point functions $<X^n>$ depend
+classically on all of the $N_i$. Thus, there are no recursion
+relations which solve for the one point functions of the loop
+operators $<X^n>$.
+
+The technical issue is how to effectively truncate the problem to
+finitely many cuts. In the one matrix model this is automatic, but
+in the ${\cal N}=1^*$ theory one has to do this by hand. A related
+problem in complex analysis can be phrased as follows: given a
+Laurent series of an analytic function $f(z)=\sum a_i z^{-i}$ at
+infinity, what are the constraints on the variables $a_i$ that
+guarantee that $f(z)$ has a finite number of cuts in the interior
+of the complex plane? The constraints involve an infinite number
+of the coefficients of $f$ at the same time, since multiplying
+$f(z)$ by any polynomial function of $z$ will always give a
+function with the same properties. Looking at it from  this point
+of view it also looks like the problem has no solution.
+
+
+The current literature solves the abstract problem by making a clever
+anzatz for the one-cut solution (or multi-cut solutions
+ where all of the cuts are
+correlated, see for example \cite{KKN, DHKS,DHKS2,DHK2,Man}),
+that leads to studying functions on an elliptic curve, but it does
+not solve in any sense a {\em general} multi-cut solution.
+
+In this paper we will describe a new technique to solve (only
+partially) similar matrix models based on getting information from
+the gauge theory first. Since the gauge theory and the matrix
+model data are in some sense equivalent, this statement might seem
+paradoxical. We will concern ourselves with situations where the
+superpotential is non-generic and there is the possibility of
+having a moduli space of vacua. In particular, the allowed
+deformations of the moduli space give a finite number of
+parameters which determine part of the vacuum structure. In the
+matrix model these turn out to be situations where the system of
+loop equations is degenerate in some sense, a statement which will
+be explained in detail later in  the paper, and there are more
+free parameters than at a generic case. The main question we want
+to address is: what does the moduli space tell us about the matrix
+model?
+
+To avoid undue suspense, we find that under some circumstances the
+existence of a moduli space of  vacua produces an {\em integrable
+sector} of the matrix model, this is, part of the problem behaves
+like a one matrix model: one can find an infinite number of one
+point functions with a finite amount of data. The finite amount of
+data is exactly the one that characterizes the possible
+deformations of the moduli space that are allowed by holomorphy.
+
+To show the new technique, we will study two examples. First, a
+toy example which reduces to the one matrix model, which we
+understand very well. It will just be an illustration of the
+matrix model techniques used.
+ Then we will study a
+three matrix model closely related to the ${\cal N}=1^*$ gauge
+theory which has special properties that insure that certain
+objects in the matrix model only have a finite number of cuts
+automatically. This happy coincidence is tied to the fact that
+these particularly gauge theories can be geometrically engineered.
+We will in this paper always consider a gauge field theory which
+can be geometrically engineered by placing branes on a singular
+Calabi-Yau (CY) geometry. From this point of view we are exploring
+ questions that relate the CY geometry to a matrix model.
+
+The basic idea is that if we place fractional branes at the
+singularities of the geometry, then the CY geometry will be
+deformed by geometric transitions so that the singularities with
+fractional branes on them are 'resolved'. This will be exactly like in the
+Klebanov-Strassler geometry \cite{KS,GV}, repeated many times at many 
+singularities, as in
+\cite{CIV,CFIKV}.
+
+If we insert a probe brane in the bulk (in the presence of the
+fractional branes) then it's moduli space should correspond to the
+deformed CY geometry. This idea is very common in the literature, see for 
+example \cite{KS,GT,GT2,Bq}.
+Fortunately, the shape of the CY can be
+studied directly from the field theory \cite{BL,Brev}
+ so it is possible to start
+with a classical gauge field theory and produce certain CY
+geometries, as opposed to start with the geometry and guess the field 
+theory. If we place a brane in the bulk and compute it's
+moduli space, the moduli space of the brane will be the CY
+geometry. Of course, not every superpotential will lead to a CY
+geometry, but for those that do one can make progress in
+understanding the gauge theory questions by studying the geometry
+(moduli space of the theory).
+Also, one should be able to understand aspects of the matrix model by 
+studying the geometry.
+
+The main advantage with this setup is that the problem is controlled 
+by holomorphy:
+the possible deformations of the CY geometry that result from
+placing fractional branes at singularities are not arbitrary, so
+there are only a finite number of unknowns. This is exactly what
+we are looking for, a situation where the potentially infinite
+number of variables (cuts in the matrix model)
+ is reduced to finitely many (we are assuming that
+there is one cut per quantum deformation parameter, a statement which
+will be justified later).
+
+We want to study exactly what matrix model information we can get
+from the gauge theory moduli space. We will use a proposal first
+presented in \cite{Bq} to calculate the quantum moduli space from
+the matrix model. The relation between the moduli space and how to
+obtain it from the matrix model still lacks a proof, so it should
+be treated as a conjecture that needs justification. However, one
+can make predictions based on the calculation of the deformed
+moduli space from the matrix model, and the one expected from
+holomorphy. Some of these predictions can be verified directly by
+manipulating the loop equations of the matrix model, and we will
+use this calculation as a consistency check of the proposal.
+
+In our examples, we will not solve the
+matrix model completely (find all one point functions from a
+finite amount of data). We will use the word `solve' in the
+following more restricted sense: it is possible to determine an
+infinite number of one point functions of the matrix model with a
+finite amount of data. In essence, we obtain similar results to a one 
+matrix model.
+
+
+The main example we will study 
+is a gauge theory that will have three matrices
+$X,Y,Z$ in the adjoint of $U(N)$, and a superpotential of the
+general form $$ {\rm tr}~ (XYZ-q XZY+ V(X)) $$ with the restriction
+$q^n=1$, and a restriction on the form of $V(X)$ which depends on
+$n$. Similar systems have been studied  
+in \cite{D,DF,BJL,DHK2,Hollow, Man} and are interesting on their own right as
+they encode structure of interesting 
+deformations of ${\cal N}=4$ gauge theories \cite{LS}.
+The  restrictions placed on the superpotential guarantee
+ that there is a
+CY geometry associated to the gauge theory \cite{D,DF,BJL}, and similar 
+examples studied in \cite{CIV,CKV}.
+ Also,  after a linear
+change of variables on $X$, we can get for $q\neq 1$ an equivalent
+superpotential of the form
+$$
+{\rm tr}~ (XYZ-q XZY+ \tilde V(X)+ m^2 YZ)
+$$
+The ${\cal N}=1^*$ gauge theory has the same matter content and
+the potential
+$$
+{\rm tr}~ (XYZ- XZY+\tilde m^2 X^2 + m^2 YZ)
+$$
+so by varying $q$ we can in principle get arbitrarily close to
+the ${\cal N}=1^*$ gauge theory. This particular
+model has been studied extensively, also 
+in relation to AdS/CFT \cite{PS,ADK}.
+This is the main physical motivation to
+write this paper: to approach the problem of solving the
+${\cal N}=1^*$ vacuum structure from the matrix models,
+ with an arbitrary number of 
+cuts, as well as the related $q$ deformed systems. 
+It is important to notice that setting $q\neq 1$ means that the conformal 
+field theory with $V=0$ has only $N=1$ SUSY in four dimensions.
+Therefore, techniques that depend on the quantum corrections 
+being calculable 
+in ${\cal N}=2$ theories, which then are softly broken 
+to ${\cal N}=1$ can break down 
+because there is less supersymmetry protecting the system. 
+In particular, to use integrable systems like in ${\cal N}=2$ gauge theories,
+but with less supersymmetry \cite{Hollow}, 
+one actually needs a proof that the moduli space does not get lifted by 
+quantum corrections.
+These matrix models are also interesting on their own right, 
+see for example \cite{Kos2}, so we can also gain insight into the problem 
+of solving matrix models by using four dimensional SUSY gauge theory 
+information.
+
+
+\section{The one matrix model}\label{sec:1matrix}
+
+In this short section we will show how the analysis of a quantum
+moduli space can solve the one matrix model.  The whole purpose of
+this section is to show that a quantum deformed CY geometry
+contains information about loop equations of the matrix model.
+
+Consider the  CY threefold  geometry
+\begin{equation}\label{eq:CY1}
+uv= (w- P(z))(w+P(z))
+\end{equation}
+where $P(z)$ is a polynomial of degree $n$ ($P(z)=\sum_{i=0}^n a_i
+z^i$), and which results from deforming the $A_1$ singularity
+geometry $uv = w^2$. This procedure removes the codimension two
+singularities and leaves only codimension three singularities
+behind, which for generic $P(z)$ are conifold singularities.
+
+The gauge theory associated to D-branes on this geometry has been 
+studied in \cite{CIV,CKV,CFIKV,CV}, and it is given by a quiver
+diagram with two nodes, representing the affine dynkin diagram 
+$\hat A_1$.
+
+
+ \epsfxsize=1in
+ \epsfbox{quiver3.ep1}
+
+
+Because there are two nodes in the quiver theory, one has general
+gauge group $U(N)\times U(M)$. The superpotential of the theory is
+given by
+\begin{equation}\label{eq:super1}
+W = {\rm tr}~ ( Z A_1B_1 - B_1 A_1 \tilde Z - ZA_2B_2+B_2A_2 \tilde Z)
++{\rm tr}~ (V(Z) - V(\tilde Z)
+\end{equation}
+and in the case $V(x)=0$ the superpotential is the one that results
+from an ${\cal N}=2$ supersymmetric gauge theory. $P(x)$ as a
+polynomial is determined by the following equation $2P(x)=V'(x)$,
+so one can relate the shape of the geometry and the gauge theory
+parameters in the superpotential.
+
+A brane in the bulk will have a theory characterized by the gauge
+group $U(1)\times U(1)$. This is the correct fractional brane
+content for a bulk brane in the orbifold geometry, and these
+numbers do not change when we deform the geometry.
+
+Also, if we take $M=0$, we see that we obtain a gauge theory with the same
+matter content as the ${\cal N}=2$, $U(N)$ gauge theory, which has been
+deformed by the potential $V(Z)$. Thus this particular theory is a
+sub-theory of the one defined by the geometry.
+
+This $U(N)$ does not have a moduli space of vacua, instead it has
+a discrete set of vacua. These
+ vacua at the classical level
+are built by distributing the $N$
+eigenvalues of $Z$ into the roots of $P(Z)$.
+If there are $N_i$
+eigenvalues at the $r_i$ root, the low energy effective (classical) theory
+is given by pure gauge theory, with gauge group $\prod_i U(N_i)$.
+Quantum effects lead to confinement of the $SU(N_i)$ groups, so in the
+infrared of the quantum theory
+we end up with a gauge group $\prod(U(1))$ over the roots
+which have at least one eigenvalue.
+
+To solve for the structure of the vacuum, we want to find the vevs
+of all of the elements of the chiral ring.
+ The chiral ring is generated by the following combinations
+\begin{eqnarray}
+\frac 1 {32\pi^2}tr(Z^nW_\alpha W^\alpha)\\
+tr(Z^nW_\alpha)\\
+tr(Z^n)
+\end{eqnarray}
+The ordering of $W$ inside the trace does not matter, because any
+other ordering can be obtained by the addition of terms of the
+form $\bar D M$, so at the level of the chiral ring they give the
+same cohomology class. For our purposes, the elements of the
+chiral ring which have a simple interpretation in a matrix model
+are the ones given by $tr(Z^nW_\alpha W^\alpha)$. Using the
+generalized Konishi anomaly for the variations $\delta Z \sim Z^kW_\alpha
+W^\alpha$, Cachazo et al. \cite{CDSW} were able to show that these satisfy the
+same equations as the loop equations for the one matrix model with
+potential $V(X)$. This is
+\begin{equation}
+tr(V'(Z) Z^k W_\alpha W^\alpha) =\frac{1}{32\pi^2} \sum(tr(Z^{k-1-i}W_\alpha
+W^\alpha)tr(Z^iW_\alpha W^\alpha)
+\end{equation}
+If we call $O_i = \frac1{32\pi^2}tr(Z^iW_\alpha W^\alpha)$, then the
+equations
+above read
+\begin{equation}
+tr(\sum a_j Z^{k+j} W_\alpha W^\alpha) =\frac{1}{32\pi^2}
+\sum(tr(Z^{k-1-i}W_\alpha
+W^\alpha)tr(Z^iW_\alpha W^\alpha)
+\end{equation}
+or equivalently
+\begin{equation}
+\sum a_j O_{k+j} = \sum_i O_{k-i-1} O_i
+\end{equation}
+This equation can be read as  a recursion relation for the vevs
+$O_{n+k}$ for $k\geq 0$ in terms of the vevs $O_{0},\dots,
+O_{n-1}$. All of these equations can be put in one single equation
+in terms of a generating function for the $O_i$, defined as
+follows
+\begin{equation}
+R(u) = \sum O_k u^{-k-1}
+\end{equation}
+so that
+\begin{equation}{\label{eq:loop1matrix}}
+V'(u)R(u) = R(u)^2 +f(u)
+\end{equation}
+where $f$ is an unknown polynomial of degree $n-1$. This is
+necessary to seed the initial conditions for the recursion
+relation. Given $f$ it straightforward to solve for $R(u)$. $f$ in
+the quantum theory is determined by how we choose to distribute
+the eigenvalues of $Z$ on the different roots of the classical
+potential, and it encodes the different possible vacua of the
+theory.
+
+
+These equations above are the same equations that can be derived
+from a one matrix model with potential $V(X)$.
+ This is, we have the
+matrix model
+\begin{equation}
+\int [dX] \exp (-N\mu^{-1} {\rm tr}~ (V(X)))
+\end{equation}
+which is to be solved in the planar limit in the large $N$ limit.
+We can write the loop operators
+\begin{equation}
+<X^k> = \frac 1N{\rm tr}~ (X^k)
+\end{equation}
+and the loop equations for the one matrix model
+\begin{equation}
+<V'(X)X^k> = \mu \sum_i<X^{k-1-i}><X^i>
+\end{equation}
+So it is immediate to see
+ that they have structurally the same form as the ones given
+above (by setting $O_i\sim \mu<X^i>$).
+ In the matrix model
+we have the normalization condition $<X^0> =<1> =1$, which
+identifies $\mu\sim \frac1{32\pi^2}<W_\alpha W^\alpha>=S$,
+the gaugino condensate.
+It is the identification between loop equations of a matrix model
+and the chiral ring constraints that allow us to relate these two
+very different mathematical problems.
+
+
+Now, let us use the quantum moduli space technique to rederive the same loop
+equations from a different point of view. The idea is to study the
+gauge theory with potential \ref{eq:super1}, with one brane in the
+bulk, this is, with gauge group $U(N+1)\times U(1)$.
+
+The classical moduli space is obtained by solving the F-term
+constraints. The constraints for the $A,B$ give us
+\begin{equation}
+zA_i - A_i\tilde z =0\quad B_i z-\tilde z B_i=0
+\end{equation}
+and since $\tilde z$ is a scalar, for $A,B$ to get a non-zero vev
+and give us a brane in the bulk, we need that one of the
+eigenvalues of $z$ is equal to $\tilde z$, and that $A,B$ be
+eigenvectors of the matrix $z$ with eigenvalue $\tilde z$.
+
+We can diagonalize $z$, and single out the ($1\times 1$) block
+matrices corresponding to the eigenvalue $\tilde z$. With this
+convention
+\begin{equation}
+z= \hbox{diag}(\tilde z, z_1 ,\dots z_n),\quad B= (b_i,0,\dots,0)\quad
+A_i=\begin{pmatrix}a_i\\ 0\\\vdots\\0\end{pmatrix}
+\end{equation}
+
+The other eigenvalues will be constrained by the equations
+\begin{equation}
+A_1B_1-A_2B_2 = V'(z)\quad B_1A_1-B_2A_2=V'(\tilde z)
+\end{equation}
+which result in $V'(z_i)=0$ and
+\begin{equation}
+b_1a_1-b_2a_2 = V'(\tilde z)
+\end{equation}
+From here, the classical eigenvalues $z_i$ which were not singled out
+will be distributed
+only along the saddle points of the potential $V$.
+
+Now, to find the moduli space we need to write the constraints
+between the gauge invariant variables (with respect to the group
+$U(N+1)$) given by $\tilde z$ and the combinations
+\begin{equation}
+u=a_1b_2, v=a_2b_1, w = \frac{a_1b_1+a_2b_2}{2},
+\Omega=\frac{a_1b_1-a_2b_2}{2}
+\end{equation}
+ Clearly, the F-terms imply $\Omega=V'(\tilde z)/2$.
+ And we can also use the algebraic relation
+\begin{equation}
+w^2 = \Omega^2+uv = \frac{V'(\tilde z)^2}{4}+uv
+\end{equation}
+to obtain the equations describing the moduli space given by the
+geometry \ref{eq:CY1}.
+
+The classical moduli space is given by the single equation in four
+variables $w, u, v, \tilde z$
+\begin{equation}
+w^2-uv -\frac{V'(\tilde z)^2}{4}=0
+\end{equation}
+and it has branes located at the singularities of the geometry.
+Because there are singularities, it is possible to deform the moduli
+space and remove the singularities. These deformations are
+controlled by holomorphy.
+
+We should expect that the quantum deformed moduli space is of the
+form
+\begin{equation}
+w^2-uv -\frac{V'(\tilde z)^2}{4} = \hbox{Quantum deformations}=Q
+\end{equation}
+where the right hand side is a polynomial involving only positive
+powers of the confining scale $\Lambda_{SU(N+1)}$, and which is
+polynomial in the coefficients of $P$. This is the expected result from
+holomorphy \cite{Snal,Sexact,Shol}.
+
+The particular theory at hand
+has an $SU(2)$ symmetry under which $A_1,A_2$ and
+$B_1,B_2$ are doublets, while $z,\tilde z$ are singlets. $w,u,v$
+together form a triplet, and $\Omega$ is a singlet. From these
+symmetries one can see that the quantum deformations will be
+independent of $w,u,v$, since terms of degree one in these
+variables that could appear in the polynomial $Q$ above are not in
+a singlet representation of $SU(2)$. Hence $Q$ can only be given
+by a polynomial in $z$. The deformations should also be such that they
+are subleading with respect to the deformations induced by
+changing the couplings in the superpotential. If $V'(z)$ is of
+degree $n$, and we change the functional form of $V'$ we can vary
+the coefficients of $z^n, z^{n+1}, \dots, z^{2n}$ independently of
+each other. The deformation should thus be of the form $f(z)$, with $f$
+of degree smaller than $n$ \cite{CIV}.
+
+It turns out that the number of parameters in the deformation $f$
+is equal to the number of roots of $V'$. For each of these roots
+there is a conifold singularity, and each of these singularities
+can be deformed away by placing fractional branes at the given
+conifold, thus inducing a geometric transition which is of the same type as 
+the one in \cite{KS}. We get in the end
+the same number of deformation parameters
+as there are singularities in the
+geometry.
+
+Now we want to see that these deformations can be related to the
+loop equations of the matrix model with potential $V$.
+
+For this, we need to know how to derive the quantum moduli space of
+the gauge field theory from the matrix model point of view. This has
+been previously argued for in \cite{Bq}.
+
+We need to consider a multi-matrix model with the same field content as
+the gauge theory, and we take ${\tilde N}\to \infty$. However,
+ we fix the matrix model so that the number of moduli stays fixed.
+This is, we will consider a matrix model with one probe brane in the
+bulk singled out.
+We do this with a matrix
+model potential
+given by the classical superpotential of the theory.
+$$
+\int ([dz][d\tilde z][d A][d B])' \exp(W)
+$$
+where the prime indicates that we leave some matrix fields unintegrated
+(exactly those that are massless perturbatively in the gauge theory).
+Since in the matrix model we do a large $N$ expansion, we are going
+to get to the results by analyzing the saddle point equations for
+the variables $\tilde z$,
+and what we called $a_i,b_i$ perturbatively above. Also, one of the
+eigenvalues of $z$ in the gauge theory is singled out to be equal to
+$\tilde z$ perturbatively. This eigenvalue will be called $z_0$ in the
+matrix model. At least naively, we can ignore the effect of the matrix 
+probe on the large $N$ matrix condensate because it would give rise 
+to a $1/N$ effect. 
+
+
+
+On going to a basis of eigenvalues for $z$, and including the
+Vandermonde determinant  we find the following
+integral to perform in the large $\tilde {N}$
+limit:
+\begin{eqnarray}
+&\int \prod_{i\neq 0}[d\lambda_i][dA_{12}^i][(dB_{12})_i]
+\Delta^2 \exp-\left\{\tilde N\mu^{-1}
+\sum_{j=1}^{\tilde N}(\lambda_j-\tilde z)(A^j\cdot B_j) +\right.&
+\\&\left.+ \tilde N\mu^{-1} \sum_{j=0}^{\tilde N} V(\lambda_j)
+-{\tilde N}\mu^{-1}V( \tilde z)+{\tilde N}\mu^{-1}(z_0-\tilde z)((a_1 )(b_1) -
+(a_2)(b_2)) \right\}&
+\end{eqnarray}
+The above equation includes the Vandermode for all of the eigenvalues of $z$,
+ not 
+just the Vandermonde of the large $N$ condensate.
+In the equations above $\Delta^2$ is the Vadermonde determinant.
+The sum over $j$ of $A^jB_j$ is over the color indices associated
+to the eigenvalues $\lambda_1,\dots\lambda_{\tilde N}$, but not to $z_0$.
+This has
+been separated in the last line because we want
+$a_1,b_1, a_2,b_2$ to be moduli in the matrix model,
+ so they cannot be massive at the saddle point.
+From this condition one of the eigenvalues of $z$ is equal to
+$\tilde z$.
+
+In the equation above it is possible to integrate $A^j,B_j$ completely.
+This being a Gaussian
+integral over four coordinates of mass $\lambda_j-\tilde z$
+gives us a measure term equal to
+$\delta= \prod_{i\neq 0}(\lambda_i-\tilde z)^{-2}$
+
+The logarithm of the Vandermonde determinant combined with $\delta$ is then
+$$\log(\Delta^2 \delta) =
+\sum_{i\neq j} 2\log(\lambda_i-\lambda_j)
+-2 \sum_{i\neq 0} \log(\lambda_i-\tilde z)$$
+and it is the term in the effective action for the
+eigenvalues $\lambda$ and $z$.
+Now we want to solve for the saddle point of this setup
+in the large $\tilde N$ limit. This will result in summing all of the planar
+diagrams of massive fields in the above theory.
+Notice that the eigenvalues $\tilde z$ and $z_0$ do not have an
+ interaction between
+them, because we have not integrated out the massless modes of $A,B$.
+The saddle point equation for the zero components of $A$, $B$
+generic make $\tilde z=z_0$ in this situation.
+
+One sees that
+the saddle point equations for the eigenvalues $\lambda_i$ are
+the same as when we have the theory $U(\tilde N)\times U(0)$,
+ because the contribution from $z_0$ cancels the
+contribution from $z$ when they are equal. This seems accidental in 
+the matrix model.
+The saddle point equation for the eigenvalues $\lambda_i$ is
+\begin{equation}
+ \tilde N \mu^{-1} V'(\lambda_i) -
+2\sum_{j\neq i} \frac 1{\lambda_i-\lambda_j} = 0
+\end{equation}
+Now let $w(\lambda) = \frac 1{\tilde N}\sum_{i\neq 0} \frac{1}
+{\lambda-\lambda_i}$
+be the resolvent of the matrix model.
+
+The saddle point equations for $\tilde z = z_0$ are identically
+equal to
+\begin{equation}
+ V'(\tilde z) - 2\mu w(\tilde z) +a_1b_1-a_2b_2 = 0
+\end{equation}
+From here, we can use the same identity that led us to the classical moduli
+space to find that the quantum moduli space, as described by the matrix model,
+should be given by the equation
+\begin{equation}
+w^2 - uv = \frac 14(V'(\tilde z) - 2\mu w(\tilde z))^2
+\end{equation}
+Now, we compare the matrix model prediction to the  prediction obtained  by
+holomorphy arguments.
+It should be the case that two different functions of $\tilde z$ are
+ identical, these are as follows
+\begin{equation}
+\frac 14(V'(\tilde z) - 2\mu w(\tilde z))^2 =\frac 14(V'(\tilde z))^2+ f(z)
+\end{equation}
+where $f$ is a polynomial. We obtain from these the following
+set of equations
+(after changing the normalization of  $f$ to $\tilde f=-4 \mu^{-1} f$)
+\begin{equation}
+V'(\tilde z) w(\tilde z) -  \mu w(\tilde z)^2 = \tilde f(\tilde z)
+\end{equation}
+which encode the full set of loop equations of the one matrix
+model \ref{eq:loop1matrix}, when we realize that $R(u)$ and $w(\tilde z)$
+are really the same object.
+
+To summarize: the quantum deformed moduli space of a supersymmetric
+gauge theory  can encode loop equations for a matrix model. The above result
+for a one matrix model is not new and seems redundant,
+but the results in the following
+sections, using the same techniques are new.
+
+
+\section{Superpotential
+deformations of ${\cal N} = 4$ SUSY gauge theories}
+
+The ${\cal N}=4$ SUSY gauge theory is a supersymmetric field theory
+characterized by a gauge group $G$ \footnote{The gauge group
+ will be $U(N)$ for the remainder
+of the paper. The results presented here can be generalized to
+other gauge groups which admit a large $N$ description} and three fields
+$X,Y,Z$ in the adjoint whose superpotential (up to normalization)
+is given by
+\begin{equation}
+{\rm tr}~ ( XYZ - XZY)
+\end{equation}
+This theory is a superconformal field theory
+which spontaneously breaks the conformal invariance at generic points
+in the moduli space,
+ but if the vacuum is at the
+origin in moduli space (the gauge group is unbroken) then the theory
+has a vacuum with superconformal invariance.
+
+The gauge theory with ${\cal N}=4$ SUSY has a moduli space of
+conformal field theories parametrized by the gauge coupling of the theory
+$g$. If we consider deformations of the superpotential, this moduli space of
+${\cal N}=1$ superconformal field theories possesses a three parameter family
+of deformations which give rise to superconformal field theories
+\cite{LS}. These have
+(up to normalization) the following form of the superpotential
+\begin{equation}
+W_0 = {\rm tr}~ ( XYZ - q XZY + \frac \beta3(X^3+Y^2+Z^3))
+\end{equation}
+and they also respect a ${"

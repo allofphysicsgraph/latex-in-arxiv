@@ -1,7 +1,7 @@
 ,document
 0,"\begin{document}
 
-\renewcommand{\thefootnote}{$\fnsymbol{footnote}$}
+
 
 \
 
@@ -50,10 +50,13 @@ a non-trivial global structure.
 
 \newpage
 
-\renewcommand{\thefootnote}{\arabic{footnote}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ssection{Introduction}
+    
+\section{Introduction}
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -190,16 +193,19 @@ Sine--Liouville perturbation is considered in detail.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ssection{Tachyon and winding modes in 2D Euclidean string theory}
+
+\section{Tachyon and winding modes in 2D Euclidean string theory}
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 2D string theory is defined by the Polyakov action
 %
-\be\label{metr:PSTR}
+\begin{equation}\label{metr:PSTR}
 S_{\rm P}={1\over 4\pi}\int d^2\sigma\sqrt{h}
 [ h^{ab}\p_a X\p_b X +\mu],
-\ee
+\end{equation}
 %
 where the bosonic field $X(\sigma)$ describes the embedding of the
 string into the Euclidean time dimension and $ h^{ab}$ is a world
@@ -208,10 +214,10 @@ where $\hat h^{ab}$ is a background metric, the conformal mode
 $\phi$ becomes dynamical due to the conformal anomaly and the
 world-sheet CFT action takes the familiar Liouville form
 %
-\be\label{metr:confstr}
+\begin{equation}\label{metr:confstr}
 S_0={1\over4\pi}\int d^2 \sigma\, [(\partial X)^2
 +(\partial\phi)^2 -2\hat \CR\phi + \mu e^{-2\phi}+{\rm ghosts}].
-\ee
+\end{equation}
 %
 This action is known to describe the unperturbed linear dilaton string
 background corresponding to the flat 2D target space parameterized
@@ -222,10 +228,10 @@ degree of freedom, which is called ``tachyon'' since it corresponds
 to the tachyon mode of the bosonic string in 26 dimensions.
 However, in the present case it is massless.
 The vertex operators for the tachyons of momentum $p$ are written as
-\be\label{metr:vert}
+\begin{equation}\label{metr:vert}
 V_p = {\Gamma(|p|)\over \Gamma(-|p|)}\int d^2
  \sigma\, e^{-i p X }e^{( |p|-2)\phi}.
-\ee
+\end{equation}
 If we consider the Euclidean theory compactified to a time circle
 of radius $R$, the momentum is allowed to take only discrete values
 $p_n=n/R$, $n\in \Zb$. In this case there are also winding modes
@@ -236,9 +242,9 @@ as vortex operators $\tilde V_q$.
 Both tachyons and windings can be used to perturb the simplest
 theory \Ref{metr:confstr}
 %
-\be\label{metr:PERTS}
+\begin{equation}\label{metr:PERTS}
  S=S_0+\sum_{n\ne 0}( t_n V_n +\tilde t_n\tilde V_n).
-\ee
+\end{equation}
 %
 How do these perturbations look from the target space point of
 view? The presence of non-vanishing couplings $t_n$ (together with
@@ -279,7 +285,10 @@ carry over this T-duality from the world sheet to the target space.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ssection{Das--Jevicki collective field theory}
+
+\section{Das--Jevicki collective field theory}
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -287,9 +296,9 @@ The 2D string theory can be described using Matrix Quantum Mechanics
 in the double scaling limit (for review see\cite{metr:KLEBANOV}).
 The matrix model Lagrangian corresponding to the unperturbed CFT
 \Ref{metr:confstr} is
-\be\label{metr:mmL}
+\begin{equation}\label{metr:mmL}
 L=\hf \Tr\left({\dot M}^2-u(M)\right),
-\ee
+\end{equation}
 where $u(M)=-\hf M^2$ is the inverse oscillator potential.
 It is known also how to introduce tachyons and windings into this model
 \cite{metr:AKK,metr:GRKL,metr:BULKA,metr:KKK}.
@@ -308,63 +317,63 @@ to a collective field theory developed by Das and
 Jevicki \cite{metr:DasJev,metr:JEVICKI}.
 The role of the collective field is played by the density of
 matrix eigenvalues
-\be\label{metr:cmf}
+\begin{equation}\label{metr:cmf}
 \bff(x,t)=\Tr\delta\left(x-M(t)\right).
-\ee
+\end{equation}
 If to introduce the conjugated field $\Pi(x)$ such that
-\be\label{metr:imp}
+\begin{equation}\label{metr:imp}
 \{ \bff(x), \Pi(y)\}=\delta(x,y),
-\ee
+\end{equation}
 the effective action for the collective theory is written as
-\beq
+\begin{eqnarray}
 S_{\rm coll}&=\int dt \left[\int dx\,
 \left(  \Pi \p_t \bff\right) -H_{\rm coll}\right],
 \label{metr:Scolm}\\
 {\rm where}\quad H_{\rm coll}&=\int dx \left(
 {1\over 2} \bff(\p_x\Pi)^2 +{\pi^2 \over 6}\bff^3
 +(u(x)+\mu)\bff \right) \nonumber
-\eeq
+\end{eqnarray}
 and we added the chemical potential $\mu$ to the action.
 The classical equations of motion read
-\beq
+\begin{eqnarray}
 -\p_x \Pi&=&{1\over \bff}\int dx \p_t \bff, \label{metr:cleq} \\
 -\p_t \Pi &=&
 \hf (\p_x \Pi)^2 +{\pi^2\over 2} \bff^2 + (u(x)+\mu).
-\eeq
+\end{eqnarray}
 Due to the first equation one can exclude the momenta and pass to
 the Lagrangian form of the action
-\be\label{metr:Scol}
+\begin{equation}\label{metr:Scol}
 S_{\rm coll}=\int dt \int dx\,
 \left({1\over 2\bff}\left(\int dx \p_t\bff\right)^2-{\pi^2 \over 6}\bff^3
 -(u(x)+\mu)\bff\right)
-\ee
+\end{equation}
 with the following equation for the classical field
-\be\label{metr:Leq}
+\begin{equation}\label{metr:Leq}
 \p_t\left( {\int dx \p_t \bff \over \bff} \right)=
 \hf \p_x \left( {\int dx \p_t \bff \over \bff} \right)^2
 +{\pi^2\over 2} \p_x \bff^2 +\p_x u(x).
-\ee
+\end{equation}
 
 
 Let us consider a function ${1\over \pi}\ff(x,t)$,
 which is a solution of the classical equation of motion \Ref{metr:Leq}.
 We expand the collective field around the background given by
 this solution
-\be\label{metr:expf}
+\begin{equation}\label{metr:expf}
 \bff(x,t)={1\over \pi}\ff(x,t)+{1\over \sqrt{\pi}}\p_x\eta(x,t).
-\ee
+\end{equation}
 The action takes the form
-\be\label{metr:expS}
+\begin{equation}\label{metr:expS}
 S_{\rm coll}=S_{(0)}+S_{(1)}+S_{(2)}+\cdots,
-\ee
+\end{equation}
 where $S_{(0)}$ is a constant, $S_{(1)}$ vanishes due to the
 equation \Ref{metr:Leq}, and $S_{(2)}$ is given by
-\be\label{metr:Sd}
+\begin{equation}\label{metr:Sd}
 S_{(2)}=\hf \int dt \int {dx\over \ff}\, \left[
 (\p_t \eta)^2 -2  {\int dx \p_t \ff \over \ff}\p_t\eta \p_x \eta
 -\left( \ff^2 -\left( {\int dx \p_t \ff \over \ff}\right)^2
 \right) (\p_x\eta)^2  \right].
-\ee
+\end{equation}
 
 We want to use the quadratic part of the action to extract
 information about the background of string theory corresponding
@@ -375,9 +384,9 @@ low-energy string effective action. Therefore, we will need
 the properties of the matrix standing in front of derivatives of $\eta$.
 The crucial property is that for any $\ff$ its determinant is equal to $-1$.
 As a result, the action can be represented in the following form
-\be\label{metr:Sg}
+\begin{equation}\label{metr:Sg}
 S_{(2)}=-\hf \int dt \int dx\, \sqrt{-g} g^{\mu\nu}\p_\mu \eta \p_\nu\eta.
-\ee
+\end{equation}
 In a more general case we would have to introduce a dilaton dependent
 factor coupled with the kinetic term.
 
@@ -388,30 +397,33 @@ Unfortunately, we do not know the explicit form of this transformation
 for arbitrary solution $\ff$. Note, however, that one can bring
 the metric to another standard form which is of the Schwarzschild type.
 Indeed, it is easy to check that if one changes the $x$ coordinate to
-\be\label{metr:tap}
+\begin{equation}\label{metr:tap}
 y(x,t)=\int \ff(x,t) dx,
-\ee
+\end{equation}
 the metric becomes
-\be\label{metr:met}
+\begin{equation}\label{metr:met}
 g_{\mu\nu}=
 \pmatrix{-\ff^2 & 0 \cr
            0 & \ff^{-2}}.
-\ee
+\end{equation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ssection{Low-energy effective action and background of 2D string theory}
+
+\section{Low-energy effective action and background of 2D string theory}
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Now we turn to the string theory side of the problem.
 In a general background the string theory is defined by the following
 $\sigma$-model action
 %
-\be\label{metr:smod}
+\begin{equation}\label{metr:smod}
 S_\sigma={1\over4\pi\alp}\int d^2 \sigma\,\sqrt{h}
 \left[G_{\mu\nu}(X)h^{ab}\p_a X^{\mu} \p_b X^{\nu}
 +\alp\hat\CR \dl(X) + T(X)\right],
-\ee
+\end{equation}
 %
 where $X(\sigma)$ is a two-dimensional field on the world sheet.
 As it is well known the condition that the conformal invariance of
@@ -420,10 +432,10 @@ the background fields: target space metric $G_{\mu\nu}$,
 dilaton $\dl$ and tachyon $T$.
 These equations can be obtained from the effective action which in
 the leading order in $\alpha'$ is given by \cite{metr:Polbook}
-\be\label{metr:Seff}
+\begin{equation}\label{metr:Seff}
 S_{\rm eff}=\hf \int d^2 X \, \sqrt{-G}e^{-2\dl } \left[ {16\over \alp}+
 R+4(\dd\dl)^2-(\dd T)^2+{4\over\alp}T^2\right].
-\ee
+\end{equation}
 Here the covariant derivative
 $\dd_{\mu}$ is defined with respect to the metric $G_{\mu\nu}$ and $R$
 is its curvature. The first term comes from the central charge and in
@@ -431,7 +443,7 @@ $D$ dimensions looks as ${2(26-D)\over 3\alp}$ disappearing in the
 critical case.
 The equations of motion following from the
 action \Ref{metr:Seff} are equivalent to
-\beq
+\begin{eqnarray}
 \beta_{\mu\nu}^G &=&R_{\mu\nu}+2\dd_{\mu}\dd_{\nu} \dl
 -\dd_{\mu}T \dd_{\nu}T=0,
 \nonumber \\
@@ -439,7 +451,7 @@ action \Ref{metr:Seff} are equivalent to
 -R+4(\dd\dl)^2-4\dd^2\dl+(\dd T)^2-{4\over\alp}T^2=0,
 \label{metr:eqss} \\
 \beta^T &=&-2\dd^2 T +4 \dd\dl\cdot \dd T-{8\over\alp}T=0. \nonumber
-\eeq
+\end{eqnarray}
 
 Let us concentrate on the tachyonic part of the action \Ref{metr:Seff}.
 We want to relate it to the action \Ref{metr:Sg} for the collective theory obtained
@@ -450,29 +462,29 @@ We see that the main difference between \Ref{metr:Seff}
 and \Ref{metr:Sg} is the presence of the dilaton dependent factor $e^{-2\dl}$.
 To remove this factor, we redefine the tachyon as $T=e^{\dl}\eta$.
 Then the part of the action quadratic in the tachyon field reads
-\be\label{metr:Stach}
+\begin{equation}\label{metr:Stach}
 S_{\rm tach}=-\hf \int d^2 X\,
 \sqrt{-G} \left[(\dd\eta)^2+\mt^2 \eta^2\right],
-\ee
+\end{equation}
 where
-\be\label{metr:mas}
+\begin{equation}\label{metr:mas}
 \mt^2=(\dd\dl)^2-\dd^2\dl-{4\pal}.
-\ee
+\end{equation}
 We denoted the new tachyon by the same letter as the matrix model field since
 they should be identical. However, comparing two actions \Ref{metr:Stach}
 and \Ref{metr:Sg}, we see that for this identification to be true,
 one must require the vanishing of the tachyonic mass
-\be\label{metr:vmas}
+\begin{equation}\label{metr:vmas}
 \mt^2=0.
-\ee
+\end{equation}
 This equation plays the role of an additional condition for
 the equations of motion \Ref{metr:eqss}
 and allows to select the unique solution.
 It is easy to check that the linear dilaton background
-\be\label{metr:solld}
+\begin{equation}\label{metr:solld}
 G_{\mu\nu}=\eta_{\mu\nu}, \qquad \dl=-\nspal{2} X^1,
 \qquad \eta=0
-\ee
+\end{equation}
 satisfies all these equations.
 Besides, we argue that it is the unique solution of
 the equations \Ref{metr:eqss} and \Ref{metr:vmas}.
@@ -509,9 +521,9 @@ case.
 To understand why this can happen, note that in the initial
 coordinates $(t,x)$ of MQM the metric is non-trivial, although flat.
 We can represent it as
-\be\label{metr:mets}
+\begin{equation}\label{metr:mets}
 G_{\mu\nu}=e^{2\rho}g_{\mu\nu} ,
-\ee
+\end{equation}
 where $g_{\mu\nu}$ is the matrix coupled with the derivatives
 of $\eta$ in \Ref{metr:Sd}, whose determinant equals $-1$.
 It takes the usual form $\eta_{\mu\nu}$ only after
@@ -524,8 +536,11 @@ the appearance of boundaries.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ssection{Target space of string theory with
+
+\section{Target space of string theory with
 integrable tachyon perturbations}
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section we analyze the structure of the target space of
@@ -557,23 +572,23 @@ formed by fermions of the MQM singlet sector.
 To see how this works,
 let us introduce the left and right moving chiral
 fields \cite{metr:JEVICKI}:
-\be\label{metr:chf}
+\begin{equation}\label{metr:chf}
 p_\pm(x,t) = \p_x\Pi \pm \pi \bff(x,t).
-\ee
+\end{equation}
 They have the following Poisson brackets
-\be\label{metr:Ppp}
+\begin{equation}\label{metr:Ppp}
 \{p_\pm(x),p_\pm(y)\}=\pm 2\pi \p_x\delta(x-y)
-\ee
+\end{equation}
 and bring the Hamiltonian to the form
-\be\label{metr:Hampp}
+\begin{equation}\label{metr:Hampp}
 H_{\rm coll}=\int {dx\over 2\pi}\, \left( {1\over 6} (p_+^3-p_-^3)+
 (u(x)+\mu)(p_+-p_-) \right).
-\ee
+\end{equation}
 Using \Ref{metr:Ppp}, it is easy to show that
 they should satisfy the Hopf equation
-\be\label{metr:Hopfeq}
+\begin{equation}\label{metr:Hopfeq}
 \p_t p_\pm+p_\pm \p_x p_\pm+\p_x u(x)=0.
-\ee
+\end{equation}
 This equation is of integrable type and much easier to solve than
 eq. \Ref{metr:Leq}. The key observation, which establishes the contact
 with MQM, is that in the quasiclassical limit $p_\pm(x,t)$
@@ -587,14 +602,14 @@ For general integrable tachyon perturbations, the solution for
 the profile of the Fermi sea has been found in \cite{metr:AKK}.
 If we introduce the sources for tachyons with momenta $p_k=k/R$,
 $k=1,\dots,n$, it can be represented in the following parametric form
-\be\label{metr:SLbac}
+\begin{equation}\label{metr:SLbac}
 \begin{array}{rcl}
 p(\o,t)&=&\sum\limits_{k=0}^n a_k
 \sinh\left[\left(1-\kR\right)\o+\kR t+\alpha_k\right],\\
 x(\o,t)&=&\sum\limits_{k=0}^n a_k
 \cosh\left[\left(1-\kR\right)\o+\kR t+\alpha_k \right].
 \end{array}
-\ee
+\end{equation}
 Here $a_k$ are coefficients which can be found in terms of
 the coupling constants $t_k$ of the tachyon operators and the chemical
 potential $\mu$ which fixes the Fermi level.
@@ -616,25 +631,25 @@ that $p(x)$ is a two-valued function so that
 $p_\pm (x)$ can be identified with its two branches.
 As functions of $\o$ they appear as follows.
 Let us define a ""mirror"" parameter $\op(\o,t)$ such that (see fig. 1)
-\be\label{metr:ooooo}
+\begin{equation}\label{metr:ooooo}
 x(\op(\o,t),t)=x(\o,t), \ \ \op\ne \o.
-\ee
+\end{equation}
 Then $p_+$ can be identified with $p$ and
 $p_-$ with $p(\op(\o,t),t)$.
 The solution for the background field is given
 again in the parametric form
-\be\label{metr:solf}
+\begin{equation}\label{metr:solf}
 \ff(\o,t)=\hf(p(\o,t)-\pp(\o,t)),
-\ee
+\end{equation}
 where we denoted $\pp(\o,t)=p(\op(\o,t),t)$
 and $\o$ is related to $x$ by eq. \Ref{metr:SLbac}.
 Due to \Ref{metr:cleq}, \Ref{metr:chf} and \Ref{metr:solf},
 the effective action \Ref{metr:Sd} can now be rewritten as
-\be\label{metr:Sdfpp}
+\begin{equation}\label{metr:Sdfpp}
 S_{(2)}=\int dt \int {dx\over p-\pp}\, \left[
 (\p_t \eta)^2 +  (p+\pp)\p_t\eta \p_x \eta
 +p\pp (\p_x\eta)^2  \right].
-\ee
+\end{equation}
 
 
 
@@ -656,21 +671,21 @@ Remarkably, in our case given by the solution \Ref{metr:SLbac},
 this task can be accomplished.
 Indeed, we show in Appendix B that the
 change of coordinates from $(t,x)$ to $(\tf,\xf)$ with
-\be\label{metr:flcor}
+\begin{equation}\label{metr:flcor}
 \tf=t-{\o+\op\over 2}, \qquad \xf={\o-\op\over 2}
-\ee
+\end{equation}
 brings the action \Ref{metr:Sdfpp} to the standard form
-\be\label{metr:Sdffl}
+\begin{equation}\label{metr:Sdffl}
 S_{(2)}=\pm \hf\int d\tf \int d\xf\,
 \left[(\p_\tf\eta)^2-(\p_\xf\eta)^2\right],
-\ee
+\end{equation}
 where the sign is determined by the sign of the Jacobian of
 the coordinate transformation \Ref{metr:flcor}.
 The Jacobian is defined by the function $D$ in (B.2) and can
 be represented in the form
-\be\label{metr:Jac}
+\begin{equation}\label{metr:Jac}
 2D= {2(p-\xt)(\pp-\xtp)\over \pp-p },
-\ee
+\end{equation}
 where $\xt\equiv\p_t x(\o,t)$ and
 $\xtp\equiv\xt(\op,t)$ given explicitly in (B.4).
 
@@ -682,9 +697,9 @@ which corresponds to the most left point of the Fermi sea where
 two branches of $p(x)$ meet each other (see fig. 1).
 In terms of the flat coordinates
 \Ref{metr:flcor}, this line is given in the following parametric form
-\be\label{metr:singl}
+\begin{equation}\label{metr:singl}
 \tf=t-\os(t), \qquad \xf=0,
-\ee
+\end{equation}
 where $\os(t)$ is a solution of the above condition.
 Also it defines the limiting value of the coordinate $x$, which
 should always be larger than $\xs(t)=x(\os(t),t)$. However,
@@ -705,9 +720,9 @@ along the line \Ref{metr:singl}.
 Unfortunately, there is an ambiguity in the choice of coordinates
 where the action has the form \Ref{metr:Sdffl}.  Any conformal change
 of variables \Ref{metr:flcor}
-\be\label{metr:confch}
+\begin{equation}\label{metr:confch}
 (\tf,\xf)\longrightarrow \left(u(t-\o),v(t-\op)\right)
-\ee
+\end{equation}
 leaves the action unchanged.  Due to this we can find the form of the
 resulting spacetime only up to the conformal map. However, one can
 reduce the ambiguity imposing some conditions on the map
@@ -734,9 +749,9 @@ coordinates where $G_{\mu\nu}=\eta_{\mu\nu}$.
 If $u$ and $v$ from \Ref{metr:confch} are such coordinates, than
 $dt dx \sqrt{-G}=du dv$ and, since $\sqrt{-G}=e^{2\rho}$,
 we conclude from \Ref{metr:Jac} that
-\be\label{metr:confac}
+\begin{equation}\label{metr:confac}
 e^{2\rho}= {\pp-p \over 2(p-\xt)(\pp-\xtp)}u'v'.
-\ee
+\end{equation}
 The conformal factor becomes singular on the line \Ref{metr:singl}
 discussed above. However, this is only a coordinate singularity
 since it disappears after our coordinate transformation.
@@ -795,14 +810,14 @@ conic regions bounded by lines
 $\tf=\pm (2R-1)\xf\pm R\log{a_0\over a_1}$ (fig. 2).
 Near the origin the boundaries are not anymore the straight lines
 but defined by the solution of the following irrational equation
-\be\label{metr:oreq}
+\begin{equation}\label{metr:oreq}
 a_0 e^{\xip}+a_1 e^{(1-1/R)\xip}=a_0 e^{\xi}+a_1 e^{(1-1/R)\xi},
 \quad \xip\ne\xi.
-\ee
+\end{equation}
 It allows to represent the boundary in the parametric form
-\be\label{metr:orbound}
+\begin{equation}\label{metr:orbound}
 \tf=-\hf(\xi+\xip(\xi)), \qquad \xf=\hf(\xi-\xip(\xi)).
-\ee
+\end{equation}
 Two conic regions are glued along some finite interval belonging to
 the $\tf$-axis.
 It is just that line where the change of coordinates \Ref{metr:flcor}
@@ -811,14 +826,14 @@ As it was discussed in the previous subsection, the interval is defined
 by eq. \Ref{metr:singl}. We need to find the limiting value of $\tf(t)$ when
 $t\rightarrow\infty$.
 In this limit the condition for $\os(t)$ can be written as
-\be\label{metr:condoo}
+\begin{equation}\label{metr:condoo}
 2{\p x\over \p \o}\approx a_0 e^{\os}+\left(1-\oR\right)a_1
 e^{(1-\oR)\os+\oR t}=0 \Rightarrow \os(t)=t-\hf\Delta,
-\ee
+\end{equation}
 where
-\be\label{metr:delt}
+\begin{equation}\label{metr:delt}
 \Delta={2R} \log\left[{R\over 1-R}{a_0\over a_1}\right].
-\ee
+\end{equation}
 Thus $\tf(t)\mathop{\longrightarrow}\limits_{t\rightarrow\infty} \Delta/2$
 and we conclude that $\Delta$ is the length we were looking for.
 
@@ -836,24 +851,24 @@ limit where the length $\Delta$ vanishes.
 It happens when $a_1= {Ra_0\over 1-R}$.
 The parameters are related to the coupling constant
 $\lambda=\sqrt{\tp\tm}$ as follows \cite{metr:AKK}
-\be\label{metr:param}
+\begin{equation}\label{metr:param}
 a_0=\sqrt{2}e^{-{1\over 2R}\chi},\qquad
 a_1=\sqrt{2}{\lambda}e^{{R-1\over 2R^2}\chi},
-\ee
+\end{equation}
 where $\chi=\p^2 \CF/\p \mu^2$ is the second derivative of
 the grand canonical free energy.
 This quantity is defined by the equation \cite{metr:KKK}
-\be\label{metr:freeen}
+\begin{equation}\label{metr:freeen}
 \mu e^{ {1\over R} \chi} -
 \left(1-{1\over R}\right)\lambda^2 e^{{2R-1\over R^2} \chi} =1.
-\ee
+\end{equation}
 Taking into account \Ref{metr:param} and \Ref{metr:freeen},
 the condition of vanishing $\Delta$ leads to the following
 critical point
-\be\label{metr:crmu}
+\begin{equation}\label{metr:crmu}
 \mu_c=-\left(2-{1\over R}\right)\left({1\over R}-1\right)^{1\over 2R-1}
 \lambda^{2R\over 2R-1}.
-\ee
+\end{equation}
 In \cite{metr:AKK} it was shown that at this point the Fermi sea forms a pinch
 and beyond it the solution for the free energy
 does not exist anymore. Also this point
@@ -1017,7 +1032,10 @@ does take place.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ssection{ Conclusions }
+
+\section{ Conclusions }
+\setcounter{equation}{0}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1100,14 +1118,14 @@ and -00131 and by European network EUROGRID HPRN-CT-1999-00161.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Appendix A. Perturbative solution of dilaton gravity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\theequation}{A.\arabic{equation}}
-\renewcommand{\thesection}{A.}
+
+
 \setcounter{equation}{0}
 
 We are interested in the solution of the system of equations \Ref{metr:eqss}
 and \Ref{metr:vmas}.
 After the substitution $T=e^{\dl}\eta$, they can be rewritten as
-\beq
+\begin{eqnarray}
 -\hf e^{-\dl}\beta^T-\mt^2\eta &=&
 \dd^2\eta=0, \nonumber \\
 \mt^2 &=&(\dd\dl)^2-\dd^2\dl-4\pal=0, \label{metr:sfeq} \\
@@ -1115,14 +1133,14 @@ After the substitution $T=e^{\dl}\eta$, they can be rewritten as
 &=&2\dd^2\dl -4\pal e^{2\dl}\eta^2=0,\nonumber \\
 \beta^G_{\mu\nu}&=&R_{\mu\nu}+2\dd_{\mu}\dd_{\nu} \dl-
 \dd_{\mu}(e^{\dl}\eta) \dd_{\nu}(e^{\dl}\eta)=0. \nonumber
-\eeq
+\end{eqnarray}
 Let us choose the conformal gauge
-\be\label{metr:cong}
+\begin{equation}\label{metr:cong}
 G_{\mu\nu}=e^{2\rho}\eta_{\mu\nu}.
-\ee
+\end{equation}
 Then in the light-cone coordinates $\Xpm={X^0\pm X^1\over\sqrt{2}}$
 the equations take the following form
-\beq
+\begin{eqnarray}
 &&\p_+\p_-\eta=0,  \nonumber \\
 &&\p_+\p_-\dl- \p_+\dl\p_-\dl=2\pal e^{2\rho} , \nonumber \\
 &&\p_+\p_-\dl=-\pal e^{2(\dl+\rho)}\eta^2,
@@ -1130,7 +1148,7 @@ the equations take the following form
 &&\p_+\p_-\rho -\p_+\p_-\dl=-\hf\p_+(e^{\dl}\eta)\p_-(e^{\dl}\eta),\nonumber \\
 &&\p_+\p_+\dl=\hf\left(\p_+(e^{\dl}\eta)\right)^2,\nonumber \\
 &&\p_-\p_-\dl=\hf\left(\p_-(e^{\dl}\eta)\right)^2,\nonumber
-\eeq
+\end{eqnarray}
 where the last three equations are produced by the last equation
 in \Ref{metr:sfeq}.
 
@@ -1140,14 +1158,14 @@ is the unique solution.
 To generalize this statement, let us consider a solution
 which can be represented as an expansion around the linear
 dilaton background \Ref{metr:solld}. We use the following ansatz
-\be\label{metr:expan}
+\begin{equation}\label{metr:expan}
 \rho=\sum_{k>0}\e^{k+1}\rho_k, \qquad
 \dl=-\nspal{2}X^1 +\sum_{k>0}\e^{k+1}\ddl_k,
 \qquad
 \eta=\sum_{k>0}\e^{k}\eta_k.
-\ee
+\end{equation}
 In the first order in $\e$ we find
-\beq
+\begin{eqnarray}
 {(\rm a)}&\ \ &\eta_1=f_1(\Xp)+g_1(\Xm),  \nonumber \\
 {(\rm b)}&\ \ &\p_+\p_-\ddl_1 -\sqrt{2\over\alp}(\p_+ - \p_-)\ddl_1=
 {4\over \alp}\rho_1 , \nonumber \\
@@ -1161,40 +1179,40 @@ In the first order in $\e$ we find
 \left(\p_+\left(e^{-{\nspal{2}}X^1}\eta_1\right)\right)^2,\nonumber \\
 {(\rm f)}&\ \ &\p_-\p_-\ddl_1=\hf
 \left(\p_-\left(e^{-{\nspal{2}}X^1}\eta_1\right)\right)^2. \nonumber
-\eeq
+\end{eqnarray}
 Using equations (b) and (c), one can check that (d) is fulfilled identically.
 On the other hand, for (c), (e) and (f) to be consistent, some
 integrability conditions must hold. They are obtained comparing
 the derivatives of these equations. Taking into account (a),
 we get the following
 conditions on $f_1(\Xp)$ and $g_1(\Xm)$
-\be\label{metr:condfg}
+\begin{equation}\label{metr:condfg}
 \begin{array}{c}
 (f'-g')\left(f'-\sqrt{2\over\alp}(f+g)\right) =0, \\
 (f'-g')\left(g'+\sqrt{2\over\alp}(f+g)\right) =0.
 \end{array}
-\ee
+\end{equation}
 The only solution of \Ref{metr:condfg} is obtained when $f'=g'$.
 Then we find
-\be\label{metr:solfirst}
+\begin{equation}\label{metr:solfirst}
 \rho_1={\alp c_1^2\over 32}e^{-{\nspal{4}}X^1} , \quad
 \ddl_1={1\over 8} \left( (c_1 X^0+d_1)^2+{\alp c_1^2\over 4}\right)
 e^{-{\nspal{4}}X^1}, \quad
 \eta_1=c_1 X^0+d_1,
-\ee
+\end{equation}
 where $c_1$ and $d_1$ are some constants.
 In the second order we get the similar system of equations
 as \Ref{metr:firsto},
 where one should change one of $\eta_1$ in terms quadratic
 in tachyon by $2\eta_2$.
 Then we obtain
-\beq
+\begin{eqnarray}
 &\rho_2={\alp c_1 c_2\over 16}e^{-{\nspal{4}}X^1} , \quad
  \ddl_2={1\over 4} \left( (c_1 X^0+d_1)(c_2 X^0+d_2)+
 {\alp c_1 c_2\over 4}\right)
 e^{-{\nspal{4}}X^1}, & \nonumber \\
 & \eta_2=c_2 X^0+d_2. & \label{metr:solsec}
-\eeq
+\end{eqnarray}
 But already in the next order in $\e$ we encounter inconsistences
 which can not be overcomed.
 We must choose the vanishing tachyon and all other perturbations.
@@ -1206,8 +1224,8 @@ is the linear dilaton background.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Appendix B. Change to the flat coordinates}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\theequation}{B.\arabic{equation}}
-\renewcommand{\thesection}{B.}
+
+
 \setcounter{equation}{0}
 
 In this appendix we demonstrate
@@ -1216,12 +1234,12 @@ that the quadratic part of the effective action for the tachyon field
 
 First of all, for generic functions $x$, $p$ and $\op$ of $\o$ and $t$
 the passage to the variables \Ref{metr:flcor} leads to the action
-\be\label{metr:Sdint}
+\begin{equation}\label{metr:Sdint}
 S_{(2)}=\hf\int d\tf \int d\xf\, {|D|\over p-\pp}
 \left[A(\p_\tf\eta)^2-2B\p_\tf\eta \p_\xf\eta-C(\p_\xf\eta)^2\right],
-\ee
+\end{equation}
 where
-\beq
+\begin{eqnarray}
 A&=&\left[ 2-{\p_t\op}-\left({\p_\o x}\right)^{-1}
 \left( 1+{\p_\o \op} \right)\left( p-{\p_t x}\right)\right]
 \left[ 2-{\p_t\op}-\left({\p_\o x}\right)^{-1}
@@ -1241,19 +1259,19 @@ C&=&\left[{\p_t\op}-\left({\p_\o x}\right)^{-1}
 \left( 1-{\p_\o \op} \right)\left(\pp-{\p_t x}\right)\right], \nonumber \\
 D&=& {{\p_\o x} \over 1-\left({\p_\o\op}+{\p_t\op}\right)}.
 \nonumber
-\eeq
+\end{eqnarray}
 From the explicit form \Ref{metr:SLbac} of $p(\o,t)$ and $x(\o,t)$ it is easy to
 check the following properties
-\be\label{metr:porper}
+\begin{equation}\label{metr:porper}
 {\p x\over \p t}=p-{\p x\over \p \o}, \qquad
 {\p \op\over \p \o}={{\p x/\p\o} \over \pp -\xtp}, \qquad
 {\p \op\over \p t}={p-\xtp \over \pp -\xtp}-{\p \op\over \p \o}
-\ee
+\end{equation}
 with
-\be\label{metr:dobav}
+\begin{equation}\label{metr:dobav}
 \xtp\equiv {\p_t x}(\op,t)=\oR\sum\limits_{k=1}^n k a_k
 \sinh\left[(1-\kR)\op+\kR t\right].
-\ee
+\end{equation}
 These properties are enough to show that
 $DA=DC=p-\pp$ and $B=0$ what gives the action \Ref{metr:Sdffl}.
 
@@ -1262,8 +1280,8 @@ $DA=DC=p-\pp$ and $B=0$ what gives the action \Ref{metr:Sdffl}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Appendix C. Asymptotic values of the coordinates}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\theequation}{C.\arabic{equation}}
-\renewcommand{\thesection}{C.}
+
+
 \setcounter{equation}{0}
 
 
@@ -1434,7 +1452,7 @@ $\log{a_0\over a_1}$ & $0$ & $-{R\over 1-R}$ & $- 1$ &   \cr
 Finally, there are also two critical cases $R=1$ and $R=\hf$.
 In these cases one can find explicitly the transformation of coordinates
 \Ref{metr:flcor} on the entire plane. The results are
-\be
+\begin{equation}
 \label{metr:Rcas}
 \begin{array}{ccc}
  R=1 &\qquad & R=1/2 \\
@@ -1444,7 +1462,7 @@ In these cases one can find explicitly the transformation of coordinates
 \\
 \xf=\o &\qquad & \xf=\o-\hf\log{a_0+a_1 e^{2t}\over a_0+a_1 e^{-2t}}
 \end{array}
-\ee
+\end{equation}
 
 
 

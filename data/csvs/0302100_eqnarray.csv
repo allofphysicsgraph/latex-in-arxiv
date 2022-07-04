@@ -1,0 +1,465 @@
+,eqnarray
+0,"\begin{eqnarray}
+\label{top-charge}
+\nu &=& \frac{1}{32 \pi^2} \int \tr F \tilde F
+\"
+1,"\begin{eqnarray}
+\label{gaugepot-1}
+A_1 = - 2 \pi i x_2 / (L_1 L_2) \tau_3 \, , \quad 
+A_2 = 0 \, , \quad
+A_3 = - 2 \pi i x_4 / (L_3 L_4) \tau_3 \, , \quad 
+A_4 = 0 \, .
+\"
+2,"\begin{eqnarray}
+\int \d \Sigma_{12} F_{12} &=& 
+\int_0^{L_1} \d x_1 A_1 (x_2 = L_2) = - i 2 \pi  \tau_3 \, , \\
+\int \d \Sigma_{34} F_{34} &=& 
+\int_0^{L_3} \d x_3 A_3 (x_4 = L_4) = - i 2 \pi  \tau_3 \, , \\
+\"
+3,"\begin{eqnarray}
+\label{trans-A}
+A_\nu ( x + e_\mu ) &=& A_\nu^{U_\mu} (x) = 
+U_\mu (x) A_\nu (x) U_\mu^{-1} (x) + 
+U_\mu (x) \partial_\nu U_\mu^{-1} (x) \, , 
+\"
+4,"\begin{eqnarray}
+\label{cocycle-twist}
+U_\nu (x + e_\mu) U_\mu (x) Z_{\mu \nu} = 
+U_\mu (x + e_\nu) U_\nu (x) \, ,
+\"
+5,"\begin{eqnarray}
+\label{D2'}
+\left( \DD{2} + \bar E_n \sigma_3 \right) 
+\tilde \psi_n = 
+\lambda \tilde \psi_n \, , \, \bar E_n = 2 \pi \frac{\tau + n}{L_3} \, ,
+\"
+6,"\begin{eqnarray}
+\label{2D-eigenvalue-problem}
+\left(\begin{array}{cc}
+\tilde E_m & \bar E_n \\
+\bar E_n & - \tilde E_m
+\end{array}
+\right)
+\left(\begin{array}{c}
+\alpha_{n m} \\ 
+\beta_{n m}
+\end{array}
+\right)
+&=& E_{n m} 
+\left(\begin{array}{c}
+\alpha_{n m} \\ 
+\beta_{n m}
+\end{array}
+\right) \, .
+\"
+7,"\begin{eqnarray}
+\label{energy-1}
+E_{n m} &=& \pm \sqrt{{\tilde E_m}^2 + {\bar E_n}^2} \, ,
+\"
+8,"\begin{eqnarray}
+\label{ev-H-const-1}
+\psi_{n m l} &=& \left( \alpha_{n m} \tilde \phi_m 
++ \beta_{n m} \tilde \phi_{-m} \right) \otimes \chi_l \,
+e^{(- 2 \pi i n x_3 / L_3)} 
+\, , \, m,n \in \Z \, , \, m \neq 0 \, , \, l=1,2 \, , \\
+\label{ev-H-const-2}
+\psi_{n 0 l} &=& \tilde \phi_0 \otimes \chi_l \,
+e^{(- 2 \pi i n x_3 / L_3)} 
+\, , \, n \in \Z \, , \, l=1,2 \, . 
+\"
+9,"\begin{eqnarray}
+\partial_4 f_{n 0 l} (x_4) &=& E_{n 0 l} f_{n 0 l} (x_4) \, , \\
+f_{n 0 l} (x_4) &=& 
+C_{n 0 l} \exp{\left\{ 
+- (-1)^{l} \pi \frac{L_4}{L_3} \left( n + \frac{x_4}{L_4}\right)^2
+\right\} } \, .
+\"
+10,"\begin{eqnarray}
+\nonumber
+\psi (x) &=& \sum_{n \in \Z} \tds_{n 0 2} (x) =  
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 \sum_{n \in \Z} 
+\exp{\left\{ 
+- \pi \frac{L_4}{L_3} \left( n + \frac{x_4}{L_4}\right)^2
+ - 2 \pi i n \frac{x_3}{L_3} \right\} } \\
+\nonumber
+&=& 
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 
+\exp{\left\{- \frac{\pi x_4^2}{L_3 L_4}\right\} } 
+\sum_{n \in \Z}
+\exp{\left\{ - \pi \frac{L_4}{L_3} n^2 - 2 \pi i n 
+\left( \frac{x_3}{L_3} - i \frac{x_4}{L_3} \right) \right\}}
+\\
+\label{summation}
+&=&
+\label{relation-zero-1}
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 
+\exp{\left\{- \frac{\pi x_4^2}{L_3 L_4}\right\} } 
+\overline{\theta \left( \frac{x_3}{L_3} + i \frac{x_4}{L_3} , 
+i \frac{L_4}{L_3} \right)} \, .
+\"
+11,"\begin{eqnarray}
+\begin{array}{rclcrcl}
+\displaystyle
+u &=& \left( x_1 + i x_2 \right) / L_1 & , & 
+u^{(0)} &=& \left( x_1^{(0)} + i x_2^{(0)} \right) / L_1 \, , \\ 
+\displaystyle
+v &=& \left( x_3 + i x_4 \right) / L_3 
+& , & 
+v^{(0)} &=& \left( x_3^{(0)} + i x_4^{(0)} \right) / L_3 \, . 
+\end{array}
+\"
+12,"\begin{eqnarray}
+\label{gaugepot-orthogonal-12}
+A^{(1)}_1 = -i \partial_2 \phi(u,u^{(0)},\tau_{12}) \, , \,
+A^{(1)}_2 = i \partial_1 \phi(u,u^{(0)},\tau_{12}) \, , \, 
+A^{(1)}_3 = A^{(1)}_4 = 0 \, ,
+\"
+13,"\begin{eqnarray}
+%\label{phi-0}
+\nonumber
+\phi (u,u^{(0)},\tau_{12}) &=& \frac{1}{4} 
+\log{\left(
+\theta^+ (u,u^{(0)},\tau_{12}) 
+\overline{\theta^+(u,u^{(0)},\tau_{12})} + 
+\theta^- (u,u^{(0)},\tau_{12}) 
+\overline{\theta^-(u,u^{(0)},\tau_{12})}
+\right)} \, , \\
+\label{theta-0-pm}
+\theta^\pm (u,u^{(0)},\tau_{12}) &=&  
+\theta ( u + \ha + \iha \tau_{1 2} - u^{(0)} \pm \varepsilon 
+, i \tau_{1 2}) 
+\, , \quad 
+\varepsilon \in \R_+ \, .
+\"
+14,"\begin{eqnarray}
+\label{gaugepot-orthogonal-34}
+A^{(2)}_3 = -i \partial_4 \phi(v,v^{(0)},\tau_{34}) \, , \,
+A^{(2)}_4 = i \partial_3 \phi(v,v^{(0)},\tau_{34}) \, , \, 
+A^{(2)}_1 = A^{(2)}_2 = 0 \, .
+\"
+15,"\begin{eqnarray}
+\psi_{n m l} &=& \left( \alpha_{n m} \tilde \phi_m
++ \beta_{n m} \tilde \phi_{-m} \right) \otimes \chi_l
+\, \ff_n 
+\, , \, m,n \in \Z \, , \, m \neq 0 \, , \, l=1,2 \, , \\
+\psi_{n 0 l} &=& \alpha_{n 0} \tilde \phi_0 \otimes \chi_l
+\, \ff_n 
+\, , \, n \in \Z \, , \, l=1,2 \, ,
+\"
+16,"\begin{eqnarray}
+\ff_n ( x_3 , x_4) &=&
+\exp{ \left\{ - 2 \pi i n \frac{x_3}{L_3} 
++ \frac{x_3}{L_3} \int_0^{L_3} \d x_3' A_3 (x_3' , x_4 ) 
+- \int_0^{x_3} \d x_3' A_3 (x_3' , x_4 ) \right\} } \, , \\
+\bar E_n &=& 
+\frac{2 \pi n}{L_3} + \frac{i}{L_3} \int_0^{L_3} \d x_3' A_3 (x_3')
+\, .
+\"
+17,"\begin{eqnarray}
+\label{spectral-flow2}
+E_{n m l} &=& 
+(-1)^l \left\{ \begin{array} {ll} 
+\displaystyle
+E_m \sqrt{1 + (b/E_m)^2 } \, , \, & m \neq 0 \\
+\displaystyle
+- b \, , \, & m = 0
+\end{array} \right\} \, , \\
+\label{b}
+b &=& 2 \pi \frac{n}{L_3} + \frac{i}{L_3} \int_0^{L_3} \d x_3 A_3 \, .
+\"
+18,"\begin{eqnarray}
+\int_0^{L_3} \d x_3' A_3 (x_3',x_4^{(1)} ) &=& 
+\int_0^{L_3} \d x_3' A_3 (x_3',x_4^{(0)} ) + 
+\int_0^{L_3} \d x_3' \int_{x_4^{(0)}}^{x_4^{(1)}} \d x_4 '
+F_{4 3} (x_3',x_4' ) \, .
+\"
+19,"\begin{eqnarray}
+E_{n 0 1} (x_4^{(1)}) &=& E_{n 0 1} (x_4^{(0)}) - (-1)^l 
+\frac{i}{L_3} 
+\int_0^{L_3} \d x_3' \int_{x_4^{(0)}}^{x_4^{(1)}} \d x_4 '
+F_{4 3} (x_3',x_4' ) \, ,
+\"
+20,"\begin{eqnarray}
+\label{param}
+\begin{array}{rclcrcl}
+\displaystyle
+u &=& \left( x_1 + i x_2 \right) / L_1 & , & 
+u^{(0)} &=& \left( x_1^{(0)} + i x_2^{(0)} \right) / L_1 \, , \\ 
+\displaystyle
+v &=& \left( x_3 + i \left( x_4 - x_2 \tau_{24} \right) \right) / L_3 
+& , & 
+v^{(0)} &=& x_3^{(0)} / L_3 \, . 
+\end{array}
+\"
+21,"\begin{eqnarray}
+A^{(1)}_1 = -i \partial_2 \phi(u,u^{(0)},\tau_{12}) \, , \,
+A^{(1)}_2 = i \partial_1 \phi(u,u^{(0)},\tau_{12}) \, , \, 
+A^{(1)}_3 = A^{(1)}_4 = 0 \, .
+\"
+22,"\begin{eqnarray}
+A_1 = 0 \, , \, 
+A_2 = - i \tau_{24} \partial_3 \phi(v,v^{(0)},\tau_{34})  \, , \,
+A_3 = - i \partial_4 \phi(v,v^{(0)},\tau_{34}) \, , \, 
+A_4 = i \partial_3 \phi(v,v^{(0)},\tau_{34}) \, .
+\"
+23,"\begin{eqnarray}
+U_1 = U_3 = \Id \, , \quad 
+U_2 = \exp{\left( 2 \pi i  
+      \left( \frac{x_1}{L_1} + \frac{x_3}{L_3} \right) \right)} 
+\, , \quad 
+U_4 = \exp{\left( 2 \pi i  \frac{x_3}{L_3} \right)} \, .
+\"
+24,"\begin{eqnarray}
+\label{dirac-matrices-D4}
+\gamma_i &=& \left( \begin{array}{cc}
+                0 & \sigma_i \\
+                \sigma_i & 0 
+                \end{array} \right) \, , \quad i = 1,2,3 \, , \quad 
+\gamma_4 = \left( \begin{array}{cc}
+                0 & i \Id \\
+                - i \Id & 0 
+                \end{array} \right) \, , \\
+\gamma_5 &=& \gamma_1 \gamma_2 \gamma_3 \gamma_4 = 
+            \left( \begin{array}{cc}
+                \Id & 0 \\
+                0 & - \Id 
+                \end{array} \right) \, , 
+\"
+25,"\begin{eqnarray}
+A_1 &=& - 2 \pi i x_2 / (L_1 L_2)  \, , \quad 
+A_2 = 0 \, , \\
+A_3 &=& - 2 \pi i x_4 / (L_3 L_4) \, \, , \quad 
+A_4 = 0 \, 
+\"
+26,"\begin{eqnarray}
+\label{top-charge}
+\nu &=& \frac{1}{32 \pi^2} \int \tr F \tilde F
+\"
+27,"\begin{eqnarray}
+\label{gaugepot-1}
+A_1 = - 2 \pi i x_2 / (L_1 L_2) \tau_3 \, , \quad 
+A_2 = 0 \, , \quad
+A_3 = - 2 \pi i x_4 / (L_3 L_4) \tau_3 \, , \quad 
+A_4 = 0 \, .
+\"
+28,"\begin{eqnarray}
+\int \d \Sigma_{12} F_{12} &=& 
+\int_0^{L_1} \d x_1 A_1 (x_2 = L_2) = - i 2 \pi  \tau_3 \, , \\
+\int \d \Sigma_{34} F_{34} &=& 
+\int_0^{L_3} \d x_3 A_3 (x_4 = L_4) = - i 2 \pi  \tau_3 \, , \\
+\"
+29,"\begin{eqnarray}
+\label{trans-A}
+A_\nu ( x + e_\mu ) &=& A_\nu^{U_\mu} (x) = 
+U_\mu (x) A_\nu (x) U_\mu^{-1} (x) + 
+U_\mu (x) \partial_\nu U_\mu^{-1} (x) \, , 
+\"
+30,"\begin{eqnarray}
+\label{cocycle-twist}
+U_\nu (x + e_\mu) U_\mu (x) Z_{\mu \nu} = 
+U_\mu (x + e_\nu) U_\nu (x) \, ,
+\"
+31,"\begin{eqnarray}
+\label{D2'}
+\left( \DD{2} + \bar E_n \sigma_3 \right) 
+\tilde \psi_n = 
+\lambda \tilde \psi_n \, , \, \bar E_n = 2 \pi \frac{\tau + n}{L_3} \, ,
+\"
+32,"\begin{eqnarray}
+\label{2D-eigenvalue-problem}
+\left(\begin{array}{cc}
+\tilde E_m & \bar E_n \\
+\bar E_n & - \tilde E_m
+\end{array}
+\right)
+\left(\begin{array}{c}
+\alpha_{n m} \\ 
+\beta_{n m}
+\end{array}
+\right)
+&=& E_{n m} 
+\left(\begin{array}{c}
+\alpha_{n m} \\ 
+\beta_{n m}
+\end{array}
+\right) \, .
+\"
+33,"\begin{eqnarray}
+\label{energy-1}
+E_{n m} &=& \pm \sqrt{{\tilde E_m}^2 + {\bar E_n}^2} \, ,
+\"
+34,"\begin{eqnarray}
+\label{ev-H-const-1}
+\psi_{n m l} &=& \left( \alpha_{n m} \tilde \phi_m 
++ \beta_{n m} \tilde \phi_{-m} \right) \otimes \chi_l \,
+e^{(- 2 \pi i n x_3 / L_3)} 
+\, , \, m,n \in \Z \, , \, m \neq 0 \, , \, l=1,2 \, , \\
+\label{ev-H-const-2}
+\psi_{n 0 l} &=& \tilde \phi_0 \otimes \chi_l \,
+e^{(- 2 \pi i n x_3 / L_3)} 
+\, , \, n \in \Z \, , \, l=1,2 \, . 
+\"
+35,"\begin{eqnarray}
+\partial_4 f_{n 0 l} (x_4) &=& E_{n 0 l} f_{n 0 l} (x_4) \, , \\
+f_{n 0 l} (x_4) &=& 
+C_{n 0 l} \exp{\left\{ 
+- (-1)^{l} \pi \frac{L_4}{L_3} \left( n + \frac{x_4}{L_4}\right)^2
+\right\} } \, .
+\"
+36,"\begin{eqnarray}
+\nonumber
+\psi (x) &=& \sum_{n \in \Z} \tds_{n 0 2} (x) =  
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 \sum_{n \in \Z} 
+\exp{\left\{ 
+- \pi \frac{L_4}{L_3} \left( n + \frac{x_4}{L_4}\right)^2
+ - 2 \pi i n \frac{x_3}{L_3} \right\} } \\
+\nonumber
+&=& 
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 
+\exp{\left\{- \frac{\pi x_4^2}{L_3 L_4}\right\} } 
+\sum_{n \in \Z}
+\exp{\left\{ - \pi \frac{L_4}{L_3} n^2 - 2 \pi i n 
+\left( \frac{x_3}{L_3} - i \frac{x_4}{L_3} \right) \right\}}
+\\
+\label{summation}
+&=&
+\label{relation-zero-1}
+\tilde \phi_0 (x_1,x_2) \otimes \chi_2 
+\exp{\left\{- \frac{\pi x_4^2}{L_3 L_4}\right\} } 
+\overline{\theta \left( \frac{x_3}{L_3} + i \frac{x_4}{L_3} , 
+i \frac{L_4}{L_3} \right)} \, .
+\"
+37,"\begin{eqnarray}
+\begin{array}{rclcrcl}
+\displaystyle
+u &=& \left( x_1 + i x_2 \right) / L_1 & , & 
+u^{(0)} &=& \left( x_1^{(0)} + i x_2^{(0)} \right) / L_1 \, , \\ 
+\displaystyle
+v &=& \left( x_3 + i x_4 \right) / L_3 
+& , & 
+v^{(0)} &=& \left( x_3^{(0)} + i x_4^{(0)} \right) / L_3 \, . 
+\end{array}
+\"
+38,"\begin{eqnarray}
+\label{gaugepot-orthogonal-12}
+A^{(1)}_1 = -i \partial_2 \phi(u,u^{(0)},\tau_{12}) \, , \,
+A^{(1)}_2 = i \partial_1 \phi(u,u^{(0)},\tau_{12}) \, , \, 
+A^{(1)}_3 = A^{(1)}_4 = 0 \, ,
+\"
+39,"\begin{eqnarray}
+%\label{phi-0}
+\nonumber
+\phi (u,u^{(0)},\tau_{12}) &=& \frac{1}{4} 
+\log{\left(
+\theta^+ (u,u^{(0)},\tau_{12}) 
+\overline{\theta^+(u,u^{(0)},\tau_{12})} + 
+\theta^- (u,u^{(0)},\tau_{12}) 
+\overline{\theta^-(u,u^{(0)},\tau_{12})}
+\right)} \, , \\
+\label{theta-0-pm}
+\theta^\pm (u,u^{(0)},\tau_{12}) &=&  
+\theta ( u + \ha + \iha \tau_{1 2} - u^{(0)} \pm \varepsilon 
+, i \tau_{1 2}) 
+\, , \quad 
+\varepsilon \in \R_+ \, .
+\"
+40,"\begin{eqnarray}
+\label{gaugepot-orthogonal-34}
+A^{(2)}_3 = -i \partial_4 \phi(v,v^{(0)},\tau_{34}) \, , \,
+A^{(2)}_4 = i \partial_3 \phi(v,v^{(0)},\tau_{34}) \, , \, 
+A^{(2)}_1 = A^{(2)}_2 = 0 \, .
+\"
+41,"\begin{eqnarray}
+\psi_{n m l} &=& \left( \alpha_{n m} \tilde \phi_m
++ \beta_{n m} \tilde \phi_{-m} \right) \otimes \chi_l
+\, \ff_n 
+\, , \, m,n \in \Z \, , \, m \neq 0 \, , \, l=1,2 \, , \\
+\psi_{n 0 l} &=& \alpha_{n 0} \tilde \phi_0 \otimes \chi_l
+\, \ff_n 
+\, , \, n \in \Z \, , \, l=1,2 \, ,
+\"
+42,"\begin{eqnarray}
+\ff_n ( x_3 , x_4) &=&
+\exp{ \left\{ - 2 \pi i n \frac{x_3}{L_3} 
++ \frac{x_3}{L_3} \int_0^{L_3} \d x_3' A_3 (x_3' , x_4 ) 
+- \int_0^{x_3} \d x_3' A_3 (x_3' , x_4 ) \right\} } \, , \\
+\bar E_n &=& 
+\frac{2 \pi n}{L_3} + \frac{i}{L_3} \int_0^{L_3} \d x_3' A_3 (x_3')
+\, .
+\"
+43,"\begin{eqnarray}
+\label{spectral-flow2}
+E_{n m l} &=& 
+(-1)^l \left\{ \begin{array} {ll} 
+\displaystyle
+E_m \sqrt{1 + (b/E_m)^2 } \, , \, & m \neq 0 \\
+\displaystyle
+- b \, , \, & m = 0
+\end{array} \right\} \, , \\
+\label{b}
+b &=& 2 \pi \frac{n}{L_3} + \frac{i}{L_3} \int_0^{L_3} \d x_3 A_3 \, .
+\"
+44,"\begin{eqnarray}
+\int_0^{L_3} \d x_3' A_3 (x_3',x_4^{(1)} ) &=& 
+\int_0^{L_3} \d x_3' A_3 (x_3',x_4^{(0)} ) + 
+\int_0^{L_3} \d x_3' \int_{x_4^{(0)}}^{x_4^{(1)}} \d x_4 '
+F_{4 3} (x_3',x_4' ) \, .
+\"
+45,"\begin{eqnarray}
+E_{n 0 1} (x_4^{(1)}) &=& E_{n 0 1} (x_4^{(0)}) - (-1)^l 
+\frac{i}{L_3} 
+\int_0^{L_3} \d x_3' \int_{x_4^{(0)}}^{x_4^{(1)}} \d x_4 '
+F_{4 3} (x_3',x_4' ) \, ,
+\"
+46,"\begin{eqnarray}
+\label{param}
+\begin{array}{rclcrcl}
+\displaystyle
+u &=& \left( x_1 + i x_2 \right) / L_1 & , & 
+u^{(0)} &=& \left( x_1^{(0)} + i x_2^{(0)} \right) / L_1 \, , \\ 
+\displaystyle
+v &=& \left( x_3 + i \left( x_4 - x_2 \tau_{24} \right) \right) / L_3 
+& , & 
+v^{(0)} &=& x_3^{(0)} / L_3 \, . 
+\end{array}
+\"
+47,"\begin{eqnarray}
+A^{(1)}_1 = -i \partial_2 \phi(u,u^{(0)},\tau_{12}) \, , \,
+A^{(1)}_2 = i \partial_1 \phi(u,u^{(0)},\tau_{12}) \, , \, 
+A^{(1)}_3 = A^{(1)}_4 = 0 \, .
+\"
+48,"\begin{eqnarray}
+A_1 = 0 \, , \, 
+A_2 = - i \tau_{24} \partial_3 \phi(v,v^{(0)},\tau_{34})  \, , \,
+A_3 = - i \partial_4 \phi(v,v^{(0)},\tau_{34}) \, , \, 
+A_4 = i \partial_3 \phi(v,v^{(0)},\tau_{34}) \, .
+\"
+49,"\begin{eqnarray}
+U_1 = U_3 = \Id \, , \quad 
+U_2 = \exp{\left( 2 \pi i  
+      \left( \frac{x_1}{L_1} + \frac{x_3}{L_3} \right) \right)} 
+\, , \quad 
+U_4 = \exp{\left( 2 \pi i  \frac{x_3}{L_3} \right)} \, .
+\"
+50,"\begin{eqnarray}
+\label{dirac-matrices-D4}
+\gamma_i &=& \left( \begin{array}{cc}
+                0 & \sigma_i \\
+                \sigma_i & 0 
+                \end{array} \right) \, , \quad i = 1,2,3 \, , \quad 
+\gamma_4 = \left( \begin{array}{cc}
+                0 & i \Id \\
+                - i \Id & 0 
+                \end{array} \right) \, , \\
+\gamma_5 &=& \gamma_1 \gamma_2 \gamma_3 \gamma_4 = 
+            \left( \begin{array}{cc}
+                \Id & 0 \\
+                0 & - \Id 
+                \end{array} \right) \, , 
+\"
+51,"\begin{eqnarray}
+A_1 &=& - 2 \pi i x_2 / (L_1 L_2)  \, , \quad 
+A_2 = 0 \, , \\
+A_3 &=& - 2 \pi i x_4 / (L_3 L_4) \, \, , \quad 
+A_4 = 0 \, 
+\"

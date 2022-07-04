@@ -1,0 +1,755 @@
+,eqnarray
+0,"\begin{eqnarray}
+  Z &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*  \exp \Bigl[ 
+{-\omega(\mbit{\xi}^* \cdot \mbit{\xi})  +\frac{\lambda^2}{2N}}(\mbit{\xi}^*  \cdot 
+\mbit{\xi})^2 \Bigl] \ , 
+\label{gras}
+\"
+1,"\begin{eqnarray}
+  d^N \mbit{\xi} \equiv  d \xi_1 \cdot \cdot \cdot d \xi_N \ , \quad
+  d^N \mbit{\xi}^* \equiv  d \xi^*_N \cdot \cdot \cdot d \xi^*_1 \ , \quad  
+  (\mbit{\xi}^*  \cdot \mbit{\xi}) \equiv  \sum_{i=1}^N \xi^*_i  \xi_i \ ,
+\"
+2,"\begin{eqnarray}
+  Z &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \sum_{n=0}^{\infty} \frac{1}{n!}
+  \bigl{\{}-\omega(\mbit{\xi}^* \cdot \mbit{\xi})
+  +\frac{\lambda^2}{2N}(\mbit{\xi}^* \cdot \mbit{\xi})^2 \bigl{\}}^n 
+  \nonumber \\
+  &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \sum_{n=0}^{\infty} 
+  \sum_{r=0}^{n} \frac{1}{(n-r)!r!}
+  (-\omega)^{n-r} (\frac{\lambda^2}{2N})^r (\mbit{\xi}^*  \cdot 
+\mbit{\xi})^{n+r} \ .
+  \nonumber 
+\"
+3,"\begin{eqnarray}
+\int d^N \mbit{\xi} d^N \mbit{\xi}^* (\mbit{\xi}^*  \cdot \mbit{\xi})^{m} 
+=  (-1)^N N! \delta_{m N} \ ,
+\"
+4,"\begin{eqnarray}
+ Z =  \sum_{r=0}^{[\frac{N}{2}]}\frac{N!}{(N-2r)!r!} 
+  \omega^{N-2r} (\frac{\lambda^{2}}{2N})^r \  ,  \label{exact} 
+\"
+5,"\begin{eqnarray}
+ 1 = \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}  
+    \exp \bigg[-\frac{1}{2} \big{\{} y + \frac{\lambda}{\sqrt{N}}
+    (\mbit{\xi}^* \cdot \mbit{\xi} ) \big{\}}^2 \bigg] ,
+\"
+6,"\begin{eqnarray}  
+  Z &=& \int_{-\infty}^{\infty} \frac{d y}
+  {\sqrt{2\pi}}
+  \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \exp \Bigl[-\frac{y^2}{2}
+  -(\omega+\frac{\lambda}{\sqrt{N}} y)
+  (\mbit{\xi}^* \cdot \mbit{\xi})
+  \Bigl]  \nonumber \\
+  &=& \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+(\omega+\frac{\lambda}{\sqrt{N}} y)^N
+  \exp \Bigl[-\frac{y^2}{2}  \Bigl]  \nonumber \\
+&\stackrel{y \to \sqrt{N} y}{=}& 
+  \int_{-\infty}^{\infty} \sqrt{\frac{N}{2\pi}} d y
+  \exp [-N S(y)] \  , \label{base0}
+\"
+7,"\begin{eqnarray}
+S(y) &\equiv& \frac{y^2}{2}-\ln (\omega+\lambda y) \ .
+\"
+8,"\begin{eqnarray}
+  0 = S^{(1)}(y_0) = y_0-\frac{\lambda}{\omega+\lambda y_0} \ ,
+\label{classsol}
+\"
+9,"\begin{eqnarray}
+S^{(2)}(y_0) > 0 \ ; \qquad \mbox{stability condition} \ . 
+\label{stbCond}
+\"
+10,"\begin{eqnarray}
+S^{(n)}(y) &\equiv& \frac{d^n S(y)}{d y^n} \ . 
+\"
+11,"\begin{eqnarray}
+\Omega &\equiv& \omega+\lambda y_0 \ , \label{omega0}
+\"
+12,"\begin{eqnarray}
+  \Omega-\omega-\frac{\lambda^2}{\Omega} = 0 \ , \label{classsol2}
+\"
+13,"\begin{eqnarray}
+  \Omega = \frac{\omega \pm \sqrt{\omega^2+4\lambda^2}}{2} \ . 
+\label{omega}
+\"
+14,"\begin{eqnarray}  
+  Z = \!   \!  \!   \int_{-\infty}^{\infty} \!  \!  \!  
+\sqrt{\frac{N}{2\pi}} d y
+  \exp \bigg[  \!  -N \bigg{\{} S_0 + \frac{1}{2}S_0^{(2)}(y - y_0)^2  \!  
+\!  + \sum_{n=3}^{\infty} \frac{1}{n!} S_0^{(n)}(y - y_0)^n \bigg{\}}  \!  
+\bigg] \ , 
+  \nonumber
+\"
+15,"\begin{eqnarray}
+  Z  = e^{-N S_0} 
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+  \exp \Bigl[-\frac{S^{(2)}_0}{2}y^2 - \sum_{n=3}^{\infty}N^{1 - n/2} 
+  \frac{S^{(n)}_0}{n!}y^n \Bigl]\ , \label{base}
+\"
+16,"\begin{eqnarray}
+  S_0 &=& \frac{\lambda^2}{2 \Omega^2}-\ln \Omega , \label{s0} \\
+  S_0^{(2)} &=& 1+\frac{\lambda^2}{(\omega+\lambda y_0)^2}
+  = 1+\frac{\lambda^2}{\Omega^2}  \nonumber \\ 
+  & = &  \frac{\sqrt{\omega^2 + 4 \lambda^2 }
+    (\sqrt{\omega^2 + 4 \lambda^2 } \mp \omega) }{2 \lambda^2} \ , 
+\label{s2} 
+\"
+17,"\begin{eqnarray}
+  S_0^{(3)} &=& -\frac{2 \lambda^3}{(\omega+\lambda y_0)^3}
+  = -\frac{2 \lambda^3}{\Omega^3} \ , \label{s3} \\
+  S_0^{(4)} &=& \frac{6 \lambda^4}{(\omega+\lambda y_0)^4}
+  = \frac{6 \lambda^4}{\Omega^4} \ , \label{s4} 
+  \"
+18,"\begin{eqnarray}
+  S_0^{(5)} &=& -\frac{24 \lambda^5}{(\omega+\lambda y_0)^5}
+  = -\frac{24 \lambda^5}{\Omega^5} \ , \label{s5} \\
+  S_0^{(6)} &=& \frac{120 \lambda^6}{(\omega+\lambda y_0)^6}
+  = \frac{120 \lambda^6}{\Omega^6} \ , \label{s6} 
+\"
+19,"\begin{eqnarray}
+  Z &=& e^{-N S_0} 
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+  \exp \Bigl[ -\frac{S^{(2)}_0}{2}y^2 \Bigl]
+  \Bigl[ 1 + \frac{1}{N} 
+  \Bigl{\{} -\frac{S_0^{(4)}}{4!}y^4
+  +\frac{(S_0^{(3)})^2}{2 (3!)^2} y^6 \Bigl{\}}  \nonumber \\
+ &&  \hspace{-8mm}+ \frac{1}{N^2} \Bigl{\{} \! \!   -\frac{S_0^{(6)}}{6}y^6 
+\!  \!  
+  +  \!  \Bigl( \!  \frac{(S_0^{(4)})^2}{2 (4!)^2} \!  
+  + \frac{S_0^{(3)} S_0^{(5)}}{3! 5!} \!  \Bigl) y^8 \!  \!  \! 
+  -\frac{3 (S_0^{(3)})^2 S_0^{(4)}}{(3!)^3 4!}y^{10} \!  \! \! 
+  +\frac{(S_0^{(3)})^4}{(3!)^4 4!}y^{12} \Bigl{\}}  \nonumber \\ 
+  & + & \mathcal{O}(\frac{1}{N^3})\Bigl] \  . \label{base2}
+\"
+20,"\begin{eqnarray}
+  \Omega_{\pm} = \frac{1 \pm \sqrt{1+4\lambda^2}}{2}\ , \label{omega2}
+\"
+21,"\begin{eqnarray}
+  S_0^{(2)} = 1+\frac{\lambda^2}{\Omega_{\pm}^2}
+  = \frac{\sqrt{1 + 4 \lambda^2 }
+    (\sqrt{1 + 4 \lambda^2 } \mp 1) }{2 \lambda^2} > 0\ ,
+    \label{s22}
+\"
+22,"\begin{eqnarray}
+Z_{\mbox{L-loop}} = Z_{\mbox{L-loop}}^+ + Z_{\mbox{L-loop}}^- \ , 
+\label{Lloop}
+\"
+23,"\begin{eqnarray}
+Z_{\mbox{tree}}^{\pm } (\equiv Z_{\mbox{0-loop}}^{\pm }) \equiv  
+\Omega_{\pm}^N \exp \Bigl[-\frac{N \lambda^2}{2 \Omega_{\pm}^2} \Bigl] \ ;  
+\"
+24,"\begin{eqnarray}
+  Z_{\mbox{3-loop}}^{\pm } &=&   \Omega_{\pm}^N 
+  \exp  \Bigl[-\frac{N \lambda^2}{2 \Omega_{\pm}^2} \Bigl]
+  \sqrt{\frac{\Omega_{\pm}^2}{\Omega_{\pm}^2  \! +  \! \lambda^2}}
+  \nonumber \\
+  & & \times  \Bigl[ 1 +\frac{1}{N} \Bigl{\{} -\frac{3 \lambda^4}
+  {4(\Omega_{\pm}^2+\lambda^2)^2}
+  +\frac{5 \lambda^6}{6(\Omega_{\pm}^2+\lambda^2)^3} \Bigl{\}}  \nonumber 
+\\
+  & & \hspace{-18mm} +{\frac{1}{N^2} \! \Bigl{ \{} -\frac{5 \lambda^6}
+    {2(\Omega_{\pm}^2  \! +  \! \lambda^2)^3}
+    + \frac{329 \lambda^8}{32(\Omega_{\pm}^2  \! +  \!\lambda^2)^4}} 
+  -\frac{105 \lambda^{10}}{8(\Omega_{\pm}^2  \! +  \! \lambda^2)^5}
+  +\frac{385 \lambda^{12}}
+  {72(\Omega_{\pm}^2  \! +  \! \lambda^2)^6} \Bigl{\}} \Bigl] \ . 
+  \label{conclusion0}
+\"
+25,"\begin{eqnarray}
+  \Omega_{\pm} &=& \frac{1 \pm \sqrt{1-4|\lambda|^2}}{2} \ , \label{omega3} 
+\\
+  S_0^{(2)} &=& 1-\frac{|\lambda|^2}{\Omega_{\pm}^2}
+  = \frac{\sqrt{1 - 4 |\lambda|^2 }
+    (\pm 1 - \sqrt{1 - 4 |\lambda|^2 }) }{2 |\lambda|^2} \ ,  \label{s23}
+\"
+26,"\begin{eqnarray}
+  Z &=& \Omega_+^N \exp 
+  \Bigl[\frac{N |\lambda|^2}{2 \Omega_+^2} \Bigl]
+  \sqrt{\frac{\Omega_+^2}{\Omega_+^2-|\lambda|^2}}
+  \Bigl[ 1  \nonumber \\
+  & & +  \frac{1}{N} \Bigl{\{} -\frac{3 |\lambda|^4}
+  {4(\Omega_+^2-|\lambda|^2)^2}
+  -\frac{5 |\lambda|^6}{6(\Omega_+^2-|\lambda|^2)^3} \Bigl{\}}  
+  \nonumber \\
+  & & +{\frac{1}{N^2} \Bigl{\{} \frac{5 |\lambda|^6}
+    {2(\Omega_+^2-|\lambda|^2)^3}
+    +\frac{329 |\lambda|^8}{32(\Omega_+^2-|\lambda|^2)^4}}   \nonumber \\
+  & & \hspace{7mm} +\frac{105 |\lambda|^{10}}{8(\Omega_+^2-|\lambda|^2)^5}
+  +\frac{385 |\lambda|^{12}}
+  {72(\Omega_+^2-|\lambda|^2)^6} \Bigl{\}}   \nonumber \\
+  & & \hspace{35mm}+ \mathcal{O}(\frac{1}{N^3}) \Bigl] \ . 
+\label{conclusion1}
+\"
+27,"\begin{eqnarray}
+  \Omega_{\pm} &=& \frac{1 \pm i \sqrt{4|\lambda|^2-1}}{2} \ , 
+\label{omega4}  \\
+  S_0^{(2)} &=&  \frac{ i \sqrt{4 |\lambda|^2 -1}
+    (\pm 1 - i \sqrt{4 |\lambda|^2 -1}) }{2 |\lambda|^2} \nonumber \\
+ &  = & \frac{\sqrt{4 |\lambda|^2 -1}}{|\lambda|}
+  \bigg(\frac{\sqrt{4 |\lambda|^2 -1}}{2 |\lambda|} 
+  \pm i \frac{1}{2 |\lambda|} \bigg) \ .  \label{s24}
+\"
+28,"\begin{eqnarray}
+  \mbox{Re}[S_0^{(2)} y^2] > 0 \  , \qquad  
+  \mbox{Im}[S_0^{(2)} y^2] = 0 \ .  \label{imag}
+\"
+29,"\begin{eqnarray}
+  S_0^{(2)} &=& R e^{\pm i \theta} \ ,  \label{s25} 
+\"
+30,"\begin{eqnarray}
+  R \equiv \frac{\sqrt{4|\lambda|^2 - 1}}{|\lambda|} \ ,  \quad 
+  \tan \theta \equiv  \frac{1}{\sqrt{4|\lambda|^2 - 1}}  \ ; \quad   (0 < 
+\theta < \frac{\pi}{2}) \ ,   \label{tan}
+\"
+31,"\begin{eqnarray}
+  y &=& r e^{ i \varphi},  \label{y1} 
+\"
+32,"\begin{eqnarray}
+  S_0^{(2)} y^2 &=& r^2 R e^{2 i \varphi \pm i \theta}.  
+\label{s25y}\"
+33,"\begin{eqnarray}
+ 0= \mbox{Im}[S_0^{(2)} y^2] = r^2 R \sin (2 \varphi \pm \theta ) 
+  \ ,  \label{imag2}
+\"
+34,"\begin{eqnarray}
+  \varphi &=& \mp \frac{\theta}{2} \ ,  \label{varphi} 
+\"
+35,"\begin{eqnarray}
+\mbox{Re}[S_0^{(2)} y^2] = r^2 R \cos (2 \varphi \pm \theta ) 
+  = r^2 R  \  ,  \label{R} 
+\"
+36,"\begin{eqnarray}
+  \Omega_{\pm} &=& \pm i |\lambda| ( \frac{\sqrt{4|\lambda|^2}-1}{2 
+|\lambda|}
+  \mp \frac{1}{2 |\lambda|} ) = |\lambda| e^{\pm i (\frac{\pi}{2} - 
+\theta)} \  ,
+  \label{omega5} \\
+  S_0 &=& -\frac{|\lambda|^2}{2 |\lambda|^2 e^{\pm i (\pi - 2 \theta)}}
+  -\ln (|\lambda| e^{\pm i (\frac{\pi}{2} - \theta)}) \nonumber \\
+   &=& \frac{1}{2} \cos 2 \theta -\ln |\lambda| 
+  \mp i (\frac{\pi}{2} - \theta - \frac{1}{2} \sin 2 \theta) \ , 
+\label{s02} 
+\\
+  S_0^{(3)} &=& \frac{2 i |\lambda|^3}{|\lambda|^3 
+    e^{\pm i (\frac{3}{2} \pi - 3 \theta)}}
+  = \mp 2 e^{\pm 3 i \theta} \  , \label{s32} \\
+  S_0^{(4)} &=& \frac{6 |\lambda|^4}{|\lambda|^4 
+    e^{\pm i (2 \pi - 4 \theta)}}
+  = 6 e^{\pm 4 i \theta} \ , \label{s42} \\
+  S_0^{(5)} &=& - \frac{24 i |\lambda|^5}{|\lambda|^5 
+    e^{\pm i (\frac{5}{2} \pi - 5 \theta)}}
+  = \mp 24 e^{\pm 5 i \theta} \ , \label{s52} \\
+  S_0^{(6)} &=& - \frac{120 |\lambda|^6}{|\lambda|^6 
+    e^{\pm i (3 \pi - 6 \theta)}}
+  = 120 e^{\pm 6 i \theta}  \ . \label{s62} 
+\"
+37,"\begin{eqnarray}
+  Z_{\mbox{L-loop}} = Z_{\mbox{L-loop}}^+ + Z_{\mbox{L-loop}}^- 
+  = 2 \mbox{Re} \left[ Z_{\mbox{L-loop}}^+ \right] \ . \label{conc3} 
+\"
+38,"\begin{eqnarray}
+  Z_{\mbox{tree}} \equiv  2 |\lambda|^N e^{-\frac{N}{2} \cos 2 \theta} 
+  \cos N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} \sin 2 \theta \bigg) \ 
+,
+  \label{conc3tree} 
+\"
+39,"\begin{eqnarray}
+  Z_{\mbox{3-loop}} &\equiv & 
+  \frac{2 |\lambda|^N}{\sqrt{R}} e^{-\frac{N}{2} \cos 2 \theta} 
+  \bigg[ \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)-\frac{\theta}{2} \bigg{\}} \nonumber \\
+  &+& \frac{1}{N} \bigg{\{} -\frac{3}{4 R^2} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg) + \frac{3}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{5}{6 R^3} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+ \frac{5}{2} \theta \bigg{\}}
+  \bigg{\}} \nonumber \\
+  &+& \frac{1}{N^2} \bigg{\{} -\frac{5}{2 R^3} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{5}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{329}{32 R^4} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{7}{2} \theta \bigg{\}} \nonumber \\
+  &&- \frac{105}{8 R^5} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{9}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{385}{72 R^6} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{11}{2} \theta \bigg{\}}
+  \bigg{\}} \bigg]
+ \label{conc33}  \ , 
+\"
+40,"\begin{eqnarray}
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}} y^{2n}
+  \exp \Bigl[ -\frac{S^{(2)}_0}{2}y^2 \Bigl]
+&=& e^{\mp i \frac{2n+1}{2} \theta} 
+\int_{-\infty}^{\infty} \frac{d r}{\sqrt{2\pi}} r^{2n}
+  \exp \Bigl[ -\frac{1}{2} R r^2 \Bigl] \nonumber \\
+&=& \frac{(2n-1)!!}{R^{n+\frac{1}{2}}}
+e^{\mp i \frac{2n+1}{2} \theta} \quad  (n \geq 0) \  . \label{gauss}
+\"
+41,"\begin{eqnarray}
+S_0^{(2)} = 1-\frac{|\lambda|^2}{(\omega+i |\lambda| \tilde{y})^2} = 0 \ , 
+\label{s2cau}
+\"
+42,"\begin{eqnarray}
+\tilde{\Omega} &\equiv& \omega+i |\lambda| \tilde{y} \ , \label{omega0cau}
+\"
+43,"\begin{eqnarray}
+\tilde{\Omega}_{\pm} = \pm |\lambda| \ . \label{omegacau}
+\"
+44,"\begin{eqnarray}
+  \tilde{S}^{(n)} \equiv S^{(n)} (\tilde{y}) \  ,
+\"
+45,"\begin{eqnarray}
+  \tilde{S}^{(1)}_{\pm} = \frac{i}{|\lambda|}(1 \mp |\lambda|) 
+  - \frac{i |\lambda|}{(\pm |\lambda|)} 
+  = \frac{i}{|\lambda|}(1 \mp 2|\lambda|) \ . \label{s1cau}
+\"
+46,"\begin{eqnarray}
+  \tilde{S} = \frac{1}{2} \bigg{\{} \frac{i}{|\lambda|}(1-|\lambda|) 
+\bigg{\}}^2 \! \!  \! \! \! \! \!  &  -    &  \! \! \! \! \ln |\lambda| 
+  = -\frac{(1 - |\lambda|)^2}{2|\lambda|^2} - \ln |\lambda| \ , 
+\label{s0cau} 
+\\
+ \tilde{S}^{(3)} = \frac{2 i |\lambda|^3}{|\lambda|^3} = 
+2i \ ,  & & \quad   \tilde{S}^{(4)} = \frac{6 |\lambda|^4}{|\lambda|^4} = 6 
+\ ,\label{s4cau} 
+\\
+  \tilde{S}^{(5)} \! \! \! \! \!  &=& \! \! \! -\frac{24 i |\lambda|^5}{|\lambda|^5} = -24i \ 
+.\label{s5cau}
+\"
+47,"\begin{eqnarray}
+  y-\tilde{y} = i \bigl( \frac{2}{N \tilde{S}^{(3)}} \bigl)^{\frac{1}{3}}t
+  =-\frac{t}{N^{\frac{1}{3}}} \ , \label{vari} 
+\"
+48,"\begin{eqnarray}
+  Z &=& e^{-N \tilde{S}} 
+    \int_{-\infty}^{\infty} \frac{N^{\frac{1}{6}}}{\sqrt{2\pi}} d t        
+      \exp \Bigl[ \frac{i t^3}{3}+i a t - \sum_{n=4}^{\infty} 
+  \frac{ (-1)^n \tilde{S}^{(n)}}{n! N^{\frac{n}{3}-1}} t^n\Bigl], 
+\label{airy}       
+\"
+49,"\begin{eqnarray}
+  a \equiv  \frac{N^{\frac{2}{3}}}{|\lambda|}(1 - 2|\lambda|) \ . \label{a}
+\"
+50,"\begin{eqnarray}
+  Z &=& |\lambda|^N \exp 
+  \Bigl[N \frac{(1 - |\lambda|)^2}{2 |\lambda|^2} \Bigl]
+  \sqrt{\frac{2}{\pi}}N^{\frac{1}{6}}  \nonumber \\
+ & & \times  \Bigl[ \int_0^\infty dt \cos \Bigl[\frac{t^3}{3}+at \Bigl] 
+\nonumber \\
+  & & -\frac{1}{4N^{\frac{1}{3}}} \int_0^\infty dt \,t^4 \cos 
+\Bigl[\frac{t^3}{3}+at \Bigl]   \nonumber \\
+  &&  + \frac{1}{N^{\frac{2}{3}}} 
+  \Bigl{\{} \frac{1}{32}
+  \int_0^\infty dt \,t^8 \cos \Bigl[\frac{t^3}{3}+at \Bigl]
+  +\frac{1}{5}
+  \int_0^\infty dt \,t^5 \sin \Bigl[\frac{t^3}{3}+at \Bigl] \Bigl{\}} 
+  \nonumber \\
+ & &  \hspace{18mm}+\mathcal{O}(\frac{1}{N})\Bigl] \ . \label{coacau}
+\"
+51,"\begin{eqnarray}
+ {\rm Ai}(a) = \frac{1}{\pi } \int_{0}^{\infty} d t        
+  \cos \Bigl[ \frac{ t^3}{3}+ a t \Bigl] \ ; \qquad  {\rm Im}[a] = 0 \ ,
+  \label{Airy}
+\"
+52,"\begin{eqnarray}
+Z_{\mbox{3-loop}} &=& |\lambda|^N \exp 
+  \Bigl[N \frac{(1 - |\lambda|)^2}{2 |\lambda|^2} \Bigl]
+  \sqrt{2 \pi}N^{\frac{1}{6}}  \nonumber \\
+ &\times &   \Bigl[ {\rm Ai}(a)  -\frac{1}{4N^{\frac{1}{3}}}{\rm 
+Ai}^{(4)}(a)   + \frac{1}{N^{\frac{2}{3}}} 
+  \Bigl{\{} \frac{1}{32}
+  {\rm Ai}^{(8)}(a)
+  - \frac{1}{5}
+ {\rm Ai}^{(5)}(a) \Bigl{\}} \Bigl] \ , 
+ \label{airy3loop}
+\"
+53,"\begin{eqnarray}
+{\rm Ai}^{(n)}(a) \equiv \frac{d^n}{da^n}{\rm Ai}(a)  \ .
+\"
+54,"\begin{eqnarray}
+{\rm Ai}^{(2)}(a) = a {\rm Ai}(a) \ ,
+\"
+55,"\begin{eqnarray}
+  Z &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*  \exp \Bigl[ 
+{-\omega(\mbit{\xi}^* \cdot \mbit{\xi})  +\frac{\lambda^2}{2N}}(\mbit{\xi}^*  \cdot 
+\mbit{\xi})^2 \Bigl] \ , 
+\label{gras}
+\"
+56,"\begin{eqnarray}
+  d^N \mbit{\xi} \equiv  d \xi_1 \cdot \cdot \cdot d \xi_N \ , \quad
+  d^N \mbit{\xi}^* \equiv  d \xi^*_N \cdot \cdot \cdot d \xi^*_1 \ , \quad  
+  (\mbit{\xi}^*  \cdot \mbit{\xi}) \equiv  \sum_{i=1}^N \xi^*_i  \xi_i \ ,
+\"
+57,"\begin{eqnarray}
+  Z &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \sum_{n=0}^{\infty} \frac{1}{n!}
+  \bigl{\{}-\omega(\mbit{\xi}^* \cdot \mbit{\xi})
+  +\frac{\lambda^2}{2N}(\mbit{\xi}^* \cdot \mbit{\xi})^2 \bigl{\}}^n 
+  \nonumber \\
+  &=& \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \sum_{n=0}^{\infty} 
+  \sum_{r=0}^{n} \frac{1}{(n-r)!r!}
+  (-\omega)^{n-r} (\frac{\lambda^2}{2N})^r (\mbit{\xi}^*  \cdot 
+\mbit{\xi})^{n+r} \ .
+  \nonumber 
+\"
+58,"\begin{eqnarray}
+\int d^N \mbit{\xi} d^N \mbit{\xi}^* (\mbit{\xi}^*  \cdot \mbit{\xi})^{m} 
+=  (-1)^N N! \delta_{m N} \ ,
+\"
+59,"\begin{eqnarray}
+ Z =  \sum_{r=0}^{[\frac{N}{2}]}\frac{N!}{(N-2r)!r!} 
+  \omega^{N-2r} (\frac{\lambda^{2}}{2N})^r \  ,  \label{exact} 
+\"
+60,"\begin{eqnarray}
+ 1 = \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}  
+    \exp \bigg[-\frac{1}{2} \big{\{} y + \frac{\lambda}{\sqrt{N}}
+    (\mbit{\xi}^* \cdot \mbit{\xi} ) \big{\}}^2 \bigg] ,
+\"
+61,"\begin{eqnarray}  
+  Z &=& \int_{-\infty}^{\infty} \frac{d y}
+  {\sqrt{2\pi}}
+  \int d^N \mbit{\xi} d^N \mbit{\xi}^*
+  \exp \Bigl[-\frac{y^2}{2}
+  -(\omega+\frac{\lambda}{\sqrt{N}} y)
+  (\mbit{\xi}^* \cdot \mbit{\xi})
+  \Bigl]  \nonumber \\
+  &=& \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+(\omega+\frac{\lambda}{\sqrt{N}} y)^N
+  \exp \Bigl[-\frac{y^2}{2}  \Bigl]  \nonumber \\
+&\stackrel{y \to \sqrt{N} y}{=}& 
+  \int_{-\infty}^{\infty} \sqrt{\frac{N}{2\pi}} d y
+  \exp [-N S(y)] \  , \label{base0}
+\"
+62,"\begin{eqnarray}
+S(y) &\equiv& \frac{y^2}{2}-\ln (\omega+\lambda y) \ .
+\"
+63,"\begin{eqnarray}
+  0 = S^{(1)}(y_0) = y_0-\frac{\lambda}{\omega+\lambda y_0} \ ,
+\label{classsol}
+\"
+64,"\begin{eqnarray}
+S^{(2)}(y_0) > 0 \ ; \qquad \mbox{stability condition} \ . 
+\label{stbCond}
+\"
+65,"\begin{eqnarray}
+S^{(n)}(y) &\equiv& \frac{d^n S(y)}{d y^n} \ . 
+\"
+66,"\begin{eqnarray}
+\Omega &\equiv& \omega+\lambda y_0 \ , \label{omega0}
+\"
+67,"\begin{eqnarray}
+  \Omega-\omega-\frac{\lambda^2}{\Omega} = 0 \ , \label{classsol2}
+\"
+68,"\begin{eqnarray}
+  \Omega = \frac{\omega \pm \sqrt{\omega^2+4\lambda^2}}{2} \ . 
+\label{omega}
+\"
+69,"\begin{eqnarray}  
+  Z = \!   \!  \!   \int_{-\infty}^{\infty} \!  \!  \!  
+\sqrt{\frac{N}{2\pi}} d y
+  \exp \bigg[  \!  -N \bigg{\{} S_0 + \frac{1}{2}S_0^{(2)}(y - y_0)^2  \!  
+\!  + \sum_{n=3}^{\infty} \frac{1}{n!} S_0^{(n)}(y - y_0)^n \bigg{\}}  \!  
+\bigg] \ , 
+  \nonumber
+\"
+70,"\begin{eqnarray}
+  Z  = e^{-N S_0} 
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+  \exp \Bigl[-\frac{S^{(2)}_0}{2}y^2 - \sum_{n=3}^{\infty}N^{1 - n/2} 
+  \frac{S^{(n)}_0}{n!}y^n \Bigl]\ , \label{base}
+\"
+71,"\begin{eqnarray}
+  S_0 &=& \frac{\lambda^2}{2 \Omega^2}-\ln \Omega , \label{s0} \\
+  S_0^{(2)} &=& 1+\frac{\lambda^2}{(\omega+\lambda y_0)^2}
+  = 1+\frac{\lambda^2}{\Omega^2}  \nonumber \\ 
+  & = &  \frac{\sqrt{\omega^2 + 4 \lambda^2 }
+    (\sqrt{\omega^2 + 4 \lambda^2 } \mp \omega) }{2 \lambda^2} \ , 
+\label{s2} 
+\"
+72,"\begin{eqnarray}
+  S_0^{(3)} &=& -\frac{2 \lambda^3}{(\omega+\lambda y_0)^3}
+  = -\frac{2 \lambda^3}{\Omega^3} \ , \label{s3} \\
+  S_0^{(4)} &=& \frac{6 \lambda^4}{(\omega+\lambda y_0)^4}
+  = \frac{6 \lambda^4}{\Omega^4} \ , \label{s4} 
+  \"
+73,"\begin{eqnarray}
+  S_0^{(5)} &=& -\frac{24 \lambda^5}{(\omega+\lambda y_0)^5}
+  = -\frac{24 \lambda^5}{\Omega^5} \ , \label{s5} \\
+  S_0^{(6)} &=& \frac{120 \lambda^6}{(\omega+\lambda y_0)^6}
+  = \frac{120 \lambda^6}{\Omega^6} \ , \label{s6} 
+\"
+74,"\begin{eqnarray}
+  Z &=& e^{-N S_0} 
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}}
+  \exp \Bigl[ -\frac{S^{(2)}_0}{2}y^2 \Bigl]
+  \Bigl[ 1 + \frac{1}{N} 
+  \Bigl{\{} -\frac{S_0^{(4)}}{4!}y^4
+  +\frac{(S_0^{(3)})^2}{2 (3!)^2} y^6 \Bigl{\}}  \nonumber \\
+ &&  \hspace{-8mm}+ \frac{1}{N^2} \Bigl{\{} \! \!   -\frac{S_0^{(6)}}{6}y^6 
+\!  \!  
+  +  \!  \Bigl( \!  \frac{(S_0^{(4)})^2}{2 (4!)^2} \!  
+  + \frac{S_0^{(3)} S_0^{(5)}}{3! 5!} \!  \Bigl) y^8 \!  \!  \! 
+  -\frac{3 (S_0^{(3)})^2 S_0^{(4)}}{(3!)^3 4!}y^{10} \!  \! \! 
+  +\frac{(S_0^{(3)})^4}{(3!)^4 4!}y^{12} \Bigl{\}}  \nonumber \\ 
+  & + & \mathcal{O}(\frac{1}{N^3})\Bigl] \  . \label{base2}
+\"
+75,"\begin{eqnarray}
+  \Omega_{\pm} = \frac{1 \pm \sqrt{1+4\lambda^2}}{2}\ , \label{omega2}
+\"
+76,"\begin{eqnarray}
+  S_0^{(2)} = 1+\frac{\lambda^2}{\Omega_{\pm}^2}
+  = \frac{\sqrt{1 + 4 \lambda^2 }
+    (\sqrt{1 + 4 \lambda^2 } \mp 1) }{2 \lambda^2} > 0\ ,
+    \label{s22}
+\"
+77,"\begin{eqnarray}
+Z_{\mbox{L-loop}} = Z_{\mbox{L-loop}}^+ + Z_{\mbox{L-loop}}^- \ , 
+\label{Lloop}
+\"
+78,"\begin{eqnarray}
+Z_{\mbox{tree}}^{\pm } (\equiv Z_{\mbox{0-loop}}^{\pm }) \equiv  
+\Omega_{\pm}^N \exp \Bigl[-\frac{N \lambda^2}{2 \Omega_{\pm}^2} \Bigl] \ ;  
+\"
+79,"\begin{eqnarray}
+  Z_{\mbox{3-loop}}^{\pm } &=&   \Omega_{\pm}^N 
+  \exp  \Bigl[-\frac{N \lambda^2}{2 \Omega_{\pm}^2} \Bigl]
+  \sqrt{\frac{\Omega_{\pm}^2}{\Omega_{\pm}^2  \! +  \! \lambda^2}}
+  \nonumber \\
+  & & \times  \Bigl[ 1 +\frac{1}{N} \Bigl{\{} -\frac{3 \lambda^4}
+  {4(\Omega_{\pm}^2+\lambda^2)^2}
+  +\frac{5 \lambda^6}{6(\Omega_{\pm}^2+\lambda^2)^3} \Bigl{\}}  \nonumber 
+\\
+  & & \hspace{-18mm} +{\frac{1}{N^2} \! \Bigl{ \{} -\frac{5 \lambda^6}
+    {2(\Omega_{\pm}^2  \! +  \! \lambda^2)^3}
+    + \frac{329 \lambda^8}{32(\Omega_{\pm}^2  \! +  \!\lambda^2)^4}} 
+  -\frac{105 \lambda^{10}}{8(\Omega_{\pm}^2  \! +  \! \lambda^2)^5}
+  +\frac{385 \lambda^{12}}
+  {72(\Omega_{\pm}^2  \! +  \! \lambda^2)^6} \Bigl{\}} \Bigl] \ . 
+  \label{conclusion0}
+\"
+80,"\begin{eqnarray}
+  \Omega_{\pm} &=& \frac{1 \pm \sqrt{1-4|\lambda|^2}}{2} \ , \label{omega3} 
+\\
+  S_0^{(2)} &=& 1-\frac{|\lambda|^2}{\Omega_{\pm}^2}
+  = \frac{\sqrt{1 - 4 |\lambda|^2 }
+    (\pm 1 - \sqrt{1 - 4 |\lambda|^2 }) }{2 |\lambda|^2} \ ,  \label{s23}
+\"
+81,"\begin{eqnarray}
+  Z &=& \Omega_+^N \exp 
+  \Bigl[\frac{N |\lambda|^2}{2 \Omega_+^2} \Bigl]
+  \sqrt{\frac{\Omega_+^2}{\Omega_+^2-|\lambda|^2}}
+  \Bigl[ 1  \nonumber \\
+  & & +  \frac{1}{N} \Bigl{\{} -\frac{3 |\lambda|^4}
+  {4(\Omega_+^2-|\lambda|^2)^2}
+  -\frac{5 |\lambda|^6}{6(\Omega_+^2-|\lambda|^2)^3} \Bigl{\}}  
+  \nonumber \\
+  & & +{\frac{1}{N^2} \Bigl{\{} \frac{5 |\lambda|^6}
+    {2(\Omega_+^2-|\lambda|^2)^3}
+    +\frac{329 |\lambda|^8}{32(\Omega_+^2-|\lambda|^2)^4}}   \nonumber \\
+  & & \hspace{7mm} +\frac{105 |\lambda|^{10}}{8(\Omega_+^2-|\lambda|^2)^5}
+  +\frac{385 |\lambda|^{12}}
+  {72(\Omega_+^2-|\lambda|^2)^6} \Bigl{\}}   \nonumber \\
+  & & \hspace{35mm}+ \mathcal{O}(\frac{1}{N^3}) \Bigl] \ . 
+\label{conclusion1}
+\"
+82,"\begin{eqnarray}
+  \Omega_{\pm} &=& \frac{1 \pm i \sqrt{4|\lambda|^2-1}}{2} \ , 
+\label{omega4}  \\
+  S_0^{(2)} &=&  \frac{ i \sqrt{4 |\lambda|^2 -1}
+    (\pm 1 - i \sqrt{4 |\lambda|^2 -1}) }{2 |\lambda|^2} \nonumber \\
+ &  = & \frac{\sqrt{4 |\lambda|^2 -1}}{|\lambda|}
+  \bigg(\frac{\sqrt{4 |\lambda|^2 -1}}{2 |\lambda|} 
+  \pm i \frac{1}{2 |\lambda|} \bigg) \ .  \label{s24}
+\"
+83,"\begin{eqnarray}
+  \mbox{Re}[S_0^{(2)} y^2] > 0 \  , \qquad  
+  \mbox{Im}[S_0^{(2)} y^2] = 0 \ .  \label{imag}
+\"
+84,"\begin{eqnarray}
+  S_0^{(2)} &=& R e^{\pm i \theta} \ ,  \label{s25} 
+\"
+85,"\begin{eqnarray}
+  R \equiv \frac{\sqrt{4|\lambda|^2 - 1}}{|\lambda|} \ ,  \quad 
+  \tan \theta \equiv  \frac{1}{\sqrt{4|\lambda|^2 - 1}}  \ ; \quad   (0 < 
+\theta < \frac{\pi}{2}) \ ,   \label{tan}
+\"
+86,"\begin{eqnarray}
+  y &=& r e^{ i \varphi},  \label{y1} 
+\"
+87,"\begin{eqnarray}
+  S_0^{(2)} y^2 &=& r^2 R e^{2 i \varphi \pm i \theta}.  
+\label{s25y}\"
+88,"\begin{eqnarray}
+ 0= \mbox{Im}[S_0^{(2)} y^2] = r^2 R \sin (2 \varphi \pm \theta ) 
+  \ ,  \label{imag2}
+\"
+89,"\begin{eqnarray}
+  \varphi &=& \mp \frac{\theta}{2} \ ,  \label{varphi} 
+\"
+90,"\begin{eqnarray}
+\mbox{Re}[S_0^{(2)} y^2] = r^2 R \cos (2 \varphi \pm \theta ) 
+  = r^2 R  \  ,  \label{R} 
+\"
+91,"\begin{eqnarray}
+  \Omega_{\pm} &=& \pm i |\lambda| ( \frac{\sqrt{4|\lambda|^2}-1}{2 
+|\lambda|}
+  \mp \frac{1}{2 |\lambda|} ) = |\lambda| e^{\pm i (\frac{\pi}{2} - 
+\theta)} \  ,
+  \label{omega5} \\
+  S_0 &=& -\frac{|\lambda|^2}{2 |\lambda|^2 e^{\pm i (\pi - 2 \theta)}}
+  -\ln (|\lambda| e^{\pm i (\frac{\pi}{2} - \theta)}) \nonumber \\
+   &=& \frac{1}{2} \cos 2 \theta -\ln |\lambda| 
+  \mp i (\frac{\pi}{2} - \theta - \frac{1}{2} \sin 2 \theta) \ , 
+\label{s02} 
+\\
+  S_0^{(3)} &=& \frac{2 i |\lambda|^3}{|\lambda|^3 
+    e^{\pm i (\frac{3}{2} \pi - 3 \theta)}}
+  = \mp 2 e^{\pm 3 i \theta} \  , \label{s32} \\
+  S_0^{(4)} &=& \frac{6 |\lambda|^4}{|\lambda|^4 
+    e^{\pm i (2 \pi - 4 \theta)}}
+  = 6 e^{\pm 4 i \theta} \ , \label{s42} \\
+  S_0^{(5)} &=& - \frac{24 i |\lambda|^5}{|\lambda|^5 
+    e^{\pm i (\frac{5}{2} \pi - 5 \theta)}}
+  = \mp 24 e^{\pm 5 i \theta} \ , \label{s52} \\
+  S_0^{(6)} &=& - \frac{120 |\lambda|^6}{|\lambda|^6 
+    e^{\pm i (3 \pi - 6 \theta)}}
+  = 120 e^{\pm 6 i \theta}  \ . \label{s62} 
+\"
+92,"\begin{eqnarray}
+  Z_{\mbox{L-loop}} = Z_{\mbox{L-loop}}^+ + Z_{\mbox{L-loop}}^- 
+  = 2 \mbox{Re} \left[ Z_{\mbox{L-loop}}^+ \right] \ . \label{conc3} 
+\"
+93,"\begin{eqnarray}
+  Z_{\mbox{tree}} \equiv  2 |\lambda|^N e^{-\frac{N}{2} \cos 2 \theta} 
+  \cos N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} \sin 2 \theta \bigg) \ 
+,
+  \label{conc3tree} 
+\"
+94,"\begin{eqnarray}
+  Z_{\mbox{3-loop}} &\equiv & 
+  \frac{2 |\lambda|^N}{\sqrt{R}} e^{-\frac{N}{2} \cos 2 \theta} 
+  \bigg[ \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)-\frac{\theta}{2} \bigg{\}} \nonumber \\
+  &+& \frac{1}{N} \bigg{\{} -\frac{3}{4 R^2} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg) + \frac{3}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{5}{6 R^3} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+ \frac{5}{2} \theta \bigg{\}}
+  \bigg{\}} \nonumber \\
+  &+& \frac{1}{N^2} \bigg{\{} -\frac{5}{2 R^3} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{5}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{329}{32 R^4} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{7}{2} \theta \bigg{\}} \nonumber \\
+  &&- \frac{105}{8 R^5} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{9}{2} \theta \bigg{\}} \nonumber \\
+  &&+ \frac{385}{72 R^6} 
+  \cos \bigg{\{}N \bigg( \frac{\pi}{2} - \theta - \frac{1}{2} 
+  \sin 2 \theta \bigg)+\frac{11}{2} \theta \bigg{\}}
+  \bigg{\}} \bigg]
+ \label{conc33}  \ , 
+\"
+95,"\begin{eqnarray}
+  \int_{-\infty}^{\infty} \frac{d y}{\sqrt{2\pi}} y^{2n}
+  \exp \Bigl[ -\frac{S^{(2)}_0}{2}y^2 \Bigl]
+&=& e^{\mp i \frac{2n+1}{2} \theta} 
+\int_{-\infty}^{\infty} \frac{d r}{\sqrt{2\pi}} r^{2n}
+  \exp \Bigl[ -\frac{1}{2} R r^2 \Bigl] \nonumber \\
+&=& \frac{(2n-1)!!}{R^{n+\frac{1}{2}}}
+e^{\mp i \frac{2n+1}{2} \theta} \quad  (n \geq 0) \  . \label{gauss}
+\"
+96,"\begin{eqnarray}
+S_0^{(2)} = 1-\frac{|\lambda|^2}{(\omega+i |\lambda| \tilde{y})^2} = 0 \ , 
+\label{s2cau}
+\"
+97,"\begin{eqnarray}
+\tilde{\Omega} &\equiv& \omega+i |\lambda| \tilde{y} \ , \label{omega0cau}
+\"
+98,"\begin{eqnarray}
+\tilde{\Omega}_{\pm} = \pm |\lambda| \ . \label{omegacau}
+\"
+99,"\begin{eqnarray}
+  \tilde{S}^{(n)} \equiv S^{(n)} (\tilde{y}) \  ,
+\"
+100,"\begin{eqnarray}
+  \tilde{S}^{(1)}_{\pm} = \frac{i}{|\lambda|}(1 \mp |\lambda|) 
+  - \frac{i |\lambda|}{(\pm |\lambda|)} 
+  = \frac{i}{|\lambda|}(1 \mp 2|\lambda|) \ . \label{s1cau}
+\"
+101,"\begin{eqnarray}
+  \tilde{S} = \frac{1}{2} \bigg{\{} \frac{i}{|\lambda|}(1-|\lambda|) 
+\bigg{\}}^2 \! \!  \! \! \! \! \!  &  -    &  \! \! \! \! \ln |\lambda| 
+  = -\frac{(1 - |\lambda|)^2}{2|\lambda|^2} - \ln |\lambda| \ , 
+\label{s0cau} 
+\\
+ \tilde{S}^{(3)} = \frac{2 i |\lambda|^3}{|\lambda|^3} = 
+2i \ ,  & & \quad   \tilde{S}^{(4)} = \frac{6 |\lambda|^4}{|\lambda|^4} = 6 
+\ ,\label{s4cau} 
+\\
+  \tilde{S}^{(5)} \! \! \! \! \!  &=& \! \! \! -\frac{24 i |\lambda|^5}{|\lambda|^5} = -24i \ 
+.\label{s5cau}
+\"
+102,"\begin{eqnarray}
+  y-\tilde{y} = i \bigl( \frac{2}{N \tilde{S}^{(3)}} \bigl)^{\frac{1}{3}}t
+  =-\frac{t}{N^{\frac{1}{3}}} \ , \label{vari} 
+\"
+103,"\begin{eqnarray}
+  Z &=& e^{-N \tilde{S}} 
+    \int_{-\infty}^{\infty} \frac{N^{\frac{1}{6}}}{\sqrt{2\pi}} d t        
+      \exp \Bigl[ \frac{i t^3}{3}+i a t - \sum_{n=4}^{\infty} 
+  \frac{ (-1)^n \tilde{S}^{(n)}}{n! N^{\frac{n}{3}-1}} t^n\Bigl], 
+\label{airy}       
+\"
+104,"\begin{eqnarray}
+  a \equiv  \frac{N^{\frac{2}{3}}}{|\lambda|}(1 - 2|\lambda|) \ . \label{a}
+\"
+105,"\begin{eqnarray}
+  Z &=& |\lambda|^N \exp 
+  \Bigl[N \frac{(1 - |\lambda|)^2}{2 |\lambda|^2} \Bigl]
+  \sqrt{\frac{2}{\pi}}N^{\frac{1}{6}}  \nonumber \\
+ & & \times  \Bigl[ \int_0^\infty dt \cos \Bigl[\frac{t^3}{3}+at \Bigl] 
+\nonumber \\
+  & & -\frac{1}{4N^{\frac{1}{3}}} \int_0^\infty dt \,t^4 \cos 
+\Bigl[\frac{t^3}{3}+at \Bigl]   \nonumber \\
+  &&  + \frac{1}{N^{\frac{2}{3}}} 
+  \Bigl{\{} \frac{1}{32}
+  \int_0^\infty dt \,t^8 \cos \Bigl[\frac{t^3}{3}+at \Bigl]
+  +\frac{1}{5}
+  \int_0^\infty dt \,t^5 \sin \Bigl[\frac{t^3}{3}+at \Bigl] \Bigl{\}} 
+  \nonumber \\
+ & &  \hspace{18mm}+\mathcal{O}(\frac{1}{N})\Bigl] \ . \label{coacau}
+\"
+106,"\begin{eqnarray}
+ {\rm Ai}(a) = \frac{1}{\pi } \int_{0}^{\infty} d t        
+  \cos \Bigl[ \frac{ t^3}{3}+ a t \Bigl] \ ; \qquad  {\rm Im}[a] = 0 \ ,
+  \label{Airy}
+\"
+107,"\begin{eqnarray}
+Z_{\mbox{3-loop}} &=& |\lambda|^N \exp 
+  \Bigl[N \frac{(1 - |\lambda|)^2}{2 |\lambda|^2} \Bigl]
+  \sqrt{2 \pi}N^{\frac{1}{6}}  \nonumber \\
+ &\times &   \Bigl[ {\rm Ai}(a)  -\frac{1}{4N^{\frac{1}{3}}}{\rm 
+Ai}^{(4)}(a)   + \frac{1}{N^{\frac{2}{3}}} 
+  \Bigl{\{} \frac{1}{32}
+  {\rm Ai}^{(8)}(a)
+  - \frac{1}{5}
+ {\rm Ai}^{(5)}(a) \Bigl{\}} \Bigl] \ , 
+ \label{airy3loop}
+\"
+108,"\begin{eqnarray}
+{\rm Ai}^{(n)}(a) \equiv \frac{d^n}{da^n}{\rm Ai}(a)  \ .
+\"
+109,"\begin{eqnarray}
+{\rm Ai}^{(2)}(a) = a {\rm Ai}(a) \ ,
+\"

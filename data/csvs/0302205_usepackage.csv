@@ -1,0 +1,1248 @@
+,usepackage
+0,"\usepackage[dvips]{graphicx}
+\usepackage{latexsym}
+\topmargin -20mm
+\textwidth 160mm
+\textheight 220mm
+\evensidemargin 0mm
+\oddsidemargin 0mm
+\parskip=\medskipamount
+%\arraycolsep 2pt
+
+
+
+%%
+%
+%Calligraphic Lettersq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+%Boldface Letters
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\renewcommand{\aa}{{\a\ad}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%
+
+
+
+
+
+%
+
+
+
+
+
+
+%
+
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\thispagestyle{empty}
+
+\begin{flushright}
+hep-th/0302205 \\
+February, 2003 \\
+Revised version: March, 2003
+\end{flushright}
+\vspace{5mm}
+
+\begin{center}
+{\Large \bf
+On the Background Field Method Beyond One Loop: \\
+A manifestly covariant derivative expansion \\
+in super Yang-Mills theories }
+\end{center}
+%\vspace{3mm}
+
+\begin{center}
+{\large S. M. Kuzenko and I. N. McArthur}\\
+\vspace{2mm}
+
+%${}^\dagger$
+\footnotesize{
+{\it
+School of Physics, The University of Western Australia\\
+Crawley, W.A. 6009, Australia}
+} \\
+{\tt  kuzenko@cyllene.uwa.edu.au},~
+{\tt mcarthur@physics.uwa.edu.au}
+\end{center}
+\vspace{5mm}
+
+\begin{abstract}
+\baselineskip=14pt
+There are currently many string inspired conjectures
+about the structure of the low-energy effective action for
+super Yang-Mills theories which require explicit multi-loop
+calculations. In this paper, we develop
+a manifestly covariant derivative expansion of superspace
+heat kernels and present a scheme to evaluate multi-loop
+contributions to the effective action in the framework
+of the background field method. The crucial ingredient
+of the construction is a detailed analysis of the properties
+of the parallel displacement propagators associated
+with Yang-Mills supermultiples in $\cN$-extended
+superspace.
+\end{abstract}
+
+
+
+\vfill
+\end{titlepage}
+
+\newpage
+\setcounter{page}{1}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sect{Introduction and outlook}
+
+The background field method
+\cite{DeWitt67,Hon,tH1,Kallosh,AFS,tH2,DeWitt3,Ab,Boul,Hart}
+is a powerful tool for the study of
+quantum dynamics in gauge theories, including gravity.
+Its main merit is a manifestly gauge invariant definition
+of the quantum effective action.
+Renormalization of the Yang-Mills theories
+in this approach is not much harder
+to establish \cite{Kallosh,KZ} than in the conventional one,
+and the $S$-matrix is correctly reproduced \cite{AGS,BC,FPQ}.
+The background field method is universal enough
+to admit natural superspace generalizations;
+such extensions have been constructed for $\cN=1$
+super Yang-Mills theories and supergravity
+\cite{GRS,GS,GGRS,GZ1,GZ2}
+and for $\cN=2$ super Yang-Mills theories \cite{N=2BFM}
+(see also \cite{HST} for earlier attempts to develop
+a background field formulation for some $\cN=2$ SYM models,
+including the $\cN=4$ SYM theory).
+
+The price to pay for the manifest gauge invariance of
+the effective action is that one has to deal with propagators
+in arbitrary background fields, and these are impossible to
+compute exactly. At the one-loop level, this does not lead to
+any serious problems, since the famous Schwinger-DeWitt technique
+\cite{Schw1,DeWitt1} and its numerous generalizations
+\cite{BV,NSVZ,Nep,Avr1,Gus,MG,PB} allow one to compute
+the effective action to any given order in the derivative expansion.
+Beyond the one-loop approximation, however, the full power of the
+background field method has never been exploited.
+A necessary precursor to such multi-loop calculations should be
+a manifestly gauge covariant derivative expansion
+of the Feynman propagators in the presence of arbitrary background
+fields. This has essentially existed for non-supersymmetric theories
+since the mid 1980's \cite{BV,Avr1} (although, in our opinion,
+its significance has not yet been fully appreciated),
+while such an approach has never been elaborated for
+supersymmetric gauge theories in superspace.
+In the non-supersymmetric case,
+a manifestly covariant calculus has only been worked out in detail
+for computing the UV divergences of the effective action \cite{JO}.
+Otherwise (and often for counterterm calculations only),
+it has been usual to  resort to one of the following
+options\footnote{There also exists the so-called string-inspired
+approach to perturbative QFT, see \cite{Schubert} for a review and
+references.}
+(see \cite{BV2,BvdV} for a more detailed discussion):
+(i) a combination of conventional perturbation theory with
+the background field formalism, with manifest background gauge
+invariance sacrificed at intermediate stages
+\cite{Ab,CM,IO,GRS,GGRS,GZ2,GorS,PGJ};
+(ii) the use of normal coordinates in curved space \cite{BP,BO}
+or the Schwinger-Fock gauge for Yang-Mills fields
+(see \cite{NSVZ} and reference therein), usually in conjunction
+with momentum space methods.
+
+One can hardly  overestimate the importance of developing
+a manifestly gauge covariant derivative expansion of the {\it finite}
+part of the (low energy)
+effective action beyond the one-loop approximation\footnote{In this
+paper we are interested in the local (or low energy) expansion of
+the effective action. Concerning the nonlocal part of the effective
+action, the interested reader is referred to \cite{BM}
+for a recent comprehensive discussion and references.}.
+A great many research groups have contributed to solving
+the problem in the non-supersymmetric case,
+and it is simply impossible to give all references here.
+The present paper is aimed at completing this program
+for the case of supersymmetric  Yang-Mills theories.
+Crucial for our considerations were
+the ideas and techniques developed by
+DeWitt \cite{DeWitt1} (in particular the concept of
+parallel displacement propagator),
+Barvinsky and Vilkovisky \cite{BV} (including
+the covariant Taylor expansion), as well as
+Avramidi's extension  \cite{Avr1}
+of the covariant calculus introduced in \cite{BV}.
+Of course, in the beginning was Schwinger \cite{Schw1}.
+
+This paper is organized as follows. In sect. 2 we develop
+a manifestly covariant derivative expansion of the
+heat kernels in ordinary Yang-Mills theories, extending and
+generalizing previous results \cite{DeWitt1,BV,Avr1}.
+In sect. 3 we outline a manifestly covariant scheme
+for evaluating multi-loop diagrams in Yang-Mills theories
+in the framework of the background field method.
+Sect. 4 is devoted to a detailed analysis of the properties
+of the parallel displacement propagators associated
+with Yang-Mills supermultiplets in $\cN$-extended flat superspace.
+A superspace covariant Taylor expansion is also derived.
+The Fock-Schwinger gauge in $\cN$-extended superspace is
+described in detail for completeness\footnote{Unlike numerous
+previous quantum calculations with background fields,
+at {\it no} stage in our scheme
+is there need to use the Fock-Schwinger gauge.}.
+In sect. 5 we provide a manifestly covariant derivative expansion
+of the superfield heat kernels in $\cN=1$ super Yang-Mills theories.
+The exact superpropagator in a covariantly constant background
+is computed in sect. 6. Finally, the appendix contains
+the proof of a technical lemma.
+
+To keep  the background covariance of the effective action manifest,
+Barvinsky and Vilkovisky \cite{BV}, and more recently
+B\""ornsen and van de Ven \cite{BvdV}, eliminated the momentum
+representation from their consideration. Our approach differs
+conceptually from \cite{BV,BvdV} in that we {\it do} preserve
+the momentum representation in a manifestly covariant way.
+
+The approach developed in this paper opens the way
+to computing low-energy effective actions in super Yang-Mills
+theories beyond one loop. A supergravity extension is
+quite feasible, and old results on the proper-time technique
+in curved $\cN=1$ superspace \cite{McA,BK2,BK}
+should be relevant.
+We believe that the results will also be helpful, for instance,
+for a better understanding  of (i) numerous non-renormalization
+theorems which are predicted by the AdS/CFT conjecture
+and relate to the explicit structure of the
+low energy effective action in $\cN=4$ super Yang-Mills
+theory (see \cite{CT,BKT} for more details
+and references); (ii) quantum deformation of
+the superconformal symmetry in $\cN=2,4$ SCFTs \cite{KMT}
+at higher loops.
+
+
+\sect{Non-supersymmetric case}
+
+We consider a Green's function,
+$G^i{}_{i'} (x,x') = {\rm i}\,
+\langle \vf^i(x) \, {\bar \vf}_{i'} (x') \rangle $,
+associated with a quantum field $\vf$, which  transforms in some
+representation of the gauge group, and its conjugate $\bar \vf$.
+The Green's function satisfies the equation
+\be
+\D_x \, G (x, x') = - \d^d (x-x') \, {\bf1} ~,
+\qquad
+\D = \nabla^m \nabla_m + \cP ~, \qquad
+{\bf 1} = (\d^i{}_{i'})~,
+\ee
+with $\nabla_m = \pa_m +{\rm i} \,A_m $ the gauge covariant
+derivatives, $[ \nabla_m, \nabla_n ] = {\rm i}\, F_{mn}$,
+and $\cP(x) $ a local matrix function of the background field
+containing a mass term $(-m^2 ){\bf 1}$.
+With respect to the gauge group, $\nabla_m$ and $\cP$
+transform as follows
+\be
+\nabla_m ~\to~ {\rm e}^{{\rm i} \l(x)} \, \nabla_m\,
+{\rm e}^{-{\rm i} \l(x)}~, \qquad
+\cP ~\to ~ {\rm e}^{{\rm i} \l(x)}\,\cP \,
+{\rm e}^{-{\rm i} \l(x)}~,
+\ee
+and therefore
+\be
+  G (x, x') ~\to ~
+{\rm e}^{{\rm i} \l(x)} \,  G (x, x') \,
+{\rm e}^{-{\rm i} \l(x')} ~.
+\ee
+
+We introduce the proper time representation of $G$:
+\be
+G (x, x') ={\rm i} \int_{0}^{\infty}
+{\rm d} s \, K(x,x'|s) ~,
+\ee
+where the so-called heat kernel $ K(x,x'|s) $ is formally given by
+\be
+  K(x,x'|s) = {\rm e}^{ {\rm i} s \, (\D \,+\,{\rm i} \,\ve)}
+  \, \d^d (x-x') \, {\bf1}~,  \qquad \ve \to + 0~,
+\label{kernel1}
+\ee
+and which transforms as
+\be
+K (x, x'|s) ~\to ~
+{\rm e}^{{\rm i} \l(x)} \,  K (x, x'|s) \,
+{\rm e}^{-{\rm i} \l(x')}
+\label{TL1}
+\ee
+with respect to the gauge group.
+
+It is advantageous to make use of
+the Fourier integral representation
+$$
+\d^d (x-x') = \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')}
+$$
+for the delta-function in (\ref{kernel1}).
+To preserve the gauge transformation law (\ref{TL1}),
+however, we should actually represent the full delta-function
+$\d^d (x-x') \, {\bf1}$ as follows:
+\be
+\d^d (x-x') \, {\bf1} = \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')} \; \cI(x,x')~.
+\ee
+Here the matrix $\cI(x,x')$ is a functional of the background field
+chosen in such a way that (i) it possesses the gauge transformation law
+\be
+  \cI (x, x') ~\to ~
+{\rm e}^{{\rm i} \l(x)} \,  \cI (x, x') \,
+{\rm e}^{-{\rm i} \l(x')} ~;
+\label{PDO1}
+\ee
+(ii) it satisfies the boundary condition
+\be
+\cI (x,x) = {\bf 1}~.
+\label{PDO2}
+\ee
+As a result, the heat kernel takes the form
+\be
+  K(x,x'|s) =  \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')} \,
+{\rm e}^{{\rm i} s[ (\nabla +{\rm i}k)^2 + \cP ]} \,
+\cI(x,x')
+\equiv \hat{K}(x,x'|s) \, \cI(x,x')~.
+\label{HK1}
+\ee
+It is clear that the gauge transformation law
+of the operator $\hat{K}(x,x'|s)$ is
+\be
+\hat{K} (x, x'|s) ~\to ~
+{\rm e}^{{\rm i} \l(x)} \,  \hat{K} (x, x'|s) \,
+{\rm e}^{-{\rm i} \l(x)} ~.
+\label{TL2}
+\ee
+
+Given a {\it gauge invariant} scalar field $\U (x)$ of compact support,
+one can prove the following operator identity:
+\be
+\hat{K}(x,x'|s) \cdot \hat{\U} (x) =
+\hat{\U} (x') \cdot \hat{K}(x,x'|s)~, \qquad
+\hat{\U}(x) \equiv \U(x) \,{\bf 1}~,
+\label{master}
+\ee
+see sect. \ref{super-Green's} for a proof.
+This identity implies
+\bea
+\hat{K}(x,x'|s) &=&
+\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}
+\, \hat{A} (x,x'|s) ~,
+\label{master2}
+\eea
+where the matrix $\hat{A} (x,x'|s) $ is a functional of the background field
+such that
+\be
+\hat{A} (x,x'|s) \cdot  \hat{\U} (x) =
+\hat{\U}(x) \cdot \hat{A} (x,x'|s) ~.
+\ee
+In other words, the matrix $\hat{A} (x,x'|s) $
+may depend on the covariant derivatives only via multiple
+commutators starting with the master commutators
+$[ \nabla_m, \nabla_n ] = {\rm i}\, F_{mn}$
+and $[\nabla_m , \cP ] = (\nabla_m  \cP)$ .
+The operator
+$\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}$
+is defined by
+\be
+\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }
+\mbox{{\bf :}} =
+\sum_{p=0}^{\infty} { 1 \over p!}
+(x'-x)^{m_1} \ldots (x'-x)^{m_p} \,
+\nabla_{m_1} \ldots \nabla_{m_p}
+\label{normal-exp}
+\ee
+when acting on a gauge covariant field $\vf (x)$ possessing a
+covariant Taylor series (see below). More generally,
+the operator
+$\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}$
+is defined by
+\be
+\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}\,
+\vf (x) = I(x,x') \, \vf (x')~,
+\ee
+where $I(x,x')$ is the parallel displacement propagator
+(see below).
+
+It follows from (\ref{master}) that
+in the coincidence limit,
+$\hat{K}(x,x|s) $
+is not a differential operator,
+\be
+\hat{K}(x,x|s) \cdot \hat{\U} (x) =
+\hat{\U} (x) \cdot \hat{K}(x,x|s)~.
+\ee
+The latter observation can be restated as the fact that
+all covariant derivatives in
+\be
+\hat{K}(x,x|s) =
+\int \frac{ {\rm d}^d k }{(2\p)^d}\,
+\exp \Big\{ {\rm i} s \, [ (\nabla +{\rm i}k)^2 + \cP ] \Big\}
+\ee
+can be organized into multiple commutators upon doing
+the (Gaussian) momentum integration.
+
+It is well known that the one-loop effective action
+can be expressed via the functional trace of the heat kernel,
+\bea
+{\rm Tr} \, K(s) &=& \int {\rm d}^d x \, {\rm tr} \, K(x,x|s)~, \non \\
+K(x,x|s) &=& \int \frac{ {\rm d}^d k }{(2\p)^d}\, \Big(
+\exp \Big\{ {\rm i} s \, [ (\nabla +{\rm i}k)^2 + \cP ] \Big\} \,
+\cI(x,x') \Big)
+\Big|_{x'=x} \label{one-loop}
+\eea
+where  `tr' denotes the trace over gauge group indices.
+In accordance with the above discussion,
+$\hat{K}(x,x|s) $ is not a differential operator, and
+we then get
+\bea
+K(x,x|s) &=&
+\int \frac{ {\rm d}^d k }{(2\p)^d}\,
+\exp \Big\{ {\rm i} s \, [ (\nabla +{\rm i}k)^2 + \cP ] \Big\}~,
+\eea
+where the boundary condition (\ref{PDO2}) has been taken into
+account. We therefore conclude that, apart from the structural
+requirements (\ref{PDO1}) and (\ref{PDO2}), the concrete choice of
+$\cI(x,x')$ is not relevant at the one-loop level.
+
+As already noted, the operator $\hat{A}(x,x'|s)$ depends on
+the gauge covariant derivatives only via commutators.
+In practice, it is quite nontrivial to manifestly organize
+the terms in the expansion of $\hat{A}$ into such commutators.
+It turns out, however, that such an organization occurs
+automatically for a special choice of $\cI(x,x')$,
+to be discussed below.
+
+Beyond the one-loop approximation, we should work with
+the Feynman propagator $G(x,x')$ at $x\neq x'$.
+Therefore, it would be desirable to choose $\cI(x,x')$
+in such a way that the heat kernel (\ref{HK1}) takes a
+simple form. The best choice turns out to be the so-called
+parallel displacement propagator $I(x,x')$
+along the geodesic connecting
+the points $x'$ and $x$ \cite{DeWitt1}. This object
+(which generalizes the Schwinger phase factor \cite{Schw1,Schw2})
+satisfies the equation\footnote{The unique solution to the equation
+(\ref{PDO3}) under the boundary condition (\ref{PDO2}) is given by
+$I(x,x') = {\rm P} \, \exp \,(-{\rm i}
+\int_{x'}^{x}  \, A_m \,  {\rm d} x^m )$,
+where the integration is carried out along the straight line
+connecting the points $x'$ and $x$. This
+explicit form of $I(x,x')$ is not required for actual loop
+calculations.}
+\be
+(x-x')^a \, \nabla_a \, I(x,x') = 0~,
+\label{PDO3}
+\ee
+which implies
+\be
+(x'-x)^{a_1} \ldots (x'-x)^{a_n} \,
+\nabla_{a_1} \ldots \nabla_{a_n} \, I(x,x') = 0~,
+\label{PDO4}
+\ee
+for any positive integer $n$.
+The latter means that  the operator
+$\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}$
+in (\ref{master2})
+collapses to the unit operator when acting on $I(x,x')$.
+It is worth noting that the identities (\ref{PDO4}) lead to
+\be
+\nabla_{(a_1} \ldots \nabla_{a_n)} \, I(x,x') \Big|_{x=x'} =0~,
+\label{PDO5}
+\ee
+for any positive integer $n$.
+
+In what follows, we identify $\cI(x,x')$ with the
+parallel displacement propagator\footnote{Representation
+(\ref{HK1}) with $\cI(x,x')$ chosen to be
+the parallel displacement propagator, was the starting
+point of Avramidi's analysis \cite{Avr1}.}.
+${}$From the equation (\ref{PDO3}),
+the transformation law (\ref{PDO1}) and the boundary
+condition (\ref{PDO2}), one can easily deduce \cite{BV}
+\be
+I(x,x') \, I(x',x) = {\bf 1}~.
+\ee
+Under Hermitian conjugation, this object transforms as
+\be
+\Big( I (x,x') \Big)^\dagger = I(x' , x)~.
+\ee
+
+Let $\vf (x)$ be a field transforming in some representation
+of the gauge group. It can be expanded in a
+{\it covariant Taylor series} \cite{BV}
+\be
+\vf (x) = I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla _{a_1} \ldots \nabla_{a_n} \vf (y) \Big|_{y = x'}~,
+\label{CTS1}
+\ee
+see sect. \ref{super-parallel-dis} for a proof.
+We can apply this expansion to $\nabla_b I(x,x')$
+considered as a function of $x$:
+\be
+\nabla_b I(x,x') = I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla _{ a_1} \ldots \nabla_{a_n} \nabla_b
+I (y, x') \Big|_{y = x'}~.
+\ee
+Using the identity
+$$
+\nabla _{( a_1} \ldots \nabla_{a_n} \nabla_{b)}
+I (y, x') \Big|_{y = x'} = 0
+$$
+in conjunction with the commutation relation
+$[ \nabla_m, \nabla_n ] = {\rm i}\, F_{mn}$,
+one can express
+$$\nabla _{( a_1} \ldots \nabla_{a_n )} \nabla_b
+I (y, x') \Big|_{y = x'}
+$$
+in terms of covariant derivatives
+of the field strength (see the Appendix for more
+detail).
+One ends up with \cite{Avr1}
+\bea
+\nabla_b I(x,x') &=& {\rm i} \, I(x,x') \, \sum_{n=1}^{\infty}
+{ n  \over (n+1)!} \,
+(x-x')^{a_1}
+\ldots
+(x-x')^{a_{n-1}}
+(x-x')^{a_n}
+\non \\
+&\times &
+\nabla'_{a_1} \ldots \nabla'_{a_{n-1} } F_{a_n \,b } (x')~.
+\label{PTO-der1}
+\eea
+This relation has a fundamental significance
+in our considerations.
+It expresses covariant derivatives of
+$I(x,x') $ in terms of $I(x,x')$ itself and covariant derivatives of
+the field strength $F_{ab}$.
+This is the property which automatically results in
+the organization of the covariant derivatives in $\hat{A}(x,x'|s)$
+into commutators.
+
+Relation (\ref{PTO-der1}) can be rewritten in an integral form
+\bea
+\nabla_b I(x,x') &=& {\rm i} \, \int_{0}^{1} {\rm d} t\,
+I(x,x(t)) \, \frac{\pa x^d (t) }{\pa x^b} \, \dot{x}^c (t)\,
+F_{cd}(x(t)) \,
+I(x(t), x') ~, \label{integralform} \\
+x(t) &=& (x-x')\,t + x'~, \non
+\eea
+which was derived, in a more general setting,
+many years ago in \cite{LM}. Applying the covariant Taylor
+expansion to $I(x,x(t)) \, F_{cd}(x(t)) $,
+\bea
+&&\qquad \qquad  I(x,x(t)) \,F_{cd}(x(t)) \, I(x(t),x) \non \\
+& = &\sum_{n=0}^{\infty}
+{(-1)^n \over n!} \,
+(1-t)^n \,(x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla _{a_1} \ldots \nabla_{a_n} F_{cd}(x)~,
+\eea
+and making use of the identity
+\be
+I(x,x(t)) \, I(x(t),x') = I(x,x')~,
+\ee
+eq. (\ref{integralform}) leads to
+\bea
+\nabla_b I(x,x') &=& - {\rm i} \, \sum_{n=1}^{\infty}
+{ (-1)^n  \over (n+1)!} \,
+(x-x')^{a_1}
+\ldots
+(x-x')^{a_{n-1}}
+(x-x')^{a_n}
+\non \\
+&\times &
+\nabla_{a_1} \ldots \nabla_{a_{n-1} } F_{a_n \,b } (x)
+\, I(x,x')~.
+\label{PTO-der-new}
+\eea
+Of course, the latter relation can be deduced directly
+from (\ref{PTO-der1}).
+
+It is worth noting that the relation (\ref{PTO-der1}) and the delta
+function representation
+\be
+\d^d (x-x') \, {\bf1} = \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')} \; I(x,x')
+\ee
+make quite obvious
+the standard property of the delta-function,
+\be
+\nabla_a \Big( \d^d (x-x') \, \d^i{}_{i'} \Big)
+= - \nabla'_a \Big( \d^d (x-x') \, \d^i{}_{i'} \Big) ~.
+\ee
+
+Relations (\ref{PTO-der1}) and (\ref{PTO-der-new})
+simplify drastically in the case
+of a covariantly constant gauge field,
+\be
+\nabla_a F_{bc} = 0~.
+\ee
+Then, eqs. (\ref{PTO-der1}) and (\ref{PTO-der-new}) take the form
+\be
+\nabla_b I(x,x') = { {\rm i} \over 2} \, (x-x')^a \,
+I(x,x') \,
+F_{ab}(x')
+= { {\rm i} \over 2} \, (x-x')^a \,F_{ab}(x) \,I(x,x')~.
+\ee
+
+Let us fix some space-time point $x'$ and consider the
+following gauge transformation:
+\be
+{\rm e}^{{\rm i} \l(x)}  = I (x', x) ~, \qquad
+{\rm e}^{{\rm i} \l(x')} =  {\bf 1}~.
+\ee
+Applying this gauge transformation to $I(x,x')$,
+as in eq. (\ref{PDO1}), the result is
+\be
+I(x,x') = {\bf 1}~,
+\label{F-S1}
+\ee
+which is equivalent, due to (\ref{PDO3}),
+to the Fock-Schwinger gauge \cite{Fock,Schw1}
+\be
+(x-x')^m \,  A_m(x) = 0~.
+\label{F-S2}
+\ee
+In the Fock-Schwinger gauge, the relation (\ref{PTO-der1})
+becomes \cite{Shif}
+\be
+A_b (x)  =  \sum_{n=1}^{\infty}
+{ n  \over (n+1)!} \,
+(x-x')^{a_1}
+\ldots
+(x-x')^{a_{n-1}}
+(x-x')^{a_n}
+\nabla'_{a_1} \ldots \nabla'_{a_{n-1} } F_{a_n \,b } (x')~.
+\ee
+Thus, all coefficients in the Taylor expansion of $A(x)$  acquire a
+geometric meaning.
+
+
+We now comment on the explicit evaluation of the kernel
+\be
+K(x,x'|s) =  \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')} \,
+{\rm e}^{{\rm i} s[ (\nabla +{\rm i}k)^2 + \cP ]} \,
+I(x,x')~.
+\label{starting}
+\ee
+It should be pointed out that we are interested in
+a manifestly covariant expansion of the heat kernel which can be truncated
+at required order in the derivative expansion.
+Rescaling $k$, the right hand side of (\ref{starting}) is
+the result of applying  the operator
+\be
+\frac{1}{(4 \p^2 s)^{d/2}} \,\int {\rm d}^d k \,
+{\rm e}^{- {\rm i} k^2 + {\rm i}\, s^{-1/2} \,k. (x-x')} \,
+{\rm e}^{[{\rm i} s \nabla^2  - 2 s^{1/2} k. \nabla + {\rm i} \,s
+\cP ]}
+\label{starting2}
+\ee
+to the parallel displacement propagator. The second exponential factor
+here should  then be expanded in a Taylor series.
+Whenever  a covariant derivative $\nabla_b$
+  from this series
+hits $I(x,x')$, we  apply
+the relation  (\ref{PTO-der1}). Given a product of
+the form $\cP (x) \,I(x,x')$, we represent it as
+\be
+\cP (x) \,I(x,x') =
+I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla'_{a_1} \ldots \nabla'_{a_n} \cP (x') ~.
+\label{P}
+\ee
+A generic term in
+the Taylor expansion will involve a Gaussian moment of the form
+\be
+\langle k^{a_1} \ldots  k^{a_n} \rangle \equiv
+\frac{1}{(4 \p^2 s)^{d/2}} \,\int {\rm d}^d k \,
+{\rm e}^{- {\rm i} k^2 + {\rm i}\, s^{-1/2} \,k. (x-x')} \,
+s^{1/2} k^{a_1} \ldots s^{1/2} k^{a_n}~,
+\label{moment}
+\ee
+where each $k^{a_i}$ comes together with an
+$s$-independent factor of $\nabla_{a_i}$;
+there also occur insertions of $s \nabla^2$ and $s \cP$.
+To compute the moments (\ref{moment}), we can introduce a generating
+function $Z(J)$,
+\bea
+Z(J) &=& \frac{1}{(4 \p^2 s)^{d/2}} \,\int {\rm d}^d k \,
+{\rm e}^{- {\rm i} k^2 + {\rm i}\, s^{-1/2} \,k. (x-x') \, +
+s^{1/2}\, J.k}~, \non \\
+\langle k^{a_1} \ldots  k^{a_n} \rangle &=&
+\frac{\pa^n}{\pa J_{a_1} \ldots \pa J_{a_n} }\, Z(J)\Big|_{J=0}~.
+\eea
+One readily gets
+\be
+Z(J) = \frac{\rm i}{( 4 \p {\rm i}
+s)^{d/2}} \, {\rm e}^{{\rm i} (x-x')^2/4s} \, {\rm e}^{- {\rm i} s
+J^2/4 + J.(x-x')/2}~.
+\label{genf}
+\ee
+Then, the resulting expression for the kernel is of the form
+\be
+K(x,x'|s) =
+\frac{\rm i}{( 4 \p {\rm i} s)^{d/2}} \,
+{\rm e}^{{\rm i} (x-x')^2/4s}\, F(x,x'|s)~, \qquad
+  F(x,x'|s) = \sum_{n=0}^{\infty} a_n (x,x') \,({\rm i}s)^n~,
+\ee
+where\footnote{Had one started with the more general representation
+(\ref{HK1}) instead of (\ref{starting}), the result for $a_0$
+would then have been
+$a_0 (x,x') =
+\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}
+\, \cI(x,x') = I (x,x')$.}
+\be
+a_0 (x,x') =
+\mbox{{\bf :}} \,{\rm e}^{(x'-x). \nabla }\mbox{{\bf :}}
+\, I(x,x') = I (x,x')~.
+\ee
+This is consistent with the
+standard Schwinger-DeWitt asymptotic expansion of the
+heat kernel \cite{DeWitt1}. By construction, the coefficients
+$a_n$ have the form
+\bea
+a_n(x,x') &=& {\bf a}_n\Big( F(x), \nabla F (x), \ldots ,
+\cP(x) , \nabla \cP (x) \ldots ; x-x' \Big) \, I(x,x') \non \\
+&=& I(x,x')\,
+{\bf a}'_n \Big( F(x'), \nabla' F (x'), \ldots ,
+\cP(x') , \nabla' \cP (x') \ldots ; x-x' \Big) ~,
+\eea
+where the functions ${\bf a}_n$ and ${\bf a}'_n$ are straightforward
+to compute using the scheme described above.
+In the standard Schwinger-DeWitt technique,
+one has to solve the recurrence relations which follow
+from the equation
+\be
+\Big( {\rm i} \,{\pa \over \pa s}  +\nabla^2 + \cP \Big)
+K(x,x'|s) = 0~.
+\ee
+In practice, these recurrence relations prove more difficult to solve
+than to implement the above perturbation scheme.
+
+
+
+\sect{Evaluating multi-loop diagrams}
+
+In sect. 2, a covariant procedure for the derivative expansion of Green's
+functions  in the background field method
+was presented. We now extend this to the evaluation of Feynman diagrams.
+
+As already discussed in sect. 2, at the one loop level,
+the effective action can be expressed in terms
+of the functional trace of the heat kernel, and therefore only a
+knowledge of the coincidence limit of the kernel is required. It was
+noted that in principle this does not require a
+specific choice of  $\cI(x,x')$ in (\ref{one-loop})
+because, after doing the momentum integration, all covariant
+derivatives assemble into commutators and there are actually no derivatives of
+$\cI(x,x')$ to be evaluated. In practice, it is quite
+difficult to assemble the commutators, and it proves  efficient to
+use the procedure outlined in sect. 2: namely,
+to choose $\cI(x,x')$ to be the parallel displacement propagator
+$I(x,x')$ and to evaluate the action of covariant derivatives
+on $I(x,x')$ using either (\ref{PTO-der1})
+or (\ref{PTO-der-new}). This automatically generates
+the required commutators.
+
+Beyond one loop, the situation is more complicated, in that
+diagrams involve multiple Green's functions, and interaction vertices
+will in general include  insertions of background fields and covariant
+derivatives. When covariant derivatives act on Green's functions,
+the generic structure will be of the form
+\bea
+&&  \nabla_{a_1} \cdots \nabla_{a_{n}}
+  \nabla'_{b_1} \cdots \nabla'_{b_{m}}
+   K(x,x'|s)  =
+  \int \frac{ {\rm d}^d k }{(2\p)^d}\,
+{\rm e}^{{\rm i} \,k. (x-x')} \,(\nabla + {\rm i} k)_{a_{1}} \cdots
+(\nabla + {\rm i} k)_{a{_n}}
+\nonumber \\
+& & \qquad \qquad \times
+{\rm e}^{{\rm i} s[ (\nabla +{\rm i}k)^2 + \cP ]} \,
+(\nabla' - {\rm i} k)_{b_1} \cdots (\nabla' - {\rm i} k)_{b_{m}} \,
+I(x,x')~,
+\label{dKernel}
+\eea
+where the proper time integral has been omitted.
+When $\nabla$ hits $I(x,x')$, the result can be represented
+as either (\ref{PTO-der1}) or (\ref{PTO-der-new}).
+When $\nabla'$ hits $I(x,x')$, the result can be
+evaluated using
+\be
+\nabla'_b \, I(x,x') = - I(x,x') \, \nabla'_b I(x',x) \, I(x,x')~.
+\ee
+After having applied all the covariant derivatives
+to $I(x,x')$, the integrand in (\ref {dKernel})
+can be expressed either as
+\be
+{\rm e}^{ {\rm i} \,[ k. (x-x') -s\,k^2 ]}\,
+\J \Big( F(x) , \nabla F (x), \ldots, \cP (x) ,
+\nabla  \cP (x)  , \ldots ; x-x' , k, s\Big) \, I(x,x')
+\label{dKernel2}
+\ee
+or
+\be
+{\rm e}^{ {\rm i} \,[ k. (x-x') -s\,k^2 ]}\,
+I(x,x') \, \J' \Big( F(x') , \nabla' F (x') , \ldots,
+\cP(x') ,\nabla'  \cP (x'), \ldots ; x-x' , k, s\Big) ~.
+\label{dKernel3}
+\ee
+
+At this stage, there are two possible ways to proceed.
+${}$For any Feynman graph,
+the momentum integrals
+in {\it all} kernels (\ref {dKernel})  can either be
+(i) left to the end of calculation; or
+(ii) carried out first.
+These choices give rise to two different {\it manifestly} covariant
+perturbation schemes: (i) momentum space scheme;
+(ii) configuration space scheme. In our opinion,
+the former is most suitable for arbitrary backgrounds,
+while the latter is better adapted to special background
+configurations such as a covariantly constant field.
+We will describe in detail the momentum space scheme.
+It is worth noting that the configuration space scheme
+was advocated in \cite{BV,BV2,BvdV}.
+
+${}$For the purposes of illustration, we first consider two-loop
+contributions to the effective action.
+The relevant Feynman diagrams are either of  the `eight'
+type  or `fish'  type, as shown in Figure 1.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig1}
+\caption{Two-loop graphs: `eight' diagram and `fish' diagram.}
+\end{center}
+\end{figure}
+
+The `eight' diagram
+is relatively simple to treat since
+it involves the product of two Green's functions
+or their covariant derivatives in a
+coincidence limit.
+The situation for the `fish' diagram is somewhat more complex.
+This diagram  makes a contribution to the effective action of the
+form (with gauge indices suppressed)
+\be
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+  \int\limits_0^{\infty} {\rm d} s_3
+\int {\rm d}^d x \, \int {\rm d}^d x' \,  V_1(x) \, V_2(x') \,
+K_1(x,x'|s_1) \,K_2(x,x'|s_2) \, K_3(x,x'|s_3)~,
+\label{fish}
+\ee
+where the vertex factors $V_1(x)$ and $V_2(x')$  will in general
+contribute insertions of the background fields, and may also contain
+covariant derivatives which act on one or more of the kernels.
+The procedure for evaluating (\ref{fish}), to be outlined below,
+is to reduce this diagram to
+%effectively splits it into two components -
+a `skeleton'. The latter is characterized
+by the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x'$;
+(ii) the  vertex at $x$ is connected to that
+at $x'$ by four (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+%of parallel displacement propagators,
+%described diagrammatically by adding an extra line to
+%the `fish' diagram,
+%and a {\it gauge invariant} factor involving explicit dependence on
+%background fields evaluated at only one of the vertices, say $x'$.
+
+The kernels and their derivatives in (\ref{fish})
+should be expressed as in (\ref{dKernel})  and (\ref{dKernel3}).
+In particular, the background field dependence in the
+kernels coming from either $\cP$ or from covariant derivatives
+of $I(x,x')$  are
+evaluated at $x'$, with $\cP (x) \,I(x,x')$ treated as in
+(\ref{P}) .
+The  $x$-dependence of each of the  kernels is then only via a
+multiplicative factor $I(x,x')$,
+Taylor factors $(x-x')^n$,
+and via a phase factor ${\rm e}^{ {\rm i} k_i.(x-x')}$, where $k_i$
+$(i = 1,2\, {\rm or} \, 3)$  denotes
+the momentum associated with the  kernel.
+In contrast, the vertices $V_1(x)$ and $V_2(x')$
+contribute background fields
+evaluated at  $x$ and $x'$ respectively. As stated earlier, the aim is to get
+all explicit dependence on the background to be in the form of fields
+evaluated at $x'.$ This can be achieved by the covariant Taylor
+expansion of the product of fields in $V_1(x)$
+in terms of fields evaluated at $x'$,
+\be
+\cV_1 (x) = I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla' _{a_1} \ldots \nabla'_{a_n} \cV_1 (x') ~,
+\ee
+where $\cV_1(x)$ denotes the result of removing all covariant
+derivatives from the vertex $V_1(x)$.
+The covariant Taylor  expansion introduces
+an additional factor of the
+parallel displacement  propagator $I(x,x')$
+(in the representation of the gauge
+group under which  $\cV_1$ transforms).
+This is denoted by the dashed
+line $I_4(x,x')$ in Figure 2, while the
+solid lines $I_i(x,x'), i = 1,2,3$ denote
+the three parallel displacement propagators
+arising from the kernels. The filled square denotes the
+dependence on background fields, evaluated only at $x'.$
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig2}
+\caption{Accumulation of explicit background field dependence at
+one point.}
+\end{center}
+\end{figure}
+
+The parallel displacement propagators $I_1(x,x'), \cdots, I_4(x,x')$
+in Figure 2 are in general in different representations of the gauge
+group. However, their  product
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+\ee
+(gauge indices suppressed) is gauge invariant at  $x.$
+Since each of these propagators satisfies the same
+equation (\ref{PDO3}), it is straightforward to show
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+= 1~.
+\ee
+More precisely, the right-hand side of this relation is a product of
+Kronecker deltas.
+  Thus the `skeleton' of parallel displacement
+propagators collapses, leaving all background field dependence in the
+form of fields evaluated at $x',$ depicted by the square in Figure 2.
+There are also explicit factors of $(x-x')$
+from the covariant Taylor expansion of fields in
+the vertex at $x$, and from covariant derivatives of the
+parallel displacement propagators.
+These can be traded for momentum derivatives by using
+\be
+(x-x')^a \, {\rm e}^{ {\rm i} k.(x-x')} F(k)  =  - \, {\rm i} \, F(k) \,
+\frac{\partial}{\partial k_a} \, {\rm e}^{ {\rm i} k.(x-x')}
+={\rm i}  \, {\rm e}^{ {\rm i} k.(x-x')} \, \frac{\partial}{\partial
+k_a} F(k) +\ldots ~,
+\label{kderiv}
+\ee
+where the dots denote
+a total derivative,
+which does not contribute to the momentum integral. This  leaves all the
+dependence on $(x-x')$ in the form of the phase factor
+$$
+{\rm e}^{{\rm i} \, (k_1 + k_2 + k_3).(x-x')}~.
+$$
+  Since all background fields now depend
+only on $x',$ the integral over $x$ is
+\be
+\int {\rm d}^dx \,{\rm e}^{ {\rm i} (k_1 + k_2 + k_3).(x - x')} =
+  (2 \p)^d \, \delta^d(k_1 + k_2 + k_3)~,
+  \ee
+and this delta function allows  one of the three Gaussian momentum
+integrals associated with the kernels to be eliminated.
+The procedure outlined above results in an expression for the
+contribution to the effective action from  the `fish'
+diagram in the form\footnote{All covariant regularization
+schemes are consistent with our approach, therefore this issue
+does not require elaboration.}
+\bea
+& & \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3
+\int \frac{{\rm d}^dk_1}{(2 \p)^d}
+\, \frac{{\rm d}^dk_2}{(2 \p)^d} \,
+{\rm e}^{- {\rm i}\, s_1 k_1^2} \,
+{\rm e}^{- {\rm i}\, s_2 k_2^2}
+  \,{\rm e}^{- {\rm i}\, s_3 (k_1 + k_2)^2}
+\nonumber \\
+& &
+\phantom{ \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3 }
+\times  F(s_1, s_2, s_3, k_1,
+  k_2, \phi(x'))~,
+  \eea
+where $\phi$ denotes background fields and
+their covariant derivatives.
+The momentum integrals here are just Gaussian moments,
+which are straightforward to compute.
+
+
+At three and higher loops, a similar procedure can be implemented,
+although the presence of extra vertices adds a complication. The aim
+is to transform the $n$-vertex diagram to a `skeleton' which
+has the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x_n$;
+(ii) the remaining vertices at $x_1, \ldots , x_{n-1}$ are connected to each
+other and to the vertex at $x_n$ by (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+Consider, for example, the three-loop graph  shown in
+Figure 3.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig3}
+\caption{A three-loop graph.}
+\end{center}
+\end{figure}
+
+\noindent
+Suppose we wish to move all the background field dependence to
+a single vertex, say  at $x_4.$
+As a first step, we could choose to use the covariant Taylor expansion to
+express the background fields in the vertex $V_1(x_1)$ in terms of fields
+evaluated at $x_2,$ resulting in the introduction of a parallel
+displacement propagator $I(x_1,x_2)$ in the representation of the
+gauge group under which the fields in $V_1$ transform. Using the
+steps outlined for the `fish' diagram, it is  also possible to
+manipulate the kernel $K(x_1, x_2|s_1)$ (or its derivatives if
+  derivatives from the vertices   act on it) and the
+explicit factors of $(x_1 - x_2)$ in the Taylor series
+  so that all of the $x_1$
+dependence is in the form $e^{{\rm i} k_1.(x_1 - x_2)} \, I(x_1,
+x_2).$ Here, the factor of $I(x_1, x_2)$ is in the representation under
+which $K(x_1, x_2|s_1)$ transforms. A new vertex, $\tilde{V}_2(x_2),$
+has effectively been generated at $x_2,$ consisting of the original
+background dependence of the vertex multiplied by the additional
+background dependence generated from $V_1(x_1)$ and $K(x_1, x_2|s_1).$
+Diagrammatically, we have the situation in Figure 4, where the
+circles denote original vertices and the square denotes the new
+effective vertex.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig4}
+\caption{Removing explicit field dependence at $x_1$.}
+\end{center}
+\end{figure}
+
+Repeating this procedure, the explicit dependence on background
+fields can be progessively moved through the diagram, at each step
+removing the field dependence at one vertex at the cost of
+introducing an additional parallel displacement propagator.
+It should be stressed that this procedure preserves manifest gauge
+invariance at each vertex.
+When all explicit background field dependence has been moved to a
+single point, the result is a skeleton as defined above.
+
+Having produced the skeleton from
+the original Feynman diagram, it is now necessary to evaluate it.
+A very special case is that of a two-vertex skeleton,
+as illustrated in Figure
+5.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig5}
+\caption{An arbitary two-vertex skeleton.}
+\end{center}
+\end{figure}
+Here, the product of the parallel diplacement propagators
+is gauge invariant at $x.$
+Since  all the propagators  satisfy the same
+equation (\ref{PDO3}), it is straightforward to show that the product
+of parallel diplacement propagators simply collapses to
+a product of Kronecker deltas,
+leaving a gauge invariant contribution at a single point, $x'$.
+In the case where the skeleton contains three or more vertices, it is
+possible to systematically reduce it to a skeleton with only two
+vertices; the resulting diagram then collapses to a single point as
+above. We will
+explain the procedure for reducing a skeleton with $n$ vertices to
+one with $n-1$ vertices; this process is then iterated to produce the
+two vertex skeleton.
+
+The generic structure of the skeleton with $n$ vertices is shown in
+Figure 6, where $x_1$ is the point where
+all the explicit background field dependence is accumulated,
+and the lines are parallel displacement
+propagators.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig6}
+\caption{An arbitrary $n$-vertex skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+Focusing attention on a vertex adjacent to that at $x_1,$
+say that at  $x_2,$ the diagram has  the structure
+\be
+{\rm Tr} \Big( I(x_1, x_2) \, \chi(x_2, x_1) \Big),
+\ee
+where $\chi(x_2,x_1)$ consists of the vertex at $x_1$ and products of parallel
+displacement propagators (dependence on points other than $x_1$
+and $x_2$ has been suppressed).
+We can make use of the covariant
+Taylor series to expand $I(x_1, x_2) \, \chi(x_2, x_1)$ in the form
+\be
+I(x_1, x_2) \, \chi(x_2, x_1) = \sum_{n=0}^{\infty} \frac{1}{n!} \,
+(x_2 - x_1)^{a_1} \cdots (x_2 - x_1)^{a_n} \,
+\nabla _{a_1} \ldots \nabla_{a_n} \chi(y, x_1) \Big|_{y = x_1}~.
+\ee
+By this means, all $x_2$ dependence of the skeleton is now in the 
+form of factors $(x_2 - x_1).$
+These factors can be replaced by momentum derivatives of the phase factor
+${\rm e}^{{\rm i} k. (x_1 - x_2)}$ associated with a Green's function
+  in the original Feynman diagram, as in (\ref{kderiv}).
+This process reduces number of vertices in the skeleton by one, as
+illustrated in Figure 7.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig7}
+\caption{Reducing an $n$-vertex skeleton to an $(n-1)$-vertex
+skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+This completes our prescription for computing multi-loop
+contributions to the effective action
+in a manifestly covariant manner.
+%multi-loop derivative expansion of the effective action.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the literature \cite{BV,BV2}, the configuration
+space approach has been the favoured means to achieve a covariant
+derivative expansion of the effective action.
+A possible explanation for this is a belief that the transition
+to momentum space should be incompatible with manifest
+gauge invariance, see e.g. \cite{BvdV}.
+As we have shown above, the latter is not the case.
+Our momentum space scheme
+is well-adapted to the derivative
+expansion of the effective action,
+in that it automatically links the
+factors of momentum  to covariant derivatives of the
+background fields. Further, this approach is more economical in that
+there is no need to do
+separate configuration and momentum space integrals
+(configuration space integrals are just trivial).
+In contrast, the configuration
+space approach
+requires separate computation (by carrying out momentum integrals)
+of each Greeen's function
+in a diagram to the required order in the derivative expansion, and
+then the sewing together of
+the Green's functions with configuration space
+integrals.
+As noted earlier, the configuration space approach
+is well suited to the computation of the effective action
+in special backgrounds,  as an exact
+expression for the Green's function can sometimes be computed. An
+example is a covariantly constant background;
+we treat this case in $\cN =1$ super Yang-Mills in
+sect. 6. It is worth noting that the momentum space scheme
+can easily be formulated in curved space due to the existence
+of a covariant Fourier integral \cite{Avr1}.
+
+
+\sect{Parallel displacement  propagator in superspace}
+\label{super-parallel-dis}
+
+In four space-time dimensions, $d=4$, we consider a flat global
+$\cN$-extended superspace parametrized by variables
+$z^m = (x^m, \q^\m_i , {\bar \q}_{\dot{\m}}^i)$, where $i= 1,\ldots, \cN$.
+We recall that
+the flat covariant derivatives $D_A = (\pa_a, D_\a^i , {\bar D}^\ad_i)$
+are related to the supersymmetric Cartan 1-forms
+$\o^A =  (\o^a , \o^\a_i , {\bar \o}_\ad^i ) $ by
+\be
+{\rm d}z^M \,\pa_M = \o^A \, D_A~, \qquad
+\o^A
+= ({\rm d} x^a - {\rm i} \, {\rm d}\q_i  \s^a   {\bar \q}^i
++  {\rm i} \, \q_i  \s^a  {\rm d} {\bar \q}^i ,
+{\rm d} \q^\a_i , {\rm d} {\bar \q}_\ad^i )~,
+\ee
+and satisfy  the algebra
+\be
+[D_A, D_B \}"
+1,\usepackage{latexsym}

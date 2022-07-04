@@ -1,0 +1,838 @@
+,ref
+0,\ref{kernel1}
+1,\ref{TL1}
+2,\ref{super-Green's}
+3,\ref{master}
+4,\ref{PDO2}
+5,\ref{PDO1}
+6,\ref{PDO2}
+7,\ref{HK1}
+8,\ref{PDO3}
+9,\ref{PDO2}
+10,\ref{master2}
+11,\ref{PDO4}
+12,\ref{HK1}
+13,\ref{PDO3}
+14,\ref{PDO1}
+15,\ref{PDO2}
+16,\ref{super-parallel-dis}
+17,\ref{PTO-der1}
+18,\ref{integralform}
+19,\ref{PTO-der1}
+20,\ref{PTO-der1}
+21,\ref{PTO-der1}
+22,\ref{PTO-der-new}
+23,\ref{PTO-der1}
+24,\ref{PTO-der-new}
+25,\ref{PDO1}
+26,\ref{PDO3}
+27,\ref{PTO-der1}
+28,\ref{starting}
+29,\ref{PTO-der1}
+30,\ref{moment}
+31,\ref{HK1}
+32,\ref{starting}
+33,\ref{one-loop}
+34,\ref{PTO-der1}
+35,\ref{PTO-der-new}
+36,\ref{PTO-der1}
+37,\ref{PTO-der-new}
+38,"\ref {dKernel})
+can be expressed either as
+\be
+{\rm e}^{ {\rm i} \,[ k. (x-x') -s\,k^2 ]}\,
+\J \Big( F(x) , \nabla F (x), \ldots, \cP (x) ,
+\nabla  \cP (x)  , \ldots ; x-x' , k, s\Big) \, I(x,x')
+\label{dKernel2}
+\ee
+or
+\be
+{\rm e}^{ {\rm i} \,[ k. (x-x') -s\,k^2 ]}\,
+I(x,x') \, \J' \Big( F(x') , \nabla' F (x') , \ldots,
+\cP(x') ,\nabla'  \cP (x'), \ldots ; x-x' , k, s\Big) ~.
+\label{dKernel3}
+\ee
+
+At this stage, there are two possible ways to proceed.
+${}$For any Feynman graph,
+the momentum integrals
+in {\it all} kernels (\ref {dKernel})  can either be
+(i) left to the end of calculation; or
+(ii) carried out first.
+These choices give rise to two different {\it manifestly} covariant
+perturbation schemes: (i) momentum space scheme;
+(ii) configuration space scheme. In our opinion,
+the former is most suitable for arbitrary backgrounds,
+while the latter is better adapted to special background
+configurations such as a covariantly constant field.
+We will describe in detail the momentum space scheme.
+It is worth noting that the configuration space scheme
+was advocated in \cite{BV,BV2,BvdV}.
+
+${}$For the purposes of illustration, we first consider two-loop
+contributions to the effective action.
+The relevant Feynman diagrams are either of  the `eight'
+type  or `fish'  type, as shown in Figure 1.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig1}
+\caption{Two-loop graphs: `eight' diagram and `fish' diagram.}
+\end{center}
+\end{figure}
+
+The `eight' diagram
+is relatively simple to treat since
+it involves the product of two Green's functions
+or their covariant derivatives in a
+coincidence limit.
+The situation for the `fish' diagram is somewhat more complex.
+This diagram  makes a contribution to the effective action of the
+form (with gauge indices suppressed)
+\be
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+  \int\limits_0^{\infty} {\rm d} s_3
+\int {\rm d}^d x \, \int {\rm d}^d x' \,  V_1(x) \, V_2(x') \,
+K_1(x,x'|s_1) \,K_2(x,x'|s_2) \, K_3(x,x'|s_3)~,
+\label{fish}
+\ee
+where the vertex factors $V_1(x)$ and $V_2(x')$  will in general
+contribute insertions of the background fields, and may also contain
+covariant derivatives which act on one or more of the kernels.
+The procedure for evaluating (\ref{fish}), to be outlined below,
+is to reduce this diagram to
+%effectively splits it into two components -
+a `skeleton'. The latter is characterized
+by the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x'$;
+(ii) the  vertex at $x$ is connected to that
+at $x'$ by four (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+%of parallel displacement propagators,
+%described diagrammatically by adding an extra line to
+%the `fish' diagram,
+%and a {\it gauge invariant} factor involving explicit dependence on
+%background fields evaluated at only one of the vertices, say $x'$.
+
+The kernels and their derivatives in (\ref{fish})
+should be expressed as in (\ref{dKernel})  and (\ref{dKernel3}).
+In particular, the background field dependence in the
+kernels coming from either $\cP$ or from covariant derivatives
+of $I(x,x')$  are
+evaluated at $x'$, with $\cP (x) \,I(x,x')$ treated as in
+(\ref{P}) .
+The  $x$-dependence of each of the  kernels is then only via a
+multiplicative factor $I(x,x')$,
+Taylor factors $(x-x')^n$,
+and via a phase factor ${\rm e}^{ {\rm i} k_i.(x-x')}$, where $k_i$
+$(i = 1,2\, {\rm or} \, 3)$  denotes
+the momentum associated with the  kernel.
+In contrast, the vertices $V_1(x)$ and $V_2(x')$
+contribute background fields
+evaluated at  $x$ and $x'$ respectively. As stated earlier, the aim is to get
+all explicit dependence on the background to be in the form of fields
+evaluated at $x'.$ This can be achieved by the covariant Taylor
+expansion of the product of fields in $V_1(x)$
+in terms of fields evaluated at $x'$,
+\be
+\cV_1 (x) = I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla' _{a_1} \ldots \nabla'_{a_n} \cV_1 (x') ~,
+\ee
+where $\cV_1(x)$ denotes the result of removing all covariant
+derivatives from the vertex $V_1(x)$.
+The covariant Taylor  expansion introduces
+an additional factor of the
+parallel displacement  propagator $I(x,x')$
+(in the representation of the gauge
+group under which  $\cV_1$ transforms).
+This is denoted by the dashed
+line $I_4(x,x')$ in Figure 2, while the
+solid lines $I_i(x,x'), i = 1,2,3$ denote
+the three parallel displacement propagators
+arising from the kernels. The filled square denotes the
+dependence on background fields, evaluated only at $x'.$
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig2}
+\caption{Accumulation of explicit background field dependence at
+one point.}
+\end{center}
+\end{figure}
+
+The parallel displacement propagators $I_1(x,x'), \cdots, I_4(x,x')$
+in Figure 2 are in general in different representations of the gauge
+group. However, their  product
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+\ee
+(gauge indices suppressed) is gauge invariant at  $x.$
+Since each of these propagators satisfies the same
+equation (\ref{PDO3}), it is straightforward to show
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+= 1~.
+\ee
+More precisely, the right-hand side of this relation is a product of
+Kronecker deltas.
+  Thus the `skeleton' of parallel displacement
+propagators collapses, leaving all background field dependence in the
+form of fields evaluated at $x',$ depicted by the square in Figure 2.
+There are also explicit factors of $(x-x')$
+from the covariant Taylor expansion of fields in
+the vertex at $x$, and from covariant derivatives of the
+parallel displacement propagators.
+These can be traded for momentum derivatives by using
+\be
+(x-x')^a \, {\rm e}^{ {\rm i} k.(x-x')} F(k)  =  - \, {\rm i} \, F(k) \,
+\frac{\partial}{\partial k_a} \, {\rm e}^{ {\rm i} k.(x-x')}
+={\rm i}  \, {\rm e}^{ {\rm i} k.(x-x')} \, \frac{\partial}{\partial
+k_a} F(k) +\ldots ~,
+\label{kderiv}
+\ee
+where the dots denote
+a total derivative,
+which does not contribute to the momentum integral. This  leaves all the
+dependence on $(x-x')$ in the form of the phase factor
+$$
+{\rm e}^{{\rm i} \, (k_1 + k_2 + k_3).(x-x')}~.
+$$
+  Since all background fields now depend
+only on $x',$ the integral over $x$ is
+\be
+\int {\rm d}^dx \,{\rm e}^{ {\rm i} (k_1 + k_2 + k_3).(x - x')} =
+  (2 \p)^d \, \delta^d(k_1 + k_2 + k_3)~,
+  \ee
+and this delta function allows  one of the three Gaussian momentum
+integrals associated with the kernels to be eliminated.
+The procedure outlined above results in an expression for the
+contribution to the effective action from  the `fish'
+diagram in the form\footnote{All covariant regularization
+schemes are consistent with our approach, therefore this issue
+does not require elaboration.}
+\bea
+& & \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3
+\int \frac{{\rm d}^dk_1}{(2 \p)^d}
+\, \frac{{\rm d}^dk_2}{(2 \p)^d} \,
+{\rm e}^{- {\rm i}\, s_1 k_1^2} \,
+{\rm e}^{- {\rm i}\, s_2 k_2^2}
+  \,{\rm e}^{- {\rm i}\, s_3 (k_1 + k_2)^2}
+\nonumber \\
+& &
+\phantom{ \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3 }
+\times  F(s_1, s_2, s_3, k_1,
+  k_2, \phi(x'))~,
+  \eea
+where $\phi$ denotes background fields and
+their covariant derivatives.
+The momentum integrals here are just Gaussian moments,
+which are straightforward to compute.
+
+
+At three and higher loops, a similar procedure can be implemented,
+although the presence of extra vertices adds a complication. The aim
+is to transform the $n$-vertex diagram to a `skeleton' which
+has the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x_n$;
+(ii) the remaining vertices at $x_1, \ldots , x_{n-1}$ are connected to each
+other and to the vertex at $x_n$ by (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+Consider, for example, the three-loop graph  shown in
+Figure 3.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig3}
+\caption{A three-loop graph.}
+\end{center}
+\end{figure}
+
+\noindent
+Suppose we wish to move all the background field dependence to
+a single vertex, say  at $x_4.$
+As a first step, we could choose to use the covariant Taylor expansion to
+express the background fields in the vertex $V_1(x_1)$ in terms of fields
+evaluated at $x_2,$ resulting in the introduction of a parallel
+displacement propagator $I(x_1,x_2)$ in the representation of the
+gauge group under which the fields in $V_1$ transform. Using the
+steps outlined for the `fish' diagram, it is  also possible to
+manipulate the kernel $K(x_1, x_2|s_1)$ (or its derivatives if
+  derivatives from the vertices   act on it) and the
+explicit factors of $(x_1 - x_2)$ in the Taylor series
+  so that all of the $x_1$
+dependence is in the form $e^{{\rm i} k_1.(x_1 - x_2)} \, I(x_1,
+x_2).$ Here, the factor of $I(x_1, x_2)$ is in the representation under
+which $K(x_1, x_2|s_1)$ transforms. A new vertex, $\tilde{V}_2(x_2),$
+has effectively been generated at $x_2,$ consisting of the original
+background dependence of the vertex multiplied by the additional
+background dependence generated from $V_1(x_1)$ and $K(x_1, x_2|s_1).$
+Diagrammatically, we have the situation in Figure 4, where the
+circles denote original vertices and the square denotes the new
+effective vertex.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig4}
+\caption{Removing explicit field dependence at $x_1$.}
+\end{center}
+\end{figure}
+
+Repeating this procedure, the explicit dependence on background
+fields can be progessively moved through the diagram, at each step
+removing the field dependence at one vertex at the cost of
+introducing an additional parallel displacement propagator.
+It should be stressed that this procedure preserves manifest gauge
+invariance at each vertex.
+When all explicit background field dependence has been moved to a
+single point, the result is a skeleton as defined above.
+
+Having produced the skeleton from
+the original Feynman diagram, it is now necessary to evaluate it.
+A very special case is that of a two-vertex skeleton,
+as illustrated in Figure
+5.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig5}
+\caption{An arbitary two-vertex skeleton.}
+\end{center}
+\end{figure}
+Here, the product of the parallel diplacement propagators
+is gauge invariant at $x.$
+Since  all the propagators  satisfy the same
+equation (\ref{PDO3}), it is straightforward to show that the product
+of parallel diplacement propagators simply collapses to
+a product of Kronecker deltas,
+leaving a gauge invariant contribution at a single point, $x'$.
+In the case where the skeleton contains three or more vertices, it is
+possible to systematically reduce it to a skeleton with only two
+vertices; the resulting diagram then collapses to a single point as
+above. We will
+explain the procedure for reducing a skeleton with $n$ vertices to
+one with $n-1$ vertices; this process is then iterated to produce the
+two vertex skeleton.
+
+The generic structure of the skeleton with $n$ vertices is shown in
+Figure 6, where $x_1$ is the point where
+all the explicit background field dependence is accumulated,
+and the lines are parallel displacement
+propagators.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig6}
+\caption{An arbitrary $n$-vertex skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+Focusing attention on a vertex adjacent to that at $x_1,$
+say that at  $x_2,$ the diagram has  the structure
+\be
+{\rm Tr} \Big( I(x_1, x_2) \, \chi(x_2, x_1) \Big),
+\ee
+where $\chi(x_2,x_1)$ consists of the vertex at $x_1$ and products of parallel
+displacement propagators (dependence on points other than $x_1$
+and $x_2$ has been suppressed).
+We can make use of the covariant
+Taylor series to expand $I(x_1, x_2) \, \chi(x_2, x_1)$ in the form
+\be
+I(x_1, x_2) \, \chi(x_2, x_1) = \sum_{n=0}^{\infty} \frac{1}{n!} \,
+(x_2 - x_1)^{a_1} \cdots (x_2 - x_1)^{a_n} \,
+\nabla _{a_1} \ldots \nabla_{a_n} \chi(y, x_1) \Big|_{y = x_1}~.
+\ee
+By this means, all $x_2$ dependence of the skeleton is now in the 
+form of factors $(x_2 - x_1).$
+These factors can be replaced by momentum derivatives of the phase factor
+${\rm e}^{{\rm i} k. (x_1 - x_2)}$ associated with a Green's function
+  in the original Feynman diagram, as in (\ref{kderiv}).
+This process reduces number of vertices in the skeleton by one, as
+illustrated in Figure 7.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig7}
+\caption{Reducing an $n$-vertex skeleton to an $(n-1)$-vertex
+skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+This completes our prescription for computing multi-loop
+contributions to the effective action
+in a manifestly covariant manner.
+%multi-loop derivative expansion of the effective action.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the literature \cite{BV,BV2}, the configuration
+space approach has been the favoured means to achieve a covariant
+derivative expansion of the effective action.
+A possible explanation for this is a belief that the transition
+to momentum space should be incompatible with manifest
+gauge invariance, see e.g. \cite{BvdV}.
+As we have shown above, the latter is not the case.
+Our momentum space scheme
+is well-adapted to the derivative
+expansion of the effective action,
+in that it automatically links the
+factors of momentum  to covariant derivatives of the
+background fields. Further, this approach is more economical in that
+there is no need to do
+separate configuration and momentum space integrals
+(configuration space integrals are just trivial).
+In contrast, the configuration
+space approach
+requires separate computation (by carrying out momentum integrals)
+of each Greeen's function
+in a diagram to the required order in the derivative expansion, and
+then the sewing together of
+the Green's functions with configuration space
+integrals.
+As noted earlier, the configuration space approach
+is well suited to the computation of the effective action
+in special backgrounds,  as an exact
+expression for the Green's function can sometimes be computed. An
+example is a covariantly constant background;
+we treat this case in $\cN =1$ super Yang-Mills in
+sect. 6. It is worth noting that the momentum space scheme
+can easily be formulated in curved space due to the existence
+of a covariant Fourier integral \cite{Avr1}.
+
+
+\sect{Parallel displacement  propagator in superspace}
+\label{super-parallel-dis}
+
+In four space-time dimensions, $d=4$, we consider a flat global
+$\cN$-extended superspace parametrized by variables
+$z^m = (x^m, \q^\m_i , {\bar \q}_{\dot{\m}}^i)$, where $i= 1,\ldots, \cN$.
+We recall that
+the flat covariant derivatives $D_A = (\pa_a, D_\a^i , {\bar D}^\ad_i)$
+are related to the supersymmetric Cartan 1-forms
+$\o^A =  (\o^a , \o^\a_i , {\bar \o}_\ad^i ) $ by
+\be
+{\rm d}z^M \,\pa_M = \o^A \, D_A~, \qquad
+\o^A
+= ({\rm d} x^a - {\rm i} \, {\rm d}\q_i  \s^a   {\bar \q}^i
++  {\rm i} \, \q_i  \s^a  {\rm d} {\bar \q}^i ,
+{\rm d} \q^\a_i , {\rm d} {\bar \q}_\ad^i )~,
+\ee
+and satisfy  the algebra
+\be
+[D_A, D_B \}"
+39,"\ref {dKernel})  can either be
+(i) left to the end of calculation; or
+(ii) carried out first.
+These choices give rise to two different {\it manifestly} covariant
+perturbation schemes: (i) momentum space scheme;
+(ii) configuration space scheme. In our opinion,
+the former is most suitable for arbitrary backgrounds,
+while the latter is better adapted to special background
+configurations such as a covariantly constant field.
+We will describe in detail the momentum space scheme.
+It is worth noting that the configuration space scheme
+was advocated in \cite{BV,BV2,BvdV}.
+
+${}$For the purposes of illustration, we first consider two-loop
+contributions to the effective action.
+The relevant Feynman diagrams are either of  the `eight'
+type  or `fish'  type, as shown in Figure 1.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig1}
+\caption{Two-loop graphs: `eight' diagram and `fish' diagram.}
+\end{center}
+\end{figure}
+
+The `eight' diagram
+is relatively simple to treat since
+it involves the product of two Green's functions
+or their covariant derivatives in a
+coincidence limit.
+The situation for the `fish' diagram is somewhat more complex.
+This diagram  makes a contribution to the effective action of the
+form (with gauge indices suppressed)
+\be
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+  \int\limits_0^{\infty} {\rm d} s_3
+\int {\rm d}^d x \, \int {\rm d}^d x' \,  V_1(x) \, V_2(x') \,
+K_1(x,x'|s_1) \,K_2(x,x'|s_2) \, K_3(x,x'|s_3)~,
+\label{fish}
+\ee
+where the vertex factors $V_1(x)$ and $V_2(x')$  will in general
+contribute insertions of the background fields, and may also contain
+covariant derivatives which act on one or more of the kernels.
+The procedure for evaluating (\ref{fish}), to be outlined below,
+is to reduce this diagram to
+%effectively splits it into two components -
+a `skeleton'. The latter is characterized
+by the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x'$;
+(ii) the  vertex at $x$ is connected to that
+at $x'$ by four (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+%of parallel displacement propagators,
+%described diagrammatically by adding an extra line to
+%the `fish' diagram,
+%and a {\it gauge invariant} factor involving explicit dependence on
+%background fields evaluated at only one of the vertices, say $x'$.
+
+The kernels and their derivatives in (\ref{fish})
+should be expressed as in (\ref{dKernel})  and (\ref{dKernel3}).
+In particular, the background field dependence in the
+kernels coming from either $\cP$ or from covariant derivatives
+of $I(x,x')$  are
+evaluated at $x'$, with $\cP (x) \,I(x,x')$ treated as in
+(\ref{P}) .
+The  $x$-dependence of each of the  kernels is then only via a
+multiplicative factor $I(x,x')$,
+Taylor factors $(x-x')^n$,
+and via a phase factor ${\rm e}^{ {\rm i} k_i.(x-x')}$, where $k_i$
+$(i = 1,2\, {\rm or} \, 3)$  denotes
+the momentum associated with the  kernel.
+In contrast, the vertices $V_1(x)$ and $V_2(x')$
+contribute background fields
+evaluated at  $x$ and $x'$ respectively. As stated earlier, the aim is to get
+all explicit dependence on the background to be in the form of fields
+evaluated at $x'.$ This can be achieved by the covariant Taylor
+expansion of the product of fields in $V_1(x)$
+in terms of fields evaluated at $x'$,
+\be
+\cV_1 (x) = I(x,x') \, \sum_{n=0}^{\infty}
+{1 \over n!} \, (x-x')^{a_1} \ldots (x-x')^{a_n} \,
+\nabla' _{a_1} \ldots \nabla'_{a_n} \cV_1 (x') ~,
+\ee
+where $\cV_1(x)$ denotes the result of removing all covariant
+derivatives from the vertex $V_1(x)$.
+The covariant Taylor  expansion introduces
+an additional factor of the
+parallel displacement  propagator $I(x,x')$
+(in the representation of the gauge
+group under which  $\cV_1$ transforms).
+This is denoted by the dashed
+line $I_4(x,x')$ in Figure 2, while the
+solid lines $I_i(x,x'), i = 1,2,3$ denote
+the three parallel displacement propagators
+arising from the kernels. The filled square denotes the
+dependence on background fields, evaluated only at $x'.$
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig2}
+\caption{Accumulation of explicit background field dependence at
+one point.}
+\end{center}
+\end{figure}
+
+The parallel displacement propagators $I_1(x,x'), \cdots, I_4(x,x')$
+in Figure 2 are in general in different representations of the gauge
+group. However, their  product
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+\ee
+(gauge indices suppressed) is gauge invariant at  $x.$
+Since each of these propagators satisfies the same
+equation (\ref{PDO3}), it is straightforward to show
+\be
+I_4(x,x') \, I_1(x,x') \, I_2(x,x') \, I_3(x,x')
+= 1~.
+\ee
+More precisely, the right-hand side of this relation is a product of
+Kronecker deltas.
+  Thus the `skeleton' of parallel displacement
+propagators collapses, leaving all background field dependence in the
+form of fields evaluated at $x',$ depicted by the square in Figure 2.
+There are also explicit factors of $(x-x')$
+from the covariant Taylor expansion of fields in
+the vertex at $x$, and from covariant derivatives of the
+parallel displacement propagators.
+These can be traded for momentum derivatives by using
+\be
+(x-x')^a \, {\rm e}^{ {\rm i} k.(x-x')} F(k)  =  - \, {\rm i} \, F(k) \,
+\frac{\partial}{\partial k_a} \, {\rm e}^{ {\rm i} k.(x-x')}
+={\rm i}  \, {\rm e}^{ {\rm i} k.(x-x')} \, \frac{\partial}{\partial
+k_a} F(k) +\ldots ~,
+\label{kderiv}
+\ee
+where the dots denote
+a total derivative,
+which does not contribute to the momentum integral. This  leaves all the
+dependence on $(x-x')$ in the form of the phase factor
+$$
+{\rm e}^{{\rm i} \, (k_1 + k_2 + k_3).(x-x')}~.
+$$
+  Since all background fields now depend
+only on $x',$ the integral over $x$ is
+\be
+\int {\rm d}^dx \,{\rm e}^{ {\rm i} (k_1 + k_2 + k_3).(x - x')} =
+  (2 \p)^d \, \delta^d(k_1 + k_2 + k_3)~,
+  \ee
+and this delta function allows  one of the three Gaussian momentum
+integrals associated with the kernels to be eliminated.
+The procedure outlined above results in an expression for the
+contribution to the effective action from  the `fish'
+diagram in the form\footnote{All covariant regularization
+schemes are consistent with our approach, therefore this issue
+does not require elaboration.}
+\bea
+& & \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3
+\int \frac{{\rm d}^dk_1}{(2 \p)^d}
+\, \frac{{\rm d}^dk_2}{(2 \p)^d} \,
+{\rm e}^{- {\rm i}\, s_1 k_1^2} \,
+{\rm e}^{- {\rm i}\, s_2 k_2^2}
+  \,{\rm e}^{- {\rm i}\, s_3 (k_1 + k_2)^2}
+\nonumber \\
+& &
+\phantom{ \int {\rm d}^d x'
+\int\limits_0^{\infty} {\rm d} s_1
+\int\limits_0^{\infty} {\rm d} s_2
+\, \int\limits_0^{\infty} {\rm d} s_3 }
+\times  F(s_1, s_2, s_3, k_1,
+  k_2, \phi(x'))~,
+  \eea
+where $\phi$ denotes background fields and
+their covariant derivatives.
+The momentum integrals here are just Gaussian moments,
+which are straightforward to compute.
+
+
+At three and higher loops, a similar procedure can be implemented,
+although the presence of extra vertices adds a complication. The aim
+is to transform the $n$-vertex diagram to a `skeleton' which
+has the following properties:
+(i) all explicit background field dependence is collected
+at a single vertex, say $x_n$;
+(ii) the remaining vertices at $x_1, \ldots , x_{n-1}$ are connected to each
+other and to the vertex at $x_n$ by (undifferentiated) parallel
+displacement propagators only;
+(iii) the skeleton is gauge invariant at each vertex.
+Consider, for example, the three-loop graph  shown in
+Figure 3.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig3}
+\caption{A three-loop graph.}
+\end{center}
+\end{figure}
+
+\noindent
+Suppose we wish to move all the background field dependence to
+a single vertex, say  at $x_4.$
+As a first step, we could choose to use the covariant Taylor expansion to
+express the background fields in the vertex $V_1(x_1)$ in terms of fields
+evaluated at $x_2,$ resulting in the introduction of a parallel
+displacement propagator $I(x_1,x_2)$ in the representation of the
+gauge group under which the fields in $V_1$ transform. Using the
+steps outlined for the `fish' diagram, it is  also possible to
+manipulate the kernel $K(x_1, x_2|s_1)$ (or its derivatives if
+  derivatives from the vertices   act on it) and the
+explicit factors of $(x_1 - x_2)$ in the Taylor series
+  so that all of the $x_1$
+dependence is in the form $e^{{\rm i} k_1.(x_1 - x_2)} \, I(x_1,
+x_2).$ Here, the factor of $I(x_1, x_2)$ is in the representation under
+which $K(x_1, x_2|s_1)$ transforms. A new vertex, $\tilde{V}_2(x_2),$
+has effectively been generated at $x_2,$ consisting of the original
+background dependence of the vertex multiplied by the additional
+background dependence generated from $V_1(x_1)$ and $K(x_1, x_2|s_1).$
+Diagrammatically, we have the situation in Figure 4, where the
+circles denote original vertices and the square denotes the new
+effective vertex.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig4}
+\caption{Removing explicit field dependence at $x_1$.}
+\end{center}
+\end{figure}
+
+Repeating this procedure, the explicit dependence on background
+fields can be progessively moved through the diagram, at each step
+removing the field dependence at one vertex at the cost of
+introducing an additional parallel displacement propagator.
+It should be stressed that this procedure preserves manifest gauge
+invariance at each vertex.
+When all explicit background field dependence has been moved to a
+single point, the result is a skeleton as defined above.
+
+Having produced the skeleton from
+the original Feynman diagram, it is now necessary to evaluate it.
+A very special case is that of a two-vertex skeleton,
+as illustrated in Figure
+5.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics{fig5}
+\caption{An arbitary two-vertex skeleton.}
+\end{center}
+\end{figure}
+Here, the product of the parallel diplacement propagators
+is gauge invariant at $x.$
+Since  all the propagators  satisfy the same
+equation (\ref{PDO3}), it is straightforward to show that the product
+of parallel diplacement propagators simply collapses to
+a product of Kronecker deltas,
+leaving a gauge invariant contribution at a single point, $x'$.
+In the case where the skeleton contains three or more vertices, it is
+possible to systematically reduce it to a skeleton with only two
+vertices; the resulting diagram then collapses to a single point as
+above. We will
+explain the procedure for reducing a skeleton with $n$ vertices to
+one with $n-1$ vertices; this process is then iterated to produce the
+two vertex skeleton.
+
+The generic structure of the skeleton with $n$ vertices is shown in
+Figure 6, where $x_1$ is the point where
+all the explicit background field dependence is accumulated,
+and the lines are parallel displacement
+propagators.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig6}
+\caption{An arbitrary $n$-vertex skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+Focusing attention on a vertex adjacent to that at $x_1,$
+say that at  $x_2,$ the diagram has  the structure
+\be
+{\rm Tr} \Big( I(x_1, x_2) \, \chi(x_2, x_1) \Big),
+\ee
+where $\chi(x_2,x_1)$ consists of the vertex at $x_1$ and products of parallel
+displacement propagators (dependence on points other than $x_1$
+and $x_2$ has been suppressed).
+We can make use of the covariant
+Taylor series to expand $I(x_1, x_2) \, \chi(x_2, x_1)$ in the form
+\be
+I(x_1, x_2) \, \chi(x_2, x_1) = \sum_{n=0}^{\infty} \frac{1}{n!} \,
+(x_2 - x_1)^{a_1} \cdots (x_2 - x_1)^{a_n} \,
+\nabla _{a_1} \ldots \nabla_{a_n} \chi(y, x_1) \Big|_{y = x_1}~.
+\ee
+By this means, all $x_2$ dependence of the skeleton is now in the 
+form of factors $(x_2 - x_1).$
+These factors can be replaced by momentum derivatives of the phase factor
+${\rm e}^{{\rm i} k. (x_1 - x_2)}$ associated with a Green's function
+  in the original Feynman diagram, as in (\ref{kderiv}).
+This process reduces number of vertices in the skeleton by one, as
+illustrated in Figure 7.
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics{fig7}
+\caption{Reducing an $n$-vertex skeleton to an $(n-1)$-vertex
+skeleton, $n \geq 3.$}
+\end{center}
+\end{figure}
+This completes our prescription for computing multi-loop
+contributions to the effective action
+in a manifestly covariant manner.
+%multi-loop derivative expansion of the effective action.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the literature \cite{BV,BV2}, the configuration
+space approach has been the favoured means to achieve a covariant
+derivative expansion of the effective action.
+A possible explanation for this is a belief that the transition
+to momentum space should be incompatible with manifest
+gauge invariance, see e.g. \cite{BvdV}.
+As we have shown above, the latter is not the case.
+Our momentum space scheme
+is well-adapted to the derivative
+expansion of the effective action,
+in that it automatically links the
+factors of momentum  to covariant derivatives of the
+background fields. Further, this approach is more economical in that
+there is no need to do
+separate configuration and momentum space integrals
+(configuration space integrals are just trivial).
+In contrast, the configuration
+space approach
+requires separate computation (by carrying out momentum integrals)
+of each Greeen's function
+in a diagram to the required order in the derivative expansion, and
+then the sewing together of
+the Green's functions with configuration space
+integrals.
+As noted earlier, the configuration space approach
+is well suited to the computation of the effective action
+in special backgrounds,  as an exact
+expression for the Green's function can sometimes be computed. An
+example is a covariantly constant background;
+we treat this case in $\cN =1$ super Yang-Mills in
+sect. 6. It is worth noting that the momentum space scheme
+can easily be formulated in curved space due to the existence
+of a covariant Fourier integral \cite{Avr1}.
+
+
+\sect{Parallel displacement  propagator in superspace}
+\label{super-parallel-dis}
+
+In four space-time dimensions, $d=4$, we consider a flat global
+$\cN$-extended superspace parametrized by variables
+$z^m = (x^m, \q^\m_i , {\bar \q}_{\dot{\m}}^i)$, where $i= 1,\ldots, \cN$.
+We recall that
+the flat covariant derivatives $D_A = (\pa_a, D_\a^i , {\bar D}^\ad_i)$
+are related to the supersymmetric Cartan 1-forms
+$\o^A =  (\o^a , \o^\a_i , {\bar \o}_\ad^i ) $ by
+\be
+{\rm d}z^M \,\pa_M = \o^A \, D_A~, \qquad
+\o^A
+= ({\rm d} x^a - {\rm i} \, {\rm d}\q_i  \s^a   {\bar \q}^i
++  {\rm i} \, \q_i  \s^a  {\rm d} {\bar \q}^i ,
+{\rm d} \q^\a_i , {\rm d} {\bar \q}_\ad^i )~,
+\ee
+and satisfy  the algebra
+\be
+[D_A, D_B \}"
+40,\ref{fish}
+41,\ref{fish}
+42,\ref{dKernel}
+43,\ref{dKernel3}
+44,\ref{P}
+45,\ref{PDO3}
+46,\ref{PDO3}
+47,\ref{kderiv}
+48,\ref{tau}
+49,\ref{super-PDO2}
+50,\ref{super-Taylor1}
+51,\ref{super-PTO-der1}
+52,\ref{super-PTO-der-mod}
+53,\ref{super-PDO1}
+54,\ref{super-PTO-der1}
+55,\ref{super-PTO-der1}
+56,\ref{super-Green1}
+57,\ref{super-interval}
+58,\ref{super-kernel2}
+59,\ref{super-hatK}
+60,\ref{super-master}
+61,\ref{super-hatK}
+62,\ref{normal-exp}
+63,\ref{super-kernel1}
+64,\ref{constant SYM}
+65,\ref{super-kernel1}
+66,\ref{N=1cov-der-al}
+67,\ref{super-interval}
+68,\ref{super-kernel1}
+69,\ref{DaK}
+70,\ref{SSKde}
+71,\ref{SSKde}
+72,\ref{Ksol}
+73,\ref{DaK}
+74,\ref{DaK}
+75,\ref{super-PTO-der2}
+76,\ref{zeta(s)}
+77,\ref{EoM}
+78,\ref{exactsuper-kernel}
+79,\ref{chiral-kernel2}
+80,\ref{constant SYM}
+81,\ref{EoM}
+82,\ref{super-PTO-der1}
+83,\ref{super-PDO5}
+84,\ref{CDA}
+85,\ref{A4}
+86,\ref{CDA}
+87,\ref{A1}

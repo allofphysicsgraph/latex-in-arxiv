@@ -22,14 +22,12 @@ from sys import argv
 from sqlalchemy import create_engine
 
 pd.set_option("display.max_columns", 50)
-#TODO read connection params from config file
-engine = create_engine('postgresql://latexinarxiv:3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29@localhost/latexinarxiv',connect_args={'options': '-csearch_path={}'.format('api')})
-#set_trace()
-df = pd.read_sql('equation',engine)
-print(df.head())
-exit()
-
-
+# TODO read connection params from config file
+engine = create_engine(
+    "postgresql://latexinarxiv:3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29@localhost/latexinarxiv",
+    connect_args={"options": "-csearch_path={}".format("api")},
+)
+# set_trace()
 
 
 def read_file(path, f_name):
@@ -271,6 +269,7 @@ if __name__ == "__main__":
     from random import shuffle
     from sys import argv
 
+    to_csv = False
     manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
     # files = [x for x in listdir("2003") if x.endswith(".tex")]
     # shuffle(files)
@@ -338,13 +337,13 @@ if __name__ == "__main__":
                         lst.append(tags)
                         df = pd.DataFrame(lst)
                         # save.append(df)
-                        df.to_csv(
-                            "data/training_data/{}_{}_training_sent".format(
-                                file.replace(".tex", ""), ix
-                            ),
-                            index=False,
-                        )
-
+                        if to_csv:
+                            df.to_csv(
+                                "data/training_data/{}_{}_training_sent".format(
+                                    file.replace(".tex", ""), ix
+                                ),
+                                index=False,
+                            )
                     if inp == "parse":
                         # parse LaTeX document into the defaultdict(list) named dct
                         print(tokenizer.parse_document())
@@ -357,6 +356,7 @@ if __name__ == "__main__":
         for k, v in tokenizer.dct.items():
             df = pd.DataFrame()
             df[k] = v
+            df["filename"] = file
             if not df.empty:
                 if "/" in file:
                     file_name = [x.strip() for x in re.split("/", file) if x.strip()]
@@ -365,6 +365,8 @@ if __name__ == "__main__":
                     file_name = file
                 file_name = file_name.replace("_newcmd_", "_")
                 # print(file_name)
-                df.to_csv(
-                    "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
-                )
+                if to_csv:
+                    df.to_csv(
+                        "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
+                    )
+                df.to_sql(k, engine, if_exists="append")

@@ -6,62 +6,95 @@ grant usage on schema api to web_anon;
 create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
 
-create table api.abstract (index int,abstract text,filename text,checksum text);
-create table api.acknowledgments (index int,acknowledgments text,filename text,checksum text);
-create table api.affiliation (index int,affiliation text,filename text,checksum text);
-create table api.align (index int,align text,filename text,checksum text);
-create table api.alignat (index int,alignat text,filename text,checksum text);
-create table api.aligned (index int,aligned text,filename text,checksum text);
-create table api.author (index int,author text,filename text,checksum text);
-create table api.cases (index int,cases text,filename text,checksum text);
-create table api.center (index int,center text,filename text,checksum text);
-create table api.cite (index int,cite text,filename text,checksum text);
-create table api.definition (index int,definition text,filename text,checksum text);
-create table api.description (index int,description text,filename text,checksum text);
-create table api.displaymath (index int,displaymath text,filename text,checksum text);
-create table api.document (index int,document text,filename text,checksum text);
-create table api.enumerate (index int,enumerate text,filename text,checksum text);
-create table api.eq (index int,eq text,filename text,checksum text);
-create table api.eqnarray (index int,eqnarray text,filename text,checksum text);
-create table api.equation (index int,equation text,filename text,checksum text);
-create table api.figure (index int,figure text,filename text,checksum text);
-create table api.flushleft (index int,flushleft text,filename text,checksum text);
-create table api.flushright (index int,flushright text,filename text,checksum text);
-create table api.fractions (index int,fractions text,filename text,checksum text);
-create table api.gather (index int,gather text,filename text,checksum text);
-create table api.itemize (index int,itemize text,filename text,checksum text);
-create table api.label (index int,label text,filename text,checksum text);
-create table api.matrix (index int,matrix text,filename text,checksum text);
-create table api.minipage (index int,minipage text,filename text,checksum text);
-create table api.multline (index int,multline text,filename text,checksum text);
-create table api.pacs (index int,pacs text,filename text,checksum text);
-create table api.picture (index int,picture text,filename text,checksum text);
-create table api.pmatrix (index int,pmatrix text,filename text,checksum text);
-create table api.proof (index int,proof text,filename text,checksum text);
-create table api.prop (index int,prop text,filename text,checksum text);
-create table api.quote (index int,quote text,filename text,checksum text);
-create table api.ref (index int,ref text,filename text,checksum text);
-create table api.section (index int,section text,filename text,checksum text);
-create table api.small (index int,small text,filename text,checksum text);
-create table api.split (index int,split text,filename text,checksum text);
-create table api.subequations (index int,subequations text,filename text,checksum text);
-create table api.tabular (index int,tabular text,filename text,checksum text);
-create table api.thebibliography (index int,thebibliography text,filename text,checksum text);
-create table api.theorem (index int,theorem text,filename text,checksum text);
-create table api.thm (index int,thm text,filename text,checksum text);
-create table api.title (index int,title text,filename text,checksum text);
-create table api.titlepage (index int,titlepage text,filename text,checksum text);
-create table api.twomatrix (index int,twomatrix text,filename text,checksum text);
-create table api.usepackage (index int,usepackage text,filename text,checksum text);
-create table api.widetext (index int,widetext text,filename text,checksum text);
+create table api.base (index int,filename text,checksum text,ts timestamp);
+
+CREATE FUNCTION insert_timestamp()
+RETURNS	TRIGGER AS $$
+BEGIN
+	NEW.ts := (select timestamp 'now');
+	RETURN NEW;
+END;
+$$
+LANGUAGE  plpgsql;
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.base
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.abstract
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.acknowledgments
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.affiliation
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.author
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.cases
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.cite
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.definition
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.description
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+create table api.abstract (abstract text) INHERITS (api.base);
+create table api.acknowledgments (acknowledgments text) INHERITS (api.base);
+create table api.affiliation (affiliation text) INHERITS (api.base);
+create table api.author (author text) INHERITS (api.base);
+create table api.cases (cases text) INHERITS (api.base);
+create table api.cite (cite text) INHERITS (api.base);
+create table api.definition (definition text) INHERITS (api.base);
+create table api.description (description text) INHERITS (api.base);
+create table api.displaymath (displaymath text) INHERITS (api.base);
+create table api.document (document text) INHERITS (api.base);
+create table api.enumerate (enumerate text) INHERITS (api.base);
+create table api.eq (eq text) INHERITS (api.base);
+create table api.eqnarray (eqnarray text) INHERITS (api.base);
+create table api.equation (equation text) INHERITS (api.base);
+create table api.figure (figure text) INHERITS (api.base);
+create table api.fractions (fractions text) INHERITS (api.base);
+create table api.itemize (itemize text) INHERITS (api.base);
+create table api.label (label text) INHERITS (api.base);
+create table api.matrix (matrix text) INHERITS (api.base);
+create table api.minipage (minipage text) INHERITS (api.base);
+create table api.multline (multline text) INHERITS (api.base);
+create table api.pacs (pacs text) INHERITS (api.base);
+create table api.pmatrix (pmatrix text) INHERITS (api.base);
+create table api.proof (proof text) INHERITS (api.base);
+create table api.prop (prop text) INHERITS (api.base);
+create table api.quote (quote text) INHERITS (api.base);
+create table api.ref (ref text) INHERITS (api.base);
+create table api.section (section text) INHERITS (api.base);
+create table api.subequations (subequations text) INHERITS (api.base);
+create table api.tabular (tabular text) INHERITS (api.base);
+create table api.thebibliography (thebibliography text) INHERITS (api.base);
+create table api.theorem (theorem text) INHERITS (api.base);
+create table api.thm (thm text) INHERITS (api.base);
+create table api.title (title text) INHERITS (api.base);
+create table api.titlepage (titlepage text) INHERITS (api.base);
+create table api.twomatrix (twomatrix text) INHERITS (api.base);
+create table api.usepackage (usepackage text) INHERITS (api.base);
 
 
 alter table api.abstract owner to latexinarxiv;
 alter table api.acknowledgments owner to latexinarxiv;
 alter table api.affiliation owner to latexinarxiv;
-alter table api.align owner to latexinarxiv;
-alter table api.alignat owner to latexinarxiv;
-alter table api.aligned owner to latexinarxiv;
 alter table api.author owner to latexinarxiv;
 alter table api.cases owner to latexinarxiv;
 alter table api.center owner to latexinarxiv;
@@ -109,9 +142,6 @@ alter table api.widetext owner to latexinarxiv;
 grant select on api.abstract to web_anon;
 grant select on api.acknowledgments to web_anon;
 grant select on api.affiliation to web_anon;
-grant select on api.align to web_anon;
-grant select on api.alignat to web_anon;
-grant select on api.aligned to web_anon;
 grant select on api.author to web_anon;
 grant select on api.cases to web_anon;
 grant select on api.center to web_anon;

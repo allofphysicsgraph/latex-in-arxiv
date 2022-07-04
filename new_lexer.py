@@ -91,7 +91,9 @@ class Tokenizer:
                         counter += 1
                         if counter > 500000:
                             print("error on {}".format(start))
-                            shutil.move(path + file, "2003_errors/")
+                            self.log_file.write("{} error on {}".format(self.file_name,start))
+                            self.log_file.write('\n')
+                            break
                     matched.append(s[start_offset:current_offset])
                     start_offset = current_offset
         counter = 0
@@ -185,6 +187,8 @@ class Tokenizer:
         # set_trace()
 
     def __init__(self, file_name):
+        self.file_name = file_name
+        self.log_file = open("log_file","a+")
         self.tokens = []
         self.dct = defaultdict(list)
         self.file_data = read_file(".", file_name)
@@ -348,5 +352,6 @@ if __name__ == "__main__":
                     file_name = file_name[-1]
                 else:
                     file_name = file
+                file_name = file_name.replace('_newcmd_','_')
                 #print(file_name)
                 df.to_csv('data/csvs/{}_{}.csv'.format(file_name.replace('.tex',''),k))

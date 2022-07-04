@@ -1,5 +1,6 @@
 
 create schema api;
+alter schema api owner to latexinarxiv;
 create role web_anon nologin;
 grant usage on schema api to web_anon;
 create role authenticator noinherit login password 'mysecretpassword';
@@ -55,6 +56,54 @@ create table api.usepackage (index int,usepackage text,filename text,checksum te
 create table api.widetext (index int,widetext text,filename text,checksum text);
 
 
+alter table api.abstract owner to latexinarxiv;
+alter table api.acknowledgments owner to latexinarxiv;
+alter table api.affiliation owner to latexinarxiv;
+alter table api.align owner to latexinarxiv;
+alter table api.alignat owner to latexinarxiv;
+alter table api.aligned owner to latexinarxiv;
+alter table api.author owner to latexinarxiv;
+alter table api.cases owner to latexinarxiv;
+alter table api.center owner to latexinarxiv;
+alter table api.cite owner to latexinarxiv;
+alter table api.definition owner to latexinarxiv;
+alter table api.description owner to latexinarxiv;
+alter table api.displaymath owner to latexinarxiv;
+alter table api.document owner to latexinarxiv;
+alter table api.enumerate owner to latexinarxiv;
+alter table api.eq owner to latexinarxiv;
+alter table api.eqnarray owner to latexinarxiv;
+alter table api.equation owner to latexinarxiv;
+alter table api.figure owner to latexinarxiv;
+alter table api.flushleft owner to latexinarxiv;
+alter table api.flushright owner to latexinarxiv;
+alter table api.fractions owner to latexinarxiv;
+alter table api.gather owner to latexinarxiv;
+alter table api.itemize owner to latexinarxiv;
+alter table api.label owner to latexinarxiv;
+alter table api.matrix owner to latexinarxiv;
+alter table api.minipage owner to latexinarxiv;
+alter table api.multline owner to latexinarxiv;
+alter table api.pacs owner to latexinarxiv;
+alter table api.picture owner to latexinarxiv;
+alter table api.pmatrix owner to latexinarxiv;
+alter table api.proof owner to latexinarxiv;
+alter table api.prop owner to latexinarxiv;
+alter table api.quote owner to latexinarxiv;
+alter table api.ref owner to latexinarxiv;
+alter table api.section owner to latexinarxiv;
+alter table api.small owner to latexinarxiv;
+alter table api.split owner to latexinarxiv;
+alter table api.subequations owner to latexinarxiv;
+alter table api.tabular owner to latexinarxiv;
+alter table api.thebibliography owner to latexinarxiv;
+alter table api.theorem owner to latexinarxiv;
+alter table api.thm owner to latexinarxiv;
+alter table api.title owner to latexinarxiv;
+alter table api.titlepage owner to latexinarxiv;
+alter table api.twomatrix owner to latexinarxiv;
+alter table api.usepackage owner to latexinarxiv;
+alter table api.widetext owner to latexinarxiv;
 
 
 grant select on api.abstract to web_anon;

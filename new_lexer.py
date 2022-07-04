@@ -19,9 +19,17 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 from sys import argv
-
+from sqlalchemy import create_engine
 
 pd.set_option("display.max_columns", 50)
+#TODO read connection params from config file
+engine = create_engine('postgresql://latexinarxiv:3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29@localhost/latexinarxiv',connect_args={'options': '-csearch_path={}'.format('api')})
+#set_trace()
+df = pd.read_sql('equation',engine)
+print(df.head())
+exit()
+
+
 
 
 def read_file(path, f_name):
@@ -91,8 +99,10 @@ class Tokenizer:
                         counter += 1
                         if counter > 500000:
                             print("error on {}".format(start))
-                            self.log_file.write("{} error on {}".format(self.file_name,start))
-                            self.log_file.write('\n')
+                            self.log_file.write(
+                                "{} error on {}".format(self.file_name, start)
+                            )
+                            self.log_file.write("\n")
                             break
                     matched.append(s[start_offset:current_offset])
                     start_offset = current_offset
@@ -188,7 +198,7 @@ class Tokenizer:
 
     def __init__(self, file_name):
         self.file_name = file_name
-        self.log_file = open("log_file","a+")
+        self.log_file = open("log_file", "a+")
         self.tokens = []
         self.dct = defaultdict(list)
         self.file_data = read_file(".", file_name)
@@ -260,13 +270,14 @@ if __name__ == "__main__":
     import shutil
     from random import shuffle
     from sys import argv
-    manual_iteration = False # set to true to review each sentence of each file where there is a regexp_token
-    #files = [x for x in listdir("2003") if x.endswith(".tex")]
-    #shuffle(files)
+
+    manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
+    # files = [x for x in listdir("2003") if x.endswith(".tex")]
+    # shuffle(files)
     file_dct = dict()
-    #path = "2003/"
-    #files = listdir(path)
-    #files = ["sound1.tex"]
+    # path = "2003/"
+    # files = listdir(path)
+    # files = ["sound1.tex"]
     path = "./"
     files = []
     files.append(argv[1])
@@ -292,7 +303,7 @@ if __name__ == "__main__":
                 ]
                 if resp:
                     print(sent)
-                    #inp = input()
+                    # inp = input()
                     inp = False
                     lst = []
                     if inp == "break":
@@ -343,15 +354,17 @@ if __name__ == "__main__":
                         set_trace()
                 if cont == 1:
                     break
-        for k,v in tokenizer.dct.items():
+        for k, v in tokenizer.dct.items():
             df = pd.DataFrame()
-            df[k]=v
+            df[k] = v
             if not df.empty:
-                if '/' in file:
-                    file_name = [x.strip() for x in re.split('/',file) if x.strip()]
+                if "/" in file:
+                    file_name = [x.strip() for x in re.split("/", file) if x.strip()]
                     file_name = file_name[-1]
                 else:
                     file_name = file
-                file_name = file_name.replace('_newcmd_','_')
-                #print(file_name)
-                df.to_csv('data/csvs/{}_{}.csv'.format(file_name.replace('.tex',''),k))
+                file_name = file_name.replace("_newcmd_", "_")
+                # print(file_name)
+                df.to_csv(
+                    "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
+                )

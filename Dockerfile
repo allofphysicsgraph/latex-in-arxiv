@@ -50,14 +50,11 @@ RUN echo "alias python=python3" > /root/.bashrc
 
 #RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 #RUN tar -xf hep-th-2003.tar.gz
-
 RUN apt-get install -y autoconf-archive
 
-RUN pip3 install nltk
-RUN pip3 install pudb
-RUN pip3 install black
-RUN pip3 install pandas
-RUN pip3 install ipython 
+COPY requirements.txt /opt/
+RUN pip3 install -r requirements.txt
+
 RUN python3 -m nltk.downloader punkt
 RUN python3 -m nltk.downloader averaged_perceptron_tagger 
 

@@ -80,7 +80,9 @@ parse_docs:
 	# adjust for the number of cores that you want to allocate.
 	find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 
-
+postgrest:
+	# REST Api for postgres
+	wget https://github.com/PostgREST/postgrest/releases/download/v9.0.1/postgrest-v9.0.1-linux-static-x64.tar.xz
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

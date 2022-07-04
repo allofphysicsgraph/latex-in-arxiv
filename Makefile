@@ -92,6 +92,11 @@ postgres:
 postgrest:
 	# REST Api for postgres
 	wget https://github.com/PostgREST/postgrest/releases/download/v9.0.1/postgrest-v9.0.1-linux-static-x64.tar.xz
+	tar -xf postgrest-v9.0.1-linux-static-x64.tar.xz
+	sudo rsync -axr postgrest /usr/local/bin/
+	sudo rsync -axr api.conf /usr/local/bin/
+	cd /usr/local/bin/ && ./postgrest api.conf & 
+
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

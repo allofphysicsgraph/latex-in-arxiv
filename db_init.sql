@@ -1,4 +1,4 @@
-#see postgrest tutorial for setup
+
 create schema api;
 create role web_anon nologin;
 grant usage on schema api to web_anon;

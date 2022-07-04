@@ -1,0 +1,1122 @@
+,document
+0,"\begin{document}
+\draft
+\title{Anti-de Sitter black holes, perfect fluids, and holography}
+\author{Saurya Das and Viqar Husain}
+\address{ Dept. of Mathematics and Statistics, } 
+%\address{}
+\address{University of New Brunswick,}  
+\address{Fredericton, New Brunswick - E3B 5A3, CANADA }
+\address{ EMail: saurya,~husain@math.unb.ca   }
+
+%\address{  }
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+
+We consider asymptotically anti-de Sitter black holes in 
+$d$-spacetime dimensions in the thermodynamically stable regime.  
+We show that the Bekenstein-Hawking entropy and its leading
+order corrections due to thermal fluctuations can be reproduced by a 
+weakly interacting fluid of bosons and fermions (`holographic gas') 
+in $\Delta=\alpha(d-2)+1$ spacetime dimensions, where 
+the energy-momentum dispersion relation for the constituents of the 
+fluid is assumed to be $\epsilon = \kappa p^\alpha$. We examine  
+implications of this result for entropy bounds and the holographic 
+hypothesis. 
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vs{1cm}
+
+\begin{multicols}{2}
+
+\section{Introduction} 
+
+It is believed that black holes are thermodynamical objects 
+with entropy given by one-quarter their horizon areas $A_H$ (in Planck
+units) \cite{bh}
+%
+\be
+S_{BH} = \f{A_H}{4 \ell_{Pl}^{d-2}}~,
+\la{bekhaw1}
+\ee
+%
+where $\ell_{Pl} = (G\hbar/c^3)^{1/(d-2)}$ is the 
+Planck length and $G_d$ the Newton's constant in 
+$d$-spacetime dimensions. They satisfy the two laws of 
+`black hole thermodynamics'  
+%
+\ba
+d(Mc^2) &=& T_H~dS + \mbox{work terms} \\
+\D S_{BH} &\geq& 0~ 
+\ea
+where $T_H$ is the Hawking temperature. These laws are semi-classical, 
+and apply to large black holes with  $A_H \gg \ell_{Pl}^{d-2}$.  
+
+The idea that black holes are thermodynamic systems in equilibrium 
+has led to two related areas of study. 
+%
+The first constitutes suggestions for the underlying microscopic degrees 
+of freedom. These are postulated based on one's views of what are the 
+fundamental degrees of freedom arising from a quantum theory of gravity. 
+The goal is to reproduce the entropy formula (\ref{bekhaw1}) by tracing 
+a density matrix describing a black hole over unobserved quantum degrees 
+of freedom. A related approach involves calculating the number of microstates
+associated with macroscopic parameters of a black hole, such as its mass
+and charge \cite{vs,ash,anydim}. 
+
+The second area of study arises from the observation that the entropy of 
+a confined non-black hole system is proportional to spatial volume, rather 
+than  bounding area. Reconciling this with the fact that black holes are 
+believed to be the most entropic systems leads to a viewpoint known as the 
+holographic hypothesis. This hypothesis states that a $d-$dimensional theory 
+may be encoded exactly in a $(d-1)-$dimensional theory. What remains is the 
+significant task of providing the details of the encoding, the ``holographic 
+map.'' A part of this map consists in matching the thermodynamics of 
+black holes with a suitable system in one lower dimension.  
+
+In this paper we consider the second question regarding holography in detail. 
+Specifically we focus on the AdS-Schwarzschild black hole because 
+it is thermodynamically stable, and because of its role in the AdS/CFT 
+correspondence. We show that thermodynamic properties of this black hole can be
+encoded in a holographic gas of free bosons and fermions.    
+The dimension of the gas depends on the dimension of the black hole, as well
+as the dispersion relation of its constituents. 
+
+In the next section, we review recent work on thermal fluctuation corrections 
+to entropy and its application to black holes. In section (\ref{aads}) 
+we discuss the thermodynamics of asymptotically anti-de Sitter 
+black holes and thermal fluctuation corrections to entropy. In section 
+(\ref{holodual}), we show that a perfect fluid of bosons and fermions captures 
+the entire thermodynamics of these black holes, including thermal fluctuation 
+corrections. We examine the implications of our results for entropy 
+bounds \cite{thooft,susskind,bekholo,bousso} 
+in section (\ref{holography}), and finally conclude in 
+section (\ref{discussions}) with a summary and list of open questions.  
+
+\section{Thermal fluctuations and entropy}
+
+Before we give a systematic derivation of leading order corrections to
+entropy of a system due to small thermal fluctuations, we present a
+heuristic argument showing how logarithmic corrections to entropy 
+arise for a black hole. 
+
+Consider Wheeler's ``it from bit'' idea, which ascribes one bit 
+of information (equivalently a spin 1/2) to each Planck area on the 
+black hole's horizon \cite{thooft,wheeler}. This idea also incorporates 
+``holography'' in that degrees of freedom are associated with area rather 
+than volume. If the area of the black hole
+horizon is $A$, the number of microstates is $\Omega = 2^n$, with $n=A/l_p^2$,
+so that entropy $S_{BH} =\ln \Omega$ is proportional to horizon area. 
+This model may be obviously generalised to associate a spin $s$ with each 
+Planck area without changing the basic result. The number of microstates is 
+now $\Omega = (2s+1)^n$, which gives entropy  proportional to area with a 
+different coefficient.
+
+Corrections to entropy arise in this picture if the component
+of total spin along a given axis is fixed. Let $x^i$ of the $n$ spins have
+a state $s^i$ chosen from the $(2s+1)$ projections along a fixed axis.
+(The total spin component along that axis is then 
+$ \sum_i [x_i (2s/(2s+1))s_i-s ]$.)
+The number of possible states ${\cal N}$ subject to
+$\sum_i x_i = n$ is given by the multinomial distribution function
+(assuming that the probability for finding
+any spin in state $i$ is independent of $i$, and equal to $1/(2s+1)$ ):
+%
+\be
+{\cal N} = \f{n!}{x_1! x_2! \cdots x_{2s+1}!}~~.
+\la{deg1}
+\ee
+%
+The entropy $S=\ln {\cal N}$ may be  evaluated using Stirling's formula,
+assuming $x^i >> 1$ to give
+%
+\be
+{\cal S}   = a n - s \ln n
+= b S_{BH} - s \ln \le( S_{BH} \ri) 
+\la{it1}
+\ee
+%
+where $S_{BH}= A\ {\rm ln}(2s+1)/l_p^2$ is the entropy with no restriction on 
+total spin component, $a \equiv \sum_i k_i \ln k_i^{-1}$ and $b=a/\ln(2s+1)$ 
+are of order unity, and $k_i \equiv x_i/n$. This is a generalisation of the 
+$s=1/2$ case considered in \cite{dmk}. Thus, the leading corrections 
+are  logarithmic, with the exact coefficient depending on the 
+spin of the building blocks of the black hole. 
+
+We now discuss some generalities of thermodynamic systems in equilibrium and 
+their thermal fluctuations, before proceeding to AdS black holes and 
+the free boson/fermion gas. This is a review of work \cite{bm,rkb,dmb,cap} 
+which shows that logarithmic corrections to entropy arise from quite general 
+considerations. 
+ 
+ 
+The canonical partition function for any thermodynamic system in equilibrium
+is 
+%
+\be
+Z(\b)
+= \int_0^\infty \r(E)~e^{-\b E} dE~~.
+\label{part1}
+\ee
+%
+The density of states $\r(E)$ can be written as an inverse 
+Laplace transform of the partition function,  
+%
+\be
+\r(E) = \f{1}{2\p i} \int_{-i\infty}^{i\infty} 
+{Z(\b) e^{\b E}} d\b
+= \f{1}{2\p i} \int_{c-i\infty}^{c+i\infty} e^{S(\b)}d\b~~,
+\la{density1}
+\ee
+%
+where 
+%
+\be
+S (\b) =\ln Z + \b E 
+\la{efn1}
+\ee
+is the `entropy function'.  A saddle-point approximation of $S(\beta)$ 
+around the equilibrium temperature $\b_0^{-1}$ gives 
+%
+\be
+\r(E) = \f{e^{S_0}}{2\p i} \int_{c-i\infty}^{c+i\infty}
+e^{1/2 (\b - \b_0)^2 S_0''} d\b ~,
+\la{saddle}
+\ee
+%
+where $S_0 \equiv S(\b_0)$ and $S_0'' = S_{,\b\b|\b_0}$. 
+By substituting $\b-\b_0=ix$, and choosing an appropriate contour, the 
+integral can be evaluated exactly to give 
+%
+%
+\be
+\r(E) = \f{e^{S_0}}{\sqrt{2\p S_0''}} ~~.
+\la{corr0}
+\ee
+%
+The corrected entropy is  
+%
+\be
+{\cal S} := \ln \r(E) = S_0 - \f{1}{2} \ln S_0'' + ~\mbox{(smaller terms)}.
+\la{entcorr2}
+\ee
+%
+That the quantity $S_0''$ is indeed a measure of fluctuations of the system 
+can be seen from the  relation  
+%
+\ba
+S''(\b) &=& \f{1}{Z} \le( \f{\pa^2 Z(\b) }{\pa\b^2} \ri) 
+- \f{1}{Z^2} \le( \f{\pa Z}{\pa\b}  \ri)^2 \\
+&=& <E^2> - <E>^2~,
+\ea
+%
+where we have used the definitions  
+%
+\be
+<E> = - \le( \f{\pa \ln Z}{\pa \b}\ri)_{\b=\b_0} 
+% = - \f{1}{Z} \le(  \f{\pa Z}{\pa \b} \ri)_{\b=\b_0},  
+<E^2> = \f{1}{Z} \le( \f{\pa^2 Z}{\pa \b^2} \ri)_{\b=\b_0}~.
+\ee
+%
+Using the fact that the specific heat of a thermodynamic system in 
+equilibrium can be written as 
+%
+\ba
+C \equiv \le( \f{\pa E}{\pa T}\ri)_{T_0}~ 
+&=& \f{1}{T^2}  \le[ \f{1}{Z} \le( \f{\pa^2 Z}{\pa\b^2} \ri)_{\b=\b_0}  - 
+\f{1}{Z^2} \le( \f{\pa Z}{\pa \b} \ri)^2_{\b=\b_0} \ri] \nn \\ 
+&=& \f{S_0''}{T^2}
+\ea
+%
+gives 
+%
+\be
+S_0''= C T^2~, 
+\ee
+%
+and hence from (\ref{entcorr2}) that 
+%
+\be
+{\cal S } = S_0 - \f{1}{2} \ln \le( CT^2  \ri) + \cdots~~. 
+\la{master1}
+\ee
+%
+This formula is applicable to all thermodynamic systems. In particular 
+it may be applied to black holes by setting $S_0 = S_{BH}$, $T=T_{BH}$ and  
+$C=C_{BH}$ for the specific black hole under consideration. 
+It is understood that the quantity within the logarithm is divided
+by $k_B^2$, the square of the Boltzmann constant. 
+
+The application of (\ref{master1}) to black holes was considered in detail 
+in  \cite{dmb,cap}, where it was shown that it provides a general approach
+to understanding corrections to black hole entropy computed in various 
+models in the literature. For related and other approaches, see  
+\cite{fursaev,solo1,other,qg,obregon,carlip,jy,qg1,bss,gks,k,ms,medved,k2,medved2,gg2}.  
+For other applications of (\ref{master1}), see \cite{appln}. 
+
+ 
+\section{Asymptotically Anti-de Sitter black holes} 
+\la{aads}
+
+We review thermodynamic properties of BTZ and 
+AdS-Schwarzschild black holes, 
+and compute entropy corrections using the method discussed above. Note that this
+method does not apply to Schwarzschild black holes which have negative specific 
+heat. 
+
+For the BTZ black holes 
+%
+\ba
+ds^2 &=& - \le( \f{r^2}{\ell^2} - \f{8 G_3 M}{c^2} \ri)~c^2 dt^2  \nn \\
+&+& \le( \f{r^2}{\ell^2} - \f{8 G_3 M}{c^2} \ri)^{-1}~dr^2   + r^2 d\theta^2 ~,
+\ea
+%
+the entropy, temperature and specific heat are 
+%
+\ba
+S_{BH} &=& \f{2\p r_+ }{4\ell_{Pl}}  
+= \le( \f{ \ell \p c^2 \sqrt{2}}{\hbar\sqrt{G_3}} \ri) 
+{\sq{M}}  \\
+T_H &=& \f{\hbar c r_+}{2\p \ell^2} = 
+\f{ \hbar \sqrt{2G_3 M}}{\p \ell}  
+= {\le( \f{\hbar \sqrt{G_3}}{\p \ell c }  \ri)^2}~{S_{BH}}
+\la{btztemp}  \\
+%\f{ \hbar \sqrt{2G_3 M}}{\p \ell}  
+%
+C_{BH} &=& \f{dMc^2}{dT_H} = {S_{BH}}~~. 
+\ea
+%
+where $r_+ = \ell\sqrt{8 G_3 M}/c$ is the horizon radius. 
+Substituting in (\ref{master1}) gives 
+%
+\ba
+{\cal S} &=& S_{BH} - \f12 \ln \le(S_{BH}  S_{BH}^2\ri) + \cdots \nn \\
+&=& S_{BH} - \f{3}{2}\ln \le( S_{BH} \ri) + \cdots ~~.
+\la{btzcorr}
+\ea
+%
+This agrees with correction computed using conformal field theory by Carlip 
+\cite{carlip},  including the coefficient $-3/2$ in front of the logarithm. 
+
+Similarly, for AdS-Schwarzschild black holes in $d$-dimensions, 
+with a  cosmological constant  
+$$
+\Lambda = - (d-1)(d-2)/2 \ell^2, 
+$$ 
+the metric is  
+%
+\ba 
+&ds^2& = -
+ \le(1 - \f{16\p  G_d M}{(d-2)\O_{d-2}c^2 r^{d-3}} 
++ \f{r^2}{\ell^2} \ri) c^2 dt^2  \nn \\  
+&+& \le(1 - \f{16\p  G_d M}{(d-2)\O_{d-2}c^2 r^{d-3}} 
++ \f{r^2}{\ell^2} \ri)^{-1} dr^2 \nn \\
+&+& r^2 d\O_{d-2}^2 ~.
+\la{adsscmetric}
+\ea
+%
+The entropy, temperature and specific heat are given by 
+%
+\ba
+S_{BH} &=& \f{ A_{d-2}}{4\ell_{Pl}^{d-2}} 
+= \f{\O_{d-2} r_+^{d-2}}{4\ell_{Pl}^{d-2}} \la{adsscent}\\
+T_H &=& {\hbar c}{}~\f{(d-1) r_+^2 + (d-3)\ell^2}{4\p \ell^2 r_+} 
+\la{adssctemp} \\
+C &=& (d-2)\le[ \f{(d-1)r_+^2/\ell^2 
++ (d-3)}{(d-1)r_+^2/\ell^2-(d-3)} \ri] S_{BH} ~, \la{adsscspht}
+\ea
+%
+where $\O_{d-2}$ is the area of an unit $S^{d-2}$. 
+In the so-called `high-temperature limit' $r_+ >> \ell$, a regime in 
+which the specific heat is positive, the corrected entropy using 
+({\ref{master1}}) is  
+%
+\ba
+{\cal S} &=& 
+S_{BH} - \f{1}{2} \ln \le( {S_{BH} S_{BH}^{2/(d-2)}} \ri) + \cdots \nn \\
+&=&  S_{BH} - \f{d}{2(d-2)} \ln \le( {S_{BH}}{} \ri) + \cdots ~~~.
+\la{adssccorr}
+\ea
+%
+It is curious to note that on substituting $d=3$ in the above, the 
+BTZ result (\ref{btzcorr}) is recovered, although the metric of the latter 
+is not a special case of (\ref{adsscmetric}). 
+
+The free energy of the black hole in the limit $r_+>>\ell$ may be computed 
+from Eq.(\ref{adsscmetric}-\ref{adssctemp}):
+%
+\be
+F_{BH} = Mc^2  - T_{H}S_0 = -c_1 T_H^{d-1}~,
+\la{fbh}
+\ee
+%
+where
+%
+\be
+c_1 =  \f{\O_{d-2}}{4(d-1) \ell_{Pl}^{d-2}} 
+\le(\f{4\p \ell^2}{\hbar c (d-1)} \ri)^{d-2}~~.
+\ee
+%
+The entropy may be expressed as 
+\be
+S_{BH} = -\f{\pa F_{BH}} {\pa T_{BH}} = c_1(d-1)T_H^{d-2}.
+\la{sbh}
+\ee
+\section{Holographic gas}
+\la{holodual}
+
+We now attempt to model the thermodynamic properties of asymptotically AdS black holes 
+using a perfect fluid of free bosons and fermions at temperature $T$ in spacetime 
+dimension  $\D$, and with dispersion relation 
+%
+\be
+\e = \k p^\a~.
+\la{dispersion}
+\ee
+%
+We compute the equation of state, free energy and entropy using 
+standard methods. 
+
+The thermodynamic potential $\O$ is \cite{landau}
+%
+\be
+\O = \pm  T \sum_i \ln \le[ 1  \mp e^{(\m-\e_i)/T} \ri] 
+\ee
+%
+where $+$ and $-$ signatures refer to bosons and fermions respectively,
+and $\mu$ is the chemical potential.
+In the continuum limit, partial integration gives  
+%
+\ba
+\O &=&  \pm \f{ V_{\D-1} \O_{\D-2} T}{(2\p \hbar)^{\D-1}} \int_0^\infty
+\ln \le[1 \mp e^{(\m-\e)/T }  \ri] p^{\D-2} dp \nn \\ 
+%
+&=&  - \f{ V_{\D-1} \O_{\D-2}}{(\D-1) (2\p \hbar)^{\D-1} k^{(\D-1)/\a}} 
+\int_0^\infty
+\f{\e^{({\D-1})/{\a}}}{e^{({\m-\e})/{T}} \pm 1} d\e~.
+\la{omega}
+\ea
+%
+The energy of the gas is 
+%
+\ba
+E &=& \int_0^\infty \e~d\Gamma (\e)  \nn \\
+%
+&=& \f{V_{\D-1} \O_{d-2} }{\a (2\p\hbar)^{\D-1} k^{(\D-1)/\a}}
+\int_0^\infty \f{\e^{(\D-1)/\D} d\e}{e^{(\m-\e)/T} \pm 1}~. 
+\ea
+%
+Comparing with (\ref{omega}) and using the relation 
+$\O = -PV_{\D-1}$ gives  
+\be
+E = \le(\f{\D-1}{\a}\ri)~P~V_{\D-1}~.  
+\la{state1}
+\ee
+%
+This can be written in terms of the energy density 
+$\r = E/V_{\D-1}$ as
+%
+\be
+P = k \r~,
+\ee
+%
+where 
+\be
+k = \f{\a}{\D-1}~. 
+\label{k}
+\ee
+% 
+This relates spacetime dimension $\D$ and dispersion relation power $\a$ 
+to the coefficient $k$ in the equation of state.  
+ 
+The free energy of the gas is 
+%
+\be
+F_{gas} = -  T \ln z = \pm T \sum_{i} \ln (1 \mp e^{-\b \e_i} ) ~.
+\ee
+%
+The temperature dependence is obtained by partial integration 
+after taking the continuum limit: 
+%
+\ba
+F_{gas}  &=& \pm \f{ T V_{\D-1} \O_{\D-2}}{(2\p \hbar)^{\D-1}} \int_0^\infty 
+\ln ( 1 \mp e^{-\b \e}) dp~p^{\D-2} ~ \nn \\
+&=& -~c_2 V_{\D-1}~T^{\f{\D-1}{\a}+1} ~,
+\la{freegas}
+\ea
+%
+where 
+$V_{\D-1}$ is the volume of the gas, and  
+%
+\ba
+c_2 &=& \f{\O_{\D-2}}{(\D-1)\k^{(\D-1)/\a} (2\p \hbar)^{(\D-1)}} 
+\times \nn \\
+&~&\zeta \le(\f{\D-1}{\a} + 1 \ri) 
+\C \le( \f{\D-1}{\a} + 1 \ri) \times \nn \\
+&~& (n_B + n_F  - \f{n_F}{2^{(\D-1)/\a}} )~.
+\ea
+% 
+Here $n_B (n_F)$ is the total number of bosonic (fermionic) degrees of 
+freedom for the fluid. The entropy is 
+%
+\be
+S_{gas} = - \f{\pa F_{gas}}{\pa T} = c_2 
+\le(\f{\D-1}{\a}+1 \ri) V_{\D-1} T^{\f{\D-1}{\a} }~~.
+\la{sgas}
+\ee
+% 
+
+To compare thermodynamic quantities of the gas with those of the AdS 
+black hole, we derive the consequences of imposing 
+%
+\be
+S_{BH} = S_{gas}~.
+\la{sbhgas}
+\ee
+%
+Matching powers of temperature in the entropy formulas 
+(\ref{sbh}) and (\ref{sgas}) gives our first result 
+relating spacetime dimensions and $\a$:
+% 
+\be
+\D =\a (d-2) + 1.
+\la{match1} 
+\ee
+%
+Thus, given an anti-de Sitter Schwarzschild black hole in $d$-spacetime
+dimensions, there will be a holographic gas in $\D$-spacetime dimensions
+capturing all thermodynamic information of the black hole.
+
+Using (\ref{k}), this may be written as 
+\be
+k = \f{1}{d-2}~.
+\ee
+The last equation shows that the fluid is physical, in the 
+sense of causality, for all cases: the dominant energy condition 
+(positive energy, and null or lightlike fluxes)
+gives the condition $0\leq k \leq 1$, which is satisfied for  
+$d \geq 3$ (the cases of interest here). 
+
+Next we compare the coefficients of the power of temperature
+in (\ref{sbhgas}). There are two ways to do this depending on the point of 
+view taken on holography: (i) the holographic degrees of freedom associated 
+with a black hole reside on a surface $r=r_0$ in the black hole spacetime, or 
+(ii)  the holographic degrees of freedom do not reside on any bounding 
+surface in the black hole background, but rather are defined on 
+their own flat background spacetime. 
+
+According to (i), the temperature $T$ of the gas must be 
+taken as the red-shifted black hole temperature
+\be 
+ T = \f{T_H}{\sqrt{-g_{00}}} = \f{\ell~T_H}{r_0}
+\ee
+The black hole entropy in terms of $T$ is 
+\be 
+S_{BH} = c_1(d-1)\left( {r_0\over l}\right)^{d-2} T^{d-2}.
+\ee
+Matching coefficients of powers of $T$ in (\ref{sbhgas}) now gives
+%
+\be 
+c_1 = c_2~\Omega_{\D - 1}~\ell^{d-2}~r_0^{(\a-1)(d-2)}~,
+\la{match2}
+\ee
+%
+where we have used the fact that the gas lives in a subspace of the 
+surface $r=r_0$ so that its volume is $V_{\D-1} = \Omega_{\D-1}r_0^{\D-1}$. 
+%
+
+We point out that a special case of the relation (\ref{match2}) arises in 
+the context of the AdS/CFT conjecture. For $d=5$, $\a=1$, $\D=4$ and 
+$n_B=n_F=8(N^2-1)$, it was shown \cite{gubser,berman}, with 
+the additional AdS/CFT relation 
+$$
+\p \ell^3/G_5 = 2N^2,
+$$ 
+that Eq.(\ref{match2}) is satisfied up to a factor of $4/3$. 
+
+According to the point of view (ii), the temperature of the gas is equated to the 
+black hole temperature without any red-shift factors. This leads to the following 
+relation between coefficients:
+%
+\be
+c_1 = c_2 V_{\D - 1}\ell^{d-2}  
+\ee
+%
+Note that in either case (i) or (ii), the holographic
+dimension $\D$ is given by Eq.(\ref{match1}).   
+
+From (\ref{match1}), it follows that for the special case $\a=1$, 
+%
+\be
+\D = d -1 ~,
+\la{minusone}
+\ee
+%
+which is normally assumed in the context of holography 
+\cite{thooft,susskind}. Another indication that $\a=1$ may be 
+`preferred' lies in the fact that the $r_0$-dependence drops out of 
+the relation (\ref{match2}) only for this value of $\a$.
+ 
+
+It is interesting to note that for near-extremal stringy black holes,
+the near horizon geometry is BTZ \cite{dadg}. Thus, to describe the  
+thermodynamics of these black holes, one substitutes $d=3$ in (\ref{minusone}). 
+This gives a $(1+1)-$dimensional holographic gas. Such a gas has been 
+shown to reproduce the entropy and Hawking radiation rates of near extremal 
+black holes in string theory\cite{dma}. 
+%
+
+We now compare the leading order entropy corrections of the 
+black hole and gas. Using $C_{gas} = d(F_{gas} + T S_{gas})/dT$, 
+the dimension matching equation (\ref{match1}) and
+Eq.(\ref{master1}), the corrected entropy of the gas is  
+%
+\be
+\cals^{corr}_{gas} 
+= S_{gas} - \f{d}{2(d-2)} \ln S_{gas} 
+- \f{1}{d-2} \ln \le( c_2 V_{\D-1} \ri).  
+\la{gascorr} 
+\ee
+
+Matching the uncorrected entropies $S_{BH} = S_{gas}$ 
+in this equation,  we see that the leading logarithmic term agrees precisely 
+with that on the black hole side, Eq.(\ref{adssccorr}),  for all spacetime 
+dimensions, and for any value of $\a$ in the dispersion relation (\ref{dispersion}).  
+The last term in (\ref{gascorr}) depends on the volume of the gas, as well the 
+number of species, and can be interpreted as a finite size effect. These 
+are considered sub-dominant so long as the entropy $S_{BH}$ remains large. Thus, 
+the exact details of the boundary theory are seen to be irrelevant for all 
+for the leading order corrections to match. (Finite size effects were also considered 
+in \cite{finite1}.)
+
+The issue of log corrections for $d=5$ and 
+$\a=1$ were first analysed in \cite{mukherji}. 
+However, there the authors had ignored the factor of
+$T_H^2$ in (\ref{master1}), by setting the `scale' of the logarithm to 
+$T_H$ itself. This scale is actually the Boltzmann constant $k_B$,
+which has been set to unity here. Consequently, the coefficient in 
+front of the log term was incorrect there, both for the black hole and
+the gas. In addition, the finite-size effect terms were missed.
+
+For $AdS_5/CFT_4$ correspondence, when $d=5,~\a=1,~\D=4,~n_b=n_F=8(N^2-1)$, the 
+coefficient of the log corrections is $5/6$, agreeing perfectly with its black 
+hole counterpart, Eq.(\ref{adssccorr}). 
+
+
+\section{Entropy bounds with AdS black holes}
+\la{holography} 
+
+In this section we consider the Bekenstein and spherical bounds 
+for asymptotically anti-de Sitter black holes, and examine the 
+effects of entropy corrections on these bounds. 
+ 
+The Bekenstein bound states that the entropy of matter in a closed
+region of linear dimension $R$ and energy $E$ is bounded
+above by the inequality \cite{bekholo,bousso}
+%
+\be
+S_{matter} \leq \f{2\p ER}{\hbar c}~.
+\ee
+%
+
+One way to arrive at this result is to consider a `Geroch process,' in 
+which a matter system in a box is lowered slowly from an asymptotically flat 
+region, and then dropped into the black hole where the box just touches 
+the horizon. The argument assumes that the energy of a floating box 
+near the horizon is added to the black hole, which increases its entropy. 
+The generalised second law $\Delta S_{Tot} = S^{final}_{BH} - (S^{initial}_{BH} 
++ S_{matter}) \ge 0$ then leads to the desired inequality. The drop off point 
+occurs where the center of mass of the matter system is a distance $R$ from the 
+horizon, where the energy of the matter acquires a factor $\sqrt{-g_{00}}$ 
+relative to its energy at infinity. 
+
+This argument may be applied to an AdS-Schwarzschild black hole
+background, where the 
+energy of the system 
+is assumed to be $E$ at a large radius $r>>r_+$.  The energy 
+of the matter a proper distance $R$ from the horizon is 
+\be 
+{\cal E} = \sqrt{-{g_{00}}|_{R}}~E = \le[ \f{(d-1) r_+}{2\ell^2} \ri] ER~.  
+\ee
+The energy gain of the black hole is 
+%
+\be
+\d E \leq 
+\le[ \f{(d-1) r_+}{2\ell^2} \ri] ER~,  
+\ee
+%
+and the corresponding entropy gain is 
+%
+\be
+\d S_{BH} = \f{\pa  S_{BH}}{\pa E}~\d E~.
+\la{geroch1}
+\ee
+%
+Now, in order to find the corrected Bekenstein bound, we use 
+(\ref{adssccorr}) to compute the entropy derivative. This gives
+a `corrected Hawking temperature' $T_H' = \pa \cals/\pa M_{BH}$ 
+given by 
+%
+\be
+T_H' = T_H + \f{d(d-1)\hbar c \ell_{Pl}^{d-2}}{\p (d-2) \O_{d-2} \ell^2
+r_+^{d-3}}~.
+\ee
+%
+Substituting this in (\ref{geroch1}) gives 
+%
+\be
+\d S_{BH} = \le[ 1 - \f{2\ell_{Pl}^{d-2}}{\O_{d-2}(d-2)r_+^{d-2}} \ri]~
+\f{2\p ER}{\hbar c}~.
+\ee
+%
+Imposing the generalised 2nd. law gives    
+%
+\be
+S_{matter} \leq  \le[ 1 - \f{2\ell_{Pl}^{d-2}}{\O_{d-2}(d-2)r_+^{d-2}} \ri]~
+\f{2\p ER}{\hbar c}~.
+\ee
+%
+Notice that the leading term is identical to the Schwarzschild case
+\cite{bousso}. The correction,  which depends on
+the horizon radius, reduces the bound. The correction
+term  attains its maximum when the radius is of the order of Planck
+length, which gives
+%
+\be
+S_{matter} \leq  \le[ 1 - \f{2}{\O_{d-2}(d-2)} \ri]~
+\f{2\p ER}{\hbar c}~.
+\ee
+%
+This equation may be regarded as the modified Bekenstein bound. 
+(Corrections to the Bekenstein bound from 
+finite volume corrections were analysed in \cite{kutlar}.)
+
+It is interesting to see what happens to this bound at the 
+expected saturation point where the system $(E,R)$ is 
+an AdS-Schwarzschild black hole. The entropy bound becomes
+%
+\be
+S_{matter}  \leq \le( \f{d-2}{2} \ri) 
+\le[ 1 - \f{2}{(d-2)\O_{d-2}} \ri] 
+\le( \f{r_+^2}{\ell^2}\ri)~ S_{BH}~.
+\la{bound2}
+\ee
+%
+Since $r_+/\ell \gg 1$,  the right side is much larger than the black hole
+entropy. That is, the black hole entropy is far from saturating the Bekenstein
+bound, implying that the latter is 
+rather weak in this case. This is a significant departure 
+from the asymptotically flat case where the upper limit is provided by 
+the black hole entropy. 
+
+The spherical entropy bound similarly undergoes the modification
+%
+\be
+S_{matter} \leq \f{A_H}{4\ell_{Pl}^{d-2}} 
+- \f{d}{2(d-2)} \ln \f{A_H}{4\ell_{Pl}^{d-2}} ~.
+\la{bound3}
+\ee
+%
+Of course in this case, the black hole saturates this bound, by 
+definition. From (\ref{bound2}) and (\ref{bound3}) it follows that 
+the two bounds are {\it not} of the same order for asymptotically 
+anti-de Sitter black holes, and that the Bekenstein bound is much 
+weaker than the spherical bound. (After this work was done, we became aware
+of a recent paper where corrections to Bekenstein and spherical 
+entropy bounds have been proposed \cite{ggour}. The 
+correction to the spherical bound proposed in that paper agrees with our's, 
+while that to the Bekenstein bound does not).   
+
+Finally we point out the AdS black hole analogues of two related   
+entropy bounds previously discussed for Schwarzschild 
+black holes \cite{thooft}. These are bounds on the entropy 
+of a collection of black holes, and on the entropy of matter 
+contained in a closed spatial region. 
+
+We ask if the spherical entropy bound is satisfied 
+for a collection of AdS-Schwarzschild black holes with 
+masses $M_i$ in a bounded region of area $A$. To do so
+let us first compare the sum of the entropies 
+$S_{total}=\Sigma S_i$ of a collection of black holes with 
+the entropy $S_M$ of a black hole of mass $M=\Sigma M_i$:  
+%
+\ba
+S_{total} &=& \f{\O_{d-2}} {4\ell_{Pl}^{d-2}}
+\le[\f{16\p G_d\ell^2}{(d-2) \O_{d-2} c^2} \ri]^{(d-2)/(d-1)}~
+\nn \\
+&& \times  \sum_i M_i^{(d-2)/(d-1)}~,
+\ea
+%
+and  
+%
+\ba
+S_M &=& \f{\O_{d-2}}{4\ell_{Pl}^{d-2}}
+~\le[ \f{16\p G_d\ell^2}{(d-2) \O_{d-2} c^2} \ri]^{(d-2)/(d-1)}~
+\nn \\
+&& \times  \left( \sum_i M_i \right)^{(d-2)/(d-1)}~,
+\ea
+%
+The relation   
+%
+\be
+\sum_i M_i^{(d-2)/(d-1)} > 
+\le(  \sum_i M_i\ri)^{(d-2)/(d-1)}~
+\ee
+%
+for powers $(d-2)/(d-1)<1$ gives 
+%
+\be
+S_{total} >  S_M 
+\ee
+%
+This is the opposite of the Schwarzschild black hole result,
+and indicates that if $A$ is taken to be the horizon area of 
+the composite black hole, then $S_{total} > A/4\ell_{Pl}^{d-2}$.  
+Thus an upper bound on the entropy of a collection of AdS black 
+holes cannot be derived form this argument. 
+
+To obtain a specific example of an entropy bound on a matter 
+system derived using AdS black holes, we use the gas 
+discussed in the last section. The energy and entropy of the gas, consisting 
+of $Z$ species, and with the dispersion relation (\ref{dispersion}), 
+follows from Eq.(\ref{freegas}), with the replacement 
+$\D \rightarrow d$  (also see \cite{thooft,bousso,wald}):
+%
+\ba
+E &=& Z c_2 \le( \f{d-1}{\a} \ri) V_{d-1} T^{(d-1)/\a+1} ~, \\
+S &=& Z c_2 \le( \f{d-1}{\a} +1 \ri) V_{d-1} T^{(d-1)/\a}  ~.
+\ea
+%
+With $V_{d-1}= \O_{d-1} R^{d-1}$ we can write the entropy 
+$S(Z,E,R)$ as 
+%
+\be
+S = c_3 Z^{\a/(d-1+\a)} R^{(\a(d-1))/(d-1+\a)}
+~E^{(d-1)/(d-1+\a)}~, 
+\la{gasentropy}
+\ee
+%
+where 
+$$
+c_3 = c_2^{\a/(d-1+\a)} \O_{d-1}^{\a/(d-1+\a)} 
+\le(  \f{\a}{d-1}  \ri)^{(d-1)/(d-1+\a)}~.
+$$
+An entropy bound arises by requiring that the gas 
+is outside its AdS-Schwarzschild radius. This is obtained 
+from  the expression for the mass of the Schwarzschild-AdS black hole
+in the $r\gg \ell$ limit: 
+%
+\be
+M = \le[ \f{(d-2) \O_{d-2} c^2}{16\p G_d \ell^2} \ri]
+r_+^{d-1}~.
+\ee
+As a result the entropy (\ref{gasentropy}) satisfies the inequality:
+%
+\be
+S < c_4 Z^{\a/(d-1+\a)} \f{A^{(d-1)/(d-2)}}{\ell^{2(d-1)/(d-1+\a)}}
+\la{gasbound1}
+\ee
+%
+where 
+$$
+c_4 = c_3 \le[ \f{(d-2)\O_{d-2} c^4}{16\p G_d} \ri]^{(d-1)/(d-1+\a)}
+~~. 
+$$
+Note that the exponent of $A$ in (\ref{gasbound1}) is greater than unity, 
+unlike the asymptotically flat case, again resulting in a weaker bound. 
+Eq.(\ref{gasbound1}) can be written as: 
+%
+\be 
+\cals < c_5 \le( \f{\ell_{Pl}}{\l} \ri)^{\f{(\a-1)(d-1)}{(d-1+\a)}} 
+\le( \f{\ell_{Pl}}{\ell}  \ri)^{ \f{(d-1-\a)}{(d-1+\a)}}~
+\f{r_+}{\ell}~S_{BH}~,
+\ee 
+%
+where $S_{BH}$ is the black hole entropy for the same horizon area, 
+and
+%
+\ba
+\l^{\a-1} &\equiv& \f{\e \hbar^{\a-1}}{cp^\a} \\
+c_5 &=& 4 \a^{\f{d-1}{d-1+\a}} \O_{d-1}^{\f{\a}{d-1}} 
+%\nn \\ &\times& 
+\le( \f{d-2}{16\p} \ri)^{\f{d-1}{d-1+\a}} \nn \\
+&\times& 
+\le[\zeta\le(\f{d-1}{\a} +1 \ri) 
+\Gamma\le(\f{d-1}{\a} +1 \ri) \ri] 
+\nn \\ &\times& 
+\le[ \le(n_B + n_F - \f{n_F}{2^{(d-1)/\a}}\ri)  \ri]^{\f{\a}{(d-1+\a)}}~.
+\ea
+%
+Given $r_+/\ell \gg1$, the magnitude of the proportionality
+factor multiplying $S_{BH}$ on the RHS depend on the two ratios 
+$\ell_{Pl}/\l$ and $\ell_{Pl}/\ell$. 
+
+
+
+\section{Discussions} 
+\la{discussions}
+
+We have shown that the thermodynamics of  
+black holes can be reproduced by a holographic gas with a generalised 
+dispersion 
+relation. Specifically we have the general result that for 
+AdS-Schwarzschild black 
+holes in $d$-spacetime dimensions, the thermodynamics can be encoded  
+in a gas of 
+free bosons and fermions in $\D = \a (d-1) + 1$ spacetime dimensions. 
+Thus for a 
+given $d$, a variety of $\D$ can serve our purpose, depending on $\a$. 
+We have also 
+seen that some results in the AdS/CFT context arise as special cases of the 
+thermodynamic matching we have used. 
+
+We have also derived corrections to entropy bounds, and discussed specific 
+examples of the bounds, using Schwarzschild-AdS black holes. 
+An interesting result 
+here is the lack of a spherical bound for a collection of these black holes.
+
+Particles with $\a=1$ do not seem to be necessary in the holographic mapping, 
+although they are sufficient. It is interesting to note however, 
+that for $\a=1$, the 
+relations that map the entropies  of the black hole and gas 
+become independent of $r_0$, the `location' of the holographic gas 
+in the black hole spacetime. 
+Thus, this may be an additional reason  to attach a preferred status to 
+particles satisfying the  relativistic dispersion relation. 
+
+There are several open questions which would be interesting to pursue.
+From the integral in (\ref{saddle}), it is clear that the next-to-leading-order
+corrections are difficult, if not impossible to compute
+analytically. It may be possible to do this numerically to find 
+the dependence of the corrections on horizon area. As noted earlier, 
+the corrected entropy is always less than the uncorrected one, signifying
+a reduction in the number of accessible states, when fluctuations are taken 
+into account. It may be useful to find an interpretation of this result from
+the point of view of information theory, in which decrease of entropy is
+associated with an increase in information \cite{khinchin,shannon}.  
+%
+
+An important generalisation of the current
+formalism would be to calculate entropy corrections for asymptotically
+flat black holes. One way would be to consider these black holes in
+a finite box, whose size can be adjusted such that the specific heat of the 
+resultant system is positive \cite{ad}. It would also be interesting 
+to compare these corrections with those coming from other sources, such
+as quantum spacetime fluctuations \cite{pm2}.
+
+A related problem concerns  de-Sitter black holes. 
+Here the temperature and specific heat can be obtained from the 
+corresponding expressions for asymptotically anti-de Sitter 
+black holes [Eqs.(\ref{adssctemp}-\ref{adsscspht})],
+by substituting $\ell^2 \rightarrow -\ell^2$:
+\ba
+T_H &=& {\hbar c}{}~\f{- (d-1) r_+^2 + (d-3)\ell^2}{4\p \ell^2 r_+} 
+\la{dssctemp} \\
+C &=& (d-2)\le[ \f{(d-1)r_+^2/\ell^2 
+- (d-3)}{(d-1)r_+^2/\ell^2-(d-3)} \ri] S_{BH} ~. \la{dsscspht}
+\ea
+%
+Here in the regime in which Hawking temperature is positive, 
+the specific heat is negative, again signaling an apparent 
+breakdown of the approach. However, since the energy of the black holes 
+is negative,  one may use a modified definition of specific heat, 
+namely $C = d(-E)/dT$. This gives a positive $C$  and permits 
+some calculations \cite{spradlin,balasub,shanki2}. 
+Corrections to entropy would be  identical to that 
+for the AdS case, Eq.(\ref{adssccorr}), and it appears that the 
+mapping of thermodynamics can also be done. 
+
+
+\vs{.4cm}
+\no
+{\bf Acknowledgements}
+
+The authors would like to thank J. Gegenberg for useful discussions. 
+S.D. thanks R. K. Bhaduri, P. Majumdar and 
+S. Shankaranarayanan for useful correspondence, 
+and M. M. Akbar, D. S. Berman, M. Cavaglia, A. Dasgupta, 
+W. R. Knight, R. Maartens
+and O. Obregon
+for helpful comments and discussions. This work was supported in part by 
+the Natural Sciences and Engineering Research Council of Canada.  
+
+ 
+ 
+\begin{thebibliography}{99}
+
+\bibitem{bh} J. D. Bekenstein, Phys. Rev. {\bf D7} (1973) 2333;
+S. W. Hawking, Phys. Rev. {\bf D13} (1976) 191. 
+
+\bibitem{vs} C. Vafa, A. Strominger, 
+Phys. Lett. {\bf B379} (1996) 99 (hep-th/9601029).
+
+\bibitem{ash}C. Rovelli, Phys. Rev. Lett. {\bf 77} (1996) 3288 
+(gr-qc/9603063);
+K. V. Krasnov, Phys. Rev. D {\bf 55}, 3505 (1997) (gr-qc/9603025);
+A. Ashtekar, J. Baez, A. Corichi, and K. Krasnov,
+Phys. Rev. Lett.  {\bf 80} (1998) 904 (gr-qc/9710007); 
+V. Husain, Phys. Rev. D. {\bf 59} (1999) 084019 (gr-qc/9806115); 
+A. Ashtekar, J. C. Baez and K. Krasnov, 
+Adv. Theor. Math. Phys. {\bf 4} (2000) 1 (gr-qc/0005126).  
+
+\bibitem{anydim} S. Carlip, Phys. Rev. Lett. {\bf 82} (1999) 2828
+(hep-th/9812013).
+
+\bibitem{thooft} G. 't Hooft, in {\it Salam Festschrift}, 
+eds. A. Alo, J. Ellis, S. Randjbar-Daemi, World Scientific (1993)
+(gr-qc/9310006). 
+
+\bibitem{susskind} L. Susskind, 
+J. Math. Phys. {\bf 36}  (1995) 6377 (hep-th/9409089). 
+
+\bibitem{bekholo} J. D. Bekenstein, Phys. Rev. {\bf D 23} (1981) 287. 
+
+\bibitem{bousso} R. Bousso, Rev. Mod. Phys. {\bf 74} (2002) 825
+(hep-th/0203101). 
+
+
+\bibitem{wheeler} J. Wheeler, 
+Sakharov Memorial Lectures on Physics, vol. 2,
+L. Keldysh and V. Feinberg, Nova (1992).
+
+\bibitem{dmk} S. Das, P. Majumdar, R. K. Kaul, 
+Phys. Rev. {\bf D63} (2001) 44019 (hep-th/0006211). 
+
+\bibitem{bm} A. Bohr and B. R. Mottelson, 
+{\it Nuclear Structure}, Vol.1 (W. A. Benjamin Inc., New York, 1969)
+pp. 281-283. 
+
+\bibitem{rkb} R. K. Bhaduri, {\it Models of the Nucleon}, 
+(Addison-Wesley, 1988), p.116. 
+
+\bibitem{dmb} S. Das, P. Majumdar, R. K. Bhaduri, 
+Class. Quant. Grav. 19 (2002) 2355 (hep-th/0111011). 
+
+\bibitem{cap} S. Das, in
+{\it Proceedings of Canadian Association of Physicists Annual Congress, 
+Quebec City, June 2-5, 2002} (hep-th/0207072). 
+
+\bibitem{fursaev}
+D. Fursaev, Phys. Rev. {\bf D51} (1995) 5352 (hep-th/9412161). 
+
+\bibitem{solo1} S. N. Solodukhin, Phys. Rev. {\bf D57} (1998) 2410
+(hep-th/9701106). 
+
+\bibitem{other} R. B. Mann, S. N. Solodukhin, Nucl. Phys. {\bf B523} 
+(1998) 293 (hep-th/9709064); 
+A. J. M. Medved, G. Kunstatter, Phys. Rev. {\bf D60} (1999) 104029
+(hep-th/9904070); 
+A. J. M. Medved, G. Kunstatter, Phys. Rev. {\bf D63} (2001) 104005
+(hep-th/0009050). 
+
+\bibitem{qg} R. K. Kaul and P. Majumdar, Phys. Rev. Lett. {\bf 84} (2000) 
+5255 (gr-qc/0002040). 
+
+\bibitem{obregon} O. Obregon, M. Sabido, V. I. Tkach,
+Gen. Rel. Grav. {\bf 33} (2001) 913 (gr-qc/0003023).
+
+\bibitem{carlip} S. Carlip, Class. Quant. Grav. {\bf 17} (2000) 4175 
+(gr-qc/0005017). 
+
+\bibitem{jy} J. Jing, M-L Yan, Phys. Rev. {\bf D63} (2001) 24003 
+(gr-qc/0005105). 
+
+\bibitem{qg1}
+S. Das, R. K. Kaul and P. Majumdar, 
+Phys. Rev. {\bf D 63} (2001) 044019 (hep-th/0006211); 
+P. Majumdar, Pramana {\bf 55} (2000) 511 (hep-th/0009008), 
+hep-th/0011284, hep-th/0110198.   
+
+\bibitem{bss} D. Birmingham, S. Sen, Phys. Rev. {\bf D63} (2001) 47501
+(hep-th/0008051); D. Birmingham, I. Sachs, S. Sen, Int. J. Mod. Phys. 
+{\bf D10} (2001) 833 (hep-th/0102155).
+
+\bibitem{gks} T. R. Govindarajan, R. K. Kaul, V. Suneeta, 
+Class. Quant. Grav. {\bf 18} (2001) 2877 (gr-qc/0104010).
+
+\bibitem{k} K. S. Gupta, S. Sen, 
+Phys. Lett. {\bf 526} (2002) 121 (hep-th/0112041),
+hep-th/0203094; K. S. Gupta, hep-th/0204137. 
+
+\bibitem{ms} S. A. Major, K. L. Setter,  
+Class. Quant. Grav. {\bf 18} (2001) 5125 (gr-qc/0101031); 
+Class. Quant. Grav. {\bf 18} (2001) 5293 (gr-qc/0108034). 
+
+\bibitem{medved} A. J. M. Medved, 
+Class. Quant. Grav. {\bf 19} (2002) 2503 (hep-th/0201079) 
+and gr-qc/0211004.
+
+\bibitem{k2} K. S. Gupta, hepth/0204137. 
+
+\bibitem{medved2} A. J. M. Medved, hep-th/0210017.  
+
+\bibitem{gg2} G. Gour, Phys. Rev. {\bf D66} (2002) 104022 (gr-qc/0210024).
+
+\bibitem{appln} J. E. Lidsey, S. Nojiri, S. D. Odintsov, S. Ogushi,
+Phys. Lett. {\bf B544} (2002) 337 (hep-th/0207009);
+S. Nojiri, S. D. Odintsov, S. Ogushi, hep-th/0212047; 
+M. H. Dehghani, A. Khoddam-Mohammadi, hep-th/0212126. 
+
+\bibitem{landau} L. D. Landau and E. M. Lifshitz, {\it Statistical Physics},
+(Pergamon, 1969), Chapter XII.
+
+\bibitem{gubser} S. S. Gubser, I. R. Klebanov, A. W. Peet, 
+Phys. Rev. {\bf D54} (1996) 3915 (hep-th/9602135). 
+
+\bibitem{berman} D. S. Berman, M. K. Parikh, 
+Phys. Lett. {\bf B463} (1999) 168 (hep-th/9907003). 
+
+\bibitem{dadg} K. Sfetsos, K. Skenderis, 
+Nucl. Phys. B517 (1998) 179 (hep-th/9711138);
+V. Balasubramanian, F. Larsen, Nucl.Phys. B528 (1998) 229 (hep-th/9802198);
+J. Maldacena, A. Strominger, JHEP 9812 (1998) 005 (hep-th/9804085); 
+S. Das, A. Dasgupta, 
+JHEP {\bf 9910} (1999) 25, hep-th/9907116. 
+
+\bibitem{dma} S. R. Das, S. D. Mathur, 
+Nucl.Phys. B478 (1996) 561 (hep-th/9606185). 
+
+\bibitem{finite1} G. T. Horowitz, T. Jacobson,
+JHEP {\bf 0201} (2002) 013 (hep-th/0112231).  
+
+\bibitem{mukherji} S. Mukherji, S. S. Pal, 
+JHEP {\bf 0205} (2002) 26 (hep-th/0205164). 
+
+\bibitem{kutlar}D. Kutasov, F. Larsen, 
+JHEP {\bf 0101} (2001) 001 (hep-th/0009244). 
+
+\bibitem{ggour} G. Gour, gr-qc/0302117. 
+
+\bibitem{wald} R. M. Wald, Living Rev. Rel. {\bf 4}
+(2001) 6 (gr-qc/9912119).  
+
+\bibitem{khinchin} A. I. Khinchin, {\it Mathematical 
+Foundations of Information Theory}, Dover, New York, 1957.
+
+\bibitem{shannon} C. E. Shannon, W. Weaver, 
+{\it The Mathematical Theory of Communication},
+The University of Illinois Press, Urbana, 1964. 
+
+\bibitem{ad} M. M. Akbar, S. Das (work in progress). 
+
+\bibitem{pm2} P. Majumdar (private communication). 
+
+\bibitem{spradlin} M. Spradlin, A. Strominger, A. Volovich,
+hep-th/0110007. 
+
+\bibitem{balasub} V. Balasubramanian, J. de Boer, D. Minic,
+Phys. Rev. {\bf D65} (2002) 123508 (hep-th/0110108).
+
+\bibitem{shanki2} S. Shankaranarayanan, gr-qc/0301090. 
+
+\end{thebibliography}
+
+
+
+\end{multicols}
+
+\"

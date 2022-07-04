@@ -1,0 +1,541 @@
+,equation
+0,"\begin{equation}
+  \label{eq:defpoly}
+L(x) := P \exp 
+\left[-\int\limits_{x_0}^{x_0+\beta} dt \, A_0(t,\vec x) \right] 
+\"
+1,"\begin{equation}
+  \label{eq:deffop}
+\Delta_x = -D^x_\mu D^x_\mu +X(x)
+\"
+2,"\begin{equation}
+  \label{eq:gaugeder}
+D^x_\mu = \partial^x_\mu + A_\mu(x)  \,.
+\"
+3,"\begin{equation}
+  \label{eq:gaugetrafo}
+X(x) \to V(x)\, X(x) \, V^{-1}(x) \,, \qquad D^x_\mu \to V(x)\, D^x_\mu V^{-1}(x) \,.
+\"
+4,"\begin{equation}
+  \label{eq:naiveheatk}
+H(x,x';\tau) := \left( x \vert e^{-\tau \Delta} \vert x' \right) 
+= e^{-\tau \Delta_x} \, \delta(x-x')  \,.
+\"
+5,"\begin{equation}
+  \label{eq:defdeltafint}
+\delta(x-x') = \sum\limits_{n = -\infty}^{+\infty} 
+T \int\! {d^{D-1}k \over (2 \pi)^{D-1}} \, e^{i \vec k (\vec x - \vec x')}
+\, e^{i \omega_n \, (x_0 - x_0')} 
+=: \sumint  {d^{D}k \over (2 \pi)^{D}} \, e^{i k \cdot (x - x')}
+\"
+6,"\begin{equation}
+  \label{eq:defenerg}
+\omega_n = 2 \pi T \,\left( n + {1 \over 2} \right)   \,.
+\"
+7,"\begin{equation}
+  \label{eq:expanhs}
+H(x,x;\tau) = \sumint {d^{D}k \over (2 \pi)^{D}} \, e^{-\tau \, (k^2+M^2)}
+\left. 
+\sum\limits_{m=0}^\infty {1 \over m!} \, \tau^m \, (2 i k \cdot D_x - \Delta_x + M^2)^m
+f(x) \right\vert_{f = 1}  \,.
+\"
+8,"\begin{equation}
+  \label{eq:seeley}
+H(x,x;\tau) = \left( {1 \over 4 \pi \tau} \right)^{D/2} e^{-\tau M^2}
+\sum\limits_{n =0}^\infty g_n(x;\sqrt{\tau} T) \, \tau^n  \,.
+\"
+9,"\begin{equation}
+  \label{eq:defcm}
+c_m := \left. \left . (2 i k \cdot D_x - \Delta_x + M^2)^m f(x) \right\vert_{f = 1} \,\,
+\right\vert_{\mbox{drop odd powers of $k$}}  \,\,.
+\"
+10,"\begin{equation}
+  \label{eq:defxtilde}
+\tilde X := X - M^2  \,.
+\"
+11,"\begin{equation}
+  \label{eq:trafoheat}
+H(x,x';\tau) \to V(x)\, e^{-\tau \Delta_x} \, V^{-1}(x)\, \delta(x-x') =
+V(x)\, e^{-\tau \Delta_x} \, \delta(x-x') \, V^{-1}(x') =
+V(x)\, H(x,x';\tau)  \, V^{-1}(x')  \,,
+\"
+12,"\begin{equation}
+  \label{eq:decompopdelta}
+e^{-\tau \Delta_x} \to V(x)\, e^{-\tau \Delta_x} \, V^{-1}(x) \quad \mbox{and}
+\quad \delta(x-x') \to V(x)\, \delta(x-x')  \, V^{-1}(x') \,.
+\"
+13,"\begin{equation}
+  \label{eq:trafoheatdiag}
+H(x,x;\tau) \to V(x)\, H(x,x;\tau)  \, V^{-1}(x)   \,.
+\"
+14,"\begin{equation}
+  \label{eq:defU}
+U[A](x;x') := P \exp\left[ - \int\limits_{x'}^x \!\! dz_\mu A_\mu(z) \right]
+\"
+15,"\begin{equation}
+  \label{eq:U1}
+U[A](x,x) = 1  \,.
+\"
+16,"\begin{equation}
+  \label{eq:Uadd}
+U[A](x;x') \, U[A](x';x'') = U[A](x;x'')
+\"
+17,"\begin{equation}
+  \label{eq:Utrafo}
+U[A](x;x') \to V(x)\, U[A](x;x')  \, V^{-1}(x')  \,.
+\"
+18,"\begin{equation}
+  \label{eq:deltaprelim}
+\delta(x-x') = \delta(x-x') U[A](x,x') 
+= \sumint  {d^{D}k \over (2 \pi)^{D}} \, e^{i k \cdot (x - x')} \, U[A](x,x') \,.
+\"
+19,"\begin{equation}
+  \label{eq:trafomodfourier}
+e^{i k \cdot (x - x')} \, U[A](x,x') \to 
+V(x)\, e^{i k \cdot (x - x')} \, U[A](x;x')  \, V^{-1}(x')  \,.
+\"
+20,"\begin{equation}
+  \label{eq:antiperdelta}
+\delta(x_0 + \beta - x_0') = - \delta(x_0 - x_0')  \,.
+\"
+21,"\begin{equation}
+  \label{eq:antiperefnc}
+e^{i k_0 \, (x_0 + \beta - x_0')} = - e^{i k_0 \, (x_0 - x_0')}
+\"
+22,"\begin{equation}
+  \label{eq:Unonper}
+U[A](x_0+\beta,\vec x;x_0',\vec x') 
+= \underbrace{U[A](x_0+\beta,\vec x;x_0,\vec x)}_{=L(x)} 
+\, U[A](x_0,\vec x;x_0',\vec x') \neq U[A](x_0,\vec x;x_0',\vec x') 
+\"
+23,"\begin{equation}
+  \label{eq:defa0}
+a_0(x) := -T \log L(x) 
+= -T \log U[A](x_0+\beta,\vec x;x_0,\vec x)   \,.
+\"
+24,"\begin{equation}
+  \label{eq:deflog}
+\log (1+{\cal O}) := 
+\sum\limits_{n=1}^\infty (-1)^{n+1} \, {1 \over n} \, {\cal O}^n   \,.
+\"
+25,"\begin{equation}
+  \label{eq:modgaugeconn}
+\tilde U[A](x;x') := e^{x_0 \, a_0(x)} \, U[A](x;x') \, e^{-x_0' \, a_0(x')}  \,.
+\"
+26,"\begin{equation}
+  \label{eq:heatgaugecov}
+H(x,x';\tau) = e^{-\tau \Delta_x} \left( \delta(x-x') \, \tilde U[A](x;x') \right) \,.
+\"
+27,"\begin{equation}
+  \label{eq:diagheatgaugecov}
+H(x,x;\tau) = \sumint {d^{D}k \over (2 \pi)^{D}} \, e^{-\tau \, (k^2+M^2)}
+\left. 
+\sum\limits_{m=0}^\infty {1 \over m!} \, \tau^m \, (2 i k \cdot D_x - \Delta_x + M^2)^m
+\, \tilde U[A](x;x') \, \right\vert_{x' = x}  \,.
+\"
+28,"\begin{equation}
+  \label{eq:deftildec}
+\tilde c_m := \left. \left . (2 i k \cdot D_x - \Delta_x + M^2)^m
+\, \tilde U[A](x;x') \, \right\vert_{x' = x}  \,\,
+\right\vert_{\mbox{drop odd powers of $k$}}  \,\,.
+\"
+29,"\begin{equation}
+  \label{eq:timeder}
+\left. D_{x,0}^n \, \tilde U[A](x;x') \, \right\vert_{x' = x} = a_0^n(x)   \,.
+\"
+30,"\begin{equation}
+  \label{eq:actorheat}
+{\rm tr}H(x,x;\tau)= {E \over 2\pi} {1 \over \tanh E\tau} 
+\left\{ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n 
+        \cos\left[ 
+               n\, {E x_1 + 2 \pi T a \over T}
+            \right]
+        \exp \left(- {n^2 E \over 4 T^2 \tanh E\tau} \right)
+\right\}    \,.
+\"
+31,"\begin{equation}
+  \label{eq:actorvpot}
+A_0 = -i \, (E x_1 + 2 \pi T a) \,, \qquad A_1 = 0  \,.
+\"
+32,"\begin{equation}
+  \label{eq:twodimzeromode}
+a_0 = A_0 = -i \, (E x_1 + 2 \pi T a) \,.
+\"
+33,"\begin{equation}
+  \label{eq:twodimop}
+\not \! \! D^2 = D_\mu D_\mu - X
+\"
+34,"\begin{equation}
+  \label{eq:twodimX}
+X = -{1 \over 4} [\gamma_\mu,\gamma_\nu] [D_\mu,D_\nu] = -E \sigma_3
+\"
+35,"\begin{equation}
+  \label{eq:convgamma}
+\gamma_0 = -\sigma_1 \,, \qquad \gamma_1 = \sigma_2
+\"
+36,"\begin{equation}
+  \label{eq:actorheat2}
+{\rm tr}H(x,x;\tau)= {1 \over 2\pi\tau} {E\tau \over \tanh E\tau} 
+\left\{ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n 
+        \cos\left[ 
+               \sqrt{\tau} \, n \, {i a_0 \over \sqrt{\tau}T}
+            \right]
+        \exp \left(- {n^2 \over 4 \tau T^2} {E \tau \over \tanh E\tau} \right)
+\right\}    \,.
+\"
+37,"\begin{equation}
+  \label{eq:periodzero}
+a \to a + 1   \,.
+\"
+38,"\begin{equation}
+  \label{eq:polyactor}
+L(x) = e^{i(\beta E x_1 + 2 \pi a)}   \,.
+\"
+39,"\begin{equation}
+  \label{eq:truea0}
+a_0(x) = -i \, [E x_1 + 2 \pi T (a-m)] 
+\"
+40,"\begin{equation}
+  \label{eq:gentheta}
+\sum\limits_{n = -\infty}^{+\infty} \exp\left( -\gamma\,(n+1/2)^2 \right) \,
+\left[ \gamma \, (n+1/2)^2 \right]^p 
+= \left( {\pi \over \gamma} \right)^{1/2} \, {(2p-1)!! \over 2^p}
+\left[ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n \, \exp(-\pi^2 n^2/\gamma)
+\sum\limits_{l=0}^p \left( {-\pi^2 n^2 \over \gamma} \right)^l C_l^p \right]
+\"
+41,"\begin{equation}
+  \label{eq:defclp}
+C_l^p := { 2^l \, p! \over l! \, (p-l)! \, (2l-1)!! }  \,,
+\"
+42,"\begin{equation}
+  \label{eq:a0abel}
+A_0(x_0,\vec x) = 
+\sum\limits_{n=-\infty}^{+\infty} a_n(\vec x) \, e^{i 2 n \pi T x_0} \,.
+\"
+43,"\begin{equation}
+  \label{eq:a0period}
+a_0(x_0+\beta,\vec x) = -T \log P \exp 
+\left[-\int\limits_{x_0+\beta}^{x_0+2\beta} dt \, A_0(t,\vec x) \right] 
+= -T \log P \exp 
+\left[-\int\limits_{x_0}^{x_0+\beta} dt \, 
+\underbrace{A_0(t+\beta,\vec x)}_{=A_0(t,\vec x)} \right] 
+= a_0(x_0,\vec x)   \,.
+\"
+44,"\begin{equation}
+  \label{eq:poltrafo}
+U[A](x_0+\beta,\vec x;x_0,\vec x) \to 
+V(x_0+\beta,\vec x) \, U[A](x_0+\beta,\vec x;x_0,\vec x) \, V^{-1}(x_0,\vec x)
+= V(x_0,\vec x) \, U[A](x_0+\beta,\vec x;x_0,\vec x) \, V^{-1}(x_0,\vec x)   \,.
+\"
+45,"\begin{equation}
+  \label{eq:defcalO}
+U[A](x_0+\beta,\vec x;x_0,\vec x) =: 1 + {\cal O}
+\"
+46,"\begin{equation}
+  \label{eq:a0trafo}
+a_0(x) \to V(x) \, a_0(x) \, V^{-1}(x)   \,.
+\"
+47,"\begin{equation}
+  \label{eq:trafoexp}
+\exp\left(\alpha a_0(x)\right) \to \exp\left(\alpha V(x) \, a_0(x) \, V^{-1}(x)\right) = 
+V(x) \, \exp\left(\alpha a_0(x) \right) \, V^{-1}(x)
+\"
+48,"\begin{equation}
+  \label{eq:defz}
+z = z(s) = a + s \, (b-a)  \,,
+\"
+49,"\begin{equation}
+  \label{eq:deffieldstrength}
+F_{\mu\nu} := [D_\mu,D_\nu]  \,.
+\"
+50,"\begin{equation}
+  \label{eq:derivU}
+\left[ D^x_0,U[A](x_0+\beta,\vec x;x_0,\vec x) \right] = 0
+\"
+51,"\begin{equation}
+  \label{eq:derivU2}
+D^x_0 \, U[A](x;x') = U[A](x;x') \, \partial_0^x   \,.
+\"
+52,"\begin{equation}
+  \label{eq:commO}
+\left[ D_0,{\cal O} \right] = 0
+\"
+53,"\begin{equation}
+  \label{eq:commOn}
+\left[ D_0,{\cal O}^n \right] = 0   \,.
+\"
+54,"\begin{equation}
+  \label{eq:comma0}
+[D_0,a_0] = -T \, [D_0,\log(1+{\cal O})] 
+= -T \sum\limits_{n=1}^\infty (-1)^{n+1} \, {1 \over n} \, [D_0,{\cal O}^n] = 0  \,.
+\"
+55,"\begin{equation}
+  \label{eq:defpoly}
+L(x) := P \exp 
+\left[-\int\limits_{x_0}^{x_0+\beta} dt \, A_0(t,\vec x) \right] 
+\"
+56,"\begin{equation}
+  \label{eq:deffop}
+\Delta_x = -D^x_\mu D^x_\mu +X(x)
+\"
+57,"\begin{equation}
+  \label{eq:gaugeder}
+D^x_\mu = \partial^x_\mu + A_\mu(x)  \,.
+\"
+58,"\begin{equation}
+  \label{eq:gaugetrafo}
+X(x) \to V(x)\, X(x) \, V^{-1}(x) \,, \qquad D^x_\mu \to V(x)\, D^x_\mu V^{-1}(x) \,.
+\"
+59,"\begin{equation}
+  \label{eq:naiveheatk}
+H(x,x';\tau) := \left( x \vert e^{-\tau \Delta} \vert x' \right) 
+= e^{-\tau \Delta_x} \, \delta(x-x')  \,.
+\"
+60,"\begin{equation}
+  \label{eq:defdeltafint}
+\delta(x-x') = \sum\limits_{n = -\infty}^{+\infty} 
+T \int\! {d^{D-1}k \over (2 \pi)^{D-1}} \, e^{i \vec k (\vec x - \vec x')}
+\, e^{i \omega_n \, (x_0 - x_0')} 
+=: \sumint  {d^{D}k \over (2 \pi)^{D}} \, e^{i k \cdot (x - x')}
+\"
+61,"\begin{equation}
+  \label{eq:defenerg}
+\omega_n = 2 \pi T \,\left( n + {1 \over 2} \right)   \,.
+\"
+62,"\begin{equation}
+  \label{eq:expanhs}
+H(x,x;\tau) = \sumint {d^{D}k \over (2 \pi)^{D}} \, e^{-\tau \, (k^2+M^2)}
+\left. 
+\sum\limits_{m=0}^\infty {1 \over m!} \, \tau^m \, (2 i k \cdot D_x - \Delta_x + M^2)^m
+f(x) \right\vert_{f = 1}  \,.
+\"
+63,"\begin{equation}
+  \label{eq:seeley}
+H(x,x;\tau) = \left( {1 \over 4 \pi \tau} \right)^{D/2} e^{-\tau M^2}
+\sum\limits_{n =0}^\infty g_n(x;\sqrt{\tau} T) \, \tau^n  \,.
+\"
+64,"\begin{equation}
+  \label{eq:defcm}
+c_m := \left. \left . (2 i k \cdot D_x - \Delta_x + M^2)^m f(x) \right\vert_{f = 1} \,\,
+\right\vert_{\mbox{drop odd powers of $k$}}  \,\,.
+\"
+65,"\begin{equation}
+  \label{eq:defxtilde}
+\tilde X := X - M^2  \,.
+\"
+66,"\begin{equation}
+  \label{eq:trafoheat}
+H(x,x';\tau) \to V(x)\, e^{-\tau \Delta_x} \, V^{-1}(x)\, \delta(x-x') =
+V(x)\, e^{-\tau \Delta_x} \, \delta(x-x') \, V^{-1}(x') =
+V(x)\, H(x,x';\tau)  \, V^{-1}(x')  \,,
+\"
+67,"\begin{equation}
+  \label{eq:decompopdelta}
+e^{-\tau \Delta_x} \to V(x)\, e^{-\tau \Delta_x} \, V^{-1}(x) \quad \mbox{and}
+\quad \delta(x-x') \to V(x)\, \delta(x-x')  \, V^{-1}(x') \,.
+\"
+68,"\begin{equation}
+  \label{eq:trafoheatdiag}
+H(x,x;\tau) \to V(x)\, H(x,x;\tau)  \, V^{-1}(x)   \,.
+\"
+69,"\begin{equation}
+  \label{eq:defU}
+U[A](x;x') := P \exp\left[ - \int\limits_{x'}^x \!\! dz_\mu A_\mu(z) \right]
+\"
+70,"\begin{equation}
+  \label{eq:U1}
+U[A](x,x) = 1  \,.
+\"
+71,"\begin{equation}
+  \label{eq:Uadd}
+U[A](x;x') \, U[A](x';x'') = U[A](x;x'')
+\"
+72,"\begin{equation}
+  \label{eq:Utrafo}
+U[A](x;x') \to V(x)\, U[A](x;x')  \, V^{-1}(x')  \,.
+\"
+73,"\begin{equation}
+  \label{eq:deltaprelim}
+\delta(x-x') = \delta(x-x') U[A](x,x') 
+= \sumint  {d^{D}k \over (2 \pi)^{D}} \, e^{i k \cdot (x - x')} \, U[A](x,x') \,.
+\"
+74,"\begin{equation}
+  \label{eq:trafomodfourier}
+e^{i k \cdot (x - x')} \, U[A](x,x') \to 
+V(x)\, e^{i k \cdot (x - x')} \, U[A](x;x')  \, V^{-1}(x')  \,.
+\"
+75,"\begin{equation}
+  \label{eq:antiperdelta}
+\delta(x_0 + \beta - x_0') = - \delta(x_0 - x_0')  \,.
+\"
+76,"\begin{equation}
+  \label{eq:antiperefnc}
+e^{i k_0 \, (x_0 + \beta - x_0')} = - e^{i k_0 \, (x_0 - x_0')}
+\"
+77,"\begin{equation}
+  \label{eq:Unonper}
+U[A](x_0+\beta,\vec x;x_0',\vec x') 
+= \underbrace{U[A](x_0+\beta,\vec x;x_0,\vec x)}_{=L(x)} 
+\, U[A](x_0,\vec x;x_0',\vec x') \neq U[A](x_0,\vec x;x_0',\vec x') 
+\"
+78,"\begin{equation}
+  \label{eq:defa0}
+a_0(x) := -T \log L(x) 
+= -T \log U[A](x_0+\beta,\vec x;x_0,\vec x)   \,.
+\"
+79,"\begin{equation}
+  \label{eq:deflog}
+\log (1+{\cal O}) := 
+\sum\limits_{n=1}^\infty (-1)^{n+1} \, {1 \over n} \, {\cal O}^n   \,.
+\"
+80,"\begin{equation}
+  \label{eq:modgaugeconn}
+\tilde U[A](x;x') := e^{x_0 \, a_0(x)} \, U[A](x;x') \, e^{-x_0' \, a_0(x')}  \,.
+\"
+81,"\begin{equation}
+  \label{eq:heatgaugecov}
+H(x,x';\tau) = e^{-\tau \Delta_x} \left( \delta(x-x') \, \tilde U[A](x;x') \right) \,.
+\"
+82,"\begin{equation}
+  \label{eq:diagheatgaugecov}
+H(x,x;\tau) = \sumint {d^{D}k \over (2 \pi)^{D}} \, e^{-\tau \, (k^2+M^2)}
+\left. 
+\sum\limits_{m=0}^\infty {1 \over m!} \, \tau^m \, (2 i k \cdot D_x - \Delta_x + M^2)^m
+\, \tilde U[A](x;x') \, \right\vert_{x' = x}  \,.
+\"
+83,"\begin{equation}
+  \label{eq:deftildec}
+\tilde c_m := \left. \left . (2 i k \cdot D_x - \Delta_x + M^2)^m
+\, \tilde U[A](x;x') \, \right\vert_{x' = x}  \,\,
+\right\vert_{\mbox{drop odd powers of $k$}}  \,\,.
+\"
+84,"\begin{equation}
+  \label{eq:timeder}
+\left. D_{x,0}^n \, \tilde U[A](x;x') \, \right\vert_{x' = x} = a_0^n(x)   \,.
+\"
+85,"\begin{equation}
+  \label{eq:actorheat}
+{\rm tr}H(x,x;\tau)= {E \over 2\pi} {1 \over \tanh E\tau} 
+\left\{ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n 
+        \cos\left[ 
+               n\, {E x_1 + 2 \pi T a \over T}
+            \right]
+        \exp \left(- {n^2 E \over 4 T^2 \tanh E\tau} \right)
+\right\}    \,.
+\"
+86,"\begin{equation}
+  \label{eq:actorvpot}
+A_0 = -i \, (E x_1 + 2 \pi T a) \,, \qquad A_1 = 0  \,.
+\"
+87,"\begin{equation}
+  \label{eq:twodimzeromode}
+a_0 = A_0 = -i \, (E x_1 + 2 \pi T a) \,.
+\"
+88,"\begin{equation}
+  \label{eq:twodimop}
+\not \! \! D^2 = D_\mu D_\mu - X
+\"
+89,"\begin{equation}
+  \label{eq:twodimX}
+X = -{1 \over 4} [\gamma_\mu,\gamma_\nu] [D_\mu,D_\nu] = -E \sigma_3
+\"
+90,"\begin{equation}
+  \label{eq:convgamma}
+\gamma_0 = -\sigma_1 \,, \qquad \gamma_1 = \sigma_2
+\"
+91,"\begin{equation}
+  \label{eq:actorheat2}
+{\rm tr}H(x,x;\tau)= {1 \over 2\pi\tau} {E\tau \over \tanh E\tau} 
+\left\{ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n 
+        \cos\left[ 
+               \sqrt{\tau} \, n \, {i a_0 \over \sqrt{\tau}T}
+            \right]
+        \exp \left(- {n^2 \over 4 \tau T^2} {E \tau \over \tanh E\tau} \right)
+\right\}    \,.
+\"
+92,"\begin{equation}
+  \label{eq:periodzero}
+a \to a + 1   \,.
+\"
+93,"\begin{equation}
+  \label{eq:polyactor}
+L(x) = e^{i(\beta E x_1 + 2 \pi a)}   \,.
+\"
+94,"\begin{equation}
+  \label{eq:truea0}
+a_0(x) = -i \, [E x_1 + 2 \pi T (a-m)] 
+\"
+95,"\begin{equation}
+  \label{eq:gentheta}
+\sum\limits_{n = -\infty}^{+\infty} \exp\left( -\gamma\,(n+1/2)^2 \right) \,
+\left[ \gamma \, (n+1/2)^2 \right]^p 
+= \left( {\pi \over \gamma} \right)^{1/2} \, {(2p-1)!! \over 2^p}
+\left[ 1 + 2 \sum\limits_{n=1}^\infty (-1)^n \, \exp(-\pi^2 n^2/\gamma)
+\sum\limits_{l=0}^p \left( {-\pi^2 n^2 \over \gamma} \right)^l C_l^p \right]
+\"
+96,"\begin{equation}
+  \label{eq:defclp}
+C_l^p := { 2^l \, p! \over l! \, (p-l)! \, (2l-1)!! }  \,,
+\"
+97,"\begin{equation}
+  \label{eq:a0abel}
+A_0(x_0,\vec x) = 
+\sum\limits_{n=-\infty}^{+\infty} a_n(\vec x) \, e^{i 2 n \pi T x_0} \,.
+\"
+98,"\begin{equation}
+  \label{eq:a0period}
+a_0(x_0+\beta,\vec x) = -T \log P \exp 
+\left[-\int\limits_{x_0+\beta}^{x_0+2\beta} dt \, A_0(t,\vec x) \right] 
+= -T \log P \exp 
+\left[-\int\limits_{x_0}^{x_0+\beta} dt \, 
+\underbrace{A_0(t+\beta,\vec x)}_{=A_0(t,\vec x)} \right] 
+= a_0(x_0,\vec x)   \,.
+\"
+99,"\begin{equation}
+  \label{eq:poltrafo}
+U[A](x_0+\beta,\vec x;x_0,\vec x) \to 
+V(x_0+\beta,\vec x) \, U[A](x_0+\beta,\vec x;x_0,\vec x) \, V^{-1}(x_0,\vec x)
+= V(x_0,\vec x) \, U[A](x_0+\beta,\vec x;x_0,\vec x) \, V^{-1}(x_0,\vec x)   \,.
+\"
+100,"\begin{equation}
+  \label{eq:defcalO}
+U[A](x_0+\beta,\vec x;x_0,\vec x) =: 1 + {\cal O}
+\"
+101,"\begin{equation}
+  \label{eq:a0trafo}
+a_0(x) \to V(x) \, a_0(x) \, V^{-1}(x)   \,.
+\"
+102,"\begin{equation}
+  \label{eq:trafoexp}
+\exp\left(\alpha a_0(x)\right) \to \exp\left(\alpha V(x) \, a_0(x) \, V^{-1}(x)\right) = 
+V(x) \, \exp\left(\alpha a_0(x) \right) \, V^{-1}(x)
+\"
+103,"\begin{equation}
+  \label{eq:defz}
+z = z(s) = a + s \, (b-a)  \,,
+\"
+104,"\begin{equation}
+  \label{eq:deffieldstrength}
+F_{\mu\nu} := [D_\mu,D_\nu]  \,.
+\"
+105,"\begin{equation}
+  \label{eq:derivU}
+\left[ D^x_0,U[A](x_0+\beta,\vec x;x_0,\vec x) \right] = 0
+\"
+106,"\begin{equation}
+  \label{eq:derivU2}
+D^x_0 \, U[A](x;x') = U[A](x;x') \, \partial_0^x   \,.
+\"
+107,"\begin{equation}
+  \label{eq:commO}
+\left[ D_0,{\cal O} \right] = 0
+\"
+108,"\begin{equation}
+  \label{eq:commOn}
+\left[ D_0,{\cal O}^n \right] = 0   \,.
+\"
+109,"\begin{equation}
+  \label{eq:comma0}
+[D_0,a_0] = -T \, [D_0,\log(1+{\cal O})] 
+= -T \sum\limits_{n=1}^\infty (-1)^{n+1} \, {1 \over n} \, [D_0,{\cal O}^n] = 0  \,.
+\"

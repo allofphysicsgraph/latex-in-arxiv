@@ -1,0 +1,347 @@
+,author
+0,"\authors{P.A.~Grassi,\footnotemark{}\adref{1} 
+  G.~Policastro,\footnotemark{}\adref{2} 
+  and P.~van~Nieuwenhuizen\footnotemark{}\adref{1}} 
+ 
+\addresses{\1ad  C.N. Yang Institute for Theoretical Physics, 
+                  State University of New York\\ at Stony Brook, 
+                  NY 11794-3840, USA 
+  \nextaddress 
+  \2ad  DAMTP, Centre for Mathematical Sciences 
+               Wilberforce Road,\\ Cambridge CB3 0WA, UK} 
+ 
+\maketitle 
+ 
+\makeatletter 
+\renewcommand{\@makefnmark}%{\mbox{$^{\@thefnmark}$}} 
+{\mbox{$^{\fnsymbol{footnote}}$}} 
+\makeatother 
+\setcounter{page}{1} 
+ 
+ 
+\setcounter{footnote}{1} 
+\footnotetext{pgrassi@insti.physics.sunysb.edu} 
+\addtocounter{footnote}{1} 
+\footnotetext{policast@cibslogin.sns.it} 
+\addtocounter{footnote}{1} 
+\footnotetext{vannieu@insti.physics.sunysb.edu} 
+ 
+ 
+ 
+\begin{abstract} 
+
+  We give an introduction to a 
+  new approach to the covariant quantization of superstrings. 
+  After a brief review of the classical Green--Schwarz 
+  superstring and Berkovits' approach to its quantization based on 
+  pure spinors, we discuss our covariant formulation without pure spinor 
+  constraints. We discuss the relation between the concept of grading, 
+  which we introduced to define vertex operators, and 
+  homological perturbation theory, and we compare our work with recent 
+  work by others. In the appendices, 
+  we include some background material for the Green-Schwarz and 
+  Berkovits formulations, in order that this presentation be self 
+  contained. 
+\end{abstract} 
+ 
+% \centerline{\it 
+% Based on a talk given at the Third Sacharov Conference.} 
+ 
+\renewcommand{\thefootnote}{\arabic{footnote}} 
+\setcounter{footnote}{0} 
+ 
+\makeatletter 
+\renewcommand{\@makefnmark}{\mbox{$^{\@thefnmark}$}} 
+\makeatother 
+ 
+ 
+\section{Introduction} 
+String theory is mostly based on the Ramond--Neveu--Schwarz (RNS) 
+formulation, with worldsheet fermions $\psi^m$ in the vector 
+representation of the spacetime Lorentz group $SO(9,1)$. This 
+formulation exhibits classically a $N=1$ local supersymmetry of the 
+worldsheet.  The BRST symmetry of the RNS formulation is based on the 
+super-reparametrization invariance of the worldsheet. The fundamental 
+fields are the bosons $x^m$, the fermions $\psi^m$, the 
+reparametrization ghosts $b_{zz}, c^z$ and the superghosts $\beta_{\small {z \sqrt{z}}}, 
+\g^{\small \sqrt{z}}$. Physical states correspond to vertex operators which {i)} belong 
+to the BRST cohomology and {ii)} are annihilated by the zero mode $b_0$ of the 
+antighost for the open string, or by $b_0$ and $\tilde b_0$ for the closed string.  To obtain 
+a set of physical states which form a representation of spacetime 
+supersymmetry, the GSO projection is applied to remove half of the 
+physical states. Spacetime supersymmetry is thus not manifest, and the 
+study of Ramond-Ramond backgrounds is not feasible. Therefore, one 
+would prefer a formulation with spacetime fermions $\t^\a$ belonging 
+to a representation of $Spin(9,1)$ because it would keep spacetime 
+supersymmetry (susy) manifest. 
+
+At the classical level, such a 
+formulation was constructed by Green and Schwarz in 1984 
+\GreenSchwarz. Their classical action contains two fermions 
+$\t^{i\a}$ ($i=1,2$) and the bosonic coordinates $x^m$. Each of the 
+$\t$'s is real and can be chiral or anti-chiral (type IIA/B 
+superstrings): they are $16$-component Majorana-Weyl spinors which are 
+spacetime spinors and worldsheet scalars. We denote chiral 
+spinors by contravariant indices $\t^\a$ with $\a=1,\dots,16$; 
+antichiral spinors are denoted by $\t_\a$, also with $\a=1,\dots,16$. 
+We shall only consider chiral $\t$'s below.  
+
+The rigid spacetime supersymmetry is given by the usual non-linear 
+coordinate representation 
+\ahin{susyA}{\d_\e \t^{i\a} = \e^{i\a}\,, ~~~~~ 
+\d_\e x^m = \bar\e^i \G^m \t^i = i\, \e^{i \a} \g^m_{\a\b} \t^{i \b}\,,} 
+where $\g^m_{\a\b}$ are  ten real symmetric $16\times16$ matrices and the 
+flavor indices $i=1,2$ are summed over. (In appendix A, Dirac matrices and 
+Majorana-Weyl spinors are reviewed). 
+Susy-invariant building blocks are 
+\ahin{susyB}{\Pi^m_\mu \equiv \p_\mu x^m - 
+i \t^i \g^m \p_\mu \t^i\,, ~~~~~ \p_\mu \t^{i\a}\,} where $\mu=0,1$ 
+and $\p_0 = \p_t$ and $\p_1 = \p_\s$. A natural choice for the action 
+on a flat background spacetime and curved worldsheet would seem to be 
+\ahin{susyC}{{\cal L}_1 = -\frac {1}{ 2  \pi} \, \sqrt{-h} \, 
+h^{\mu\nu} \eta_{mn} \, \Pi^m_\mu \Pi^n_\nu\,, } 
+with $h^{\m\n}$ the worldsheet metric, 
+because it is the susy-invariant line element (a natural generalization of the 
+action for the bosonic string). However, it yields no kinetic term for the fermions. Even if 
+one could produce a kinetic term, there would still be the problem that one would have 
+${\frac 1 2 }(16+16) = 16$ fermionic propagating modes and $8$ bosonic 
+propagating modes. Such a theory could not yield a linear representation of supersymmetry. 
+ 
+A resolution of this problem became possible when Siegel found a new 
+local fermionic symmetry ($\k$-symmetry) for the point particle 
+%\SiegelHH 
+\cite{SiegelHH}. 
+Green and Schwarz tried to find this symmetry in their string, and they discovered 
+that it is present, but only after adding a Wess-Zumino-Novikov-Witten 
+term to the action. Using this symmetry one could impose the gauge 
+$\G^+ \t^1 = \G^+ \t^2 =0$ (where $\G^\pm = \G^0 \pm \G^9$), and if 
+one then also fixed the local scale and general coordinate symmetry by 
+$h^{\mu \nu } = \eta^{\mu\nu}$, and the remaining conformal symmetry by 
+$x^+(\s,t) = x^+_0 + p^+ t$, the action became a free string theory with $8$ 
+fermionic degrees of freedom and $8$ bosonic degrees of freedom. Susy 
+was linearly realized and quantization posed no problem. 
+ 
+However, in this combined $\k$-light cone gauge, manifest $SO(9,1)$ 
+Lorentz invariance is lost, and with it all the reasons for studying the 
+superstring in the first place. (We shall call the string of 
+Green and Schwarz the superstring, to distinguish it from the RNS 
+string which we call the spinning string.) 
+ 
+Going back to the original classical action, it was soon 
+realized that second class constraints were present, due to the 
+definition of the conjugate momenta of the $\t$'s. These second class 
+constraints could be handled by decomposing them w.r.t. a non-compact 
+$SU(5)$ subgroup of $SO(9,1)$ (see appendix D) , but then again 
+manifest Lorentz invariance was lost. An approach to quantization 
+which could deal with second class constraints and keep covariance 
+was needed. By using a 
+proposal of Faddeev and Fradkin, one could 
+turn second class constraints into first class constraints by adding further fields, 
+but upon quantization one now obtained an infinite set of ghosts-for-ghosts, and 
+problems with the calculation of anomalies were encountered. At the end 
+of the 80's, several authors tried different approaches, but they always 
+encountered infinite sets of ghosts-for-ghosts, and 15 years of pain 
+followed \superstring. 
+ 
+A few years ago Berkovits developed a new line of thought \berko. 
+Taking a flat background and a flat worldsheet metric, 
+the central charge $c$ in one sector\footnote{One $\t$ is always left-moving and the other $\t$ is 
+always right-moving, whether or not they have the same chirality.} 
+of 10 free bosons $x^m$ and one $\t$ is 
+$c =10 - 2 \times 16 =-22$ 
+(there is a conjugate momentum $p_{z\a}$ for $\t^\a$). He noted 
+that if one decomposes a chiral spinor $\l^\a$ under the 
+non-compact $SU(5)$ subgroup of $SO(9,1)$, it decomposes as 
+$\underline{16} \rightarrow 
+\underline{10}+\underline{5}^*+\underline{1}$ (see Appendix~D). 
+Imposing the constraint 
+\ahin{pure}{\l^T \g^m \l = 0\,,} 
+also known as {\it pure spinor constraint}, 
+one can express the $\underline{5}^*$ in terms of the $\underline{10}$ 
+and $\underline{1}$, and hence it seemed that by adding a commuting 
+pure spinor (with conjugate momenta for the $\underline{10}$ 
+and $\underline{1}$), one could obtain vanishing central charge: 
+$c = 10_x - 2 \times 16_{\t,p_\t} + 2 \times (10 +1)_{\l, p_\l} = 0$. In 
+the past few years, he has developed this approach further. 
+ 
+Having a constraint such as (\ref{pure})~in a theory 
+leads to problems at the quantum level in the computation of loop 
+corrections and in the definition of the path integral. A similar situation 
+occurred in superspace formulations of supergravity, where one must impose constraints 
+on the supertorsions; in that case the constraints were solved and the 
+covariance was sacrificed. One could work only with $\underline{10}$ and 
+$\underline{1}$, but then one would again violate manifest Lorentz 
+invariance. 
+ 
+We have developed an approach 
+\Grassi~which starts with the same 
+$\t^\a, p_{z\a}$ 
+and $\l^\a$ as used by Berkovits, but we relax the constraint (\ref{pure})~by 
+adding new ghosts. In Berkovits' and our approach one has the BRST 
+law $s\, \t^\a = i \l^\a$, with real $\t^\a$, but in Berkovits' approach $\l^\a$ 
+must be complex in order that (\ref{pure})~have a solution at all, 
+{\it whereas in our approach $\l^\a$ is real}. 
+The law $s \t^\a = i\, \l^\a$ is an enormous simplification over the law one would 
+obtain from the $\kappa$-symmetry law $\delta_\kappa \t^\a = \Pi^m_\mu (\g_m \k^\mu)^\a$ 
+with selfdual $\k^{\mu}_\beta$. It is this simpler starting point that avoids the 
+infinite set of ghosts-for-ghosts. Perhaps our finite set of fields corresponds to 
+resummations of the infinite set of fields 
+encountered in previous approaches. 
+First, we give a brief review of the classical superstring action from which 
+we shall only extract a set of first class constraints $d_{z\a}$. These first 
+class constraints are removed from the action and used to construct a BRST charge. 
+ 
+We deduce the full theory 
+by requiring nilpotency of the BRST charge: each time nilpotency on a given field 
+does not hold we add a new field (ghost) and define its BRST transformation 
+rule such that nilpotency holds.  A priori, one might expect that one would end up again with an 
+infinite set of ghosts-for-ghosts, but to our happy surprise the iteration procedure 
+stops after a finite number of steps. 
+ 
+In some modern approaches the difference between the action and the BRST charge becomes 
+less clear (in the BV formalism the action is even equal to the BRST charge, and 
+in string field theory the action is expressed in terms of the BRST charge). So the 
+transplantation of the first class constraints from the action to the BRST charge may not be as 
+drastic as it may sound at first. We may in this way create a different off-shell formulation of the 
+same physical theory. The great advantage of this procedure is that one is left with a free 
+action, so that propagators become very easy to write down, and OPE's among vertex operators 
+become as easy as in the RNS approach. 
+ 
+We shall now present our approach. We have a new definition of physical states, 
+and we obtain the correct spectrum for the open string as well as for the closed 
+superstring, both at the massless level and at the massive levels. Since these 
+notes are intended as introduction to our work, we give much background material 
+in the appendices. Such material is not present in our papers, but 
+may help to understand the reasons and the technical aspects of our approach. 
+Our approach differs from the conventional approaches to the BRST quantization of strings. 
+One would therefore like to see it work in a simpler example. For that reason we have applied 
+our ideas to pure Yang-Mills field theory \GrassiSR. One gets also in that case the 
+correct cohomology. 
+
+We have found since the conference some deep geometrical meanings of the new ghosts, but we have 
+not yet found the underlying classical action to which our quantum theory corresponds. Sorokin, Tonin and 
+collaborators have recently shown \tonin~how one can obtain Berkovits' theory 
+from a $N=(2,0)$ worldsheet action with superdiffeomorphism embeddings, and it is possible 
+that a similar approach yields our theory. 
+ 
+\section{The classical Green-Schwarz action} 
+ 
+As we already mentioned, a natural generalization of the bosonic string with ${\cal L} \sim (\p_\a x^m)^2$ with 
+spacetime supersymmetry is the supersymmetric line element given in \susyB~and \susyC. 
+If one considers the interaction term $\p_\mu x^m (\t \g_m \p^\m \t)$ and if 
+one chooses the light cone gauge $x^+ = x^+_0 + p^+ t$ one obtains a term 
+$p^+ \t \g_+ \p_t \t= (\sqrt{p^+} \t) \g_+ \p_t (\sqrt{p^+} \t)$. This is not a satisfactory 
+kinetic term because we also would need a term with $ p^+ \t \g_+ \p_\s \t$. Such a term 
+would be obtained if the action contains a term of the form $ (\p_t x^+) \t \g_+ \p_\s \t$, or in covariant 
+notation $\e^{\m\n} (\p_\m x^m) \t \g_m \p_\n \t$. 
+The extra kinetic term  $\e^{\m\n} \p_\m x^m \t \g_m \p_\n \t$ is part of a Wess-Zumino term 
+(see appendix B). 
+ 
+Rigid susy \susyA~and $\d_\e (\p_\s x^+) = 0$ 
+would lead to $\e \g^+ \p_\s \t =0$. This suggests that the light-cone gauge for $\t$ 
+should read $\g^+ \t =0$, or, in terms of $32 \times 32$ matrices, $\Gamma^+ \t =0$. 
+If $\Gamma^+ \t =0$, also $\t^T C \Gamma^+=0$, and inserting 
+$\{\Gamma^+, \Gamma^-\} = 1$, one would also 
+find that $\t^T C \Gamma^I \p_\s \t =0$ for $I=1, \dots, 8$. So, then we would find in the light cone gauge 
+that the action for $\t$ becomes a free action, a good starting point for string theory at the 
+quantum level. 
+ 
+In order that these steps are correct, we would need a local fermionic symmetry which would justify 
+the gauge $\Gamma^+ \t =0$.  Pursuing this line of thought, one arrives then at the 
+crucial question: does the sum of the supersymmetric line element and the WZNW term contain a new fermionic 
+symmetry with half as many parameters as there are $\t$ components ? The answer is affirmative, and the 
+$\k$-symmetry is briefly discussed at the end of appendix B, but since we shall not need the explicit form of 
+the $\kappa$ symmetry transformation laws, we do not give them. 
+ 
+The superstring action is very complicated already in a flat background. We extract from it a set of 
+first class constraints $d_{z\a}= 0$, from which we build the BRST charge, and at all stages we work with a 
+free action. 
+%Since action and BRST charge are closely related (for example in the BV formalism the action {\it is} 
+%the BRST charge) it may not be too drastic to transfer informations (the constraints $d_\a$) from the 
+%classical action to the BRST charge. Starting with a free action and a BRST charge which contains the relevant 
+%information on the dynamics ($d_\a$)  might lead to a different off-shell formulation with the same 
+%physical content. 
+The precise way to obtain $d_{z\a}$ from the classical superstring action is discussed in appendix~C. 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\section{Determining the theory from  the nilpotency of the BRST charge} 
+ 
+We now start our program of determining the theory 
+(the BRST charge and the ghost content) by requiring 
+nilpotency of the BRST transformations. We consider one $\t$ for 
+simplicity (we have also extended 
+our work to two $\t$'s \GrassiXF). 
+We shall be careful (for once) with aspects such as reality and normalizations. 
+The BRST transformations preserve reality and are generated by $\Lambda Q$ where $\Lambda$ 
+is imaginary and anti-commuting. It then follows that $Q$ should also be antihermitian in order that 
+$\Lambda\, Q$ be antihermitian. For any field, we define 
+the $s$ transformations as BRST transformations without $\Lambda$, 
+so $\d_B \Phi = [\Lambda Q, \Phi]$ and $s \Phi = [Q, \Phi]_{\pm}$. 
+The $s$-transformations have reality properties 
+which follow from the BRST transformations (which preserve reality). 
+ 
+We begin with 
+\ahin{BRSTA}{Q = \int i \l^\a d_{z\a}\,,} 
+where $d_{z\a}$ is given in Appendix C and 
+$\int = {\frac {1}{ 2 i \pi}} \oint dz$. This Q is indeed antihermitian because $d_{z \a}$ is 
+antihermitian. (We have performed a Wick rotation in appendix C, in order to be able to use the conventional tools 
+of conformal field theory, but the reality properties hold in Minkowski space). 
+The BRST operator depends on Heisenberg fields which satisfy the field 
+equations, and since we work with a free action, $\bar\p \l^\a =0$ and $\bar\p d_{z\a} =0$ so that 
+in flat space $\l^\a d_{z \a}$ is a holomorphic current, namely 
+$\bar\p (\l^\a d_{z \a}) = 0$. 
+%This property is crucial for the construction of non-linear 
+%sigma models. 
+ 
+The field $d_{z\a}$ contains a term $p_{z\a}$, where $p_{z\a}$ is the 
+momentum conjugate to $\t^\a$ and it is antihermitian since $p_{z\a}$ 
+is antihermitian as can be seen from the action $\int d^2z p_{z\a} \bar\p \t$. 
+The factor ${\frac 1 2}$ in  $d_{z\a}$ in eq. \GSC\ 
+can be checked by noting that the OPE\foot{The OPE of $d_\a$ with $d_\b$ is evaluated 
+using $\p x^m(z) \p x^n(w) \sim - \eta^{mn} (z-w)^{-2}$ and $p_{z\a}(z) \t^\b (w) \sim \d_\a^{~~\b} (z-w)^{-1}.$} 
+of $d_\a$ with $d_\b$ be proportional to $\Pi^m_w$. The expression for $\Pi^m_z$ is real and fixed by spacetime 
+susy. 
+ 
+The operators $d_{z\a}$ generate a closed algebra of currents with a central charge 
+\ahin{BRSTB}{ 
+d_\a(z) d_\b(w) \sim  2 i {\frac{\g^m_{\a\b}\Pi_m(w)}{z-w}}\,, 
+~~~~~~~ 
+d_\a(z) \Pi^m(w) \sim - 2 i {\frac{\g^m_{\a\b}\p\t^\b(w)} {z-w}}\,, 
+} 
+$$ 
+\Pi^m(z) \Pi^n(w) \sim - \frac{ 1}{(z-w)^2} \eta^{mn}\,,~~~~~~~ 
+    d_\a(z) \t^\b(w) \sim {\frac 1 {z-w}} \delta^{~\b}_{\a}\,. 
+$$ 
+ 
+Acting with \BRSTA~on $\t^\a$, one obtains 
+$s \t^\a = i \l^\a$, and acting on $\l^\a$  yields $s \l^\a =0$. Nilpotency 
+on $\t^\a$ and $\l^\a$ is achieved. 
+Repeating this procedure on $x^m$ 
+gives $s x^m = \l \g^m \t$, but since $s^2 x^m = i \l \g^m \l$ 
+does not vanish, we introduce a new real anticommuting ghost $\xi^m$ by setting 
+$s\,  x^m = \l \g^m \t + \xi^m$ and choosing the BRST transformation law of 
+$\xi^m$ such that the nilpotency on $x^m$ is obtained. This leads to 
+$s \xi^m = - i \l \g^m\l$. Nilpotency on $x^m$ is now achieved, but $s$ 
+has acquired an extra 
+term\foot{Spacetime susy requires that $Q'$ depends on $\Pi^m_z$ 
+instead of, for example $\p_z x^m$.} 
+$Q' = - \int \xi^m \Pi_{z m}$ where we recall $\Pi^m_z  = 
+\p_z x^m - i \t \g^m \p_z \t$. Nilpotency on $p_{z\a}$, or 
+equivalently on $d_{z\a}$, is obtained by further 
+modifying the sum of 
+$Q d_{z\a} = 
+- 2 \Pi^m_z (\g_m \l)_\a$ and 
+$ Q' d_{z \a} = - 2 i \xi^m (\g_m \p_z \t)_\a$ 
+by adding 
+$Q''  d_{z \a} = %- 2 \Pi^m_z (\g_m \l)_\a -2 i \xi^m (\g_m \p_z 
+                 %\t)_\a + 
+\p_z\chi_\a$ and fixing the BRST law of $\chi_\a$ such that nilpotency on 
+$d_{z\a}$ is achieved.\foot{Since $(Q+Q')^2 d_{z\a} = \p_z( -2 \xi^m \g_m \l) _\a$, 
+we add a term $\p_z \chi_\a$ instead of a field $\chi_{z\a}$.} 
+This yields $Q \chi_\a = 2\xi^m (\g_m \l)_\a$ 
+and $Q^2 \chi_\a =0$ due to a Fierz rearrangement involving three 
+chiral spinors (see eq.~(\ref{ccccc})). At this point we have achieved nilpotency on $\t^\a, 
+x^m, d_{z\a}$ and $\l^\a, \xi^m, \chi_\a$. We introduce the antighosts 
+$w_{z\a}, \b_{z m}, \k^\a_z$ for the ghosts $\l^\a, \xi^m, \chi_\a$ and 
+find that $s \Phi = [Q, \Phi\}"

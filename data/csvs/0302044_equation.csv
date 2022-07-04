@@ -1,0 +1,805 @@
+,equation
+0,"\begin{equation}
+S[\phi] =  \int_p \frac{1}{2} \phi (p) \phi (-p) \, \frac{p^2 +
+m^2}{K(p)} + S_{\text{int}} [\phi]
+\"
+1,"\begin{equation}
+K(p) = \left\{ \begin{array} {r@{\quad\text{if}\quad}l} 1 & p^2 <
+1\\ 0 & p^2 > 2^2 \end{array} \right.
+\"
+2,"\begin{equation}
+S_{\text{int}} [\phi] = - \sum_{n=1}^\infty \frac{1}{(2n)!}
+\int_{p_1,\cdots, p_{2n-1}} \phi (p_1) \cdots \phi (p_{2n-1})\,
+\V_{2n} (p_1, \cdots, p_{2n}) \label{expansion}
+\"
+3,"\begin{equation}
+p_1 + \cdots + p_{2n} = 0,
+\"
+4,"\begin{equation}
+\frac{K(p)}{p^2 + m^2}
+\"
+5,"\begin{equation}
+\e^{(4n - y_{2n})t} \vev{ \phi (p_1 \e^t) \cdots \phi (p_{2n-1}
+\e^t) \phi }_{m^2 \e^{2t}; \V(t)} = \vev{ \phi (p_1) \cdots
+\phi (p_{2n-1}) \phi}_{m^2; \V}
+\"
+6,"\begin{equation}
+y_{2n} \equiv 4 - 2n
+\"
+7,"\begin{equation}
+- \frac{\partial}{\partial t} S_{\text{int}} [t; \phi] = \frac{1}{2}
+  \int_p \frac{\Delta (p)}{p^2 + m^2 \e^{2t}} \left( \frac{\delta
+  S_{\text{int}}[t;\phi]}{\delta \phi (p)} \frac{\delta S_{\text{int}}
+  [t;\phi]}{\delta \phi (-p)} - \frac{\delta^2 S_{\text{int}}
+  [t;\phi]}{\delta \phi (p) \delta \phi (-p)} \right)
+\"
+8,"\begin{equation}
+\Delta (p) \equiv - 2 p^2 \frac{d}{d p^2} K(p) \label{Delta}
+\"
+9,"\begin{equation}
+\V_{2n} (t; p_1,\cdots,p_{2n}) = A_{2n} (t; p_1,\cdots,p_{2n}) + m^2 B_{2n}
+(t; p_1,\cdots,p_{2n}) + \text{O} (m^4)
+\"
+10,"\begin{equation}
+m^2 \longrightarrow m^2 + \Delta m^2
+\"
+11,"\begin{equation}
+\V_2 (p) \longrightarrow \V_2 (p) + \Delta m^2
+\"
+12,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} s(p) \right)
+\label{change}
+\"
+13,"\begin{equation}
+s(p) = (1 - K(p)) \frac{\ep m^2}{p^2 + m^2} - \eta K(p) = - \eta + (1
+- K(p)) \left( \eta + \frac{\ep m^2}{p^2 + m^2} \right) \label{choice}
+\"
+14,"\begin{equation}
+s(p) = - \eta \quad \text{for}\quad p^2 < 1 \label{seta}
+\"
+15,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 (1+\ep)}
+\"
+16,"\begin{equation}
+\vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2; \V}
+= (1 - n \eta) \vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2
+(1+\ep); \V'}
+\"
+17,"\begin{equation}
+\frac{d}{dp^2} A'_2 (p)\Big|_{p^2=0} = B'_2 (p=0) = 0
+\"
+18,"\begin{equation}
+\frac{d}{dp^2} A_2 (p)\Big|_{p^2=0} = B_2 (p=0) = 0 \label{conditions}
+\"
+19,"\begin{equation}
+{m^2}'' = m^2 \e^{2 \Delta t} (1 + \ep)
+\"
+20,"\begin{equation}
+\frac{d}{dp^2} A''_2 (p)\Big|_{p^2=0} = B''_2 (p=0) = 0
+\"
+21,"\begin{equation}
+\ep = \beta_m \Delta t,\quad \eta = 2 \gamma \Delta t,
+\label{defbetamgamma} 
+\"
+22,"\begin{equation}
+- \lambda (t) \equiv A_4 (t; 0,0,0,0) \label{deflambda}
+\"
+23,"\begin{equation}
+\frac{d}{dt} ( - \lambda (t)) = 4 \gamma (t) \lambda (t) + \frac{1}{2}
+\int_q \frac{\Delta (q)}{q^2} A_6 (t; q,-q,0,0,0,0)
+\"
+24,"\begin{equation}
+\frac{d}{dt} \lambda (t) = \beta (t) \label{difflambda}
+\"
+25,"\begin{equation}
+\beta (t) \equiv - 4 \gamma (t) \lambda (t) - \frac{1}{2}
+\int_q \frac{\Delta (q)}{q^2} A_6 (t; q,-q,0,0,0,0) \label{defbeta}
+\"
+26,"\begin{equation}
+4 \gamma (-(t+t')) \lambda (-(t+t')) + \frac{1}{2} \int_q \frac{\Delta
+(q)}{q^2} A_6 (-(t+t'); q,-q,0,0,0,0) + \beta (-(t+t')) + \text{O}
+(\e^{-2t'})
+\"
+27,"\begin{equation}
+\frac{\partial}{\partial p^2} A_2 (-t; p)\Bigg|_{p^2=0} = B_2 (-t) = 0
+\label{tdepconditions}
+\"
+28,"\begin{equation}
+- \frac{d}{dt} \left( \e^{2t} A_2 (-t) \right) \nonumber\\ = \e^{2t}
+\left[ - 2 \gamma (-t) A_2 (-t) + \frac{1}{2} \int_q \frac{\Delta
+(q)}{q^2} \, A_4 (-t; q,-q,0,0) \right] \label{diffAtwo}
+\"
+29,"\begin{equation}
+\e^{2t} A_2 (-t) = \int^t dt' \e^{2t'} \left[ 2 \gamma (-t') A_2 (-t')
+- \frac{1}{2} \int_q \frac{\Delta (q)}{q^2}\, A_4 (-t'; q,-q,0,0)
+\right]
+\"
+30,"\begin{equation}
+\int^t dt' \e^{2t'} t'^k = \e^{2t} T_k (t)
+\"
+31,"\begin{equation}
+- \lambda (-t) \equiv A_4 (-t; 0,0,0,0)
+\"
+32,"\begin{equation}
+\V_{2n} (-t; p_1,\cdots, p_{2n}; m^2, \lambda)
+\"
+33,"\begin{equation}
+A_{2n} (-t;p_1,\cdots,p_{2n};\lambda),\quad B_{2n} (-t;
+p_1,\cdots,p_{2n}; \lambda)
+\"
+34,"\begin{equation}
+\V_{2n} (-t-\Delta t; p_1,\cdots,p_{2n}; m^2, \lambda) = \V_{2n} (-t;
+p_1,\cdots, p_{2n}; m^2 (-\Delta t), \lambda (-\Delta t)) \label{scaling}
+\"
+35,"\begin{equation}
+\V_{2n} (-t; p_1,\cdots, p_{2n}; m^2, \lambda) = \V_{2n} (0;
+p_1,\cdots,p_{2n}; m^2 (-t), \lambda (-t)) \label{altscaling}
+\"
+36,"\begin{equation}
+\gamma(-t) = \gamma (\lambda(-t)),\quad \beta_m (-t) = \beta_m
+(\lambda (-t)),\quad \beta (-t)= \beta (\lambda (-t))
+\"
+37,"\begin{equation}
+f(p, m^2, \lambda) \equiv (1 - K(p)) \left(\gamma(\lambda) +
+\frac{\beta_m (\lambda)}{2} \frac{m^2}{p^2 + m^2} \right)
+\"
+38,"\begin{equation}
+- \lambda (-t) \equiv A_4 (0,0,0,0; \lambda (-t)), \label{mainlambda}
+\"
+39,"\begin{equation}
+- \frac{d}{dt} \lambda (-t) = \beta (\lambda (-t))
+\"
+40,"\begin{equation}
+m^2 (-t) \e^{2t} = m^2 \exp \left[ - \int_0^t dt' \beta_m (\lambda
+(-t')) \right] \label{maindm}
+\"
+41,"\begin{equation}
+a_2 (\lambda) \equiv A_2 (0, 0; \lambda)
+\"
+42,"\begin{equation}
+2 a_2 (\lambda) = \beta (\lambda) a_2' (\lambda) + 2 \gamma (\lambda)
+a_2 (\lambda) - \frac{1}{2} \int_q \frac{\Delta (q)}{q^2} A_4
+(q,-q,0,0; \lambda) \label{mainatwo}
+\"
+43,"\begin{equation}
+\frac{\partial}{\partial p^2} A_2 (p; \lambda) \Big|_{p^2=0} = B_2
+(p=0; \lambda) = 0 \label{scaleconvention}
+\"
+44,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} ( K(p) t(p) +
+u(p) ) \right)
+\"
+45,"\begin{equation}
+t (p) = u(p) = 0 \quad \text{for} \quad p^2 < 1 \label{tuzero}
+\"
+46,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 + \ep m^2} - \frac{K(p) u(p)}{p^2 + m^2}
+\"
+47,"\begin{equation}
+\tilde{s} (p) \equiv - \eta + (1 - K(p))
+\left( \frac{\ep m^2}{p^2 + m^2} + \eta \right)  + K(p) t(p) + u(p)
+\"
+48,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} \tilde{s} (p)
+\right)
+\"
+49,"\begin{equation}
+\tilde{s} (p) = - \eta \quad \text{for}\quad p^2 < 1
+\"
+50,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }_{m^2; \V}
+= \left( 1 - n \eta \right) \vev{ \phi (p_1) \cdots \phi (p_{2n-1})
+\phi }_{m^2 + \ep m^2; \V''} \label{generalequiv}
+\"
+51,"\begin{equation}
+\frac{K(p)}{p^2+m^2} \label{originalprop}
+\"
+52,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }^K_{m^2, \lambda}
+\"
+53,"\begin{equation}
+(1 - n \eta (\lambda)) \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi
+}^{K+\delta K}_{m^2 (1+\ep),\lambda + \delta \lambda} = \vev{ \phi
+(p_1) \cdots \phi (p_{2n-1}) \phi }^K_{m^2, \lambda}
+\label{equivalence}
+\"
+54,"\begin{equation}
+\delta K (p) = 0 \quad \text{unless} \quad 1 < p^2 < 2^2
+\"
+55,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 (1+\ep)}
+\"
+56,"\begin{equation}
+(1 - n \eta (\lambda)) \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi
+}_{m^2 (1+\ep); \overline{\V}} = \vev{ \phi (p_1) \cdots \phi
+(p_{2n-1}) \phi }_{m^2; \V} \label{intermediate}
+\"
+57,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 (1 + \ep);
+\overline{\V}} = \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }_{m^2
+(1 + \ep); \V''} \label{altequivalence}
+\"
+58,"\begin{equation}
+\tilde{s} (p) \equiv - \eta(\lambda) + (1 - K(p)) \left( \frac{\ep(\lambda)
+m^2}{p^2 + m^2} + \eta (\lambda) \right) + K(p) t(p) + u(p)
+\"
+59,"\begin{equation}
+\frac{d}{dt} \equiv 2 p^2 \frac{\partial}{\partial p^2} + \beta
+(\lambda) \frac{\partial}{\partial \lambda} + (2 + \beta_m (\lambda))
+m^2 \frac{\partial}{\partial m^2}
+\"
+60,"\begin{equation}
+u(p) = (1 - K(p)) \left( \frac{\ep m^2}{p^2 + m^2} + \eta \right)
+\"
+61,"\begin{equation}
+\V_{2n} (p_1, \cdots, p_{2n}; m^2, \lambda) = A_{2n} (p_1, \cdots,
+p_{2n}; \lambda) + m^2 B_{2n} (p_1,\cdots, p_{2n}; \lambda) + \text{O}
+(m^4)
+\"
+62,"\begin{equation}
+A_2 (p; \lambda) = \sum_{i=1}^\infty (- \lambda)^i A_2^{(i)} (p),\quad
+\V_2 (p; \lambda,m^2) = \sum_{i=1}^\infty (- \lambda)^i \V_2^{(i)} (p; m^2)
+\"
+63,"\begin{equation}
+\V_4^{(1)} (p_1,\cdots,p_4) = 1
+\"
+64,"\begin{equation}
+A_4 ^{(1)} (p_1,\cdots,p_4) = 1,\quad B_4^{(1)} (p_1,\cdots,p_4) = 0
+\"
+65,"\begin{equation}
+\gamma^{(1)} = 0
+\"
+66,"\begin{equation}
+\beta_m^{(1)} = \frac{1}{2} \int_q \frac{\Delta (q)}{q^4} A_4^{(1)} =
+\frac{1}{2} \int_q \frac{\Delta (q)}{q^4} = \frac{1}{(4\pi)^2}
+\label{betamfirst} 
+\"
+67,"\begin{equation}
+m^2 (-t) \e^{2t} = m^2 \left( 1 - t \cdot (-\lambda) \cdot \beta_m^{(1)} +
+\text{O} (\lambda^2) \right)
+\"
+68,"\begin{equation}
+a_2^{(1)} = - \frac{1}{4} \int_q \frac{\Delta (q)}{q^2} A_4^{(1)} = 
+ - \frac{1}{4} \int_q \frac{\Delta (q)}{q^2}
+\"
+69,"\begin{equation}
+\V_6^{(2)} (p_1,\cdots,p_6; m^2) = \frac{1 -
+K(p_1+p_2+p_3)}{(p_1+p_2+p_3)^2 + m^2} + \text{9 permutations}
+\"
+70,"\begin{equation}
+A_6^{(2)} (q,-q,0,0,0,0) = 6 \frac{1-K(q)}{q^2}
+\"
+71,"\begin{equation}
+\beta^{(2)} = - \frac{1}{2} \int_q \frac{\Delta (q)}{q^2} A_6^{(2)}
+(q,-q,0,0,0,0) = - 3 \int_q \frac{\Delta (q) (1 - K(q))}{q^4} = -
+\frac{3}{(4\pi)^2} 
+\"
+72,"\begin{equation}
+\Delta (q) (1 - K(q)) = q^2 \frac{d}{dq^2} (1-K(q))^2
+\"
+73,"\begin{equation}
+\lambda (-t) = \lambda - t (-\lambda)^2 \beta^{(2)} + \text{O}
+(\lambda^3)
+\"
+74,"\begin{equation}
+- \frac{\partial}{\partial t} \left( \e^{2t} \V_2^{(1)} (m^2 \e^{-2t})
+\right) = \frac{1}{2} \int_q \frac{\Delta (q \e^{-t})}{q^2 + m^2} +
+m^2 \beta_m^{(1)}
+\"
+75,"\begin{equation}
+\Delta (p \e^t) = - \partial_t K(p \e^t)\, , \label{dtK}
+\"
+76,"\begin{equation}
+K'(p) \equiv \frac{d}{dp^2} K(p),\quad K'' (p) \equiv \frac{d^2}{(d
+p^2)^2} K(p)
+\"
+77,"\begin{equation}
+- 2 \gamma^{(2)} = - \frac{1}{6} \frac{1}{(4\pi)^2} \label{gammaresult}
+\"
+78,"\begin{equation}
+K(p) \equiv \theta (1-p^2) = \left\{ \begin{array}
+{r@{\quad\text{if}\quad}l} 1 & p^2 < 1\\ 0 & p^2 > 1 \end{array}
+\right. \label{step}
+\"
+79,"\begin{equation}
+\beta_m^{(2)} + 2 \gamma^{(2)} = \frac{1}{(4\pi)^4}
+\"
+80,"\begin{equation}
+\beta_m^{(2)} = \frac{1}{(4\pi)^4} \frac{5}{6}
+\"
+81,"\begin{equation}
+\V_8^{(3)} (p_1,\cdots,p_8; m^2) = \frac{1 -
+K(p_1+p_2+p_3)}{(p_1+p_2+p_3)^2 + m^2} \cdot \frac{1 - K(p_4 + p_5 +
+p_6)}{(p_4+p_5+p_6)^2+m^2} + \text{279 permutations}
+\"
+82,"\begin{equation}
+\beta^{(3)} - 4 \gamma^{(2)} = - \frac{6}{(4\pi)^4}
+\"
+83,"\begin{equation}
+\beta^{(3)} = - \frac{17}{3} \frac{1}{(4\pi)^4}
+\"
+84,"\begin{equation}
+B_2 (0) = C_2 (0) = 0 \label{convention}
+\"
+85,"\begin{equation}
+u(p) = (1 - K(p)) \left( \frac{\ep m^2 \e^{2t}}{p^2 + m^2 \e^{2t}}
++ \eta \right),\quad t(p) = 0
+\"
+86,"\begin{equation}
+\vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 \e^{2t}, \V(t)} = (1
+- n \eta) \vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 (1 + \ep)
+\e^{2t}, \V' (t)} \label{RGGreen}
+\"
+87,"\begin{equation}
+B'_2 (\Delta t) = C'_2 (\Delta t) = 0
+\"
+88,"\begin{equation}
+\tilde{\beta} (\lambda) \equiv \frac{- A'_4 (\Delta t) + A_4
+(0)}{\Delta t}\, , \quad
+\tilde{\beta}_m (\lambda) \equiv \frac{\ep}{\Delta t}\, ,
+\"
+89,"\begin{equation}
+m^2 (\Delta t) \equiv m^2 \left( 1 + \Delta t (2 + \tilde{\beta}_m
+(\lambda) \right),\quad
+\lambda (\Delta t) \equiv \lambda + \Delta t ~\tilde{\beta} (\lambda)
+\"
+90,"\begin{equation}
+\tilde{\gamma} (\lambda) \equiv \frac{1}{2} \frac{\eta}{\Delta t}
+\"
+91,"\begin{equation}
+\V_{2n} (t; p_1, \cdots, p_{2n}; m^2, \lambda) = \V_{2n} (0; p_1,
+\cdots, p_{2n}; m^2 (t), \lambda (t))
+\"
+92,"\begin{equation}
+2 \left( p^2 \frac{\partial}{\partial p^2} + m^2
+\frac{\partial}{\partial m^2} \right) u^{(1)} (p; m^2) = (\delta K(p)
+\beta_m^{(1)}  + \Delta (p) \ep^{(1)} ) \frac{m^2}{p^2 + m^2}
+\"
+93,"\begin{equation}
+u^{(1)}(p; m^2) = \frac{m^2}{p^2 + m^2} \left( \beta_m^{(1)} \int_0^\infty
+dt\, \delta K(p \e^{-t}) + \ep^{(1)} (1 - K(p)) \right)
+\"
+94,"\begin{equation}
+2 \left( p^2 \frac{\partial}{\partial p^2} + m^2
+\frac{\partial}{\partial m^2} \right) t^{(2)} (p; m^2) = \beta_m^{(1)}
+u^{(1)} (p;m^2) \frac{m^2}{p^2+m^2}
+\"
+95,"\begin{equation}
+t^{(2)} (p) = \beta_m^{(1)} \left( \frac{m^2}{p^2+m^2}\right)^2 \left(
+\beta_m^{(1)} \int_0^\infty dt' \int_0^\infty dt \, \delta K(p
+\e^{-\tpt}) + \ep^{(1)} \int_0^\infty dt (1 - K(p \e^{-t})) \right)
+\"
+96,"\begin{equation}
+\vev{\phi} = M > 0
+\"
+97,"\begin{equation}
+m^2 > - 1
+\"
+98,"\begin{equation}
+\frac{\Delta (p)}{p^2 + m^2} \quad \text{or}\quad \frac{1 -
+K(p)}{p^2+m^2}
+\"
+99,"\begin{equation}
+\frac{K(p)}{p^2 + m^2}
+\"
+100,"\begin{equation}
+\phi (p) = \varphi (p) + M (2\pi)^4 \delta^{(4)} (p)
+\"
+101,"\begin{equation}
+\frac{p^2+m^2}{K(p)} - \sum_{n=1}^\infty \frac{M^{2n-2}}{(2n-2)!}
+\V_{2n} (p,-p,0,\cdots,0)
+\"
+102,"\begin{equation}
+C(p) \equiv \frac{p^2+m^2}{K(p)} - \sum_{n=2}^\infty \frac{(- \lambda
+M^2)^{n-1}}{(2n-2)!}  \V_{2n}^{(n-1)} (p,-p,0,\cdots,0)
+\"
+103,"\begin{equation}
+\V_{2n}^{(n-1)} (p,-p,0,\cdots,0) = \frac{(2(n-1))!}{2^{n-1}} \left(
+\frac{1 - K(p)}{p^2+m^2} \right)^{n-2}
+\"
+104,"\begin{equation}
+S[\phi] = \frac{1}{2} \int_p C(p) \varphi (p) \varphi (-p) +
+S'_{\text{int}} [\varphi]
+\"
+105,"\begin{equation}
+S[\phi] =  \int_p \frac{1}{2} \phi (p) \phi (-p) \, \frac{p^2 +
+m^2}{K(p)} + S_{\text{int}} [\phi]
+\"
+106,"\begin{equation}
+K(p) = \left\{ \begin{array} {r@{\quad\text{if}\quad}l} 1 & p^2 <
+1\\ 0 & p^2 > 2^2 \end{array} \right.
+\"
+107,"\begin{equation}
+S_{\text{int}} [\phi] = - \sum_{n=1}^\infty \frac{1}{(2n)!}
+\int_{p_1,\cdots, p_{2n-1}} \phi (p_1) \cdots \phi (p_{2n-1})\,
+\V_{2n} (p_1, \cdots, p_{2n}) \label{expansion}
+\"
+108,"\begin{equation}
+p_1 + \cdots + p_{2n} = 0,
+\"
+109,"\begin{equation}
+\frac{K(p)}{p^2 + m^2}
+\"
+110,"\begin{equation}
+\e^{(4n - y_{2n})t} \vev{ \phi (p_1 \e^t) \cdots \phi (p_{2n-1}
+\e^t) \phi }_{m^2 \e^{2t}; \V(t)} = \vev{ \phi (p_1) \cdots
+\phi (p_{2n-1}) \phi}_{m^2; \V}
+\"
+111,"\begin{equation}
+y_{2n} \equiv 4 - 2n
+\"
+112,"\begin{equation}
+- \frac{\partial}{\partial t} S_{\text{int}} [t; \phi] = \frac{1}{2}
+  \int_p \frac{\Delta (p)}{p^2 + m^2 \e^{2t}} \left( \frac{\delta
+  S_{\text{int}}[t;\phi]}{\delta \phi (p)} \frac{\delta S_{\text{int}}
+  [t;\phi]}{\delta \phi (-p)} - \frac{\delta^2 S_{\text{int}}
+  [t;\phi]}{\delta \phi (p) \delta \phi (-p)} \right)
+\"
+113,"\begin{equation}
+\Delta (p) \equiv - 2 p^2 \frac{d}{d p^2} K(p) \label{Delta}
+\"
+114,"\begin{equation}
+\V_{2n} (t; p_1,\cdots,p_{2n}) = A_{2n} (t; p_1,\cdots,p_{2n}) + m^2 B_{2n}
+(t; p_1,\cdots,p_{2n}) + \text{O} (m^4)
+\"
+115,"\begin{equation}
+m^2 \longrightarrow m^2 + \Delta m^2
+\"
+116,"\begin{equation}
+\V_2 (p) \longrightarrow \V_2 (p) + \Delta m^2
+\"
+117,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} s(p) \right)
+\label{change}
+\"
+118,"\begin{equation}
+s(p) = (1 - K(p)) \frac{\ep m^2}{p^2 + m^2} - \eta K(p) = - \eta + (1
+- K(p)) \left( \eta + \frac{\ep m^2}{p^2 + m^2} \right) \label{choice}
+\"
+119,"\begin{equation}
+s(p) = - \eta \quad \text{for}\quad p^2 < 1 \label{seta}
+\"
+120,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 (1+\ep)}
+\"
+121,"\begin{equation}
+\vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2; \V}
+= (1 - n \eta) \vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2
+(1+\ep); \V'}
+\"
+122,"\begin{equation}
+\frac{d}{dp^2} A'_2 (p)\Big|_{p^2=0} = B'_2 (p=0) = 0
+\"
+123,"\begin{equation}
+\frac{d}{dp^2} A_2 (p)\Big|_{p^2=0} = B_2 (p=0) = 0 \label{conditions}
+\"
+124,"\begin{equation}
+{m^2}'' = m^2 \e^{2 \Delta t} (1 + \ep)
+\"
+125,"\begin{equation}
+\frac{d}{dp^2} A''_2 (p)\Big|_{p^2=0} = B''_2 (p=0) = 0
+\"
+126,"\begin{equation}
+\ep = \beta_m \Delta t,\quad \eta = 2 \gamma \Delta t,
+\label{defbetamgamma} 
+\"
+127,"\begin{equation}
+- \lambda (t) \equiv A_4 (t; 0,0,0,0) \label{deflambda}
+\"
+128,"\begin{equation}
+\frac{d}{dt} ( - \lambda (t)) = 4 \gamma (t) \lambda (t) + \frac{1}{2}
+\int_q \frac{\Delta (q)}{q^2} A_6 (t; q,-q,0,0,0,0)
+\"
+129,"\begin{equation}
+\frac{d}{dt} \lambda (t) = \beta (t) \label{difflambda}
+\"
+130,"\begin{equation}
+\beta (t) \equiv - 4 \gamma (t) \lambda (t) - \frac{1}{2}
+\int_q \frac{\Delta (q)}{q^2} A_6 (t; q,-q,0,0,0,0) \label{defbeta}
+\"
+131,"\begin{equation}
+4 \gamma (-(t+t')) \lambda (-(t+t')) + \frac{1}{2} \int_q \frac{\Delta
+(q)}{q^2} A_6 (-(t+t'); q,-q,0,0,0,0) + \beta (-(t+t')) + \text{O}
+(\e^{-2t'})
+\"
+132,"\begin{equation}
+\frac{\partial}{\partial p^2} A_2 (-t; p)\Bigg|_{p^2=0} = B_2 (-t) = 0
+\label{tdepconditions}
+\"
+133,"\begin{equation}
+- \frac{d}{dt} \left( \e^{2t} A_2 (-t) \right) \nonumber\\ = \e^{2t}
+\left[ - 2 \gamma (-t) A_2 (-t) + \frac{1}{2} \int_q \frac{\Delta
+(q)}{q^2} \, A_4 (-t; q,-q,0,0) \right] \label{diffAtwo}
+\"
+134,"\begin{equation}
+\e^{2t} A_2 (-t) = \int^t dt' \e^{2t'} \left[ 2 \gamma (-t') A_2 (-t')
+- \frac{1}{2} \int_q \frac{\Delta (q)}{q^2}\, A_4 (-t'; q,-q,0,0)
+\right]
+\"
+135,"\begin{equation}
+\int^t dt' \e^{2t'} t'^k = \e^{2t} T_k (t)
+\"
+136,"\begin{equation}
+- \lambda (-t) \equiv A_4 (-t; 0,0,0,0)
+\"
+137,"\begin{equation}
+\V_{2n} (-t; p_1,\cdots, p_{2n}; m^2, \lambda)
+\"
+138,"\begin{equation}
+A_{2n} (-t;p_1,\cdots,p_{2n};\lambda),\quad B_{2n} (-t;
+p_1,\cdots,p_{2n}; \lambda)
+\"
+139,"\begin{equation}
+\V_{2n} (-t-\Delta t; p_1,\cdots,p_{2n}; m^2, \lambda) = \V_{2n} (-t;
+p_1,\cdots, p_{2n}; m^2 (-\Delta t), \lambda (-\Delta t)) \label{scaling}
+\"
+140,"\begin{equation}
+\V_{2n} (-t; p_1,\cdots, p_{2n}; m^2, \lambda) = \V_{2n} (0;
+p_1,\cdots,p_{2n}; m^2 (-t), \lambda (-t)) \label{altscaling}
+\"
+141,"\begin{equation}
+\gamma(-t) = \gamma (\lambda(-t)),\quad \beta_m (-t) = \beta_m
+(\lambda (-t)),\quad \beta (-t)= \beta (\lambda (-t))
+\"
+142,"\begin{equation}
+f(p, m^2, \lambda) \equiv (1 - K(p)) \left(\gamma(\lambda) +
+\frac{\beta_m (\lambda)}{2} \frac{m^2}{p^2 + m^2} \right)
+\"
+143,"\begin{equation}
+- \lambda (-t) \equiv A_4 (0,0,0,0; \lambda (-t)), \label{mainlambda}
+\"
+144,"\begin{equation}
+- \frac{d}{dt} \lambda (-t) = \beta (\lambda (-t))
+\"
+145,"\begin{equation}
+m^2 (-t) \e^{2t} = m^2 \exp \left[ - \int_0^t dt' \beta_m (\lambda
+(-t')) \right] \label{maindm}
+\"
+146,"\begin{equation}
+a_2 (\lambda) \equiv A_2 (0, 0; \lambda)
+\"
+147,"\begin{equation}
+2 a_2 (\lambda) = \beta (\lambda) a_2' (\lambda) + 2 \gamma (\lambda)
+a_2 (\lambda) - \frac{1}{2} \int_q \frac{\Delta (q)}{q^2} A_4
+(q,-q,0,0; \lambda) \label{mainatwo}
+\"
+148,"\begin{equation}
+\frac{\partial}{\partial p^2} A_2 (p; \lambda) \Big|_{p^2=0} = B_2
+(p=0; \lambda) = 0 \label{scaleconvention}
+\"
+149,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} ( K(p) t(p) +
+u(p) ) \right)
+\"
+150,"\begin{equation}
+t (p) = u(p) = 0 \quad \text{for} \quad p^2 < 1 \label{tuzero}
+\"
+151,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 + \ep m^2} - \frac{K(p) u(p)}{p^2 + m^2}
+\"
+152,"\begin{equation}
+\tilde{s} (p) \equiv - \eta + (1 - K(p))
+\left( \frac{\ep m^2}{p^2 + m^2} + \eta \right)  + K(p) t(p) + u(p)
+\"
+153,"\begin{equation}
+\phi (p) \longrightarrow \phi (p) \left( 1 + \frac{1}{2} \tilde{s} (p)
+\right)
+\"
+154,"\begin{equation}
+\tilde{s} (p) = - \eta \quad \text{for}\quad p^2 < 1
+\"
+155,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }_{m^2; \V}
+= \left( 1 - n \eta \right) \vev{ \phi (p_1) \cdots \phi (p_{2n-1})
+\phi }_{m^2 + \ep m^2; \V''} \label{generalequiv}
+\"
+156,"\begin{equation}
+\frac{K(p)}{p^2+m^2} \label{originalprop}
+\"
+157,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }^K_{m^2, \lambda}
+\"
+158,"\begin{equation}
+(1 - n \eta (\lambda)) \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi
+}^{K+\delta K}_{m^2 (1+\ep),\lambda + \delta \lambda} = \vev{ \phi
+(p_1) \cdots \phi (p_{2n-1}) \phi }^K_{m^2, \lambda}
+\label{equivalence}
+\"
+159,"\begin{equation}
+\delta K (p) = 0 \quad \text{unless} \quad 1 < p^2 < 2^2
+\"
+160,"\begin{equation}
+\frac{K(p)}{p^2 + m^2 (1+\ep)}
+\"
+161,"\begin{equation}
+(1 - n \eta (\lambda)) \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi
+}_{m^2 (1+\ep); \overline{\V}} = \vev{ \phi (p_1) \cdots \phi
+(p_{2n-1}) \phi }_{m^2; \V} \label{intermediate}
+\"
+162,"\begin{equation}
+\vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 (1 + \ep);
+\overline{\V}} = \vev{ \phi (p_1) \cdots \phi (p_{2n-1}) \phi }_{m^2
+(1 + \ep); \V''} \label{altequivalence}
+\"
+163,"\begin{equation}
+\tilde{s} (p) \equiv - \eta(\lambda) + (1 - K(p)) \left( \frac{\ep(\lambda)
+m^2}{p^2 + m^2} + \eta (\lambda) \right) + K(p) t(p) + u(p)
+\"
+164,"\begin{equation}
+\frac{d}{dt} \equiv 2 p^2 \frac{\partial}{\partial p^2} + \beta
+(\lambda) \frac{\partial}{\partial \lambda} + (2 + \beta_m (\lambda))
+m^2 \frac{\partial}{\partial m^2}
+\"
+165,"\begin{equation}
+u(p) = (1 - K(p)) \left( \frac{\ep m^2}{p^2 + m^2} + \eta \right)
+\"
+166,"\begin{equation}
+\V_{2n} (p_1, \cdots, p_{2n}; m^2, \lambda) = A_{2n} (p_1, \cdots,
+p_{2n}; \lambda) + m^2 B_{2n} (p_1,\cdots, p_{2n}; \lambda) + \text{O}
+(m^4)
+\"
+167,"\begin{equation}
+A_2 (p; \lambda) = \sum_{i=1}^\infty (- \lambda)^i A_2^{(i)} (p),\quad
+\V_2 (p; \lambda,m^2) = \sum_{i=1}^\infty (- \lambda)^i \V_2^{(i)} (p; m^2)
+\"
+168,"\begin{equation}
+\V_4^{(1)} (p_1,\cdots,p_4) = 1
+\"
+169,"\begin{equation}
+A_4 ^{(1)} (p_1,\cdots,p_4) = 1,\quad B_4^{(1)} (p_1,\cdots,p_4) = 0
+\"
+170,"\begin{equation}
+\gamma^{(1)} = 0
+\"
+171,"\begin{equation}
+\beta_m^{(1)} = \frac{1}{2} \int_q \frac{\Delta (q)}{q^4} A_4^{(1)} =
+\frac{1}{2} \int_q \frac{\Delta (q)}{q^4} = \frac{1}{(4\pi)^2}
+\label{betamfirst} 
+\"
+172,"\begin{equation}
+m^2 (-t) \e^{2t} = m^2 \left( 1 - t \cdot (-\lambda) \cdot \beta_m^{(1)} +
+\text{O} (\lambda^2) \right)
+\"
+173,"\begin{equation}
+a_2^{(1)} = - \frac{1}{4} \int_q \frac{\Delta (q)}{q^2} A_4^{(1)} = 
+ - \frac{1}{4} \int_q \frac{\Delta (q)}{q^2}
+\"
+174,"\begin{equation}
+\V_6^{(2)} (p_1,\cdots,p_6; m^2) = \frac{1 -
+K(p_1+p_2+p_3)}{(p_1+p_2+p_3)^2 + m^2} + \text{9 permutations}
+\"
+175,"\begin{equation}
+A_6^{(2)} (q,-q,0,0,0,0) = 6 \frac{1-K(q)}{q^2}
+\"
+176,"\begin{equation}
+\beta^{(2)} = - \frac{1}{2} \int_q \frac{\Delta (q)}{q^2} A_6^{(2)}
+(q,-q,0,0,0,0) = - 3 \int_q \frac{\Delta (q) (1 - K(q))}{q^4} = -
+\frac{3}{(4\pi)^2} 
+\"
+177,"\begin{equation}
+\Delta (q) (1 - K(q)) = q^2 \frac{d}{dq^2} (1-K(q))^2
+\"
+178,"\begin{equation}
+\lambda (-t) = \lambda - t (-\lambda)^2 \beta^{(2)} + \text{O}
+(\lambda^3)
+\"
+179,"\begin{equation}
+- \frac{\partial}{\partial t} \left( \e^{2t} \V_2^{(1)} (m^2 \e^{-2t})
+\right) = \frac{1}{2} \int_q \frac{\Delta (q \e^{-t})}{q^2 + m^2} +
+m^2 \beta_m^{(1)}
+\"
+180,"\begin{equation}
+\Delta (p \e^t) = - \partial_t K(p \e^t)\, , \label{dtK}
+\"
+181,"\begin{equation}
+K'(p) \equiv \frac{d}{dp^2} K(p),\quad K'' (p) \equiv \frac{d^2}{(d
+p^2)^2} K(p)
+\"
+182,"\begin{equation}
+- 2 \gamma^{(2)} = - \frac{1}{6} \frac{1}{(4\pi)^2} \label{gammaresult}
+\"
+183,"\begin{equation}
+K(p) \equiv \theta (1-p^2) = \left\{ \begin{array}
+{r@{\quad\text{if}\quad}l} 1 & p^2 < 1\\ 0 & p^2 > 1 \end{array}
+\right. \label{step}
+\"
+184,"\begin{equation}
+\beta_m^{(2)} + 2 \gamma^{(2)} = \frac{1}{(4\pi)^4}
+\"
+185,"\begin{equation}
+\beta_m^{(2)} = \frac{1}{(4\pi)^4} \frac{5}{6}
+\"
+186,"\begin{equation}
+\V_8^{(3)} (p_1,\cdots,p_8; m^2) = \frac{1 -
+K(p_1+p_2+p_3)}{(p_1+p_2+p_3)^2 + m^2} \cdot \frac{1 - K(p_4 + p_5 +
+p_6)}{(p_4+p_5+p_6)^2+m^2} + \text{279 permutations}
+\"
+187,"\begin{equation}
+\beta^{(3)} - 4 \gamma^{(2)} = - \frac{6}{(4\pi)^4}
+\"
+188,"\begin{equation}
+\beta^{(3)} = - \frac{17}{3} \frac{1}{(4\pi)^4}
+\"
+189,"\begin{equation}
+B_2 (0) = C_2 (0) = 0 \label{convention}
+\"
+190,"\begin{equation}
+u(p) = (1 - K(p)) \left( \frac{\ep m^2 \e^{2t}}{p^2 + m^2 \e^{2t}}
++ \eta \right),\quad t(p) = 0
+\"
+191,"\begin{equation}
+\vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 \e^{2t}, \V(t)} = (1
+- n \eta) \vev{\phi (p_1) \cdots \phi (p_{2n-1}) \phi}_{m^2 (1 + \ep)
+\e^{2t}, \V' (t)} \label{RGGreen}
+\"
+192,"\begin{equation}
+B'_2 (\Delta t) = C'_2 (\Delta t) = 0
+\"
+193,"\begin{equation}
+\tilde{\beta} (\lambda) \equiv \frac{- A'_4 (\Delta t) + A_4
+(0)}{\Delta t}\, , \quad
+\tilde{\beta}_m (\lambda) \equiv \frac{\ep}{\Delta t}\, ,
+\"
+194,"\begin{equation}
+m^2 (\Delta t) \equiv m^2 \left( 1 + \Delta t (2 + \tilde{\beta}_m
+(\lambda) \right),\quad
+\lambda (\Delta t) \equiv \lambda + \Delta t ~\tilde{\beta} (\lambda)
+\"
+195,"\begin{equation}
+\tilde{\gamma} (\lambda) \equiv \frac{1}{2} \frac{\eta}{\Delta t}
+\"
+196,"\begin{equation}
+\V_{2n} (t; p_1, \cdots, p_{2n}; m^2, \lambda) = \V_{2n} (0; p_1,
+\cdots, p_{2n}; m^2 (t), \lambda (t))
+\"
+197,"\begin{equation}
+2 \left( p^2 \frac{\partial}{\partial p^2} + m^2
+\frac{\partial}{\partial m^2} \right) u^{(1)} (p; m^2) = (\delta K(p)
+\beta_m^{(1)}  + \Delta (p) \ep^{(1)} ) \frac{m^2}{p^2 + m^2}
+\"
+198,"\begin{equation}
+u^{(1)}(p; m^2) = \frac{m^2}{p^2 + m^2} \left( \beta_m^{(1)} \int_0^\infty
+dt\, \delta K(p \e^{-t}) + \ep^{(1)} (1 - K(p)) \right)
+\"
+199,"\begin{equation}
+2 \left( p^2 \frac{\partial}{\partial p^2} + m^2
+\frac{\partial}{\partial m^2} \right) t^{(2)} (p; m^2) = \beta_m^{(1)}
+u^{(1)} (p;m^2) \frac{m^2}{p^2+m^2}
+\"
+200,"\begin{equation}
+t^{(2)} (p) = \beta_m^{(1)} \left( \frac{m^2}{p^2+m^2}\right)^2 \left(
+\beta_m^{(1)} \int_0^\infty dt' \int_0^\infty dt \, \delta K(p
+\e^{-\tpt}) + \ep^{(1)} \int_0^\infty dt (1 - K(p \e^{-t})) \right)
+\"
+201,"\begin{equation}
+\vev{\phi} = M > 0
+\"
+202,"\begin{equation}
+m^2 > - 1
+\"
+203,"\begin{equation}
+\frac{\Delta (p)}{p^2 + m^2} \quad \text{or}\quad \frac{1 -
+K(p)}{p^2+m^2}
+\"
+204,"\begin{equation}
+\frac{K(p)}{p^2 + m^2}
+\"
+205,"\begin{equation}
+\phi (p) = \varphi (p) + M (2\pi)^4 \delta^{(4)} (p)
+\"
+206,"\begin{equation}
+\frac{p^2+m^2}{K(p)} - \sum_{n=1}^\infty \frac{M^{2n-2}}{(2n-2)!}
+\V_{2n} (p,-p,0,\cdots,0)
+\"
+207,"\begin{equation}
+C(p) \equiv \frac{p^2+m^2}{K(p)} - \sum_{n=2}^\infty \frac{(- \lambda
+M^2)^{n-1}}{(2n-2)!}  \V_{2n}^{(n-1)} (p,-p,0,\cdots,0)
+\"
+208,"\begin{equation}
+\V_{2n}^{(n-1)} (p,-p,0,\cdots,0) = \frac{(2(n-1))!}{2^{n-1}} \left(
+\frac{1 - K(p)}{p^2+m^2} \right)^{n-2}
+\"
+209,"\begin{equation}
+S[\phi] = \frac{1}{2} \int_p C(p) \varphi (p) \varphi (-p) +
+S'_{\text{int}} [\varphi]
+\"

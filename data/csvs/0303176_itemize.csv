@@ -1,0 +1,218 @@
+,itemize
+0,"\begin{itemize}
+\item
+${\cal H}$
+is a Hilbert space of Fock type (associated to some one-particle Hilbert space
+describing some choice of elementary particles) with the scalar product
+$(\cdot, \cdot)$;
+\item
+$\Omega \in {\cal H}$
+is a special vector called the vacuum;
+\item
+$U_{a,A}$ 
+is a unitary irreducible representation of 
+$inSL(2,\C)$
+the universal covering group of the proper orthochronous Poincar\'e group such
+that 
+$a \in \R^{4}$ 
+is translation in the Minkowski space and 
+$A \in SL(2,\C)$;
+\item
+$U \mapsto V_{U}$
+is a unitary representation of the compact group $G$ (usually
+$SU(N)$
+or 
+$SO(N)$);
+$V_{U}$
+commutes with
+$U_{a,A}$ 
+\item
+$b_{J}, \quad J = 1,\dots,N_{B}$ (resp. $f_{A}, \quad A = 1,\dots,N_{F}$)
+are the quantum free fields of integer (resp. half-integer) spin. We assume
+that the fields are linearly independent up to equations of motion;
+\item
+The  equations of motion do not connect distinct fields. 
+\"
+1,"\begin{itemize}
+\item
+From the compatibility of (\ref{tensor}) with Lorentz transformations it
+follows that these polynomials are Lorentz covariant.
+\item
+The equation of motion are supersymmetric invariant, i.e. if we take the 
+commutator of the supercharges
+$Q_{ja}$
+and
+$\bar{Q}_{k\bar{a}}$
+with the equations for the Bosonic fields we obtain zero modulo the equation
+of motion for the Fermionic fields and vice-versa.
+\item
+To verify the validity of (\ref{SUSY}) it is necessary and sufficient to prove
+they commute with all the fields 
+$b$ and $f$
+of the model: 
+\bea
+~[ \{ Q_{ja} , Q_{kb} \} - \epsilon_{ab} Z_{jk}, b ] = 0, \quad
+[ \{ Q_{a} , \bar{Q}_{\bar{b}} \} - 2 \sigma^{\mu}_{a\bar{b}} P_{\mu} , b ] = 0
+\nonumber \\
+~[ \{ Q_{a} , Q_{b} \} - \epsilon_{ab} Z_{jk}, f ] = 0, \quad
+[ \{ Q_{a} , \bar{Q}_{\bar{b}} \} - 2 \sigma^{\mu}_{a\bar{b}} P_{\mu} , f]  = 0;
+\eea
+this follows from (\ref{vac}) and the fact that the Hilbert space is generated 
+by vectors of the type
+\bea
+\Psi = b_{J_{1}}(x_{1}) \cdots b_{J_{p}}(x_{p}) 
+f_{A_{1}}(y_{1}) \cdots f_{A_{q}}(y_{q}) \Omega \in {\cal H}.
+\label{hilbert}
+\eea
+
+Using the (graded) Jacobi identities it follows that we must check:
+\bea  
+\left\{ Q_{ja} , [ Q_{kb}, b ] \right\}  
+- \left\{ Q_{kb} , [ b, Q_{ja} ] \right\} 
++ [ b , \epsilon_{ab} Z_{jk} ] = 0
+\nonumber \\
+\left[ Q_{ja} , \{ Q_{kb}, f \} \right] 
++ \left[ Q_{kb} , \{ f, Q_{ja} \} \right] 
++ [ f, \epsilon_{ab} Z_{jk} ] = 0
+\nonumber \\
+\left\{ Q_{ja} , [ \bar{Q}_{\bar{kb}}, b ] \right\} 
+- \{ \bar{Q}_{\bar{kb}} , [ b, Q_{ja} ] \} 
++ [ b, 2 \delta{jk} \sigma^{\mu}_{a\bar{b}} P_{\mu} ] = 0
+\nonumber \\
+\left[ Q_{ja} , \{ \bar{Q}_{\bar{kb}}, f \} \right] 
++ [ \bar{Q}_{k\bar{b}} , \{ f, Q_{ja} \} ] 
++ [ f, 2 \delta{jk} \sigma^{\mu}_{a\bar{b}} P_{\mu} ] = 0.
+\label{jacobi1}
+\eea
+\item
+Causal (anti)commutation relations are verified by the free fields
+$b$ and $f$:
+\bea
+~[ b(x), b(y) ] = - i p(\partial) D(x-y) \qquad
+\{ f(x), f(y) \} = - i q(\partial) D(x-y)
+\eea
+where $D$ is Pauli-Jordan causal distribution. Reasoning as above it follows
+that new consistency relations are valid following again from (graded) Jacobi 
+identities; the non-trivial ones are:
+\bea
+[ b(x), \{ f(y), Q_{ja} \} ] + \{ f(y), [ Q_{ja}, b(x) ] \} = 0
+\label{jacobi2}
+\eea
+\item
+If one considers higher-spin fields (more precisely
+$s \geq 1$),
+is necessary to extend 
+somewhat this framework: one considers in 
+${\cal H}$
+besides the usual positive definite scalar product a non-degenerate 
+sesqui-linear form
+$<\cdot, \cdot>$
+which becomes positively defined when restricted to a factor Hilbert space
+$Ker(Q)/Im(Q)$
+where $Q$ is some {\it gauge charge}. We denote with
+$A^{\dagger}$
+the adjoint of the operator $A$ with respect to
+$<\cdot, \cdot>$.
+
+The gauge supercharge $Q$ it is usually determined by relations of the type 
+(\ref{tensor}) involving ghost fields also, so it means that we must impose 
+consistency relations of the same type as above. Moreover, it is desirable to 
+have
+\be
+\{ Q, Q_{ja} \} = 0, \quad \{ Q, \bar{Q}_{j\bar{a}} \} = 0;
+\label{susy-gauge}
+\ee
+this implies that the supersymmetric charges
+$Q_{ja}$
+and
+$\bar{Q}_{j\bar{a}}$
+factorizes to the physical Hilbert space
+${\cal H}_{phys} = Ker(Q)/Im(Q)$.
+This implies new consistency relations of the type (\ref{jacobi1})
+with one of the supercharges replaced by the gauge charge:
+\bea  
+~\left\{ Q_{ja} , [ Q, b ] \right\} + \left\{ Q , [ Q_{ja}, b ] \right\} = 0
+\qquad
+~\left[ Q_{ja} , \{ Q, f \} \right] + \left[ Q, \{ Q_{ja}, f \} \right] = 0.
+\label{jacobi3}
+\eea
+\item
+A relation of the type (\ref{jacobi3}) must be also valid for the 
+gauge charge:
+\bea
+[ b(x), \{ f(y), Q \} ] + \{ f(y), [ {Q}, b(x) ] \} = 0.
+\label{jacobi4}
+\eea
+\item
+To have
+$Q^{2} = 0$
+we must also impose
+\be
+~\{ Q, [Q , b ] \} = 0 \qquad [ Q, \{ Q, f \} ] = 0.
+\label{jacobi5}
+\ee
+\"
+2,"\begin{itemize}
+\item
+$z, D$
+are two complex Bosonic scalar field which are 
+$SU(2)$
+scalars; 
+\item
+$F_{ab}$
+are complex Bosonic fields which are
+$SU(2)$ 
+scalars and such that
+\be
+F_{ab} = F_{ba};
+\ee
+\item
+$C_{jk}$
+are complex Bosonic fields which verify
+\be
+V_{U}^{-1} C_{jk} V_{U} = U_{jl} U_{km} C_{lm}, \quad \forall U \in SU(2)
+\ee
+and such that
+\be
+C_{jk} = C_{kj};
+\ee
+\item
+$\lambda_{ja},\quad \chi_{ja}$
+are Fermionic Dirac spinor fields and verifying
+\be
+V_{U}^{-1} \lambda_{ja} V_{U} = U_{jk} \lambda_{k}, \quad
+V_{U}^{-1} \chi_{ja} V_{U} = U_{jk} \chi_{ka}, \quad \forall U \in SU(2).
+\ee
+\"
+3,"\begin{itemize}
+\item
+$\phi_{j}, f_{j}$
+are complex Bosonic scalar field verify
+\be
+V_{U}^{-1} \phi_{j} V_{U} = U_{jk} \phi_{k}, \quad
+V_{U}^{-1} f_{j} V_{U} = U_{jk} f_{k}, \quad
+\quad \forall U \in SU(2).
+\ee
+\item
+$\psi_{a},\quad \chi_{a}$
+are Fermionic Dirac spinor fields which are $SU(2)$ scalars.
+\"
+4,"\begin{itemize}
+\item
+$\phi_{jk}$
+are complex Bosonic scalar fields antisymmetric in $j$ and $k$ and verifying
+\be
+V_{U}^{-1} \phi_{jk} V_{U} = U_{jl} U_{km} \phi_{lm}, 
+\quad \forall U \in SU(4);
+\ee
+\item
+$F_{ab}$
+are complex Bosonic fields which are $SU(4)$ scalars;
+\item
+$\lambda_{ja}$
+are spinor Fermionic fields and verifying
+\be
+V_{U}^{-1} \lambda_{ja} V_{U} = \overline{U_{jk}} \lambda_{k}, 
+\quad \forall U \in SO(4).
+\ee
+\"

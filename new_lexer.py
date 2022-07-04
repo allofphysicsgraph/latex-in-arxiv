@@ -20,14 +20,43 @@ from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 from sys import argv
 from sqlalchemy import create_engine
+import configparser
+import sqlalchemy
+import json
+import re
+import os
+import sys
+
+
+curdir = os.path.dirname(os.path.realpath(__file__))
+project_path = "/".join(curdir.split("/"))
+sys.path.insert(1, project_path)
+
+dbconfig = configparser.ConfigParser()
+dbconfig.read(f"{project_path}/config_files/db.conf")
+dbschema = f"{dbconfig['POSTGRES']['schema']},public"
 
 pd.set_option("display.max_columns", 50)
-# TODO read connection params from config file
-engine = create_engine(
-    "postgresql://latexinarxiv:3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29@localhost/latexinarxiv",
-    connect_args={"options": "-csearch_path={}".format("api")},
+
+engine = sqlalchemy.create_engine(
+    f"postgresql://{dbconfig['POSTGRES']['username']}:{dbconfig['POSTGRES']['password']}@{dbconfig['POSTGRES']['hostname']}:{dbconfig['POSTGRES']['port']}/{dbconfig['POSTGRES']['database']}",
+    connect_args={"options": "-csearch_path={}".format(dbschema)},
 )
-# set_trace()
+
+
+def print_table_names():
+    schema_with_data = dbconfig["POSTGRES"]["schema"]
+    inspector = sqlalchemy.inspect(engine)
+    tables_to_check = inspector.get_table_names(schema=schema_with_data)
+    for table_name in tables_to_check:
+        try:
+            print(table_name)
+        except Exception as e:
+            print(e)
+
+
+print_table_names()
+exit()
 
 
 def read_file(path, f_name):

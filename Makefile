@@ -76,7 +76,7 @@ newcommand:
 	/bin/bash run_new_command.sh
 
 parse_docs:
-	# xargs -i either doensn't work on dragonfly bsd or does not have the same meaning
+	# xargs -i either doesn't work on dragonfly bsd or does not have the same meaning
 	# adjust for the number of cores that you want to allocate.
 	find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 

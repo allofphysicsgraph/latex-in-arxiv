@@ -53,6 +53,14 @@ CREATE TRIGGER insert_timestamp_trigger
 	BEFORE INSERT ON api.description
 	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
 
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.displaymath
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
+CREATE TRIGGER insert_timestamp_trigger
+	BEFORE INSERT ON api.document
+	FOR EACH ROW EXECUTE FUNCTION insert_timestamp();
+
 create table api.abstract (abstract text) INHERITS (api.base);
 create table api.acknowledgments (acknowledgments text) INHERITS (api.base);
 create table api.affiliation (affiliation text) INHERITS (api.base);

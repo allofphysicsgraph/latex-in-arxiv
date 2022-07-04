@@ -255,16 +255,17 @@ if __name__ == "__main__":
     from os import listdir
     import shutil
     from random import shuffle
-
+    from sys import argv
     manual_iteration = False # set to true to review each sentence of each file where there is a regexp_token
-    files = [x for x in listdir("2003") if x.endswith(".tex")]
-    shuffle(files)
+    #files = [x for x in listdir("2003") if x.endswith(".tex")]
+    #shuffle(files)
     file_dct = dict()
-    path = "2003/"
-    files = listdir(path)
-    #path = "./"
+    #path = "2003/"
+    #files = listdir(path)
     #files = ["sound1.tex"]
-
+    path = "./"
+    files = []
+    files.append(argv[1])
     for file in files:
         try:
             print(file)
@@ -342,4 +343,10 @@ if __name__ == "__main__":
             df = pd.DataFrame()
             df[k]=v
             if not df.empty:
-                df.to_csv('data/csvs/{}_{}.csv'.format(file.replace('.tex',''),k))
+                if '/' in file:
+                    file_name = [x.strip() for x in re.split('/',file) if x.strip()]
+                    file_name = file_name[-1]
+                else:
+                    file_name = file
+                #print(file_name)
+                df.to_csv('data/csvs/{}_{}.csv'.format(file_name.replace('.tex',''),k))

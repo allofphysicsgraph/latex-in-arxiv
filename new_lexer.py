@@ -55,14 +55,13 @@ def print_table_names():
             print(e)
 
 
-print_table_names()
-exit()
+#print_table_names()
 
 
 def read_file(path, f_name):
     with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
-    clean = [x for x in data.splitlines() if not re.findall(r"^\\def", x)]
+    clean = [x for x in data.splitlines() if not re.findall(r"^\\def|^\\newcommand", x)]
     data = "\n".join(clean)
     return data
 
@@ -201,8 +200,8 @@ class Tokenizer:
             r"\\ref",
             r"\\pacs",
             r"\\label",
-            r"\\section",
         ]
+        balanced_tokens = list(set(balanced_tokens))
         print(len(balanced_tokens))
 
         balanced_tokens = [x for x in balanced_tokens if re.findall(x, self.file_data)]
@@ -386,6 +385,7 @@ if __name__ == "__main__":
             df = pd.DataFrame()
             df[k] = v
             df["filename"] = file
+            print(df.head())
             if not df.empty:
                 if "/" in file:
                     file_name = [x.strip() for x in re.split("/", file) if x.strip()]
@@ -398,4 +398,6 @@ if __name__ == "__main__":
                     df.to_csv(
                         "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
                     )
-                df.to_sql(k, engine, if_exists="append")
+                print(df.head())
+                #enable this line to save to auto save to db
+                #df.to_sql(k, engine, if_exists="append")

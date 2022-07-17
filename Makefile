@@ -37,6 +37,8 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
 	mkdir 2003_errors
+	gcc strip_non_ascii.c -o strip_non_ascii.out
+	bash pre-process-dataset.sh
 
 md5:
 	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto

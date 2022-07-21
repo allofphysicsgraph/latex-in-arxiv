@@ -6,7 +6,7 @@ int count;
 %x AUTHOR
 %%
 
-"\\author"[ ]{0,4}"{" {
+"\\author"([ ]{0,4}|\n)"{" {
 	yymore();
 	BEGIN(AUTHOR);
 }

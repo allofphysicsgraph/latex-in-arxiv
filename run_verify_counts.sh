@@ -1,4 +1,5 @@
-grep \\\\author -irl 2003|xargs -i bash verify_counts.sh \\cite "{}" |grep -v ok
+control_sequence="\\abstract"
+grep "$control_sequence" -irl 2003|xargs -i bash verify_counts.sh "$control_sequence" "{}" |grep -v ok
 
 #example output on mismatch for \\cite
 #0,1,2003/0301062.tex

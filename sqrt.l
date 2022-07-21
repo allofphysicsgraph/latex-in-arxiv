@@ -3,25 +3,25 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x SQRT
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\sqrt"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(SQRT);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
-		printf("%s\n",yytext);
+<SQRT>"{" { yymore(); balanced--;}
+<SQRT>"}" { balanced++; if(balanced){
+		//printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
 	} else { 
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<SQRT>. { yymore(); }
+<SQRT>\n { yymore(); }
 
 .	;
 \n	;

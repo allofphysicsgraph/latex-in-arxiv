@@ -3,16 +3,16 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x BIBLIOGRAPHY
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\bibliography"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(BIBLIOGRAPHY);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
+<BIBLIOGRAPHY>"{" { yymore(); balanced--;}
+<BIBLIOGRAPHY>"}" { balanced++; if(balanced){
 		printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
@@ -20,8 +20,8 @@ int count;
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<BIBLIOGRAPHY>. { yymore(); }
+<BIBLIOGRAPHY>\n { yymore(); }
 
 .	;
 \n	;

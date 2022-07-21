@@ -99,6 +99,9 @@ postgrest:
 	sudo rsync -axr api.conf /usr/local/bin/
 	cd /usr/local/bin/ && ./postgrest api.conf & 
 
+
+
+
 clean:
 	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD

@@ -5,7 +5,7 @@ int balanced;
 %x AUTHOR
 %%
 
-"\\author{" {
+"\\author"[ ]{0,4}"{" {
 	yymore();
 	BEGIN(AUTHOR);
 }
@@ -14,7 +14,10 @@ int balanced;
 <AUTHOR>"}" { balanced++; if(balanced){
 		printf("%s\n",yytext);
 		BEGIN(0);
-	}}
+	} else { 
+		yymore();
+	}
+}
 <AUTHOR>. { yymore(); }
 
 .	;

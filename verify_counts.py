@@ -12,4 +12,4 @@ def read_file(f_name):
 
 
 data = read_file(argv[2])
-print(len(re.findall(r'{}'.format(re.escape(argv[1])),data)))
+print(len(re.findall(r'{}(\s{{0,5}}|\n){{'.format(re.escape(argv[1])),data,re.DOTALL)))

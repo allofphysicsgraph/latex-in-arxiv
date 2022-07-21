@@ -129,7 +129,7 @@ class Tokenizer:
 
     def parse_document(self):
         file_data = self.file_data
-        self.dct["fractions"].extend(self.regexp_fraction_tokens)
+        self.dct["frac"].extend(self.regexp_fraction_tokens)
 
         balanced_tokens = [
             r"\\begin{acknowledgments}",
@@ -382,6 +382,17 @@ if __name__ == "__main__":
                     df.to_csv(
                         "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
                     )
-                #print(df.head())
+                # print(df.head())
                 # enable this line to save to auto save to db
+                # basic error checking
+                # verify the keys are valid to avoid some invalid matches
+                df = df[
+                    df.loc[:, k].apply(
+                        lambda x: True
+                        if re.findall(k + "{", str(x)[:20])
+                        and str(x).count("{") == str(x).count("}")
+                        and (str(x).count("{") + str(x).count("}")) % 2 == 0
+                        else False
+                    )
+                ]
                 df.to_sql(k, engine, if_exists="append")

@@ -1,31 +1,23 @@
 #!/usr/bin/python3
 
-from sys import argv
-from pudb import set_trace
-import pandas as pd
-from sys import argv
-from nltk.tokenize import mwe
-from time import sleep
-from nltk.tokenize import RegexpTokenizer
-from nltk.tokenize import mwe
-from nltk.tag import pos_tag_sents
-from collections import defaultdict
-import nltk
+import sys
+import sqlalchemy
 import re
+import pandas as pd
+import os
+import nltk
+import configparser
+from sys import argv
+from sumy.utils import get_stop_words
 from sumy.summarizers.lsa import LsaSummarizer
 from sumy.parsers.plaintext import PlaintextParser
-from sumy.nlp.stemmers import Stemmer
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.nlp.stemmers import Stemmer
-from sumy.utils import get_stop_words
-from sys import argv
 from sqlalchemy import create_engine
-import configparser
-import sqlalchemy
-import json
-import re
-import os
-import sys
+from pudb import set_trace
+from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import mwe
+from collections import defaultdict
 
 
 curdir = os.path.dirname(os.path.realpath(__file__))
@@ -40,7 +32,7 @@ pd.set_option("display.max_columns", 50)
 
 engine = sqlalchemy.create_engine(
     f"postgresql://{dbconfig['POSTGRES']['username']}:{dbconfig['POSTGRES']['password']}@{dbconfig['POSTGRES']['hostname']}:{dbconfig['POSTGRES']['port']}/{dbconfig['POSTGRES']['database']}",
-    connect_args={"options": "-csearch_path={}".format(dbschema)},
+    connect_args={"options": "-csearch_path={dbschema}"},
 )
 
 
@@ -55,11 +47,11 @@ def print_table_names():
             print(e)
 
 
-#print_table_names()
+# print_table_names()
 
 
 def read_file(path, f_name):
-    with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
+    with open(f"{path}/{f_name}", "r", encoding="ISO-8859-1") as f:
         data = f.read()
     clean = [x for x in data.splitlines() if not re.findall(r"^\\def|^\\newcommand", x)]
     data = "\n".join(clean)
@@ -124,7 +116,7 @@ class Tokenizer:
                         current_offset += 1
                         counter += 1
                         if counter > 500000:
-                            print("error on {}".format(start))
+                            print(f"error on {start}")
                             self.log_file.write(
                                 "{} error on {}".format(self.file_name, start)
                             )
@@ -292,19 +284,11 @@ def symbol_definitions(sentence):
 
 
 if __name__ == "__main__":
-    from os import listdir
     import shutil
-    from random import shuffle
-    from sys import argv
 
     to_csv = False
     manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
-    # files = [x for x in listdir("2003") if x.endswith(".tex")]
-    # shuffle(files)
-    file_dct = dict()
-    # path = "2003/"
-    # files = listdir(path)
-    # files = ["sound1.tex"]
+    file_dct = {}
     path = "./"
     files = []
     files.append(argv[1])
@@ -337,7 +321,7 @@ if __name__ == "__main__":
                         cont = 1
                         continue  # skip to the next file
                     if inp == "quit":
-                        exit(0)  # quit application
+                        sys.exit(0)  # quit application
 
                     if inp == "print":
                         # print current sentence as a pandas dataframe append second line of pos tags
@@ -399,5 +383,5 @@ if __name__ == "__main__":
                         "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
                     )
                 print(df.head())
-                #enable this line to save to auto save to db
-                #df.to_sql(k, engine, if_exists="append")
+                # enable this line to save to auto save to db
+                # df.to_sql(k, engine, if_exists="append")

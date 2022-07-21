@@ -103,6 +103,5 @@ postgrest:
 
 
 clean:
-	$(RM) lexer lex.yy.c
 	$(RM) *.o EVP_MD
-
+	$(RM) *.out

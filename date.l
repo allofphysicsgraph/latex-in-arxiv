@@ -3,16 +3,16 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x DATE
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\date"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(DATE);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
+<DATE>"{" { yymore(); balanced--;}
+<DATE>"}" { balanced++; if(balanced){
 		printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
@@ -20,8 +20,8 @@ int count;
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<DATE>. { yymore(); }
+<DATE>\n { yymore(); }
 
 .	;
 \n	;

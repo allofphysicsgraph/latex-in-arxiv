@@ -3,25 +3,25 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x REF
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\ref"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(REF);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
-		printf("%s\n",yytext);
+<REF>"{" { yymore(); balanced--;}
+<REF>"}" { balanced++; if(balanced){
+		//printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
 	} else { 
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<REF>. { yymore(); }
+<REF>\n { yymore(); }
 
 .	;
 \n	;

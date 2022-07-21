@@ -3,16 +3,16 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x ABSTRACT
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\abstract"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(ABSTRACT);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
+<ABSTRACT>"{" { yymore(); balanced--;}
+<ABSTRACT>"}" { balanced++; if(balanced){
 		printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
@@ -20,8 +20,8 @@ int count;
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<ABSTRACT>. { yymore(); }
+<ABSTRACT>\n { yymore(); }
 
 .	;
 \n	;

@@ -3,25 +3,25 @@ int balanced;
 int count;
 %}
 
-%x AUTHOR
+%x BIBITEM
 %%
 
-"\\author"([ ]{0,4}|\n)"{" {
+"\\bibitem"([ ]{0,4}|\n)"{" {
 	yymore();
-	BEGIN(AUTHOR);
+	BEGIN(BIBITEM);
 }
 
-<AUTHOR>"{" { yymore(); balanced--;}
-<AUTHOR>"}" { balanced++; if(balanced){
-		printf("%s\n",yytext);
+<BIBITEM>"{" { yymore(); balanced--;}
+<BIBITEM>"}" { balanced++; if(balanced){
+		//printf("%s\n",yytext);
 		count++;
 		BEGIN(0);
 	} else { 
 		yymore();
 	}
 }
-<AUTHOR>. { yymore(); }
-<AUTHOR>\n { yymore(); }
+<BIBITEM>. { yymore(); }
+<BIBITEM>\n { yymore(); }
 
 .	;
 \n	;

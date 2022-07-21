@@ -32,7 +32,7 @@ pd.set_option("display.max_columns", 50)
 
 engine = sqlalchemy.create_engine(
     f"postgresql://{dbconfig['POSTGRES']['username']}:{dbconfig['POSTGRES']['password']}@{dbconfig['POSTGRES']['hostname']}:{dbconfig['POSTGRES']['port']}/{dbconfig['POSTGRES']['database']}",
-    connect_args={"options": "-csearch_path={dbschema}"},
+    connect_args={"options": "-csearch_path={}".format(dbschema)},
 )
 
 
@@ -382,6 +382,6 @@ if __name__ == "__main__":
                     df.to_csv(
                         "data/csvs/{}_{}.csv".format(file_name.replace(".tex", ""), k)
                     )
-                print(df.head())
+                #print(df.head())
                 # enable this line to save to auto save to db
-                # df.to_sql(k, engine, if_exists="append")
+                df.to_sql(k, engine, if_exists="append")

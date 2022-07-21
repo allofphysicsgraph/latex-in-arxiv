@@ -5,7 +5,7 @@ int balanced;
 %x CITE
 %%
 
-"\\cite{" {
+"\\cite"[ ]{0,4}"{" {
 	yymore();
 	BEGIN(CITE);
 }
@@ -14,7 +14,10 @@ int balanced;
 <CITE>"}" { balanced++; if(balanced){
 		printf("%s\n",yytext);
 		BEGIN(0);
-	}}
+	} else { 
+		yymore();
+	}
+}
 <CITE>. { yymore(); }
 
 .	;

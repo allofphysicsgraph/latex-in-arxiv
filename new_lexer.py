@@ -289,7 +289,7 @@ if __name__ == "__main__":
     to_csv = False
     manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
     file_dct = {}
-    path = "./"
+    path = ""
     files = []
     files.append(argv[1])
     for file in files:

@@ -24,7 +24,7 @@
 
 typedef struct File {
     char *sha256;
-    int count=0;
+    int count;
     char *filePath;
 } File_type;
 
@@ -98,10 +98,12 @@ int main(int argc, char *argv[])
         z = File_search(array,sha256,array_idx);
         if(z!=-1){
             array[z]->count++;
-   	    printf("%s:%s:%d\n",array[z]->sha256,array[z]->filePath,array[z]->count);  //array_idx gets incremented in File_create
+   	    if(array[z]->count > 1){
+	     printf("%s:%s:%d\n",array[z]->sha256,array[z]->filePath,array[z]->count);  //array_idx gets incremented in File_create
+	    }
         } else {
        	    array[array_idx] = File_create(sha256, &filePath[1],ptr);
-   	    printf("%s:%s\n",array[array_idx-1]->sha256,array[array_idx-1]->filePath);  //array_idx gets incremented in File_create
+   	    //printf("%s:%s\n",array[array_idx-1]->sha256,array[array_idx-1]->filePath);  //array_idx gets incremented in File_create
 	}
 	z=-1;
     }

@@ -3,16 +3,19 @@ int balanced;
 char numerator[2048];
 char denominator[2048];
 char output[8192];
+char filename[256];
+
 %}
 
 %x	NUMERATOR
 %x 	DENOMINATOR
 %%
-"\\frac"|"\\tfrac"	{
+"\\frac{"|"\\tfrac{"	{
 			memset(numerator,'\0',2048);
 			memset(denominator,'\0',2048); 
 			memset(output,'\0',8192);
 			strcpy(output,yytext);	
+			balanced--;
 			BEGIN(NUMERATOR); 
 }
 <NUMERATOR>"{"	{ 
@@ -46,8 +49,7 @@ char output[8192];
 			balanced++; 
 			strcat(denominator,yytext);
 			if(balanced==0){
-			printf("%s%s%s\n",output,numerator,denominator);
-			printf("\n<NUMERATOR:%s>\n\n<DENOMINATOR:%s>\n",numerator,denominator);
+			printf("%s%s%s->%s\n",output,numerator,denominator,filename);
 			BEGIN(0);	
 	} else { 
 		strcat(denominator,yytext);
@@ -63,7 +65,7 @@ char output[8192];
 %%
 
 int main(int argc, char** argv){
-
+	strcat(filename,argv[1]);
 	balanced=0;	
 	yyin=fopen(argv[1],"r");
 	yylex();

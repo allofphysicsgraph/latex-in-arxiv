@@ -82,11 +82,15 @@ parse_docs:
 	# adjust for the number of cores that you want to allocate.
 	find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 
-postgres:
+postgres_build:
+	sudo apt install libreadline-dev
+	git clone https://github.com/postgres/postgres
+	cd postgres && ./configure && make && sudo make install
+
+
+postgres_db_setup:
 	#REPLACE PASSWORD
 	#database test for latex-in-arxiv
-	#git clone https://github.com/postgres/postgres
-	#cd postgres && ./configure && make && sudo make install
 	sudo -u postgres -H -- psql -c "create user latexinarxiv with password '3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29'" 
 	sudo -u postgres -H -- psql -c 'create database latexinarxiv with owner latexinarxiv;' 
 	sudo -u postgres -H -- psql -d latexinarxiv -f db_init.sql 
@@ -103,6 +107,7 @@ postgrest:
 
 
 clean:
+	find . -maxdepth 1 -name "2003_*.csv" -exec rm "{}" \; 
 	find . -type f -name "*.out" -exec rm "{}" \; 
 	$(RM) *.o EVP_MD
 	$(RM) *.out

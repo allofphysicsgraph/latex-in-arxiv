@@ -32,6 +32,26 @@ punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 
 """
+from nltk.tokenize import SExprTokenizer
+tokenizer=SExprTokenizer(parens='{}',strict=True)
+
+In [18]: for f_name in tqdm(files):
+    ...:     try:
+    ...:         data = read_file(path,f_name)
+    ...:         if data.count('{') != data.count('}'):
+    ...:             count+=1
+    ...:     except Exception as e:
+    ...:         print(e)
+    ...: 
+100%|█████████████████████████████████████████████████████████████████████████████████████████| 1019/1019 [00:01<00:00, 875.45it/s]
+
+In [19]: count
+Out[19]: 509
+
+In [20]: len(files)
+Out[20]: 1019
+
+
 curdir = os.path.dirname(os.path.realpath(__file__))
 project_path = "/".join(curdir.split("/"))
 sys.path.insert(1, project_path)
@@ -96,7 +116,7 @@ def document_summary(document, reduction_percentage):
             dct[tag] += 1
     return dct
 
-f=open("sentences__","w")
+f=open("sentences__1","w")
 storage = defaultdict(list)
 data = read_file("HEP", "DATA_1")
 for ix in range(0,len(data),1000000):
@@ -109,8 +129,9 @@ for ix in range(0,len(data),1000000):
         for sent in sentences:
             f.write(sent)
             #words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+            f.write('\n')
             #print(words)
-            #print("*" * 50)
+            f.write("*" * 50)
             #print("\n\n")
             #sleep(3)
             f.write('\n')

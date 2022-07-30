@@ -5,17 +5,17 @@ char filename[256];
 int print_count;
 %}
 
-%x PACS
+%x ADDRESS
 %%
 
-"\\pacs"([ ]{0,4}|\n)"{" {
+"\\address"([ ]{0,4}|\n)"{" {
 	yymore();
 	balanced--;
-	BEGIN(PACS);
+	BEGIN(ADDRESS);
 }
 
-<PACS>"{" { yymore(); balanced--;}
-<PACS>"}" { balanced++; if(balanced==0){
+<ADDRESS>"{" { yymore(); balanced--;}
+<ADDRESS>"}" { balanced++; if(balanced==0){
 		if(print_count==0){
 			printf("%s->%s\n",yytext,filename);
 		}
@@ -25,8 +25,8 @@ int print_count;
 		yymore();
 	}
 }
-<PACS>. { yymore(); }
-<PACS>\n { yymore(); }
+<ADDRESS>. { yymore(); }
+<ADDRESS>\n { yymore(); }
 
 .	;
 \n	;

@@ -9,11 +9,12 @@ char filename[256];
 
 "\\begin{equation}" {
 	yymore();
+	balanced--;
 	BEGIN(EQUATION);
 }
 
 <EQUATION>"\\begin{equation}" { yymore(); balanced--;}
-<EQUATION>"\\end{equation}" { balanced++; if(balanced){
+<EQUATION>"\\end{equation}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

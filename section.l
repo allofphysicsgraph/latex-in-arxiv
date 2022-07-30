@@ -9,11 +9,12 @@ char filename[256];
 
 "\\begin{section}" {
 	yymore();
+	balanced--;
 	BEGIN(SECTION);
 }
 
 <SECTION>"\\begin{section}" { yymore(); balanced--;}
-<SECTION>"\\end{section}" { balanced++; if(balanced){
+<SECTION>"\\end{section}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

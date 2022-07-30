@@ -9,11 +9,12 @@ char filename[256];
 
 "\\begin{array}" {
 	yymore();
+	balanced--;
 	BEGIN(ARRAY);
 }
 
 <ARRAY>"\\begin{array}" { yymore(); balanced--;}
-<ARRAY>"\\end{array}" { balanced++; if(balanced){
+<ARRAY>"\\end{array}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

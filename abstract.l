@@ -7,13 +7,14 @@ char filename[256];
 %x ABSTRACT
 %%
 
-"\\abstract"([ ]{0,4}|\n)"{" {
+"\\begin{abstract}" {
 	yymore();
+	balanced--;
 	BEGIN(ABSTRACT);
 }
 
-<ABSTRACT>"{" { yymore(); balanced--;}
-<ABSTRACT>"}" { balanced++; if(balanced){
+<ABSTRACT>"\\begin{abstract}" { yymore(); balanced--;}
+<ABSTRACT>"\\end{abstract}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

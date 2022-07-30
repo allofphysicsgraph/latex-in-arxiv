@@ -9,11 +9,12 @@ char filename[256];
 
 "\\date"([ ]{0,4}|\n)"{" {
 	yymore();
+	balanced--;
 	BEGIN(DATE);
 }
 
 <DATE>"{" { yymore(); balanced--;}
-<DATE>"}" { balanced++; if(balanced){
+<DATE>"}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

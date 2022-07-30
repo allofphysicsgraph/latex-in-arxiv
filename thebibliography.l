@@ -9,11 +9,12 @@ char filename[256];
 
 "\\thebibliography"([ ]{0,4}|\n)"{" {
 	yymore();
+	balanced--;
 	BEGIN(THEBIBLIOGRAPHY);
 }
 
 <THEBIBLIOGRAPHY>"{" { yymore(); balanced--;}
-<THEBIBLIOGRAPHY>"}" { balanced++; if(balanced){
+<THEBIBLIOGRAPHY>"}" { balanced++; if(balancedi==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

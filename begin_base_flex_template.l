@@ -4,17 +4,17 @@ int count;
 char filename[256];
 %}
 
-%x TITLE
+%x SECTION
 %%
 
-"\\title"([ ]{0,4}|\n)"{" {
+"\\begin{section}" {
 	yymore();
 	balanced--;
-	BEGIN(TITLE);
+	BEGIN(SECTION);
 }
 
-<TITLE>"{" { yymore(); balanced--;}
-<TITLE>"}" { balanced++; if(balanced==0){
+<SECTION>"\\begin{section}" { yymore(); balanced--;}
+<SECTION>"\\end{section}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);
@@ -22,8 +22,8 @@ char filename[256];
 		yymore();
 	}
 }
-<TITLE>. { yymore(); }
-<TITLE>\n { yymore(); }
+<SECTION>. { yymore(); }
+<SECTION>\n { yymore(); }
 
 .	;
 \n	;
@@ -37,7 +37,6 @@ int main(int argc, char** argv){
 
 	yyin=fopen(argv[1],"r");
 	yylex();
-	memset(yytext,'\0',yyleng);
 	//printf("%d",count);
 	return 0;
 }

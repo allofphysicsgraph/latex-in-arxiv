@@ -9,11 +9,12 @@ char filename[256];
 
 "\\label"([ ]{0,4}|\n)"{" {
 	yymore();
+	balanced--;
 	BEGIN(LABEL);
 }
 
 <LABEL>"{" { yymore(); balanced--;}
-<LABEL>"}" { balanced++; if(balanced){
+<LABEL>"}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

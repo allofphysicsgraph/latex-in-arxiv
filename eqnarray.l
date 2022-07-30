@@ -9,11 +9,12 @@ char filename[256];
 
 "\\begin{eqnarray}" {
 	yymore();
+	balanced--;
 	BEGIN(EQNARRAY);
 }
 
 <EQNARRAY>"\\begin{eqnarray}" { yymore(); balanced--;}
-<EQNARRAY>"\\end{eqnarray}" { balanced++; if(balanced){
+<EQNARRAY>"\\end{eqnarray}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

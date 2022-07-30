@@ -21,11 +21,14 @@ from collections import defaultdict
 from nltk.tokenize import texttiling
 from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
 from time import sleep
-#store document as a list of logical groupings, basically paragraphs
-txttlng_tokenizer = texttiling.TextTilingTokenizer(smoothing_width=50,smoothing_rounds=50000)
 
-#training a sentence tokenizer on scientific LaTeX documents.
-punkt_trainer = nltk.data.load('Punkt_LaTeX_SENT_Tokenizer.pickle')
+# store document as a list of logical groupings, basically paragraphs
+txttlng_tokenizer = texttiling.TextTilingTokenizer(
+    smoothing_width=50, smoothing_rounds=50000
+)
+
+# training a sentence tokenizer on scientific LaTeX documents.
+punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 
 """
@@ -46,6 +49,8 @@ engine = sqlalchemy.create_engine(
 
 
 """
+
+
 def print_table_names():
     schema_with_data = dbconfig["POSTGRES"]["schema"]
     inspector = sqlalchemy.inspect(engine)
@@ -59,6 +64,7 @@ def print_table_names():
 
 # print_table_names()
 
+
 def read_file(path, f_name):
     with open(f"{path}/{f_name}", "r", encoding="ISO-8859-1") as f:
         data = f.read()
@@ -67,8 +73,9 @@ def read_file(path, f_name):
     return data
 
 
-def document_summary(document,reduction_percentage):
+def document_summary(document, reduction_percentage):
     from sumy.nlp.tokenizers import Tokenizer
+
     sents = []
     tokenizer = Tokenizer("english")
     stemmer = Stemmer("english")
@@ -77,34 +84,48 @@ def document_summary(document,reduction_percentage):
     summarizer = LsaSummarizer(stemmer)
     summarizer.stop_words = stop_words
     from pudb import set_trace
-    #set_trace()
+
+    # set_trace()
     from collections import defaultdict
+
     dct = defaultdict(int)
-    #set_trace()
-    for sent in summarizer(parser.document, int(len(document.splitlines())*.88)):
-        pos_tags = ['/'.join(x) for x in nltk.pos_tag(sent.words)]
+    # set_trace()
+    for sent in summarizer(parser.document, int(len(document.splitlines()) * 0.88)):
+        pos_tags = ["/".join(x) for x in nltk.pos_tag(sent.words)]
         for tag in pos_tags:
             dct[tag] += 1
     return dct
 
+f=open("sentences__","w")
 storage = defaultdict(list)
-data = read_file('.','sound1.tex')
-groups = txttlng_tokenizer.tokenize(data)
-for group in groups:
-    sentences = tok_cls.sentences_from_text(group)
-    for sent in sentences:
-        print(sent)
-        print('*'*50)
-        print('\n\n')
-        sleep(3)
-exit(0)
-set_trace()
-set_trace()
+data = read_file("HEP", "DATA_1")
+for ix in range(0,len(data),1000000):
+    d = data[ix:ix+1000000]
+    groups = txttlng_tokenizer.tokenize(d)
+    sentences = []
+    from tqdm import tqdm
+    for group in tqdm(groups):
+        sentences = tok_cls.sentences_from_text(group)
+        for sent in sentences:
+            f.write(sent)
+            #words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+            #print(words)
+            #print("*" * 50)
+            #print("\n\n")
+            #sleep(3)
+            f.write('\n')
+f.close()
 
-words = document_summary(data,.10)
-words = sorted(words.items(),key=lambda x: -x[1])
-print(words)
 exit(0)
+#set_trace()
+#set_trace()
+trainer.__dict__['_lang_vars'].word_tokenizetrainer.__dict__['_lang_vars'].word_tokenize
+#words = document_summary(data, 0.10)
+#words = sorted(words.items(), key=lambda x: -x[1])
+#print(words)
+#exit(0)
+
+
 class Tokenizer:
     def add_new_token(self, tokenizer, string):
         tokenizer.add_mwe(r"{}".format(string))

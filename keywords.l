@@ -9,11 +9,12 @@ char filename[256];
 
 "\\keywords"([ ]{0,4}|\n)"{" {
 	yymore();
+	balanced--;
 	BEGIN(KEYWORDS);
 }
 
 <KEYWORDS>"{" { yymore(); balanced--;}
-<KEYWORDS>"}" { balanced++; if(balanced){
+<KEYWORDS>"}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);

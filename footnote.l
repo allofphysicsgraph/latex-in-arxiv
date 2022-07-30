@@ -4,17 +4,17 @@ int count;
 char filename[256];
 %}
 
-%x SECTION
+%x FOOTNOTE
 %%
 
-"\\section"([ ]{0,4}|\n)"{" {
+"\\footnote"([ ]{0,4}|\n)"{" {
 	yymore();
 	balanced--;
-	BEGIN(SECTION);
+	BEGIN(FOOTNOTE);
 }
 
-<SECTION>"{" { yymore(); balanced--;}
-<SECTION>"}" { balanced++; if(balanced==0){
+<FOOTNOTE>"{" { yymore(); balanced--;}
+<FOOTNOTE>"}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);
@@ -22,8 +22,8 @@ char filename[256];
 		yymore();
 	}
 }
-<SECTION>. { yymore(); }
-<SECTION>\n { yymore(); }
+<FOOTNOTE>. { yymore(); }
+<FOOTNOTE>\n { yymore(); }
 
 .	;
 \n	;

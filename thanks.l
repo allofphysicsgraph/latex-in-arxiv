@@ -4,17 +4,17 @@ int count;
 char filename[256];
 %}
 
-%x SECTION
+%x THANKS
 %%
 
-"\\section"([ ]{0,4}|\n)"{" {
+"\\thanks"([ ]{0,4}|\n)"{" {
 	yymore();
 	balanced--;
-	BEGIN(SECTION);
+	BEGIN(THANKS);
 }
 
-<SECTION>"{" { yymore(); balanced--;}
-<SECTION>"}" { balanced++; if(balanced==0){
+<THANKS>"{" { yymore(); balanced--;}
+<THANKS>"}" { balanced++; if(balanced==0){
 		printf("%s->%s\n",yytext,filename);
 		count++;
 		BEGIN(0);
@@ -22,8 +22,8 @@ char filename[256];
 		yymore();
 	}
 }
-<SECTION>. { yymore(); }
-<SECTION>\n { yymore(); }
+<THANKS>. { yymore(); }
+<THANKS>\n { yymore(); }
 
 .	;
 \n	;

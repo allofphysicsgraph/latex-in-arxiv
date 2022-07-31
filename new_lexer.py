@@ -20,6 +20,7 @@ from nltk.tokenize import mwe
 from collections import defaultdict
 from nltk.tokenize import texttiling
 from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+from nltk.tokenize import SExprTokenizer
 from time import sleep
 
 # store document as a list of logical groupings, basically paragraphs
@@ -30,10 +31,10 @@ txttlng_tokenizer = texttiling.TextTilingTokenizer(
 # training a sentence tokenizer on scientific LaTeX documents.
 punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
+balanced_test_tokenizer=SExprTokenizer(parens='$$',strict=True)
+
 
 """
-from nltk.tokenize import SExprTokenizer
-tokenizer=SExprTokenizer(parens='{}',strict=True)
 
 In [18]: for f_name in tqdm(files):
     ...:     try:
@@ -116,9 +117,44 @@ def document_summary(document, reduction_percentage):
             dct[tag] += 1
     return dct
 
-f=open("sentences__1","w")
-storage = defaultdict(list)
-data = read_file("HEP", "DATA_1")
+#f=open("sentences__1","w")
+#storage = defaultdict(list)
+#testing a process for replacing math latex in the sentences temporarily for the purposing of tagging
+#and then to get the structure the the phrases which define the variables in the tex files.
+#steps should include extract all math, equations, etc, determine where the variables are 
+#then find their definitions and properties. 
+
+
+grammar = "NP: {<DT>?<JJ>*<NN>{1,2}}"
+cp = nltk.RegexpParser(grammar)
+data = read_file(".", "sentences__1")
+sentences = re.split('\*'*50,data)
+for sent in sentences:
+
+    words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+    tags = nltk.pos_tag(words)
+    print(sent)
+    test = balanced_test_tokenizer.tokenize(sent)
+    if len(test) > 1:
+        regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
+        math_expressions = regexpTokenizer.tokenize(sent)
+        for tex in math_expressions:
+            sent = sent.replace(tex,"TEX_MATH")
+        if '$$' in sent:
+            regexpTokenizer = nltk.RegexpTokenizer("\$\$.*?\$\$")
+            multiline_math_expressions = regexpTokenizer.tokenize(sent)
+            for tex in multiline_math_expressions:
+                sent = sent.replace(tex,"MULTILINE_TEX_MATH")
+
+        print(sent)
+        sleep(3)
+    #result = cp.parse(tags)
+    #print(result)
+    #inp = input()
+
+
+exit(0)
+
 for ix in range(0,len(data),1000000):
     d = data[ix:ix+1000000]
     groups = txttlng_tokenizer.tokenize(d)

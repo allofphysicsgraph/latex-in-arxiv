@@ -144,8 +144,7 @@ for sent in sentences:
     tags = nltk.pos_tag(words)
     test = balanced_test_tokenizer.tokenize(
         sent
-    )  # set test = str of len > 1 if the file doesn't have any latex in it
-    # test =  'asdf'
+    )  
     if len(test) > 1:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
         math_expressions = regexpTokenizer.tokenize(sent)
@@ -163,24 +162,24 @@ for sent in sentences:
             multiline_math_expressions = regexpTokenizer.tokenize(sent)
             for tex in multiline_math_expressions:
                 sent = sent.replace(tex, "MULTILINE_TEX_MATH")
-        if sent:
-            print(sent)
-            print("*" * 50)
+    if sent:
+        print(sent)
+        print("*" * 50)
 
-            words = punkt_trainer.__dict__["_lang_vars"].word_tokenize(sent)
-            words = words[:-1] + [
-                re.sub("\.$", "", words[-1])
-            ]  # replace the punction in the last word of the sent
-            mwe_words = [x for x in mwe_eng_tokenizer.tokenize(sent) if x.strip()]
+        words = punkt_trainer.__dict__["_lang_vars"].word_tokenize(sent)
+        words = words[:-1] + [
+            re.sub("\.$", "", words[-1])
+        ]  # replace the punction in the last word of the sent
+        mwe_words = [x for x in mwe_eng_tokenizer.tokenize(sent) if x.strip()]
 
-            for word in words:
-                word_frequency_dist[word] += 1
-            print(words)
-            # print(mwe_words)
-            # print(set(words).difference(set(mwe_words)))
-            # print(set(mwe_words).difference(set(words)))
-            print("*" * 50, "\n")
-            #sleep(3)
+        for word in words:
+            word_frequency_dist[word] += 1
+        print(words)
+        # print(mwe_words)
+        # print(set(words).difference(set(mwe_words)))
+        # print(set(mwe_words).difference(set(words)))
+        print("*" * 50, "\n")
+        #sleep(3)
     # result = cp.parse(tags)
     # print(result)
     # inp = input()

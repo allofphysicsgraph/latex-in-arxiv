@@ -26,6 +26,7 @@ import pandas as pd
 from sys import argv
 from os import listdir
 import re
+pd.set_option("display.max_columns", 50)
 
 # store document as a list of logical groupings, basically paragraphs
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
@@ -36,9 +37,12 @@ txttlng_tokenizer = texttiling.TextTilingTokenizer(
 punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 balanced_test_tokenizer=SExprTokenizer(parens='$$',strict=True)
+mwe_eng_tokenizer = mwe.MWETokenizer(separator="")
+mwe_latex_tokenizer = mwe.MWETokenizer(separator="")
+mwe_latex_math_tokenizer = mwe.MWETokenizer(separator="")
 
-
-pd.set_option("display.max_columns", 50)
+def add_mwe_token(string,tokenier):
+    tokenier.add_mwe(r"{}".format(string))
 
 def read_file(path, f_name):
     with open(f"{path}/{f_name}", "r", encoding="ISO-8859-1") as f:
@@ -47,8 +51,25 @@ def read_file(path, f_name):
     data = "\n".join(clean)
     return data
 
-
 file_data = read_file('.',argv[1])
+
+english_vocab = read_file('../','english.vocab')
+english_vocab = sorted([x.strip() for x in english_vocab.splitlines()],key=lambda x: -len(x))
+
+latex_vocab = read_file('../','latex.vocab')
+latex_vocab = sorted([x.strip() for x in latex_vocab.splitlines()],key=lambda x: -len(x))
+
+latex_math_vocab = read_file('../','latex_math.vocab')
+latex_math_vocab = sorted([x.strip() for x in latex_math_vocab.splitlines()],key=lambda x: -len(x))
+
+for word in english_vocab:
+    add_mwe_token(word,mwe_eng_tokenizer)
+
+for tex in latex_vocab:
+    add_mwe_token(tex,mwe_latex_tokenizer)
+
+for tex in latex_math_vocab:
+    add_mwe_token(tex,mwe_latex_math_tokenizer)
 
 def replace_tex_with_token_name(csv_file_name,prefix,file_data): 
     with open(csv_file_name,'r') as f:
@@ -58,13 +79,24 @@ def replace_tex_with_token_name(csv_file_name,prefix,file_data):
         file_data = file_data.replace(pattern,"<T_{}_{}>".format(csv_file_name.replace(".csv",'').upper(),ix))
     return file_data
 
+csv_files = [x.strip() for x in listdir('.')]
+if 'equation.csv' in csv_files:
+    file_data = replace_tex_with_token_name('equation.csv',r'\\begin{equation}',file_data=file_data)
 
-file_data = replace_tex_with_token_name('equation.csv',r'\\begin{equation}',file_data=file_data)
-file_data = replace_tex_with_token_name('cite.csv',r'\\cite',file_data=file_data)
-file_data = replace_tex_with_token_name('author.csv',r'\\author',file_data=file_data)
-file_data = replace_tex_with_token_name('affiliation.csv',r'\\affiliation',file_data=file_data)
-file_data = replace_tex_with_token_name('usepackage.csv',r'\\usepackage',file_data=file_data)
-file_data = replace_tex_with_token_name('ref.csv',r'\\ref',file_data=file_data)
+if 'cite.csv' in csv_files:
+    file_data = replace_tex_with_token_name('cite.csv',r'\\cite',file_data=file_data)
+
+if 'autor.csv' in csv_files:
+    file_data = replace_tex_with_token_name('author.csv',r'\\author',file_data=file_data)
+
+if 'affiliation.csv' in csv_files:
+    file_data = replace_tex_with_token_name('affiliation.csv',r'\\affiliation',file_data=file_data)
+
+if 'usepackage.csv' in csv_files:
+    file_data = replace_tex_with_token_name('usepackage.csv',r'\\usepackage',file_data=file_data)
+
+if 'ref.csv' in csv_files:
+    file_data = replace_tex_with_token_name('ref.csv',r'\\ref',file_data=file_data)
 
 #testing a process for replacing math latex in the sentences temporarily for the purposing of tagging
 #and then to get the structure the the phrases which define the variables in the tex files.
@@ -79,14 +111,17 @@ tex_math = []
 word_frequency_dist = defaultdict(int)
 tex_math_seen = set()
 for group in groups:
+    #print(group)
     for sent in tok_cls.tokenize(group):
         sentences.append(sent)
 
 for sent in sentences:
-
+    #print(sent)
+    #print('*'*50)
     words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
     tags = nltk.pos_tag(words)
-    test = balanced_test_tokenizer.tokenize(sent)
+    test = balanced_test_tokenizer.tokenize(sent) #set test = str of len > 1 if the file doesn't have any latex in it
+    #test =  'asdf'
     if len(test) > 1:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
         math_expressions = regexpTokenizer.tokenize(sent)
@@ -106,27 +141,30 @@ for sent in sentences:
                 sent = sent.replace(tex,"MULTILINE_TEX_MATH")
         if sent:
             print(sent)
+            print('*'*50)
+            
             words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+            words = words[:-1]+[re.sub('\.$','',words[-1])] #replace the punction in the last word of the sent
+            mwe_words = [x for x in mwe_eng_tokenizer.tokenize(sent) if x.strip()]
+            
+
             for word in words:
                 word_frequency_dist[word]+=1
             print(words)
+            #print(mwe_words)
+            #print(set(words).difference(set(mwe_words)))
+            #print(set(mwe_words).difference(set(words)))
             print('*'*50,'\n')
-            #sleep(5)
+            sleep(3)
     #result = cp.parse(tags)
     #print(result)
     #inp = input()
 
 
-exit(0)
 
-
+words = {k:v for k,v in sorted(word_frequency_dist.items(), key=lambda x: -x[1])}
+print(words)
 exit(0)
-#set_trace()
-#set_trace()
-trainer.__dict__['_lang_vars'].word_tokenizetrainer.__dict__['_lang_vars'].word_tokenize
-#words = document_summary(data, 0.10)
-#words = sorted(words.items(), key=lambda x: -x[1])
-#print(words)
 #exit(0)
 
 

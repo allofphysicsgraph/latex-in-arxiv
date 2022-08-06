@@ -15,7 +15,7 @@ char filename[256];
 
 <EQNARRAY>"\\begin{eqnarray}" { yymore(); balanced--;}
 <EQNARRAY>"\\end{eqnarray}" { balanced++; if(balanced==0){
-		printf("%s->%s\n",yytext,filename);
+		printf("%s<T_SPLIT>%s\n",yytext,filename);
 		count++;
 		BEGIN(0);
 	} else { 

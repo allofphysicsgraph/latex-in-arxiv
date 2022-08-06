@@ -293,8 +293,8 @@ int main(int argc, char **argv)
 
 static int hashmap_print_all(void *context, struct hashmap_element_s *e) {
   //puts("print all");
-  printf("\nprint_all:%s\n",e->key);
-  //(*(int *)context)+=e->key_len;
+  printf("\nprint_all:%s\n",e<T_SPLIT>key);
+  //(*(int *)context)+=e<T_SPLIT>key_len;
   return -1;
 }
 

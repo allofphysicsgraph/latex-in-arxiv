@@ -50,6 +50,14 @@ def read_file(path, f_name):
 
 file_data = read_file('.',argv[1])
 
+with open('equation.csv','r') as f:
+    equations = f.read()
+    equations = re.findall(r'(\\begin{equation}.*?)<T_SPLIT>.*?\n',equations,re.DOTALL)
+
+for equation in equations:
+    print("EQUATION")
+    file_data = file_data.replace(equation,"<T_EQUATION>")
+
 files = [x for x in listdir('.') if x.endswith('.csv')]
 files = [x for x in files if not re.findall('abstract|equation',x)]
 for f_name in files:

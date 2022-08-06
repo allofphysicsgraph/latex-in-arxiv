@@ -52,11 +52,10 @@ file_data = read_file('.',argv[1])
 
 def replace_tex_with_token_name(csv_file_name,prefix,file_data): 
     with open(csv_file_name,'r') as f:
-        equations = f.read()
-        equations = re.findall(f'''({prefix}.*?)<T_SPLIT>.*?\n''',equations,re.DOTALL)
-
-    for equation in equations:
-        file_data = file_data.replace(equation,"<T_{}>".format(csv_file_name.replace(".csv",'').upper()))
+        csv_data = f.read()
+        patterns = re.findall(f'''({prefix}.*?)<T_SPLIT>.*?\n''',csv_data,re.DOTALL)
+    for ix,pattern in enumerate(patterns):
+        file_data = file_data.replace(pattern,"<T_{}_{}>".format(csv_file_name.replace(".csv",'').upper(),ix))
     return file_data
 
 

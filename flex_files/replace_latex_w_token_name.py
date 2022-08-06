@@ -50,29 +50,22 @@ def read_file(path, f_name):
 
 file_data = read_file('.',argv[1])
 
-with open('equation.csv','r') as f:
-    equations = f.read()
-    equations = re.findall(r'(\\begin{equation}.*?)<T_SPLIT>.*?\n',equations,re.DOTALL)
+def replace_tex_with_token_name(csv_file_name,prefix,file_data): 
+    with open(csv_file_name,'r') as f:
+        equations = f.read()
+        equations = re.findall(f'''({prefix}.*?)<T_SPLIT>.*?\n''',equations,re.DOTALL)
 
-for equation in equations:
-    print("EQUATION")
-    file_data = file_data.replace(equation,"<T_EQUATION>")
+    for equation in equations:
+        file_data = file_data.replace(equation,"<T_{}>".format(csv_file_name.replace(".csv",'').upper()))
+    return file_data
 
-files = [x for x in listdir('.') if x.endswith('.csv')]
-files = [x for x in files if not re.findall('abstract|equation',x)]
-for f_name in files:
-    print(f_name)
-    df = pd.read_csv(f_name,sep='<T_SPLIT>./',engine='python',header=None)
-    df.columns = [f_name.replace('.csv',''),'soure_filename']
-    from pudb import set_trace
-    #set_trace()
-    ROWS = df.itertuples()
-    columns = df.columns.tolist()
-    for row in list(ROWS):
-        tpl = row[1:]
-        #print(tpl)
-        file_data = file_data.replace(tpl[0],'<T_{}>'.format(columns[0].upper()))
 
+file_data = replace_tex_with_token_name('equation.csv',r'\\begin{equation}',file_data=file_data)
+file_data = replace_tex_with_token_name('cite.csv',r'\\cite',file_data=file_data)
+file_data = replace_tex_with_token_name('author.csv',r'\\author',file_data=file_data)
+file_data = replace_tex_with_token_name('affiliation.csv',r'\\affiliation',file_data=file_data)
+file_data = replace_tex_with_token_name('usepackage.csv',r'\\usepackage',file_data=file_data)
+file_data = replace_tex_with_token_name('ref.csv',r'\\ref',file_data=file_data)
 
 #testing a process for replacing math latex in the sentences temporarily for the purposing of tagging
 #and then to get the structure the the phrases which define the variables in the tex files.
@@ -91,7 +84,6 @@ for sent in sentences:
 
     words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
     tags = nltk.pos_tag(words)
-    print('*'*50,'\n')
     test = balanced_test_tokenizer.tokenize(sent)
     if len(test) > 1:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
@@ -103,19 +95,16 @@ for sent in sentences:
             multiline_math_expressions = regexpTokenizer.tokenize(sent)
             for tex in multiline_math_expressions:
                 sent = sent.replace(tex,"MULTILINE_TEX_MATH")
-
-        print(sent)
-        sleep(1)
+        if sent:
+            print(sent)
+            print('*'*50,'\n')
+            sleep(1)
     #result = cp.parse(tags)
     #print(result)
     #inp = input()
 
 
 exit(0)
-print(file_data)
-exit(0)
-exit(0)
-
 
 for ix in range(0,len(data),1000000):
     d = data[ix:ix+1000000]

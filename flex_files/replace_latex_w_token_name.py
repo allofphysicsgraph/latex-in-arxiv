@@ -180,14 +180,17 @@ for sent in sentences:
             # print(set(words).difference(set(mwe_words)))
             # print(set(mwe_words).difference(set(words)))
             print("*" * 50, "\n")
-            sleep(3)
+            #sleep(3)
     # result = cp.parse(tags)
     # print(result)
     # inp = input()
 
 
 words = {k: v for k, v in sorted(word_frequency_dist.items(), key=lambda x: -x[1])}
-print(words)
+f = open('frequency_dist','w')
+for k,v in words.items():
+    f.write(f'{k}:{v}\n')
+print("frequency dist written to frequency_dist")
 exit(0)
 # exit(0)
 
@@ -201,52 +204,6 @@ class Tokenizer:
         matched_words = set(nltk_word_list).intersection(set(self.tokens))
         unmatched_words = set(nltk_word_list).difference(set(self.tokens))
         return matched_words, unmatched_words
-
-    def balanced(self, start, s, left_symbol=r"{", right_symbol=r"}"):
-        counter = 0
-        matched = []
-        lr_match_twice = 0
-        s = re.sub(r"\\newcommand.*", "", self.file_data)
-        if "\\begin" in start:
-            match = re.findall(r"\\begin{(.*?)}", start)
-            if match:
-                match = match[0]
-                left_symbol = f"""\\begin{{{match}}}"""
-                right_symbol = f"""\\end{{{match}}}"""
-        if left_symbol != right_symbol:
-            current_offset = 0
-            balanced = 0
-            match = re.finditer(r"{}".format(start), s)
-            for m in match:
-                if m:
-                    start_offset = m.start()
-                    current_offset = m.end() + 1
-                    balanced = -1
-                    while balanced != 0:
-
-                        if (
-                            s[current_offset : current_offset + len(right_symbol)]
-                            == right_symbol
-                        ):
-                            balanced += 1
-                        if (
-                            s[current_offset : current_offset + len(left_symbol)]
-                            == left_symbol
-                        ):
-                            balanced -= 1
-                        current_offset += 1
-                        counter += 1
-                        if counter > 500000:
-                            print(f"error on {start}")
-                            self.log_file.write(
-                                "{} error on {}".format(self.file_name, start)
-                            )
-                            self.log_file.write("\n")
-                            break
-                    matched.append(s[start_offset:current_offset])
-                    start_offset = current_offset
-        counter = 0
-        return matched
 
     def parse_document(self):
         file_data = self.file_data

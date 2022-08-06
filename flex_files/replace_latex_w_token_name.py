@@ -35,7 +35,7 @@ txttlng_tokenizer = texttiling.TextTilingTokenizer(
 )
 
 # training a sentence tokenizer on scientific LaTeX documents.
-punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
+punkt_trainer = nltk.data.load("../Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 balanced_test_tokenizer = SExprTokenizer(parens="$$", strict=True)
 mwe_eng_tokenizer = mwe.MWETokenizer(separator="")

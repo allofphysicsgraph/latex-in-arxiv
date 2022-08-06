@@ -17,7 +17,7 @@ int print_count;
 <LABEL>"{" { yymore(); balanced--;}
 <LABEL>"}" { balanced++; if(balanced==0){
 		if(print_count==0){
-			printf("%s->%s\n",yytext,filename);
+			printf("%s<T_SPLIT>%s\n",yytext,filename);
 		}
 		count++;
 		BEGIN(0);

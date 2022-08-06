@@ -15,7 +15,7 @@ char filename[256];
 
 <SECTION>"\\begin{section}" { yymore(); balanced--;}
 <SECTION>"\\end{section}" { balanced++; if(balanced==0){
-		printf("%s->%s\n",yytext,filename);
+		printf("%s<T_SPLIT>%s\n",yytext,filename);
 		count++;
 		BEGIN(0);
 	} else { 

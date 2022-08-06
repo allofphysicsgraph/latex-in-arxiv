@@ -3,4 +3,5 @@ all:
 	/bin/bash run_all_flex_scripts.sh
 
 clean:
+	rm *.csv
 	rm *.out

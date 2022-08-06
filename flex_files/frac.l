@@ -49,7 +49,7 @@ char filename[256];
 			balanced++; 
 			strcat(denominator,yytext);
 			if(balanced==0){
-			printf("%s%s%s->%s\n",output,numerator,denominator,filename);
+			printf("%s%s%s<T_SPLIT>%s\n",output,numerator,denominator,filename);
 			BEGIN(0);	
 	} else { 
 		strcat(denominator,yytext);

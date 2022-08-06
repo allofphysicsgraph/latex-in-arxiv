@@ -76,6 +76,7 @@ cp = nltk.RegexpParser(grammar)
 groups = txttlng_tokenizer.tokenize(file_data)
 sentences = []
 tex_math = []
+word_frequency_dist = defaultdict(int)
 tex_math_seen = set()
 for group in groups:
     for sent in tok_cls.tokenize(group):
@@ -105,8 +106,12 @@ for sent in sentences:
                 sent = sent.replace(tex,"MULTILINE_TEX_MATH")
         if sent:
             print(sent)
+            words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+            for word in words:
+                word_frequency_dist[word]+=1
+            print(words)
             print('*'*50,'\n')
-            sleep(1)
+            #sleep(5)
     #result = cp.parse(tags)
     #print(result)
     #inp = input()
@@ -114,23 +119,6 @@ for sent in sentences:
 
 exit(0)
 
-for ix in range(0,len(data),1000000):
-    d = data[ix:ix+1000000]
-    groups = txttlng_tokenizer.tokenize(d)
-    sentences = []
-    from tqdm import tqdm
-    for group in tqdm(groups):
-        sentences = tok_cls.sentences_from_text(group)
-        for sent in sentences:
-            f.write(sent)
-            #words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
-            f.write('\n')
-            #print(words)
-            f.write("*" * 50)
-            #print("\n\n")
-            #sleep(3)
-            f.write('\n')
-f.close()
 
 exit(0)
 #set_trace()

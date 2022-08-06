@@ -75,6 +75,8 @@ cp = nltk.RegexpParser(grammar)
 
 groups = txttlng_tokenizer.tokenize(file_data)
 sentences = []
+tex_math = []
+tex_math_seen = set()
 for group in groups:
     for sent in tok_cls.tokenize(group):
         sentences.append(sent)
@@ -88,7 +90,14 @@ for sent in sentences:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
         math_expressions = regexpTokenizer.tokenize(sent)
         for tex in math_expressions:
-            sent = sent.replace(tex,"TEX_MATH")
+            if tex in tex_math_seen:
+                tex_math_index = tex_math.index(tex)
+            else:
+                tex_math.append(tex)
+                tex_math_index = tex_math.index(tex)
+                tex_math_seen.add(tex)
+
+            sent = sent.replace(tex,"<TEX_MATH_{}>".format(tex_math_index))
         if '$$' in sent:
             regexpTokenizer = nltk.RegexpTokenizer("\$\$.*?\$\$")
             multiline_math_expressions = regexpTokenizer.tokenize(sent)

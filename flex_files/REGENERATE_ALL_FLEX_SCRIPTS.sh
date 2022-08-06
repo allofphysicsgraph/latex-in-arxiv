@@ -4,7 +4,7 @@ if [[ -d flex_scripts_backup ]];
 fi
 find . -maxdepth 1 -name "*.l" -exec rsync -axr  "{}" flex_scripts_backup/ \; 
 
-arr=(address affiliation author bibitem bibliography cite date footnote keywords label pacs ref section setcounter sqrt thanks title usepackage)
+arr=(address affiliation author cite date footnote keywords label pacs ref section setcounter sqrt thanks title usepackage)
 
 
 for ((i=0;i<${#arr[*]};i++))

@@ -41,7 +41,8 @@ parse_latex(char* fileName ){
 
 	YY_BUFFER_STATE buf;
         char* buffer = ReadFile(fileName);
-        char test_buffer[100000];
+        printf("%s",buffer);
+	char test_buffer[100000];
 	memset(test_buffer,'\0',100000);
         buf = yy_scan_string(buffer);
         yy_switch_to_buffer(buf);

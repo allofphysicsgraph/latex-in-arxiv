@@ -29,6 +29,9 @@ import re
 
 pd.set_option("display.max_columns", 50)
 
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+
 # store document as a list of logical groupings, basically paragraphs
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
     smoothing_width=50, smoothing_rounds=50000

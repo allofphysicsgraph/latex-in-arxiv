@@ -7,7 +7,7 @@ int print_count;
 
 %}
 
-%x BIBITEM
+%x BIBITEM EOS
 %%
 
 "\\bibitem"([ ]{0,4}|\n)"{" {
@@ -18,17 +18,18 @@ int print_count;
 
 <BIBITEM>"{" { yymore(); balanced--;}
 <BIBITEM>"}" { balanced++; if(balanced==0){
-		if(print_count==0){
-			fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename);
-		}
-		count++;
-		BEGIN(0);
+		BEGIN(EOS);
 	} else { 
 		yymore();
 	}
 }
 <BIBITEM>. { yymore(); }
 <BIBITEM>\n { yymore(); }
+
+<EOS>\n\n { 
+			fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename); 
+}
+<EOS>. { yymore(); }
 
 .	;
 \n	;

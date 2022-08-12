@@ -60,15 +60,11 @@ koreio:
 	tar -xf kore-4.2.2.tar.gz
 	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install
 
-
-delatex:
-	git clone https://github.com/pkubowicz/opendetex.git
-	cd opendetex/ &&  make  && sudo cp delatex /usr/bin/
- 
 install_libbloom:
 	bash libbloom.sh
 
 bloom:
+	sudo apt install ncurses-dev
 	flex -Cf bloom_filter_test.l
 	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter
 

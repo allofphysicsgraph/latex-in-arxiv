@@ -13,8 +13,26 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 ### another option (that's free) is a few years of arxiv
 <https://www.cs.cornell.edu/projects/kddcup/datasets.html>
 
-## build the parser
+# build the parser
 ```
+The parser is long overdue, but in progress. 
+The scripts in flex_files work pretty well. 
+
+hashmap.h was borrowed from 
+https://github.com/sheredom/hashmap.h
+it is required for bloom_filter_test.l 
+
+I am interested in showing the important parts of a document by highlighting special words, or word phrases.
+	I tried using ncurses for this, which does work, but considering other options.  
+
+I have been exploring various options for word tokenization/segmentation -> (which is not trivial or a solved problem as far as I can tell).
+	Many tokenizers default to splitting on white spaces introduces a large number of errors.
+	Seems like building a word list is reasonable for this task.
+	Many word lists have around 250K words, most of which I am not interested in (such as peoples names, locations, abbreviations ...) 
+		maybe match as seperate classes of tokens. 
+
+
+
 make openssl
 make sampledata
 

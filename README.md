@@ -17,10 +17,7 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 ```
 make openssl
 make sampledata
-make lexer
 
-example useage  
-./lexer 2003/0301215 array
 ```
 
 ## using the Docker container

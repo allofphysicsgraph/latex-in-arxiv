@@ -5,6 +5,8 @@ char denominator[2048];
 char output[8192];
 char filename[256];
 
+char filename[256];
+char results_filename[256];
 %}
 
 %x	NUMERATOR
@@ -49,7 +51,7 @@ char filename[256];
 			balanced++; 
 			strcat(denominator,yytext);
 			if(balanced==0){
-			printf("%s%s%s<T_SPLIT>%s\n",output,numerator,denominator,filename);
+			fprintf(yyout,"%s%s%s<T_SPLIT>%s\n",output,numerator,denominator,filename);
 			BEGIN(0);	
 	} else { 
 		strcat(denominator,yytext);

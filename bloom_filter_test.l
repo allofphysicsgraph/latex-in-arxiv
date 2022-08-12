@@ -45,11 +45,11 @@ int balanced_parens(const char *data,
 
  
 FILE	*latex_fp;										/* input-file pointer */
-char	*latex_fp_file_name = "latex_vocab";		/* input-file name    */
+char	*latex_fp_file_name = "latex.vocab";		/* input-file name    */
 char  latex_tmp_buffer[100000];
 
 FILE	*fp;										/* input-file pointer */
-char	*fp_file_name = "english_vocab";		/* input-file name    */
+char	*fp_file_name = "english.vocab";		/* input-file name    */
 char  tmp_buffer[100000];
 
 YY_BUFFER_STATE flex_page_buffer;
@@ -293,7 +293,7 @@ int main(int argc, char **argv)
 
 static int hashmap_print_all(void *context, struct hashmap_element_s *e) {
   //puts("print all");
-  printf("\nprint_all:%s\n",e<T_SPLIT>key);
+  printf("\nprint_all:%s\n",e->key);
   //(*(int *)context)+=e<T_SPLIT>key_len;
   return -1;
 }

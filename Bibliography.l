@@ -22,12 +22,17 @@ JRNL "Physical Review"|"Nature Communications"
 PAPER "arXiv:"[0-9]{4}"."[0-9]{4}
 TEXT [a-zA-Z :]+
 COMMA ","
+%x LEXER
 %%
-{LBRACKET}{DIGIT}+{RBRACKET} { printf("\n\nID:%s\n",yytext);}
-{FIRST_INITIAL}{WS}+({MIDDLE_INITIAL}{WS}+)?{LAST_NAME} { printf("NAME:%s\n",yytext);}
-{LPAREN}({TEXT}{COMMA}{WS}*)?{YEAR}{RPAREN}	{ printf("year:%s\n\n",yytext);}
-{JRNL} { printf("journal:%s\n",yytext);}
-{PAPER} { printf("paper:%s\n",yytext);}
+
+\\bibitem { BEGIN(LEXER) ; }
+
+<LEXER>{LBRACKET}{DIGIT}+{RBRACKET} { printf("\n\nID:%s\n",yytext);}
+<LEXER>{FIRST_INITIAL}{WS}+({MIDDLE_INITIAL}{WS}+)?{LAST_NAME} { printf("NAME:%s\n",yytext);}
+<LEXER>{LPAREN}({TEXT}{COMMA}{WS}*)?{YEAR}{RPAREN}	{ printf("year:%s\n\n",yytext);}
+<LEXER>{JRNL} { printf("journal:%s\n",yytext);}
+<LEXER>{PAPER} { printf("paper:%s\n",yytext);}
+<LEXER>. { printf("%s",yytext); }
 
 [ ]+"arXiv," { BEGIN(arxiv); }
 <arxiv>[ ]+ ; 

@@ -40,10 +40,6 @@ sampledata:
 	gcc strip_non_ascii.c -o strip_non_ascii.out
 	bash pre-process-dataset.sh
 
-md5:
-	gcc EVP_MD.c -Iopenssl/include/ -Lopenssl/ -lcrypto
-
-
 curl:
 	git clone https://github.com/curl/curl
 	cd curl && mkdir build && cd build && cmake .. && make && make install
@@ -70,8 +66,8 @@ bloom:
 
 
 newcommand:
-	gcc -Wall -Wunused -o newcommand newcommand.c
-	/bin/bash run_new_command.sh
+	gcc -Wall -Wunused -o newcommand utils/newcommand.c
+	/bin/bash utils/run_new_command.sh
 
 parse_docs:
 	# xargs -i either doesn't work on dragonfly bsd or does not have the same meaning

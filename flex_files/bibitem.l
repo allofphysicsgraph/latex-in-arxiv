@@ -25,12 +25,20 @@ int print_count;
 }
 <BIBITEM>. { yymore(); }
 <BIBITEM>\n { yymore(); }
-
+<EOS>"\\bibitem"([ ]{0,4}|\n)"{" { 
+	count++; 
+	yymore();
+	balanced--;
+	BEGIN(BIBITEM);
+}
 <EOS>\n\n {
 			count++; 
 			fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename); 
 }
+<EOS>\n {
+			fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename); 
 
+}
 <EOS>\\end\{thebibliography\}	{ BEGIN(0); }
 
 <EOS>. { yymore(); }

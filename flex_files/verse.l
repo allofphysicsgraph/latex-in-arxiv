@@ -8,6 +8,7 @@ int print_count;
 
 %x VERSE
 %%
+\\newcommand.*	;
 
 "\\begin{verse}" {
 	yymore();

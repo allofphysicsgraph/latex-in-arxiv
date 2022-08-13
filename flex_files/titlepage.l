@@ -4,36 +4,28 @@ int count;
 char filename[256];
 char results_filename[256];
 int print_count;
-
 %}
 
-%x BIBITEM EOS
+%x TITLEPAGE
 %%
 
-"\\bibitem"([ ]{0,4}|\n)"{" {
+"\\begin{titlepage}" {
 	yymore();
 	balanced--;
-	BEGIN(BIBITEM);
+	BEGIN(TITLEPAGE);
 }
 
-<BIBITEM>"{" { yymore(); balanced--;}
-<BIBITEM>"}" { balanced++; if(balanced==0){
-		BEGIN(EOS);
+<TITLEPAGE>"\\begin{titlepage}" { yymore(); balanced--;}
+<TITLEPAGE>"\\end{titlepage}" { balanced++; if(balanced==0){
+		fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename);
+		count++;
+		BEGIN(0);
 	} else { 
 		yymore();
 	}
 }
-<BIBITEM>. { yymore(); }
-<BIBITEM>\n { yymore(); }
-
-<EOS>\n\n {
-			count++; 
-			fprintf(yyout,"%s<T_SPLIT>%s\n",yytext,filename); 
-}
-
-<EOS>\\end\{thebibliography\}	{ BEGIN(0); }
-
-<EOS>. { yymore(); }
+<TITLEPAGE>. { yymore(); }
+<TITLEPAGE>\n { yymore(); }
 
 .	;
 \n	;
@@ -60,4 +52,5 @@ int main(int argc, char** argv){
 		printf("%d",count);
 	}
 	return 0;
+
 }

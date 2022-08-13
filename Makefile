@@ -37,8 +37,8 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
 	tar -xf hep-th-2003.tar.gz
 	mkdir 2003_errors
-	gcc strip_non_ascii.c -o strip_non_ascii.out
-	bash pre-process-dataset.sh
+	gcc utils/strip_non_ascii.c -o strip_non_ascii.out
+	bash utils/pre-process-dataset.sh
 
 curl:
 	git clone https://github.com/curl/curl
@@ -72,7 +72,9 @@ newcommand:
 parse_docs:
 	# xargs -i either doesn't work on dragonfly bsd or does not have the same meaning
 	# adjust for the number of cores that you want to allocate.
-	find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
+	# decompress if the file exists
+	find . -maxdepth 1 -type f -name "Punkt_LaTeX_SENT_Tokenizer.pickle.xz" -exec xz -d "{}" \;
+	#find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 
 postgres_build:
 	sudo apt install libreadline-dev

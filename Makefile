@@ -41,17 +41,19 @@ sampledata:
 	bash utils/pre-process-dataset.sh
 
 curl:
+	# Dependency for Kore, I prefer to build from source as a learning tool.
 	git clone https://github.com/curl/curl
 	cd curl && mkdir build && cd build && cmake .. && make && sudo make install
 
-#version change to 1.1.1 for koreio
+
 openssl:
+	# Version change to 1.1.1 for kore
 	wget https://www.openssl.org/source/openssl-1.1.1p.tar.gz
 	tar -xf openssl-1.1.1p.tar.gz
 	cd openssl-1.1.1p && ./config && make && sudo make install && sudo ldconfig
 
-# Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
-koreio:
+Kore:
+	# Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
 	wget https://kore.io/releases/kore-4.2.2.tar.gz --no-check-certificate
 	tar -xf kore-4.2.2.tar.gz
 	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install

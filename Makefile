@@ -90,7 +90,10 @@ postgres_db_setup:
 	sudo -u postgres -H -- psql -c "create user latexinarxiv with password '3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29'" 
 	sudo -u postgres -H -- psql -c 'create database latexinarxiv with owner latexinarxiv;' 
 	sudo -u postgres -H -- psql -d latexinarxiv -f db_init.sql 
-	
+	sudo sed -i 's/5433/5432/g' /etc/postgresql/14/main/postgresql.conf	
+	sudo service postgresql restart
+
+
 postgrest:
 	# REST Api for postgres
 	wget https://github.com/PostgREST/postgrest/releases/download/v9.0.1/postgrest-v9.0.1-linux-static-x64.tar.xz
@@ -98,8 +101,6 @@ postgrest:
 	sudo rsync -axr postgrest /usr/local/bin/
 	sudo rsync -axr config_files/api.conf /usr/local/bin/
 	cd /usr/local/bin/ && ./postgrest api.conf & 
-
-
 
 
 clean:

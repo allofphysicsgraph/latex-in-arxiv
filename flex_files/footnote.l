@@ -18,6 +18,9 @@ int print_count;
 %x FOOTNOTE
 %%
 
+\\newcommand.* ;
+\\def.*	;
+
 "\\footnote"([ ]{0,4}|\n)"{" {
 	yymore();
 	balanced--;

@@ -42,7 +42,7 @@ sampledata:
 
 curl:
 	git clone https://github.com/curl/curl
-	cd curl && mkdir build && cd build && cmake .. && make && make install
+	cd curl && mkdir build && cd build && cmake .. && make && sudo make install
 
 #version change to 1.1.1 for koreio
 openssl:

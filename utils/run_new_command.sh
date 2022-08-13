@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ ! -d 2003 ];
+then
+	make sampledata;
+fi
+	ls 
 
 while read -r f;
 	do

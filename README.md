@@ -23,13 +23,15 @@ https://github.com/sheredom/hashmap.h
 it is required for bloom_filter_test.l 
 
 I am interested in showing the important parts of a document by highlighting special words, or word phrases.
-	I tried using ncurses for this, which does work, but considering other options.  
+Currently using ncurses for this task.
 
 I have been exploring various options for word tokenization/segmentation -> (which is not trivial or a solved problem as far as I can tell).
-	Many tokenizers default to splitting on white spaces introduces a large number of errors.
-	Seems like building a word list is reasonable for this task.
-	Many word lists have around 250K words, most of which I am not interested in (such as peoples names, locations, abbreviations ...) 
-		maybe match as seperate classes of tokens. 
+Many tokenizers default to splitting on white spaces introducing errors.
+Seems like building a word list is reasonable for this task.
+PunktTrainer from NLTK works well for building a tokenizer.
+
+Many word lists I have seen have words for (such as peoples names, locations, abbreviations ...) 
+I would like to not include them in the english.vocab but match them in their own classes of tokens. 
 
 
 

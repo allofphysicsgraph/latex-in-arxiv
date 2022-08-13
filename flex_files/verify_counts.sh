@@ -3,6 +3,7 @@ flex_file_name=$(echo "$1".out)
 python_count="$(./verify_counts.py "$1" "$2")"
 flex_count="$(./$flex_file_name $2 --count)"
 control_sequence="$(echo $2|tr -d '\\')"
+echo $control_sequence
 if [[ $python_count != $flex_count ]];
 then 
    echo  $python_count,$flex_count,$2,$control_sequence

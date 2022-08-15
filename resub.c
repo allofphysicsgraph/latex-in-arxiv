@@ -5,23 +5,14 @@
 #include <string.h>
 #include <regex.h>
 #define MAX_FILE_SIZE 10000
-void resub(char *buffer, char *pattern,char* replacement); 
+#include "globals.h"
+
 char results[1024];
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  main
- *  Description:  main function
- * =====================================================================================
- */
-	int
-main ( int argc, char *argv[] )
-{
-	memset(results,'\0',1024);
-	resub("hello this is a pattern:       test:    again",":\\s+",": ");
-	return EXIT_SUCCESS;
-}		/* ----------  end of function main  ---------- */
-
-
+/*	
+*	memset(results,'\0',1024);
+*	resub("hello this is a pattern:       test:    again",":\\s+",": ");
+*	printf("%s",results);
+*/
 
 void resub(char *buffer, char *pattern,char* replacement) {
   int current_offset = 0;
@@ -46,7 +37,6 @@ void resub(char *buffer, char *pattern,char* replacement) {
       break;
     }
   }
-  printf("%s\n", results);
   regfree(&preg);
 }
 

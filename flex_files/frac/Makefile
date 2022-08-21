@@ -15,8 +15,3 @@ base:
 	./frac.out ../../sound1.tex
 
 
-clean:
-	rm *.out
-	rm *.csv
-	rm *~
-	rm .*~

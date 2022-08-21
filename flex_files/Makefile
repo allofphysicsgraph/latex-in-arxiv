@@ -5,6 +5,8 @@ all:
 	#python replace_latex_w_token_named.py sound1.tex
 
 clean:
-	rm *.tex
-	rm *.csv
-	rm *.out
+	find . -type f -name "*.out" -exec rm "{}" \; 
+	find . -type f -name "*.csv" -exec rm "{}" \; 
+	find . -type f -name "*.tex" -exec rm "{}" \; 
+	find . -type f -name "*~" -exec rm "{}" \; 
+	find . -type f -name ".*~" -exec rm "{}" \; 

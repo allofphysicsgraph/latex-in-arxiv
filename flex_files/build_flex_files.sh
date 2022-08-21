@@ -1,3 +1,7 @@
+cd frac
+make base
+cp frac.out ../
+cd ..
 while read f;
 do flex -Cf "$f".l;
 	echo $f

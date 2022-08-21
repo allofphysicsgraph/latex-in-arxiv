@@ -11,7 +11,7 @@ install_sds:
 
 base:
 	flex -CFa scanner.l
-	gcc -g -O3 lex.S1_.c resub.c main.c -lfl -o frac.out 
+	gcc -g -O3 lex.Frac_.c resub.c main.c -lfl -o frac.out 
 	./frac.out ../../sound1.tex
 
 

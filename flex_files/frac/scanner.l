@@ -11,7 +11,7 @@ char results_filename[256];
 %}
 
 %option header="base_flex.h"
-%option prefix="S1_"
+%option prefix="Frac_"
 %option 8bit nounput nomain noyywrap noinput
 %option warn stack noyy_top_state
 
@@ -58,7 +58,7 @@ char results_filename[256];
 			balanced++; 
 			strcat(denominator,yytext);
 			if(balanced==0){
-			fprintf(S1_out,"%s%s%s<T_SPLIT>%s\n",output,numerator,denominator,filename);
+			fprintf(Frac_out,"%s%s%s<T_SPLIT>%s\n",output,numerator,denominator,filename);
 			BEGIN(0);	
 	} else { 
 		strcat(denominator,yytext);

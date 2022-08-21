@@ -5,5 +5,6 @@ all:
 	#python replace_latex_w_token_named.py sound1.tex
 
 clean:
+	rm *.tex
 	rm *.csv
 	rm *.out

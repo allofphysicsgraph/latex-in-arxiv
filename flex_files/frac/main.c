@@ -65,18 +65,12 @@ buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 if (buffer != (void *)-1) {
   yybuffer buff1; // create a new buffer
   
-  buff1 = Frac__scan_string(buffer); // read string into buff1
-  Frac__switch_to_buffer(buff1);     // switch to the new buffer
-  Frac_out=fopen(results_filename,"a+");
-  Frac_lex();                        // run the lexer defined in scanner.l
-  Frac__delete_buffer(buff1);        // delete the buffer
 
-
-buff1 = Abstract__scan_string(buffer);
-Abstract__switch_to_buffer(buff1);
-Abstract_out = fopen("abstract.csv", "a+");
-Abstract_lex();
-Abstract__delete_buffer(buff1);
+buff1 = Abstract__scan_string(buffer);      // read string into buff1
+Abstract__switch_to_buffer(buff1);          // switch to the new buffer
+Abstract_out = fopen("abstract.csv", "a+"); // save results to csv named here
+Abstract_lex();                             // run lexer defined in abstract.l
+Abstract__delete_buffer(buff1);             // delete buffer
 
 buff1 = Author__scan_string(buffer);
 Author__switch_to_buffer(buff1);

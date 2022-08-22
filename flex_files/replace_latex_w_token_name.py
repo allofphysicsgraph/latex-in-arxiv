@@ -34,7 +34,7 @@ nltk.download('averaged_perceptron_tagger')
 
 # store document as a list of logical groupings, basically paragraphs
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
-    smoothing_width=50, smoothing_rounds=50000
+    smoothing_width=75, smoothing_rounds=10000
 )
 
 # training a sentence tokenizer on scientific LaTeX documents.

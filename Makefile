@@ -42,6 +42,7 @@ sampledata:
 
 curl:
 	# Dependency for Kore, I prefer to build from source as a learning tool.
+	sudo apt install cmake 
 	git clone https://github.com/curl/curl
 	cd curl && mkdir build && cd build && cmake .. && make && sudo make install
 

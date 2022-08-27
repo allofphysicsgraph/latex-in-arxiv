@@ -15,6 +15,10 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 
 # build the parser
 ```
+make openssl
+make curl
+make kore
+
 The parser is long overdue, but in progress. 
 The scripts in flex_files work pretty well. 
 

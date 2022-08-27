@@ -103,6 +103,11 @@ postgrest:
 	sudo rsync -axr config_files/api.conf /usr/local/bin/
 	cd /usr/local/bin/ && ./postgrest api.conf & 
 
+RedisGraph:
+	git clone --recurse-submodules -j8 https://github.com/RedisGraph/RedisGraph.git
+	cd RedisGraph
+	make
+	sudo make install
 
 clean:
 	find . -maxdepth 1 -name "2003_*.csv" -exec rm "{}" \; 

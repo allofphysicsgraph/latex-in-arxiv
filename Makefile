@@ -103,6 +103,10 @@ postgrest:
 	sudo rsync -axr config_files/api.conf /usr/local/bin/
 	cd /usr/local/bin/ && ./postgrest api.conf & 
 
+test_vocab:
+	python test.py |tr ',' '\n'|sed -r 's/^\s+//g'|grep -v '\\' |tr -d "'" |awk 'length($1)>3' |grep -v '=' |grep -v '[0-9]'|grep -v '^\-'
+	
+
 RedisGraph:
 	#docker run -p 6379:6379 -it --rm redislabs/redisgraph
 	git clone --recurse-submodules -j8 https://github.com/RedisGraph/RedisGraph.git

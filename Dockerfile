@@ -7,6 +7,8 @@ FROM phusion/baseimage:master
 
 RUN apt-get update && \
     apt-get install -y \
+	sudo \
+	latexml \
 	 wget \
          zip \
          vim \
@@ -58,30 +60,14 @@ RUN pip3 install -r requirements.txt
 RUN python3 -m nltk.downloader punkt
 RUN python3 -m nltk.downloader averaged_perceptron_tagger 
 
-RUN git clone https://github.com/brucemiller/LaTeXML
-WORKDIR LaTeXML
-RUN    perl -MCPAN -e 'install XML::LibXML'
-RUN    perl -MCPAN -e 'install XML::LibXSLT'
-RUN    perl -MCPAN -e 'install XML::LibXSLT'
-RUN    perl -MCPAN -e 'install Parse::RecDescent'
-RUN    perl -MCPAN -e 'install Image::Magick'
-RUN    perl -MCPAN -e 'install Pod::Parser'
-RUN    perl -MCPAN -e 'install IO::String'
-RUN    perl -MCPAN -e 'install Image::Size'
-RUN    perl -MCPAN -e 'install JSON::XS'
-RUN    perl -MCPAN -e 'install Text::Unidecode'
-RUN    echo install -f Archive::Zip |cpan
-RUN    perl Makefile.PL
-RUN    make
-RUN    make test
-RUN    make install
-
 WORKDIR /opt/
-
 
 WORKDIR /opt/
 RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
+RUN make openssl
+RUN make curl
+RUN make Kore
 RUN make sampledata
 #RUN make install_libbloom
 #RUN make bloom

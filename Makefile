@@ -34,7 +34,7 @@ dockermac_run:
 
 
 sampledata:
-	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
+	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz --no-check-certificate
 	tar -xf hep-th-2003.tar.gz
 	mkdir 2003_errors
 	gcc utils/strip_non_ascii.c -o strip_non_ascii.out

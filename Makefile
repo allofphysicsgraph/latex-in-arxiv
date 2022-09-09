@@ -14,8 +14,9 @@ help:
 	@echo "         for Mac"
 	@echo "== inside the container =="
 	@echo "make openssl"
+	@echo "make curl"
+	@echo "make Kore"
 	@echo "make sampledata"
-	@echo "make lexer"
 
 
 # Docker on linux
@@ -39,6 +40,7 @@ sampledata:
 	mkdir 2003_errors
 	gcc utils/strip_non_ascii.c -o strip_non_ascii.out
 	bash utils/pre-process-dataset.sh
+	#time find 2003 -type f -name "*.tex" |xargs -i -P12 latexml_tex2xml2html.sh "{}" 
 
 curl:
 	# Dependency for Kore, I prefer to build from source as a learning tool.
@@ -106,6 +108,8 @@ postgrest:
 test_vocab:
 	python test.py |tr ',' '\n'|sed -r 's/^\s+//g'|grep -v '\\' |tr -d "'" |awk 'length($1)>3' |grep -v '=' |grep -v '[0-9]'|grep -v '^\-'
 	
+
+
 
 RedisGraph:
 	#docker run -p 6379:6379 -it --rm redislabs/redisgraph

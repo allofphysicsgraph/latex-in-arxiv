@@ -56,9 +56,9 @@ openssl:
 
 Kore:
 	# Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
-	wget https://kore.io/releases/kore-4.2.2.tar.gz --no-check-certificate
-	tar -xf kore-4.2.2.tar.gz
-	cd kore-4.2.2 && make TLS_BACKEND=none PYTHON=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install
+	wget https://kore.io/releases/kore-4.2.3.tar.gz --no-check-certificate
+	tar -xf kore-4.2.3.tar.gz
+	cd kore-4.2.3 && make TLS_BACKEND=none PGSQL=1 PYTHON=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install
 
 install_libbloom:
 	bash libbloom.sh

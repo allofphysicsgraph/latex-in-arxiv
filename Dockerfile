@@ -7,6 +7,7 @@ FROM phusion/baseimage:master
 
 RUN apt-get update && \
     apt-get install -y \
+	postgresql-server-dev-all \
 	sudo \
 	latexml \
 	 wget \

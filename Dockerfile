@@ -49,6 +49,7 @@ WORKDIR /opt/
 RUN apt-get install -y build-essential flex bison
 
 RUN echo "alias python=python3" > /root/.bashrc
+RUN echo "export PATH=$PATH:/usr/lib/postgresql/12/bin/ >> /root/.bashrc"
 #RUN /bin/bash -l /root/.bashrc
 
 #RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
@@ -70,6 +71,8 @@ RUN make openssl
 RUN make curl
 RUN make Kore
 RUN make sampledata
+RUN mkdir /dev/shm/db
+RUN chown postgres -R /dev/shm/db
 #RUN make install_libbloom
 #RUN make bloom
 

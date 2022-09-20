@@ -80,11 +80,9 @@ parse_docs:
 	find . -maxdepth 1 -type f -name "Punkt_LaTeX_SENT_Tokenizer.pickle.xz" -exec xz -d "{}" \;
 	#find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 
-postgres_build:
+postgres:
 	sudo apt install libreadline-dev
-	git clone https://github.com/postgres/postgres
-	cd postgres && ./configure && make && sudo make install
-
+	sudo apt install postgresql-server-dev-all
 
 postgres_db_setup:
 	#REPLACE PASSWORD

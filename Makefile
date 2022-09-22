@@ -106,7 +106,9 @@ test_vocab:
 	python test.py |tr ',' '\n'|sed -r 's/^\s+//g'|grep -v '\\' |tr -d "'" |awk 'length($1)>3' |grep -v '=' |grep -v '[0-9]'|grep -v '^\-'
 	
 
-
+webapp:
+	
+	cd websocket/assets && tar -xf HTML.tar.xz && cd .. && make
 
 RedisGraph:
 	#docker run -p 6379:6379 -it --rm redislabs/redisgraph

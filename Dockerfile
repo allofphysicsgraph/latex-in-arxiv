@@ -71,12 +71,13 @@ COPY .  /opt/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN make openssl
 RUN make Kore
-RUN make sampledata
-RUN mkdir /dev/shm/db
-RUN chown postgres -R /dev/shm/db
+#RUN make sampledata
+RUN mkdir -p /dev/shm/db
+RUN tar -xf /opt/latex-in-arxiv/websocket/assets/HTML.tar.xz
+#RUN chown postgres -R /dev/shm/db
 #RUN make install_libbloom
 #RUN make bloom
-
+RUN make webapp
 #RUN ./bloom_filter sound1.tex
 
 #RUN git clone https://github.com/dankamongmen/notcurses

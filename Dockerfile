@@ -7,6 +7,7 @@ FROM phusion/baseimage:master
 
 RUN apt-get update && \
     apt-get install -y \
+	libcurl4-openssl-dev \
 	postgresql-server-dev-all \
 	sudo \
 	latexml \
@@ -65,10 +66,10 @@ RUN python3 -m nltk.downloader averaged_perceptron_tagger
 WORKDIR /opt/
 
 WORKDIR /opt/
-RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
+#RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
+COPY .  /opt/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN make openssl
-RUN make curl
 RUN make Kore
 RUN make sampledata
 RUN mkdir /dev/shm/db

@@ -23,7 +23,7 @@ help:
 docker:
 	sudo service docker start
 	sudo docker build -t $(mytag) .
-	sudo docker run -it --rm $(mytag) /bin/bash
+	sudo docker run -it --publish 8888:8888 --rm $(mytag)
 
 # Docker on Mac
 docmac: dockermac_build dockermac_run

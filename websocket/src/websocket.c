@@ -14,12 +14,22 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <kore/kore.h>
+#include <ctype.h>
+#include <dirent.h>
+#include <err.h>
+#include <errno.h>
 #include <kore/http.h>
-#include "scanner.h"
+#include <kore/kore.h>
+#include <regex.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "assets.h"
 #include "file_utils.h"
-#include <ctype.h>
+#include "scanner.h"
 #define MAX_FILE_COUNT 10000
 
 int		page(struct http_request *);

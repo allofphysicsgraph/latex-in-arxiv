@@ -77,7 +77,6 @@ RUN tar -xf /opt/latex-in-arxiv/websocket/assets/HTML.tar.xz
 #RUN chown postgres -R /dev/shm/db
 #RUN make install_libbloom
 #RUN make bloom
-RUN make webapp
 #RUN ./bloom_filter sound1.tex
 
 #RUN git clone https://github.com/dankamongmen/notcurses
@@ -90,5 +89,5 @@ RUN make webapp
 #RUN make install
 #RUN ldconfig 
 
-
-
+EXPOSE 8888
+ENTRYPOINT [ "./entry.sh" ]

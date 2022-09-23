@@ -118,6 +118,7 @@ int main(int argc, char **argv) {
   i = 0;
   while (array[i] != NULL) {
     printf("%s\n", array[i]);
+    free(array[i]);
     i++;
   }
   return 0;

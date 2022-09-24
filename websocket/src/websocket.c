@@ -14,23 +14,12 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <ctype.h>
-#include <dirent.h>
-#include <err.h>
-#include <errno.h>
-#include <kore/http.h>
 #include <kore/kore.h>
-#include <regex.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include <kore/http.h>
+#include "scanner.h"
 #include "assets.h"
 #include "file_utils.h"
-#include "scanner.h"
-#define MAX_FILE_COUNT 10000
+#include <ctype.h>
 
 int		page(struct http_request *);
 int		page_ws_connect(struct http_request *);
@@ -63,31 +52,6 @@ parse_latex(char* fileName ){
         fclose(fp);	
 }
 
-void find_files(){
-  char *array[MAX_FILE_COUNT];
-  int i = 0;
-  int array_index = 0;
-  memset(array, 0, sizeof(array));
-  int r = walk_dir(".", "\\.c$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
-  switch (r) {
-  case WALK_OK:
-    break;
-  case WALK_BADIO:
-    printf("IO error");
-  case WALK_BADPATTERN:
-    printf("Bad pattern");
-  case WALK_NAMETOOLONG:
-    printf("Filename too long");
-  default:
-    printf("Unknown error?");
-  }
-  i = 0;
-  while (array[i] != NULL) {
-    printf("%s\n", array[i]);
-    free(array[i]);
-    i++;
-  }
-}
 
 void
 websocket_message(struct connection *c, u_int8_t op, void *data, size_t len)

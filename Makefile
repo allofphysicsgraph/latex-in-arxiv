@@ -83,6 +83,7 @@ parse_docs:
 postgres:
 	sudo apt install libreadline-dev
 	sudo apt install postgresql-server-dev-all
+	sudo apt install postgresql
 
 postgres_db_setup:
 	#REPLACE PASSWORD

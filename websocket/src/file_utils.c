@@ -11,6 +11,7 @@
 #include	<stdlib.h>
 #include <stdio.h>
 #include "enum.h"
+#define MAX_FILE_COUNT 100000
 
 //rosetta code
 char *ReadFile(char *filename)
@@ -121,3 +122,30 @@ int walk_dir(char *dname, char *pattern, int spec, char* array[], int array_inde
 	return res;
 }
 
+void file_search(){
+
+  char *array[MAX_FILE_COUNT];
+  int i = 0;
+  int array_index = 0;
+  memset(array, 0, sizeof(array));
+  int r = walk_dir(".", "\\.c$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
+  switch (r) {
+  case WALK_OK:
+    break;
+  case WALK_BADIO:
+    printf("IO error");
+  case WALK_BADPATTERN:
+    printf("Bad pattern");
+  case WALK_NAMETOOLONG:
+    printf("Filename too long");
+  default:
+    printf("Unknown error?");
+  }
+  i = 0;
+  while (array[i] != NULL) {
+    printf("%s\n", array[i]);
+    free(array[i]);
+    i++;
+  }
+
+}

@@ -21,6 +21,13 @@
 #include "file_utils.h"
 #include <ctype.h>
 
+
+#include <kore/seccomp.h>
+
+KORE_SECCOMP_FILTER("tasks",
+	KORE_SYSCALL_ALLOW(getdents64),
+);
+
 int		page(struct http_request *);
 int		page_ws_connect(struct http_request *);
 
@@ -70,6 +77,7 @@ websocket_disconnect(struct connection *c)
 int
 page(struct http_request *req)
 {
+	file_search();
 	http_response_header(req, "content-type", "text/html");
 	http_response(req, 200, asset_frontend_html, asset_len_frontend_html);
 

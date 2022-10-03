@@ -27,7 +27,7 @@
 #include <kore/pgsql.h>
 
 int			init(int);
-int			page(struct http_request *);
+int			page2(struct http_request *);
 
 /* Called when our module is loaded (see config) */
 int
@@ -41,7 +41,7 @@ init(int state)
 
 /* Page handler entry point (see config) */
 int
-page(struct http_request *req)
+page2(struct http_request *req)
 {
 	struct kore_pgsql	sql;
 	char			*name;

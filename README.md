@@ -19,6 +19,9 @@ make openssl
 make curl  
 make postgres  
 make Kore  
+cd websocket && make  
+
+
 
 The parser is long overdue, but in progress. 
 The scripts in flex_files work pretty well. 

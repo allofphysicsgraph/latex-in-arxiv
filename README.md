@@ -29,8 +29,9 @@ it is required for bloom_filter_test.l
 I am interested in showing the important parts of a document by highlighting special words, or word phrases.
 Currently using ncurses for this task.
 
-I have been exploring various options for word tokenization/segmentation -> (which is not trivial or a solved problem as far as I can tell).
-Many tokenizers default to splitting on white spaces introducing errors.
+Currently exploring various options for word tokenization/segmentation 
+	(which is not trivial or a solved problem as far as I can tell).
+Many tokenizers default to splitting on white spaces often introducing errors.
 Seems like building a word list is reasonable for this task.
 PunktTrainer from NLTK works well for building a tokenizer.
 
@@ -39,8 +40,12 @@ I would like to not include them in the english.vocab but match them in their ow
 
 
 
-make openssl
-make sampledata
+make openssl  
+make curl  
+make postgres  
+make Kore  
+make sampledata  
+
 
 ```
 

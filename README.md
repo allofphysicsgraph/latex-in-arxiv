@@ -19,8 +19,7 @@ make openssl
 make curl  
 make postgres  
 make Kore  
-cd websocket && make  
-
+make webapp
 
 
 The parser is long overdue, but in progress. 

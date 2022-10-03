@@ -108,8 +108,9 @@ test_vocab:
 	
 
 webapp:
-	
+	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ 
 	cd websocket/assets && tar -xf HTML.tar.xz && cd .. && make
+	
 
 RedisGraph:
 	#docker run -p 6379:6379 -it --rm redislabs/redisgraph

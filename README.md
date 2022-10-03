@@ -13,11 +13,12 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 ### another option (that's free) is a few years of arxiv
 <https://www.cs.cornell.edu/projects/kddcup/datasets.html>
 
-# build the parser
+# build the webapp 
 ```
-make openssl
-make curl
-make kore
+make openssl  
+make curl  
+make postgres  
+make Kore  
 
 The parser is long overdue, but in progress. 
 The scripts in flex_files work pretty well. 
@@ -40,11 +41,6 @@ I would like to not include them in the english.vocab but match them in their ow
 
 
 
-make openssl  
-make curl  
-make postgres  
-make Kore  
-make sampledata  
 
 
 ```

@@ -20,10 +20,13 @@ make curl
 make postgres  
 make Kore  
 make webapp
+for the parsing 
+
+cd flex_files/frac  
+make  
+./main.out filename.tex  
 
 
-The parser is long overdue, but in progress. 
-The scripts in flex_files work pretty well. 
 
 hashmap.h was borrowed from 
 https://github.com/sheredom/hashmap.h

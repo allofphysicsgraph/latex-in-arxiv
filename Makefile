@@ -108,7 +108,7 @@ test_vocab:
 	
 
 webapp:
-	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ 
+	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ &&  cp websocket/assets/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js websocket/assets/js && cp websocket/assets/bootstrap-5.2.1-dist/css/bootstrap.min.css websocket/assets/css/   
 	cd websocket/assets && tar -xf HTML.tar.xz && cd .. && make
 	
 

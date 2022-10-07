@@ -122,3 +122,6 @@ clean:
 	find . -type f -name "*.out" -exec rm "{}" \; 
 	$(RM) *.o EVP_MD
 	$(RM) *.out
+
+katex:
+	wget https://github.com/katex/katex/releases/download/v0.16.2/katex.tar.gz

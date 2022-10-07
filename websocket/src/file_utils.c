@@ -3,11 +3,8 @@
 #include <errno.h>
 #include <hiredis.h>
 #include <regex.h>
-#include 	<stdio.h>
 #include <stdio.h>
-#include	<stdlib.h>
 #include <stdlib.h>
-#include        <string.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>

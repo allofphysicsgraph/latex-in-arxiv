@@ -77,7 +77,8 @@ websocket_disconnect(struct connection *c)
 int
 page(struct http_request *req)
 {
-	file_search();
+	file_search("assets");
+	//hiredis_example();
 	http_response_header(req, "content-type", "text/html");
 	http_response(req, 200, asset_frontend_html, asset_len_frontend_html);
 

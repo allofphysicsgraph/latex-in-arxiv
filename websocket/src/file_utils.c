@@ -128,7 +128,7 @@ void file_search(){
   int i = 0;
   int array_index = 0;
   memset(array, 0, sizeof(array));
-  int r = walk_dir(".", "\\.c$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
+  int r = walk_dir("assets", "\\.html$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
   switch (r) {
   case WALK_OK:
     break;

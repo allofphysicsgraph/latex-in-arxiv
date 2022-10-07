@@ -1,9 +1,11 @@
 
 mytag=latexinarxiv
-
+CC=gcc
 CFLAGS = -Iopenssl/include -g
 LDFLAGS = -Lopenssl/
 LDLIBS = -lcrypto
+INSTALL="sudo apt install -y"
+
 
 help:
 	@echo "== outside the container =="
@@ -38,13 +40,13 @@ sampledata:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz --no-check-certificate
 	tar -xf hep-th-2003.tar.gz
 	mkdir 2003_errors
-	gcc utils/strip_non_ascii.c -o strip_non_ascii.out
+	$(CC) utils/strip_non_ascii.c -o strip_non_ascii.out
 	bash utils/pre-process-dataset.sh
 	#time find 2003 -type f -name "*.tex" |xargs -i -P12 latexml_tex2xml2html.sh "{}" 
 
 curl:
 	# Dependency for Kore, I prefer to build from source as a learning tool.
-	sudo apt install cmake 
+	sudo apt install -y  cmake 
 	git clone https://github.com/curl/curl
 	cd curl && mkdir build && cd build && cmake .. && make && sudo make install && sudo ldconfig
 
@@ -64,13 +66,13 @@ install_libbloom:
 	bash libbloom.sh
 
 bloom:
-	sudo apt install ncurses-dev
+	sudo apt install -y  ncurses-dev
 	flex -Cf bloom_filter_test.l
-	gcc -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter
+	$(CC) -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter
 
 
 newcommand:
-	gcc -Wall -Wunused -o newcommand utils/newcommand.c
+	$(CC) -Wall -Wunused -o newcommand utils/newcommand.c
 	/bin/bash utils/run_new_command.sh
 
 parse_docs:
@@ -81,9 +83,9 @@ parse_docs:
 	#find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
 
 postgres:
-	sudo apt install libreadline-dev
-	sudo apt install postgresql-server-dev-all
-	sudo apt install postgresql
+	sudo apt install -y  libreadline-dev
+	sudo apt install -y  postgresql-server-dev-all
+	sudo apt install -y  postgresql
 
 postgres_db_setup:
 	#REPLACE PASSWORD
@@ -111,6 +113,9 @@ webapp:
 	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ &&  cp websocket/assets/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js websocket/assets/js && cp websocket/assets/bootstrap-5.2.1-dist/css/bootstrap.min.css websocket/assets/css/   
 	cd websocket/assets && tar -xf HTML.tar.xz && rm HTML.tar.xz && rm -rf bootstrap-5.2.1-dist  && cd .. && make
 	
+hiredis:
+	git clone https://github.com/redis/hidredis
+	cd hiredis && make && sudo make install && sudo make install
 
 RedisGraph:
 	#docker run -p 6379:6379 -it --rm redislabs/redisgraph

@@ -1,15 +1,17 @@
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
 #include <dirent.h>
-#include <regex.h>
-#include <errno.h>
 #include <err.h>
+#include <errno.h>
+#include <hiredis.h>
+#include <regex.h>
 #include 	<stdio.h>
-#include        <string.h>
-#include	<stdlib.h>
 #include <stdio.h>
+#include	<stdlib.h>
+#include <stdlib.h>
+#include        <string.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "enum.h"
 #define MAX_FILE_COUNT 100000
 
@@ -122,13 +124,36 @@ int walk_dir(char *dname, char *pattern, int spec, char* array[], int array_inde
 	return res;
 }
 
-void file_search(){
+void file_search(char *dir_path) {
+  unsigned int j, isunix = 0;
+  redisContext *c;
+  redisReply *reply;
+  const char *hostname = "127.0.0.1";
+
+  int port = 6379;
+
+  struct timeval timeout = {1, 500000}; // 1.5 seconds
+  if (isunix) {
+    c = redisConnectUnixWithTimeout(hostname, timeout);
+  } else {
+    c = redisConnectWithTimeout(hostname, port, timeout);
+  }
+  if (c == NULL || c->err) {
+    if (c) {
+      printf("Connection error: %s\n", c->errstr);
+      redisFree(c);
+    } else {
+      printf("Connection error: can't allocate redis context\n");
+    }
+    exit(1);
+  }
 
   char *array[MAX_FILE_COUNT];
   int i = 0;
   int array_index = 0;
   memset(array, 0, sizeof(array));
-  int r = walk_dir("assets", "\\.html$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
+  int r = walk_dir(dir_path, "\\.html$", WS_DEFAULT | WS_MATCHDIRS, array,
+                   array_index);
   switch (r) {
   case WALK_OK:
     break;
@@ -141,11 +166,17 @@ void file_search(){
   default:
     printf("Unknown error?");
   }
+  reply = redisCommand(c, "DEL files");
+  freeReplyObject(reply);
+
   i = 0;
   while (array[i] != NULL) {
-    printf("%s\n", array[i]);
+    //printf("%s\n", array[i]);
+    reply = redisCommand(c, "LPUSH files %s", array[i]);
+    freeReplyObject(reply);
     free(array[i]);
     i++;
   }
 
+  redisFree(c);
 }

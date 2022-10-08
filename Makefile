@@ -114,6 +114,7 @@ webapp:
 	cd websocket/assets && tar -xf HTML.tar.xz && rm HTML.tar.xz && rm -rf bootstrap-5.2.1-dist  && cd .. && make
 	
 hiredis:
+	sudo apt install -y redis-server
 	git clone https://github.com/redis/hiredis
 	cd hiredis && make && sudo make install && sudo make install
 

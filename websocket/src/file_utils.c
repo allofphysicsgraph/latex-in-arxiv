@@ -1,3 +1,4 @@
+#include "enum.h"
 #include <dirent.h>
 #include <err.h>
 #include <errno.h>
@@ -9,10 +10,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include "enum.h"
 #define MAX_FILE_COUNT 100000
 
-//rosetta code
+// rosetta code
 char *ReadFile(char *filename)
 // https://stackoverflow.com/a/3464656
 {
@@ -52,73 +52,75 @@ char *ReadFile(char *filename)
   return buffer;
 }
 
+// https://rosettacode.org/wiki/Walk_a_directory/Recursively#C
+int walk_recur(char *dname, regex_t *reg, int spec, char *array[],
+               int array_index) {
+  struct dirent *dent;
+  DIR *dir;
+  struct stat st;
+  char fn[FILENAME_MAX];
+  int res = WALK_OK;
+  int len = strlen(dname);
+  if (len >= FILENAME_MAX - 1)
+    return WALK_NAMETOOLONG;
 
+  strcpy(fn, dname);
+  fn[len++] = '/';
 
+  if (!(dir = opendir(dname))) {
+    warn("can't open %s", dname);
+    return WALK_BADIO;
+  }
 
-//https://rosettacode.org/wiki/Walk_a_directory/Recursively#C
-int walk_recur(char *dname, regex_t *reg, int spec,char *array[],int array_index)
-{
-	struct dirent *dent;
-	DIR *dir;
-	struct stat st;
-	char fn[FILENAME_MAX];
-	int res = WALK_OK;
-	int len = strlen(dname);
-	if (len >= FILENAME_MAX - 1)
-		return WALK_NAMETOOLONG;
+  errno = 0;
+  while ((dent = readdir(dir))) {
+    if (!(spec & WS_DOTFILES) && dent->d_name[0] == '.')
+      continue;
+    if (!strcmp(dent->d_name, ".") || !strcmp(dent->d_name, ".."))
+      continue;
 
-	strcpy(fn, dname);
-	fn[len++] = '/';
+    strncpy(fn + len, dent->d_name, FILENAME_MAX - len);
+    if (lstat(fn, &st) == -1) {
+      warn("Can't stat %s", fn);
+      res = WALK_BADIO;
+      continue;
+    }
 
-	if (!(dir = opendir(dname))) {
-		warn("can't open %s", dname);
-		return WALK_BADIO;
-	}
+    /* don't follow symlink unless told so */
+    if (S_ISLNK(st.st_mode) && !(spec & WS_FOLLOWLINK))
+      continue;
 
-	errno = 0;
-	while ((dent = readdir(dir))) {
-		if (!(spec & WS_DOTFILES) && dent->d_name[0] == '.')
-			continue;
-		if (!strcmp(dent->d_name, ".") || !strcmp(dent->d_name, ".."))
-			continue;
+    /* will be false for symlinked dirs */
+    if (S_ISDIR(st.st_mode)) {
+      /* recursively follow dirs */
+      if ((spec & WS_RECURSIVE))
+        walk_recur(fn, reg, spec, array, array_index);
 
-		strncpy(fn + len, dent->d_name, FILENAME_MAX - len);
-		if (lstat(fn, &st) == -1) {
-			warn("Can't stat %s", fn);
-			res = WALK_BADIO;
-			continue;
-		}
+      if (!(spec & WS_MATCHDIRS))
+        continue;
+    }
 
-		/* don't follow symlink unless told so */
-		if (S_ISLNK(st.st_mode) && !(spec & WS_FOLLOWLINK))
-			continue;
+    /* pattern match */
+    if (!regexec(reg, fn, 0, 0, 0)) {
+      array[array_index] = strdup(fn);
+      array_index++;
+    }
+  }
 
-		/* will be false for symlinked dirs */
-		if (S_ISDIR(st.st_mode)) {
-			/* recursively follow dirs */
-			if ((spec & WS_RECURSIVE))
-				walk_recur(fn, reg, spec,array,array_index);
-
-			if (!(spec & WS_MATCHDIRS)) continue;
-		}
-
-		/* pattern match */
-		if (!regexec(reg, fn, 0, 0, 0)) { array[array_index] = strdup(fn);  array_index++; }
-	}
-
-	if (dir) closedir(dir);
-	return res ? res : errno ? WALK_BADIO : WALK_OK;
+  if (dir)
+    closedir(dir);
+  return res ? res : errno ? WALK_BADIO : WALK_OK;
 }
 
-int walk_dir(char *dname, char *pattern, int spec, char* array[], int array_index)
-{
-	regex_t r;
-	int res;
-	if (regcomp(&r, pattern, REG_EXTENDED | REG_NOSUB))
-		return WALK_BADPATTERN;
-	res = walk_recur(dname, &r, spec, array, array_index);
-	regfree(&r);
-	return res;
+int walk_dir(char *dname, char *pattern, int spec, char *array[],
+             int array_index) {
+  regex_t r;
+  int res;
+  if (regcomp(&r, pattern, REG_EXTENDED | REG_NOSUB))
+    return WALK_BADPATTERN;
+  res = walk_recur(dname, &r, spec, array, array_index);
+  regfree(&r);
+  return res;
 }
 
 void file_search(char *dir_path) {
@@ -126,15 +128,10 @@ void file_search(char *dir_path) {
   redisContext *c;
   redisReply *reply;
   const char *hostname = "127.0.0.1";
-
   int port = 6379;
 
   struct timeval timeout = {1, 500000}; // 1.5 seconds
-  if (isunix) {
-    c = redisConnectUnixWithTimeout(hostname, timeout);
-  } else {
-    c = redisConnectWithTimeout(hostname, port, timeout);
-  }
+  c = redisConnectUnixWithTimeout(hostname, timeout);
   if (c == NULL || c->err) {
     if (c) {
       printf("Connection error: %s\n", c->errstr);
@@ -168,12 +165,48 @@ void file_search(char *dir_path) {
 
   i = 0;
   while (array[i] != NULL) {
-    //printf("%s\n", array[i]);
+    // printf("%s\n", array[i]);
     reply = redisCommand(c, "LPUSH files %s", array[i]);
     freeReplyObject(reply);
     free(array[i]);
     i++;
   }
 
+  redisFree(c);
+}
+
+redisContext *Conn(void) {
+  unsigned int j, isunix = 0;
+  redisContext *c;
+  const char *hostname = "127.0.0.1";
+  int port = 6379;
+  redisReply *reply;
+
+  struct timeval timeout = {1, 500000}; // 1.5 seconds
+  c = redisConnectWithTimeout(hostname, port, timeout);
+  if (c == NULL || c->err) {
+    if (c) {
+      printf("Connection error: %s\n", c->errstr);
+      redisFree(c);
+    } else {
+      printf("Connection error: can't allocate redis context\n");
+    }
+    exit(1);
+  }
+  return c;
+}
+
+void query(void) {
+  redisContext *c = Conn();
+  redisReply *reply;
+
+  /* Let's check what we have inside the list */
+  reply = redisCommand(c, "LRANGE files 0 -1");
+  if (reply->type == REDIS_REPLY_ARRAY) {
+    for (int j = 0; j < reply->elements; j++) {
+      printf("%u) %s\n", j, reply->element[j]->str);
+    }
+  }
+  freeReplyObject(reply);
   redisFree(c);
 }

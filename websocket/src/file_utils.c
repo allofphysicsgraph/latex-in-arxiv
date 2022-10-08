@@ -123,15 +123,28 @@ int walk_dir(char *dname, char *pattern, int spec, char *array[],
   return res;
 }
 
-void file_search(char *dir_path) {
-  unsigned int j, isunix = 0;
-  redisContext *c;
-  redisReply *reply;
+redisContext *Conn(void) {
   const char *hostname = "127.0.0.1";
   int port = 6379;
+  redisContext *c;
 
   struct timeval timeout = {1, 500000}; // 1.5 seconds
-  c = redisConnectUnixWithTimeout(hostname, timeout);
+  c = redisConnectWithTimeout(hostname, port, timeout);
+  if (c == NULL || c->err) {
+    if (c) {
+      printf("Connection error: %s\n", c->errstr);
+      redisFree(c);
+    } else {
+      printf("Connection error: can't allocate redis context\n");
+    }
+    exit(1);
+  }
+  return c;
+}
+
+void file_search(char *dir_path) {
+  redisContext *c = Conn(); 
+  redisReply *reply;
   if (c == NULL || c->err) {
     if (c) {
       printf("Connection error: %s\n", c->errstr);
@@ -175,26 +188,6 @@ void file_search(char *dir_path) {
   redisFree(c);
 }
 
-redisContext *Conn(void) {
-  unsigned int j, isunix = 0;
-  redisContext *c;
-  const char *hostname = "127.0.0.1";
-  int port = 6379;
-  redisReply *reply;
-
-  struct timeval timeout = {1, 500000}; // 1.5 seconds
-  c = redisConnectWithTimeout(hostname, port, timeout);
-  if (c == NULL || c->err) {
-    if (c) {
-      printf("Connection error: %s\n", c->errstr);
-      redisFree(c);
-    } else {
-      printf("Connection error: can't allocate redis context\n");
-    }
-    exit(1);
-  }
-  return c;
-}
 
 void query(void) {
   redisContext *c = Conn();
@@ -203,7 +196,7 @@ void query(void) {
   /* Let's check what we have inside the list */
   reply = redisCommand(c, "LRANGE files 0 -1");
   if (reply->type == REDIS_REPLY_ARRAY) {
-    for (int j = 0; j < reply->elements; j++) {
+    for (unsigned int j = 0; j < reply->elements; j++) {
       printf("%u) %s\n", j, reply->element[j]->str);
     }
   }

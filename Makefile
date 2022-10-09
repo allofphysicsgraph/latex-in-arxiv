@@ -111,7 +111,7 @@ test_vocab:
 
 webapp:
 	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ &&  cp websocket/assets/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js websocket/assets/js && cp websocket/assets/bootstrap-5.2.1-dist/css/bootstrap.min.css websocket/assets/css/   
-	cd websocket/assets && tar -xf HTML.tar.xz && rm HTML.tar.xz && rm -rf bootstrap-5.2.1-dist  && cd .. && make
+	cd websocket/assets && tar -xf HTML.tar.xz && rm HTML.tar.xz && rm -rf bootstrap-5.2.1-dist  && find . -type f -name "*.html"  -exec sed -i 's/<head>/<head>\n<link rel="icon" href="data:,">/g' "{}" \; &&  cd .. && make
 	
 hiredis:
 	sudo apt install -y redis-server

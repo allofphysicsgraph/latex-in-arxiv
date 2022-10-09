@@ -107,10 +107,14 @@ function connect() {
         socket = new WebSocket("ws://127.0.0.1:8888/connect");
 
         socket.onopen = function(evt) { open(evt) };
-        socket.onclose = function(evt) { alert("closed"); };
-        socket.onmessage = function(evt) { console.log(evt);
-                onmessage(evt) 
-        };
+        socket.onclose = function(evt) { console.log("closed");};
+        socket.onmessage = function(evt) { 
+		filetable = document.getElementById("fileTable");
+		filetable.innerHTML = evt.data;
+		onmessage(evt);
+		socket.close();
+        	
+	};
         socket.onerror = function(evt) { alert("onerror"); };
 }
 </script><!-- Custom styles for this template -->
@@ -175,7 +179,7 @@ week</button></div>
 </div>
 <p id="ktx">$$\\frac{1}{2}$$</p>
 <form action="/" onsubmit="connect(); return false;"><input type=
-"submit" value="connect"></form>
+"submit" value="indexFiles"></form>
 <div id="counter"></div>
 <div class="input-group">
 <div class="input-group-prepend"><span class=
@@ -192,74 +196,9 @@ week</button></div>
 <thead>
 <tr>
 <th scope="col">#</th>
-<th scope="col">Header</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>1,001</td>
-<td>random</td>
-</tr>
-<tr>
-<td>1,002</td>
-<td>placeholder</td>
-</tr>
-<tr>
-<td>1,003</td>
-<td>data</td>
-</tr>
-<tr>
-<td>1,003</td>
-<td>information</td>
-</tr>
-<tr>
-<td>1,004</td>
-<td>text</td>
-</tr>
-<tr>
-<td>1,005</td>
-<td>dashboard</td>
-</tr>
-<tr>
-<td>1,006</td>
-<td>dashboard</td>
-</tr>
-<tr>
-<td>1,007</td>
-<td>placeholder</td>
-</tr>
-<tr>
-<td>1,008</td>
-<td>random</td>
-</tr>
-<tr>
-<td>1,009</td>
-<td>placeholder</td>
-</tr>
-<tr>
-<td>1,010</td>
-<td>data</td>
-</tr>
-<tr>
-<td>1,011</td>
-<td>information</td>
-</tr>
-<tr>
-<td>1,012</td>
-<td>text</td>
-</tr>
-<tr>
-<td>1,013</td>
-<td>dashboard</td>
-</tr>
-<tr>
-<td>1,014</td>
-<td>dashboard</td>
-</tr>
-<tr>
-<td>1,015</td>
-<td>random</td>
-</tr>
+<tbody id="fileTable">
 </tbody>
 </table>
 </div>

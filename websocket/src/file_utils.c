@@ -203,3 +203,12 @@ void query(void) {
   freeReplyObject(reply);
   redisFree(c);
 }
+
+redisReply *redisCmd(void) {
+  redisContext *redisConn = Conn();
+  redisReply *reply;
+  reply = redisCommand(redisConn, "LRANGE files 0 -1");
+  if (reply->type == REDIS_REPLY_ARRAY) {
+    return reply;
+  }
+}

@@ -20,7 +20,7 @@
 #include "assets.h"
 #include "file_utils.h"
 #include <ctype.h>
-
+#include <hiredis.h>
 
 #include <kore/seccomp.h>
 
@@ -40,10 +40,11 @@ void		websocket_message(struct connection *,
 void
 websocket_connect(struct connection *c)
 {
-	kore_log(LOG_NOTICE, "%p: connected", c);
+		file_search("assets");
+		kore_log(LOG_NOTICE, "%p: connected", c);
 }
 
-void
+/*void
 parse_latex(char* fileName ){
 
 	YY_BUFFER_STATE buf;
@@ -58,14 +59,38 @@ parse_latex(char* fileName ){
         yylex();
         fclose(fp);	
 }
+*/
+
+void websocket_message(struct connection *c, u_int8_t op, void *data,
+                       size_t len) {
+
+  u_int32_t u32;
+  size_t len2;
+  struct kore_buf *buf;
+  u_int8_t *data2;
+
+  // http_populate_get(req);
+  buf = kore_buf_alloc(1280000);
 
 
-void
-websocket_message(struct connection *c, u_int8_t op, void *data, size_t len)
-{
-        parse_latex("test.txt");
-      	char* parsed = ReadFile("out_file");
-	kore_websocket_broadcast(c, op, (void *)parsed, strlen(parsed) , WEBSOCKET_BROADCAST_GLOBAL);
+  redisReply *reply;
+  redisContext *redisConn = Conn();
+  reply = redisCommand(redisConn, "LRANGE files 0 -1");
+  if (reply->type == REDIS_REPLY_ARRAY) {
+for (unsigned int j = 0; j < reply->elements; j++) {
+  // printf("%u) %s\n", j, reply->element[j]->str);
+  kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
+                   reply->element[j]->str, reply->element[j]->str);
+}
+}
+  
+  data2 = kore_buf_release(buf, &len2);
+  freeReplyObject(reply);
+  redisFree(redisConn);
+
+  kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+  kore_free(data2);
+  // kore_free(data);
 }
 
 void
@@ -77,7 +102,6 @@ websocket_disconnect(struct connection *c)
 int
 page(struct http_request *req)
 {
-	file_search("assets");
 	//hiredis_example();
 	http_response_header(req, "content-type", "text/html");
 	http_response(req, 200, asset_frontend_html, asset_len_frontend_html);

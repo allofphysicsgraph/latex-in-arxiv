@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <link rel="icon" href="data:,">
+<link rel="icon" href="data:,">
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="utf-8">
@@ -77,18 +78,13 @@ var length = 65536;
 
 function open(evt) {
         var msg = "";
-        var alphabet = "abcdefghijklmnopqrstuvwxyz";
-
-        for (i = 0; i < length; i++)
-                msg += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-
         message(msg);
 }
 
 function message(msg) {
         socket.send(msg);
         sent = sent + 1;
-        update();
+        //update();
 }
 
 function update() {
@@ -104,17 +100,23 @@ function onmessage(evt) {
         message(evt.data);
 }
 
-function connect() {
-        socket = new WebSocket("ws://127.0.0.1:8888/file_index_connect");
+function connect(url) {
+        //url file_index_connect
+	connect_url = "ws://127.0.0.1:8888/"+url
+	socket = new WebSocket(connect_url);
 
-        socket.onopen = function(evt) { open(evt) };
-        socket.onclose = function(evt) { console.log("closed");};
+        socket.onopen = function(evt) { open(evt); console.log("open"); };
+        socket.onclose = function(evt) {  console.log("closed");};
         socket.onmessage = function(evt) { 
+		//onmessage(evt);
+		if(url === "websocket_message_connect"){
+			console.log("wsc");
+			var msg = document.getElementById("search");
+			socket.send(msg.value);
+		
+		}
 		filetable = document.getElementById("fileTable");
 		filetable.innerHTML = evt.data;
-		onmessage(evt);
-		socket.close();
-        	
 	};
         socket.onerror = function(evt) { alert("onerror"); };
 }
@@ -167,7 +169,7 @@ month</a></li>
 week</button></div>
 </div>
 <p id="ktx">$$\\frac{1}{2}$$</p>
-<form action="/" onsubmit="connect(); return false;"><input type=
+<form action="/" onsubmit="connect('file_index_connect'); return false;"><input type=
 "submit" value="indexFiles"></form>
 <div id="counter"></div>
 <div class="input-group">
@@ -196,7 +198,6 @@ week</button></div>
 </div>
 <script>
             document.addEventListener("DOMContentLoaded", function() {
-                    console.log(123);        
 		    renderMathInElement(document.body, {
                                               // customised options
                                               // • auto-render specific keys, e.g.:
@@ -243,7 +244,8 @@ crossorigin="anonymous" onload=
    const searchInputHandler = function(e) {
 	   if (e.data !== null){
    	   const search_value = document.getElementById('search');
-	   console.log(search_value.value);
+	   connect("websocket_message_connect");
+	   return false;
 	   }
    }
    const search = document.getElementById('search');

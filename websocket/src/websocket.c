@@ -30,6 +30,7 @@ KORE_SECCOMP_FILTER("tasks",
 
 int		page(struct http_request *);
 int		file_index_connect(struct http_request *);
+int		websocket_message_connect(struct http_request *req);
 
 void		websocket_connect(struct connection *);
 void		websocket_disconnect(struct connection *);
@@ -46,22 +47,6 @@ websocket_connect(struct connection *c)
 		kore_log(LOG_NOTICE, "%p: connected", c);
 }
 
-/*void
-parse_latex(char* fileName ){
-
-	YY_BUFFER_STATE buf;
-        char* buffer = ReadFile(fileName);
-	char test_buffer[100000];
-	memset(test_buffer,'\0',100000);
-        buf = yy_scan_string(buffer);
-        yy_switch_to_buffer(buf);
-        FILE *fp;
-	fp = fopen("out_file","w");
-	yyout=fp;
-        yylex();
-        fclose(fp);	
-}
-*/
 
 void index_files(struct connection *c, u_int8_t op) {
 size_t len2;
@@ -77,12 +62,10 @@ reply = redisCommand(redisConn, "LRANGE files 0 -1");
 if (reply->type == REDIS_REPLY_ARRAY) {
   for (unsigned int j = 0; j < reply->elements; j++) {
     // printf("%u) %s\n", j, reply->element[j]->str);
-    if(rematch(reply->element[j]->str,"030320")==0){
     kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                      reply->element[j]->str, reply->element[j]->str);
     }
   }
-}
 
 data2 = kore_buf_release(buf, &len2);
 freeReplyObject(reply);
@@ -94,35 +77,35 @@ kore_free(data2);
 
 void websocket_message(struct connection *c, u_int8_t op, void *data,
                        size_t len) {
+  size_t len2;
+  struct kore_buf *buf;
+  u_int8_t *data2;
 
-size_t len2;
-struct kore_buf *buf;
-u_int8_t *data2;
-
-// http_populate_get(req);
-buf = kore_buf_alloc(1280000);
-
-redisReply *reply;
-redisContext *redisConn = Conn();
-reply = redisCommand(redisConn, "LRANGE files 0 -1");
-if (reply->type == REDIS_REPLY_ARRAY) {
-  for (unsigned int j = 0; j < reply->elements; j++) {
-    if(rematch("asdf","asdf")){
-    kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
-                     reply->element[j]->str, reply->element[j]->str);
+  buf = kore_buf_alloc(1280000);
+  redisReply *reply;
+  redisContext *redisConn = Conn();
+  reply = redisCommand(redisConn, "LRANGE files 0 -1");
+  if (reply->type == REDIS_REPLY_ARRAY) {
+    for (unsigned int j = 0; j < reply->elements; j++) {
+      if (rematch(reply->element[j]->str, data) == 0 && len > 0) {
+        kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
+                         reply->element[j]->str, reply->element[j]->str);
+      } else {
+        kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
+                         reply->element[j]->str, reply->element[j]->str);
+      }
     }
   }
-  
-  }
 
-data2 = kore_buf_release(buf, &len2);
-freeReplyObject(reply);
-redisFree(redisConn);
+  data2 = kore_buf_release(buf, &len2);
+  freeReplyObject(reply);
+  redisFree(redisConn);
 
-kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
-kore_free(data2);
+  kore_free(data);
+  kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+  kore_free(data2);
+  // free(data);
 }
-
 void
 websocket_disconnect(struct connection *c)
 {
@@ -135,6 +118,16 @@ page(struct http_request *req)
 	//hiredis_example();
 	http_response_header(req, "content-type", "text/html");
 	http_response(req, 200, asset_frontend_html, asset_len_frontend_html);
+
+	return (KORE_RESULT_OK);
+}
+
+int
+websocket_message_connect(struct http_request *req)
+{
+	/* Perform the websocket handshake, passing our callbacks. */
+	kore_websocket_handshake(req, "websocket_connect",
+	    "websocket_message", "websocket_disconnect");
 
 	return (KORE_RESULT_OK);
 }

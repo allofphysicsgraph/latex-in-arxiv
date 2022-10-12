@@ -73,12 +73,14 @@ buf = kore_buf_alloc(1280000);
 
 redisReply *reply;
 redisContext *redisConn = Conn();
-reply = redisCommand(redisConn, "LRANGE files 0 5");
+reply = redisCommand(redisConn, "LRANGE files 0 -1");
 if (reply->type == REDIS_REPLY_ARRAY) {
   for (unsigned int j = 0; j < reply->elements; j++) {
     // printf("%u) %s\n", j, reply->element[j]->str);
+    if(rematch(reply->element[j]->str,"030320")==0){
     kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                      reply->element[j]->str, reply->element[j]->str);
+    }
   }
 }
 
@@ -105,15 +107,13 @@ redisContext *redisConn = Conn();
 reply = redisCommand(redisConn, "LRANGE files 0 -1");
 if (reply->type == REDIS_REPLY_ARRAY) {
   for (unsigned int j = 0; j < reply->elements; j++) {
-    if(rematch(reply->element[j]->str,"asdf")){
+    if(rematch("asdf","asdf")){
     kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                      reply->element[j]->str, reply->element[j]->str);
     }
   }
-  if(data != NULL){
   
   }
-}
 
 data2 = kore_buf_release(buf, &len2);
 freeReplyObject(reply);

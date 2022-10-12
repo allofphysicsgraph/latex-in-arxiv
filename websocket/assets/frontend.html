@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <link rel="icon" href="data:,">
-<link rel="icon" href="data:,">
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="utf-8">
@@ -106,7 +105,7 @@ function onmessage(evt) {
 }
 
 function connect() {
-        socket = new WebSocket("ws://127.0.0.1:8888/connect");
+        socket = new WebSocket("ws://127.0.0.1:8888/file_index_connect");
 
         socket.onopen = function(evt) { open(evt) };
         socket.onclose = function(evt) { console.log("closed");};
@@ -126,12 +125,12 @@ function connect() {
 <header class=
 "navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href=
-"#">Company name</a> <input class=
+"#">LaTex in ArXiV</a> <input class=
 "form-control form-control-dark w-100 rounded-0 border-0" type=
-"text" placeholder="Search" aria-label="Search">
+"text" placeholder="Search" aria-label="Search" id="search">
 <div class="navbar-nav">
 <div class="nav-item text-nowrap"><a class="nav-link px-3" href=
-"#">Sign out</a></div>
+"#"></a></div>
 </div>
 </header>
 <div class="container-fluid">
@@ -142,13 +141,7 @@ function connect() {
 <ul class="nav flex-column">
 <li class="nav-item"><a class="nav-link active" aria-current="page"
 href="#">Dashboard</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-<li class="nav-item"><a class="nav-link" href=
-"#">Customers</a></li>
 <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-<li class="nav-item"><a class="nav-link" href=
-"#">Integrations</a></li>
 </ul>
 <h6 class=
 "sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
@@ -157,12 +150,6 @@ aria-label="Add a new report"></a></h6>
 <ul class="nav flex-column mb-2">
 <li class="nav-item"><a class="nav-link" href="#">Current
 month</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Last
-quarter</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Social
-engagement</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Year-end
-sale</a></li>
 </ul>
 </div>
 </nav>
@@ -252,6 +239,15 @@ crossorigin="anonymous" onload=
    }
 
      source.addEventListener('input', inputHandler);
+
+   const searchInputHandler = function(e) {
+	   if (e.data !== null){
+   	   const search_value = document.getElementById('search');
+	   console.log(search_value.value);
+	   }
+   }
+   const search = document.getElementById('search');
+   search.addEventListener('input', searchInputHandler);
 </script> 
 <!--script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="/js/dashboard.js"></script>-->
 </body>

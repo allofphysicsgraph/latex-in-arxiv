@@ -58,10 +58,9 @@ buf = kore_buf_alloc(1280000);
 
 redisReply *reply;
 redisContext *redisConn = Conn();
-reply = redisCommand(redisConn, "LRANGE files 0 -1");
+reply = redisCommand(redisConn, "LRANGE files 0 15");
 if (reply->type == REDIS_REPLY_ARRAY) {
   for (unsigned int j = 0; j < reply->elements; j++) {
-    // printf("%u) %s\n", j, reply->element[j]->str);
     kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                      reply->element[j]->str, reply->element[j]->str);
     }
@@ -80,20 +79,14 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
   size_t len2;
   struct kore_buf *buf;
   u_int8_t *data2;
-
-  buf = kore_buf_alloc(1280000);
+  buf = kore_buf_alloc(128000);
   redisReply *reply;
   redisContext *redisConn = Conn();
   reply = redisCommand(redisConn, "LRANGE files 0 -1");
   if (reply->type == REDIS_REPLY_ARRAY) {
     for (unsigned int j = 0; j < reply->elements; j++) {
-      if (rematch(reply->element[j]->str, data) == 0 && len > 0) {
         kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                          reply->element[j]->str, reply->element[j]->str);
-      } else {
-        kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
-                         reply->element[j]->str, reply->element[j]->str);
-      }
     }
   }
 
@@ -104,7 +97,6 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
   kore_free(data);
   kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
   kore_free(data2);
-  // free(data);
 }
 void
 websocket_disconnect(struct connection *c)

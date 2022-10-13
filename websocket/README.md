@@ -1,13 +1,3 @@
-requires kore 4.2.2
-	openssl
-	in the parent directory	
-		make openssl
-		make kore
-	
-	in this directory 
-		make run
-
- 
 Kore example websocket server
 
 Run:

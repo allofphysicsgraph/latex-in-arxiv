@@ -4,6 +4,7 @@
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
+<link rel="icon" href="data:,">
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
 <meta charset="utf-8">
@@ -91,10 +92,6 @@ function update(evt) {
 	filetable.innerHTML = evt.data;
 }
 
-function filter_message(evt) {
-	socket.send(evt.data);
-	filter_update(evt);
-}
 
 function onmessage(evt) {
 	message(evt);
@@ -106,15 +103,21 @@ function connect(url) {
 	socket = new WebSocket(connect_url);
 
         socket.onopen = function(evt) { 
-		open(evt);
+		if(url==="websocket_message_connect"){
+			var filter  = document.getElementById("search").value;
+			socket.send(filter);
+		} else {
+			open(evt);
+		}
 		console.log("open"); 
 	};
 
         socket.onclose = function(evt) {  console.log("closed");};
         socket.onmessage = function(evt) { 
-		var filter  = document.getElementById("search").value;
+		update(evt);	
 		console.log(filter);
 		console.log(message);	
+		socket.close();
 	};
         socket.onerror = function(evt) { alert("onerror"); };
 }

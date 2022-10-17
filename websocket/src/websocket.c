@@ -58,7 +58,7 @@ buf = kore_buf_alloc(1280000);
 
 redisReply *reply;
 redisContext *redisConn = Conn();
-reply = redisCommand(redisConn, "LRANGE files 0 15");
+reply = redisCommand(redisConn, "LRANGE files 0 -1");
 if (reply->type == REDIS_REPLY_ARRAY) {
   for (unsigned int j = 0; j < reply->elements; j++) {
     kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",

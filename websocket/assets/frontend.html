@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="utf-8">
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
-<meta charset="utf-8">
 <meta name="viewport" content=
 "width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -71,6 +71,7 @@
         -webkit-overflow-scrolling: touch;
       }
 </style>
+
 <script>
 var socket = null;
 var sent = 0;
@@ -78,60 +79,59 @@ var recv = 0;
 var length = 65536;
 
 function open(evt) {
-	message(evt);
+        message(evt);
 }
 
 function message(evt) {
-	socket.send(evt.data);
-	//sent = sent + 1;
-	update(evt);
+        socket.send(evt.data);
+        //sent = sent + 1;
+        update(evt);
 }
 
 function update(evt) {
-	filetable = document.getElementById("fileTable");
-	filetable.innerHTML = evt.data;
+        filetable = document.getElementById("fileTable");
+        filetable.innerHTML = evt.data;
 }
 
 
 function onmessage(evt) {
-	message(evt);
+        message(evt);
 }
 
 function connect(url) {
         //url file_index_connect
-	connect_url = "ws://127.0.0.1:8888/"+url
-	socket = new WebSocket(connect_url);
+        connect_url = "ws://127.0.0.1:8888/"+url
+        socket = new WebSocket(connect_url);
 
         socket.onopen = function(evt) { 
-		if(url==="websocket_message_connect"){
-			var filter  = document.getElementById("search").value;
-			socket.send(filter);
-		} else {
-			open(evt);
-		}
-		console.log("open"); 
-	};
+                if(url==="websocket_message_connect"){
+                        var filter  = document.getElementById("search").value;
+                        socket.send(filter);
+                } else {
+                        open(evt);
+                }
+                console.log("open"); 
+        };
 
         socket.onclose = function(evt) {  console.log("closed");};
         socket.onmessage = function(evt) { 
-		update(evt);	
-		console.log(filter);
-		console.log(message);	
-		socket.close();
-	};
+                update(evt);    
+                //console.log(filter);
+                //console.log(message); 
+                socket.close();
+        };
         socket.onerror = function(evt) { alert("onerror"); };
 }
 </script><!-- Custom styles for this template -->
 <link href="/css/dashboard.css" rel="stylesheet">
 </head>
-
 <body>
 <header class=
 "navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href=
 "#">LaTex in ArXiV</a> <input class=
 "form-control form-control-dark w-100 rounded-0 border-0" type=
-"text" placeholder="Search" aria-label="Search" id="search">
+"text" placeholder="Search only filters filenames on input" aria-label="Search" id="search">
 <div class="navbar-nav">
 <div class="nav-item text-nowrap"><a class="nav-link px-3" href=
 "#"></a></div>
@@ -167,20 +167,22 @@ month</a></li>
 "button" class=
 "btn btn-sm btn-outline-secondary">Export</button></div>
 <button type="button" class=
-"btn btn-sm btn-outline-secondary dropdown-toggle"> This
+"btn btn-sm btn-outline-secondary dropdown-toggle">This
 week</button></div>
 </div>
 <p id="ktx">$$\\frac{1}{2}$$</p>
-<form action="/" onsubmit="connect('file_index_connect'); return false;"><input type=
-"submit" value="indexFiles"></form>
+<form action="/" onsubmit=
+"connect('file_index_connect'); return false;"><input type="submit"
+value="indexFiles"></form>
 <div id="counter"></div>
 <div class="input-group">
 <div class="input-group-prepend"><span class=
 "input-group-text">Input LaTeX</span></div>
 <textarea class="form-control" aria-label="With textarea" id=
 "source"></textarea></div>
-
-<div><h3 id="result"> </h3></div>
+<div>
+<h3 id="result"></h3>
+</div>
 <canvas class="my-4 w-100" id="myChart" width="900" height="380">
 </canvas>
 <h2>Section title</h2>
@@ -191,8 +193,7 @@ week</button></div>
 <th scope="col">#</th>
 </tr>
 </thead>
-<tbody id="fileTable">
-</tbody>
+<tbody id="fileTable"></tbody>
 </table>
 </div>
 </main>
@@ -200,7 +201,7 @@ week</button></div>
 </div>
 <script>
             document.addEventListener("DOMContentLoaded", function() {
-		    renderMathInElement(document.body, {
+                    renderMathInElement(document.body, {
                                               // customised options
                                               // • auto-render specific keys, e.g.:
                                               delimiters: [
@@ -218,6 +219,7 @@ week</button></div>
 <script src="/js/bootstrap.bundle.min.js"></script> 
 <script>
 
+
 katex.render("c = \\pm\\sqrt{a^2 + b^2}", ktx, {
     throwOnError: false
 });
@@ -229,6 +231,7 @@ integrity=
 crossorigin="anonymous" onload=
 "renderMathInElement(document.body);"></script> 
 <script>
+
 
    const source = document.getElementById('source');
    const result = document.getElementById('result');
@@ -244,14 +247,14 @@ crossorigin="anonymous" onload=
      source.addEventListener('input', inputHandler);
 
    const searchInputHandler = function(e) {
-	   if (e.data !== null){
-   	   const search_value = document.getElementById('search');
-	   connect("websocket_message_connect");
-	   return false;
-	   }
+           if (e.data !== null){
+           const search_value = document.getElementById('search');
+           connect("websocket_message_connect");
+           return false;
+           }
    }
    const search = document.getElementById('search');
    search.addEventListener('input', searchInputHandler);
-</script> 
+</script>
 </body>
 </html>

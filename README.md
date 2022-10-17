@@ -21,6 +21,7 @@ make postgres
 make Kore  
 make hiredis
 make webapp
+open a browser and go to http://localhost:8888  
 for the parsing 
 
 cd flex_files/frac  

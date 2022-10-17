@@ -77,29 +77,27 @@ var recv = 0;
 var length = 65536;
 
 function open(evt) {
-	var msg = "";
 	message(evt);
 }
 
-function message(msg) {
-	socket.send(msg);
+function message(evt) {
+	socket.send(evt.data);
 	//sent = sent + 1;
-	update(msg);
+	update(evt);
 }
 
-function update(msg) {
-	//console.log(msg);
+function update(evt) {
 	filetable = document.getElementById("fileTable");
-	filetable.innerHTML = msg;
-	//var cnt = document.getElementById("counter");
-	//cnt.innerHTML = "Recv: " + recv + " Sent: " + sent;
+	filetable.innerHTML = evt.data;
+}
+
+function filter_message(evt) {
+	socket.send(evt.data);
+	filter_update(evt);
 }
 
 function onmessage(evt) {
-	recv = recv + 1;
-	//update();
-
-	message(evt.data);
+	message(evt);
 }
 
 function connect(url) {
@@ -114,8 +112,9 @@ function connect(url) {
 
         socket.onclose = function(evt) {  console.log("closed");};
         socket.onmessage = function(evt) { 
-		update(evt.data);
-		socket.close();
+		var filter  = document.getElementById("search").value;
+		console.log(filter);
+		console.log(message);	
 	};
         socket.onerror = function(evt) { alert("onerror"); };
 }

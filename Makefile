@@ -131,3 +131,6 @@ clean:
 
 katex:
 	wget https://github.com/katex/katex/releases/download/v0.16.2/katex.tar.gz
+
+ragel:
+	sudo apt install ragel

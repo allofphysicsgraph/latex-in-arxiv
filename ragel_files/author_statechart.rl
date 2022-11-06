@@ -27,25 +27,42 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action a { n--; printf("\\author{");}
+	action author { n--; printf("\\author{");}
+	action title { n--; printf("\\title{");}
+	action affiliation { n--; printf("\\affiliation{");}
 	action b { printf("%c",fc); n++; if(n==0){
 		printf("\n");}
 	}
+
+	
+	action begin_abstract { n--; printf("\\begin{abstract}");}
+	action end_abstract { n++; printf("\\end{abstract}");}
+	
+
 	action c { n--; printf("%c",fc);}
-	action inc { printf("%c",fc); }
+	action inc { 
+	printf("%c",fc); }
 	action balanced { n == -1 }
 	action not_balanced {n != -1}	
-	a = '\\author{' @a;
+	
+	author = '\\author{' @author;
+	title = '\\title{' @title;
+	affiliation = '\\affiliation{' @affiliation;
+	begin_abstract = '\\begin{abstract}' @begin_abstract;
+	end_abstract = '\\end{abstract}' @end_abstract;
+
 	b = '}' @b;
 	ws = ' '+;
-	filter = (any+ - a);
         c = '{' @c;
-	ignore = (any+ - a);
+	ignore = (any+ - author) ;
+	ignore_abstract = (any+ - end_abstract) @inc ;
 	inc = (any - b) @inc ;
-
+ 
 	mach = 
 		start: ( 
-			a -> st1 |
+			author -> st1 |
+			affiliation -> st1 | 
+			title -> st1 | 
 			ignore -> start |
 			zlen -> final 
 		),
@@ -59,6 +76,9 @@ struct state_chart
 		st2: ( 
 			zlen -> final
 		);
+
+
+
 	
 	main := ( mach '\n' )*;
 }%%
@@ -81,7 +101,7 @@ void state_chart_execute( struct state_chart *fsm, const char *_data, int _len )
 int state_chart_finish( struct state_chart *fsm )
 {
 	if ( fsm->cs == state_chart_error )
-		return -1;
+		{ printf("ERR");return -1; }
 	if ( fsm->cs >= state_chart_first_final )
 		return 1;
 	return 0;

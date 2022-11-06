@@ -3,3 +3,6 @@ all:
 	gcc author_statechart.c -o author.out
 	./author.out ../sound1.tex
 
+clean:
+	rm *~
+	rm *.out

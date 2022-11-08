@@ -45,7 +45,7 @@ int stack [1024];
 	equation = (ignore_eq . (B_Equation . (incl_eq|B_Equation){,5} :>>  E_Equation when balanced @{printf("\n"); fgoto main;} )); 
 
 
-	main:= (equation);
+	main:= (abstract|equation);
 
 }%%
 

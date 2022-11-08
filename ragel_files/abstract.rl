@@ -13,11 +13,29 @@
 	action print_fc {
 		printf("%c",fc);
 	}
-	t = '\\begin{abstract}' @{ printf("\\begin{abstract}"); }  ;
-	ignore = any* - t;
-	e = '\\end{abstract}' @print_fc; 
-	incl = (any+ - e) $print_fc ;
-	main := ignore . t . incl? :>>  e;
+
+	action print_nl {
+		printf("\n");
+	}
+
+	B_Abstract = '\\begin{abstract}' @{ printf("\\begin{abstract}"); }  ;
+	ignore_abstract = any* - B_Abstract;
+	E_Abstract = '\\end{abstract}' @print_fc @print_nl; 
+	incl_abstract = (any+ - E_Abstract) $print_fc ;
+
+
+	B_Equation = '\\begin{equation}' @print_nl @{ printf("\\begin{equation}"); }  ;
+	ignore_eq = any* - B_Equation;
+	E_Equation = '\\end{equation}' @print_fc @print_nl; 
+	incl_eq = (any+ - E_Equation) $print_fc ;
+
+
+	abstract = (ignore_abstract . B_Abstract . incl_abstract? :>>  E_Abstract)*; 
+	equation = (ignore_eq . B_Equation . incl_eq? :>>  E_Equation)*; 
+
+
+	main:= (abstract|equation);
+
 }%%
 
 %% write data;

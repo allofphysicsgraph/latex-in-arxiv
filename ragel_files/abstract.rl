@@ -7,7 +7,11 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
+int n;
 
+char *pe;
+char *eof;
+int stack [1024];
 %%{
 	machine foo;
 	action print_fc {
@@ -24,17 +28,24 @@
 	incl_abstract = (any+ - E_Abstract) $print_fc ;
 
 
-	B_Equation = '\\begin{equation}' @print_nl @{ printf("\\begin{equation}"); }  ;
+	action balanced {n == 1 } 
+	action inc_n { n++ ; }
+	action dec_n { n--;  }
+	action print_n {
+		printf(":%i:",n);
+	}
+
+	B_Equation = '\\begin{equation}' @inc_n  @{ if(n==1) printf("\n\\begin{equation}"); }  ;
 	ignore_eq = any* - B_Equation;
-	E_Equation = '\\end{equation}' @print_fc @print_nl; 
+	E_Equation = '\\end{equation}' @dec_n  @print_fc @{ if(n==1) printf("\n"); }; 
 	incl_eq = (any+ - E_Equation) $print_fc ;
 
 
-	abstract = (ignore_abstract . B_Abstract . incl_abstract? :>>  E_Abstract)*; 
-	equation = (ignore_eq . B_Equation . incl_eq? :>>  E_Equation)*; 
+	abstract = (ignore_abstract . B_Abstract . incl_abstract? :>>  E_Abstract ); 
+	equation = (ignore_eq . (B_Equation . (incl_eq|B_Equation){,5} :>>  E_Equation when balanced @{printf("\n"); fgoto main;} )); 
 
 
-	main:= (abstract|equation);
+	main:= (equation);
 
 }%%
 

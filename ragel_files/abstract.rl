@@ -40,12 +40,16 @@ int stack [1024];
 	E_Equation = '\\end{equation}' @dec_n  @print_fc @{ if(n==1) printf("\n"); }; 
 	incl_eq = (any+ - E_Equation) $print_fc ;
 
+	B_TheBibliography = '\\begin{thebibliography}' @inc_n  @{ if(n==1) printf("\n\\begin{thebibliography}"); }  ;
+	ignore_tb = any* - B_TheBibliography;
+	E_TheBibliography = '\\end{thebibliography}' @dec_n  @print_fc @{ if(n==1) printf("\n"); }; 
+	incl_tb = (any+ - E_TheBibliography) $print_fc ;
 
 	abstract = (ignore_abstract . B_Abstract . incl_abstract? :>>  E_Abstract ); 
 	equation = (ignore_eq . (B_Equation . (incl_eq|B_Equation){,5} :>>  E_Equation when balanced @{printf("\n"); fgoto main;} )); 
+	thebibliography = (ignore_tb . B_TheBibliography . incl_tb? :>>  E_TheBibliography ); 
 
-
-	main:= (abstract|equation);
+	main:= (abstract|equation|thebibliography);
 
 }%%
 

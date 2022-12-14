@@ -45,11 +45,25 @@ int stack [1024];
 	E_TheBibliography = '\\end{thebibliography}' @dec_n  @print_fc @{ if(n==1) printf("\n"); }; 
 	incl_tb = (any+ - E_TheBibliography) $print_fc ;
 
+	B_Author = '\\author{' @inc_n  @{ if(n==1) printf("\n\\author{"); }  ;
+	ignore_author = any* - B_Author;
+	E_Author = '}' @dec_n  @print_fc @{ if(n==0) printf("\n"); }; 
+	incl_author = (any - E_Author) $print_fc ;
+	
+	B_Affiliation = '\\affiliation{' @inc_n  @{ if(n==1) printf("\n\\affiliation{"); }  ;
+	ignore_affiliation = any* - B_Affiliation;
+	E_Affiliation = '}' @dec_n  @print_fc @{ if(n==0) printf("\n"); }; 
+	incl_affiliation = (any - E_Affiliation) $print_fc ;
+	
 	abstract = (ignore_abstract . B_Abstract . incl_abstract? :>>  E_Abstract ); 
 	equation = (ignore_eq . (B_Equation . (incl_eq|B_Equation){,5} :>>  E_Equation when balanced @{printf("\n"); fgoto main;} )); 
 	thebibliography = (ignore_tb . B_TheBibliography . incl_tb? :>>  E_TheBibliography ); 
+	author = (ignore_author . B_Author . incl_author* :>>  E_Author ); 
+	affiliation = (ignore_affiliation . B_Affiliation . incl_affiliation* :>>  E_Affiliation ); 
 
-	main:= (abstract|equation|thebibliography);
+
+
+	main:= (abstract|equation|thebibliography|author*|affiliation*);
 
 }%%
 

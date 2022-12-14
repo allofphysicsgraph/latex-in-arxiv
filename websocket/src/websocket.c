@@ -77,12 +77,14 @@ kore_free(data2);
 void websocket_message(struct connection *c, u_int8_t op, void *data,
                        size_t len) {
   size_t len2;
-  //kore_log(LOG_NOTICE, "%lu: data:%s:",len,data);
+  kore_log(LOG_NOTICE, " data:%s:","*********************");
   kore_log(LOG_NOTICE, "%d:%s",strcmp(data,"undefined"),data);
   struct kore_buf *buf;
   u_int8_t *data2;
   buf = kore_buf_alloc(128000);
   redisReply *reply;
+  char tmp_file_loc[1024];
+  memset(tmp_file_loc,'\0',1024);
   redisContext *redisConn = Conn();
   reply = redisCommand(redisConn, "LRANGE files 0 -1");
   if (reply->type == REDIS_REPLY_ARRAY) {
@@ -90,8 +92,10 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
   	if(!strcmp(data,"undefined")==0){
 	if (rematch(reply->element[j]->str,data)==0){
   	//	kore_log(LOG_NOTICE, "%s:%s\n",reply->element[j]->str,data);
+		resub(reply->element[j]->str,"assets/HTML/","",tmp_file_loc);
       	    	kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
-                         reply->element[j]->str, reply->element[j]->str);
+                         reply->element[j]->str, tmp_file_loc);
+			 memset(tmp_file_loc,'\0',1024);
     }}}
   }
 

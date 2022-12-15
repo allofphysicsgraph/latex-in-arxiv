@@ -23,7 +23,6 @@ void refind(char *buffer, char *pattern,char* replacement) {
   memset(current_buffer, '\0', MAX_FILE_SIZE);
   strcpy(current_buffer, buffer);
   while (current_offset < strlen(buffer)) {
-   printf("%d",current_offset);
    if (regexec(&preg, current_buffer, 1, substmatch, 0) == 0) {
       memset(current_buffer, '\0', MAX_FILE_SIZE);
       strncpy(results, buffer,current_offset+substmatch[0].rm_so+(substmatch[0].rm_eo-substmatch[0].rm_so));

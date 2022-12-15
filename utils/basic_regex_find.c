@@ -40,7 +40,7 @@ void refind(char *buffer, char *pattern,char* replacement) {
 
 int main(int argc, char** argv){
 	if(argc!=2) {
-		printf("input regex as argv[1]: ./a.out test:\s+");
+		printf("input regex as argv[1]: ./a.out test:\\s+");
 		return -1;
 	}
 	memset(results,'\0',1024);

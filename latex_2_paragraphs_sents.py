@@ -103,6 +103,14 @@ list_of_pda_matches('affiliation')
 list_of_pda_matches('section')
 list_of_pda_matches('bibitem')
 
+def begin_end_search(search_term,idx=0):
+    q= rf'\\begin{{{search_term}}}.*?\\end{{{search_term}}}'
+    from pudb import set_trace
+    m = re.search(q,file_data[idx:],re.DOTALL)
+    print(file_data[m.start():m.end()])
+
+begin_end_search('abstract')
+
 
 # bp
 import networkx as nx

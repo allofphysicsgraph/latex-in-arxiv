@@ -29,27 +29,36 @@ def read_file(f_name, path="."):
     return data
 
 
-def pda(init_pattern, push_tok, pop_tok, bal=0, data=""):
-    """>>> pda(r'\\title','{','}',bal=0,data=sents[0])"""
-    
-    from collections import defaultdict
-    import re
-    
+def pda(init_pattern,push_tok,pop_tok,bal=0,data=''):
+    '''>>> pda(r'\\title','{','}',bal=0,data=sents[0])'''
+    from collections import defaultdict 
     keep = defaultdict(list)
-    match = re.findall(init_pattern, data)
-    if match:
-        key = match[0]
-        current_idx = data.index(match[0]) + len(init_pattern) - 1
-        while current_idx < len(data):
-            search = data[current_idx : current_idx + max(len(push_tok), len(pop_tok))]
-            keep[key].append(search)
-            if push_tok in search:
-                bal += 1
-            if pop_tok in search:
-                bal -= 1
-            if bal == 0:
-                return {key: "".join(keep[key][1:-1])}
-            current_idx += max(len(push_tok), len(pop_tok))
+    import re
+    results = []
+    matched = re.search(init_pattern, data)
+    if not matched:
+        return results,-1
+    key = data[matched.start():matched.end()]
+    current_idx = matched.end()
+    while current_idx < len(data):
+        search = data[current_idx:current_idx+max(len(push_tok),len(pop_tok))]
+        keep[key].append(search)
+        if push_tok in search:
+            bal+=1
+            if bal==0:
+                results.append({key:''.join(keep[key][len(push_tok):-1*len(pop_tok)])})
+                break
+        if pop_tok in search:
+            bal-=1
+            if bal==0:
+                results.append({key:''.join(keep[key][len(push_tok):-1*len(pop_tok)])})
+                break
+        current_idx+=max(len(push_tok),len(pop_tok))
+    if matched.end():
+        return results,matched.end()
+
+
+
 
 
 # store document as a list of logical groupings, basically paragraphs
@@ -77,6 +86,22 @@ for group in tqdm(groups):
         # print(sent,'\n','*'*25,'\n')
         # sleep(1)
 
+def list_of_pda_matches(search_term):
+    idx= 0
+    while idx < len(file_data):
+        keep = []
+        match,current_idx = pda(fr'\\{search_term}','{','}',bal=0,data=file_data[idx:])
+        if current_idx > 0:
+            idx+=current_idx
+            print(match)
+        else:
+            idx+=1
+
+list_of_pda_matches('author')
+list_of_pda_matches('title')
+list_of_pda_matches('affiliation')
+
+
 # bp
 import networkx as nx
 import numpy
@@ -102,3 +127,6 @@ clique_sizes = defaultdict(int)
 for this_clique in nx.enumerate_all_cliques(G):
     clique_sizes[len(this_clique)] += 1
 #
+
+
+

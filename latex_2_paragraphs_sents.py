@@ -100,6 +100,8 @@ def list_of_pda_matches(search_term):
 list_of_pda_matches('author')
 list_of_pda_matches('title')
 list_of_pda_matches('affiliation')
+list_of_pda_matches('section')
+list_of_pda_matches('bibitem')
 
 
 # bp

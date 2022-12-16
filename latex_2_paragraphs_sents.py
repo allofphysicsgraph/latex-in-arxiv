@@ -103,14 +103,26 @@ list_of_pda_matches('affiliation')
 list_of_pda_matches('section')
 list_of_pda_matches('bibitem')
 
+
+
 def begin_end_search(search_term,idx=0):
     q= rf'\\begin{{{search_term}}}.*?\\end{{{search_term}}}'
     from pudb import set_trace
-    m = re.search(q,file_data[idx:],re.DOTALL)
-    print(file_data[m.start():m.end()])
+    try:
+        m = re.search(q,file_data[idx:],re.DOTALL)
+        return file_data[m.start():m.end()],m.end()
+    except:
+        return [],-1
 
 begin_end_search('abstract')
 
+equations = re.findall(r'\\begin{equation}.*?\\end{equation}',file_data,re.DOTALL)
+for eq in equations:
+    print(eq)
+
+math_single_line = re.findall(r'[^$](\$.{,50}?\$)[^$]',file_data,re.DOTALL)
+for expr in math_single_line:
+    print(expr)
 
 # bp
 import networkx as nx

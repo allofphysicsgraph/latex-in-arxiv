@@ -122,14 +122,14 @@ void test( char *buf )
 	printf("\n");
 }
 
-int main(int argc, char **argv) {
+int author(char *f) {
   struct stat s;
   char *buffer;
   int fd;
-  fd = open(argv[1], O_RDONLY);
+  fd = open(f, O_RDONLY);
   if (fd < 0)
     return EXIT_FAILURE;
-  strcpy(filename,argv[1]);
+  strcpy(filename,f);
 
   fstat(fd, &s);
   /* PROT_READ disallows writing to buffer: will segv */

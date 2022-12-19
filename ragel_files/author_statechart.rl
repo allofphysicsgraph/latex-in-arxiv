@@ -40,7 +40,7 @@ struct state_chart
 
 	
 	action begin_abstract { n--; printf("\\begin{abstract}");}
-	action end_abstract { n++; printf("\\end{abstract}");}
+	action end_abstract { n++; printf("\\end{abstract}\n\n\n");}
 	
 
 	action c { n--; printf("%c",fc);}
@@ -65,6 +65,8 @@ struct state_chart
  
 	mach = 
 		start: ( 
+			title -> st1 |
+			affiliation -> st1 | 
 			author -> st1 |
 			ignore -> start |
 			zlen -> final   

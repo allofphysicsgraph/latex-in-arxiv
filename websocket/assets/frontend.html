@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <link rel="icon" href="data:,">
+<link rel="icon" href="data:,">
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <link rel="icon" href="data:,">
@@ -108,6 +109,12 @@ function connect(url) {
                 if(url==="websocket_message_connect"){
                         var filter  = document.getElementById("search").value;
                         socket.send(filter);
+                } 
+                
+		if(url==="websocket_author_connect"){
+                        var filter  = document.getElementById("search").value;
+                        console.log('was');
+			socket.send(filter);
                 } else {
                         open(evt);
                 }
@@ -240,8 +247,14 @@ crossorigin="anonymous" onload=
 
    const searchInputHandler = function(e) {
            if (e.data !== null){
-           const search_value = document.getElementById('search');
-           connect("websocket_message_connect");
+           const search_value = document.getElementById('search').value;
+	   const myArray = search_value.match('author:');
+		   if(myArray==null){
+			   connect("websocket_message_connect");
+		   } else {
+			console.log(myArray);
+			   connect("websocket_author_connect");
+		   }
            return false;
            }
    }

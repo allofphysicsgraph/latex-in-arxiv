@@ -75,9 +75,9 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,size_
   /* PROT_READ disallows writing to buffer: will segv */
   buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
   if (buffer != (void *)-1) {
-	//kore_log(LOG_NOTICE, "%s: author*** : connected", data);
 	kore_log(LOG_NOTICE,"%s",buffer);
-	//int testing = refind(buffer,"asdfa3453Riv");
+	int testing = refind(buffer,"PhysikRiv");
+	kore_log(LOG_NOTICE, "::%i:: match found", testing);
 	//resplit(buffer,".*?$");
 	munmap(buffer, s.st_size);
   }

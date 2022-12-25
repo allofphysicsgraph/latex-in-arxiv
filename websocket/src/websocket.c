@@ -20,8 +20,21 @@
 #include "assets.h"
 #include "file_utils.h"
 #include <ctype.h>
+#include <err.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <hiredis.h>
-
+#include <math.h>  
+#include <stdio.h>
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <kore/http.h>
+#include <kore/kore.h>
+#define MAX_FILE_SIZE 100000
 #include <kore/seccomp.h>
 
 KORE_SECCOMP_FILTER("tasks",
@@ -38,6 +51,8 @@ void		websocket_message(struct connection *,
 		    u_int8_t, void *, size_t);
 
 void		index_files(struct connection *,u_int8_t);
+void            websocket_author_search(struct connection *c, u_int8_t op, void *data, size_t len);
+int refind(char *buffer, char *pattern) ;
 
 /* Called whenever we get a new websocket connection. */
 void
@@ -47,6 +62,28 @@ websocket_connect(struct connection *c)
 		kore_log(LOG_NOTICE, "%p: connected", c);
 }
 
+
+void websocket_author_search(struct connection *c, u_int8_t op, void *data,size_t len) {
+		kore_log(LOG_NOTICE, "%s: author : connected", data);
+  struct stat s;
+  char *buffer;
+  int fd;
+  fd = open("authors", O_RDONLY);
+  //if (fd < 0)
+    //kore_log(EXIT_FAILURE;
+
+  fstat(fd, &s);
+  /* PROT_READ disallows writing to buffer: will segv */
+  buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (buffer != (void *)-1) {
+	int testing = refind(buffer,"asdfa3453Riv");
+	resplit(buffer,".*?$");
+	//	kore_log(LOG_NOTICE,"XXXXXXXXXXXXXXXXXXXXX%i",asdf);
+	munmap(buffer, s.st_size);
+  }
+  close(fd);
+
+}
 
 void index_files(struct connection *c, u_int8_t op) {
 size_t len2;
@@ -118,6 +155,15 @@ page(struct http_request *req)
 	//hiredis_example();
 	http_response_header(req, "content-type", "text/html");
 	http_response(req, 200, asset_frontend_html, asset_len_frontend_html);
+
+	return (KORE_RESULT_OK);
+}
+int
+websocket_author_connect(struct http_request *req)
+{
+	/* Perform the websocket handshake, passing our callbacks. */
+	kore_websocket_handshake(req, "websocket_connect",
+	    "websocket_author_search", "websocket_disconnect");
 
 	return (KORE_RESULT_OK);
 }

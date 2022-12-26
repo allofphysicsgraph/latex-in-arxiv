@@ -31,7 +31,7 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action title { n--; printf("\n%s\\title{",filename);}
+	action title { n--; printf("\n%s:\\title{",filename);}
 	action affiliation { n--; printf("\\affiliation{");}
 	action b { printf("%c",fc); n++; if(n==0){
 		//	printf("\n");

@@ -31,7 +31,7 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action cite { n--; printf("\n%s\\cite{",filename);}
+	action cite { n--; printf("\n%s:\\cite{",filename);}
 	action b { printf("%c",fc); n++; if(n==0){
 	}
 	}

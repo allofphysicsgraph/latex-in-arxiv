@@ -65,6 +65,16 @@ websocket_connect(struct connection *c)
 
 void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
+  
+  //size_t len2;
+  //struct kore_buf *buf;
+  //u_int8_t *data2;
+  //buf = kore_buf_alloc(128000);
+  //kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
+  //data2 = kore_buf_release(buf, &len2);
+  //kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+  //kore_free(data2);
+	
   struct stat s;
   char *buffer;
   int fd;

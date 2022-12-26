@@ -67,14 +67,10 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
   
   //size_t len2;
-  //struct kore_buf *buf;
-  //u_int8_t *data2;
-  //buf = kore_buf_alloc(128000);
-  //kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
-  //data2 = kore_buf_release(buf, &len2);
-  //kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
-  //kore_free(data2);
-	
+  struct kore_buf *buf;
+  u_int8_t *data2;
+  buf = kore_buf_alloc(128000);
+  size_t len2;  
   struct stat s;
   char *buffer;
   int fd;
@@ -101,9 +97,10 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
         char filename[120];
         memset(filename, '\0', 120);
         if (strlen(test_buffer) > 10) {
-          strncpy(filename, &test_buffer[2], 8);
+          strncpy(filename, &test_buffer[2], 7);
           if (testing == 0) {
             kore_log(LOG_NOTICE, "%s\n", filename);
+	    kore_buf_appendf(buf, "<tr><td><a href=\'/assets/HTML/%s.html\'>%s<td></tr>",filename,filename);
           }
           test_buffer_idx = 0;
           memset(test_buffer, '\0', 2056);
@@ -114,6 +111,9 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
     munmap(buffer, s.st_size);
   }
   close(fd);
+  data2 = kore_buf_release(buf, &len2);
+  kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+  kore_free(data2);
 }
 
 void index_files(struct connection *c, u_int8_t op) {

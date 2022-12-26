@@ -63,26 +63,47 @@ websocket_connect(struct connection *c)
 }
 
 
-void websocket_author_search(struct connection *c, u_int8_t op, void *data,size_t len) {
+void websocket_author_search(struct connection *c, u_int8_t op, void *data,
+                             size_t len) {
   struct stat s;
   char *buffer;
   int fd;
   fd = open("authors", O_RDONLY);
-  //if (fd < 0)
-    //kore_log(EXIT_FAILURE;
+  // if (fd < 0)
+  // kore_log(EXIT_FAILURE;
 
+  size_t buffer_idx = 0;
+  int test_buffer_idx = 0;
+  char test_buffer[2056];
+  memset(test_buffer, '\0', 2056);
+  int line_count = 0;
   fstat(fd, &s);
   /* PROT_READ disallows writing to buffer: will segv */
   buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
   if (buffer != (void *)-1) {
-	kore_log(LOG_NOTICE,"%s",buffer);
-	int testing = refind(buffer,"PhysikRiv");
-	kore_log(LOG_NOTICE, "::%i:: match found", testing);
-	//resplit(buffer,".*?$");
-	munmap(buffer, s.st_size);
+    while (buffer_idx < strlen(buffer)) {
+      if (buffer[buffer_idx] != '\n') {
+        test_buffer[test_buffer_idx] = buffer[buffer_idx];
+        test_buffer_idx++;
+      } else {
+        line_count++;
+        int testing = refind(test_buffer, (char *)&data[7]);
+        char filename[120];
+        memset(filename, '\0', 120);
+        if (strlen(test_buffer) > 10) {
+          strncpy(filename, &test_buffer[2], 8);
+          if (testing == 0) {
+            kore_log(LOG_NOTICE, "%s\n", filename);
+          }
+          test_buffer_idx = 0;
+          memset(test_buffer, '\0', 2056);
+        }
+      }
+      buffer_idx++;
+    }
+    munmap(buffer, s.st_size);
   }
   close(fd);
-
 }
 
 void index_files(struct connection *c, u_int8_t op) {
@@ -114,8 +135,8 @@ kore_free(data2);
 void websocket_message(struct connection *c, u_int8_t op, void *data,
                        size_t len) {
   size_t len2;
-  kore_log(LOG_NOTICE, " data:%s:","*********************");
-  kore_log(LOG_NOTICE, "%d:%s",strcmp(data,"undefined"),data);
+  //kore_log(LOG_NOTICE, " data:%s:","*********************");
+  //kore_log(LOG_NOTICE, "%d:%s",strcmp(data,"undefined"),data);
   struct kore_buf *buf;
   u_int8_t *data2;
   buf = kore_buf_alloc(128000);
@@ -129,7 +150,7 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
   	if(!strcmp(data,"undefined")==0){
 	if (rematch(reply->element[j]->str,data)==0){
   	//	kore_log(LOG_NOTICE, "%s:%s\n",reply->element[j]->str,data);
-		resub(reply->element[j]->str,"assets/HTML/","",tmp_file_loc);
+		//resub(reply->element[j]->str,"assets/HTML/","",tmp_file_loc);
       	    	kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                          reply->element[j]->str, tmp_file_loc);
 			 memset(tmp_file_loc,'\0',1024);

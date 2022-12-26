@@ -12,6 +12,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+char filename[1024];
+
 %%{
 	machine foo;
 
@@ -21,7 +23,7 @@
 	action print_fc {printf("%c",fc);}
 	action init_c { c = 0;}
 	action done { printf("***************\ndone\n***********"); }
-	begin_abstract = '\\begin{abstract}' @inc  @{ printf("\\begin{abstract}"); };
+	begin_abstract = '\\begin{abstract}' @inc  @{ printf("\n%s:\\begin{abstract}",filename); };
 	end_abstract = '\\end{abstract}'  @dec @{ printf("}"); } ;
 
 	# The any* includes '\n' when hit_5 is true, so use guarded concatenation.
@@ -44,6 +46,8 @@ void test( const char *str )
 }
 
 int main(int argc, char** argv) {
+  memset(filename,'\0',1024);
+  strncpy(filename,argv[1],1024);
   struct stat s;
   char *buffer;
   int fd;

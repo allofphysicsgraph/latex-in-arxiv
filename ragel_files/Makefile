@@ -8,6 +8,8 @@ all:
 	gcc cite.c -o cite.out	
 	ragel abstract.rl
 	gcc abstract.c -o abstract.out
+	ragel equation.rl
+	gcc equation.c -o equation.out
 
 
 clean:

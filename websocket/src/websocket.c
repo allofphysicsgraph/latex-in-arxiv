@@ -66,6 +66,7 @@ websocket_connect(struct connection *c)
 void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
   
+  kore_log(LOG_NOTICE, "%s:\n",(char*)data);
   //size_t len2;
   struct kore_buf *buf;
   u_int8_t *data2;
@@ -145,7 +146,6 @@ kore_free(data2);
 void websocket_message(struct connection *c, u_int8_t op, void *data,
                        size_t len) {
   size_t len2;
-  //kore_log(LOG_NOTICE, " data:%s:","*********************");
   //kore_log(LOG_NOTICE, "%d:%s",strcmp(data,"undefined"),data);
   struct kore_buf *buf;
   u_int8_t *data2;

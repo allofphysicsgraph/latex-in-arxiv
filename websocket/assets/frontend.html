@@ -5,15 +5,12 @@
 <meta charset="utf-8">
 <meta name="generator" content=
 "HTML Tidy for HTML5 for Linux version 5.6.0">
-<meta name="viewport" content=
-"width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content=
-"Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
 <title>Dashboard Template · Bootstrap v5.2</title>
-<link rel="canonical" href=
-"https://getbootstrap.com/docs/5.2/examples/dashboard/">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 <link href="/css/katex.min.css" rel="stylesheet">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <style>
@@ -108,8 +105,13 @@ function connect(url) {
                 
 		if(url==="websocket_author_connect"){
                         var filter  = document.getElementById("search").value;
-                        console.log('was');
-			socket.send(filter);
+			   let x = xxhash();
+			   x.then((v)=> {
+				   console.log(filter.substring(7,));
+				   let hash  = v.h64ToString(filter);
+				   console.log(hash);
+				   socket.send(hash);
+			   });
                 } else {
                         open(evt);
                 }
@@ -217,12 +219,28 @@ katex.render("c = \\pm\\sqrt{a^2 + b^2}", ktx, {
     throwOnError: false
 });
 </script> 
+
+<script  src="/js/index.js"></script>
+
+
 <script defer src=
 "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"
 integrity=
 "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
 crossorigin="anonymous" onload=
 "renderMathInElement(document.body);"></script> 
+
+<script>
+// Creates the WebAssembly instance.
+xxhash().then(hasher => {
+  const input = "The string that is being hashed";
+
+  // 64-bit version
+  hasher.h64(input); // 5776724552493396044n (BigInt)
+  // For convenience, get hash as string of its zero-padded hex representation
+  hasher.h64ToString(input,BigInt(0)); // "502b0c5fc4a5704c"
+  });</script>
+
 <script>
 
 
@@ -246,7 +264,7 @@ crossorigin="anonymous" onload=
 		   if(myArray==null){
 			   connect("websocket_message_connect");
 		   } else {
-			console.log(myArray);
+			   //console.log(myArray);
 			   connect("websocket_author_connect");
 		   }
            return false;

@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
         test_buffer[test_buffer_idx] = buffer[buffer_idx];
         test_buffer_idx++;
       } else {
-        printf("%016llx:%s\n", tokenHash(test_buffer), test_buffer);
+	printf("%016llx:%s\n", tokenHash(test_buffer), test_buffer);
         memset(test_buffer, '\0', s.st_size);
         test_buffer_idx = 0;
       }

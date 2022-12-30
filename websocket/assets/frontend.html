@@ -107,7 +107,7 @@ function connect(url) {
                         var filter  = document.getElementById("search").value;
 			   let x = xxhash();
 			   x.then((v)=> {
-				   console.log(filter.substring(7,));
+				   filter = filter.substring(7,);
 				   let hash  = v.h64ToString(filter);
 				   console.log(hash);
 				   socket.send(hash);

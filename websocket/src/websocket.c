@@ -34,10 +34,8 @@
 #include <unistd.h>
 #include <kore/http.h>
 #include <kore/kore.h>
-#define MAX_FILE_SIZE 100000
 #include <kore/seccomp.h>
 
-#define MAX_AUTHORS 15000
 
 KORE_SECCOMP_FILTER("tasks",
 	KORE_SYSCALL_ALLOW(getdents64),
@@ -58,49 +56,57 @@ int refind(char *buffer, char *pattern) ;
 
 
 
+#define MAX_FILE_SIZE 100000
 #define MEM_TAG_AUTHORS		100
+#define MAX_AUTHORS 15000
+#define MAX_AUTHORS_LEN		100000
 
 int		init(int);
 
 /* Global pointer, gets initialized to NULL when module loads/reloads. */
 char		*author_ptr=NULL;
-char *test[MAX_AUTHORS];
+
+char *test[MAX_AUTHORS_LEN]={NULL};
+char author[MAX_AUTHORS][MAX_AUTHORS_LEN];
+int author_line_count=0;
 
 int
 init(int state) {
+  char *buffer;
   int fd;
   struct stat s;
-  char *buffer;
-  /* Ignore unload(s). */
-  if (state == KORE_MODULE_UNLOAD)
-    return (KORE_RESULT_OK);
-
-  //printf("author_ptr: %p\n", (void *)author_ptr);
-  /* Attempt to lookup the original pointer. */
-  if ((author_ptr = kore_mem_lookup(MEM_TAG_AUTHORS)) == NULL) {
-    /* Failed, grab a new chunk of memory and tag it. */
-    fd = open("authors", O_RDONLY);
-    // if (fd < 0)
-    // kore_log(EXIT_FAILURE;
-    fstat(fd, &s);
-    /* PROT_READ disallows writing to buffer: will segv */
-    buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-    if (buffer != (void *)-1) {
-      printf("  allocating author_ptr for the first time\n");
-      author_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_AUTHORS);
-      kore_strlcpy(author_ptr, buffer, strlen(buffer) + 1);
-      kore_split_string(author_ptr,"\n",test,MAX_AUTHORS);
-      close(fd);
-      munmap(buffer, s.st_size);
-    }
-  } else {
-    printf("  fixed_ptr address resolved\n");
-  }
-
-  //printf("  fixed_ptr: %p\n", (void *)fixed_ptr);
-  //printf("  value    : %s\n", fixed_ptr);
-
+  
+/* Ignore unload(s). */
+if (state == KORE_MODULE_UNLOAD)
   return (KORE_RESULT_OK);
+
+/* Attempt to lookup the original pointer. */
+if ((author_ptr = kore_mem_lookup(MEM_TAG_AUTHORS)) == NULL) {
+  /* Failed, grab a new chunk of memory and tag it. */
+  fd = open("authors", O_RDONLY);
+  fstat(fd, &s);
+  /* PROT_READ disallows writing to buffer: will segv */
+
+  buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (buffer != (void *)-1) {
+    printf("  allocating author_ptr for the first time\n");
+    author_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_AUTHORS);
+    kore_strlcpy(author_ptr, buffer, strlen(buffer) + 1);
+    author_line_count = kore_split_string(author_ptr, "\n", test, MAX_AUTHORS);
+    for (int i = 0; i < author_line_count; i++) {
+      if (test[i] != NULL) {
+        //kore_log(LOG_NOTICE, "%s: connected", test[i]);
+        sprintf(author[i], "<tr><td>%s</td></tr>", test[i]);
+        //kore_log(LOG_NOTICE, "%s: connected", author[i]);
+      }
+    }
+    close(fd);
+    munmap(buffer, s.st_size);
+  }
+} else {
+  printf("  fixed_ptr address resolved\n");
+}
+return (KORE_RESULT_OK);
 }
 
 
@@ -117,8 +123,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
   
 	kore_log(LOG_NOTICE, "%s:\n", (char *)data);
-	
-	char filename[120];
+	//char filename[120];
 	int line_count = 0;
 	int row_count =0;	
 	int test_buffer_idx = 0;
@@ -127,18 +132,16 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	struct kore_buf *buf;
 	u_int8_t *data2;
 	buf = kore_buf_alloc(10*1024*1024);
-	for(int i=0;i<MAX_AUTHORS;i++){
+	for(int i=0;i<author_line_count;i++){
 		if(test[i]!=NULL){
+		//kore_log(LOG_NOTICE, ":::%s::",author[i]);
 		if(refind(test[i],data)==0){
 			row_count++;
-		if (row_count > 5000) { break;}
-		kore_buf_append(buf,"<tr><td>",8);
-		kore_buf_append(buf,test[i],strlen(test[i]));
-		kore_buf_append(buf,"</tr></td>",10);
+		if (row_count > 10000) { break;}
+		kore_buf_append(buf,author[i],strlen(author[i]));
 		}}
 	}
 	
-	kore_log(LOG_NOTICE, ":::%i::",buf);
 	data2 = kore_buf_release(buf, &len2);
 	kore_websocket_broadcast(c, op,data2 , len2, WEBSOCKET_BROADCAST_GLOBAL);
 kore_free(data2);

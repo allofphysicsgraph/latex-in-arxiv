@@ -37,7 +37,7 @@
 #define MAX_FILE_SIZE 100000
 #include <kore/seccomp.h>
 
-
+#define MAX_AUTHORS 15000
 
 KORE_SECCOMP_FILTER("tasks",
 	KORE_SYSCALL_ALLOW(getdents64),
@@ -63,7 +63,8 @@ int refind(char *buffer, char *pattern) ;
 int		init(int);
 
 /* Global pointer, gets initialized to NULL when module loads/reloads. */
-char		*author_ptr = NULL;
+char		*author_ptr=NULL;
+char *test[MAX_AUTHORS];
 
 int
 init(int state) {
@@ -74,8 +75,7 @@ init(int state) {
   if (state == KORE_MODULE_UNLOAD)
     return (KORE_RESULT_OK);
 
-  printf("author_ptr: %p\n", (void *)author_ptr);
-
+  //printf("author_ptr: %p\n", (void *)author_ptr);
   /* Attempt to lookup the original pointer. */
   if ((author_ptr = kore_mem_lookup(MEM_TAG_AUTHORS)) == NULL) {
     /* Failed, grab a new chunk of memory and tag it. */
@@ -89,6 +89,7 @@ init(int state) {
       printf("  allocating author_ptr for the first time\n");
       author_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_AUTHORS);
       kore_strlcpy(author_ptr, buffer, strlen(buffer) + 1);
+      kore_split_string(author_ptr,"\n",test,MAX_AUTHORS);
       close(fd);
       munmap(buffer, s.st_size);
     }
@@ -116,38 +117,31 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
   
 	kore_log(LOG_NOTICE, "%s:\n", (char *)data);
-
+	
 	char filename[120];
-	char test_buffer[2056];
 	int line_count = 0;
+	int row_count =0;	
 	int test_buffer_idx = 0;
 	size_t author_idx = 0;
-
-	memset(test_buffer, '\0', 2056);
-
-	while (author_idx < strlen(author_ptr)) {
-	  if (author_ptr[author_idx] != '\n') {
-	    // test_buffer[test_buffer_idx] = author_ptr[author_idx];
-	    kore_log(LOG_NOTICE, "%s\n\n\n\n", &author_ptr[author_idx]);
-	    // test_buffer_idx++;
-	  } else {
-	    // line_count++;
-
-	    // int testing = refind(test_buffer, (char *)&data[7]);
-	    // memset(filename, '\0', 120);
-	    // if (strlen(test_buffer) > 10) {
-	    // strncpy(filename, &test_buffer[2], 7);
-	    // if (testing == 0) {
-	    // kore_buf_appendf(buf, "<tr><td><a
-	    // href=\'/assets/HTML/%s.html\'>%s<td></tr>",filename,filename);
-	    //}
-	    test_buffer_idx = 0;
-	    memset(test_buffer, '\0', 2056);
-	  }
-	  author_idx++;
+	size_t len2;
+	struct kore_buf *buf;
+	u_int8_t *data2;
+	buf = kore_buf_alloc(10*1024*1024);
+	for(int i=0;i<MAX_AUTHORS;i++){
+		if(test[i]!=NULL){
+		if(refind(test[i],data)==0){
+			row_count++;
+		if (row_count > 5000) { break;}
+		kore_buf_append(buf,"<tr><td>",8);
+		kore_buf_append(buf,test[i],strlen(test[i]));
+		kore_buf_append(buf,"</tr></td>",10);
+		}}
 	}
-
-	kore_websocket_broadcast(c, op, "a", 1, WEBSOCKET_BROADCAST_GLOBAL);
+	
+	kore_log(LOG_NOTICE, ":::%i::",buf);
+	data2 = kore_buf_release(buf, &len2);
+	kore_websocket_broadcast(c, op,data2 , len2, WEBSOCKET_BROADCAST_GLOBAL);
+kore_free(data2);
 }
 
 void index_files(struct connection *c, u_int8_t op) {

@@ -56,19 +56,28 @@ int refind(char *buffer, char *pattern) ;
 
 
 
-#define MAX_FILE_SIZE 100000
-#define MEM_TAG_AUTHORS		100
+
+
 #define MAX_AUTHORS 15000
-#define MAX_AUTHORS_LEN		100000
+#define MAX_AUTHORS_LEN 100000
+#define MAX_FILE_SIZE 100000
+#define MAX_TITLES 12000
+#define MAX_TITLES_LEN 100000
+#define MEM_TAG_AUTHORS 100
+#define MEM_TAG_TITLES 101
 
 int		init(int);
 
 /* Global pointer, gets initialized to NULL when module loads/reloads. */
 char		*author_ptr=NULL;
+char		*title_ptr=NULL;
 
 char *test[MAX_AUTHORS_LEN]={NULL};
 char author[MAX_AUTHORS][MAX_AUTHORS_LEN];
+char *title_test[MAX_TITLES_LEN]={NULL};
+char title[MAX_TITLES][MAX_TITLES_LEN];
 int author_line_count=0;
+int title_line_count=0;
 
 int
 init(int state) {
@@ -103,9 +112,36 @@ if ((author_ptr = kore_mem_lookup(MEM_TAG_AUTHORS)) == NULL) {
     close(fd);
     munmap(buffer, s.st_size);
   }
+
+if ((title_ptr = kore_mem_lookup(MEM_TAG_TITLES)) == NULL) {
+  /* Failed, grab a new chunk of memory and tag it. */
+  fd = open("titles", O_RDONLY);
+  fstat(fd, &s);
+  /* PROT_READ disallows writing to buffer: will segv */
+
+  buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (buffer != (void *)-1) {
+    printf("  allocating title_ptr for the first time\n");
+    title_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_TITLES);
+    kore_strlcpy(title_ptr, buffer, strlen(buffer) + 1);
+    title_line_count = kore_split_string(title_ptr, "\n", title_test, MAX_TITLES);
+    kore_log(LOG_NOTICE, ":::::%i: connected", title_line_count);
+    kore_log(LOG_NOTICE, ":::::%s: connected", title_test[0]);
+    for (int i = 0; i < title_line_count; i++) {
+      if (title_test[i] != NULL) {
+	memset(title[i],'\0',MAX_TITLES_LEN);
+        //kore_log(LOG_NOTICE, "%s: connected", title[i]);
+        sprintf(title[i], "<tr><td>%s</td></tr>", title_test[i]);
+	
+      }
+    }
+    close(fd);
+    munmap(buffer, s.st_size);
+  }
+
 } else {
   printf("  fixed_ptr address resolved\n");
-}
+}}
 return (KORE_RESULT_OK);
 }
 
@@ -139,6 +175,15 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 			row_count++;
 		if (row_count > 10000) { break;}
 		kore_buf_append(buf,author[i],strlen(author[i]));
+		}}
+	}
+	
+	for(int i=0;i<title_line_count;i++){
+		if(title_test[i]!=NULL){
+		if(refind(title_test[i],data)==0){
+			row_count++;
+		if (row_count > 10000) { break;}
+		kore_buf_append(buf,title[i],strlen(title[i]));
 		}}
 	}
 	

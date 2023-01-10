@@ -73,7 +73,7 @@ RUN make openssl
 RUN make Kore
 #RUN make sampledata
 RUN mkdir -p /dev/shm/db
-RUN tar -xf /opt/latex-in-arxiv/websocket/assets/HTML.tar.xz
+RUN tar -xf /opt/latex-in-arxiv/websocket/assets/html/2003.tar.xz
 #RUN chown postgres -R /dev/shm/db
 #RUN make install_libbloom
 #RUN make bloom

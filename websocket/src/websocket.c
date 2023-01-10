@@ -235,7 +235,7 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
   	if(!strcmp(data,"undefined")==0){
 	if (rematch(reply->element[j]->str,data)==0){
   	//	kore_log(LOG_NOTICE, "%s:%s\n",reply->element[j]->str,data);
-		//resub(reply->element[j]->str,"assets/HTML/","",tmp_file_loc);
+		//resub(reply->element[j]->str,"assets/html/","",tmp_file_loc);
       	    	kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                          reply->element[j]->str, tmp_file_loc);
 			 memset(tmp_file_loc,'\0',1024);

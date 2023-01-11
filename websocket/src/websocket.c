@@ -65,6 +65,7 @@ int refind(char *buffer, char *pattern) ;
 #define MAX_TITLES_LEN 100000
 #define MEM_TAG_AUTHORS 100
 #define MEM_TAG_TITLES 101
+#define SEARCH_STATES 5
 
 int		init(int);
 
@@ -78,6 +79,8 @@ char *title_test[MAX_TITLES_LEN]={NULL};
 char title[MAX_TITLES][MAX_TITLES_LEN];
 int author_line_count=0;
 int title_line_count=0;
+
+
 
 int
 init(int state) {
@@ -168,24 +171,36 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	struct kore_buf *buf;
 	u_int8_t *data2;
 	buf = kore_buf_alloc(10*1024*1024);
+	int search_titles = 0;
+	int search_authors = 0;
+	int search_affiliations = 0;
+	int search_equations = 0;
+	int search_citations = 0;
+	char search_state[SEARCH_STATES];
+	memset(search_state,'\0',SEARCH_STATES);
+	strncpy(search_state,data,SEARCH_STATES);
+
+  	kore_log(LOG_NOTICE, "%s",&data[SEARCH_STATES]);
+	if(search_state[1]=='1'){
 	for(int i=0;i<author_line_count;i++){
 		if(test[i]!=NULL){
-		//kore_log(LOG_NOTICE, ":::%s::",author[i]);
-		if(refind(test[i],data)==0){
+		if(refind(test[i],&data[SEARCH_STATES])==0){
 			row_count++;
-		if (row_count > 10000) { break;}
+		if (row_count > 1000) { break;}
 		kore_buf_append(buf,author[i],strlen(author[i]));
 		}}
-	}
+	}}
 	
+	
+	if(search_state[0]=='1'){
 	for(int i=0;i<title_line_count;i++){
 		if(title_test[i]!=NULL){
-		if(refind(title_test[i],data)==0){
+		if(refind(title_test[i],&data[SEARCH_STATES])==0){
 			row_count++;
-		if (row_count > 10000) { break;}
+		if (row_count > 1000) { break;}
 		kore_buf_append(buf,title[i],strlen(title[i]));
 		}}
-	}
+	}}
 	
 	data2 = kore_buf_release(buf, &len2);
 	kore_websocket_broadcast(c, op,data2 , len2, WEBSOCKET_BROADCAST_GLOBAL);

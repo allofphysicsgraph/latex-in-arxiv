@@ -10,7 +10,7 @@ all:
 	gcc abstract.c -o abstract.out
 	ragel equation.rl
 	gcc equation.c -o equation.out
-
+	sudo cp equation.out /usr/bin/
 
 clean:
 	rm *~

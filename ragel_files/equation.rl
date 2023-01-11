@@ -22,12 +22,12 @@ char filename[1024];
 	action balanced { c == 0}
 	action print_fc {printf("%c",fc);}
 	action init_c { c = 0;}
-	action done { printf("\n**************************"); }
+	action done { printf(""); }
 	begin_equation = '\\begin{equation}' @inc  @{ printf("\n%s:\\begin{equation}",filename); };
 	end_equation = '\\end{equation}'  @dec @{ printf("}"); } ;
-
+	newline = '\n' @{printf(" ");};
 	# The any* includes '\n' when hit_5 is true, so use guarded concatenation.
-	main :=  ( (any-begin_equation)* . begin_equation . any* @print_fc :>> end_equation  @done :> any* when balanced )+   ;
+	main :=  ( (any-begin_equation)* . begin_equation . (((any-newline) @print_fc)|newline)*  :>> end_equation  @done :> any* when balanced )+   ;
 }%%
 
 %% write data noerror;
@@ -40,9 +40,9 @@ void test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf(" \n success \n");
+		printf("");
 	else
-		printf(" \n failure \n");
+		printf("");
 }
 
 int main(int argc, char** argv) {

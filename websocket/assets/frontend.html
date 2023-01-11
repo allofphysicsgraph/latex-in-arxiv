@@ -1,203 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel="icon" href="data:,">
-<link rel="icon" href="data:,">
-<link rel="icon" href="data:,">
-<meta charset="utf-8">
-<meta name="generator" content=
-"HTML Tidy for HTML5 for Linux version 5.6.0">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.101.0">
-<title>Dashboard Template · Bootstrap v5.2</title>
-<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-<link href="/css/katex.min.css" rel="stylesheet">
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+    <meta charset="utf-8">
+    <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Dashboard Template · Bootstrap v5.2</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link href="/css/katex.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+          }
+    
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+    
+          .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+          }
+    
+          .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+          }
+    
+          .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+          }
+    
+          .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+          }
+    
+          .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+          }
+    </style>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+    <script>
+        var socket = null;
+        var sent = 0;
+        var recv = 0;
+        var length = 65536;
+        
+        function open(evt) {
+                message(evt);
         }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-</style>
-
-<script>
-var socket = null;
-var sent = 0;
-var recv = 0;
-var length = 65536;
-
-function open(evt) {
-        message(evt);
-}
-
-function message(evt) {
-        socket.send(evt.data);
-        //sent = sent + 1;
-        update(evt);
-}
-
-function update(evt) {
-        filetable = document.getElementById("fileTable");
-        filetable.innerHTML = evt.data;
-}
-
-
-function onmessage(evt) {
-        message(evt);
-}
-
-function connect(url) {
-        //url file_index_connect
-        connect_url = "ws://127.0.0.1:8888/"+url
-        socket = new WebSocket(connect_url);
-
-        socket.onopen = function(evt) { 
-                if(url==="websocket_message_connect"){
-                        var filter  = document.getElementById("search").value;
-                        socket.send(filter);
-                } 
-                
-		if(url==="websocket_author_connect"){
-                        var filter  = document.getElementById("search").value;
-			   let x = xxhash();
-			   x.then((v)=> {
-				   filter = filter.substring(7,);
-				   let hash  = v.h64ToString(filter);
-				   console.log(filter);
-				   socket.send(filter);
-			   });
-                } else {
-                        open(evt);
-                }
-                console.log("open"); 
-        };
-
-        socket.onclose = function(evt) {  console.log("closed");};
-        socket.onmessage = function(evt) { 
-                update(evt);    
-                //console.log(filter);
-                //console.log(message); 
-                socket.close();
-        };
-        socket.onerror = function(evt) { console.log("onerror"); };
-}
-</script><!-- Custom styles for this template -->
-<link href="/css/dashboard.css" rel="stylesheet">
+        
+        function message(evt) {
+                socket.send(evt.data);
+                //sent = sent + 1;
+                update(evt);
+        }
+        
+        function update(evt) {
+                filetable = document.getElementById("fileTable");
+                filetable.innerHTML = evt.data;
+        }
+        
+        
+        function onmessage(evt) {
+                message(evt);
+        }
+        
+        
+        
+        function connect(url) {
+                //url file_index_connect
+                connect_url = "ws://127.0.0.1:8888/"+url
+                socket = new WebSocket(connect_url);
+        
+                socket.onopen = function(evt) { 
+                        if(url==="websocket_message_connect"){
+                                var filter  = document.getElementById("search").value;
+                                socket.send(filter);
+                        } 
+                        
+        		if(url==="websocket_author_connect"){
+                                var filter  = document.getElementById("search").value;
+        			   let x = xxhash();
+        			   x.then((v)=> {
+        				   //filter = filter.substring(7,);
+        				   let hash  = v.h64ToString(filter);
+        				   console.log(filter);
+        				   var titles = document.getElementById('titles').checked;
+        				   var authors = document.getElementById('authors').checked;
+        				   var affiliations = document.getElementById('affiliations').checked;
+        				   var citations = document.getElementById('citations').checked;
+        				   var button_state='';
+        				   button_state += titles ? '1':'0';
+        				   button_state += authors ? '1':'0';
+        				   button_state += affiliations ? '1':'0';
+        				   button_state += equations ? '1':'0';
+        				   button_state += citations ? '1':'0';
+        				   console.log(button_state);
+        				   console.log(5);
+        
+        				   socket.send(button_state + filter);
+        			   });
+                        } else {
+                                open(evt);
+                        }
+                        console.log("open"); 
+                };
+        
+                socket.onclose = function(evt) {  console.log("closed");};
+                socket.onmessage = function(evt) { 
+                        update(evt);    
+                        //console.log(filter);
+                        //console.log(message); 
+                        socket.close();
+                };
+                socket.onerror = function(evt) { console.log("onerror"); };
+        }
+    </script>
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
 </head>
+
 <body>
-<header class=
-"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href=
-"#">LaTex in ArXiV</a> <input class=
-"form-control form-control-dark w-100 rounded-0 border-0" type=
-"text" placeholder="author:Theoretical Physics" aria-label="Search" id="search">
-<div class="navbar-nav">
-<div class="nav-item text-nowrap"><a class="nav-link px-3" href=
-"#"></a></div>
-</div>
-</header>
-<div class="container-fluid">
-<div class="row">
-<nav id="sidebarMenu" class=
-"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-<div class="position-sticky pt-3 sidebar-sticky">
-<ul class="nav flex-column">
-<li class="nav-item"><a class="nav-link active" aria-current="page"
-href="#">Dashboard</a></li>
-</ul>
-<h6 class=
-"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-</h6>
-<ul class="nav flex-column mb-2">
-</ul>
-</div>
-</nav>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-<div class=
-"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-<h1 class="h2">Dashboard</h1>
-<div class="btn-toolbar mb-2 mb-md-0">
-</div>
-</div>
-<p id="ktx">$$\\frac{1}{2}$$</p>
-<form action="/" onsubmit=
-"connect('file_index_connect'); return false;"><input type="submit"
-value="indexFiles"></form>
-<div id="counter"></div>
-<div class="input-group">
-<div class="input-group-prepend"><span class=
-"input-group-text">Input LaTeX</span></div>
-<textarea class="form-control" aria-label="With textarea" id=
-"source"></textarea></div>
-<div>
-<h3 id="result"></h3>
-</div>
-<!--canvas class="my-4 w-100" id="myChart" width="900" height="380">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">LaTeX in ArXiV</a> <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Theoretical Physics" aria-label="Search" id="search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="#"></a>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"></a>
+                        </li>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="titles">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Titles</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="authors" checked>
+                            <label class="form-check-label" for="flexSwitchCheck">Author</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="affiliations" disabled>
+                            <label class="form-check-label" for="flexSwitchCheck">Affiliation</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="equations" disabled>
+                            <label class="form-check-label" for="flexSwitchCheck">Equations</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="citations" disabled>
+                            <label class="form-check-label" for="flexSwitchCheck">Citations</label>
+                        </div>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                    </div>
+                </div>
+                <p id="ktx">$$\\frac{1}{2}$$</p>
+                <form action="/" onsubmit="connect('file_index_connect'); return false;"><input type="submit" value="indexFiles"></form>
+                <div id="counter"></div>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">Input LaTeX</span></div>
+                    <textarea class="form-control" aria-label="With textarea" id="source"></textarea></div>
+                <div>
+                    <h3 id="result"></h3>
+                </div>
+                <!--canvas class="my-4 w-100" id="myChart" width="900" height="380">
 </canvas>-->
-<h2>Section title</h2>
-<div class="table-responsive">
-<table class="table table-striped table-sm">
-<thead>
-<tr>
-<th scope="col">#</th>
-</tr>
-</thead>
-<tbody id="fileTable"></tbody>
-</table>
-</div>
-</main>
-</div>
-</div>
-<script>
-            document.addEventListener("DOMContentLoaded", function() {
+                <h2>Section title</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fileTable"></tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
                     renderMathInElement(document.body, {
                                               // customised options
                                               // • auto-render specific keys, e.g.:
@@ -211,69 +239,61 @@ value="indexFiles"></form>
                                                                                                                                                                                             throwOnError : false
                                                                                                                                                                                           });
                                                                                                                                                                                       });
-</script> 
-<script src="/js/katex.min.js"></script> 
-<script src="/js/bootstrap.bundle.min.js"></script> 
-<script>
+    </script>
+    <script src="/js/katex.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script>
+        katex.render("c = \\pm\\sqrt{a^2 + b^2}", ktx, {
+            throwOnError: false
+        });
+    </script>
 
+    <script src="/js/index.js"></script>
 
-katex.render("c = \\pm\\sqrt{a^2 + b^2}", ktx, {
-    throwOnError: false
-});
-</script> 
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-<script  src="/js/index.js"></script>
+    <script>
+        // Creates the WebAssembly instance.
+        xxhash().then(hasher => {
+          const input = "The string that is being hashed";
+        
+          // 64-bit version
+          hasher.h64(input); // 5776724552493396044n (BigInt)
+          // For convenience, get hash as string of its zero-padded hex representation
+          hasher.h64ToString(input,BigInt(0)); // "502b0c5fc4a5704c"
+          });
+    </script>
 
-
-<script defer src=
-"https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js"
-integrity=
-"sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-crossorigin="anonymous" onload=
-"renderMathInElement(document.body);"></script> 
-
-<script>
-// Creates the WebAssembly instance.
-xxhash().then(hasher => {
-  const input = "The string that is being hashed";
-
-  // 64-bit version
-  hasher.h64(input); // 5776724552493396044n (BigInt)
-  // For convenience, get hash as string of its zero-padded hex representation
-  hasher.h64ToString(input,BigInt(0)); // "502b0c5fc4a5704c"
-  });</script>
-
-<script>
-
-
-   const source = document.getElementById('source');
-   const result = document.getElementById('result');
-
-   const inputHandler = function(e) {
-     result.innerHTML = e.target.value;
-        katex.render(e.target.value, result, {
-    throwOnError: false
-});
-
-   }
-
-     source.addEventListener('input', inputHandler);
-
-   const searchInputHandler = function(e) {
-           if (e.data !== null){
-           const search_value = document.getElementById('search').value;
-	   const myArray = search_value.match('author:');
-		   if(myArray==null){
-			   connect("websocket_message_connect");
-		   } else {
-			   //console.log(myArray);
-			   connect("websocket_author_connect");
-		   }
-           return false;
+    <script>
+        const source = document.getElementById('source');
+           const result = document.getElementById('result');
+        
+           const inputHandler = function(e) {
+             result.innerHTML = e.target.value;
+                katex.render(e.target.value, result, {
+            throwOnError: false
+        });
+        
            }
-   }
-   const search = document.getElementById('search');
-   search.addEventListener('input', searchInputHandler);
-</script>
+        
+             source.addEventListener('input', inputHandler);
+        
+           const searchInputHandler = function(e) {
+                   if (e.data !== null){
+                   const search_value = document.getElementById('search').value;
+        	   //const myArray = search_value.match('author:');
+        	  //	   if(myArray==null){
+        	 //		   connect("websocket_message_connect");
+        	//	   } else {
+        		   if(search_value.length>0){
+        			   connect("websocket_author_connect");
+        		   }
+                   return false;
+                   }
+           }
+           const search = document.getElementById('search');
+           search.addEventListener('input', searchInputHandler);
+    </script>
 </body>
+
 </html>

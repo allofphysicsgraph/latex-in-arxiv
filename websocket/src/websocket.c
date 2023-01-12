@@ -56,19 +56,19 @@ int refind(char *buffer, char *pattern) ;
 
 
 
-#define MAX_AFFILIATIONS 15000
-#define MAX_AFFILIATIONS_LEN 100000
+#define MAX_AFFILIATIONS 1500
+#define MAX_AFFILIATIONS_LEN 10000
 
-#define MAX_EQUATIONS 50000
-#define MAX_EQUATIONS_LEN 100000
+#define MAX_EQUATIONS 70000
+#define MAX_EQUATIONS_LEN 50000
 
-#define MAX_CITATIONS 15000
-#define MAX_CITATIONS_LEN 100000
+#define MAX_CITATIONS 490000
+#define MAX_CITATIONS_LEN 10000
 
-#define MAX_AUTHORS 15000
+#define MAX_AUTHORS 14000
 #define MAX_AUTHORS_LEN 100000
 
-#define MAX_TITLES 12000
+#define MAX_TITLES 13000
 #define MAX_TITLES_LEN 100000
 
 #define MAX_FILE_SIZE 100000
@@ -195,6 +195,7 @@ if ((equations_ptr = kore_mem_lookup(MEM_TAG_EQUATIONS)) == NULL) {
   }
 }
 
+kore_log(LOG_NOTICE, "%i: connected", sizeof(equations));
 return (KORE_RESULT_OK);
 }
 
@@ -229,7 +230,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	char search_state[SEARCH_STATES];
 	memset(search_state,'\0',SEARCH_STATES);
 	strncpy(search_state,data,SEARCH_STATES);
-  	kore_log(LOG_NOTICE, "%s",(char *)&data[SEARCH_STATES]);
+  	//kore_log(LOG_NOTICE, "%s",(char *)&data[SEARCH_STATES]);
 	
 	if(search_state[0]=='1'){
 	for(int i=0;i<title_line_count;i++){
@@ -266,7 +267,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 		if(equations_test[i]!=NULL){
 		if(refind(equations_test[i],&data[SEARCH_STATES])==0){
 			row_count++;
-		if (row_count > 1000) { break;}
+		if (row_count > 500) { break;}
 		kore_buf_append(buf,equations[i],strlen(equations[i]));
 		}}
 	}}
@@ -283,7 +284,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	
 	data2 = kore_buf_release(buf, &len2);
 	kore_websocket_broadcast(c, op,data2 , len2, WEBSOCKET_BROADCAST_GLOBAL);
-kore_free(data2);
+	kore_free(data2);
 }
 
 void index_files(struct connection *c, u_int8_t op) {

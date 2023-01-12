@@ -8,6 +8,8 @@ all:
 	gcc cite.c -o cite.out	
 	ragel abstract.rl
 	gcc abstract.c -o abstract.out
+	ragel affiliation.rl
+	gcc affiliation.c -o affiliation.out
 	ragel equation.rl
 	gcc equation.c -o equation.out
 	sudo cp equation.out /usr/bin/

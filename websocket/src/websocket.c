@@ -56,29 +56,60 @@ int refind(char *buffer, char *pattern) ;
 
 
 
+#define MAX_AFFILIATIONS 15000
+#define MAX_AFFILIATIONS_LEN 100000
 
+#define MAX_EQUATIONS 50000
+#define MAX_EQUATIONS_LEN 100000
+
+#define MAX_CITATIONS 15000
+#define MAX_CITATIONS_LEN 100000
 
 #define MAX_AUTHORS 15000
 #define MAX_AUTHORS_LEN 100000
-#define MAX_FILE_SIZE 100000
+
 #define MAX_TITLES 12000
 #define MAX_TITLES_LEN 100000
+
+#define MAX_FILE_SIZE 100000
+#define SEARCH_STATES 5
+
 #define MEM_TAG_AUTHORS 100
 #define MEM_TAG_TITLES 101
-#define SEARCH_STATES 5
+#define MEM_TAG_AFFILIATIONS 102
+#define MEM_TAG_EQUATIONS 103
+#define MEM_TAG_CITATIONS 104
+
 
 int		init(int);
 
 /* Global pointer, gets initialized to NULL when module loads/reloads. */
 char		*author_ptr=NULL;
 char		*title_ptr=NULL;
+char		*affiliations_ptr=NULL;
+char		*equations_ptr=NULL;
+char		*citations_ptr=NULL;
 
-char *test[MAX_AUTHORS_LEN]={NULL};
+char *author_test[MAX_AUTHORS_LEN]={NULL};
 char author[MAX_AUTHORS][MAX_AUTHORS_LEN];
+
 char *title_test[MAX_TITLES_LEN]={NULL};
 char title[MAX_TITLES][MAX_TITLES_LEN];
+
+char *affiliation_test[MAX_AFFILIATIONS_LEN]={NULL};
+char affiliation[MAX_AFFILIATIONS][MAX_AFFILIATIONS_LEN];
+
+char *equations_test[MAX_EQUATIONS_LEN]={NULL};
+char equations[MAX_EQUATIONS][MAX_EQUATIONS_LEN];
+
+char *citations_test[MAX_CITATIONS_LEN]={NULL};
+char citations[MAX_CITATIONS][MAX_CITATIONS_LEN];
+
 int author_line_count=0;
 int title_line_count=0;
+int affiliation_line_count=0;
+int equations_line_count=0;
+int citations_line_count=0;
 
 
 
@@ -104,17 +135,15 @@ if ((author_ptr = kore_mem_lookup(MEM_TAG_AUTHORS)) == NULL) {
     printf("  allocating author_ptr for the first time\n");
     author_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_AUTHORS);
     kore_strlcpy(author_ptr, buffer, strlen(buffer) + 1);
-    author_line_count = kore_split_string(author_ptr, "\n", test, MAX_AUTHORS);
+    author_line_count = kore_split_string(author_ptr, "\n", author_test, MAX_AUTHORS);
     for (int i = 0; i < author_line_count; i++) {
-      if (test[i] != NULL) {
-        //kore_log(LOG_NOTICE, "%s: connected", test[i]);
-        sprintf(author[i], "<tr><td>%s</td></tr>", test[i]);
-        //kore_log(LOG_NOTICE, "%s: connected", author[i]);
+      if (author_test[i] != NULL) {
+        sprintf(author[i], "<tr><td>%s</td></tr>", author_test[i]);
       }
     }
     close(fd);
     munmap(buffer, s.st_size);
-  }
+  }}
 
 if ((title_ptr = kore_mem_lookup(MEM_TAG_TITLES)) == NULL) {
   /* Failed, grab a new chunk of memory and tag it. */
@@ -133,18 +162,39 @@ if ((title_ptr = kore_mem_lookup(MEM_TAG_TITLES)) == NULL) {
     for (int i = 0; i < title_line_count; i++) {
       if (title_test[i] != NULL) {
 	memset(title[i],'\0',MAX_TITLES_LEN);
-        //kore_log(LOG_NOTICE, "%s: connected", title[i]);
         sprintf(title[i], "<tr><td>%s</td></tr>", title_test[i]);
 	
       }
     }
     close(fd);
     munmap(buffer, s.st_size);
-  }
+  }} 
 
-} else {
-  printf("  fixed_ptr address resolved\n");
-}}
+if ((equations_ptr = kore_mem_lookup(MEM_TAG_EQUATIONS)) == NULL) {
+  /* Failed, grab a new chunk of memory and tag it. */
+  fd = open("equations", O_RDONLY);
+  fstat(fd, &s);
+  /* PROT_READ disallows writing to buffer: will segv */
+  buffer = mmap(0, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (buffer != (void *)-1) {
+    equations_ptr = kore_malloc_tagged(strlen(buffer) + 1, MEM_TAG_EQUATIONS);
+    kore_strlcpy(equations_ptr, buffer, strlen(buffer) + 1);
+    equations_line_count = kore_split_string(equations_ptr, "\n", equations_test, MAX_EQUATIONS);
+    kore_log(LOG_NOTICE, "%s: equations", equations_test[0]);
+    for (int i = 0; i < equations_line_count; i++) {
+      if (equations_test[i] != NULL) {
+        memset(equations[i],'\0', MAX_EQUATIONS_LEN);
+        // kore_log(LOG_NOTICE, "%s: connected", equations[i]);
+	//char test_var[128] = "katex.render(\"c = \\pm\\sqrt{a^2 + b^2}\", {throwOnError: false});";
+        //sprintf(equations[i], "<tr><td>%s</td></tr>", test_var);
+        sprintf(equations[i], "<tr><td>%s</td></tr>", equations_test[i]);
+      }
+    }
+    close(fd);
+    munmap(buffer, s.st_size);
+  }
+}
+
 return (KORE_RESULT_OK);
 }
 
@@ -179,18 +229,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	char search_state[SEARCH_STATES];
 	memset(search_state,'\0',SEARCH_STATES);
 	strncpy(search_state,data,SEARCH_STATES);
-
-  	kore_log(LOG_NOTICE, "%s",&data[SEARCH_STATES]);
-	if(search_state[1]=='1'){
-	for(int i=0;i<author_line_count;i++){
-		if(test[i]!=NULL){
-		if(refind(test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 1000) { break;}
-		kore_buf_append(buf,author[i],strlen(author[i]));
-		}}
-	}}
-	
+  	kore_log(LOG_NOTICE, "%s",(char *)&data[SEARCH_STATES]);
 	
 	if(search_state[0]=='1'){
 	for(int i=0;i<title_line_count;i++){
@@ -199,6 +238,46 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 			row_count++;
 		if (row_count > 1000) { break;}
 		kore_buf_append(buf,title[i],strlen(title[i]));
+		}}
+	}}
+	
+	if(search_state[1]=='1'){
+	for(int i=0;i<author_line_count;i++){
+		if(author_test[i]!=NULL){
+		if(refind(author_test[i],&data[SEARCH_STATES])==0){
+			row_count++;
+		if (row_count > 1000) { break;}
+		kore_buf_append(buf,author[i],strlen(author[i]));
+		}}
+	}}
+	
+	if(search_state[2]=='1'){
+	for(int i=0;i<affiliation_line_count;i++){
+		if(affiliation_test[i]!=NULL){
+		if(refind(affiliation_test[i],&data[SEARCH_STATES])==0){
+			row_count++;
+		if (row_count > 1000) { break;}
+		kore_buf_append(buf,affiliation[i],strlen(affiliation[i]));
+		}}
+	}}
+	
+	if(search_state[3]=='1'){
+	for(int i=0;i<equations_line_count;i++){
+		if(equations_test[i]!=NULL){
+		if(refind(equations_test[i],&data[SEARCH_STATES])==0){
+			row_count++;
+		if (row_count > 1000) { break;}
+		kore_buf_append(buf,equations[i],strlen(equations[i]));
+		}}
+	}}
+	
+	if(search_state[4]=='1'){
+	for(int i=0;i<citations_line_count;i++){
+		if(citations_test[i]!=NULL){
+		if(refind(citations_test[i],&data[SEARCH_STATES])==0){
+			row_count++;
+		if (row_count > 1000) { break;}
+		kore_buf_append(buf,citations[i],strlen(citations[i]));
 		}}
 	}}
 	

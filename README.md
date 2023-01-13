@@ -15,38 +15,13 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 
 # build the webapp 
 ```
-make openssl  
-make curl  
-make postgres  
-make Kore  
-make hiredis
-make webapp
+bash build.sh
 open a browser and go to http://localhost:8888  
-for the parsing 
-
-cd flex_files/frac  
-make  
-./main.out filename.tex  
 
 
+api:    https://postgrest.org/en/stable/api.html
 
-hashmap.h was borrowed from 
-https://github.com/sheredom/hashmap.h
-it is required for bloom_filter_test.l 
-
-I am interested in showing the important parts of a document by highlighting special words, or word phrases.
-Currently using ncurses for this task.
-
-Currently exploring various options for word tokenization/segmentation 
-	(which is not trivial or a solved problem as far as I can tell).
-Many tokenizers default to splitting on white spaces often introducing errors.
-Seems like building a word list is reasonable for this task.
-PunktTrainer from NLTK works well for building a tokenizer.
-
-Many word lists I have seen have words for (such as peoples names, locations, abbreviations ...) 
-I would like to not include them in the english.vocab but match them in their own classes of tokens. 
-
-
+    http://159.223.177.134:3000/equations?limit=1000
 
 
 
@@ -56,7 +31,6 @@ I would like to not include them in the english.vocab but match them in their ow
 on Mac,
 ```bash
 make docmac
-make lexer
 ```
 
 Run commands using the container 

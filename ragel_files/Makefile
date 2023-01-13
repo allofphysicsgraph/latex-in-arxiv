@@ -6,6 +6,8 @@ all:
 	gcc title.c -o title.out
 	ragel cite.rl
 	gcc cite.c -o cite.out	
+	ragel section.rl
+	gcc section.c -o section.out	
 	ragel abstract.rl
 	gcc abstract.c -o abstract.out
 	ragel affiliation.rl

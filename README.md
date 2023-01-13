@@ -21,9 +21,8 @@ open a browser and go to http://localhost:8888
 
 api:    https://postgrest.org/en/stable/api.html
 
-    http://159.223.177.134:3000/equations?limit=1000
-
-
+    Currently there is a limit of 1000 results per query due to resource limitations
+    http://159.223.177.134:3000/equations?equations=like.*frac{1}{2}*
 
 ```
 

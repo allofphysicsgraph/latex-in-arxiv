@@ -13,7 +13,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-
+#include <curl/curl.h>
 #include <kore/kore.h>
 #include <kore/http.h>
 #include "scanner.h"
@@ -195,9 +195,117 @@ if ((equations_ptr = kore_mem_lookup(MEM_TAG_EQUATIONS)) == NULL) {
   }
 }
 
-kore_log(LOG_NOTICE, "%i: connected", sizeof(equations));
 return (KORE_RESULT_OK);
 }
+
+void json_print(unsigned char *s) {
+  if (*s == '\"')
+    s++;
+  while (*s && *s != ',' && *s != '{' && *s != '[' && *s != ']' && *s != '}' &&
+         *s != '\"' && *s != '\r' && *s != '\n')
+    putchar(*s++);
+}
+
+void json_dump(const char *jsonstr) {
+  unsigned char *c = (unsigned char *)jsonstr, *k[33], *v;
+  int l = 0, j = 1, i, n, x[33] = {0};
+  if (!jsonstr || !jsonstr[0])
+    return;
+  while (1) {
+    while (*c && *c <= ' ')
+      c++;
+    if (j) {
+      j = 0;
+      k[l] = v = c;
+    }
+    switch (*c) {
+    case '\"':
+      c++;
+      while (*c && *c != '\"') {
+        if (*c == '\\') {
+          c++;
+        }
+        c++;
+      }
+      break;
+    case ':':
+      c++;
+      while (*c && *c <= ' ') {
+        c++;
+      }
+      v = c--;
+      break;
+    case 0:
+    case ',':
+    case '{':
+    case '[':
+    case '}':
+    case ']':
+      if (*v != ',' && *v != '{' && *v != '[' && *v != ']' && *v != '}') {
+        n = k[0][0] == '{' ? 1 : 0;
+        /* print path */
+        for (i = n; i <= l; i++) {
+          if (i != n)
+            printf(".");
+          if (k[i][0] == '\"' && k[i] != v)
+            json_print(k[i]);
+          else
+            printf("%d", x[i]);
+        }
+        /* print value */
+        printf("\t\t");
+        json_print(v);
+        printf("\n");
+      }
+      switch (*c) {
+      case 0:
+        return;
+      case '{':
+      case '[':
+        x[++l] = 0;
+        if (l >= sizeof(x) - 1)
+          return NULL;
+        break;
+      case '}':
+      case ']':
+        l--;
+        break;
+      case ',':
+        x[l]++;
+        break;
+      }
+      j++;
+      break;
+    }
+    c++;
+  }
+}
+
+struct MemoryStruct {
+  char *memory;
+  size_t size;
+};
+
+static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb,
+                                  void *userp) {
+  size_t realsize = size * nmemb;
+  struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+
+  char *ptr = realloc(mem->memory, mem->size + realsize + 1);
+  if (!ptr) {
+    /* out of memory! */
+    printf("not enough memory (realloc returned NULL)\n");
+    return 0;
+  }
+
+  mem->memory = ptr;
+  memcpy(&(mem->memory[mem->size]), contents, realsize);
+  mem->size += realsize;
+  mem->memory[mem->size] = 0;
+
+  return realsize;
+}
+
 
 
 /* Called whenever we get a new websocket connection. */
@@ -211,81 +319,152 @@ websocket_connect(struct connection *c)
 
 void websocket_author_search(struct connection *c, u_int8_t op, void *data,
                              size_t len) {
-  
-	kore_log(LOG_NOTICE, "%s:\n", (char *)data);
-	//char filename[120];
-	int line_count = 0;
-	int row_count =0;	
-	int test_buffer_idx = 0;
-	size_t author_idx = 0;
-	size_t len2;
-	struct kore_buf *buf;
-	u_int8_t *data2;
-	buf = kore_buf_alloc(10*1024*1024);
-	int search_titles = 0;
-	int search_authors = 0;
-	int search_affiliations = 0;
-	int search_equations = 0;
-	int search_citations = 0;
-	char search_state[SEARCH_STATES];
-	memset(search_state,'\0',SEARCH_STATES);
-	strncpy(search_state,data,SEARCH_STATES);
-  	//kore_log(LOG_NOTICE, "%s",(char *)&data[SEARCH_STATES]);
-	
-	if(search_state[0]=='1'){
-	for(int i=0;i<title_line_count;i++){
-		if(title_test[i]!=NULL){
-		if(refind(title_test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 1000) { break;}
-		kore_buf_append(buf,title[i],strlen(title[i]));
-		}}
-	}}
-	
-	if(search_state[1]=='1'){
-	for(int i=0;i<author_line_count;i++){
-		if(author_test[i]!=NULL){
-		if(refind(author_test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 1000) { break;}
-		kore_buf_append(buf,author[i],strlen(author[i]));
-		}}
-	}}
-	
-	if(search_state[2]=='1'){
-	for(int i=0;i<affiliation_line_count;i++){
-		if(affiliation_test[i]!=NULL){
-		if(refind(affiliation_test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 1000) { break;}
-		kore_buf_append(buf,affiliation[i],strlen(affiliation[i]));
-		}}
-	}}
-	
-	if(search_state[3]=='1'){
-	for(int i=0;i<equations_line_count;i++){
-		if(equations_test[i]!=NULL){
-		if(refind(equations_test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 500) { break;}
-		kore_buf_append(buf,equations[i],strlen(equations[i]));
-		}}
-	}}
-	
-	if(search_state[4]=='1'){
-	for(int i=0;i<citations_line_count;i++){
-		if(citations_test[i]!=NULL){
-		if(refind(citations_test[i],&data[SEARCH_STATES])==0){
-			row_count++;
-		if (row_count > 1000) { break;}
-		kore_buf_append(buf,citations[i],strlen(citations[i]));
-		}}
-	}}
-	
-	data2 = kore_buf_release(buf, &len2);
-	kore_websocket_broadcast(c, op,data2 , len2, WEBSOCKET_BROADCAST_GLOBAL);
-	kore_free(data2);
-}
+
+  kore_log(LOG_NOTICE, "%s:\n", (char *)data);
+  // char filename[120];
+  int line_count = 0;
+  int row_count = 0;
+  int test_buffer_idx = 0;
+  size_t author_idx = 0;
+  size_t len2;
+  struct kore_buf *buf;
+  u_int8_t *data2;
+  buf = kore_buf_alloc(10 * 1024 * 1024);
+  int search_titles = 0;
+  int search_authors = 0;
+  int search_affiliations = 0;
+  int search_equations = 0;
+  int search_citations = 0;
+  char search_state[SEARCH_STATES];
+  memset(search_state, '\0', SEARCH_STATES);
+  strncpy(search_state, data, SEARCH_STATES);
+  // kore_log(LOG_NOTICE, "%s",(char *)&data[SEARCH_STATES]);
+
+  if (search_state[0] == '1') {
+    for (int i = 0; i < title_line_count; i++) {
+      if (title_test[i] != NULL) {
+        if (refind(title_test[i], &data[SEARCH_STATES]) == 0) {
+          row_count++;
+          if (row_count > 1000) {
+            break;
+          }
+          kore_buf_append(buf, title[i], strlen(title[i]));
+        }
+      }
+    }
+  }
+
+  if (search_state[1] == '1') {
+    for (int i = 0; i < author_line_count; i++) {
+      if (author_test[i] != NULL) {
+        if (refind(author_test[i], &data[SEARCH_STATES]) == 0) {
+          row_count++;
+          if (row_count > 1000) {
+            break;
+          }
+          kore_buf_append(buf, author[i], strlen(author[i]));
+        }
+      }
+    }
+  }
+
+  if (search_state[2] == '1') {
+    for (int i = 0; i < affiliation_line_count; i++) {
+      if (affiliation_test[i] != NULL) {
+        if (refind(affiliation_test[i], &data[SEARCH_STATES]) == 0) {
+          row_count++;
+          if (row_count > 1000) {
+            break;
+          }
+          kore_buf_append(buf, affiliation[i], strlen(affiliation[i]));
+        }
+      }
+    }
+  }
+
+  if (search_state[3] == '1') {
+    for (int i = 0; i < equations_line_count; i++) {
+      if (equations_test[i] != NULL) {
+        if (refind(equations_test[i], &data[SEARCH_STATES]) == 0) {
+          row_count++;
+          if (row_count > 500) {
+            break;
+          }
+          kore_buf_append(buf, equations[i], strlen(equations[i]));
+        }
+      }
+    }
+  }
+
+  if (search_state[4] == '1') {
+    for (int i = 0; i < citations_line_count; i++) {
+      if (citations_test[i] != NULL) {
+        if (refind(citations_test[i], &data[SEARCH_STATES]) == 0) {
+          row_count++;
+          if (row_count > 1000) {
+            break;
+          }
+          kore_buf_append(buf, citations[i], strlen(citations[i]));
+        }
+      }
+    }
+  }
+
+  CURL *curl_handle;
+  CURLcode res;
+
+  struct MemoryStruct chunk;
+
+  chunk.memory = malloc(1); /* will be grown as needed by the realloc above */
+  chunk.size = 0;           /* no data at this point */
+
+  curl_global_init(CURL_GLOBAL_ALL);
+
+  /* init the curl session */
+  curl_handle = curl_easy_init();
+
+  /* specify URL to get */
+  curl_easy_setopt(curl_handle, CURLOPT_URL,
+                   "http://159.223.177.134:3000/equation?limit=1");
+
+  /* send all data to this function  */
+  curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+
+  /* we pass our 'chunk' struct to the callback function */
+  curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
+
+  /* some servers do not like requests that are made without a user-agent
+     field, so we provide one */
+  curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
+
+  /* get it! */
+  res = curl_easy_perform(curl_handle);
+
+  /* check for errors */
+  if (res != CURLE_OK) {
+    fprintf(stderr, "curl_easy_perform() failed: %s\n",
+            curl_easy_strerror(res));
+  } else {
+    /*
+     * Now, our chunk.memory points to a memory block that is chunk.size
+     * bytes big and contains the remote file.
+     *
+     * Do something nice with it!
+     */
+   
+    kore_buf_append(buf,chunk.memory,chunk.size);
+    /* cleanup curl stuff */
+  curl_easy_cleanup(curl_handle);
+
+  free(chunk.memory);
+
+  /* we are done with libcurl, so clean it up */
+  curl_global_cleanup();
+
+  data2 = kore_buf_release(buf, &len2);
+  kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+  kore_free(data2);
+}}
 
 void index_files(struct connection *c, u_int8_t op) {
 size_t len2;
@@ -329,8 +508,7 @@ void websocket_message(struct connection *c, u_int8_t op, void *data,
     for (unsigned int j = 0; j < reply->elements; j++) {
   	if(!strcmp(data,"undefined")==0){
 	if (rematch(reply->element[j]->str,data)==0){
-  	//	kore_log(LOG_NOTICE, "%s:%s\n",reply->element[j]->str,data);
-		//resub(reply->element[j]->str,"assets/html/","",tmp_file_loc);
+		resub(reply->element[j]->str,"assets/html/","",tmp_file_loc);
       	    	kore_buf_appendf(buf, "<tr><td><a href=\'%s\'>%s<td></tr>",
                          reply->element[j]->str, tmp_file_loc);
 			 memset(tmp_file_loc,'\0',1024);

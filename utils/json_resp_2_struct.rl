@@ -17,19 +17,18 @@
 #include <unistd.h>
 
 #define FN_MAX_LEN 1024
-#define RES_MAX_LEN 10000
 char filename[FN_MAX_LEN];
-char results[RES_MAX_LEN];
+char results[1024];
 int results_idx;
 int n;
 
 struct output {
 	char	fname[10];
-	char 	equation[RES_MAX_LEN];
+	char 	equation[1024];
 };
 
-struct output sample;
 
+struct output sample;
 struct state_chart
 {
 	int cs;
@@ -42,11 +41,16 @@ struct state_chart
 	
 	action init_results {
 		memset(sample.fname,'\0',10);
-		memset(sample.equation,'\0',RES_MAX_LEN);
-		memset(results,'\0',RES_MAX_LEN);
+		memset(sample.equation,'\0',1024);
+		memset(results,'\0',1024);
 		results_idx=0;	
 	}
 	
+	
+	action init_res {
+		memset(results,'\0',1024);
+		results_idx=0;	
+	}
 
 	action inc { 
 		results[results_idx]=fc;	
@@ -54,19 +58,20 @@ struct state_chart
 	}
 
 	action print_str{
-		if(strcmp(results,"\"")!=0 && strlen(results)>0){
-			results[strlen(results)-1]='\0';
-			if(fsm->cs<23){
-				strcpy(sample.fname,results);
-				printf("%s\n",sample.fname);
-			} else {
-				strcpy(sample.equation,results);
-				printf("%s:%s\n",sample.fname,sample.equation);
-
+			//printf(":%i:\n",fsm->cs);
+			if(strcmp(results,"\"")!=0 && strlen(results)>0){
+			
+			if(fsm->cs==22){
+				strncpy(sample.fname,results,strlen(results)-1);
+				memset(results,'\0',1024);
+				results_idx=0;	
+			} 
+			if ( fsm->cs >= state_chart_first_final ) {
+				strcpy(sample.equation,&results[1]);
 			}
 		}
 	}
-	fn = '"filename":"' . (digit{7} $inc) . '",'    ;
+	fn = '"filename":"' . (digit{7} >init_results $inc) . '",'    ;
 	equation = '"equation":'   ;
 	ignore = (any+ - fn) ;
 	inc = ([^\n]+ - equation) @inc ;
@@ -80,14 +85,14 @@ struct state_chart
 		),
 		st1: ( 
 			inc -> st1 |
-			(equation >print_str $init_results) -> st2|	
-			(nl >print_str $init_results) -> start |
+			(equation >print_str @init_res ) -> st2|	
+			(nl >print_str ) -> start |
 			zlen -> final 
 		),
 
 		st2: (
-			inc2 -> st1 |
-			(nl >print_str $init_results) -> start |
+			inc2 -> st2 |
+			(nl >print_str ) -> start |
 			zlen -> final 
 		)
 		
@@ -128,14 +133,8 @@ void test( char *buf )
 	state_chart_init( &sc );
 	state_chart_execute( &sc, buf, len );
 	state_chart_finish( &sc );
-	printf("\n");
 }
 
-int main(int argc, char **argv) {
-  memset(results,'\0',RES_MAX_LEN);
-  test("\"filename\":\"0004057\",\"equation\":\"G^{\\mu\\nu\\alpha\\beta}(x - x') = \n");
-  return 0;
-}
 
 
 

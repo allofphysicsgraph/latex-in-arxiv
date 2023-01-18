@@ -281,6 +281,14 @@ void json_dump(const char *jsonstr) {
   }
 }
 
+struct output {
+        char    fname[10];
+        char    equation[1024];
+};
+
+extern struct output sample;
+
+
 struct MemoryStruct {
   char *memory;
   size_t size;
@@ -425,7 +433,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 
   /* specify URL to get */
   curl_easy_setopt(curl_handle, CURLOPT_URL,
-                   "http://159.223.177.134:3000/equation?limit=1");
+                   "http://159.223.177.134:3000/equation?limit=100");
 
   /* send all data to this function  */
   curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
@@ -451,8 +459,17 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
      *
      * Do something nice with it!
      */
-   
-    kore_buf_append(buf,chunk.memory,chunk.size);
+    char *test_out[2048];
+    int test_count;
+    char html[2048];
+    test_count = kore_split_string(chunk.memory, "\n", test_out, 100);
+    for(int i=0;i<test_count;i++){
+    	if(test_out!=NULL){
+	   memset(html,'\0',2048);
+	   test(test_out[i]);
+    	   sprintf(html,"<tr><td>%s</td><td>%s</td></tr>",sample.fname,sample.equation);
+    	   kore_buf_append(buf,html,strlen(html));
+	}}
     /* cleanup curl stuff */
   curl_easy_cleanup(curl_handle);
 

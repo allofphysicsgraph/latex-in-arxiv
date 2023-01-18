@@ -6,9 +6,11 @@
  * Test in and out state actions.
  */
 
+
 #include <ctype.h>
 #include <err.h>
 #include <fcntl.h>
+#include <kore/kore.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,8 +42,6 @@ struct state_chart
 
 	
 	action init_results {
-		memset(sample.fname,'\0',10);
-		memset(sample.equation,'\0',1024);
 		memset(results,'\0',1024);
 		results_idx=0;	
 	}
@@ -53,52 +53,37 @@ struct state_chart
 	}
 
 	action inc { 
+			//printf(":%i:%s\n",fsm->cs,results);
 		results[results_idx]=fc;	
 		results_idx++;
 	}
 
-	action print_str{
-			//printf(":%i:\n",fsm->cs);
-			if(strcmp(results,"\"")!=0 && strlen(results)>0){
-			
-			if(fsm->cs==22){
-				strncpy(sample.fname,results,strlen(results)-1);
-				memset(results,'\0',1024);
-				results_idx=0;	
-			} 
-			if ( fsm->cs >= state_chart_first_final ) {
-				strcpy(sample.equation,&results[1]);
-			}
-		}
+	action save_filename{
+		strncpy(sample.fname,results,strlen(results));
 	}
-	fn = '"filename":"' . (digit{7} >init_results $inc) . '",'    ;
-	equation = '"equation":'   ;
-	ignore = (any+ - fn) ;
-	inc = ([^\n]+ - equation) @inc ;
-	nl = '\n'; 
-	inc2 = ([^\n]+ ) @inc;
-	mach = 
+	action save_equation{
+		strcpy(sample.equation,&results[7]);
+	}
+
+	action print_results {
+		printf("%s",results);
+	}	
+
+	newline = '\n';
+	ws = [ \t];
+	fn = ( ws* '['? '{"filename":"' >init_results) . (digit{7}  $inc) @save_filename . '","equation":'    ;
+	inc = (any+ - newline) @inc ;
+	mach =  (
 		start: ( 
-			fn  -> st1 |
-			ignore -> start |
+			fn -> st1|
 			zlen -> final   
 		),
-		st1: ( 
+		st1: (
 			inc -> st1 |
-			(equation >print_str @init_res ) -> st2|	
-			(nl >print_str ) -> start |
-			zlen -> final 
-		),
-
-		st2: (
-			inc2 -> st2 |
-			(nl >print_str ) -> start |
-			zlen -> final 
+			(zlen >save_equation) -> final
 		)
-		
-		;
-	
-	main := ( mach '\n' )*;
+	);	
+	main :=  mach  ;
 }%%
 
 %% write data;
@@ -112,7 +97,7 @@ void state_chart_execute( struct state_chart *fsm, const char *_data, int _len )
 {
 	const char *p = _data;
 	const char *pe = _data+_len;
-
+	const char *eof = pe;
 	%% write exec;
 }
 
@@ -134,6 +119,7 @@ void test( char *buf )
 	state_chart_execute( &sc, buf, len );
 	state_chart_finish( &sc );
 }
+
 
 
 

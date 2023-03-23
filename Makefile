@@ -62,13 +62,6 @@ Kore:
 	tar -xf kore-4.2.3.tar.gz
 	cd kore-4.2.3 && make TLS_BACKEND=none PGSQL=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install
 
-install_libbloom:
-	bash libbloom.sh
-
-bloom:
-	sudo apt install -y  ncurses-dev
-	flex -Cf bloom_filter_test.l
-	$(CC) -O3 -g -lfl lex.yy.c -Ilibbloom libbloom/bloom.c -Llibbloom/build/libbloom.so libbloom/murmur2/MurmurHash2.c  -lm -lncurses -o bloom_filter
 
 
 newcommand:

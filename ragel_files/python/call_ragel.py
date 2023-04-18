@@ -8,6 +8,7 @@ author = CDLL('./author.so')
 affiliation = CDLL('./affiliation.so')
 bibliography = CDLL('./bibliography.so')
 equation = CDLL('./equation.so')
+algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
@@ -16,6 +17,7 @@ author.test.restype = c_char_p
 affiliation.test.restype = c_char_p
 bibliography.test.restype = c_char_p
 equation.test.restype = c_char_p
+algorithm.test.restype = c_char_p
 abstract.test.restype = c_char_p
 slm.test.restype = c_char_p
 
@@ -38,6 +40,9 @@ if re.findall(r'\\begin{equation}',data):
     for match in equation.test(s).decode().splitlines():
         parsed_document['equation'].append(match)
 
+if re.findall(r'\\begin{algorithm}',data):
+    for match in algorithm.test(s).decode().splitlines():
+        parsed_document['algorithm'].append(match)
 
 for match in abstract.test(s).decode().splitlines():
     parsed_document['abstract'].append(match)
@@ -52,4 +57,4 @@ if matches:
     for match in matches:
         data = data.replace(match,'')
 
-print(parsed_document['slm'])
+print(parsed_document['algorithm'])

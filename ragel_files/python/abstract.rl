@@ -54,8 +54,8 @@ char* test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("OK\n");
+		printf("ABSTRACT OK\n");
 	else
-		printf("FAILED\n");
+		printf("ABSTRACT FAILED\n");
 	return results;
 }

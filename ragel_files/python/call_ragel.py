@@ -34,14 +34,17 @@ for match in author.test(s).decode().splitlines():
 for match in affiliation.test(s).decode().splitlines():
     parsed_document['affiliation'].append(match)
 
-for match in equation.test(s).decode().splitlines():
-    parsed_document['equation'].append(match)
+if re.findall(r'\\begin{equation}',data):
+    for match in equation.test(s).decode().splitlines():
+        parsed_document['equation'].append(match)
+
 
 for match in abstract.test(s).decode().splitlines():
     parsed_document['abstract'].append(match)
 
 for match in slm.test(s).decode().splitlines():
     parsed_document['slm'].append(match)
+
 #parse thebibliography on another pass
 matches=re.findall(r'\\begin{thebibliography}.*?\\end{thebibliography}',data,re.DOTALL)
 if matches:

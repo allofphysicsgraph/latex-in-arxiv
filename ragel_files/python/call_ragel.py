@@ -2,6 +2,7 @@ from ctypes import *
 from sys import argv
 from collections import defaultdict 
 import re 
+from pudb import set_trace
 parsed_document = defaultdict(list)
 title = CDLL('./title.so')
 author = CDLL('./author.so')
@@ -13,8 +14,17 @@ algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
+email = CDLL('./email.so')
+email.test.restype = c_char_p
+
+textit = CDLL('./textit.so')
+textit.test.restype = c_char_p
+
 cite = CDLL('./cite.so')
 cite.test.restype = c_char_p
+
+url = CDLL('./url.so')
+url.test.restype = c_char_p
 
 bibitem = CDLL('./bibitem.so')
 bibitem.test.restype = c_char_p
@@ -49,6 +59,15 @@ for match in author.test(s).decode().splitlines():
 for match in bibitem.test(s).decode().splitlines():
     parsed_document['bibitem'].append(match)
 
+for match in url.test(s).decode().splitlines():
+    parsed_document['url'].append(match)
+
+for match in email.test(s).decode().splitlines():
+    parsed_document['email'].append(match)
+
+for match in textit.test(s).decode().splitlines():
+    parsed_document['textit'].append(match)
+
 for match in cite.test(s).decode().splitlines():
     parsed_document['cite'].append(match)
 
@@ -74,6 +93,7 @@ if re.findall(r'\\begin{definition}',data):
 for match in abstract.test(s).decode().splitlines():
     parsed_document['abstract'].append(match)
 
+#set_trace()
 for match in slm.test(s).decode().splitlines():
     parsed_document['slm'].append(match)
 
@@ -91,4 +111,4 @@ if re.findall(r'\\section',data):
         parsed_document['section'].append(match)
 
 
-print(parsed_document['section'])
+print(parsed_document['textit'])

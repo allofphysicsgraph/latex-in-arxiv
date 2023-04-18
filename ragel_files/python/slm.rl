@@ -21,7 +21,7 @@
 char filename[FN_MAX_LEN];
 char results[RES_MAX_LEN];
 int results_idx;
-char output[100000];
+char output[500000];
 int n;
 
 struct state_chart

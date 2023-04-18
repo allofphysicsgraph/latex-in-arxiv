@@ -35,5 +35,13 @@ gcc -fPIC -shared -o section.so section.c
 ragel bibitem.rl
 gcc -fPIC -shared -o bibitem.so bibitem.c
 
+ragel url.rl
+gcc -fPIC -shared -o url.so url.c
+ragel email.rl
+gcc -fPIC -shared -o email.so email.c
+
+ragel textit.rl
+gcc -fPIC -shared -o textit.so textit.c
+
 ragel cite.rl
 gcc -fPIC -shared -o cite.so cite.c

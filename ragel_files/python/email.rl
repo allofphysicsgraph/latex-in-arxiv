@@ -16,10 +16,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define RES_MAX_LEN 500000
-char results[RES_MAX_LEN];
 int n;
-const char* pattern="\\section";
+char results[10000];
 int idx;
 struct state_chart
 {
@@ -30,65 +28,62 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action section { n--; 
-		strcat(results,pattern);
-		idx+=strlen(pattern);
+	action email { n--; 
+	if (idx > 0) {results[idx]='\n';idx++; };
+	strncat(results,"\\email{",strlen("\\email{")+1);
+	idx+=strlen("\\email{");
 	}
 
 	action b { 
-	results[idx]=fc;
-	idx++;
-	n++; if(n==0){
+		results[idx]=fc;
+		idx++;
+		n++; 
+		if(n==0){
+			printf("\n");
 	}
 	}
 
 	
 	action c { n--; 
-	results[idx]=fc;
-	idx++;
+		results[idx]=fc;
+		idx++;
 	}
-	
 	action inc { 
-	results[idx]=fc;
-	idx++;
+		results[idx]=fc;
+		idx++;
 	}
-	
 	action balanced { n == -1 }
 	action not_balanced {n != -1}	
 	
-	section = '\\section{' @section;
+	email = '\\email{' @email;
 
 	b = '}' @b;
 	ws = ' '+;
         c = '{' @c;
 	nl = '\n' @{printf(" ");};
-	ignore = (any+ - section) ;
-	keep = (any+ - section) @inc ;
+	ignore = (any+ - email) ;
 	inc = ([^\n] - b) @inc ;
-
+ 
 	mach = 
 		start: ( 
-			section-> st1 |
+			email -> st1 |
 			ignore -> start |
 			zlen -> final   
 		),
 		st1: ( 
-			(b when balanced) -> st2 |
+			(b when balanced) -> start |
 			(b when not_balanced) -> st1 | 
 			c -> st1 | 	
 			inc -> st1 |	
 			nl -> st1 |
-			section -> st2|
 			zlen -> final 
 		),
 		st2: ( 
-			keep -> st2|
-			nl -> st2 |
-			section -> st1 |
 			zlen -> final
-		)
-		
-;
+		);
+
+
+
 	
 	main := ( mach '\n' )*;
 }%%
@@ -119,7 +114,7 @@ int state_chart_finish( struct state_chart *fsm )
 
 struct state_chart sc;
 
-char * test( char *buf )
+char* test( char *buf )
 {
 	int len = strlen( buf );
 	state_chart_init( &sc );

@@ -8,15 +8,29 @@ author = CDLL('./author.so')
 affiliation = CDLL('./affiliation.so')
 bibliography = CDLL('./bibliography.so')
 equation = CDLL('./equation.so')
+definition = CDLL('./definition.so')
 algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
+
+cite = CDLL('./cite.so')
+cite.test.restype = c_char_p
+
+bibitem = CDLL('./bibitem.so')
+bibitem.test.restype = c_char_p
+
+section = CDLL('./section.so')
+section.test.restype = c_char_p
+
+ref = CDLL('./ref.so')
+ref.test.restype = c_char_p
 
 title.test.restype = c_char_p
 author.test.restype = c_char_p
 affiliation.test.restype = c_char_p
 bibliography.test.restype = c_char_p
 equation.test.restype = c_char_p
+definition.test.restype = c_char_p
 algorithm.test.restype = c_char_p
 abstract.test.restype = c_char_p
 slm.test.restype = c_char_p
@@ -32,6 +46,14 @@ parsed_document['title'].append(title.test(s).decode())
 for match in author.test(s).decode().splitlines():
     parsed_document['author'].append(match)
 
+for match in bibitem.test(s).decode().splitlines():
+    parsed_document['bibitem'].append(match)
+
+for match in cite.test(s).decode().splitlines():
+    parsed_document['cite'].append(match)
+
+for match in ref.test(s).decode().splitlines():
+    parsed_document['ref'].append(match)
 
 for match in affiliation.test(s).decode().splitlines():
     parsed_document['affiliation'].append(match)
@@ -43,6 +65,11 @@ if re.findall(r'\\begin{equation}',data):
 if re.findall(r'\\begin{algorithm}',data):
     for match in algorithm.test(s).decode().splitlines():
         parsed_document['algorithm'].append(match)
+
+
+if re.findall(r'\\begin{definition}',data):
+    for match in definition.test(s).decode().splitlines():
+        parsed_document['definition'].append(match)
 
 for match in abstract.test(s).decode().splitlines():
     parsed_document['abstract'].append(match)
@@ -57,4 +84,11 @@ if matches:
     for match in matches:
         data = data.replace(match,'')
 
-print(parsed_document['algorithm'])
+if re.findall(r'\\section',data):
+    #update data to exclude thebibliography
+    s = c_char_p(str.encode(data))
+    for match in section.test(s).decode().splitlines():
+        parsed_document['section'].append(match)
+
+
+print(parsed_document['section'])

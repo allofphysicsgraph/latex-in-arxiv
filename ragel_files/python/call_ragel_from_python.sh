@@ -13,5 +13,8 @@ gcc -fPIC -shared -o abstract.so abstract.c
 ragel equation.rl
 gcc -fPIC -shared -o equation.so equation.c
 
+ragel slm.rl
+gcc -fPIC -shared -o slm.so slm.c
+
 ragel affiliation.rl
 gcc -fPIC -shared -o affiliation.so affiliation.c

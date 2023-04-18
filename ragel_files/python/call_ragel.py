@@ -8,12 +8,14 @@ author = CDLL('./author.so')
 affiliation = CDLL('./affiliation.so')
 bibliography = CDLL('./bibliography.so')
 equation = CDLL('./equation.so')
+abstract = CDLL('./abstract.so')
 
 title.test.restype = c_char_p
 author.test.restype = c_char_p
 affiliation.test.restype = c_char_p
 bibliography.test.restype = c_char_p
 equation.test.restype = c_char_p
+abstract.test.restype = c_char_p
 
 
 with open('sound1.tex','r') as f:
@@ -32,12 +34,14 @@ for match in affiliation.test(s).decode().splitlines():
 
 for match in equation.test(s).decode().splitlines():
     parsed_document['equation'].append(match)
+
+for match in abstract.test(s).decode().splitlines():
+    parsed_document['abstract'].append(match)
+
 #parse thebibliography on another pass
 matches=re.findall(r'\\begin{thebibliography}.*?\\end{thebibliography}',data,re.DOTALL)
 parsed_document['thebibliography'].append(*matches)
 for match in matches:
     data = data.replace(match,'')
 
-
-for item in parsed_document['equation']:
-    print(item)
+print(parsed_document['abstract'])

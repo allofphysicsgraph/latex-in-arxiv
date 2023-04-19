@@ -3,7 +3,6 @@ then
 	cp ../../Punkt_LaTeX_SENT_Tokenizer.pickle.xz .
         xz -d Punkt_LaTeX_SENT_Tokenizer.pickle.xz	
 fi
-exit
 
 ragel bibliography.rl
 gcc -fPIC -shared -o bibliography.so bibliography.c

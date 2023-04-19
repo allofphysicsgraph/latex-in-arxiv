@@ -23,6 +23,12 @@ textit.test.restype = c_char_p
 cite = CDLL('./cite.so')
 cite.test.restype = c_char_p
 
+figure = CDLL('./figure.so')
+figure.test.restype = c_char_p
+
+label = CDLL('./label.so')
+label.test.restype = c_char_p
+
 url = CDLL('./url.so')
 url.test.restype = c_char_p
 
@@ -71,6 +77,8 @@ for match in textit.test(s).decode().splitlines():
 for match in cite.test(s).decode().splitlines():
     parsed_document['cite'].append(match)
 
+for match in label.test(s).decode().splitlines():
+    parsed_document['label'].append(match)
 for match in ref.test(s).decode().splitlines():
     parsed_document['ref'].append(match)
 
@@ -80,6 +88,10 @@ for match in affiliation.test(s).decode().splitlines():
 if re.findall(r'\\begin{equation}',data):
     for match in equation.test(s).decode().splitlines():
         parsed_document['equation'].append(match)
+
+if re.findall(r'\\begin{figure}',data):
+    for match in figure.test(s).decode().splitlines():
+        parsed_document['figure'].append(match)
 
 if re.findall(r'\\begin{algorithm}',data):
     for match in algorithm.test(s).decode().splitlines():
@@ -111,4 +123,4 @@ if re.findall(r'\\section',data):
         parsed_document['section'].append(match)
 
 
-print(parsed_document['textit'])
+print(parsed_document['figure'])

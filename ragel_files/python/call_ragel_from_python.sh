@@ -43,5 +43,10 @@ gcc -fPIC -shared -o email.so email.c
 ragel textit.rl
 gcc -fPIC -shared -o textit.so textit.c
 
+ragel label.rl
+gcc -fPIC -shared -o label.so label.c
+
+ragel figure.rl
+gcc -fPIC -shared -o figure.so figure.c
 ragel cite.rl
 gcc -fPIC -shared -o cite.so cite.c

@@ -14,6 +14,9 @@ algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
+keywords = CDLL('./keywords.so')
+keywords.test.restype = c_char_p
+
 eqnarray = CDLL('./eqnarray.so')
 eqnarray.test.restype = c_char_p
 
@@ -94,6 +97,8 @@ for match in textbf.test(s).decode().splitlines():
 for match in cite.test(s).decode().splitlines():
     parsed_document['cite'].append(match)
 
+for match in keywords.test(s).decode().splitlines():
+    parsed_document['keywords'].append(match)
 for match in emph.test(s).decode().splitlines():
     parsed_document['emph'].append(match)
 
@@ -130,8 +135,9 @@ if re.findall(r'\\begin{definition}',data):
     for match in definition.test(s).decode().splitlines():
         parsed_document['definition'].append(match)
 
-for match in abstract.test(s).decode().splitlines():
-    parsed_document['abstract'].append(match)
+if re.findall(r'\\begin{abstract}',data):
+    for match in abstract.test(s).decode().splitlines():
+        parsed_document['abstract'].append(match)
 
 #set_trace()
 for match in slm.test(s).decode().splitlines():
@@ -151,4 +157,4 @@ if re.findall(r'\\section',data):
         parsed_document['section'].append(match)
 
 
-print(parsed_document['eqnarray'])
+print(parsed_document['keywords'])

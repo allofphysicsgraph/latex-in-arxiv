@@ -67,3 +67,6 @@ gcc -fPIC -shared -o textbf.so textbf.c
 
 ragel eqnarray.rl
 gcc -fPIC -shared -o eqnarray.so eqnarray.c
+
+ragel keywords.rl
+gcc -fPIC -shared -o keywords.so keywords.c

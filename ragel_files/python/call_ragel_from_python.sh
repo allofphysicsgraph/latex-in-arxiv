@@ -48,5 +48,17 @@ gcc -fPIC -shared -o label.so label.c
 
 ragel figure.rl
 gcc -fPIC -shared -o figure.so figure.c
+
 ragel cite.rl
 gcc -fPIC -shared -o cite.so cite.c
+
+ragel emph.rl
+gcc -fPIC -shared -o emph.so emph.c
+ragel emph.rl
+gcc -fPIC -shared -o emph.so emph.c
+ragel emph.rl
+gcc -fPIC -shared -o emph.so emph.c
+ragel emph.rl
+gcc -fPIC -shared -o emph.so emph.c
+ragel itemize.rl
+gcc -fPIC -shared -o itemize.so itemize.c

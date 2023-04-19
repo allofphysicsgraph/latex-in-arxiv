@@ -14,6 +14,9 @@ algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
+itemize = CDLL('./itemize.so')
+itemize.test.restype = c_char_p
+
 email = CDLL('./email.so')
 email.test.restype = c_char_p
 
@@ -22,6 +25,9 @@ textit.test.restype = c_char_p
 
 cite = CDLL('./cite.so')
 cite.test.restype = c_char_p
+
+emph = CDLL('./emph.so')
+emph.test.restype = c_char_p
 
 figure = CDLL('./figure.so')
 figure.test.restype = c_char_p
@@ -77,6 +83,9 @@ for match in textit.test(s).decode().splitlines():
 for match in cite.test(s).decode().splitlines():
     parsed_document['cite'].append(match)
 
+for match in emph.test(s).decode().splitlines():
+    parsed_document['emph'].append(match)
+
 for match in label.test(s).decode().splitlines():
     parsed_document['label'].append(match)
 for match in ref.test(s).decode().splitlines():
@@ -88,6 +97,10 @@ for match in affiliation.test(s).decode().splitlines():
 if re.findall(r'\\begin{equation}',data):
     for match in equation.test(s).decode().splitlines():
         parsed_document['equation'].append(match)
+
+if re.findall(r'\\begin{itemize}',data):
+    for match in itemize.test(s).decode().splitlines():
+        parsed_document['itemize'].append(match)
 
 if re.findall(r'\\begin{figure}',data):
     for match in figure.test(s).decode().splitlines():
@@ -123,4 +136,4 @@ if re.findall(r'\\section',data):
         parsed_document['section'].append(match)
 
 
-print(parsed_document['figure'])
+print(parsed_document['itemize'])

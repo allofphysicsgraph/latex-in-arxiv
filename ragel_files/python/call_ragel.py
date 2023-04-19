@@ -25,6 +25,9 @@ algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
+center = CDLL('./center.so')
+center.test.restype = c_char_p
+
 keywords = CDLL('./keywords.so')
 keywords.test.restype = c_char_p
 
@@ -140,6 +143,10 @@ if re.findall(r'\\begin{equation}',data):
     for match in equation.test(s).decode().splitlines():
         parsed_document['equation'].append(match)
 
+if re.findall(r'\\begin{center}',data):
+    for match in equation.test(s).decode().splitlines():
+        parsed_document['center'].append(match)
+
 if re.findall(r'\\begin{itemize}',data):
     for match in itemize.test(s).decode().splitlines():
         parsed_document['itemize'].append(match)
@@ -196,5 +203,4 @@ for paragraph in tqdm(parsed_document['paragraphs']):
     for sent in sentences:
         parsed_document['sents'].append(sent)
 
-
-
+print(parsed_document['center'])

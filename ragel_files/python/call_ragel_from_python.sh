@@ -43,8 +43,9 @@ gcc -fPIC -shared -o bibitem.so bibitem.c
 
 ragel url.rl
 gcc -fPIC -shared -o url.so url.c
-ragel email.rl
-gcc -fPIC -shared -o email.so email.c
+
+#ragel email.rl
+#gcc -fPIC -shared -o email.so email.c
 
 ragel textit.rl
 gcc -fPIC -shared -o textit.so textit.c
@@ -76,3 +77,6 @@ gcc -fPIC -shared -o eqnarray.so eqnarray.c
 
 ragel keywords.rl
 gcc -fPIC -shared -o keywords.so keywords.c
+
+ragel center.rl
+gcc -fPIC -shared -o center.so center.c

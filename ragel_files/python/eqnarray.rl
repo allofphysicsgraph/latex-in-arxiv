@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-char results[200000];
+char results[100000];
 int idx;
 %%{
 	machine foo;
@@ -28,20 +28,20 @@ int idx;
 	}
 	action init_c { c = 0;}
 	action done { printf(""); }
-	begin_itemize = '\\begin{itemize}' @inc  @{ 
-	strncat(results,"\\begin{itemize}",strlen("\\begin{itemize}")+1);
-	idx+=strlen("\\begin{itemize}");
+	begin_eqnarray = '\\begin{eqnarray}' @inc  @{ 
+	strncat(results,"\\begin{eqnarray}",strlen("\\begin{eqnarray}")+1);
+	idx+=strlen("\\begin{eqnarray}");
 	};
-	end_itemize = '\\end{itemize}'  @dec @{ 
+	end_eqnarray = '\\end{eqnarray}'  @dec @{ 
 	char matched_string[64];
 	memset(matched_string,'\0',64);
-	strcpy(matched_string,"\\end{itemize}");
+	strcpy(matched_string,"\\end{eqnarray}");
 	strncat(results,"}",2);
 	idx++;
 	if (idx > 0) {results[idx]='\n';idx++; };
 	};
 	newline = '\n' @{printf(" ");};
-	main :=  ( (any-begin_itemize)* . begin_itemize . (((any-newline) @print_fc)|newline)*  :>> end_itemize  @done :> any* when balanced )+   ;
+	main :=  ( (any-begin_eqnarray)* . begin_eqnarray . (((any-newline) @print_fc)|newline)*  :>> end_eqnarray  @done :> any* when balanced )+   ;
 }%%
 
 %% write data noerror;
@@ -54,8 +54,8 @@ char* test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("ITEMIZE OK\n");
+		printf("EQUATION OK\n");
 	else
-		printf("%d,ITEMIZE FAILED\n",strlen(results));
+		printf("EQUATION FAILED\n");
 	return results;
 }

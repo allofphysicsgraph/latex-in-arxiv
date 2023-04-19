@@ -14,6 +14,12 @@ algorithm = CDLL('./algorithm.so')
 abstract = CDLL('./abstract.so')
 slm = CDLL('./slm.so')
 
+eqnarray = CDLL('./eqnarray.so')
+eqnarray.test.restype = c_char_p
+
+textbf = CDLL('./textbf.so')
+textbf.test.restype = c_char_p
+
 itemize = CDLL('./itemize.so')
 itemize.test.restype = c_char_p
 
@@ -62,9 +68,11 @@ with open(argv[1],'r') as f:
     data = f.read()
 
 s = c_char_p(str.encode(data))
+print('title')
 parsed_document['title'].append(title.test(s).decode())
 
 
+print('author')
 for match in author.test(s).decode().splitlines():
     parsed_document['author'].append(match)
 
@@ -80,6 +88,9 @@ for match in email.test(s).decode().splitlines():
 for match in textit.test(s).decode().splitlines():
     parsed_document['textit'].append(match)
 
+for match in textbf.test(s).decode().splitlines():
+    parsed_document['textbf'].append(match)
+
 for match in cite.test(s).decode().splitlines():
     parsed_document['cite'].append(match)
 
@@ -93,6 +104,10 @@ for match in ref.test(s).decode().splitlines():
 
 for match in affiliation.test(s).decode().splitlines():
     parsed_document['affiliation'].append(match)
+
+if re.findall(r'\\begin{eqnarray}',data):
+    for match in eqnarray.test(s).decode().splitlines():
+        parsed_document['eqnarray'].append(match)
 
 if re.findall(r'\\begin{equation}',data):
     for match in equation.test(s).decode().splitlines():
@@ -136,4 +151,4 @@ if re.findall(r'\\section',data):
         parsed_document['section'].append(match)
 
 
-print(parsed_document['itemize'])
+print(parsed_document['eqnarray'])

@@ -58,7 +58,12 @@ ragel emph.rl
 gcc -fPIC -shared -o emph.so emph.c
 ragel emph.rl
 gcc -fPIC -shared -o emph.so emph.c
-ragel emph.rl
-gcc -fPIC -shared -o emph.so emph.c
+
 ragel itemize.rl
 gcc -fPIC -shared -o itemize.so itemize.c
+
+ragel textbf.rl
+gcc -fPIC -shared -o textbf.so textbf.c
+
+ragel eqnarray.rl
+gcc -fPIC -shared -o eqnarray.so eqnarray.c

@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-char results[10000];
+char results[100000];
 int idx;
 %%{
 	machine foo;

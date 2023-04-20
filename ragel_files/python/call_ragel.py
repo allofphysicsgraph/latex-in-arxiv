@@ -190,6 +190,8 @@ if re.findall(r'\\section',data):
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
     smoothing_width=50, smoothing_rounds=5000
 )
+'''
+#make this an option as it slows the parsing down by ~100x
 
 # training a sentence tokenizer on scientific LaTeX documents.
 punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
@@ -204,3 +206,4 @@ for paragraph in tqdm(parsed_document['paragraphs']):
         parsed_document['sents'].append(sent)
 
 print(parsed_document['center'])
+'''

@@ -29,7 +29,7 @@
 #include <kore/kore.h>
 #include <kore/seccomp.h>
 #include "assets.h"
-
+#include "shared.h"
 
 int		page(struct http_request *);
 int		websocket_message_connect(struct http_request *req);
@@ -116,7 +116,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 
   /* specify URL to get */
   curl_easy_setopt(curl_handle, CURLOPT_URL,
-                   "http://159.223.177.134:3000/equation?limit=200");
+                   "http://127.0.0.1:3000/equation?limit=10");
 
   /* send all data to this function  */
   curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
@@ -142,14 +142,25 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
      *
      * Do something nice with it!
      */
+    
+	  
+#define BUF_MAX_LEN 100000
+
+	memset(buffer,'\0',BUF_MAX_LEN);
+
     char *test_out[2048];
     int test_count;
     char html[2048];
+    char tmp_buff[100000];
+    memset(tmp_buff,'\0',100000);
     test_count = kore_split_string(chunk.memory, "\n", test_out, 100);
     for(int i=0;i<test_count;i++){
 	   memset(html,'\0',2048);
 	   test(test_out[i]);
-    	   sprintf(html,"<tr><td>%s</td><td>%s</td></tr>",sample.fname,sample.equation);
+	ragel_init();
+	unescape_tex(sample.equation,strlen(sample.equation));
+	finish();
+	   sprintf(html,"<tr><td>%s</td><td>$$%s$$</td></tr>",sample.fname,&buffer[1]);
     	   kore_buf_append(buf,html,strlen(html));
 	}
     /* cleanup curl stuff */

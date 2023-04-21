@@ -4,3 +4,4 @@ make postgres
 make Kore  
 make hiredis
 make webapp
+make postgrest

@@ -99,8 +99,14 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
   struct kore_buf *buf;
   u_int8_t *data2;
   buf = kore_buf_alloc(10 * 1024 * 1024);
-
-
+  char curl_url[256];
+  memset(curl_url,'\0',256);
+  
+  strcpy(curl_url,"http://127.0.0.1:3000/equation?equation=ilike.*");
+  //TODO assert len(data)
+  strcat(curl_url,(void *)&data[5]);
+  strcat(curl_url,"*&limit=10");
+  kore_log(LOG_NOTICE,"%s",curl_url);
   CURL *curl_handle;
   CURLcode res;
 
@@ -115,9 +121,7 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
   curl_handle = curl_easy_init();
 
   /* specify URL to get */
-  curl_easy_setopt(curl_handle, CURLOPT_URL,
-                   "http://127.0.0.1:3000/equation?limit=10");
-
+  curl_easy_setopt(curl_handle, CURLOPT_URL,curl_url);
   /* send all data to this function  */
   curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 
@@ -146,34 +150,34 @@ void websocket_author_search(struct connection *c, u_int8_t op, void *data,
 	  
 #define BUF_MAX_LEN 100000
 
-	memset(buffer,'\0',BUF_MAX_LEN);
+memset(buffer, '\0', BUF_MAX_LEN);
+char *test_out[2048];
+int test_count;
+char html[2048];
+char tmp_buff[100000];
+memset(tmp_buff, '\0', 100000);
+test_count = kore_split_string(chunk.memory, "\n", test_out, 100);
+for (int i = 0; i < test_count; i++) {
+  memset(html, '\0', 2048);
+  test(test_out[i]);
+  //kore_log(LOG_NOTICE, "%s", sample.equation);
+  ragel_init();
+  unescape_tex(sample.equation, strlen(sample.equation));
+  finish();
+  sprintf(html, "<tr><td>%s</td><td>$$%s$$</td></tr>", sample.fname,
+          &buffer[1]);
+  kore_buf_append(buf, html, strlen(html));
+}
+/* cleanup curl stuff */
+curl_easy_cleanup(curl_handle);
+free(chunk.memory);
 
-    char *test_out[2048];
-    int test_count;
-    char html[2048];
-    char tmp_buff[100000];
-    memset(tmp_buff,'\0',100000);
-    test_count = kore_split_string(chunk.memory, "\n", test_out, 100);
-    for(int i=0;i<test_count;i++){
-	   memset(html,'\0',2048);
-	   test(test_out[i]);
-	ragel_init();
-	unescape_tex(sample.equation,strlen(sample.equation));
-	finish();
-	   sprintf(html,"<tr><td>%s</td><td>$$%s$$</td></tr>",sample.fname,&buffer[1]);
-    	   kore_buf_append(buf,html,strlen(html));
-	}
-    /* cleanup curl stuff */
-  curl_easy_cleanup(curl_handle);
+/* we are done with libcurl, so clean it up */
+curl_global_cleanup();
 
-  free(chunk.memory);
-
-  /* we are done with libcurl, so clean it up */
-  curl_global_cleanup();
-
-  data2 = kore_buf_release(buf, &len2);
-  kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
-  kore_free(data2);
+data2 = kore_buf_release(buf, &len2);
+kore_websocket_broadcast(c, op, data2, len2, WEBSOCKET_BROADCAST_GLOBAL);
+kore_free(data2);
 }}
 
 

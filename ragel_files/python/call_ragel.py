@@ -84,6 +84,22 @@ slm.test.restype = c_char_p
 with open(argv[1],'r') as f:
     data = f.read()
 
+def use_package(s):
+    package_names = set()
+    import re
+    matches = re.findall(r"(?P<cmd>\\usepackage)(?P<package>{[a-z\-]+(,[a-z]+)*})?", s)
+    for match in matches:
+        #print(match)
+        if match[1][0] == '{' and match[1][-1]=='}':
+            package_names.add(match[1][1:-1])
+    return package_names
+
+for package in use_package(data):
+    parsed_document['usepackage'].append(package)
+
+print(parsed_document['usepackage'])
+exit()
+
 simple_newcommands = [[y[:-1] for y in x.split('\\newcommand{',maxsplit=1) if y][0] for x in re.findall(r'\\newcommand.*',data)]
 simple_newcommands = [x.split('}{',maxsplit=1) for x in simple_newcommands]
 simple_newcommands = [x for x in simple_newcommands if len(x) == 2]

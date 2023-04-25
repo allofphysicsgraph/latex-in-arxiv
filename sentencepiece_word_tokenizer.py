@@ -52,11 +52,11 @@ if 1 == 1:
             sentences = tok_cls.sentences_from_text(group)
             for ix, sent in enumerate(sentences):
                 # sents.append(sent)
-                print(sent)
-                print(sp.encode_as_pieces(sent))
-                sleep(5)
-                lst.append((argv[1], sentence_count, sp.encode_as_pieces(sent)))
-                sentence_count += 1
-        df = pd.DataFrame(lst)
+                if '\\' in sent:
+                    print(sent)
+                    print(sp.encode_as_pieces(sent))
+                    #sleep(5)
+                    #lst.append((argv[1], sentence_count, sp.encode_as_pieces(sent)))
+        #df = pd.DataFrame(lst)
     except Exception as e:
         print(e)

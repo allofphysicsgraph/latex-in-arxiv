@@ -239,3 +239,8 @@ if 1 == 1:
 
     for sent in sents_w_symbols:
         print(sent)
+
+symbols = set()
+[symbols.add(x) for x in re.findall('\$.*?\$',data)]
+symbols=sorted(list(symbols),key=lambda x:len(x))
+print(symbols)

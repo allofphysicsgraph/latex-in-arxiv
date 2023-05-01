@@ -25,6 +25,28 @@ ignore = ["\\begin{abstract}", "\\end{abstract}"]
 punkt_trainer_path = "/home/user/latex-in-arxiv/Punkt_LaTeX_SENT_Tokenizer.pickle"
 sentence_piece_model_path = "/home/user/latex-in-arxiv/HEP_TEX.model"
 
+math_standard_function_names = {}
+
+math_standard_function_names["arccos"] = "\\arccos"
+math_standard_function_names["arcsin"] = "\\arcsin"
+math_standard_function_names["arctan"] = "\\arctan"
+math_standard_function_names["cos"] = "\\cos"
+math_standard_function_names["cosh"] = "\\cosh"
+math_standard_function_names["cot"] = "\\cot"
+math_standard_function_names["coth"] = "\\coth"
+math_standard_function_names["csc"] = "\\csc"
+math_standard_function_names["deg"] = "\\deg"
+math_standard_function_names["det"] = "\\det"
+math_standard_function_names["exp"] = "\\exp"
+math_standard_function_names["gcd"] = "\\gcd"
+math_standard_function_names["lim"] = "\\lim"
+math_standard_function_names["sec"] = "\\sec"
+math_standard_function_names["sin"] = "\\sin"
+math_standard_function_names["sinh"] = "\\sinh"
+math_standard_function_names["sup"] = "\\sup"
+math_standard_function_names["tan"] = "\\tan"
+math_standard_function_names["tanh"] = "\\tanh"
+
 
 def read_file(f_name):
     with open(f"{f_name}", "r", encoding="ISO-8859-1") as f:
@@ -46,6 +68,10 @@ def concordance(symbol):
             yield sent
 
 
+def spe_sent_tokenizer(sent):
+    return [x[1:] for x in sp.encode_as_pieces(sent) if "".join(x[1:]) not in ignore]
+
+
 # store document as a list of logical groupings, basically paragraphs
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
     smoothing_width=10, smoothing_rounds=20
@@ -56,7 +82,7 @@ punkt_trainer = nltk.data.load(punkt_trainer_path)
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 
 
-data = read_file(argv[1])
+data = read_file("sound1.tex")
 groups = txttlng_tokenizer.tokenize(data)
 print(len(groups))
 sp = spm.SentencePieceProcessor()
@@ -98,9 +124,9 @@ for sent in sents:
 
 
 symbol_definitions = defaultdict(set)
-labels = [f"DEF{x}" for x in range(20)]
+labels = [f"DEF{x}" for x in range(30)]
 grammar = r"""
-    DEF: {<DT><JJ><NN><JJ><NN>}
+    DEF0: {<DT><JJ><NN><JJ><NN>}
     DEF1: {<DT><JJ><NN><NN><NN>}
     DEF2: {<WRB><NN><VBZ><DT><NN><.*>*}
     DEF3: {<WRB><NN><CC><NN><VBP><JJ><NN><CC><NN>}
@@ -120,13 +146,13 @@ grammar = r"""
     DEF17: {<JJ><NN><IN><DT><NN><IN><NN><IN><JJ><NN><NN>}
     DEF18: {<NN><VBZ><VBN><IN><DT><NN><NN><NNP>}
     DEF19: {<IN><NNS><IN><NN><NN><NNP>}
+    DEF20: {<PRP><RB><VBD><NNP>}
+    DEF21: {<NN><NN><NNP><WRB><NNS><NN><TO><VB>}
 """
 cp = nltk.chunk.RegexpParser(grammar)
 for symbol, sentences in concordance_dict.items():
     for sent in sentences:
-        resp = [
-            x[1:] for x in sp.encode_as_pieces(sent) if "".join(x[1:]) not in ignore
-        ]
+        resp = spe_sent_tokenizer(sent)
         test = [x for x in resp if "$" in x]
         if test:
             output = cp.parse(pos_tag(resp))
@@ -147,10 +173,12 @@ print(resolved_symbols)
 for k, v in symbol_definitions.items():
     print(k, v)
 
+sleep(3)
 print("unresolved")
 unresolved = ["$" + x + "$" for x in symbols if "$" + x + "$" not in resolved_symbols]
 print(unresolved)
 
+sleep(3)
 for k, v in concordance_dict.items():
     if k in unresolved:
         print(k, v)

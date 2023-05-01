@@ -18,6 +18,9 @@ from tqdm import tqdm
 
 import sentencepiece as spm
 
+# nltk.download('stopwords')
+# nltk.download('averaged_perceptron_tagger')
+
 ignore = ["\\begin{abstract}", "\\end{abstract}"]
 punkt_trainer_path = "/home/user/latex-in-arxiv/Punkt_LaTeX_SENT_Tokenizer.pickle"
 sentence_piece_model_path = "/home/user/latex-in-arxiv/HEP_TEX.model"
@@ -53,8 +56,8 @@ punkt_trainer = nltk.data.load(punkt_trainer_path)
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 
 
-file_data = read_file(argv[1])
-groups = txttlng_tokenizer.tokenize(file_data)
+data = read_file(argv[1])
+groups = txttlng_tokenizer.tokenize(data)
 print(len(groups))
 sp = spm.SentencePieceProcessor()
 sp.load(sentence_piece_model_path)
@@ -75,8 +78,6 @@ def strip_tokens(tok):
     return tok
 
 
-data = read_file(argv[1])
-
 symbols = set()
 [symbols.add(x) for x in re.findall("\$.*?\$", data)]
 symbols = sorted(list(symbols), key=lambda x: len(x))
@@ -88,7 +89,15 @@ for symbol in symbols:
         single_char_symbols.add(symbol)
 
 
-definitions = set()
+concordance_dict = defaultdict(list)
+for sent in sents:
+    maybe_definition = re.findall("\$.*?\$", sent)
+    if maybe_definition:
+        for match in maybe_definition:
+            concordance_dict[match].append(sent)
+
+
+symbol_definitions = defaultdict(set)
 labels = [f"DEF{x}" for x in range(20)]
 grammar = r"""
     DEF: {<DT><JJ><NN><JJ><NN>}
@@ -113,41 +122,35 @@ grammar = r"""
     DEF19: {<IN><NNS><IN><NN><NN><NNP>}
 """
 cp = nltk.chunk.RegexpParser(grammar)
-for sent in sents:
-    resp = [x[1:] for x in sp.encode_as_pieces(sent) if "".join(x[1:]) not in ignore]
-    test = [x for x in resp if "$" in x]
-    if test:
-        output = cp.parse(pos_tag(resp))
-        for subtree in output.subtrees(filter=lambda t: t.label() in labels):
-            # print(subtree)
-            DEF = " ".join([x[0] for x in subtree])
-            if re.findall("\$.*?\$", DEF):
-                definitions.add(DEF)
+for symbol, sentences in concordance_dict.items():
+    for sent in sentences:
+        resp = [
+            x[1:] for x in sp.encode_as_pieces(sent) if "".join(x[1:]) not in ignore
+        ]
+        test = [x for x in resp if "$" in x]
+        if test:
+            output = cp.parse(pos_tag(resp))
+            for subtree in output.subtrees(filter=lambda t: t.label() in labels):
+                # print(subtree)
+                DEF = " ".join([x[0] for x in subtree])
+                if re.findall("\$.*?\$", DEF):
+                    if symbol in DEF:
+                        symbol_definitions[symbol].add(DEF)
 
-resolved = set()
 
-resolved.add("M")
-resolved.add("a")
-resolved.add("u")
-resolved.add("e")
-resolved.add("\\alpha")
-resolved.add("c")
-resolved.add("m")
-resolved.add("f")
-resolved.add("G")
-resolved.add("K")
-resolved.add("\\rho")
-resolved.add("\\hbar")
-resolved.add("A")
-resolved.add("m_e")
-resolved.add("k")
-resolved.add("v_u")
-resolved.add("$E_{\\rm R}$")
+resolved_symbols = set()
+for symbol in symbol_definitions.keys():
+    resolved_symbols.add(symbol)
 
-#print the list of unresolved symbols
-for symbol in [x for x in symbols if x not in resolved]:
-    print(symbol)
+print("resolved_symbols")
+print(resolved_symbols)
+for k, v in symbol_definitions.items():
+    print(k, v)
 
-#print the list of symbol definitions
-for definition in sorted(definitions):
-    print(definition)
+print("unresolved")
+unresolved = ["$" + x + "$" for x in symbols if "$" + x + "$" not in resolved_symbols]
+print(unresolved)
+
+for k, v in concordance_dict.items():
+    if k in unresolved:
+        print(k, v)

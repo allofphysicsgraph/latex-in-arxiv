@@ -18,8 +18,8 @@ from tqdm import tqdm
 
 import sentencepiece as spm
 
-# nltk.download('stopwords')
-# nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
 
 ignore = ["\\begin{abstract}", "\\end{abstract}"]
 punkt_trainer_path = "/home/user/latex-in-arxiv/Punkt_LaTeX_SENT_Tokenizer.pickle"
@@ -82,7 +82,7 @@ punkt_trainer = nltk.data.load(punkt_trainer_path)
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 
 
-data = read_file("sound1.tex")
+data = read_file(argv[1])
 groups = txttlng_tokenizer.tokenize(data)
 print(len(groups))
 sp = spm.SentencePieceProcessor()
@@ -124,7 +124,7 @@ for sent in sents:
 
 
 symbol_definitions = defaultdict(set)
-labels = [f"DEF{x}" for x in range(30)]
+labels = [f"DEF{x}" for x in range(100)]
 grammar = r"""
     DEF0: {<DT><JJ><NN><JJ><NN>}
     DEF1: {<DT><JJ><NN><NN><NN>}
@@ -148,6 +148,32 @@ grammar = r"""
     DEF19: {<IN><NNS><IN><NN><NN><NNP>}
     DEF20: {<PRP><RB><VBD><NNP>}
     DEF21: {<NN><NN><NNP><WRB><NNS><NN><TO><VB>}
+    DEF22: {<DT><NN><NN><NNP>}
+    DEF23: {<PRP><RB><VBD><NNP>}
+    DEF24: {<RB><TO><DT><NN>}
+    DEF25: {<IN><JJ><NN><NNP><NNP>}
+    DEF26: {<WRB><NNP><NNP><CC><NNP><NNP><VBP><NNP><NN><CC><NN><NN>}
+    DEF27: {<PRP><RB><VBD><NNP><CC><NNP>}
+    DEF28: {<CC><RB><PRP><VBP><NNS><IN><DT><NN><NN><NN>}
+    DEF29: {<CC><DT><JJ><NN><IN><NNP><IN><NNP>}
+    DEF30: {<DT><JJ><NN><VBZ><RB><VBN><IN><DT><NN><NNP><NN>}
+    DEF31: {<PRP><RB><VBD><NNP><CC><NNP><IN><NNP><TO><VB><IN><DT><JJ><NN><IN><NN><IN><JJ>}
+    DEF32: {<VBG><JJ><NNP><IN><NNP><IN><NNP><VBZ>}
+    DEF33: {<WRB><NNP><NNP><VBZ><DT><NNP><NN><NNP>}
+    DEF34: {<DT><NN><NN><NNP>}
+    DEF35: {<DT><JJ><NN><IN><NN><VBZ><JJ>}
+    DEF36: {<JJ><NN><NNP><RB><VBZ><IN><DT><NN><IN><NN><TO><VBG><NN>}
+    DEF37: {<VBG><NN><CC><JJ><VBZ><VBP>}
+    DEF38: {<NNP><NN><WDT><VBZ><DT><NN><NN><IN><DT><NNP><NN>}
+    DEF39: {<DT><NN><NN><NNP><NNP><MD><VB><VBN><IN><NN>}
+    DEF40: {<DT><NN><NN><VBZ><IN><JJ><CC><MD><VB><VBN><IN><DT><JJ><NN><IN><NN>}
+    DEF41: {<JJ><NN><IN><NNS><VBZ><RB><VB><IN><DT><JJ><NN><VBN><IN><DT><NN><IN><NN><CC><DT><JJ><NN><SYM>}
+    DEF42: {<JJ><VBZ><DT><NN><JJ><NN><IN><DT><NN><IN><NN><IN><NN>}
+    DEF43: {<DT><NNS><IN><DT><NNP><NN><NNP><NNP>}
+    DEF44: {<DT><JJ><NNP><NN><NN><VBD><IN><DT><JJ><NN><NNP><NNP><NNP><NN><VBZ><JJ>}
+    DEF45: {<DT><NN><NN><NNP><NNP>}
+    DEF46: {<VBG><IN><NNP><IN><NNP><CC><NNP><VBP><NNP>}
+    DEF47: {<NNP><DT><JJS><NN><VBZ><VBN><IN><JJ>}
 """
 cp = nltk.chunk.RegexpParser(grammar)
 for symbol, sentences in concordance_dict.items():
@@ -168,10 +194,13 @@ resolved_symbols = set()
 for symbol in symbol_definitions.keys():
     resolved_symbols.add(symbol)
 
+from redis import Redis
+redis_client = Redis(decode_responses=True)
 print("resolved_symbols")
 print(resolved_symbols)
 for k, v in symbol_definitions.items():
-    print(k, v)
+    for match in v:
+        redis_client.lpush(k, match)
 
 sleep(3)
 print("unresolved")
@@ -182,3 +211,5 @@ sleep(3)
 for k, v in concordance_dict.items():
     if k in unresolved:
         print(k, v)
+
+print(len(resolved_symbols)/(1.0*len(symbols)))

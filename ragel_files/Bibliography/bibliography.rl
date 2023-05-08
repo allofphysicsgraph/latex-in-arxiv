@@ -24,11 +24,989 @@
 '\\begin{thebibliography}'	{ printf("<%s>",std::string(ts,te).c_str()); };
 '\\end{thebibliography}'	{ printf("<%s>",std::string(ts,te).c_str()); };
 '\\bibitem{' (any-'}'){1,15} '}' 	{ printf("<%s>",std::string(ts,te).c_str()); };
-'{\\it' (any-'}'){1,15} '}' 	{ printf("<%s>",std::string(ts,te).c_str()); };
+'{\\it' (any-'}'){1,25} '}' 	{ printf("<%s>",std::string(ts,te).c_str()); };
 '{\\bf' (any-'}'){1,15} '}' 	{ printf("<%s>",std::string(ts,te).c_str()); };
 '(' digit{4} ')' 	{ printf("<%s>",std::string(ts,te).c_str()); };
 ' and '|' of '|' the '|' are '	{ printf("<%s>",std::string(ts,te).c_str()); };
 any	{ printf("<%s>",std::string(ts,te).c_str()); };
+
+
+
+'(Academia Nationale dei Lincei' (any-')'){0,10}')'|'(Academia Nationale dei Lincei, Rome' (any-')'){0,10}')'|'(Academia Nazionale dei Lincei' (any-')'){0,10}')'|'(Academia Nazionale dei Lincei Roma, Italy' (any-')'){0,10}')'|'(Academia Rom^anv a, Iac si, Romv ania' (any-')'){0,10}')'|'( Academic, Boston' (any-')'){0,10}')'|'(Academic ,London' (any-')'){0,10}')'|'(Academic,new York' (any-')'){0,10}')'|'(Academic, New-York' (any-')'){0,10}')'|'(Academic, NY' (any-')'){0,10}')'|'(}Academic Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(}Academic Press' (any-')'){0,10}')'|'(Academic  Press' (any-')'){0,10}')'|'(Academic Press 1972' (any-')'){0,10}')'|'(Academic Press, 1979' (any-')'){0,10}')'|'(Academic Press, 1982' (any-')'){0,10}')'|'(Academic Press,1982' (any-')'){0,10}')'|'(Academic Press, Bosoton' (any-')'){0,10}')'|'(Academic Press Inc' (any-')'){0,10}')'|'( Academic Press INC.' (any-')'){0,10}')'|'(Academic Press, INC' (any-')'){0,10}')'|'(Academic Press Inc., Fifth Edition' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Academic Press Inc., Fifth Edition' (any-')'){0,10}')'|'(Academic Press Inc, London' (any-')'){0,10}')'|'(Academic Press, Inc., London' (any-')'){0,10}')'|'(Academic Press, INC., London' (any-')'){0,10}')'|'(Academic Press Inc., New York ' (any-')'){0,10}')'|'( Academic Press INC., New York' (any-')'){0,10}')'|'(Academic Press, Inc. New York, Fourth edition' (any-')'){0,10}')'|'(Academic Press Inc., Orlando' (any-')'){0,10}')'|'(Academic Press Inc., San Diego' (any-')'){0,10}')'|'(Academic Press Limited, London' (any-')'){0,10}')'|'( Academic Press, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Academic Press, London' (any-')'){0,10}')'|'(Academic  Press, London' (any-')'){0,10}')'|'(Academic~Press, London' (any-')'){0,10}')'|'(}{Academic Press, New York' (any-')'){0,10}')'|'(Academic  Press, New York' (any-')'){0,10}')'|'(Academic Press, New~York' (any-')'){0,10}')'|'(Academic Press, NewYork' (any-')'){0,10}')'|'(Academic Press,New York' (any-')'){0,10}')'|'(Academic Press; New York' (any-')'){0,10}')'|'(Academic Press, New York, fourth edition' (any-')'){0,10}')'|'(Academic Press, New York -- London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Academic Press, New York -- London' (any-')'){0,10}')'|'(Academic Press, New York, London' (any-')'){0,10}')'|'(Academic Press, New York-London' (any-')'){0,10}')'|'(Academic Press: NY' (any-')'){0,10}')'|'(Academic Press, Orlando, FL' (any-')'){0,10}')'|'(Academic Press, San Diego, CA' (any-')'){0,10}')'|'(Academic Press, San Diego, California' (any-')'){0,10}')'|'(Academic Press, San Francisco' (any-')'){0,10}')'|'(Academic Press, Toronto' (any-')'){0,10}')'|'(Academic, San Diego' (any-')'){0,10}')'|'(Academic - Verlag, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Academic - Verlag, Berlin' (any-')'){0,10}')'|'(Academiei, Romania' (any-')'){0,10}')'|'(Acad. Naz. dei Lincei, Rome' (any-')'){0,10}')'|'(Acad  Press' (any-')'){0,10}')'|'(Acad. Press, N.-Y.' (any-')'){0,10}')'|'(Acad. Sinica' (any-')'){0,10}')'|'(Accademia Nazionale dei Lincei' (any-')'){0,10}')'|'(Accademia Nazionale dei Lincei, Roma' (any-')'){0,10}')'|'(Accademia Nazionale dei Lincei, Rome' (any-')'){0,10}')'|'(Accademia Nazionale de Lincei' (any-')'){0,10}')'|'(Accademic Press, INC' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Accademic Press, INC' (any-')'){0,10}')'|'(Accad. Naz. dei Lincei press, Rome' (any-')'){0,10}')'|'(Accad.~Naz.~deiLincei, Rome' (any-')'){0,10}')'|'(Accad.Naz.deiLincei, Rome' (any-')'){0,10}')'|'(Acedemic Press' (any-')'){0,10}')'|'(A. Coley, D. Levi, C. Rogers and P. Winternitz' (any-')'){0,10}')'|'(Ac. Press' (any-')'){0,10}')'|'(Adam Hilgar, Bristol' (any-')'){0,10}')'|'(Adam Hilger,  Bristol' (any-')'){0,10}')'|'(Adam Hilger,Bristol' (any-')'){0,10}')'|'(Adam Hilger: Bristol' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Adam Hilger: Bristol' (any-')'){0,10}')'|'(Adam Hilger, Bristol, England' (any-')'){0,10}')'|'(Adam Hilger, Bristol UK' (any-')'){0,10}')'|'(Adam Hilger Ltd, Bristol' (any-')'){0,10}')'|'(Adam Hilger Ltd., Bristol' (any-')'){0,10}')'|'(Adam IOP Publishing' (any-')'){0,10}')'|'(Addison and Wesley' (any-')'){0,10}')'|'(Addison & Wesley' (any-')'){0,10}')'|'(Addison-Wesley, 1985, Frontiers in Physics' (any-')'){0,10}')'|'(Addison-Wesley, California' (any-')'){0,10}')'|'(Addison--Wesley, Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison--Wesley, Cambridge' (any-')'){0,10}')'|'(Addison-Wesley, Cambridge' (any-')'){0,10}')'|'(Addison-Wesley, Canada' (any-')'){0,10}')'|'(Addison-Wesley, Inc., Reading, MA' (any-')'){0,10}')'|'(Addison--Wesley, London' (any-')'){0,10}')'|'(Addison-Wesley, Massachusetts' (any-')'){0,10}')'|'( Addison-Wesley, Menlo Park' (any-')'){0,10}')'|'(Addison--Wesley, Menlo Park' (any-')'){0,10}')'|'(Addison-Wesley,Menlo Park,CA' (any-')'){0,10}')'|'(Addison-Wesley, Menlo Park, California' (any-')'){0,10}')'|'(Addison - Wesley, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison - Wesley, New York' (any-')'){0,10}')'|'(Addison-Wesley, N.Y.' (any-')'){0,10}')'|'(Addison-Wesley Pabl.Comp.' (any-')'){0,10}')'|'(Addison-Wesley P. Co., New York' (any-')'){0,10}')'|'(Addison-Wesley Press' (any-')'){0,10}')'|'(Addison-Wesley Pub Co' (any-')'){0,10}')'|'(Addison-Wesley Pub. Co. ' (any-')'){0,10}')'|'(Addison-Wesley Pub. Co., Inc., California' (any-')'){0,10}')'|'(Addison-Wesley Pub. Co., Inc., Redwood City, California ' (any-')'){0,10}')'|'(Addison-Wesley Pub. Company, Redwood City, CA' (any-')'){0,10}')'|'(Addison-Wesley Publ. Co., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison-Wesley Publ. Co., New York' (any-')'){0,10}')'|'(Addison-Wesley Publishing Co.' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company, Inc.' (any-')'){0,10}')'|'(Addison--Wesley Publishing Company, London' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company, Massachusetts' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company, New York' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company: Seoul' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company, The Advanced Book' (any-')'){0,10}')'|'(Addison--Wesley Publishing Comp., New York' (any-')'){0,10}')'|'(Addison-Wesley,  Reading' (any-')'){0,10}')'|'(Addison-Wesley; Reading' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison-Wesley; Reading' (any-')'){0,10}')'|'(Addison-Wesley, Reading, Ma' (any-')'){0,10}')'|'( Addison-Wesley, Reading, MA' (any-')'){0,10}')'|'(Addison Wesley, Reading, MA' (any-')'){0,10}')'|'(Addison-Wesley,  Reading, MA' (any-')'){0,10}')'|'(Addison-Wesley. Reading, MA' (any-')'){0,10}')'|'(Addison-Wesley: Reading, MA' (any-')'){0,10}')'|'(Addison-Wesley, Reading, MA, 1988' (any-')'){0,10}')'|'(Addison-Wesley,Reading, MA,1988' (any-')'){0,10}')'|'(Addison Wesley, Reading, Mass.' (any-')'){0,10}')'|'(Addison-Wesley,  Reading, Mass.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison-Wesley,  Reading, Mass.' (any-')'){0,10}')'|'(Addison-Wesley, Reading -- Massachusets' (any-')'){0,10}')'|'(Addison Wesley, Reading, Massachusetts' (any-')'){0,10}')'|'(Addison-Wesley, Reading Massachusetts' (any-')'){0,10}')'|'(Addison Wesley, Redwood CA' (any-')'){0,10}')'|'(Addison-Wesley, Redwood, CA' (any-')'){0,10}')'|'(Addison-Wesley, Redwood/CA' (any-')'){0,10}')'|'(Addison-Wesley, Redwood, California' (any-')'){0,10}')'|'(Addison Wesley, Redwood City' (any-')'){0,10}')'|'(Addison-Wesley Redwood City' (any-')'){0,10}')'|'(Addison  Wesley, Redwood City, Ca' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison  Wesley, Redwood City, Ca' (any-')'){0,10}')'|'(Addison-Wesley, Redwood City, Ca' (any-')'){0,10}')'|'(Addison-Wesley, Redwood City CA' (any-')'){0,10}')'|'(Addison Wesley, Redwood City, California' (any-')'){0,10}')'|'(Addison-Wesley, USA' (any-')'){0,10}')'|'(Addison-Wessley, Reading, MA' (any-')'){0,10}')'|'(Addisson Wesley, Massachusetts' (any-')'){0,10}')'|'(Adison-Wesley, London' (any-')'){0,10}')'|'(Advanced Series in Astrophysics and Cosmology' (any-')'){0,10}')'|'(Advanced Series on Direcctions in High Energy Physics' (any-')'){0,10}')'|'(Adv. Sov. Math.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Adv. Sov. Math.' (any-')'){0,10}')'|'(A. Gleason' (any-')'){0,10}')'|'(A.~Hilger, Bristol' (any-')'){0,10}')'|'(A.Hilger, Bristol' (any-')'){0,10}')'|'(A. Hilger, Bristol, UK' (any-')'){0,10}')'|'(A.~Hilger, Bristol UK' (any-')'){0,10}')'|'(A.~Hilger, Bristol, UK' (any-')'){0,10}')'|'(A. Hilger, New York' (any-')'){0,10}')'|'(AIP Conf. Proc. No. 23, New York' (any-')'){0,10}')'|'(A.I.P. Congress Proc. 433' (any-')'){0,10}')'|'(AIP Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(AIP Press' (any-')'){0,10}')'|'(AIP press, New York' (any-')'){0,10}')'|'(AIP Press, NewYork' (any-')'){0,10}')'|'(AIP Press: NY' (any-')'){0,10}')'|'(AIP Press, Woodbury' (any-')'){0,10}')'|'(AIP, Woodbury' (any-')'){0,10}')'|'( Akademie-Verlag' (any-')'){0,10}')'|'(Akademische Verlagsgesellschaft Geest & Portig, Leipzig' (any-')'){0,10}')'|'(Akademische Verlagsgesellschaft, Leipzig' (any-')'){0,10}')'|'(Akad. Verlagsges., Leipzig' (any-')'){0,10}')'|'(Akedemische Verlagsgesellschaft, Geest & Portig K.{--}G., Leipzig' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Akedemische Verlagsgesellschaft, Geest & Portig K.{--}G., Leipzig' (any-')'){0,10}')'|'(A K Peters, Wellesley' (any-')'){0,10}')'|'(Allerton Press' (any-')'){0,10}')'|'(Allerton Press, New York' (any-')'){0,10}')'|'(Almgvist and Wiksells, Stockholm' (any-')'){0,10}')'|'(Almquist and Forlag, Stockholm' (any-')'){0,10}')'|'(Almquist and Wicksells, Stockholm' (any-')'){0,10}')'|'(Almquist and Wiksell, Stockholm' (any-')'){0,10}')'|'(Almquist and Wiskell, Stockholm' (any-')'){0,10}')'|'(Almqvist and Wiksell, Stockholm' (any-')'){0,10}')'|'(Almqvist and Wiksell, Stockhom' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Almqvist and Wiksell, Stockhom' (any-')'){0,10}')'|'(Almqvist, Stockholm' (any-')'){0,10}')'|'(Almunecar, Spain' (any-')'){0,10}')'|'(,alpha=1, r_0=arbitrary|(Alushta Conference' (any-')'){0,10}')'|'(Americal Math. Soc., Providence' (any-')'){0,10}')'|'(American Institute of Physics,Melville, New York' (any-')'){0,10}')'|'(American Institute of Physics, Melville, NY' (any-')'){0,10}')'|'(American   Institute of        Physics , New York' (any-')'){0,10}')'|'(American Institute of Physics, Woodbury' (any-')'){0,10}')'|'(American Inst. of Physics' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(American Inst. of Physics' (any-')'){0,10}')'|'(American Mathematical Society, 1992' (any-')'){0,10}')'|'(American Mathematical Society Providence' (any-')'){0,10}')'|'(American Mathematical Society: Providence' (any-')'){0,10}')'|'(American Mathematical Society Providence, RI' (any-')'){0,10}')'|'(American Mathematical Society, Rhode Island' (any-')'){0,10}')'|'(American Math.  Soc.' (any-')'){0,10}')'|'(American Math. Soc.' (any-')'){0,10}')'|'(American Math. Soc., Providence, Rhode Island' (any-')'){0,10}')'|'(American Math. Soc., Providence, Rhode Island' (any-')'){0,10}')'|'(American Math. Soc., Providence, R.I.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(American Math. Soc., Providence, R.I.' (any-')'){0,10}')'|'(American Physical Society, New York' (any-')'){0,10}')'|'(Amer. Inst. Phys., Melville, N.Y.' (any-')'){0,10}')'|'(Amer. Inst. Phys., Melville, N.Y. 267' (any-')'){0,10}')'|'(Amer. Inst. Phys. Woodbury' (any-')'){0,10}')'|'(Amer.Math. Soc.' (any-')'){0,10}')'|'(Amer. Math. Society' (any-')'){0,10}')'|'(Amer. Math. Soc./International Press' (any-')'){0,10}')'|'(Amer. Math. Soc., New York' (any-')'){0,10}')'|'(Amer. Math. Soc., Providence, PI' (any-')'){0,10}')'|'(Amer.Math.Soc.Transl. of Math. Monographs, vol.22' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Amer.Math.Soc.Transl. of Math. Monographs, vol.22' (any-')'){0,10}')'|'(Am.  Math. Soc.' (any-')'){0,10}')'|'(Am. Math. Soc.' (any-')'){0,10}')'|'(Am. Math. Soc., Berkeley, CA' (any-')'){0,10}')'|'(Am. Math Soc., Providence' (any-')'){0,10}')'|'(Am.~Math.~Soc., Providence' (any-')'){0,10}')'|'(A.M.S.College Publ., Providence' (any-')'){0,10}')'|'(AMS/IAS, Providence, RI' (any-')'){0,10}')'|'(AMS: Providence' (any-')'){0,10}')'|'(AMS Pro-vi-den-ce, Rhode Is-land' (any-')'){0,10}')'|'(AMS Providence, Rhode Island' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(AMS Providence, Rhode Island' (any-')'){0,10}')'|'(AMS, Providence-Rhode Island' (any-')'){0,10}')'|'(A.M.S., Providence, R.I.' (any-')'){0,10}')'|'(AMS pub.' (any-')'){0,10}')'|'(AMS Publications, Rhode Island' (any-')'){0,10}')'|'(Amste rdam' (any-')'){0,10}')'|'(Amsterdam, Berlin, Heidelberg, New York' (any-')'){0,10}')'|'(Amsterdam: Elsevier' (any-')'){0,10}')'|'(Amsterdam, North-Holland' (any-')'){0,10}')'|'(Amsterdam: North-Holland' (any-')'){0,10}')'|'(Amsterdam: Noth-Holland' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Amsterdam: Noth-Holland' (any-')'){0,10}')'|'(Amsterdam, W. A. Benjamin' (any-')'){0,10}')'|'(Amsterdan: Elsevier' (any-')'){0,10}')'|'(AMS University Lecture Series, Vol. 10' (any-')'){0,10}')'|'(analytic regularization' (any-')'){0,10}')'|'(and the Liouville mode' (any-')'){0,10}')'|'(Ann Arbor' (any-')'){0,10}')'|'(Annecy, France' (any-')'){0,10}')'|'(Ann. Fond. Louis de Broglie' (any-')'){0,10}')'|'(April 1-5, 1997' (any-')'){0,10}')'|'(April 1992' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(April 1992' (any-')'){0,10}')'|'(April 1994' (any-')'){0,10}')'|'(April 8' (any-')'){0,10}')'|'(Asakura Shoten' (any-')'){0,10}')'|'(Asakura, Tokyo' (any-')'){0,10}')'|'(Athens, GA' (any-')'){0,10}')'|'(Athens University Press' (any-')'){0,10}')'|'( Atomizdat, Moscow' (any-')'){0,10}')'|'(Atomzidad, Moscow' (any-')'){0,10}')'|'(Audretsch J' (any-')'){0,10}')'|'( Aug. 1999' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Aug. 1999' (any-')'){0,10}')'|'(A. Zichichi' (any-')'){0,10}')'|'(b ^2 e^{Sigma}, b X, b F, phi' (any-')'){0,10}')'|'(Baifukan, Tokyo' (any-')'){0,10}')'|'(Banff, Canada' (any-')'){0,10}')'|'(Bardonecchia, September 1-5' (any-')'){0,10}')'|'(bar{mathbb Q}' (any-')'){0,10}')'|'(Baruch College, New York' (any-')'){0,10}')'|'(Basic Books' (any-')'){0,10}')'|'(Basic Books, Inc., Publishers, New-York' (any-')'){0,10}')'|'(Basic Books, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Basic Books, New York' (any-')'){0,10}')'|'(Batalin and Marnelius' (any-')'){0,10}')'|'(B. DeWitt and R. Stora' (any-')'){0,10}')'|'(Beijing, China' (any-')'){0,10}')'|'(Belfer Graduate School' (any-')'){0,10}')'|'(Belfer Graduate School of Science, New York' (any-')'){0,10}')'|'(Belfer Graduate School of Science, Yeshiba University, New York' (any-')'){0,10}')'|'(Belfer Graduate school of science, Yeshiva University, New york' (any-')'){0,10}')'|'(Belfer Graduate School of Science, Yeshiva University, New York' (any-')'){0,10}')'|'(Belfer Graduate School of Science, Yeshiva University Press, New York' (any-')'){0,10}')'|'( Belfer graduate School, Yeshiba University Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Belfer graduate School, Yeshiba University Press' (any-')'){0,10}')'|'(Belfer graduate School, Yeshiba University Press' (any-')'){0,10}')'|'(Belfer School of Science, Yeshiva University, New York' (any-')'){0,10}')'|'(Ben-Gurion University Negev Press' (any-')'){0,10}')'|'(ben-Gurion Univ. opf the Negev Prss' (any-')'){0,10}')'|'(Benjamin, Amsterdam' (any-')'){0,10}')'|'(Benjamin and Cummings' (any-')'){0,10}')'|'(Benjamin and Cummings, New York' (any-')'){0,10}')'|'(Benjamin/Commings, Reading' (any-')'){0,10}')'|'(Benjamin / Cummings' (any-')'){0,10}')'|'(Benjamin-Cummings, 1984' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin-Cummings, 1984' (any-')'){0,10}')'|'(Benjamin Cummings, California' (any-')'){0,10}')'|'(Benjamin/Cummings, California' (any-')'){0,10}')'|'(Ben-ja-min/Cummings, London' (any-')'){0,10}')'|'(Benjamin-Cummings, London' (any-')'){0,10}')'|'( Benjamin/Cummings, Massachusetts' (any-')'){0,10}')'|'(Benjamin-Cummings, Massachusetts' (any-')'){0,10}')'|'(Benjamin/Cummings, Massachusetts' (any-')'){0,10}')'|'(Benjamin/ Cummings, Menlo Park' (any-')'){0,10}')'|'(Benjamin-Cummings, Menlo Park, CA' (any-')'){0,10}')'|'(Benjamin/Cummings, Menlo Park, CA' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin/Cummings, Menlo Park, CA' (any-')'){0,10}')'|'(Benjamin/Cummings, Menlo Park -- California' (any-')'){0,10}')'|'(Benjamin/Cummings, Menlo Park, California' (any-')'){0,10}')'|'(Benjamin/Cummings, New York' (any-')'){0,10}')'|'(Benjamin/Cummings, NY' (any-')'){0,10}')'|'(Benjamin/Cummings Pub. Co.' (any-')'){0,10}')'|'(Benjamin/Cummings Pub. Co. Inc., California' (any-')'){0,10}')'|'(Benjamin/Cummings Pub. Co., Ink.' (any-')'){0,10}')'|'(Benjamin/ Cummings Publ. Comp., Reading, Mass.' (any-')'){0,10}')'|'( Benjamin/Cummings Publishing Company' (any-')'){0,10}')'|'(Benjamin/Cummings Publishing, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin/Cummings Publishing, London' (any-')'){0,10}')'|'(Benjamin/Cummings Publishing, Menlo Park' (any-')'){0,10}')'|'(Benjamin-Cummings Pu-bli-shing, Reading, Massachusetts' (any-')'){0,10}')'|'(Benjamin/Cummings Pub., MA' (any-')'){0,10}')'|'(Benjamin Cummings, Reading' (any-')'){0,10}')'|'(Benjamin & Cummings, Reading, MA' (any-')'){0,10}')'|'(Benjamin Cummings, Reading, MA.' (any-')'){0,10}')'|'(Benjamin--Cummings, Reading MA' (any-')'){0,10}')'|'(Benjamin--Cummings, Reading, MA' (any-')'){0,10}')'|'(Benjamin-Cummings, Reading MA' (any-')'){0,10}')'|'(Benjamin Cummings, Reading, Mass' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin Cummings, Reading, Mass' (any-')'){0,10}')'|'(Benjamin-Cummings, Reading, Mass.' (any-')'){0,10}')'|'(Benjamin/Cummings, Reading, Mass.' (any-')'){0,10}')'|'(Benjamin/Cummings,Reading, Mass' (any-')'){0,10}')'|'(Benjamin Cummings, Reading, PA' (any-')'){0,10}')'|'(Benjamin/Cummings, Reading, USA' (any-')'){0,10}')'|'(Benjamin/Cummins Publ. Co., Inc., Reading, MA' (any-')'){0,10}')'|'(Benjamin/Cummins, Reading Mass.' (any-')'){0,10}')'|'(Benjamin, Inc., MA' (any-')'){0,10}')'|'(Benjamin,  London' (any-')'){0,10}')'|'(Benjamin, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin, London' (any-')'){0,10}')'|'(Benjamin, Mass.' (any-')'){0,10}')'|'( Benjamin, Massachusetts' (any-')'){0,10}')'|'(Benjamin, Menlo Park' (any-')'){0,10}')'|'( Benjamin, New York' (any-')'){0,10}')'|'(Benjamin New York' (any-')'){0,10}')'|'(Benjamin: New York' (any-')'){0,10}')'|'(Benjamin Press' (any-')'){0,10}')'|'(Benjamin Press., New York' (any-')'){0,10}')'|'(Benjamin Pub. Co., Boston' (any-')'){0,10}')'|'(Benjamin Publishing Company' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin Publishing Company' (any-')'){0,10}')'|'(Benjamin, Reading, MA' (any-')'){0,10}')'|'(Benjamin, Reading, Massachsetts' (any-')'){0,10}')'|'(Benjamin, Reading, Massachusetts' (any-')'){0,10}')'|'(Beogrado, Publ. Inst. Math.' (any-')'){0,10}')'|'(Berkeley, CA' (any-')'){0,10}')'|'(Berkeley, Calif.' (any-')'){0,10}')'|'(Berkeley, California' (any-')'){0,10}')'|'(Berkeley, CA, USA' (any-')'){0,10}')'|'(Berkeley preprint 1998' (any-')'){0,10}')'|'(Berkeley: Publish or Perish Inc.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Berkeley: Publish or Perish Inc.' (any-')'){0,10}')'|'(Berkeley Univ. Press, Berkeley, CA' (any-')'){0,10}')'|'(Berkeley, USA' (any-')'){0,10}')'|'(Berlin, Germany: Springer ' (any-')'){0,10}')'|'(Berlin, Germany:Springer' (any-')'){0,10}')'|'(Berlin Springer-Verlag' (any-')'){0,10}')'|'(Berlin:  Springer-Verlag' (any-')'){0,10}')'|'(Bilbo, Spain, World Scient. Publ. Co.' (any-')'){0,10}')'|'(Birkh$ddot a$user, Basel' (any-')'){0,10}')'|'(Birkh$ddot{a}$user, Boston' (any-')'){0,10}')'|'(Birkhaeuser, Basel' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Birkhaeuser, Basel' (any-')'){0,10}')'|'(Birkh"{a}ser, Stuttgart' (any-')'){0,10}')'|'(Bir-khas-ter, Boston' (any-')'){0,10}')'|'(Birkh{"a}usen, Boston' (any-')'){0,10}')'|'(Birkhauser ' (any-')'){0,10}')'|'(Birk-hauser, Basel' (any-')'){0,10}')'|'(Birkh"{a}user, Basel' (any-')'){0,10}')'|'(Birkha"{u}ser, Basel' (any-')'){0,10}')'|'(Birkh" auser, Boston' (any-')'){0,10}')'|'(Birkh"a user, Boston' (any-')'){0,10}')'|'(BirkH{a}user, Boston' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(BirkH{a}user, Boston' (any-')'){0,10}')'|'(Birkh"{a}user, Boston, Basel' (any-')'){0,10}')'|'(Birkh"auser, Boston Basel Berlin' (any-')'){0,10}')'|'(Birkh"auser, Boston-Basel-Berlin' (any-')'){0,10}')'|'(Birkh"auser Boston, Boston' (any-')'){0,10}')'|'(Birkh"{a}user Boston Inc.' (any-')'){0,10}')'|'(Birkh"auser Boston Inc.' (any-')'){0,10}')'|'(Birkhauser Boston Inc.' (any-')'){0,10}')'|'(Birkh{"a}user Verlag' (any-')'){0,10}')'|'(Birkh"auser Verlag, Basel' (any-')'){0,10}')'|'(Birkha"user--Verlag, Basel' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Birkha"user--Verlag, Basel' (any-')'){0,10}')'|'(Birkhauser Verlag, Basel' (any-')'){0,10}')'|'(Birk{"o}user, Boston' (any-')'){0,10}')'|'(Blackie, London' (any-')'){0,10}')'|'( Blackie{&}Son, Glasgow' (any-')'){0,10}')'|'(Blackie & Son, London' (any-')'){0,10}')'|'(Blackwell Scientific Publications' (any-')'){0,10}')'|'(Boca Raton, FL:CRC' (any-')'){0,10}')'|'(Bogoliubov Institute, Kiev' (any-')'){0,10}')'|'(Bologna, Nicola Zanichelli' (any-')'){0,10}')'|'(Boringhieri; Torino' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Boringhieri; Torino' (any-')'){0,10}')'|'(Boston: Birkh"{a}user' (any-')'){0,10}')'|'(Boston: International Press' (any-')'){0,10}')'|'(Boston, USA: Birkh"auser' (any-')'){0,10}')'|'(Boulder, CO' (any-')'){0,10}')'|'(Boulder, Colorado' (any-')'){0,10}')'|'(Brandeis University report BRX-TH-350, hep-th/9307057' (any-')'){0,10}')'|'(Brandeis University Summer Intitute' (any-')'){0,10}')'|'(Bristol, Adam Hilger' (any-')'){0,10}')'|'(Bristol and Philadelphia, Adam Hilger' (any-')'){0,10}')'|'(Bristol: Hilger' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Bristol: Hilger' (any-')'){0,10}')'|'(Bristol: IOP Publishing' (any-')'){0,10}')'|'(Bristol, Uk: Hilger' (any-')'){0,10}')'|'(BRST, harmonics' (any-')'){0,10}')'|'(Brunswick, Maine' (any-')'){0,10}')'|'(Bucharesr, Romania: Academiei' (any-')'){0,10}')'|'(Buckow, Germany' (any-')'){0,10}')'|'(Buckow, September 1-5' (any-')'){0,10}')'|'(Bucurec sti' (any-')'){0,10}')'|'(Butterworth, London' (any-')'){0,10}')'|'(Calderon Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Calderon Press' (any-')'){0,10}')'|'(Calendon Press, Oxford' (any-')'){0,10}')'|'({cal M}' (any-')'){0,10}')'|'({cal S}' (any-')'){0,10}')'|'(Caltech report CALT-68-1833, hep-th/9211011' (any-')'){0,10}')'|'(Cambdridge University Press' (any-')'){0,10}')'|'(Cambridge, Cambridge, 1995' (any-')'){0,10}')'|'(Cambridge, Cambridge  Univ. Press' (any-')'){0,10}')'|'(Cambridge, Cambridge Univ. Press' (any-')'){0,10}')'|'(Cambridge, CUP' (any-')'){0,10}')'|'(Cambridge, England, August 13' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge, England, August 13' (any-')'){0,10}')'|'(Cambridge, Massachusetts' (any-')'){0,10}')'|'(Cambridge: MIT Press' (any-')'){0,10}')'|'(Cambridge Monographs on Mathematical Physics' (any-')'){0,10}')'|'(Cambridge Monographs On Mathematical Physics' (any-')'){0,10}')'|'(Cambridge Press' (any-')'){0,10}')'|'( Cambridge Press, New York' (any-')'){0,10}')'|'(Cambridge Press, NY' (any-')'){0,10}')'|'(Cambridge -- UK' (any-')'){0,10}')'|'(Cambridge, UK: Cambridge University Press' (any-')'){0,10}')'|'(Cambridge, UK: Univ. Pr.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge, UK: Univ. Pr.' (any-')'){0,10}')'|'(Cambridge, UK: Univ. Pr. ' (any-')'){0,10}')'|'(Cambridge U., New York' (any-')'){0,10}')'|'(Cambridge Uni. Press, Cambridge' (any-')'){0,10}')'|'(Cambridge Univ.' (any-')'){0,10}')'|'(Cambridge Univeersity Press' (any-')'){0,10}')'|'(Cambridge Univeristy Press' (any-')'){0,10}')'|'(Cambridge Universe Press, Cambridge' (any-')'){0,10}')'|'(Cambridge University, Cambridge' (any-')'){0,10}')'|'(cambridge University press' (any-')'){0,10}')'|'(Cambridge University press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge University press' (any-')'){0,10}')'|'(Cambridge University 	Press' (any-')'){0,10}')'|'(Cambridge University   Press' (any-')'){0,10}')'|'(Cambridge University~Press' (any-')'){0,10}')'|'(Cambridge University Press 1995' (any-')'){0,10}')'|'(Cambridge University Press, 1998' (any-')'){0,10}')'|'(Cambridge University Press, 2nd. edition' (any-')'){0,10}')'|'(Cambridge University Press, 4th ed.' (any-')'){0,10}')'|'(Cambridge University Press, Cambridg' (any-')'){0,10}')'|'(Cambridge university press, Cambridge' (any-')'){0,10}')'|'(Cambridge university Press, Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge university Press, Cambridge' (any-')'){0,10}')'|'(Cambridge University press, Cambridge' (any-')'){0,10}')'|'( Cambridge University Press, Cambridge' (any-')'){0,10}')'|'(Cambridge University Press. Cambridge' (any-')'){0,10}')'|'(Cambridge University Press., Cambridge' (any-')'){0,10}')'|'(}Cambridge University Press, Cambridge, England' (any-')'){0,10}')'|'(Cambridge~University~Press, Cambridge, England' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge, first printing' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge, Ma' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge, U.K.' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge,UK' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge University Press, Cambridge,UK' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge/UK' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge United Kingdom' (any-')'){0,10}')'|'(Cambridge University Press, Cambrigde, UK' (any-')'){0,10}')'|'(Cambridge University Press, Ed. J.M. Charap' (any-')'){0,10}')'|'(Cambridge University Press, London and New York' (any-')'){0,10}')'|'(Cambridge  University Press. News York' (any-')'){0,10}')'|'(Cambridge University Press: New York' (any-')'){0,10}')'|'(Cambridge University Press, N.Y.' (any-')'){0,10}')'|'(Cambridge University Press,NY' (any-')'){0,10}')'|'(Cambridge University Press, UK' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge University Press, UK' (any-')'){0,10}')'|'(Cambridge University Publishing, Cambridge' (any-')'){0,10}')'|'(Cambridge Univesity Press, Cambridge, England' (any-')'){0,10}')'|'(Cambridge Univ., N.Y.' (any-')'){0,10}')'|'(Cambridge Univ. Pr.' (any-')'){0,10}')'|'(Cambridge univ. press' (any-')'){0,10}')'|'(Cambridge Univ. press' (any-')'){0,10}')'|'( Cambridge Univ. Press' (any-')'){0,10}')'|'(Cambridge  Univ  Press' (any-')'){0,10}')'|'(Cambridge  Univ. Press' (any-')'){0,10}')'|'(Cambridge Univ, Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge Univ, Press' (any-')'){0,10}')'|'(Cambridge Univ. Press, 3rd ed.' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambdridge' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambridge ' (any-')'){0,10}')'|'(Cambridge Univ. Press., Cambridge' (any-')'){0,10}')'|'(Cambridge Univ. Press: Cambridge' (any-')'){0,10}')'|'(Cambridge Univ. Press: Cambridge, 1902' (any-')'){0,10}')'|'(Cambridge Univ. Press., Cambridge, Eng.' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambridge Press' (any-')'){0,10}')'|'(Cambridge Univ. Press, London' (any-')'){0,10}')'|'(Cambridge Univ., UK' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge Univ., UK' (any-')'){0,10}')'|'(Cambridge Unversity Press' (any-')'){0,10}')'|'(Cambridge U.P' (any-')'){0,10}')'|'(Cambridge UP, 1984' (any-')'){0,10}')'|'(Cambridge U.P., 2nd Edition' (any-')'){0,10}')'|'(Cambridge UP, Cambridge, England' (any-')'){0,10}')'|'(Cambridge UP, Cambridge/UK' (any-')'){0,10}')'|'(Cambridge U. Pr., Cambridge' (any-')'){0,10}')'|'(Cambridge U. Press' (any-')'){0,10}')'|'(Cambridge U. Press, London' (any-')'){0,10}')'|'(Cambrigde University Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambrigde University Press' (any-')'){0,10}')'|'(Cambrigde Univ. Press, Cambrigde' (any-')'){0,10}')'|'(Cambrige University, Cambrige' (any-')'){0,10}')'|'( Cambrige University Press' (any-')'){0,10}')'|'(Cambrige University Press, Cambridge' (any-')'){0,10}')'|'(Cambr.Univ.Press, Cambridge, 1990' (any-')'){0,10}')'|'(Camb. Univ. Press' (any-')'){0,10}')'|'(Camgridge University Press' (any-')'){0,10}')'|'(Canadian Math.Soc.Conf.Proc., Vol.12' (any-')'){0,10}')'|'(Canbridge University Press, Canbridge' (any-')'){0,10}')'|'(Cargese 1987' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cargese 1987' (any-')'){0,10}')'|'(Carg`ese NATO Workshop' (any-')'){0,10}')'|'(Carl Hanser Verlag' (any-')'){0,10}')'|'(Catania University; Catania' (any-')'){0,10}')'|'(C. Bartocci, U. Bruzzo' (any-')'){0,10}')'|'(C. Bartocci, U. Bruzzo,, R. Cianci' (any-')'){0,10}')'|'(CBMS Regional Conference Series in Mathematics textbf{85}, AMS' (any-')'){0,10}')'|'(C. DeWitt and M. Jacob' (any-')'){0,10}')'|'(C. de Witt and R. Stora' (any-')'){0,10}')'|'(C. Domb and J.L. Lebowitz' (any-')'){0,10}')'|'(C. Domb and M. Green' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(C. Domb and M. Green' (any-')'){0,10}')'|'(C. Efthimiou and B. Greene' (any-')'){0,10}')'|'(Center A. Volta, Como' (any-')'){0,10}')'|'(Center for Relativity, The University of Texas at Austin' (any-')'){0,10}')'|'(Centre de Recherche Math., Montreal' (any-')'){0,10}')'|'(C.E. Pearson' (any-')'){0,10}')'|'(CERN, Geneva' (any-')'){0,10}')'|'(CERN report CERN-TH.6889/93, gr-qc/9305012' (any-')'){0,10}')'|'(Chalk River/Deep River' (any-')'){0,10}')'|'(Chambridge press' (any-')'){0,10}')'|'( Chambridge University press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Chambridge University press' (any-')'){0,10}')'|'(Chambridge University Press' (any-')'){0,10}')'|'(Chapman and Hall/CRC, London' (any-')'){0,10}')'|'(Chapman and Hall, London' (any-')'){0,10}')'|'(Charles Griffin, London' (any-')'){0,10}')'|'(Chelsea Pub. Co.' (any-')'){0,10}')'|'(Chelsea Pub.Co' (any-')'){0,10}')'|'(Chelsea Pub.Co.' (any-')'){0,10}')'|'(Chelsea Publ. Co.' (any-')'){0,10}')'|'(Chelsea Publ. Co., New York' (any-')'){0,10}')'|'(Chelsea Publishing Company, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Chelsea Publishing Company, New York' (any-')'){0,10}')'|'(Chelsea Publishing Company, NY' (any-')'){0,10}')'|'(Chelsea Publishing Co., N.Y.' (any-')'){0,10}')'|'(Chelsea Publ., New York' (any-')'){0,10}')'|'(Chicago IL' (any-')'){0,10}')'|'(Chicago, Ill' (any-')'){0,10}')'|'(Chicago U., EFI' (any-')'){0,10}')'|'(Chicago  University Press, Chicago' (any-')'){0,10}')'|'(Chichester, England' (any-')'){0,10}')'|'(Chic sinu au' (any-')'){0,10}')'|'(Chinese translation,Science Publishers,Beijing' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Chinese translation,Science Publishers,Beijing' (any-')'){0,10}')'|'(Chmmbridge University Press' (any-')'){0,10}')'|'(Chungbum, Seoul' (any-')'){0,10}')'|'(Chungbum, Seul' (any-')'){0,10}')'|'(Chur, Switzerland' (any-')'){0,10}')'|'(CIEMAT, Madrid' (any-')'){0,10}')'|'(CIEMAT/RSEF, Madrid' (any-')'){0,10}')'|'(City Coll.' (any-')'){0,10}')'|'(City College, New York' (any-')'){0,10}')'|'(C. J. Isham {em et al}' (any-')'){0,10}')'|'(Claredon; Oxford' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Claredon; Oxford' (any-')'){0,10}')'|'(Claredon Press; 3rd ed.' (any-')'){0,10}')'|'(Clarendon Oxford' (any-')'){0,10}')'|'(Clarendon, Oxfprd' (any-')'){0,10}')'|'(Clarendon Press $cdot$ Oxford' (any-')'){0,10}')'|'(Clarendon Press, London' (any-')'){0,10}')'|'( Clarendon Press, Oxford' (any-')'){0,10}')'|'(Clarendon Press . Oxford' (any-')'){0,10}')'|'(Clarendon Press Oxford' (any-')'){0,10}')'|'(Clarendon Press,  Oxford' (any-')'){0,10}')'|'(Clarendon Press, Oxford, England' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Clarendon Press, Oxford, England' (any-')'){0,10}')'|'(Clarendon Press, Oxford, second ed.' (any-')'){0,10}')'|'(Clarendon Press, Oxford, second edition' (any-')'){0,10}')'|'(Clarendon Press, Oxford University' (any-')'){0,10}')'|'(Clarendron, Oxford' (any-')'){0,10}')'|'(Clarenton Press, Oxford' (any-')'){0,10}')'|'(Class. Quant. Grav.' (any-')'){0,10}')'|'(Class. Quant. Grav.' (any-')'){0,10}')'|'(CNRS, Paris' (any-')'){0,10}')'|'(CNYITP, Stony Brook, NY, December 1-2' (any-')'){0,10}')'|'(Colier-Macmillan, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Colier-Macmillan, New York' (any-')'){0,10}')'|'(College Park, Md.' (any-')'){0,10}')'|'(Collier Macmillan, London' (any-')'){0,10}')'|'(Colloquium, Hannover' (any-')'){0,10}')'|'(Cologne Univ. Print-91-0225' (any-')'){0,10}')'|'(Colorado Associated Press' (any-')'){0,10}')'|'(Colorado Associated Univ. Press, Boulder' (any-')'){0,10}')'|'(Colorado Assoc. Univ. Press, Boulder' (any-')'){0,10}')'|'(Columbia Univ. Press, New York' (any-')'){0,10}')'|'(Commack, N.Y. Nova Science' (any-')'){0,10}')'|'(Compositori, Bologna' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Compositori, Bologna' (any-')'){0,10}')'|'(Computer Algebra Nederland, Amsterdam' (any-')'){0,10}')'|'(Conf. at Imperial College, London' (any-')'){0,10}')'|'(Consiglio Nazionale delle Ricerche, Roma' (any-')'){0,10}')'|'( Consultant Bureau' (any-')'){0,10}')'|'(Consultant Bureau, New York' (any-')'){0,10}')'|'(Consultant Bureau, N. Y. ' (any-')'){0,10}')'|'(Consultants Bureau, London' (any-')'){0,10}')'|'(Consultants Bureau, N.Y.' (any-')'){0,10}')'|'(Consultants Bureau, NY' (any-')'){0,10}')'|'(Contemporary Soviet Mathematics, Consultants Bureau, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Contemporary Soviet Mathematics, Consultants Bureau, New York' (any-')'){0,10}')'|'(copyright 1969' (any-')'){0,10}')'|'(Corfu, September' (any-')'){0,10}')'|'(Cornell University' (any-')'){0,10}')'|'(Cornell University, Ithaca, NY' (any-')'){0,10}')'|'(Cornell University Press, Ithaca' (any-')'){0,10}')'|'(Cornell Univ. Press, Ithaca' (any-')'){0,10}')'|'(Course on Theor. Phys.' (any-')'){0,10}')'|'(C.P., Oxford' (any-')'){0,10}')'|'(CRC press' (any-')'){0,10}')'|'(CRC Press, Boca Raton, Florida' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(CRC Press, Boca Raton, Florida' (any-')'){0,10}')'|'(Crete, Greece' (any-')'){0,10}')'|'(Crimea, Ukraine' (any-')'){0,10}')'|'(CRM, Montreal University Press' (any-')'){0,10}')'|'(C. Scribner & sons, New York' (any-')'){0,10}')'|'( c Stiinc ta, Chic sinv au' (any-')'){0,10}')'|'(C. Teitelboim' (any-')'){0,10}')'|'(Cuautitlan, Mexico' (any-')'){0,10}')'|'(C.U.P, Cambridge' (any-')'){0,10}')'|'(C.U.P.  Cambridge' (any-')'){0,10}')'|'(CUP, }Cambridgeemph{' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(CUP, }Cambridgeemph{' (any-')'){0,10}')'|'(d_a{}^b ,|(Dallas, Texas' (any-')'){0,10}')'|'(DAMPT, Cambridge, England' (any-')'){0,10}')'|'(D.C.Spencer and S.Iyanaga' (any-')'){0,10}')'|'(Dec. 2-5' (any-')'){0,10}')'|'(Dec 90' (any-')'){0,10}')'|'(December 13-18' (any-')'){0,10}')'|'(December 7' (any-')'){0,10}')'|'(De Gruyter' (any-')'){0,10}')'|'(de Gruyter, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(de Gruyter, Berlin' (any-')'){0,10}')'|'(Dekker, 1993' (any-')'){0,10}')'|'(del Olmo M A' (any-')'){0,10}')'|'(Department of Physics, Nagoya University, Nagoya' (any-')'){0,10}')'|'(Deser, Grisaru and Pendleton eds.' (any-')'){0,10}')'|'(de union init' (any-')'){0,10}')'|'(Deutscher Verlag der Wissenschaften, Berlin' (any-')'){0,10}')'|'(Deutscher Verlag Der Wissenschaften, Berlin' (any-')'){0,10}')'|'(D. Heidel, Publ. Co., Dordrecht' (any-')'){0,10}')'|'(D. Horvath, P. Levai, A. Patkos' (any-')'){0,10}')'|'(D.I.A.S., Dublin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(D.I.A.S., Dublin' (any-')'){0,10}')'|'(diploma thesis' (any-')'){0,10}')'|'(Diploma Thesis, Bonn University 2000' (any-')'){0,10}')'|'(diploma thesis in german' (any-')'){0,10}')'|'(Diploma thesis, Vienna' (any-')'){0,10}')'|'(DMV, Berlin' (any-')'){0,10}')'|'(DO $,|(Doctorial dissertation, 1994,May' (any-')'){0,10}')'|'(Dordrecht: D. Reidel' (any-')'){0,10}')'|'(Dordrecht: Kluwer' (any-')'){0,10}')'|'(Dordrecht, Netherlands: Kluwer Academic' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Dordrecht, Netherlands: Kluwer Academic' (any-')'){0,10}')'|'(Dordrecht Reidel' (any-')'){0,10}')'|'(Dover, 2nd Edition' (any-')'){0,10}')'|'(Dover, 9th printing' (any-')'){0,10}')'|'(Dover Edition, New York' (any-')'){0,10}')'|'(Dover Edition, NY' (any-')'){0,10}')'|'(Dover Inc.' (any-')'){0,10}')'|'( Dover, New York' (any-')'){0,10}')'|'( Dover, New York ' (any-')'){0,10}')'|'(Dover, New, York' (any-')'){0,10}')'|'(Dover, New--York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Dover, New--York' (any-')'){0,10}')'|'(Dover, New-York' (any-')'){0,10}')'|'(Dover: New York, 1950' (any-')'){0,10}')'|'(Dover, New York, NY' (any-')'){0,10}')'|'(Dover, NY' (any-')'){0,10}')'|'(Dover paperback' (any-')'){0,10}')'|'(Dover Press, New York' (any-')'){0,10}')'|'(Dover Pub.' (any-')'){0,10}')'|'(Dover Pub. Inc. N. Y.' (any-')'){0,10}')'|'(Dover Publ.' (any-')'){0,10}')'|'(Dover  Publications' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Dover  Publications' (any-')'){0,10}')'|'(Dover publications, inc.' (any-')'){0,10}')'|'(Dover Publications, Inc.' (any-')'){0,10}')'|'( Dover Publications,Inc. New York' (any-')'){0,10}')'|'(Dover Publications Inc., New York' (any-')'){0,10}')'|'(Dover Publications, London' (any-')'){0,10}')'|'(Dover Publications , New York ' (any-')'){0,10}')'|'(Dover Publications, New York, 1965' (any-')'){0,10}')'|'(Dover Publ. Inc., New York' (any-')'){0,10}')'|'(Dover Publ., INC, N. Y.' (any-')'){0,10}')'|'(Dover Publ., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Dover Publ., New York' (any-')'){0,10}')'|'(Dover Publ. N. York' (any-')'){0,10}')'|'(Dover Publs.' (any-')'){0,10}')'|'(Dover, Toronto' (any-')'){0,10}')'|'(Dower Publ., New York' (any-')'){0,10}')'|'(D.Redel Publish Company, Dordrecht' (any-')'){0,10}')'|'(D. Reidel' (any-')'){0,10}')'|'(D. Reidel, Boston' (any-')'){0,10}')'|'( D. Reidel, Dordrecht' (any-')'){0,10}')'|'(D.~Reidel, Dordrecht' (any-')'){0,10}')'|'(D.Reidel, Dordrecht' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(D.Reidel, Dordrecht' (any-')'){0,10}')'|'(D. Reidel Pub. Co. , Dordrecht, Boston' (any-')'){0,10}')'|'(D. Reidel Publ. Co.: Dordrecht' (any-')'){0,10}')'|'(D. Reidel Publ. Comp.' (any-')'){0,10}')'|'(D.~Reidel Publishing' (any-')'){0,10}')'|'(D. Reidel Publishing Co., Dordrecht' (any-')'){0,10}')'|'(D.Reidel Publishing Company, Dordrecht' (any-')'){0,10}')'|'(D. Reidel Publishing Company, the  Netherlands' (any-')'){0,10}')'|'(D. Reidel Publishing, Dordrecht' (any-')'){0,10}')'|'(D. Reidel Publishing, Dordrecht-Holland' (any-')'){0,10}')'|'(D. Stauffer' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(D. Stauffer' (any-')'){0,10}')'|'(Dt. Verlag Wiss.' (any-')'){0,10}')'|'(Dubna, 8-12 July' (any-')'){0,10}')'|'(Dubna, July 13-17' (any-')'){0,10}')'|'(Dunod,  Paris' (any-')'){0,10}')'|'(Dunod, Paris ' (any-')'){0,10}')'|'(Durham, England' (any-')'){0,10}')'|'(Dutton, New York' (any-')'){0,10}')'|'(D. van Nostrand Co. Ltd., Toronto' (any-')'){0,10}')'|'(D. van Nostrand, Princeton' (any-')'){0,10}')'|'(D.V Shirkov et al, JINR publ.,Dubna' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(D.V Shirkov et al, JINR publ.,Dubna' (any-')'){0,10}')'|'(E2-99-35, Dubna' (any-')'){0,10}')'|'(E: B {bf 407}' (any-')'){0,10}')'|'(E: {bf B 364}' (any-')'){0,10}')'|'(E: {bf B89}' (any-')'){0,10}')'|'(E:{bf D30}' (any-')'){0,10}')'|'(Ed.Academiei, Romania' (any-')'){0,10}')'|'(ed. A. Zichichi, Plenum Press, New York' (any-')'){0,10}')'|'(E:  D {bf 58}' (any-')'){0,10}')'|'(ed. B. Jancewicz and J. Lukierski, World-Scientific' (any-')'){0,10}')'|'(ed. by A.L. Onishchik, Springer-Verlag' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(ed. by A.L. Onishchik, Springer-Verlag' (any-')'){0,10}')'|'(ed. by J. Leech, Pergamon Press' (any-')'){0,10}')'|'(ed. by L. Witten, Wiley, New York' (any-')'){0,10}')'|'(Ed. Cremonese, Roma' (any-')'){0,10}')'|'(Ed. Didacticv a c si Pedagogicv a, Bucurec sti' (any-')'){0,10}')'|'(ed. D. Stump and D. Weingarten, Wiley' (any-')'){0,10}')'|'(Ed. Fronti`eres' (any-')'){0,10}')'|'(ed. F. Wilczek, World Sc., Singapore' (any-')'){0,10}')'|'(ed  H   de Vega et al, Sringer' (any-')'){0,10}')'|'(ed. H.  de Vega et al, Sringer' (any-')'){0,10}')'|'(ed. H.  de Vega et al, Sringer, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(ed. H.  de Vega et al, Sringer, Berlin' (any-')'){0,10}')'|'(ed. HS Mani et al, W. Sc.' (any-')'){0,10}')'|'(edited by Friedan' (any-')'){0,10}')'|'(Editions Fronti`{e}res' (any-')'){0,10}')'|'(Editions Frontieres, Gif-sur-Yvette' (any-')'){0,10}')'|'(Editions Frontieres, Gif-Sur Yvette, France' (any-')'){0,10}')'|'(Editions Mir, Moscou' (any-')'){0,10}')'|'(Editori Riuniti -- Edizioni MIR; Roma' (any-')'){0,10}')'|'(Editrice Compositori, Bolonga' (any-')'){0,10}')'|'(Editura Tehnicv a, Bucurec sti' (any-')'){0,10}')'|'(Editura Tehnocv a, Bucurec sti' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Editura Tehnocv a, Bucurec sti' (any-')'){0,10}')'|'(Editzioni Crenonese, Rome' (any-')'){0,10}')'|'(Edizioni Cremonese, Roma' (any-')'){0,10}')'|'(ed. J.Baez' (any-')'){0,10}')'|'(ed. J B Zuber et al' (any-')'){0,10}')'|'(ed. J. Hietarinta et al, Springer' (any-')'){0,10}')'|'(ed. J. Hietarinta et al, Springer,Berlin' (any-')'){0,10}')'|'(Ed.~K.~Yamawaki, World Scientific Pub. Co.' (any-')'){0,10}')'|'(Ed Lindstrom' (any-')'){0,10}')'|'(Ed.M.Boiti,L.Martina and F.Pompinelli ,World Sc.' (any-')'){0,10}')'|'(Ed. Mir, Moscow' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Ed. Mir, Moscow' (any-')'){0,10}')'|'(ed. M. Jimbo' (any-')'){0,10}')'|'(ed Mo-Lin Ge and Bao-Heng Zhao, Singapore, World Scientific' (any-')'){0,10}')'|'(ed Nevai P, NATO ASI Ser. C294' (any-')'){0,10}')'|'(Ed. R. Chand' (any-')'){0,10}')'|'(eds. Bussey and Knowles, I. O. P.' (any-')'){0,10}')'|'(eds. C. Castro and M.S. El Naschie, Elsevier Science' (any-')'){0,10}')'|'(eds. C. Isham, R. Penrose and D. Sciama' (any-')'){0,10}')'|'(eds. C. M. De Witt' (any-')'){0,10}')'|'(eds. D. Axen, D. Bryman and M. Comyn, World Scientific' (any-')'){0,10}')'|'(ed. S. Doplicher et al., Rome' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(ed. S. Doplicher et al., Rome' (any-')'){0,10}')'|'(eds. Ellis and Ferrara' (any-')'){0,10}')'|'(eds. Ferarra and Taylor' (any-')'){0,10}')'|'(Eds. Ferrara and Taylor, C. U. P' (any-')'){0,10}')'|'(Eds.: Hawking, S.W.  and Israel, W., Cambridge Univ. Press' (any-')'){0,10}')'|'(Eds. H. Rollnik' (any-')'){0,10}')'|'(Eds. Isham, Penrose and Sciama' (any-')'){0,10}')'|'(Eds. L. Castellani and J. Wess, IOS Press, Amsterdam' (any-')'){0,10}')'|'(Eds. M. Bonini' (any-')'){0,10}')'|'(Eds.R.Bullough, P.Caudrey, New York' (any-')'){0,10}')'|'(eds. S.~B.~Treiman' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(eds. S.~B.~Treiman' (any-')'){0,10}')'|'(eds. S.B.~Treiman' (any-')'){0,10}')'|'(Ed. S.W. Hawking and W. Israel, Cambridge Univ. Press. Cambridge' (any-')'){0,10}')'|'(Ed: V V Dvoeglazov, Nova Science Publishers' (any-')'){0,10}')'|'(ed. W. Svartholm, Almquist and Wiskell, Stockholm' (any-')'){0,10}')'|'(Ed. Zichichi, Plenum' (any-')'){0,10}')'|'(E.F. Bolinder' (any-')'){0,10}')'|'(E. Gava' (any-')'){0,10}')'|'(Eger, Hungary' (any-')'){0,10}')'|'(EGER, Hungary' (any-')'){0,10}')'|'(e.g. H. SAZDJIAN,  Phys. Rev. D {bf 33}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(e.g. H. SAZDJIAN,  Phys. Rev. D {bf 33}' (any-')'){0,10}')'|'(E. Horwood Ltd.' (any-')'){0,10}')'|'(Einstein Studies' (any-')'){0,10}')'|'(E.: {it ibid.} {bf B206}' (any-')'){0,10}')'|'(Ellis Harwood, Chichester' (any-')'){0,10}')'|'(Ellis Horwood' (any-')'){0,10}')'|'(Ellis Horwood, Chicester' (any-')'){0,10}')'|'( Ellis Horwood, Chichester' (any-')'){0,10}')'|'(Ellis Horwood Limited, Chichester' (any-')'){0,10}')'|'(Ellis Horwood Limited, West Sussex' (any-')'){0,10}')'|'(Ellis Horwood, West Sussex' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Ellis Horwood, West Sussex' (any-')'){0,10}')'|'(Elseiver Science Publishers B.V.' (any-')'){0,10}')'|'( Elsevier' (any-')'){0,10}')'|'(Elsevier; Amsterdam' (any-')'){0,10}')'|'( Elsevier, NewYork' (any-')'){0,10}')'|'(Elsevier, North Holland' (any-')'){0,10}')'|'(Elsevier, Noth Holland' (any-')'){0,10}')'|'(Elsevier Science' (any-')'){0,10}')'|'(Elsevier Science, Amsterdam' (any-')'){0,10}')'|'(Elsevier Science Ltd, Amsterdam' (any-')'){0,10}')'|'(Elsevier Science Pub. B.V.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Elsevier Science Pub. B.V.' (any-')'){0,10}')'|'(Elsevier Science Publischers B.V.' (any-')'){0,10}')'|'(Elsevier Science Publisher' (any-')'){0,10}')'|'(Elsevier Science Publishers' (any-')'){0,10}')'|'(Elsevier Science Publishers BV' (any-')'){0,10}')'|'(Elsevier Science Publishiers B. V.' (any-')'){0,10}')'|'({em Birkh"auser Boston Inc.' (any-')'){0,10}')'|'({em erratum|({em i.e.' (any-')'){0,10}')'|'({em JETP Lett.} {bf 50}' (any-')'){0,10}')'|'({em J.  Math.  Phys.}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({em J.  Math.  Phys.}' (any-')'){0,10}')'|'({em Springer-Verlag, New York' (any-')'){0,10}')'|'({em World Scientific}, Singapore' (any-')'){0,10}')'|'(Englewood Cliffs' (any-')'){0,10}')'|'(Englewood Cliffs, N.J.' (any-')'){0,10}')'|'(English translation- {em Sov. Phys. Dokl.} {bf 2}' (any-')'){0,10}')'|'(English translation JETP 32' (any-')'){0,10}')'|'(English translation: Leningrad Math. J. {bf 1}' (any-')'){0,10}')'|'(English translation: Sov.Phys.JETP {bf 47}' (any-')'){0,10}')'|'(English version, Springer-Verlag, Berlin' (any-')'){0,10}')'|'( Engl. Transl. JETP Lett. {bf 38}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Engl. Transl. JETP Lett. {bf 38}' (any-')'){0,10}')'|'(Engl. transl.: Russian Math. Surveys {bf 37}:5' (any-')'){0,10}')'|'(entries 4.2.5,36 and 4.2.5' (any-')'){0,10}')'|'(e-print archive' (any-')'){0,10}')'|'(e-print, hep-th, April' (any-')'){0,10}')'|'(Erevan, EGU' (any-')'){0,10}')'|'(Erice, Italy, Sept. 7--15' (any-')'){0,10}')'|'(Erice Lectures' (any-')'){0,10}')'|'(Errata: {bf D30}' (any-')'){0,10}')'|'(Erratum-ibid. {bf D18}' (any-')'){0,10}')'|'(Erratum: Nucl. Phys. {bf 456}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Erratum: Nucl. Phys. {bf 456}' (any-')'){0,10}')'|'(e^{Sigma}, X, F, phi' (any-')'){0,10}')'|'(ETH lectures, Z"urich' (any-')'){0,10}')'|'(ETH, Zuerich' (any-')'){0,10}')'|'(ETS Editrice, Pisa' (any-')'){0,10}')'|'(ETS, Pisa' (any-')'){0,10}')'|'(Ettore Majorana International Science Series, Plenum Press' (any-')'){0,10}')'|'(EUP, Edinburgh' (any-')'){0,10}')'|'(Eur. Phys. J. {bf C}' (any-')'){0,10}')'|'(Eur. Phys. Journ. {bf C}' (any-')'){0,10}')'|'(Euskal Herriko Unibertsitatea, Bilbo' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Euskal Herriko Unibertsitatea, Bilbo' (any-')'){0,10}')'|'(Evora, Portugal' (any-')'){0,10}')'|'(E. Witten' (any-')'){0,10}')'|'(Exp. No. 792' (any-')'){0,10}')'|'(Fermilab, Batavia, Il' (any-')'){0,10}')'|'(Fermilab, Chicago U.' (any-')'){0,10}')'|'(Fiedrich Schiller University, Jena' (any-')'){0,10}')'|'(Firenze ' (any-')'){0,10}')'|'(Fitmatgiz, Moscow' (any-')'){0,10}')'|'(Fizmatgiz, Moscow' (any-')'){0,10}')'|'(Fizmatgiz, Moskwa' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Fizmatgiz, Moskwa' (any-')'){0,10}')'|'(Flammarion Sciences, Paris' (any-')'){0,10}')'|'(Florence, Italy' (any-')'){0,10}')'|'(Fond. Louis de Broglie, Paris' (any-')'){0,10}')'|'(For a more comprehensive list of references' (any-')'){0,10}')'|'(for short reviews see: D. Antonov' (any-')'){0,10}')'|'(Freeman and co.' (any-')'){0,10}')'|'(Freeman and Company' (any-')'){0,10}')'|'(Freeman Press' (any-')'){0,10}')'|'(Freeman, San-Francisco' (any-')'){0,10}')'|'(Freeman, San Francisco, CA' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Freeman, San Francisco, CA' (any-')'){0,10}')'|'(Freeman, San Franciso' (any-')'){0,10}')'|'(Freeman, SF' (any-')'){0,10}')'|'( Friedmann' (any-')'){0,10}')'|'(Friedmann Laboratory, St. Petersburg' (any-')'){0,10}')'|'(from Peskin' (any-')'){0,10}')'|'( Frontier in Physics' (any-')'){0,10}')'|'(Frontiers in physics' (any-')'){0,10}')'|'( Frontiers In Physics' (any-')'){0,10}')'|'(Frontiers In Physics' (any-')'){0,10}')'|'(Frontiers in Physics, Addison-Wesley' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Frontiers in Physics, Addison-Wesley' (any-')'){0,10}')'|'(Frontiers in Physics, Benjamin Cummings' (any-')'){0,10}')'|'(Frontiers in Physics: Vol. 74, Addison-Wesley Pub. Co.' (any-')'){0,10}')'|'(Frontiers in Physics: Vol. 77, Addison-Wesley Pub. Co.' (any-')'){0,10}')'|'(FU Berlin' (any-')'){0,10}')'|'(function of $S' (any-')'){0,10}')'|'(Gakujutsu Bunken Fukyu-Kai, Tokyo' (any-')'){0,10}')'|'(Gamma^3_{ [12]}|(Gauther-Villars, Paris' (any-')'){0,10}')'|'(Gauthiers-Villars, Paris' (any-')'){0,10}')'|'(Gauthier- Villars, Paris' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Gauthier- Villars, Paris' (any-')'){0,10}')'|'(G.-C. Rota' (any-')'){0,10}')'|'(G. Denardo et al.' (any-')'){0,10}')'|'(Ge,~M.-L. and Zhao' (any-')'){0,10}')'|'(G. Furlan et al.' (any-')'){0,10}')'|'(G.~Furlan et~al.' (any-')'){0,10}')'|'(G.G. Harrap and Co., London' (any-')'){0,10}')'|'(Ghostekhizdat, Moscow' (any-')'){0,10}')'|'(Ghost Sector 1' (any-')'){0,10}')'|'(Ginn and Company' (any-')'){0,10}')'|'(Gordon and Beach Science Publishers' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Gordon and Beach Science Publishers' (any-')'){0,10}')'|'( Gordon and Breach' (any-')'){0,10}')'|'(Gordon and Breach, Cargese' (any-')'){0,10}')'|'(Gordon and Breach, Langhorne' (any-')'){0,10}')'|'( Gordon and Breach, London' (any-')'){0,10}')'|'(Gordon and Breach, London' (any-')'){0,10}')'|'(Gordon and Breach, London, New York' (any-')'){0,10}')'|'(Gordon and Breach, Luxemburg' (any-')'){0,10}')'|'(Gordon and  Breach, New York' (any-')'){0,10}')'|'( Gordon and Breach Press' (any-')'){0,10}')'|'(Gordon and Breach Science publishers, Amsterdam' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Gordon and Breach Science publishers, Amsterdam' (any-')'){0,10}')'|'(Gordon and Breach Science Publishers, Langhorne' (any-')'){0,10}')'|'(Gordon and Breach Science Publishers, New York' (any-')'){0,10}')'|'(Gordon and Breach Sci. Pub., New York' (any-')'){0,10}')'|'(Gordon {&} Breach' (any-')'){0,10}')'|'(Gordon & Breach; New York' (any-')'){0,10}')'|'(Gordon Breach, New York' (any-')'){0,10}')'|'(Gordon & Breach, NY' (any-')'){0,10}')'|'(Gordon Breach, NY' (any-')'){0,10}')'|'(Gordon & Breach Science Publishers' (any-')'){0,10}')'|'(Gordon & Breach Science Publishers, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Gordon & Breach Science Publishers, New York' (any-')'){0,10}')'|'(G"{o}teborg, Sweden' (any-')'){0,10}')'|'(Goteborg, Sweden' (any-')'){0,10}')'|'({Got su}(1' (any-')'){0,10}')'|'(graduate text in mathematics' (any-')'){0,10}')'|'(Graduate Texts in Mathematics, vol. 60' (any-')'){0,10}')'|'(Gran Sasso & Moscow' (any-')'){0,10}')'|'(Groningen, Netherland' (any-')'){0,10}')'|'(G. `t hooft et al.' (any-')'){0,10}')'|'(Guanajuato, Mexico' (any-')'){0,10}')'|'(Guelph, 1995' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Guelph, 1995' (any-')'){0,10}')'|'(G. Velo, A.S. Wightman' (any-')'){0,10}')'|'(habilitation thesis' (any-')'){0,10}')'|'(Habilitation Thesis' (any-')'){0,10}')'|'(Hachette Literature, Paris' (any-')'){0,10}')'|'(Hadronic Press Inc, Palm Harbor' (any-')'){0,10}')'|'(Hadronic Press Inc., Palm Harbor' (any-')'){0,10}')'|'(Hadronic Press. Nonautum' (any-')'){0,10}')'|'(Hadronic Press, Palm Harbour' (any-')'){0,10}')'|'(Hadronic Press, Parl Harbor' (any-')'){0,10}')'|'(Hafner, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Hafner, New York' (any-')'){0,10}')'|'(Hafner Pub. Co. , New York' (any-')'){0,10}')'|'(Halsted Press, New York' (any-')'){0,10}')'|'(Hamburg University' (any-')'){0,10}')'|'(Hangzhou, China' (any-')'){0,10}')'|'(Han Lim Won Printing Company, Seoul' (any-')'){0,10}')'|'(H. Araki' (any-')'){0,10}')'|'(H. Aratyn' (any-')'){0,10}')'|'(H. Aratyn. T.D. Imbo, W.-Y. Keung' (any-')'){0,10}')'|'(Harcourt Brace Jovanovich, Publishers, N.Y.' (any-')'){0,10}')'|'(Hardwood Academic, Chur, Switzerland' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Hardwood Academic, Chur, Switzerland' (any-')'){0,10}')'|'(Hardwood Academic Pub' (any-')'){0,10}')'|'(Harper $&$ Row' (any-')'){0,10}')'|'(Harper and Row, New York' (any-')'){0,10}')'|'(Harri Deutsch, Frankfurt/Main' (any-')'){0,10}')'|'(Harry Deutsch, Thun and Frankfurt am Main' (any-')'){0,10}')'|'(Hart Publishing Co., New York' (any-')'){0,10}')'|'(Harvard Acad. Publ., London-New York' (any-')'){0,10}')'|'(Harvard Lecture Notes' (any-')'){0,10}')'|'(Harvard University Press' (any-')'){0,10}')'|'(Harvard University Press, Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Harvard University Press, Cambridge' (any-')'){0,10}')'|'(Harvard Univ. Press' (any-')'){0,10}')'|'(Harvard U. P., Cambridge, MA' (any-')'){0,10}')'|'(Harvard U. Press, Cambridge' (any-')'){0,10}')'|'(Harward Academic, Chur, Switzerland' (any-')'){0,10}')'|'( Harwood Academic' (any-')'){0,10}')'|'(Harwood Academic Chur' (any-')'){0,10}')'|'(Harwood Academic, Chur' (any-')'){0,10}')'|'(Harwood Academic, Chur, Switzerland' (any-')'){0,10}')'|'(Harwood, Academic, Chur, Switzerland' (any-')'){0,10}')'|'(Harwood Academic, New-York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Harwood Academic, New-York' (any-')'){0,10}')'|'(Harwood Academic, NY' (any-')'){0,10}')'|'(Harwood Academic Press' (any-')'){0,10}')'|'(Harwood Academic Publ.' (any-')'){0,10}')'|'(Harwood Academic Publ, Chur' (any-')'){0,10}')'|'(Harwood Academic Publishers, Chur, Switzerland' (any-')'){0,10}')'|'(Harwood Academic Publishers GmbH' (any-')'){0,10}')'|'(Harwood Academic Publishers,  London' (any-')'){0,10}')'|'(Harwood Academic Publishers: New York' (any-')'){0,10}')'|'(Harwood Acad., London' (any-')'){0,10}')'|'(Harwood Acad. Publ., Chur e. a., Switzerland' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Harwood Acad. Publ., Chur e. a., Switzerland' (any-')'){0,10}')'|'(Harwood Acad. Publ., Chur, Switzerld.' (any-')'){0,10}')'|'(Harwood Acad. Publ., New York' (any-')'){0,10}')'|'(Harwood , Chur, Switzerland' (any-')'){0,10}')'|'(Harwood,  Chur, Switzerland' (any-')'){0,10}')'|'(Harwood, London' (any-')'){0,10}')'|'( Harwood, N. Y.' (any-')'){0,10}')'|'(Harwood Press, Chur, Switzerland' (any-')'){0,10}')'|'(Harwood Publ., Chur, Switzerland' (any-')'){0,10}')'|'(Harwood Scientific Pub., Switzerland' (any-')'){0,10}')'|'(Harwood, Switzerland' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Harwood, Switzerland' (any-')'){0,10}')'|'(hat A_(M-1' (any-')'){0,10}')'|'(H. Bateman Manuscript Projet' (any-')'){0,10}')'|'(Heidelberg etc.: Springer-Verlag' (any-')'){0,10}')'|'(Heldermann Verlag, Berlin' (any-')'){0,10}')'|'(held Padova, 4-9 July' (any-')'){0,10}')'|'(Hemisphere Publishing Company, New York' (any-')'){0,10}')'|'(hepth-9605207, KYUSHU-HET-31' (any-')'){0,10}')'|'(hep-th/9712110, hep-th/9802130' (any-')'){0,10}')'|'(Herman and Cie Editeur, Paris' (any-')'){0,10}')'|'(Hermann, Paris, France' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Hermann, Paris, France' (any-')'){0,10}')'|'(Herman, Paris' (any-')'){0,10}')'|'(Heron Press, Sofia' (any-')'){0,10}')'|'(H. Haber' (any-')'){0,10}')'|'(Hilger, Bristol.' (any-')'){0,10}')'|'(Hilger; Bristol' (any-')'){0,10}')'|'(Hilger, Bristol, England' (any-')'){0,10}')'|'(Hilger, Bristol, UK' (any-')'){0,10}')'|'(Hilger, Bristol/UK' (any-')'){0,10}')'|'(Hilger, Gristd' (any-')'){0,10}')'|'(Hindustan Book Agency, New Delhi' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Hindustan Book Agency, New Delhi' (any-')'){0,10}')'|'(Hirzel Verlag, Leipzig' (any-')'){0,10}')'|'(H.~Itoyama et al.' (any-')'){0,10}')'|'(H. Mark and S. Fernbach' (any-')'){0,10}')'|'(H.~Mitter and H.~Gausterer' (any-')'){0,10}')'|'(Holden Day, San Francisco' (any-')'){0,10}')'|'(Holden-Day; San Francisco' (any-')'){0,10}')'|'(Holt, Rinehart and Winston' (any-')'){0,10}')'|'(Holt, Rinehart and Winston, New York' (any-')'){0,10}')'|'(Horwood Publishers, Chichester' (any-')'){0,10}')'|'(H. Rollnik and K. Dietz' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(H. Rollnik and K. Dietz' (any-')'){0,10}')'|'(HRS International Editions, Philadelphia, PA' (any-')'){0,10}')'|'(Huntington, New York: R.E.Krieger Publ. Comp.' (any-')'){0,10}')'|'(Iac si' (any-')'){0,10}')'|'(IAEA, Viena' (any-')'){0,10}')'|'(I.A.E.A., Vienna' (any-')'){0,10}')'|'(IAFA, Vienna' (any-')'){0,10}')'|'(ICPT preprint, Trieste, 1965' (any-')'){0,10}')'|'(ICTP Series in Theoretical Physics' (any-')'){0,10}')'|'( ICTP Trieste' (any-')'){0,10}')'|'(ICTP Trieste' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(ICTP Trieste' (any-')'){0,10}')'|'(ICTP; Trieste' (any-')'){0,10}')'|'(i.e., conventional DLCQ cite{M&Y' (any-')'){0,10}')'|'(IEEE Computer Society Press, Los Alamitos, California' (any-')'){0,10}')'|'(IEEE Press' (any-')'){0,10}')'|'( IHEP, Protvino, July 27-29' (any-')'){0,10}')'|'(Il Ciocco' (any-')'){0,10}')'|'(I.M. Gelfand' (any-')'){0,10}')'|'(IMPA, Rio de Janeiro' (any-')'){0,10}')'|'(Imperial College, London' (any-')'){0,10}')'|'(Imperial College Press, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Imperial College Press, London' (any-')'){0,10}')'|'(Imperial Coll. Press, London' (any-')'){0,10}')'|'(IN2P3, Paris' (any-')'){0,10}')'|'(in emph{Goddard, P. and Olive' (any-')'){0,10}')'|'(in Japanese, Springer-Verlag, Tokyo' (any-')'){0,10}')'|'(in particular, Appendix 10' (any-')'){0,10}')'|'(In particular chapters 6' (any-')'){0,10}')'|'(In practice, we may take $Y_-=0' (any-')'){0,10}')'|'(in preparation' (any-')'){0,10}')'|'(in Proc. Winter School Geom. Phys., Srni' (any-')'){0,10}')'|'(In *Rebbi' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(In *Rebbi' (any-')'){0,10}')'|'(in Russian edition: {bf 162}, No.8' (any-')'){0,10}')'|'(in Russian, Mir' (any-')'){0,10}')'|'(Inst. f"{u}r Hochenenergiephysik - IfH' (any-')'){0,10}')'|'(Institute for Advanced Study report' (any-')'){0,10}')'|'(Institute of Mathematics, Novosibirsk' (any-')'){0,10}')'|'(Institute of Physics' (any-')'){0,10}')'|'(Institute of Physics, Belgrade' (any-')'){0,10}')'|'(Institute of Physics, Czech. Acad. Sci., Prague' (any-')'){0,10}')'|'(Institute of Physics Press, Bristol' (any-')'){0,10}')'|'(Institute of Physics Pub., Bristol' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Institute of Physics Pub., Bristol' (any-')'){0,10}')'|'(Institute of Physics Publishing' (any-')'){0,10}')'|'(Institute  of Physics Publishing, Bristol' (any-')'){0,10}')'|'(Institute of Physics Publishing, Bristol, Philadelphia' (any-')'){0,10}')'|'(Institute of Physics Publishing, London' (any-')'){0,10}')'|'(Inter Editions' (any-')'){0,10}')'|'(Inter Editions/Editions du CNRS' (any-')'){0,10}')'|'(Intereditions, Paris' (any-')'){0,10}')'|'(Inter Editions, Paris' (any-')'){0,10}')'|'(Inter-Editions, Paris' (any-')'){0,10}')'|'(Inter European Edition, Amsterdam' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Inter European Edition, Amsterdam' (any-')'){0,10}')'|'(International Atomic Energy Agency, Vienna' (any-')'){0,10}')'|'(International Centre for Theoretical Physics report IC/79/69' (any-')'){0,10}')'|'(International Press, Cambridge' (any-')'){0,10}')'|'(International Press Incorporated, Boston' (any-')'){0,10}')'|'(International series of monographs on physics' (any-')'){0,10}')'|'(Internat, Press Inc., Boston' (any-')'){0,10}')'|'(Interscience, N' (any-')'){0,10}')'|'(Interscience, NewYork' (any-')'){0,10}')'|'(Interscience, New York, 1959' (any-')'){0,10}')'|'(Interscience, N.Y.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Interscience, N.Y.' (any-')'){0,10}')'|'(Interscience Pub.,  John Wiley' (any-')'){0,10}')'|'(Interscience Publish.' (any-')'){0,10}')'|'(Interscience publishers' (any-')'){0,10}')'|'(Interscience publishers, J. Wiley and Sons, New York' (any-')'){0,10}')'|'(Interscience Publishers, New York, London, Sydney' (any-')'){0,10}')'|'(Interscience Publishers, New York-London-Sydney' (any-')'){0,10}')'|'( Interscience Publishers, N.Y.' (any-')'){0,10}')'|'(Interscience Publishers, N.Y.' (any-')'){0,10}')'|'(Interscience Publishers, NY' (any-')'){0,10}')'|'(Interscience Publ., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Interscience Publ., New York' (any-')'){0,10}')'|'(Interscience Publ., N.Y.' (any-')'){0,10}')'|'(Intersciences, New York' (any-')'){0,10}')'|'(Interscince, New York' (any-')'){0,10}')'|'(Intersci., N.Y.' (any-')'){0,10}')'|'(Intersience, New York' (any-')'){0,10}')'|'(Int. J. Mod. Phys A.' (any-')'){0,10}')'|'(Int.~J. Mod.~Phys.~D' (any-')'){0,10}')'|'(Intl. Press, Hong Kong' (any-')'){0,10}')'|'(Int. Press Co.' (any-')'){0,10}')'|'(Int. Press. Co., Hong Kong' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Int. Press. Co., Hong Kong' (any-')'){0,10}')'|'(Int. Press, Hong Kong' (any-')'){0,10}')'|'(Int.~Press, Hong Kong' (any-')'){0,10}')'|'(Int. Press, Honk Kong' (any-')'){0,10}')'|'(Int. Publishers, New York' (any-')'){0,10}')'|'(IOP, Bristol, 1995' (any-')'){0,10}')'|'(IOPP, Bristol' (any-')'){0,10}')'|'(IOP Pub., Bristol, UK' (any-')'){0,10}')'|'(IOP Publ., Bristol' (any-')'){0,10}')'|'(IOP Publishers Ltd., Bristol' (any-')'){0,10}')'|'(IOP Publishing, 1995; Revised Edition' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(IOP Publishing, 1995; Revised Edition' (any-')'){0,10}')'|'(IOP Publishing: Bristol' (any-')'){0,10}')'|'(}IOP Publishing {it  }Ltd' (any-')'){0,10}')'|'(IOP Publishing Ltd' (any-')'){0,10}')'|'(IOP Publishing Ltd., Bristol, 1995' (any-')'){0,10}')'|'(IOP Publishing Ltd., Bristol, Phyladelphia' (any-')'){0,10}')'|'( IOP Publishing Ltd, London' (any-')'){0,10}')'|'(IOS Press, Oxford' (any-')'){0,10}')'|'(Iova City, Iova' (any-')'){0,10}')'|'(Iowa City, Iowa' (any-')'){0,10}')'|'(Iowa State University Press, Ames' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Iowa State University Press, Ames' (any-')'){0,10}')'|'(IRMA Strasbourg' (any-')'){0,10}')'|'(Irvine, CA' (any-')'){0,10}')'|'(Israel Program of Sci., Jerusalem, Transl.' (any-')'){0,10}')'|'(Isvestya Akademii Nauk Respubliki Moldova' (any-')'){0,10}')'|'({it Akademie Verlag, Berlin' (any-')'){0,10}')'|'({it Funct.~Anal.~Appl.} {bf 19}' (any-')'){0,10}')'|'({it i.e.' (any-')'){0,10}')'|'({it John Wiley & Sons}, New York' (any-')'){0,10}')'|'({it Longman Scientific & Technical}, Essex' (any-')'){0,10}')'|'({it Math.~USSR Sbornik} {bf 60}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({it Math.~USSR Sbornik} {bf 60}' (any-')'){0,10}')'|'({it McGraw Hill, New York}' (any-')'){0,10}')'|'({it McGraw-Hill}, New York' (any-')'){0,10}')'|'({it Modular invariance of string theory on $AdS_3$}' (any-')'){0,10}')'|'({it Phys.Lett. B}' (any-')'){0,10}')'|'(ITP, Kiev' (any-')'){0,10}')'|'({it Reports NAS RA}' (any-')'){0,10}')'|'({it Sov. J. Contemp. Phys.}, {bf 33}, No.6' (any-')'){0,10}')'|'({it Sov. J. Nucl. Phys.} {bf 40}' (any-')'){0,10}')'|'({it Springer}, Berlin--Heidelberg' (any-')'){0,10}')'|'({it Springer-Verlag},  Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({it Springer-Verlag},  Berlin' (any-')'){0,10}')'|'(its real part' (any-')'){0,10}')'|'({it The Theory of Spinors}, MIT Press' (any-')'){0,10}')'|'(IUCAA, Pune' (any-')'){0,10}')'|'(Iwanami Book Co., 1960' (any-')'){0,10}')'|'(Iwanami Pub.' (any-')'){0,10}')'|'(Iwanami Shoten' (any-')'){0,10}')'|'( Iwanamishoten,{it in japanese} 19?? or Springer' (any-')'){0,10}')'|'(Iwanami shoten, Tokyo' (any-')'){0,10}')'|'(Iwanami syoten' (any-')'){0,10}')'|'(Izvestya Akademii Nauk Republiki Moldova' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Izvestya Akademii Nauk Republiki Moldova' (any-')'){0,10}')'|'(Izvestya Akademii Nauk Respublici Moldova' (any-')'){0,10}')'|'(Izv. Vuz' (any-')'){0,10}')'|'(Izv. VUZov' (any-')'){0,10}')'|'(J. Bagger Ed., World Scientific, Singapore' (any-')'){0,10}')'|'(J. B. M. Duprat, Paris' (any-')'){0,10}')'|'(J.E. Purkyne Univ.' (any-')'){0,10}')'|'(JETP Lett. 45' (any-')'){0,10}')'|'(JETP Lett. 62' (any-')'){0,10}')'|'(JETP Lett.~{bf 12}' (any-')'){0,10}')'|'(JETP Lett. {bf 20}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(JETP Lett. {bf 20}' (any-')'){0,10}')'|'(JETP Lett. {bf 38}' (any-')'){0,10}')'|'(JETP Lett. {bf 4}' (any-')'){0,10}')'|'(JETP Lett. {bf 56}' (any-')'){0,10}')'|'(J. Harvey and J. Polchinski' (any-')'){0,10}')'|'(Jhon Wiley $ & $ Sons, New York' (any-')'){0,10}')'|'(J. Hubbard' (any-')'){0,10}')'|'(J. Kollar' (any-')'){0,10}')'|'(J. Kollar, R. Lazarsfeld' (any-')'){0,10}')'|'(J. L. Gervais and A. Neveu' (any-')'){0,10}')'|'(J. Math. Phys.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(J. Math. Phys.' (any-')'){0,10}')'|'(J. Mehra' (any-')'){0,10}')'|'(John Benjamins' (any-')'){0,10}')'|'(Johns Hopkins University, Baltimore' (any-')'){0,10}')'|'(Johns Hopkins University, Baltimore, MD' (any-')'){0,10}')'|'(Johnson Rep. Co.; New York' (any-')'){0,10}')'|'( John Wiley' (any-')'){0,10}')'|'(John Wiley $&$ Sons, New York' (any-')'){0,10}')'|'(John Wiley $&$ Sons, New York etc.' (any-')'){0,10}')'|'(John Wiley and sons' (any-')'){0,10}')'|'( John Wiley and Sons' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( John Wiley and Sons' (any-')'){0,10}')'|'(John Wiley and Sons, Inc., New York' (any-')'){0,10}')'|'(John Wiley and Sons, London' (any-')'){0,10}')'|'(John Wiley and Sons Ltd' (any-')'){0,10}')'|'(John Wiley and Sons, New York 1963' (any-')'){0,10}')'|'(John Wiley and Sons, New York, pp.375-404' (any-')'){0,10}')'|'(John Wiley and Sons, N.Y.' (any-')'){0,10}')'|'(John Wiley, London' (any-')'){0,10}')'|'(John Wiley n$&$ Sons, Inc. ' (any-')'){0,10}')'|'(John  Wiley, New York' (any-')'){0,10}')'|'(John Wiley, N. Y.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(John Wiley, N. Y.' (any-')'){0,10}')'|'(John Wiley, N. Y. ' (any-')'){0,10}')'|'(John Wiley, NY' (any-')'){0,10}')'|'(John Wiley&Sons' (any-')'){0,10}')'|'(John Wiley & Sons Inc., New York' (any-')'){0,10}')'|'(John Wiley & Sons,Inc. New York' (any-')'){0,10}')'|'(John Wiley &Sons, Inc. New York' (any-')'){0,10}')'|'(John Wiley & Sons, London' (any-')'){0,10}')'|'(John Wiley & Sons Ltd.' (any-')'){0,10}')'|'( John Wiley & Sons, new York' (any-')'){0,10}')'|'( John Wiley & Sons , New York ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( John Wiley & Sons , New York ' (any-')'){0,10}')'|'(John Wiley {&} Sons, New York' (any-')'){0,10}')'|'(John Wiley & Sons, NY' (any-')'){0,10}')'|'(John Wiley & Sons, USA' (any-')'){0,10}')'|'(John Wileys & Sons, New York' (any-')'){0,10}')'|'(John Willey and Sons' (any-')'){0,10}')'|'(John Willey & Sons' (any-')'){0,10}')'|'(John Willey & Sons, New York' (any-')'){0,10}')'|'(John Willey & Sons, New-York' (any-')'){0,10}')'|'(John Willey & Sons, New-York ' (any-')'){0,10}')'|'(John Willey & Sons, New-York, London, Sydney, Toronto' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(John Willey & Sons, New-York, London, Sydney, Toronto' (any-')'){0,10}')'|'(John Willy & Sons, New York' (any-')'){0,10}')'|'(Joint Institute for Nuclear Research, Dubna' (any-')'){0,10}')'|'(J. Phys.' (any-')'){0,10}')'|'(J. Springer, Berlin -- Heidelberg -- New York' (any-')'){0,10}')'|'(Jul.27-Aug.2,2000,Osaka Int. House,Osaka' (any-')'){0,10}')'|'(July 13' (any-')'){0,10}')'|'(July 16 - August 4' (any-')'){0,10}')'|'(July 1966' (any-')'){0,10}')'|'(July 1994' (any-')'){0,10}')'|'(July 1996' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(July 1996' (any-')'){0,10}')'|'(July 1999' (any-')'){0,10}')'|'(June 3-7, 1991, New York' (any-')'){0,10}')'|'(J.~Wiley and Sons' (any-')'){0,10}')'|'(J.Wiley and Sons' (any-')'){0,10}')'|'(J. Wiley ed.' (any-')'){0,10}')'|'(J. Wiley; London' (any-')'){0,10}')'|'( J. Wiley, New York' (any-')'){0,10}')'|'( J. Wiley, N.Y.' (any-')'){0,10}')'|'(J. Wiley, N.Y.' (any-')'){0,10}')'|'(J. Wiley & Sons, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(J. Wiley & Sons, New York' (any-')'){0,10}')'|'(J.Wiley & Sons, New York' (any-')'){0,10}')'|'(J. Willey, New York' (any-')'){0,10}')'|'(J.Willey & Sons, New York' (any-')'){0,10}')'|'(Kaisisha, Shigaken' (any-')'){0,10}')'|'(Kauffman, L.H., Baadhio, R.A.' (any-')'){0,10}')'|'(Kazani, University Press' (any-')'){0,10}')'|'(Kegan Paul, London' (any-')'){0,10}')'|'(KEK report 79-18' (any-')'){0,10}')'|'(KEK Report 79-18' (any-')'){0,10}')'|'(KEK Report No.79-18 Tsukuba' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(KEK Report No.79-18 Tsukuba' (any-')'){0,10}')'|'(Kharkov, January 5-7' (any-')'){0,10}')'|'(Kharkov, July 25--29' (any-')'){0,10}')'|'(Kharkov University report' (any-')'){0,10}')'|'(K.-I. Aoki' (any-')'){0,10}')'|'(Kiev, USSR' (any-')'){0,10}')'|'(Kiev, USSR, April 6-12' (any-')'){0,10}')'|'(Kingston, Ont.' (any-')'){0,10}')'|'(Kinokuniya-Academic, Tokyo' (any-')'){0,10}')'|'(Kinokuniya-Shoten, 1994; Springer-Verlag' (any-')'){0,10}')'|'(K. Kikkawa' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(K. Kikkawa' (any-')'){0,10}')'|'(Kluver Acad. ' (any-')'){0,10}')'|'(Kluver Academic Publishers, Boston' (any-')'){0,10}')'|'(Kluver Academic Publishers, Dordrecht' (any-')'){0,10}')'|'(Kluwer Academic' (any-')'){0,10}')'|'(Kluwer Academic, Hingham, Mass.' (any-')'){0,10}')'|'(Kluwer Academic Press, the Netherlands' (any-')'){0,10}')'|'( Kluwer Academic Publishers' (any-')'){0,10}')'|'(Kluwer Academic Publishers, Boston' (any-')'){0,10}')'|'(Kluwer Academic Publishers, Dordrecht, Boston, London' (any-')'){0,10}')'|'(Kluwer Academic Publishers, Dordrecht-Boston-London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Kluwer Academic Publishers, Dordrecht-Boston-London' (any-')'){0,10}')'|'(Kluwer Academic Publishers, Dordrecht, The Netherlands' (any-')'){0,10}')'|'(Kluwer Academic Publishers, The Netherlands' (any-')'){0,10}')'|'(Kluwer Academy' (any-')'){0,10}')'|'(Kluwer Acadmic Publishers, Boston' (any-')'){0,10}')'|'(Kluwer Acad. Pub., Dordrecht' (any-')'){0,10}')'|'(Kluwer Acad. Publ., Dordchet' (any-')'){0,10}')'|'(Kluwer acad. publish.' (any-')'){0,10}')'|'(Kluwer Acad. publish.' (any-')'){0,10}')'|'(Kluwer Acad. Publishers' (any-')'){0,10}')'|'(Kluwer Ac. Pub. Dorolrecht' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Kluwer Ac. Pub. Dorolrecht' (any-')'){0,10}')'|'(Kluwer Ac. Publishers, Dordrecht' (any-')'){0,10}')'|'(Kluwer AP, Dordrecht' (any-')'){0,10}')'|'( Kluwer, Boston' (any-')'){0,10}')'|'(Kluwer, Dodrecht' (any-')'){0,10}')'|'( Kluwer, Dordrecht' (any-')'){0,10}')'|'(Kluwer, Dordrecht, Boston' (any-')'){0,10}')'|'(Kluwer, Dordrecht, Holland' (any-')'){0,10}')'|'(Kluwer, Dordretch' (any-')'){0,10}')'|'(Kluwer Edit. Co. ' (any-')'){0,10}')'|'(Kluwer, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Kluwer, London' (any-')'){0,10}')'|'(Kluwer Scient. Publ.' (any-')'){0,10}')'|'(Knizhnik, V.G.' (any-')'){0,10}')'|'(Kodansha Ltd., Tokyo, and Wyley, New York' (any-')'){0,10}')'|'(Kohdansha, Tokyo' (any-')'){0,10}')'|'( Kolymbari, Crete, Greece' (any-')'){0,10}')'|'(Korean Physical Society, Seoul' (any-')'){0,10}')'|'(Kostarakis Publishers, Athens' (any-')'){0,10}')'|'(Kov sice, Slovakia' (any-')'){0,10}')'|'(Krieger, Florida' (any-')'){0,10}')'|'(Krieger Publ.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Krieger Publ.' (any-')'){0,10}')'|'(Kyoto and Tokyo' (any-')'){0,10}')'|'(Kyoto, Japan' (any-')'){0,10}')'|'(Kyoto, July' (any-')'){0,10}')'|'(Lajos Kossuth University, Debrecen, Hungary' (any-')'){0,10}')'|'(Lanik-Noga, Bratislava' (any-')'){0,10}')'|'(La Plata' (any-')'){0,10}')'|'(L. Baulieu' (any-')'){0,10}')'|'(LBL preprint' (any-')'){0,10}')'|'(L.~Brink, D.~Friedan, and A.~M. Polyakov' (any-')'){0,10}')'|'(L. Durand and L.G. Pondrom' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(L. Durand and L.G. Pondrom' (any-')'){0,10}')'|'(lead to modified action' (any-')'){0,10}')'|'(Lect. Notes Phys. 169, Springer-Verlag, Berlin-New York' (any-')'){0,10}')'|'(Lecture given at the GR 14 conference' (any-')'){0,10}')'|'(Lecture given at the GR14 Conference' (any-')'){0,10}')'|'(Lecture Notes, 1988' (any-')'){0,10}')'|'( Lecture Notes In Physics' (any-')'){0,10}')'|'(Lecture Notes In Physics' (any-')'){0,10}')'|'(Lecture Notes in Physics 469, Springer, Berlin' (any-')'){0,10}')'|'(Lecture Notes in Physics 51, Springer' (any-')'){0,10}')'|'(Lecture Notes in Physics m12, Berlin, Springer' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Lecture Notes in Physics m12, Berlin, Springer' (any-')'){0,10}')'|'(Lecture Notes in Physics, Vol. 169, Springer-Verlag' (any-')'){0,10}')'|'(Lecture Notes in Physics, Vol. 26, World Scientific' (any-')'){0,10}')'|'(Lecture Notes in Physics, Vol. 396, Springer-Verlag' (any-')'){0,10}')'|'(Lecture Notes in Physics, Vol. 5, World Scientific' (any-')'){0,10}')'|'(Lecture Notes in Physics, vol {bf 169}, Springer - Verlag, New York/Berlin' (any-')'){0,10}')'|'(Lectures in Les Houches' (any-')'){0,10}')'|'(Lectures Notes in Physics, Springer International, Berlin' (any-')'){0,10}')'|'( Lectures presented at TASI' (any-')'){0,10}')'|'(Leiden University' (any-')'){0,10}')'|'(Leningrad Math. J. 1' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Leningrad Math. J. 1' (any-')'){0,10}')'|'(Leningrad Math. J. {bf 1}' (any-')'){0,10}')'|'(Leningrad State University, Leningrad' (any-')'){0,10}')'|'(Les Houches 1988, Eds. E. Brezin and J. Zinn-Justin' (any-')'){0,10}')'|'(Les Houches, Session LXIV' (any-')'){0,10}')'|'(Les Houches Summer School publ.' (any-')'){0,10}')'|'(Les Houches Summer School, Session LVII' (any-')'){0,10}')'|'(Les Houches Summer School, Session LXII' (any-')'){0,10}')'|'(Leuven University Press' (any-')'){0,10}')'|'(Leuven University Press, Leuven' (any-')'){0,10}')'|'(Leuven Univ. Press, Leuven' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Leuven Univ. Press, Leuven' (any-')'){0,10}')'|'(Leuven U. P., Leuven' (any-')'){0,10}')'|'(LGU, Leningrad' (any-')'){0,10}')'|'(Little Brown and Company, Boston-New York-London' (any-')'){0,10}')'|'(L.-L. Chau and W.~Nahm' (any-')'){0,10}')'|'( London and New York' (any-')'){0,10}')'|'(London, John Wiley and Sons ' (any-')'){0,10}')'|'(London Mathematical Society monographs' (any-')'){0,10}')'|'(Longman Group, UK' (any-')'){0,10}')'|'(Longman, Harlow, Essex, UK' (any-')'){0,10}')'|'(Longmans, Essex, England' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Longmans, Essex, England' (any-')'){0,10}')'|'(Los Angeles' (any-')'){0,10}')'|'(L. Streit' (any-')'){0,10}')'|'(L. Witten' (any-')'){0,10}')'|'(M$^{{rm c}}$ Graw Hill' (any-')'){0,10}')'|'(Macdonald, London' (any-')'){0,10}')'|'(Mac Donald, London' (any-')'){0,10}')'|'(MacDonald, London' (any-')'){0,10}')'|'(MacGraw Hill' (any-')'){0,10}')'|'(MacGraw-Hill Book Co.' (any-')'){0,10}')'|'(Mac Graw Hill, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mac Graw Hill, New York' (any-')'){0,10}')'|'(Macmillan Co.' (any-')'){0,10}')'|'(M.A. del Olmo ' (any-')'){0,10}')'|'(Marcel Dekker etc.' (any-')'){0,10}')'|'(Marcel Dekker Inc., New York' (any-')'){0,10}')'|'(Marcel Dekker, Inc., New York' (any-')'){0,10}')'|'(Marcel Dekker, inc. New York and Basel' (any-')'){0,10}')'|'(Marcel Dekker Inc., New York and Basel' (any-')'){0,10}')'|'(March 11-18,1987' (any-')'){0,10}')'|'(March 18-23, 1997' (any-')'){0,10}')'|'(March 1962' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(March 1962' (any-')'){0,10}')'|'(March 22' (any-')'){0,10}')'|'(Marina del Rey,Feb.23' (any-')'){0,10}')'|'(Marstrand, Sweden' (any-')'){0,10}')'|'(Mashhad, March' (any-')'){0,10}')'|'(Massachusetts Institute of Technology' (any-')'){0,10}')'|'(Masson & Cie., Paris' (any-')'){0,10}')'|'(Master Thesis, Kyoto University' (any-')'){0,10}')'|'(Math. dept., 1995 series' (any-')'){0,10}')'|'(Mathematical Association of America , Washington' (any-')'){0,10}')'|'(Mathematical Lectures, Univ. of California' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mathematical Lectures, Univ. of California' (any-')'){0,10}')'|'(Mathematical Physics Studies' (any-')'){0,10}')'|'(Mathematical Sciences Research Institute Publications' (any-')'){0,10}')'|'(Mathematical Surveys and Monographs' (any-')'){0,10}')'|'(Mathematics and its applications' (any-')'){0,10}')'|'(Mathematics and its Applications' (any-')'){0,10}')'|'(Mathematics and Its Applications' (any-')'){0,10}')'|'({mathfrak sl}(2' (any-')'){0,10}')'|'(Math. Notes {bf 49}' (any-')'){0,10}')'|'(matrix{i,& 0cr 0' (any-')'){0,10}')'|'(May 19.-25.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(May 19.-25.' (any-')'){0,10}')'|'(May 1992, Zvenigorod' (any-')'){0,10}')'|'(May 27-31, 1999' (any-')'){0,10}')'|'(May 94' (any-')'){0,10}')'|'(Maynooth, Ireland' (any-')'){0,10}')'|'(M. Bonini' (any-')'){0,10}')'|'(M.~Cahen and M.~Flato' (any-')'){0,10}')'|'(Mc Graw-Hill' (any-')'){0,10}')'|'(Mc-Graw Hill' (any-')'){0,10}')'|'(Mc Graw-Hill Book Co.' (any-')'){0,10}')'|'(McGraw-Hill Book Co' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(McGraw-Hill Book Co' (any-')'){0,10}')'|'(McGraw-Hill Book Co., Inc, New York' (any-')'){0,10}')'|'(McGraw--Hill Book Company' (any-')'){0,10}')'|'(McGRAW-HILL BOOK COMPANY' (any-')'){0,10}')'|'( Mc-Graw Hill Book Company,New York' (any-')'){0,10}')'|'(Mc-Graw Hill Book Company,New York' (any-')'){0,10}')'|'(McGraw-Hill Book Co. New York' (any-')'){0,10}')'|'(McGraw-Hill, ed. A. Erdelyi' (any-')'){0,10}')'|'(McGraw-Hill Inc.' (any-')'){0,10}')'|'(McGraw-Hill, Inc.' (any-')'){0,10}')'|'(McGraw--Hill Inc., London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(McGraw--Hill Inc., London' (any-')'){0,10}')'|'(McGraw--Hill, Inc. London' (any-')'){0,10}')'|'( Mc-Graw-Hill, Inc., New York' (any-')'){0,10}')'|'(McGraw-Hill Inc, New York' (any-')'){0,10}')'|'(McGraw-Hill Inc., New York' (any-')'){0,10}')'|'(McGraw-Hill, Inc., New York' (any-')'){0,10}')'|'(McGraw-Hill Inc., U.S.A' (any-')'){0,10}')'|'(Mcgraw-Hill, London' (any-')'){0,10}')'|'( McGraw Hill, New York' (any-')'){0,10}')'|'( McGraw-Hill, New York' (any-')'){0,10}')'|'(Mc Graw - Hill, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mc Graw - Hill, New York' (any-')'){0,10}')'|'(Mc Graw Hill, New York' (any-')'){0,10}')'|'(Mc--Graw--Hill, New York' (any-')'){0,10}')'|'(McGraw - Hill, New York' (any-')'){0,10}')'|'(McGraw--Hill; New York' (any-')'){0,10}')'|'(McGraw-Hill, New-York' (any-')'){0,10}')'|'(McGraw-Hill, New~York' (any-')'){0,10}')'|'(McGraw-Hill,New York' (any-')'){0,10}')'|'(McGraw-Hill; New York' (any-')'){0,10}')'|'(Mc Graw-Hill, New York, N.Y.' (any-')'){0,10}')'|'(Mc. Graw-Hill, N.Y.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mc. Graw-Hill, N.Y.' (any-')'){0,10}')'|'(McGraw Hill, N.Y.' (any-')'){0,10}')'|'(McGraw-Hill,  N. Y.' (any-')'){0,10}')'|'(}Mc-GrawHill, Singapore' (any-')'){0,10}')'|'(McGraw Hill, Singapore' (any-')'){0,10}')'|'(McGraw--Hill, Singapore' (any-')'){0,10}')'|'(McGraw--Hill; U.S.A.' (any-')'){0,10}')'|'(McGrow Hill, NY' (any-')'){0,10}')'|'(M.~Chretien and S.~Deser' (any-')'){0,10}')'|'(MCNMO, Moscow' (any-')'){0,10}')'|'(M. Dekker, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(M. Dekker, New York' (any-')'){0,10}')'|'(Methuen, London' (any-')'){0,10}')'|'(Mexico, Mexico City' (any-')'){0,10}')'|'(MGPI Press, Moscow' (any-')'){0,10}')'|'(M. Green and D. Gross' (any-')'){0,10}')'|'(M.-H. Saito, Y. Shimizu and K. Ueno' (any-')'){0,10}')'|'(Mineumsa Publishing Co., Seoul' (any-')'){0,10}')'|'(Min Eum Sa, Seoul' (any-')'){0,10}')'|'(M.I.T., Cambridge' (any-')'){0,10}')'|'(MIT, Cambridge' (any-')'){0,10}')'|'(M. I. T. Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(M. I. T. Press' (any-')'){0,10}')'|'(MIT Press, Brandeis Lectures' (any-')'){0,10}')'|'(MIT press, Cambridge' (any-')'){0,10}')'|'( MIT Press, Cambridge' (any-')'){0,10}')'|'(MIT Press. Cambridge' (any-')'){0,10}')'|'(MIT Press,  Cambridge, MA' (any-')'){0,10}')'|'(MIT Press, Cambridge MA' (any-')'){0,10}')'|'(M.I.T. Press, Cambridge, Mass' (any-')'){0,10}')'|'(MIT Press, Cambridge, Massachusetts' (any-')'){0,10}')'|'(MIT Press, Cambridge, Massachussets' (any-')'){0,10}')'|'(MIT Press, Cambrige, MA' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(MIT Press, Cambrige, MA' (any-')'){0,10}')'|'(MIT Press, Massachusetts' (any-')'){0,10}')'|'(MIT: Scott' (any-')'){0,10}')'|'(M. Kaku et al.' (any-')'){0,10}')'|'(M. Levy' (any-')'){0,10}')'|'(M. Levy and S. Deser' (any-')'){0,10}')'|'(M.-L. Ge' (any-')'){0,10}')'|'(M.N. Harakeh, J.H. Koch, O. Scholten' (any-')'){0,10}')'|'(Mod. Phys. Lett. A' (any-')'){0,10}')'|'(Monsaraz and Lisboa' (any-')'){0,10}')'|'(Montecatini Terme' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Montecatini Terme' (any-')'){0,10}')'|'(Montreal, Que.' (any-')'){0,10}')'|'(Morikita, 1968' (any-')'){0,10}')'|'(Moscow, 1975' (any-')'){0,10}')'|'(Moscow Energoatomizdat' (any-')'){0,10}')'|'(Moscow, Energoatomizdat' (any-')'){0,10}')'|'(Moscow, Energoizdat' (any-')'){0,10}')'|'(Moscow, Gostechizdat' (any-')'){0,10}')'|'(Moscow, {it Nauka}' (any-')'){0,10}')'|'(Moscow, Mir, 1991' (any-')'){0,10}')'|'(Moscow: Moscow State Pedagogical Inst.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Moscow: Moscow State Pedagogical Inst.' (any-')'){0,10}')'|'(Moscow, Moscow University Press' (any-')'){0,10}')'|'(Moscow: Moscow Univ. Press' (any-')'){0,10}')'|'( Moscow , Nauka ' (any-')'){0,10}')'|'(Moscow , Nauka ' (any-')'){0,10}')'|'(Moscow ,Nauka ' (any-')'){0,10}')'|'(Moscow: Nauka, 1965; N.Y.' (any-')'){0,10}')'|'(Moscow, Nauka,1973; Mir Publishers' (any-')'){0,10}')'|'(Moscow, Russia, 23-29th August' (any-')'){0,10}')'|'(Moscow State University Press' (any-')'){0,10}')'|'(Moscow State University Press, Moscow' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Moscow State University Press, Moscow' (any-')'){0,10}')'|'(Moscow Univ. Press, Moscow' (any-')'){0,10}')'|'(Mos-kow, Nauka' (any-')'){0,10}')'|'(Moskva, Nauka' (any-')'){0,10}')'|'(MRSI Berkeley' (any-')'){0,10}')'|'(MSRI, Berkeley, CA.' (any-')'){0,10}')'|'(n_{1},n_{2}, ...' (any-')'){0,10}')'|'(Nagoya Univ.' (any-')'){0,10}')'|'(Nagoya University' (any-')'){0,10}')'|'(Nagoya University, Nagoya' (any-')'){0,10}')'|'(Nagoya University, Nagoya, Japan' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Nagoya University, Nagoya, Japan' (any-')'){0,10}')'|'(Nara, Japan' (any-')'){0,10}')'|'(Nasa Conference Publications' (any-')'){0,10}')'|'(NASA Conf. Pub. N. 31353' (any-')'){0,10}')'|'(NASA, Washington, D. C.' (any-')'){0,10}')'|'(Nathan, Paris' (any-')'){0,10}')'|'(National Bureau of Standards, Washington, D. C.' (any-')'){0,10}')'|'(National Bureau of Standards, Washington, D.C., USA' (any-')'){0,10}')'|'(National Bureau of Standard, Washington D.C.' (any-')'){0,10}')'|'(National Bureau of Standarts' (any-')'){0,10}')'|'(National Laboratory for High Energy Physics' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(National Laboratory for High Energy Physics' (any-')'){0,10}')'|'(NATO Advanced Study Institutes' (any-')'){0,10}')'|'(NATO ASI {bf C520}, Carg`ese' (any-')'){0,10}')'|'(NATO ASI series' (any-')'){0,10}')'|'(NATO Asi Series B, Physics' (any-')'){0,10}')'|'(NATO ASI Series, Plenum Press' (any-')'){0,10}')'|'(NATO ASI Series, Zakopane, June 1997' (any-')'){0,10}')'|'(Nauka and Technika, Minsk' (any-')'){0,10}')'|'(Nauka i Tekhnika' (any-')'){0,10}')'|'(Nauka i Tekhnika, Minsk' (any-')'){0,10}')'|'(Nauka, Leningrad' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Nauka, Leningrad' (any-')'){0,10}')'|'(Nauka, Moscow' (any-')'){0,10}')'|'(Nauka Moscow' (any-')'){0,10}')'|'(NAUKA, Moscow' (any-')'){0,10}')'|'(Nauka, Moscow, 1969; Wiley, New York' (any-')'){0,10}')'|'(Nauka, Moscow, 1981' (any-')'){0,10}')'|'(Nauka, Moscow, 1986' (any-')'){0,10}')'|'(Nauka, Moscow, 1989' (any-')'){0,10}')'|'(Nauka Publishers, Moscow' (any-')'){0,10}')'|'(Naukova Doumka, Kiev' (any-')'){0,10}')'|'(Naukova Dumka' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Naukova Dumka' (any-')'){0,10}')'|'(NBI, University of Copenhagen' (any-')'){0,10}')'|'(NEEDS 2001 proceedings' (any-')'){0,10}')'|'(New Haven' (any-')'){0,10}')'|'(New Science Publisher, New York' (any-')'){0,10}')'|'(New Science Publishers, New York' (any-')'){0,10}')'|'(new ser.' (any-')'){0,10}')'|'( New-York' (any-')'){0,10}')'|'(New York: Academic' (any-')'){0,10}')'|'(New York Academy of Science' (any-')'){0,10}')'|'(New York  Academy of Sciences' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York  Academy of Sciences' (any-')'){0,10}')'|'(New York: Acadimic' (any-')'){0,10}')'|'(New York, AIP' (any-')'){0,10}')'|'(New York, Belfer Graduate School of Science, Yeshiva University' (any-')'){0,10}')'|'(New York: Belfer Graduate School of Science, Yeshiva University' (any-')'){0,10}')'|'(New York: Benjamin-Cummings' (any-')'){0,10}')'|'(New York/Berlin' (any-')'){0,10}')'|'(New York: Colier-Macmillan, 1964' (any-')'){0,10}')'|'(New York, Frederick Ungar Publishing Co' (any-')'){0,10}')'|'(New York, Gordon and Breach Science Publishers' (any-')'){0,10}')'|'(New York, Halsted' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York, Halsted' (any-')'){0,10}')'|'(New York, Harwood' (any-')'){0,10}')'|'(New York: Harwood' (any-')'){0,10}')'|'(New  York  - Heidelberg - Berlin: Springer' (any-')'){0,10}')'|'(New York: Interscience' (any-')'){0,10}')'|'(New York, London' (any-')'){0,10}')'|'(New York - London, Academic' (any-')'){0,10}')'|'(New York-London-Paris: Gordon and Breach' (any-')'){0,10}')'|'(New-York, Macgraw-Hill' (any-')'){0,10}')'|'(New York  Mc Graw-Hill' (any-')'){0,10}')'|'(New York, McGraw Hill' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York, McGraw Hill' (any-')'){0,10}')'|'(New York, McGraw-Hill' (any-')'){0,10}')'|'(New York: McGraw--Hill' (any-')'){0,10}')'|'(New York, McGraw - Hill Book Company' (any-')'){0,10}')'|'(New York, Morrow' (any-')'){0,10}')'|'(New York, N. Y.' (any-')'){0,10}')'|'(New York, October 1-2' (any-')'){0,10}')'|'(New York, Oxford University Press' (any-')'){0,10}')'|'(New York, Pergamon Press' (any-')'){0,10}')'|'(New York, Plenum Press' (any-')'){0,10}')'|'(New-York, Plenum Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New-York, Plenum Press' (any-')'){0,10}')'|'( New York: Plenum Publ. Corp.' (any-')'){0,10}')'|'(New-York,Row,Peterson ' (any-')'){0,10}')'|'(New-York,Row-Peterson ' (any-')'){0,10}')'|'(New York,Scribner' (any-')'){0,10}')'|'(New York, Springer' (any-')'){0,10}')'|'(New York, Springer-Verlag' (any-')'){0,10}')'|'(New York, Toronto' (any-')'){0,10}')'|'(New York: W.H. Freeeman and Company' (any-')'){0,10}')'|'(New York, Wiley' (any-')'){0,10}')'|'(New York: Wiley Interscience' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York: Wiley Interscience' (any-')'){0,10}')'|'(New York, Yeshiva University' (any-')'){0,10}')'|'(New York: Yeshiva University' (any-')'){0,10}')'|'(New-York, Yeshiva University ' (any-')'){0,10}')'|'(New York: Yeshiva University Press' (any-')'){0,10}')'|'(New Zealand Mathematical Society, Wellington' (any-')'){0,10}')'|'(Ney York, Wiley' (any-')'){0,10}')'|'(N. Holland' (any-')'){0,10}')'|'(N. Holland, Amsterdam' (any-')'){0,10}')'|'(N.Holland, Amsterdam' (any-')'){0,10}')'|'(Nicola Zanichelli, Bologna' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Nicola Zanichelli, Bologna' (any-')'){0,10}')'|'(Niels Bohr Institute' (any-')'){0,10}')'|'(N.J. Hitchin, P.E. Newstead and W.M. Oxbury' (any-')'){0,10}')'|'(N.~Kamran and P.~J. Olver' (any-')'){0,10}')'|'(N. L. white' (any-')'){0,10}')'|'(No 11' (any-')'){0,10}')'|'(Nor Amberd, Armenia, September' (any-')'){0,10}')'|'(Nordita report NORDITA-93/45A' (any-')'){0,10}')'|'(North Carolina State University, Raleigh' (any-')'){0,10}')'|'(North Holand' (any-')'){0,10}')'|'(North--Holand, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North--Holand, New York' (any-')'){0,10}')'|'(North Hollamd, Holland, Amsterdam' (any-')'){0,10}')'|'(north Holland' (any-')'){0,10}')'|'(North-Holland, Amesterdam' (any-')'){0,10}')'|'( North Holland, Amsterdam' (any-')'){0,10}')'|'(North - Holland, Amsterdam' (any-')'){0,10}')'|'(North - Holland,Amsterdam' (any-')'){0,10}')'|'(North Holland,Amsterdam' (any-')'){0,10}')'|'(North Holland: Amsterdam' (any-')'){0,10}')'|'(North-Holland,  Amsterdam' (any-')'){0,10}')'|'(North-Holland, Amster-dam' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North-Holland, Amster-dam' (any-')'){0,10}')'|'(North-Holland; Amsterdam' (any-')'){0,10}')'|'(North Holland, Amsterdam - London' (any-')'){0,10}')'|'(North-Holland, Amsterdam; Masson' (any-')'){0,10}')'|'(North Holland, Amsterdam, The Netherlands' (any-')'){0,10}')'|'(North-Holland, Amsterdan' (any-')'){0,10}')'|'(North-Holland and World Scientific' (any-')'){0,10}')'|'(North-Holland, Bologne' (any-')'){0,10}')'|'( North-Holland/Kodansha' (any-')'){0,10}')'|'(North Holland, New York' (any-')'){0,10}')'|'(North-Holland, New-York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North-Holland, New-York' (any-')'){0,10}')'|'(North Holland, New York, 1988, vol. 5B' (any-')'){0,10}')'|'(North-Holland Physics Publishing, Amsterdam' (any-')'){0,10}')'|'(North-Holland Physics Publishing Company' (any-')'){0,10}')'|'(North-Holland Physics Publishing, Holland' (any-')'){0,10}')'|'(North Holland Pub.,Amsterdam' (any-')'){0,10}')'|'(North-Holland Pub. Co.' (any-')'){0,10}')'|'(North-Holland Pub. Co., Amsterdam' (any-')'){0,10}')'|'(North Holland publ.' (any-')'){0,10}')'|'(North Holland Publ. Co.' (any-')'){0,10}')'|'(North-Holland Publ.Co., Amsterdam' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North-Holland Publ.Co., Amsterdam' (any-')'){0,10}')'|'(North--Holland Publ. Comp.' (any-')'){0,10}')'|'(North-Holland Publ.  Comp., Amsterdam, New York, Oxford' (any-')'){0,10}')'|'(North-Holland Publishing' (any-')'){0,10}')'|'(North-Holland Publishing Co., Amsterdam' (any-')'){0,10}')'|'(North-Holland Publishing Company' (any-')'){0,10}')'|'(North Holland Publishing Company, Amsterdam' (any-')'){0,10}')'|'(North-Holland Publishing Company --- Amsterdam' (any-')'){0,10}')'|'(North Holland Publishing Company, New York' (any-')'){0,10}')'|'(North Holland Publishing, New York' (any-')'){0,10}')'|'(North-Holland, the Netherlands' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North-Holland, the Netherlands' (any-')'){0,10}')'|'(North Holland--World Scientific' (any-')'){0,10}')'|'(Northo-Holland, Amsterdam' (any-')'){0,10}')'|'(Nova Science, Commack' (any-')'){0,10}')'|'(Nova Science, Commack, N. Y.' (any-')'){0,10}')'|'(Nova Science, N. Y.' (any-')'){0,10}')'|'(Nova Science Publisher Inc. Huntington, NY' (any-')'){0,10}')'|'(Nova Science Publishers, Commack' (any-')'){0,10}')'|'(Nova Science Publishers, Commack, N.Y.' (any-')'){0,10}')'|'(N.Y., Benjamin' (any-')'){0,10}')'|'(N.-Y.,Interscience Publishers' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(N.-Y.,Interscience Publishers' (any-')'){0,10}')'|'(N.-Y.: Interscience Publishers' (any-')'){0,10}')'|'(NY June 6-10' (any-')'){0,10}')'|'(N.Y., London' (any-')'){0,10}')'|'(NY, WIley-Intersc.' (any-')'){0,10}')'|'(O. Alvarez, E. Marinari and P. Windey' (any-')'){0,10}')'|'(O.~Alvarez, E.~Marinari and P.~Windey' (any-')'){0,10}')'|'(O.~Babelon, P.~Cartier, and  Y.~Kosmann-Schwarzbach' (any-')'){0,10}')'|'(Obs. Paris-Meudon' (any-')'){0,10}')'|'(Oct.19-21,1992,YITP,Kyoto Univ.' (any-')'){0,10}')'|'(October 15' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(October 15' (any-')'){0,10}')'|'(October 1997' (any-')'){0,10}')'|'(Odense University Press, Odense' (any-')'){0,10}')'|'(Oliver and Boyd' (any-')'){0,10}')'|'(Olms, Hildesheim' (any-')'){0,10}')'|'(Open Court,London' (any-')'){0,10}')'|'(or {$11 = 7 + 4$}' (any-')'){0,10}')'|'(or $11 = 7 + 4$' (any-')'){0,10}')'|'(or $11=7+4$' (any-')'){0,10}')'|'(or 11=7+4' (any-')'){0,10}')'|'(Or 11 = 7 + 4' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Or 11 = 7 + 4' (any-')'){0,10}')'|'(Original Russian edition: Atomizdat, Moscow' (any-')'){0,10}')'|'(OUP and Wiedenfeld and Nicolson' (any-')'){0,10}')'|'(OUP, Oxford' (any-')'){0,10}')'|'(Ox Bow Press, Woodbridge, Connecticut' (any-')'){0,10}')'|'(Oxfold Press' (any-')'){0,10}')'|'(Oxford, 2nd ed.' (any-')'){0,10}')'|'(Oxford, Clarendon, England' (any-')'){0,10}')'|'(Oxford: Clarendon Press, 3rd edition' (any-')'){0,10}')'|'(Oxford: Oxford University Press' (any-')'){0,10}')'|'(Oxford: Pergamon' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Oxford: Pergamon' (any-')'){0,10}')'|'(Oxford, Pergamon Press' (any-')'){0,10}')'|'(Oxford: Pergamon Press' (any-')'){0,10}')'|'(Oxford preprint' (any-')'){0,10}')'|'(Oxford Preprint' (any-')'){0,10}')'|'(Oxford Science Publications' (any-')'){0,10}')'|'(Oxford SciencePublications, London' (any-')'){0,10}')'|'(Oxford Science Publications, New York' (any-')'){0,10}')'|'(Oxfordshire, England' (any-')'){0,10}')'|'(Oxford, UK' (any-')'){0,10}')'|'(Oxford, UK, July 2-3' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Oxford, UK, July 2-3' (any-')'){0,10}')'|'(Oxford Univeristy Press, Oxford' (any-')'){0,10}')'|'(Oxford University, New York' (any-')'){0,10}')'|'(Oxford university press' (any-')'){0,10}')'|'(Oxford university Press' (any-')'){0,10}')'|'(Oxford  University Press' (any-')'){0,10}')'|'(Oxford, University Press' (any-')'){0,10}')'|'(Oxford University Press, 2nd corrected edition' (any-')'){0,10}')'|'(Oxford University Press Inc., New York' (any-')'){0,10}')'|'(Oxford University Press,New York ' (any-')'){0,10}')'|'(Oxford University Press, NY' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Oxford University Press, NY' (any-')'){0,10}')'|'(Oxford University Press,Oxford' (any-')'){0,10}')'|'(Oxford University Press, Oxford, England' (any-')'){0,10}')'|'(Oxford University Press, Oxford, Third Edition' (any-')'){0,10}')'|'(Oxford University Press, Oxford, UK' (any-')'){0,10}')'|'(Oxford University Press, Walton Street, Oxford OX2 6DP' (any-')'){0,10}')'|'(Oxford Univ., New York' (any-')'){0,10}')'|'( Oxford Univ. Press' (any-')'){0,10}')'|'(Oxford Univ. Press' (any-')'){0,10}')'|'(Oxford Univ.Press' (any-')'){0,10}')'|'(Oxford Univ. Press Inc., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Oxford Univ. Press Inc., New York' (any-')'){0,10}')'|'(Oxford Univ. Press: Oxford' (any-')'){0,10}')'|'(Oxford Univ.Press, Oxford' (any-')'){0,10}')'|'(Oxford U. P.' (any-')'){0,10}')'|'(Oxford U.P.' (any-')'){0,10}')'|'(Oxford UP, New York' (any-')'){0,10}')'|'(Oxford U. Press' (any-')'){0,10}')'|'(Oxford U.Press' (any-')'){0,10}')'|'(Oxford U. Press, Clarendon Press' (any-')'){0,10}')'|'(Oxford U. Press, Fourth ed.' (any-')'){0,10}')'|'(Palm Harbor, Hadronic Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Palm Harbor, Hadronic Press' (any-')'){0,10}')'|'(paper presented at Clifford Centennial Meeting, Princeton' (any-')'){0,10}')'|'(Paris: Dunod' (any-')'){0,10}')'|'(Paris: Flammarion' (any-')'){0,10}')'|'(Paris, France, 5-9th June' (any-')'){0,10}')'|'(Paris: Gauthier-Villars' (any-')'){0,10}')'|'(Paris: Her-mann' (any-')'){0,10}')'|'(Paris: Hermann & Cie.' (any-')'){0,10}')'|'(Parisianou S.A., Athens' (any-')'){0,10}')'|'(Paris, July 18--25' (any-')'){0,10}')'|'(Paris U.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Paris U.' (any-')'){0,10}')'|'(Park City, Utah' (any-')'){0,10}')'|'(Parma University' (any-')'){0,10}')'|'(Parma University, Parma' (any-')'){0,10}')'|'(P. Di Vecchia and J. L. Petersen' (any-')'){0,10}')'|'(Pegamon Press, New York' (any-')'){0,10}')'|'(Pegamon Press, Oxford, U.K.' (any-')'){0,10}')'|'(Pergammon, Oxford' (any-')'){0,10}')'|'(Pergammon Press, London' (any-')'){0,10}')'|'(Pergammon Press Ltd.' (any-')'){0,10}')'|'(Pergamon and PWN, Oxford' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Pergamon and PWN, Oxford' (any-')'){0,10}')'|'(Pergamon, Elmsford, 4th ed.' (any-')'){0,10}')'|'(Pergamon,  New York' (any-')'){0,10}')'|'(Pergamon,  Oxford' (any-')'){0,10}')'|'(Pergamon: Oxford' (any-')'){0,10}')'|'(Pergamon, Oxford, England' (any-')'){0,10}')'|'(Pergamon press' (any-')'){0,10}')'|'( Pergamon Press' (any-')'){0,10}')'|'(Pergamon Press, 1977' (any-')'){0,10}')'|'(Pergamon Press, 2nd edition' (any-')'){0,10}')'|'(Pergamon Press, Elmsford, NY' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Pergamon Press, Elmsford, NY' (any-')'){0,10}')'|'(Pergamon Press, London and New York' (any-')'){0,10}')'|'(Pergamon Press, London - Paris' (any-')'){0,10}')'|'(Pergamon Press Ltd., Oxford' (any-')'){0,10}')'|'(Pergamon Press, N.Y.' (any-')'){0,10}')'|'( Pergamon Press, Oxford' (any-')'){0,10}')'|'(Pergamon Press. Oxford' (any-')'){0,10}')'|'(Pergamon Press, Oxford, England' (any-')'){0,10}')'|'(Pergamon Press, Tokyo' (any-')'){0,10}')'|'(Pergamon Press, USA' (any-')'){0,10}')'|'(Pergamon Pr, Oxford, Frankfurt' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Pergamon Pr, Oxford, Frankfurt' (any-')'){0,10}')'|'( Pergamon  publ.,' (any-')'){0,10}')'|'(Pergmon Press, Oxford' (any-')'){0,10}')'|'(Permagon Press' (any-')'){0,10}')'|'(Perseus Publishing' (any-')'){0,10}')'|'(Perseus, Reading, Massachusetts' (any-')'){0,10}')'|'(Perth, Western Australia' (any-')'){0,10}')'|'(Petrozavodsk, URSS' (any-')'){0,10}')'|'(P. G. O. Freund and K. T. Mahanthappa' (any-')'){0,10}')'|'(Ph.D. Thesis' (any-')'){0,10}')'|'(PhD thesis, Harvard mathematical physics' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(PhD thesis, Harvard mathematical physics' (any-')'){0,10}')'|'(Ph.D. thesis in german' (any-')'){0,10}')'|'(Ph.D. thesis in german' (any-')'){0,10}')'|'(Ph.D. thesis in German' (any-')'){0,10}')'|'(PhD. thesis; Leiden Univ.' (any-')'){0,10}')'|'(Ph.D thesis, Science Univ. of Tokyo' (any-')'){0,10}')'|'(Ph.D. Thesis, TU Wien' (any-')'){0,10}')'|'(PhD Thesis, University of Cambridge' (any-')'){0,10}')'|'(Ph. D. thesis, University of Utrecht' (any-')'){0,10}')'|'(Ph. D. Thesis, Univ. of Tokyo' (any-')'){0,10}')'|'(Ph.D. thesis, Utrecht' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Ph.D. thesis, Utrecht' (any-')'){0,10}')'|'( Phi (1' (any-')'){0,10}')'|'(Physica 124A' (any-')'){0,10}')'|'(Physical Society of Japan' (any-')'){0,10}')'|'(Physics Letters B' (any-')'){0,10}')'|'(Physics of Atomic Nuclei {bf 64}' (any-')'){0,10}')'|'(Physics Uspekhi' (any-')'){0,10}')'|'(Physics Uspekhi, {bf 37}' (any-')'){0,10}')'|'(Phys. Lett. A' (any-')'){0,10}')'|'(Phys. Lett. B.' (any-')'){0,10}')'|'(Phys. Lett. {bf B}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Phys. Lett. {bf B}' (any-')'){0,10}')'|'(Phys.~Lett. {bf B}' (any-')'){0,10}')'|'(Phys. Rep.' (any-')'){0,10}')'|'(Phys. Reports' (any-')'){0,10}')'|'(Phys. Rev. D' (any-')'){0,10}')'|'(Phys. Rev. Lett. {bf 73}' (any-')'){0,10}')'|'(Pisa: Scuola Normale Superiore' (any-')'){0,10}')'|'(Pitagora Editrice' (any-')'){0,10}')'|'(Pitagora Editrice, Bologna' (any-')'){0,10}')'|'(Pitman Advanced Publishing Program, Boston' (any-')'){0,10}')'|'(Pitman, London, 1968; Dover' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Pitman, London, 1968; Dover' (any-')'){0,10}')'|'(Pitman,San Fransisco' (any-')'){0,10}')'|'(plasma ,|(Plenumm Press' (any-')'){0,10}')'|'( Plenum, New York' (any-')'){0,10}')'|'(Plenum, New-York' (any-')'){0,10}')'|'(Plenum:  New  York' (any-')'){0,10}')'|'(Plenum; New York' (any-')'){0,10}')'|'(Plenum, New York and London' (any-')'){0,10}')'|'(Plenum, New York & London' (any-')'){0,10}')'|'(plenum, N.Y.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(plenum, N.Y.' (any-')'){0,10}')'|'( Plenum, NY' (any-')'){0,10}')'|'(Plenum ,NY' (any-')'){0,10}')'|'(Plenum NY' (any-')'){0,10}')'|'(Plenum, N. Y.' (any-')'){0,10}')'|'(Plenum: NY' (any-')'){0,10}')'|'(plenum Press' (any-')'){0,10}')'|'(Plenum Press, 1982' (any-')'){0,10}')'|'(Plenum Press, London' (any-')'){0,10}')'|'(Plenum  Press, New  York' (any-')'){0,10}')'|'(Plenum Press, New York and London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Plenum Press, New York and London' (any-')'){0,10}')'|'(Plenum Press, New York - London' (any-')'){0,10}')'|'(Plenum Press, New York & London' (any-')'){0,10}')'|'(Plenum Press, New York London' (any-')'){0,10}')'|'(Plenum Press, New York, London' (any-')'){0,10}')'|'(Plenum Press, New York NY' (any-')'){0,10}')'|'(Plenum Press, New Yourk and London' (any-')'){0,10}')'|'(plenum Press, NY' (any-')'){0,10}')'|'(Plenum Press, N.-Y.' (any-')'){0,10}')'|'(Plenum Press, N.Y' (any-')'){0,10}')'|'(Plenum Pub. Co., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Plenum Pub. Co., New York' (any-')'){0,10}')'|'(Plenum Pub. Co., New York ' (any-')'){0,10}')'|'(Plenum Publishing' (any-')'){0,10}')'|'(Plenum Publishing C., New York' (any-')'){0,10}')'|'(Plenum Publishing Co.' (any-')'){0,10}')'|'(Plenum Publishing Corporation, New York' (any-')'){0,10}')'|'(P. Nath and S. Reucroft' (any-')'){0,10}')'|'(P. Noordhoff, Ltd. Groningen' (any-')'){0,10}')'|'(Polish Scientific Publischers' (any-')'){0,10}')'|'(Polish  Scientific  Publishers, Warsaw' (any-')'){0,10}')'|'(Polish Scientific Publishers, Warzawa' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Polish Scientific Publishers, Warzawa' (any-')'){0,10}')'|'(Polish Scientific Publisher, Warszawa' (any-')'){0,10}')'|'(Polish Sci.Publishers, Warsaw' (any-')'){0,10}')'|'(Polish Sc. Publ.' (any-')'){0,10}')'|'(Pontificia Academia Scientiarum, Vatican City' (any-')'){0,10}')'|'(P.P. Kulish' (any-')'){0,10}')'|'(Prentice-Hall, Englewood Cliffs' (any-')'){0,10}')'|'(Prentice Hall, Englewood Cliffs NJ' (any-')'){0,10}')'|'(Prentice-Hall, Englewood Cliffs, NJ' (any-')'){0,10}')'|'(Prentice-Hall, Englewood, N.J.' (any-')'){0,10}')'|'(Prentice-Hall, Inc.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Prentice-Hall, Inc.' (any-')'){0,10}')'|'(Prentice-Hall, Inc., Englewood Cliffs' (any-')'){0,10}')'|'(Prentice-Hall, Inc. Englewood Cliffs, New Jersey' (any-')'){0,10}')'|'(Prentice-Hall, Inc., Englewood Cliffs, New Jersey' (any-')'){0,10}')'|'(Prentice-Hall Inc., Englewood Cliffs, N.J.' (any-')'){0,10}')'|'(Prentice-Hall, London' (any-')'){0,10}')'|'(Prentice Hall, New Jersey' (any-')'){0,10}')'|'(Prentice-Hall, New Jersey, USA' (any-')'){0,10}')'|'(Prentice-Hall, New York' (any-')'){0,10}')'|'(Prentice Hall PTR, Englewood Cliffs' (any-')'){0,10}')'|'(Prentice Hall PTR, Upper Saddle River, NJ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Prentice Hall PTR, Upper Saddle River, NJ' (any-')'){0,10}')'|'(Preprint F-7, Academy of Sci. of Estonia' (any-')'){0,10}')'|'(preprint hep-lat/9709042' (any-')'){0,10}')'|'(Preprint IAS' (any-')'){0,10}')'|'(Preprint, IP GAS-4-97, Tbilisi' (any-')'){0,10}')'|'(preprint ITEP' (any-')'){0,10}')'|'(preprint, Leningrad' (any-')'){0,10}')'|'(Preprint LPTENS-92/18' (any-')'){0,10}')'|'(preprint RU-95-37' (any-')'){0,10}')'|'(preprint SLAC-PUB-6938, CERN-TH/95-159' (any-')'){0,10}')'|'(Preprint TH.2332-CERN' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Preprint TH.2332-CERN' (any-')'){0,10}')'|'(Presses Universitaires de France' (any-')'){0,10}')'|'(Priceton University Press' (any-')'){0,10}')'|'(Princeton, N.J., Princeton University Press' (any-')'){0,10}')'|'(Princeton, NJ: Princeton University Press' (any-')'){0,10}')'|'(Princeton: Princeton Univ. Press' (any-')'){0,10}')'|'(Princeton Series in Physics, Princeton Univ. Press 1983, Princeton' (any-')'){0,10}')'|'(Princeton University Pres, Princeton' (any-')'){0,10}')'|'(Princeton  University  Press' (any-')'){0,10}')'|'(Princeton  University Press' (any-')'){0,10}')'|'(Princeton University Press ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton University Press ' (any-')'){0,10}')'|'(Princeton University Press and University of Tokyo Press' (any-')'){0,10}')'|'( Princeton University Press, New Jersey' (any-')'){0,10}')'|'(Princeton University Press, N. J.' (any-')'){0,10}')'|'(Princeton University Press, N.Y.' (any-')'){0,10}')'|'(Prin-ce-ton University Press, Prin-ce-ton' (any-')'){0,10}')'|'(Princeton University Press,  Princeton' (any-')'){0,10}')'|'(Princeton University Press: Princeton' (any-')'){0,10}')'|'(Princeton University-Press, Princeton' (any-')'){0,10}')'|'(Princeton University Press, Princeton, 1983' (any-')'){0,10}')'|'(Princeton University Press, Princeton, 1991' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton University Press, Princeton, 1991' (any-')'){0,10}')'|'(Princeton University Press: Princeton, New Jersey' (any-')'){0,10}')'|'(Princeton University press, Princeton, New Jersy' (any-')'){0,10}')'|'(Princeton University Press, Princeton N.J.' (any-')'){0,10}')'|'(Princeton University Press, Princeton NJ' (any-')'){0,10}')'|'(Princeton University Press, Princeton NJ, USA' (any-')'){0,10}')'|'(Princeton University Press/World Scientific, Princeton, NJ/Singapore' (any-')'){0,10}')'|'(Princeton University, Princeton' (any-')'){0,10}')'|'(Princeton University, Princeton, NJ' (any-')'){0,10}')'|'(Princeton University report PUPT-1373, hep-th/9301021' (any-')'){0,10}')'|'(Princeton Univ.Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton Univ.Press' (any-')'){0,10}')'|'(Princeton Univ. Press, 1st ed. 1983' (any-')'){0,10}')'|'( Princeton Univ. Press,  New Jersey' (any-')'){0,10}')'|'(Princeton Univ. Press, NJ' (any-')'){0,10}')'|'( Princeton Univ. Press, Princeton' (any-')'){0,10}')'|'(Princeton  Univ Press, Princeton' (any-')'){0,10}')'|'(Princeton Univ-Press, Princeton' (any-')'){0,10}')'|'(Princeton Univ. Press, Princeton' (any-')'){0,10}')'|'(Princeton Univ. Press, Princeton, New Jersey' (any-')'){0,10}')'|'( Princeton Univ. Press, Princeton, N.J.' (any-')'){0,10}')'|'(Princeton Univ. Press: Princeton, NJ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton Univ. Press: Princeton, NJ' (any-')'){0,10}')'|'(Princeton Univ. Press, Princeton, NJ' (any-')'){0,10}')'|'(Princeton Univ. Press, Prinston' (any-')'){0,10}')'|'(Princeton Univ. Press/World Scientific, Singapore' (any-')'){0,10}')'|'(Princeton Un. Press' (any-')'){0,10}')'|'(Princeton Un. Press/World Scientific' (any-')'){0,10}')'|'(Princeton Unversity Press' (any-')'){0,10}')'|'(Princeton U. P.' (any-')'){0,10}')'|'(Princeton U.P.' (any-')'){0,10}')'|'(Princeton UP' (any-')'){0,10}')'|'(Princeton U.P., Prenceton' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton U.P., Prenceton' (any-')'){0,10}')'|'(Princeton U. P., Princeton' (any-')'){0,10}')'|'(Princeton U. P./World Scientific, Princeton NJ, Singapore' (any-')'){0,10}')'|'(Princeton, Wess $&$ Bagger' (any-')'){0,10}')'|'(Prinston ' (any-')'){0,10}')'|'(Printed in Hoddeson and al. ' (any-')'){0,10}')'|'(printed in Japan' (any-')'){0,10}')'|'(Proc. Conf. Aug 24-30 Brno' (any-')'){0,10}')'|'(Proc. Conf. Midwest, Cincinnati, Ohio' (any-')'){0,10}')'|'(Proc. Delhi' (any-')'){0,10}')'|'(Proceedings of A. Swieca School' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Proceedings of A. Swieca School' (any-')'){0,10}')'|'(proceedings of the 16$^{th}$ International Symposium on Lattice Field Theory, Boulder, CO' (any-')'){0,10}')'|'(Proceedings of the 1992 Rome Workshop, World Scientific' (any-')'){0,10}')'|'(Proceedings of the Steklov Math. Inst., LOMI' (any-')'){0,10}')'|'(Proc. Int. Seminar, Potsdam, Germany' (any-')'){0,10}')'|'(Proc. NATO Adv. Study Inst., Geilo' (any-')'){0,10}')'|'(Proc. Of 2nd Max Born Symposium, Wroclaw, Poland' (any-')'){0,10}')'|'(Proc. of NATO Advanced Research Workshop, Chicago' (any-')'){0,10}')'|'(Proc. of the Superstring Workshop, Texas A & M Univ.' (any-')'){0,10}')'|'(Proc. Recent progress in statistical mechanics and quantum field theory, Los Angeles' (any-')'){0,10}')'|'(Proc. Roy. Soc. {bf A333}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Proc. Roy. Soc. {bf A333}' (any-')'){0,10}')'|'(Proc. Suppl} {bf 90}' (any-')'){0,10}')'|'(Proc. Symp. Pure Math.' (any-')'){0,10}')'|'(Proc. Trento' (any-')'){0,10}')'|'(Progress in Math. {bf 65}' (any-')'){0,10}')'|'(Progress in Mathematical; Vol' (any-')'){0,10}')'|'(Progress in mathematics' (any-')'){0,10}')'|'(Progress in Math., vol. 36' (any-')'){0,10}')'|'( Progress In Physics' (any-')'){0,10}')'|'(Protvino, 1986' (any-')'){0,10}')'|'(Protvino, Russia' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Protvino, Russia' (any-')'){0,10}')'|'(Providence, Amer. Math. Soc.' (any-')'){0,10}')'|'( Providence, Rhode Island' (any-')'){0,10}')'|'(Providence, Rhode Island' (any-')'){0,10}')'|'(Providence, RI' (any-')'){0,10}')'|'(Providence, RI: American Mathematical Society' (any-')'){0,10}')'|'(Providence, RI, AMS/IAS' (any-')'){0,10}')'|'(Providence, RI, USA, AMS/IAS' (any-')'){0,10}')'|'(Pub. Inst. Math., Beogrado' (any-')'){0,10}')'|'(Publ. du CNRS, Paris' (any-')'){0,10}')'|'(Publicaciones del I.A.M., Buenos Aires' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Publicaciones del I.A.M., Buenos Aires' (any-')'){0,10}')'|'(Publications Observatoire de Paris' (any-')'){0,10}')'|'(Publications of Mathematical Society, Tokyo' (any-')'){0,10}')'|'(Publich or Perich Inc.' (any-')'){0,10}')'|'(Published in Nucl. Phys. B' (any-')'){0,10}')'|'(Publish or Perish, Delaware' (any-')'){0,10}')'|'(Publish or Perish, Houston' (any-')'){0,10}')'|'(Publish or Perish, Inc.' (any-')'){0,10}')'|'(Publish or Perish, Inc. ' (any-')'){0,10}')'|'(Publish or Perish, INC' (any-')'){0,10}')'|'(Publish or Perish Inc., Boston' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Publish or Perish Inc., Boston' (any-')'){0,10}')'|'(Publish or Perish Inc.,  Boston, Ma.' (any-')'){0,10}')'|'(Publish or Perish, Inc., Math. Lect. series no. 11' (any-')'){0,10}')'|'(Publish or Perish, Vilmington' (any-')'){0,10}')'|'(Publish or Perish, Wilmington' (any-')'){0,10}')'|'(Publish or Perish, Wilmington, DE, USA' (any-')'){0,10}')'|'(Publ. JINR E2-96-224, Dubna' (any-')'){0,10}')'|'(Pure and Applied Mathematics' (any-')'){0,10}')'|'(P. van Baal' (any-')'){0,10}')'|'(PWN-Polish Scientific Publishers' (any-')'){0,10}')'|'(PWN-Polish Scientific Publishers, Warsaw' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(PWN-Polish Scientific Publishers, Warsaw' (any-')'){0,10}')'|'(PWN Polish Scientific Publishers,Warszawa' (any-')'){0,10}')'|'(PWN-Polish Sci. Publ., Warszawa' (any-')'){0,10}')'|'(quark confinement' (any-')'){0,10}')'|'(quoted in M.K. Gaillard and B. Zumino' (any-')'){0,10}')'|'(R. Ablamowicz' (any-')'){0,10}')'|'(Rajarama Bhat et al eds, AMS' (any-')'){0,10}')'|'(R. Bleuler, H. Petry, A. Reetz' (any-')'){0,10}')'|'(R. Dijkgraaf, C.Faber and G. van der Geer' (any-')'){0,10}')'|'(R. Dobrushin et al.' (any-')'){0,10}')'|'(Reading MA' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Reading MA' (any-')'){0,10}')'|'(Reading, MA : Addison-Wesley' (any-')'){0,10}')'|'(Reading, Massachusetts' (any-')'){0,10}')'|'(Readwood City: Addison-Wesley, 1965' (any-')'){0,10}')'|'(Redwood City, California' (any-')'){0,10}')'|'(Redwood City, California: Addison-Wesley' (any-')'){0,10}')'|'(Reidel; Dordrecht' (any-')'){0,10}')'|'(Reidel, Dordrecht-Holland' (any-')'){0,10}')'|'(Reidel Pub., Dordrecht' (any-')'){0,10}')'|'(Reidel Publ. Co.' (any-')'){0,10}')'|'(Reidel Publ., Dordrecht' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Reidel Publ., Dordrecht' (any-')'){0,10}')'|'(Reidel Publishing Company, Holland' (any-')'){0,10}')'|'(Reimer, Berlin' (any-')'){0,10}')'|'(Reports NAS RA' (any-')'){0,10}')'|'( reprinted by Dover, New York' (any-')'){0,10}')'|'(Reprinted in *Goldhaber' (any-')'){0,10}')'|'(Reprinted in {it Solitons and Particles}, eds. C.~Rebbi and G.~Soliani' (any-')'){0,10}')'|'(reprintes Chelsea' (any-')'){0,10}')'|'(revised edition' (any-')'){0,10}')'|'(Revised Edition' (any-')'){0,10}')'|'(revised on May' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(revised on May' (any-')'){0,10}')'|'(revised version' (any-')'){0,10}')'|'(Rhode Island' (any-')'){0,10}')'|'(R. Hwa' (any-')'){0,10}')'|'(Riedel, Dordrecht' (any-')'){0,10}')'|'(Riedel Publ. Co., Dordrecht' (any-')'){0,10}')'|'(RIMS, Montreal' (any-')'){0,10}')'|'(River Edge, NJ: World Scientific' (any-')'){0,10}')'|'(R.K.~Bullough and P.S.~Caudrey' (any-')'){0,10}')'|'({rm sl(2' (any-')'){0,10}')'|'({rm su}(1' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({rm su}(1' (any-')'){0,10}')'|'(Roma, Consiglio Nazionale Delle Ricerche' (any-')'){0,10}')'|'(Ro-me, Academia Nacionale dei Lincei' (any-')'){0,10}')'|'(Rome, Italy' (any-')'){0,10}')'|'(Routledge and Kegan Paul' (any-')'){0,10}')'|'(Routledge, London' (any-')'){0,10}')'|'(Row, Elmsford' (any-')'){0,10}')'|'(Row, Peterson and Co, 1961' (any-')'){0,10}')'|'(Row, Peterson and Co., New York' (any-')'){0,10}')'|'(Row, Peterson and Co., USA' (any-')'){0,10}')'|'(Row, Peterson, Evanson' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Row, Peterson, Evanson' (any-')'){0,10}')'|'(Row Peterson, New York' (any-')'){0,10}')'|'(R. P. Kerr, Phys. Rev. Lett. {bf 11}' (any-')'){0,10}')'|'(Russian Edition' (any-')'){0,10}')'|'(Russian edition: Yad. Fiz., {bf 56}' (any-')'){0,10}')'|'(Russian original: Dokl.Akad. Nauk SSSR {bf 250}' (any-')'){0,10}')'|'(R. V. Kadison' (any-')'){0,10}')'|'(Saclay, France, June 5-7' (any-')'){0,10}')'|'(Saiensu Co., Tokyo' (any-')'){0,10}')'|'(Sandansky, Bulgaria, 9--15 June' (any-')'){0,10}')'|'(S. Andersson and M. Lapidus' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(S. Andersson and M. Lapidus' (any-')'){0,10}')'|'(San Diego' (any-')'){0,10}')'|'(San Diego, CA, Academic Press' (any-')'){0,10}')'|'( San Francisco; Freeman' (any-')'){0,10}')'|'(San Francisco: Freeman' (any-')'){0,10}')'|'(San Francisco: Holden-Day' (any-')'){0,10}')'|'(San Francisco: W.H.Freeman and Company' (any-')'){0,10}')'|'(Santa Monica' (any-')'){0,10}')'|'(S~{a}o Paulo, IFT' (any-')'){0,10}')'|'(Saunders College Publishing, Philadelphia' (any-')'){0,10}')'|'(S.~Catto and A.~Rocha' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(S.~Catto and A.~Rocha' (any-')'){0,10}')'|'(S. Catto, A. Rocha' (any-')'){0,10}')'|'(scheduled for Feb. 15' (any-')'){0,10}')'|'(Science, China' (any-')'){0,10}')'|'(Science Network Publishing, Konstanz' (any-')'){0,10}')'|'(Science Network Publishing: Tlaxcala' (any-')'){0,10}')'|'(Science Press, Beijing' (any-')'){0,10}')'|'(Sciences Press, Beijing' (any-')'){0,10}')'|'(Scuala Normale Superiore Publ., Pisa, Italy' (any-')'){0,10}')'|'(Scuola Normale Superiore' (any-')'){0,10}')'|'(S. Deser, K. W. Ford' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(S. Deser, K. W. Ford' (any-')'){0,10}')'|'(S. Deser, M. Grisaru and H. Pendleton' (any-')'){0,10}')'|'(S.~Deser, M.~Grisaru and S.~Pendleton' (any-')'){0,10}')'|'(second edition, Princeton University Press' (any-')'){0,10}')'|'(second edition, Springer, Berlin, Heidelberg, New York' (any-')'){0,10}')'|'(second edition, Springer-Verlag, New York' (any-')'){0,10}')'|'(second ed., Nauka, Moscow' (any-')'){0,10}')'|'(see [27]' (any-')'){0,10}')'|'(See also B. Mashhoon, {it Phys. Rev.} {bf D}, 8' (any-')'){0,10}')'|'(see also cite{Gr,Gr1,G1' (any-')'){0,10}')'|'(see also hep-th/9312167' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(see also hep-th/9312167' (any-')'){0,10}')'|'(see also Ref.[17]' (any-')'){0,10}')'|'(see also Ref.cite{BS' (any-')'){0,10}')'|'(see also S.R. Wadia' (any-')'){0,10}')'|'(see also T. Deguchi' (any-')'){0,10}')'|'(see also the textbook cite{PI}' (any-')'){0,10}')'|'(see also T. Suzuki' (any-')'){0,10}')'|'(see F. Dyson, Phys. Rev. 85' (any-')'){0,10}')'|'(see fig.,5 of ref.|(see, for example' (any-')'){0,10}')'|'(See formulas 3.471, 8.411, 6.576, 8.820, 8.733' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(See formulas 3.471, 8.411, 6.576, 8.820, 8.733' (any-')'){0,10}')'|'(see his table 17' (any-')'){0,10}')'|'(see in A.V. Kotikov' (any-')'){0,10}')'|'(see Ref. 5' (any-')'){0,10}')'|'(see Ref.cite{[28]}' (any-')'){0,10}')'|'(see Refs. cite{AM89,AM20,AM30,PG,Hag' (any-')'){0,10}')'|'(See U. Jentschura and E. Weniger' (any-')'){0,10}')'|'(Semestr 3' (any-')'){0,10}')'|'(Semestr 4' (any-')'){0,10}')'|'(Seoul: Chungburn' (any-')'){0,10}')'|'(Sept. 18' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Sept. 18' (any-')'){0,10}')'|'(Sept. 94' (any-')'){0,10}')'|'( S.Gindikin and I.M.Singer' (any-')'){0,10}')'|'(Shaker Verlag, Aachen' (any-')'){0,10}')'|'( Shanghai Scientific and Technical Publishers' (any-')'){0,10}')'|'(Shanghai Scientific & Technical Publishers' (any-')'){0,10}')'|'(S.~Hawking and M.~Rov{c}ek' (any-')'){0,10}')'|'(Shelter Island' (any-')'){0,10}')'|'(Shiva Publishing Limited' (any-')'){0,10}')'|'(Shiva Publishing Limited, Orpington' (any-')'){0,10}')'|'(  Shokado, Tokyo' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(  Shokado, Tokyo' (any-')'){0,10}')'|'(Shumen, Bulgaria' (any-')'){0,10}')'|'(SIAM, Bristol' (any-')'){0,10}')'|'(SIAM Press, Philadelphia' (any-')'){0,10}')'|'(Sijthoff & Noordhoof' (any-')'){0,10}')'|'(Singapore, New Jersey, Hong Kong' (any-')'){0,10}')'|'(Singapore, Singapore: World Scientific' (any-')'){0,10}')'|'(Singapore,  World Scientific' (any-')'){0,10}')'|'(SISSA, Trieste' (any-')'){0,10}')'|'(SLAC, Stanford' (any-')'){0,10}')'|'({sl Birkh"auser},~Basel' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({sl Birkh"auser},~Basel' (any-')'){0,10}')'|'(Society for Industrial and Applied Mathematics, Philadelphia' (any-')'){0,10}')'|'(Sogang Univ.' (any-')'){0,10}')'|'(South Hadley, MA' (any-')'){0,10}')'|'(Soviet Math. Dokl. {bf 36}' (any-')'){0,10}')'|'(Soviet Physics JETP. {bf 42}' (any-')'){0,10}')'|'(Soviet Physics Uspekhi' (any-')'){0,10}')'|'(Soviet Physics Uspekhi {bf 35}' (any-')'){0,10}')'|'(Soviet Scientific Reviews A' (any-')'){0,10}')'|'(Sov. J. Contemp. Math. Anal. {bf 22}' (any-')'){0,10}')'|'(Sov. J. Contemp. Phys. {bf 22}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Sov. J. Contemp. Phys. {bf 22}' (any-')'){0,10}')'|'(Sov. J. Nucl. Phys. {bf 35}' (any-')'){0,10}')'|'(Sov.Phys.Dokl.{bf 8}' (any-')'){0,10}')'|'(Sov.Phys.Dolk.{bf 37}' (any-')'){0,10}')'|'(Sov. Phys. JETP 42' (any-')'){0,10}')'|'(Sov. Phys. JETP {bf 20}' (any-')'){0,10}')'|'(Sov. Phys. JETP {bf 42}' (any-')'){0,10}')'|'(Sov. Phys. JETP {bf 7}' (any-')'){0,10}')'|'(Sov. Phys. JETP, V. 48' (any-')'){0,10}')'|'(Spektrum Akad.Verl.' (any-')'){0,10}')'|'(Spinger Verlag' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Spinger Verlag' (any-')'){0,10}')'|'(Spinger-Verlag, Berlin' (any-')'){0,10}')'|'(Spinger-Verlag, New York' (any-')'){0,10}')'|'(Spriger-Verlag, Berlin' (any-')'){0,10}')'|'(Spriner-Verlag, Berlin' (any-')'){0,10}')'|'(Springer, 2002' (any-')'){0,10}')'|'( Springer,Berlin' (any-')'){0,10}')'|'(Spring-er, Berlin' (any-')'){0,10}')'|'(Springer,  Berlin' (any-')'){0,10}')'|'(Springer,- Berlin' (any-')'){0,10}')'|'(Springer, Berlin, 1992[1st ed.]' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer, Berlin, 1992[1st ed.]' (any-')'){0,10}')'|'(Springer, Berlin, 3rd Edition' (any-')'){0,10}')'|'(Springer, Berlin etc.' (any-')'){0,10}')'|'(Springer, Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer, Berlin Heidelberg New York' (any-')'){0,10}')'|'(Springer, Berlin--Heidelberg--New York' (any-')'){0,10}')'|'(Springer, Berlin/Heidelberg/New York' (any-')'){0,10}')'|'(Springer, Berlin - New York' (any-')'){0,10}')'|'(Springer Graduate Texts in Mathematics 42' (any-')'){0,10}')'|'(Springer: Heidelberg' (any-')'){0,10}')'|'(Springer International, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer International, Berlin' (any-')'){0,10}')'|'(Springer International Students Edition, New Delhi' (any-')'){0,10}')'|'(Springer Lect. Notes in Nonlinear Dynamics' (any-')'){0,10}')'|'(Springer lecture Notes in Physics' (any-')'){0,10}')'|'(Springer Lecture Notes in Physics $# 280$' (any-')'){0,10}')'|'(Springer Lecture Notes in Physics {bf 180}' (any-')'){0,10}')'|'(Springer Lecture Notes Math. {bf 1510}' (any-')'){0,10}')'|'(Springer, London' (any-')'){0,10}')'|'( Springer, NewYork' (any-')'){0,10}')'|'(Sprin-ger, New York' (any-')'){0,10}')'|'(Springer, New-York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer, New-York' (any-')'){0,10}')'|'(Springer, NewYork' (any-')'){0,10}')'|'(Springer, New York--Berlin--Heidelberg--Tokyo' (any-')'){0,10}')'|'(Springer, New York etc.' (any-')'){0,10}')'|'(Springer, New York/ Heidelberg/ Berlin' (any-')'){0,10}')'|'( Springer New York, Springer' (any-')'){0,10}')'|'(Springer, New York/Wien' (any-')'){0,10}')'|'(Springer Publishers, Heidelberg' (any-')'){0,10}')'|'(Springer Ser. Nonlinear Dynamics, Springer' (any-')'){0,10}')'|'( Springer--Verlag' (any-')'){0,10}')'|'(Springer- Verlag' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer- Verlag' (any-')'){0,10}')'|'(Springer-Verlag ' (any-')'){0,10}')'|'(Springer-Verlag, 1966' (any-')'){0,10}')'|'(Springer-Verlag, 1968' (any-')'){0,10}')'|'(Springer Verlag 1993' (any-')'){0,10}')'|'(Springer Verlag, 1994' (any-')'){0,10}')'|'(Springer-Verlag, 2nd Ed.' (any-')'){0,10}')'|'(Springer-Verlag, 4th edition' (any-')'){0,10}')'|'(Springer-Verlag, ADDRESS' (any-')'){0,10}')'|'(Springer-Verlag, Berin' (any-')'){0,10}')'|'(Springer verlag, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer verlag, Berlin' (any-')'){0,10}')'|'(Springer-verlag, Berlin' (any-')'){0,10}')'|'( Springer Verlag, Berlin' (any-')'){0,10}')'|'({Springer-Verlag, Berlin' (any-')'){0,10}')'|'(Springer - Verlag, Berlin' (any-')'){0,10}')'|'(Springer Verlag, Berlin ' (any-')'){0,10}')'|'(Springer- Verlag, Berlin' (any-')'){0,10}')'|'(Springer-Verlag Berlin' (any-')'){0,10}')'|'(Springer-Verlag; Berlin' (any-')'){0,10}')'|'(Springer-Verlag: Berlin, 1989' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, 2nd edition' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer-Verlag, Berlin, 2nd edition' (any-')'){0,10}')'|'(Springer-Verlag, Berlin and Les Editions de Physique, Les Ulis' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, heidelberg' (any-')'){0,10}')'|'(Springer Verlag, Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer Verlag,Berlin Heidelberg' (any-')'){0,10}')'|'(Springer--Verlag, Berlin Heidelberg' (any-')'){0,10}')'|'(Springer--Verlag, Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag Berlin Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag; Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag,  Berlin-Heidelberg-New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer-Verlag,  Berlin-Heidelberg-New York' (any-')'){0,10}')'|'(Springer-Verlag, Berlin Heidelberg New York' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, Heidelberg, New York, NY' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, New York' (any-')'){0,10}')'|'(Springer Verlag, Bonn' (any-')'){0,10}')'|'(Springer-Verlage, Berlin' (any-')'){0,10}')'|'(Springer Verlag, EDP Sciences' (any-')'){0,10}')'|'(Springer--Verlag, Germany' (any-')'){0,10}')'|'(Springer Verlag, Heidelberg, New York' (any-')'){0,10}')'|'(Springer-Verlag, Heidelberg - New York' (any-')'){0,10}')'|'(Springer--Verlag, London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer--Verlag, London' (any-')'){0,10}')'|'( Springer-Verlag, New York' (any-')'){0,10}')'|'(Springer-Verlag, New-York' (any-')'){0,10}')'|'(Springer Verlag, New York-Berlin' (any-')'){0,10}')'|'(Springer-Verlag, New York, Berlin' (any-')'){0,10}')'|'(Springer-Verlag, New York-Berlin' (any-')'){0,10}')'|'(Springer Verlag, New York-Berlin - Heidelberg - Tokyo' (any-')'){0,10}')'|'(Springer-Verlag, New York, Berlin, Heidelberg, Tokyo' (any-')'){0,10}')'|'(Springer-verlag, New York, Heidelberg, 1990' (any-')'){0,10}')'|'(Springer-Verlag, New York, Heidelberg,  1990' (any-')'){0,10}')'|'( Springer-Verlag, New York, Heidelberg, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Springer-Verlag, New York, Heidelberg, Berlin' (any-')'){0,10}')'|'(Springer-Verlag New York, Inc.' (any-')'){0,10}')'|'(Springer-Verlag, New York, NY' (any-')'){0,10}')'|'(Springer-Verlag, New York, second edition' (any-')'){0,10}')'|'(Springer-Verlag, New York, Second Edition' (any-')'){0,10}')'|'(Springer-Verlag, New York, USA' (any-')'){0,10}')'|'(Springer Verlag, NY' (any-')'){0,10}')'|'(Springer-Verlag, NY' (any-')'){0,10}')'|'(Springer-Verlag, N.Y. etc.' (any-')'){0,10}')'|'(Springer-Verlag, Tokyo' (any-')'){0,10}')'|'(Springer--Verlag, Yew York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer--Verlag, Yew York' (any-')'){0,10}')'|'(Springer Verlang, Berlin' (any-')'){0,10}')'|'(Spring--Verlag, London' (any-')'){0,10}')'|'( Stanford California, July 26-August 6' (any-')'){0,10}')'|'(Stanford U.' (any-')'){0,10}')'|'(Stanford University report SU-ITP-93-13, gr-qc/9306035' (any-')'){0,10}')'|'(Stanford University report SU-ITP-93-1, hep-th/9301082' (any-')'){0,10}')'|'(Stichting Mathematisch Centrum, Amsterdam' (any-')'){0,10}')'|'(Stony Brook, NY' (any-')'){0,10}')'|'(St. Petersburg' (any-')'){0,10}')'|'(St.Petersburg State University' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(St.Petersburg State University' (any-')'){0,10}')'|'(St. Petersburg University Press, St. Petersburg' (any-')'){0,10}')'|'(St.-Petersburg University Press, St.-Petersburg' (any-')'){0,10}')'|'(S.-T. Yau' (any-')'){0,10}')'|'(summer school at Poiana Brasov' (any-')'){0,10}')'|'(SUNY Press, Albany' (any-')'){0,10}')'|'(Supringer, New York' (any-')'){0,10}')'|'(SUSSP Publications' (any-')'){0,10}')'|'(S. Yau' (any-')'){0,10}')'|'(Syracuse University, Syracuse' (any-')'){0,10}')'|'(Taiyuan, China' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Taiyuan, China' (any-')'){0,10}')'|'(Talk given at Cargese Summer School' (any-')'){0,10}')'|'(Talk given on the $XXX$ PNPI Winter School' (any-')'){0,10}')'|'(TASI Publications, Ann Arbor, Michigan' (any-')'){0,10}')'|'( Tata Institute Fundamental Research, India' (any-')'){0,10}')'|'(Tata McGraw-Hill, New-Delhi' (any-')'){0,10}')'|'(Taylor and Francis' (any-')'){0,10}')'|'(Taylor and Francis, London' (any-')'){0,10}')'|'(Technion, Haifa' (any-')'){0,10}')'|'(Techniques of physics' (any-')'){0,10}')'|'(Teor. i Mat. Fiz. {bf 50}' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Teor. i Mat. Fiz. {bf 50}' (any-')'){0,10}')'|'(Teor. i Mat. Fiz. {bf 94}' (any-')'){0,10}')'|'(Teor. Mat. Fiz. {bf 64}' (any-')'){0,10}')'|'(Teubner, Berlin' (any-')'){0,10}')'|'(Teubner, Stuttgart' (any-')'){0,10}')'|'(Texas A&M' (any-')'){0,10}')'|'(Texas AM Press' (any-')'){0,10}')'|'(Texas A&M University, College Station' (any-')'){0,10}')'|'(Texas A&M University, College Station, Texas' (any-')'){0,10}')'|'(Texas Univ. Press, Austin' (any-')'){0,10}')'|'(Texel Island' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Texel Island' (any-')'){0,10}')'|'(The 2-nd Wigner Symp., Goslar' (any-')'){0,10}')'|'(The American Mathematical Society' (any-')'){0,10}')'|'(The Australian National University' (any-')'){0,10}')'|'(The Benjamin/Cummings, Menlo Park, California' (any-')'){0,10}')'|'(The Benjamin/Cummings Publ. Co. Inc., Massachusets, USA' (any-')'){0,10}')'|'(The Benjamin/Cummings Publishing Company' (any-')'){0,10}')'|'(The Benjamin/Cummings Publishing, Reading' (any-')'){0,10}')'|'(The Benjamin/Cummings, Reading, MA' (any-')'){0,10}')'|'(The Clarendon Press, Oxford' (any-')'){0,10}')'|'(The Institute of Physics Publishing, Bristol' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(The Institute of Physics Publishing, Bristol' (any-')'){0,10}')'|'(The Macmillan Company, New York' (any-')'){0,10}')'|'(The MIT press, Cambridge' (any-')'){0,10}')'|'(The MIT Press, Cambridge, Massachusetts' (any-')'){0,10}')'|'(the Niels Bohr Institute' (any-')'){0,10}')'|'(The Niels Bohr Institute' (any-')'){0,10}')'|'(Theor. and Math Fiz. {bf 92}' (any-')'){0,10}')'|'(Theor. and Math. Fiz. {bf 92}' (any-')'){0,10}')'|'(Theoretical Physics Seminar in Trondheim, No. 13' (any-')'){0,10}')'|'(Theor. Math. Phys. {bf 86}' (any-')'){0,10}')'|'(Theor. Phys. Dept.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Theor. Phys. Dept.' (any-')'){0,10}')'|'(thesis, Leiden' (any-')'){0,10}')'|'(The University of Chicago Press, Chicago and London' (any-')'){0,10}')'|'(The University of Chicago Press, Chicago, IL' (any-')'){0,10}')'|'(The University Press of Virginia' (any-')'){0,10}')'|'(The Univ. of Chicago Press' (any-')'){0,10}')'|'(The Unviersity Press of Virginia Charlottesville' (any-')'){0,10}')'|'(third edition' (any-')'){0,10}')'|'(third edition, Springer, Berlin' (any-')'){0,10}')'|'(Th.~M. Rassias' (any-')'){0,10}')'|'(tilde d' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(tilde d' (any-')'){0,10}')'|'({tilde d}' (any-')'){0,10}')'|'(Timisoara, Romania' (any-')'){0,10}')'|'(Tirrenia, Pisa' (any-')'){0,10}')'|'(to appear' (any-')'){0,10}')'|'(to appear in a special issue of``Chaos' (any-')'){0,10}')'|'(to appear in Comm.,Math.|(to appear in {em Theor. Math. Phys.}' (any-')'){0,10}')'|'(to appear in J. Math. Phys.' (any-')'){0,10}')'|'(to appear in J.,Op.|(to appear in Nucl.Phys. B' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(to appear in Nucl.Phys. B' (any-')'){0,10}')'|'(to appear in Phys. Rev. {bf A}' (any-')'){0,10}')'|'(to appear in the Proceedings' (any-')'){0,10}')'|'(to appear in the Proceedings of the II LASSF, Caracas' (any-')'){0,10}')'|'(to appear on Phys. Rev. D' (any-')'){0,10}')'|'(to be published by World Scientific' (any-')'){0,10}')'|'(to be published from AMS/CMI' (any-')'){0,10}')'|'(to be published in Found.Phys.' (any-')'){0,10}')'|'(Tohoku univ.' (any-')'){0,10}')'|'(Tohoku University' (any-')'){0,10}')'|'(Tohoku University, Japan' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Tohoku University, Japan' (any-')'){0,10}')'|'(Tohoku University report TU/93/440, hep-th/9307181' (any-')'){0,10}')'|'(Tokyo Institute of Technology' (any-')'){0,10}')'|'(Tokyo, Iwanami Shoten' (any-')'){0,10}')'|'(Tokyo University report, hep-th/9302101' (any-')'){0,10}')'|'(Toronto, ON' (any-')'){0,10}')'|'(Toronto University Press' (any-')'){0,10}')'|'(Trans. Am. Math. Soc., Ser. 2' (any-')'){0,10}')'|'(translated by A.~D.~King' (any-')'){0,10}')'|'(translated by Earle Raymond Hedrick' (any-')'){0,10}')'|'(translation from Izv. Vyssh. Uchebn. Zaved.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(translation from Izv. Vyssh. Uchebn. Zaved.' (any-')'){0,10}')'|'(Translations of Mathematical Monographs, Vol. 40 AMS' (any-')'){0,10}')'|'(transl.: JEPT Lett. {bf 12}' (any-')'){0,10}')'|'(transl. : Leningrad Math. J. {bf 1}' (any-')'){0,10}')'|'(transl. : Sov. J. Nucl. Phys. {bf 43}' (any-')'){0,10}')'|'(Trieste, July' (any-')'){0,10}')'|'(Trieste Seminar' (any-')'){0,10}')'|'(T.R. Taylor' (any-')'){0,10}')'|'(Tsukuba, Japan' (any-')'){0,10}')'|'({tt Hypergeometric1F1[a,b' (any-')'){0,10}')'|'(TU Darmstadt' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(TU Darmstadt' (any-')'){0,10}')'|'(TUM--TH--123/91 ' (any-')'){0,10}')'|'(TUM--TH 125/91' (any-')'){0,10}')'|'(Turin University' (any-')'){0,10}')'|'(Turku, Finland' (any-')'){0,10}')'|'(U. Jannsen, S. Kleiman, J.-P.  Serre' (any-')'){0,10}')'|'(UNAM Press; Mexico City' (any-')'){0,10}')'|'(UNESCO, St. Petersburg U., Euro-Asian Physical Society' (any-')'){0,10}')'|'(Ungar, New York' (any-')'){0,10}')'|'(Univ. Acad. Press' (any-')'){0,10}')'|'(Univ. Chicago, Chicago' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Univ. Chicago, Chicago' (any-')'){0,10}')'|'(Univ. di Como, Como, Italy' (any-')'){0,10}')'|'(Universal Academy Press' (any-')'){0,10}')'|'(Universal Academy Press, Tokyo' (any-')'){0,10}')'|'(Universit`a Statale di Catania; Catania' (any-')'){0,10}')'|'(Universit"at Bonn' (any-')'){0,10}')'|'(Universit"at Hamburg' (any-')'){0,10}')'|'(University Lecture Series' (any-')'){0,10}')'|'(University of Arizona preprint' (any-')'){0,10}')'|'(University of California Press, Berkely' (any-')'){0,10}')'|'(University of Cambridge report, hep-th/9304084' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(University of Cambridge report, hep-th/9304084' (any-')'){0,10}')'|'(University of Chicago' (any-')'){0,10}')'|'(University of Chicago, Chicago' (any-')'){0,10}')'|'(University of ChicagoPress' (any-')'){0,10}')'|'(University of Chicago Press, USA' (any-')'){0,10}')'|'(University of Chicago report EFI 93-42, gr-qc/9307038' (any-')'){0,10}')'|'(University of Illinois Press, Urbana' (any-')'){0,10}')'|'(University of Leuven Press' (any-')'){0,10}')'|'(University of Manitoba, Winnipeg' (any-')'){0,10}')'|'(University of Paris-Sud, Orsay' (any-')'){0,10}')'|'(University of Priv stina' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(University of Priv stina' (any-')'){0,10}')'|'(University of Texas at Austin' (any-')'){0,10}')'|'(University of Texas report UTTG-22-93, hep-th/9307143' (any-')'){0,10}')'|'( University of Tokio Press, Tokio, Springer, Berlin' (any-')'){0,10}')'|'(University of Tokyo Press, Tokyo' (any-')'){0,10}')'|'(University of Tokyo Press, Tokyo, Springer' (any-')'){0,10}')'|'(University of Tokyo Press, Tokyo, Springer, Berlin' (any-')'){0,10}')'|'(University of Tokyo Press,Tokyo;Springer,Berlin' (any-')'){0,10}')'|'(University of Tokyo, Tokyo' (any-')'){0,10}')'|'(University of Udmurtia, Izhevsk' (any-')'){0,10}')'|'(University of Utah report' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(University of Utah report' (any-')'){0,10}')'|'(University of Utrecht' (any-')'){0,10}')'|'(University of Washington' (any-')'){0,10}')'|'(University of Washington Press' (any-')'){0,10}')'|'(University of Waterloo, Waterloo' (any-')'){0,10}')'|'(University of Wisconsin Press, Madison' (any-')'){0,10}')'|'(University Press, Cambridge, UK' (any-')'){0,10}')'|'(University Press, Chicago' (any-')'){0,10}')'|'(University Press of Tokyo' (any-')'){0,10}')'|'(University Press, Oxford' (any-')'){0,10}')'|'(University Press, Princeton, NJ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(University Press, Princeton, NJ' (any-')'){0,10}')'|'(University Publ. House' (any-')'){0,10}')'|'(University Publ.House' (any-')'){0,10}')'|'(University Publ.House, Moscow' (any-')'){0,10}')'|'(University Science Books, Mill Valley' (any-')'){0,10}')'|'(Univers. of Tokyo Press, Springer-Verlag, Berlin' (any-')'){0,10}')'|'(Univ. Laval' (any-')'){0,10}')'|'(Univ. Montreal' (any-')'){0,10}')'|'(Univ. of California Press, Berkeley' (any-')'){0,10}')'|'(Univ. of Chicago Press, Chicago' (any-')'){0,10}')'|'(Univ. of Colorado Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Univ. of Colorado Press' (any-')'){0,10}')'|'(Univ. of North Carolina' (any-')'){0,10}')'|'(Univ. of Texas Press' (any-')'){0,10}')'|'(Univ. of Tokyo Press, Tokyo' (any-')'){0,10}')'|'(Univ. of Toronto Press' (any-')'){0,10}')'|'(Univ. of Twente' (any-')'){0,10}')'|'(Univ. of Utrecht' (any-')'){0,10}')'|'(Univ. Toronto Press' (any-')'){0,10}')'|'(unpublished, file moment3.tex' (any-')'){0,10}')'|'(unpublished, Hannover' (any-')'){0,10}')'|'(unpublished notes' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(unpublished notes' (any-')'){0,10}')'|'(Unpublished notes' (any-')'){0,10}')'|'(Unpublished Notes' (any-')'){0,10}')'|'(unpublished Ph.D. thesis, University of Guelph' (any-')'){0,10}')'|'(Un. Twente' (any-')'){0,10}')'|'(U. of Chicago Press' (any-')'){0,10}')'|'(URSS Publ., Moscow' (any-')'){0,10}')'|'(U.S. Government Printing Office, Washington' (any-')'){0,10}')'|'(U.S. Government Printing Office, Washington, D.C.' (any-')'){0,10}')'|'(U. S. GPO, Washington, D.C.' (any-')'){0,10}')'|'(US National Bureau of Standards, Washington' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(US National Bureau of Standards, Washington' (any-')'){0,10}')'|'(Uspekhi Math. Nauk. {bf 31}:4' (any-')'){0,10}')'|'(U. Sussex' (any-')'){0,10}')'|'(UWO/NUIG report, 2002' (any-')'){0,10}')'|'(UWP/UM report, 2002' (any-')'){0,10}')'|'(Van Nostrand Co., New York' (any-')'){0,10}')'|'(van Nostrand, London' (any-')'){0,10}')'|'(Van Nostrand, London' (any-')'){0,10}')'|'(Van Nostrand Reinhold Company' (any-')'){0,10}')'|'(Van Nostrand Reinhold Company, London' (any-')'){0,10}')'|'(V. Arnold' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(V. Arnold' (any-')'){0,10}')'|'(V. Bargmann' (any-')'){0,10}')'|'(VCH, New York' (any-')'){0,10}')'|'(VCH Press, New York' (any-')'){0,10}')'|'(VCH, Weinheim' (any-')'){0,10}')'|'(V. Dietrich, K. Habetha' (any-')'){0,10}')'|'(vec r|(Verlag Harri Deutsch, Frankfurt' (any-')'){0,10}')'|'(Verlag von Julius Springer, Berlin' (any-')'){0,10}')'|'(version 3 of 20th of June' (any-')'){0,10}')'|'(Vestn. Mosk. Univ.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Vestn. Mosk. Univ.' (any-')'){0,10}')'|'(V. G. Kac' (any-')'){0,10}')'|'(V.I. Arnold' (any-')'){0,10}')'|'(Vienna, Austria' (any-')'){0,10}')'|'(Vieweg: Braunschweig' (any-')'){0,10}')'|'(Viking, New York' (any-')'){0,10}')'|'(VINITI, Moscow' (any-')'){0,10}')'|'(Vintage, London' (any-')'){0,10}')'|'(V.  Kav c' (any-')'){0,10}')'|'(Vladivostok, Russia' (any-')'){0,10}')'|'(vol. 1' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(vol. 1' (any-')'){0,10}')'|'(Vol.I, Academic Press' (any-')'){0,10}')'|'(vols. 1' (any-')'){0,10}')'|'(vols. I' (any-')'){0,10}')'|'(VSP Int. Science Publ.' (any-')'){0,10}')'|'(Vyshcha Shkola, Kiev' (any-')'){0,10}')'|'(W A Benjamin' (any-')'){0,10}')'|'(W. A. Benjamin' (any-')'){0,10}')'|'(W. A. Benjamin' (any-')'){0,10}')'|'(W. A. Benjamin Inc.' (any-')'){0,10}')'|'(W.~A. Benjamin, Inc.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W.~A. Benjamin, Inc.' (any-')'){0,10}')'|'(W.A.Benjamin Inc., Massachusetts' (any-')'){0,10}')'|'(W.A.Benjamin, Inc., Massachusetts' (any-')'){0,10}')'|'(W. A. Benjamin Inc., New York' (any-')'){0,10}')'|'(W.A. Benjamin Inc., New York' (any-')'){0,10}')'|'(W.A.~Benjamin Inc., New York' (any-')'){0,10}')'|'(W.A.Benjamin Inc., New York' (any-')'){0,10}')'|'(W. A. Benjamin, Inc., New York-Amsterdam' (any-')'){0,10}')'|'(W.A.Benjamin Inc. New York-Amsterdam' (any-')'){0,10}')'|'(W. A. Benjamin Inc., Reading, Mass.' (any-')'){0,10}')'|'(W. A. Benjamin, Inc., Reading, Mass.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W. A. Benjamin, Inc., Reading, Mass.' (any-')'){0,10}')'|'(W.A. Benjamin, N.Y.' (any-')'){0,10}')'|'(W.~A.~Benjamin Publ., NY' (any-')'){0,10}')'|'(W.A. Benjamin, Reading, MA' (any-')'){0,10}')'|'(W.A. Benjamin, Reading, Massachusetts' (any-')'){0,10}')'|'(Walter de Grutyer, Berlin' (any-')'){0,10}')'|'(Walter de Gruyter, Berlin' (any-')'){0,10}')'|'(Warsaw U.' (any-')'){0,10}')'|'( Warszawa' (any-')'){0,10}')'|'(Washington, D.C.: US GPO, Dover' (any-')'){0,10}')'|'(W. Barth, K. Hulek and H. Lange' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W. Barth, K. Hulek and H. Lange' (any-')'){0,10}')'|'(W. B. Saunders Co., Philadelphia, PA' (any-')'){0,10}')'|'(W. de Gruyter, Berlin' (any-')'){0,10}')'|'(Weidenfeld and Nicolson and Basic Books, London and New York' (any-')'){0,10}')'|'(Wesley, Massachusetts' (any-')'){0,10}')'|'(Western Periodicals Co.' (any-')'){0,10}')'|'(Westview Press, Boulder' (any-')'){0,10}')'|'(where the $SO(1' (any-')'){0,10}')'|'(W. H. Freeman and company' (any-')'){0,10}')'|'(W.H. Freeman and Company' (any-')'){0,10}')'|'(W. H. Freeman and Company, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W. H. Freeman and Company, New York' (any-')'){0,10}')'|'(W.~H.~Freeman and Company, New York' (any-')'){0,10}')'|'(W.H. Freeman and Company, New York' (any-')'){0,10}')'|'(W. H. Freeman and Company, San Francisco' (any-')'){0,10}')'|'(W.H. Freeman and Company, San Francisco' (any-')'){0,10}')'|'(W.H. Freeman and Co., New York, NY' (any-')'){0,10}')'|'(W. H. Freeman and Co., San Francisco' (any-')'){0,10}')'|'(W.H. Freeman and Co., San Francisco' (any-')'){0,10}')'|'(W.H.Freeman & Company' (any-')'){0,10}')'|'(W.H. Freeman Co., San Francisco' (any-')'){0,10}')'|'(W. H. Freeman, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W. H. Freeman, New York' (any-')'){0,10}')'|'(W. H. Freeman, San Francisco' (any-')'){0,10}')'|'(W.H.~Freeman, San Francisco' (any-')'){0,10}')'|'( Wiley' (any-')'){0,10}')'|'(Wiley and Sons, New York' (any-')'){0,10}')'|'(Wiley Eastern' (any-')'){0,10}')'|'(Wiley Eastern Ltd.' (any-')'){0,10}')'|'(Wiley Eastern Ltd., New Delhi' (any-')'){0,10}')'|'(Wiley Eastren Ltd., New Delhi' (any-')'){0,10}')'|'(Wiley-Interscience, John Wiley & Sons, New York' (any-')'){0,10}')'|'(Wiley--Interscience, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Wiley--Interscience, New York' (any-')'){0,10}')'|'(Wiley~-Interscience, New~York' (any-')'){0,10}')'|'(Wiley-Interscience Publ.' (any-')'){0,10}')'|'(Wiley-Interscience Publication' (any-')'){0,10}')'|'(Wiley, London ' (any-')'){0,10}')'|'(}Wiley, New York' (any-')'){0,10}')'|'(Wiley, NewYork' (any-')'){0,10}')'|'( Wiley, New Yorl' (any-')'){0,10}')'|'(Wiley, N-Y' (any-')'){0,10}')'|'(Wiley & Sons, New York' (any-')'){0,10}')'|'(WILEY-VCH Verlag, Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(WILEY-VCH Verlag, Berlin' (any-')'){0,10}')'|'(Wiley-VCH, Weinheim' (any-')'){0,10}')'|'(Wilmington, DE, Publish or Perish' (any-')'){0,10}')'|'(Wissenschaftsverlag, Mannheim, Wien, Z"{u}rich' (any-')'){0,10}')'|'(W.M. Freedman' (any-')'){0,10}')'|'(W.M. Freeman' (any-')'){0,10}')'|'(W.M. Freeman, San Francisco' (any-')'){0,10}')'|'(Wold Scientific, Singapore' (any-')'){0,10}')'|'(Wolfram Media---Cambridge University Press' (any-')'){0,10}')'|'(Wolfram Media/Cambridge University Press' (any-')'){0,10}')'|'(Wolfram Research, Inc., Champaign' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Wolfram Research, Inc., Champaign' (any-')'){0,10}')'|'(Word Scientific' (any-')'){0,10}')'|'(Word Scientific Publishing Company, Singapore' (any-')'){0,10}')'|'(Word Scientific, Singapore' (any-')'){0,10}')'|'(Word Sientific, Singapore' (any-')'){0,10}')'|'(World Publishing' (any-')'){0,10}')'|'(World Sc ' (any-')'){0,10}')'|'(World Sci' (any-')'){0,10}')'|'(World Scientfic' (any-')'){0,10}')'|'(World Scientifc' (any-')'){0,10}')'|'(World Scientifc, Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientifc, Singapore' (any-')'){0,10}')'|'(world scientific' (any-')'){0,10}')'|'(}World Scientific' (any-')'){0,10}')'|'(World Scientific ' (any-')'){0,10}')'|'(World Scientific,1991' (any-')'){0,10}')'|'(World Scientific, 1995' (any-')'){0,10}')'|'(World Scientific, 1996' (any-')'){0,10}')'|'(World Scientific, Berlin' (any-')'){0,10}')'|'(World Scientific Co.' (any-')'){0,10}')'|'(World Scientific Co. 1988' (any-')'){0,10}')'|'(World Scientific Co. 1990' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific Co. 1990' (any-')'){0,10}')'|'(World Scientific Co., 1996' (any-')'){0,10}')'|'(World Scientific Co. Singapore' (any-')'){0,10}')'|'(World Scientific,ingapore' (any-')'){0,10}')'|'(World Scientific, London' (any-')'){0,10}')'|'(World Scientific, London and Singapore' (any-')'){0,10}')'|'(World Scientific, London-New York-Singapore' (any-')'){0,10}')'|'(World Scientific, New Jersey' (any-')'){0,10}')'|'(World Scientific, New York' (any-')'){0,10}')'|'(World Scientific, NY' (any-')'){0,10}')'|'(World Scientific P.C.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific P.C.' (any-')'){0,10}')'|'(World Scientific Press' (any-')'){0,10}')'|'(World Scientific Press, Singapore' (any-')'){0,10}')'|'(World Scientific Pub.' (any-')'){0,10}')'|'(World Scientific Pub Co.' (any-')'){0,10}')'|'(World Scientific Pub. Co.,  Singapore' (any-')'){0,10}')'|'(World Scientific Publ.' (any-')'){0,10}')'|'(World Scientific Publ. Co., Signapore' (any-')'){0,10}')'|'(World Scientific, Publ. Co., Singapore' (any-')'){0,10}')'|'(World Scientific Publication Co. Singapore' (any-')'){0,10}')'|'( World Scientific Publishing Co.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( World Scientific Publishing Co.' (any-')'){0,10}')'|'(World Scientific Publishing Co., Aachen, 1992' (any-')'){0,10}')'|'(World Scientific Publishing Co. Pte.Ltd., London' (any-')'){0,10}')'|'(World Scientific Publishing Co. Sinapore' (any-')'){0,10}')'|'(World Scientific Publ., Singapore' (any-')'){0,10}')'|'(World Scientific Pub., Singapore' (any-')'){0,10}')'|'(World Scientific, River Edge' (any-')'){0,10}')'|'(World Scientific, River Edge, N.J.' (any-')'){0,10}')'|'(World Scientifics' (any-')'){0,10}')'|'(World Scientific, Singapor' (any-')'){0,10}')'|'(World Scientific, singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific, singapore' (any-')'){0,10}')'|'( World Scientific, Singapore ' (any-')'){0,10}')'|'(World Scientific Singapore' (any-')'){0,10}')'|'(World Scientific, Singa-pore' (any-')'){0,10}')'|'(World Scientific., Singapore' (any-')'){0,10}')'|'(World~Scientific, Singapore' (any-')'){0,10}')'|'(World Scientific, Singapore, 1986' (any-')'){0,10}')'|'(World Scientific, Singapore, 1987' (any-')'){0,10}')'|'(World Scientific, Singapore, 1991' (any-')'){0,10}')'|'(World Scientific, Singapore, 2000' (any-')'){0,10}')'|'(World Scientific, Singapore, New Jersey, Hong Kong' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific, Singapore, New Jersey, Hong Kong' (any-')'){0,10}')'|'(World Scientific, Singapore, second revised edition' (any-')'){0,10}')'|'( World Scientific, Singapure' (any-')'){0,10}')'|'(World Scientific, Singapure, 187' (any-')'){0,10}')'|'(World Scientific, Singapure, New Jersey, London' (any-')'){0,10}')'|'(World Scientific, Singpore' (any-')'){0,10}')'|'(World Scientifmbox{}ic, New Jersey' (any-')'){0,10}')'|'(World Scientifuc, Singapore' (any-')'){0,10}')'|'(World Scient. Singapore' (any-')'){0,10}')'|'(World Scient.; Singapore' (any-')'){0,10}')'|'(World Scietific, Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scietific, Singapore' (any-')'){0,10}')'|'(World Scintific, Singapore' (any-')'){0,10}')'|'(World Sci., Philadelphia' (any-')'){0,10}')'|'(World Sci. Publ. Co, Singapore' (any-')'){0,10}')'|'(World Sci. Publishing, River Edge, NJ' (any-')'){0,10}')'|'(World Sci. Pub., Singapore' (any-')'){0,10}')'|'(World-Sci., Singapore' (any-')'){0,10}')'|'(World Sci., Singapoure' (any-')'){0,10}')'|'(World Sc. Publ. Co.' (any-')'){0,10}')'|'(World Sc.  Publ. Co., Singapore' (any-')'){0,10}')'|'(World Sc. Publ.  Co., Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Sc. Publ.  Co., Singapore' (any-')'){0,10}')'|'(World Sc. Publ. Co., Singapore' (any-')'){0,10}')'|'(World Sc., Singapore' (any-')'){0,10}')'|'(World Sientific' (any-')'){0,10}')'|'(World Sientific, Singapore' (any-')'){0,10}')'|'(Worlds Scientific, Singapore' (any-')'){0,10}')'|'(Worlk Scientific' (any-')'){0,10}')'|'(Worl Scientific, Singapore' (any-')'){0,10}')'|'(Worls Scientific, Singapore' (any-')'){0,10}')'|'(Wourld Sci., Singapure' (any-')'){0,10}')'|'( Wroclav' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Wroclav' (any-')'){0,10}')'|'(W. R"uhl' (any-')'){0,10}')'|'(WSPC, Singapore' (any-')'){0,10}')'|'(W.S., Singapore' (any-')'){0,10}')'|'(WUW; Wroclaw' (any-')'){0,10}')'|'(W.W. Norton and Co.' (any-')'){0,10}')'|'(~(w, x' (any-')'){0,10}')'|'(x_{1}, x_{2}' (any-')'){0,10}')'|'(x_1, x_2, cdots' (any-')'){0,10}')'|'(x+la w, x+la w' (any-')'){0,10}')'|'(XXXth Rencontre de Moriand' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(XXXth Rencontre de Moriand' (any-')'){0,10}')'|'(Yad. Fiz., 50' (any-')'){0,10}')'|'(Yale University Press' (any-')'){0,10}')'|'( Yale University Press, New Haven' (any-')'){0,10}')'|'(Yale University Press, New~Haven' (any-')'){0,10}')'|'(Yale University Press, New Haven, CT' (any-')'){0,10}')'|'(Yale Univ. Press' (any-')'){0,10}')'|'(Yale Univ. Press, New Haven, Conn.' (any-')'){0,10}')'|'(Yale U. P., New Haven' (any-')'){0,10}')'|'(Ya. S. Derbenev and A. M. Kondratenko, Zh. Eksp. Teor. Fiz. 64' (any-')'){0,10}')'|'(Yeschiva University' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Yeschiva University' (any-')'){0,10}')'|'(Yeshiva, New York' (any-')'){0,10}')'|'(Yeshiva Press, New York' (any-')'){0,10}')'|'(Yeshiva Univ.' (any-')'){0,10}')'|'( Yeshiva University' (any-')'){0,10}')'|'(Yeshiva University, Academic Press, New York' (any-')'){0,10}')'|'(Yeshiva University,\ New York ' (any-')'){0,10}')'|'(Yeshiva University, New York, N.Y.' (any-')'){0,10}')'|'(Yeshiva University, N.Y.' (any-')'){0,10}')'|'(Yeshiva University, NY' (any-')'){0,10}')'|'( Yeshiva Univ., NY ' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Yeshiva Univ., NY ' (any-')'){0,10}')'|'(Yeshiva Univ., NY' (any-')'){0,10}')'|'(Yeshiva Univ. Press, New York' (any-')'){0,10}')'|'(Yeshiva Univ. Press, New York' (any-')'){0,10}')'|'(Yeshive University, New York' (any-')'){0,10}')'|'(Yeshive University Press, New York' (any-')'){0,10}')'|'(Yesiva University Press' (any-')'){0,10}')'|'(Y.X. Gui, F.C. Khanna, Z.B. Su' (any-')'){0,10}')'|'(Zacatecas, Mexico' (any-')'){0,10}')'|'(Zakopane, Poland' (any-')'){0,10}')'|'(Zentrum H"ohere Studien, Leipzig' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Zentrum H"ohere Studien, Leipzig' (any-')'){0,10}')'|'(Z{" u}rich' (any-')'){0,10}')'|'(Academia Nazionale dei Lincei, Rome' (any-')'){0,10}')'|'(Academic, Boston' (any-')'){0,10}')'|'(Academic press' (any-')'){0,10}')'|'( Academic Press' (any-')'){0,10}')'|'(Academic Press, London, New York' (any-')'){0,10}')'|'(Academic Press,  New York' (any-')'){0,10}')'|'(Academic Press, New--York' (any-')'){0,10}')'|'(Academic Press, New-York' (any-')'){0,10}')'|'( Academic Press, New York and London' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Academic Press, New York and London' (any-')'){0,10}')'|'(Academic Press, New York, NY' (any-')'){0,10}')'|'(Academic Press, N.Y.' (any-')'){0,10}')'|'(Academic Press,N.Y.' (any-')'){0,10}')'|'(Academic Press, Orlando' (any-')'){0,10}')'|'(Acad. Press' (any-')'){0,10}')'|'(Adam Hilger, Bristol and New York' (any-')'){0,10}')'|'(Adam Hilger, Bristol, UK' (any-')'){0,10}')'|'(Addison-Wesley, London' (any-')'){0,10}')'|'(Addison-Wesley, Mass.' (any-')'){0,10}')'|'(Addison-Wesley Pub. Co.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison-Wesley Pub. Co.' (any-')'){0,10}')'|'( Addison-Wesley Publishing Company' (any-')'){0,10}')'|'(Addison-Wesley, Readings, MA' (any-')'){0,10}')'|'(Addison-Wesley, Redwood City, California' (any-')'){0,10}')'|'(A. Hilger, Bristol' (any-')'){0,10}')'|'(AIP Press, New York' (any-')'){0,10}')'|'(Allyn and Bacon, Boston' (any-')'){0,10}')'|'(American Institute of Physics, New York' (any-')'){0,10}')'|'(American Mathematical Society, Providence RI, USA' (any-')'){0,10}')'|'(Amer. Math. Soc., Providence, RI' (any-')'){0,10}')'|'(Amer. Math. Soc., Providence, RI' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Amer. Math. Soc., Providence, RI' (any-')'){0,10}')'|'(Am. Inst. Phys.' (any-')'){0,10}')'|'(Am. Math. Soc., Providence' (any-')'){0,10}')'|'(AMS, Berkeley' (any-')'){0,10}')'|'(AMS, Providence, Rhode Island' (any-')'){0,10}')'|'(AMS, Providence, RI' (any-')'){0,10}')'|'(Apeiron, Montreal' (any-')'){0,10}')'|'(Belfer graduate School, Yeshiba University Press, New York' (any-')'){0,10}')'|'(Benjamin - Cummings' (any-')'){0,10}')'|'(Benjamin-Cummings, Menlo Park' (any-')'){0,10}')'|'(Benjamin/Cummings Publishing Co.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin/Cummings Publishing Co.' (any-')'){0,10}')'|'(Benjamin-Cummings, Reading' (any-')'){0,10}')'|'(Benjamin-Cummings, Reading, MA' (any-')'){0,10}')'|'(Benjamin/Cummings, Reading, MA' (any-')'){0,10}')'|'(Benjamin/Cummings, Reading, Massachusetts' (any-')'){0,10}')'|'(Benjamin/Cunnings, Reading, MA' (any-')'){0,10}')'|'(Berkeley preprint' (any-')'){0,10}')'|'(Berlin: Springer-Verlag' (any-')'){0,10}')'|'(Bibliopolis, Naples' (any-')'){0,10}')'|'(Birkh"{a}user, Berlin' (any-')'){0,10}')'|'(Birkh"auser,  Boston' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Birkh"auser,  Boston' (any-')'){0,10}')'|'(Birkh"auser Verlag' (any-')'){0,10}')'|'(Birkhauser Verlag' (any-')'){0,10}')'|'(Butterworth-Heinemann, Oxford' (any-')'){0,10}')'|'(Calimanesti, Romania' (any-')'){0,10}')'|'(Cambridge, Cambridge' (any-')'){0,10}')'|'(Cambridge, London' (any-')'){0,10}')'|'(Cambridge, MA' (any-')'){0,10}')'|'(Cambridge Univ., Cambridge' (any-')'){0,10}')'|'(Cambridge university press' (any-')'){0,10}')'|'(Cambridge, University Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge, University Press' (any-')'){0,10}')'|'(Cambridge University  Press, Cambridge' (any-')'){0,10}')'|'( Cambridge University Press, Cambridge, England' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambridge, England' (any-')'){0,10}')'|'(Cambridge Univ. Press, London' (any-')'){0,10}')'|'(Cambridge UP, Cambridge' (any-')'){0,10}')'|'(Cambridge U. P., Cambridge UK' (any-')'){0,10}')'|'(Cambridge  U. Press' (any-')'){0,10}')'|'(Cambridge U.~Press, Cambridge' (any-')'){0,10}')'|'(Cambr. Univ. Press' (any-')'){0,10}')'|'(Cargese, France' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cargese, France' (any-')'){0,10}')'|'(Chelsea Publishing Company' (any-')'){0,10}')'|'(Chicago Univ. Press, Chicago' (any-')'){0,10}')'|'(Claredon, Oxford' (any-')'){0,10}')'|'(Clarendon Press, Oxford, UK' (any-')'){0,10}')'|'(Columbia University Press, New York' (any-')'){0,10}')'|'(Consultants Bureau, New York' (any-')'){0,10}')'|'(Contemporary concepts in physics' (any-')'){0,10}')'|'(Contemporary Concepts in Physics' (any-')'){0,10}')'|'(CRC, Boca Raton, FL' (any-')'){0,10}')'|'(de Gruyter' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(de Gruyter' (any-')'){0,10}')'|'(Diffusion C.C.L.S.' (any-')'){0,10}')'|'(Dordrecht, Kluwer Academic' (any-')'){0,10}')'|'(Dordrecht: Reidel' (any-')'){0,10}')'|'(Dover publications' (any-')'){0,10}')'|'(D. Reidel Publishing Company' (any-')'){0,10}')'|'(D. Reidel Publishing Company, Dordrecht' (any-')'){0,10}')'|'(Editions Frontieres' (any-')'){0,10}')'|'(Editions Mir' (any-')'){0,10}')'|'(Editorice Compositori, Bologna' (any-')'){0,10}')'|'(Editrice Compositori, Bologna' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Editrice Compositori, Bologna' (any-')'){0,10}')'|'(Ellis Horwood, Chichester' (any-')'){0,10}')'|'(Elsevier, New York' (any-')'){0,10}')'|'(English translation: {it Amer. Math. Soc. Trans. Series 2}, {bf 6}' (any-')'){0,10}')'|'(Freeman and Co, New York' (any-')'){0,10}')'|'(Freeman, New York' (any-')'){0,10}')'|'(Freeman, Sanfrancisco' (any-')'){0,10}')'|'(Freie Universit"{a}t Berlin' (any-')'){0,10}')'|'(Friedmann Laboratory Publishing, St. Petersburg' (any-')'){0,10}')'|'(Frontiers in Physics' (any-')'){0,10}')'|'(GIFML, Moskva' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(GIFML, Moskva' (any-')'){0,10}')'|'(Gordan and Breach, New York' (any-')'){0,10}')'|'(Gordon and Breach, N.Y.' (any-')'){0,10}')'|'(Gordon and Breach Science Publishers' (any-')'){0,10}')'|'(Gordon Breach' (any-')'){0,10}')'|'(Gostehizdat, Moscow' (any-')'){0,10}')'|'(Graduate Texts in Mathematics' (any-')'){0,10}')'|'(Hadronic Press' (any-')'){0,10}')'|'(Hadronic Press, Palm Harbor' (any-')'){0,10}')'|'(Harper & Row' (any-')'){0,10}')'|'(Harwood Academic, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Harwood Academic, New York' (any-')'){0,10}')'|'(Harwood Academic Publishers, New York' (any-')'){0,10}')'|'(Harwood, New York, NY' (any-')'){0,10}')'|'(IHEP, Protvino' (any-')'){0,10}')'|'(INFN, Frascati' (any-')'){0,10}')'|'(in Russian' (any-')'){0,10}')'|'(InterEditions, Paris' (any-')'){0,10}')'|'(Interscience Publ.' (any-')'){0,10}')'|'(Interscience Publishers' (any-')'){0,10}')'|'(IOP, Bristol and Philadelphia' (any-')'){0,10}')'|'(Iwanami, Tokyo' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Iwanami, Tokyo' (any-')'){0,10}')'|'(John Wiley $&$ Sons' (any-')'){0,10}')'|'(John Wiley & Sons, Inc.' (any-')'){0,10}')'|'(John Wiley & Sons, Inc., New York' (any-')'){0,10}')'|'(John Wiley & Sons,  New York' (any-')'){0,10}')'|'(KEK, Tsukuba' (any-')'){0,10}')'|'(Kluwer Academic, Dordrecht' (any-')'){0,10}')'|'(Kluwer Academic Publ., Dordrecht' (any-')'){0,10}')'|'(Kluwer Acad. Pub.' (any-')'){0,10}')'|'(Kluwer Acad. Publ., Dordrecht' (any-')'){0,10}')'|'(Kluwer, Boston' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Kluwer, Boston' (any-')'){0,10}')'|'(Kyoto Univ.' (any-')'){0,10}')'|'(London: Pergaman' (any-')'){0,10}')'|'(MacGraw-Hill, New York' (any-')'){0,10}')'|'(M.A. Shifman' (any-')'){0,10}')'|'(McGraw Hill' (any-')'){0,10}')'|'(McGraw-Hill Book Co., New York' (any-')'){0,10}')'|'(McGraw-Hill, NewYork' (any-')'){0,10}')'|'(Mc Graw-Hill, NY' (any-')'){0,10}')'|'(McGraw-Hill, N.Y.' (any-')'){0,10}')'|'(McGraw-Hill, San Francisco' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(McGraw-Hill, San Francisco' (any-')'){0,10}')'|'(McGraw-Hill, USA' (any-')'){0,10}')'|'(McGrow-Hill, New York' (any-')'){0,10}')'|'(MIR; Moscow' (any-')'){0,10}')'|'(MIT press' (any-')'){0,10}')'|'(M.I.T. Press' (any-')'){0,10}')'|'(MIT Press, Cambridge, MA' (any-')'){0,10}')'|'(Moscow: Energoatomizdat' (any-')'){0,10}')'|'(Moscow, Eneroizdat' (any-')'){0,10}')'|'(Moscow: Inst. Nuclear Research' (any-')'){0,10}')'|'(Moscow: Moscow State Univ.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Moscow: Moscow State Univ.' (any-')'){0,10}')'|'(Moscow State University' (any-')'){0,10}')'|'(Moscow State University, Moscow' (any-')'){0,10}')'|'(Moscow: Univer.Press' (any-')'){0,10}')'|'(National Bureau of Standards' (any-')'){0,10}')'|'(National Bureau of Standards, Washington' (any-')'){0,10}')'|'(NATO ASI Series B' (any-')'){0,10}')'|'( Nauka, Moscow' (any-')'){0,10}')'|'(Naukova Dumka, Kiev' (any-')'){0,10}')'|'(New York: Academic Press' (any-')'){0,10}')'|'(New York: Gordon and Breach' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York: Gordon and Breach' (any-')'){0,10}')'|'(New York, Plenum' (any-')'){0,10}')'|'(New York: Plenum Press' (any-')'){0,10}')'|'( North-Holland' (any-')'){0,10}')'|'(North-Holland, Amsterdam, The Netherlands' (any-')'){0,10}')'|'(North-Holland Publ. Co.' (any-')'){0,10}')'|'(North-Holland Publications' (any-')'){0,10}')'|'(North Holland Publishing, Amsterdam' (any-')'){0,10}')'|'(North-Holland Publishing Co.' (any-')'){0,10}')'|'(North-Holland--World Scientific' (any-')'){0,10}')'|'(North-Holland/World Scientific' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North-Holland/World Scientific' (any-')'){0,10}')'|'(Noth-Holland, Amsterdam' (any-')'){0,10}')'|'(Nova Science, New York' (any-')'){0,10}')'|'(Observatoire de Paris' (any-')'){0,10}')'|'(Oxford 1989' (any-')'){0,10}')'|'(Oxford, Clarendon' (any-')'){0,10}')'|'(Oxford, London' (any-')'){0,10}')'|'(Oxford Mathematical Monographs' (any-')'){0,10}')'|'(Oxford, New York' (any-')'){0,10}')'|'(Oxford, Oxford University Press' (any-')'){0,10}')'|'(Oxford: Oxford Univ. Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Oxford: Oxford Univ. Press' (any-')'){0,10}')'|'(Oxford Univ. Press, New York' (any-')'){0,10}')'|'(Oxford U.P., Oxford' (any-')'){0,10}')'|'(Pergammon, London' (any-')'){0,10}')'|'(Pergammon Press' (any-')'){0,10}')'|'(Pergamon press, Oxford' (any-')'){0,10}')'|'(Pergamon Press: Oxford' (any-')'){0,10}')'|'(Pergamon Press, Oxford and New York' (any-')'){0,10}')'|'(Ph.D. thesis' (any-')'){0,10}')'|'(PhD thesis' (any-')'){0,10}')'|'(Physical Society of Japan, Tokyo' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Physical Society of Japan, Tokyo' (any-')'){0,10}')'|'(Phys. Lett. B' (any-')'){0,10}')'|'(Phys. Soc. Japan, Tokyo' (any-')'){0,10}')'|'(Pitman, Boston' (any-')'){0,10}')'|'(Pitman, London' (any-')'){0,10}')'|'( Plenum' (any-')'){0,10}')'|'(Plenum, London' (any-')'){0,10}')'|'(Plenum, N.Y.' (any-')'){0,10}')'|'(Plenum Press, New-York' (any-')'){0,10}')'|'(Plenum Press, N.Y. and London' (any-')'){0,10}')'|'(Plenum Publishing Co., New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Plenum Publishing Co., New York' (any-')'){0,10}')'|'(Prentice-Hall, New Jersey' (any-')'){0,10}')'|'(Princeton Series in Physics' (any-')'){0,10}')'|'(Princeton University Press, New Jeresy, Princeton' (any-')'){0,10}')'|'(Princeton University Press, Princeton, N.J.' (any-')'){0,10}')'|'(Princeton University Press, Princeton, USA' (any-')'){0,10}')'|'(Princeton Univ. Press., Princeton' (any-')'){0,10}')'|'(Princeton Univ. Press, Princeton, New Jersey' (any-')'){0,10}')'|'(Princeton U.P., New Jersey' (any-')'){0,10}')'|'(Princeton U.P., Princeton' (any-')'){0,10}')'|'(Princeton UP, Princeton' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Princeton UP, Princeton' (any-')'){0,10}')'|'(Progress in Mathematics' (any-')'){0,10}')'|'(Progress in Physics' (any-')'){0,10}')'|'(Progress In Physics' (any-')'){0,10}')'|'(Publish or Perish Inc.' (any-')'){0,10}')'|'(PWN, Warszawa' (any-')'){0,10}')'|'(Reidel, Dordrecht, Netherlands' (any-')'){0,10}')'|'(Row, Peterson and Co $bullet$ Evanston, Ill., Elmsford' (any-')'){0,10}')'|'(San Francisco' (any-')'){0,10}')'|'(Santa Barbara' (any-')'){0,10}')'|'(S. Catto and A. Rocha' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(S. Catto and A. Rocha' (any-')'){0,10}')'|'(Scuola Normale Superiore, Pisa' (any-')'){0,10}')'|'(see [7]' (any-')'){0,10}')'|'(see also cite{kardar' (any-')'){0,10}')'|'(short version `Planar' (any-')'){0,10}')'|'( Springer, Berlin' (any-')'){0,10}')'|'(Springer Berlin' (any-')'){0,10}')'|'(Springer, Berlin, Heidelberg, New York' (any-')'){0,10}')'|'(Springer, Berlin - N.Y.' (any-')'){0,10}')'|'(Springer Lecture Notes, textbf{79}' (any-')'){0,10}')'|'(Springer, New York-Heidelberg-Berlin' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer, New York-Heidelberg-Berlin' (any-')'){0,10}')'|'(Springer, N.Y.' (any-')'){0,10}')'|'( Springer-Verlag' (any-')'){0,10}')'|'( Springer-Verlag, Berlin' (any-')'){0,10}')'|'(Springer-Verlag: Berlin' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, Germany' (any-')'){0,10}')'|'(Springer Verlag, Berlin - Heidelberg - New York' (any-')'){0,10}')'|'(Springer Verlag, Berlin-Heidelberg-New York' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, Heidelberg, New York' (any-')'){0,10}')'|'(Springer-Verlag, Berlin-Heidelberg-New York' (any-')'){0,10}')'|'(Springer Verlag, Heidelberg' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer Verlag, Heidelberg' (any-')'){0,10}')'|'(Springer--Verlag, New York' (any-')'){0,10}')'|'(Springer-Verlag: New York' (any-')'){0,10}')'|'(Springer Verlag, New York/Berlin' (any-')'){0,10}')'|'(Springer, Wien' (any-')'){0,10}')'|'(Spring-Verlag, Berlin' (any-')'){0,10}')'|'(Stuttgart: Teubner' (any-')'){0,10}')'|'(Taylor & Francis, London' (any-')'){0,10}')'|'(Teubner, Leipzig' (any-')'){0,10}')'|'(Texas A& M' (any-')'){0,10}')'|'(The MIT Press, Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(The MIT Press, Cambridge' (any-')'){0,10}')'|'(The University of Chicago Press' (any-')'){0,10}')'|'(Ti-mic s-oara University Press, Romania' (any-')'){0,10}')'|'(TUBITAK, Ankara' (any-')'){0,10}')'|'( University of Tokio Press, Tokio, Springer' (any-')'){0,10}')'|'(University of Tokyo' (any-')'){0,10}')'|'(University of Toronto Press' (any-')'){0,10}')'|'(Univ. Press, Cambridge' (any-')'){0,10}')'|'(U. of Chicago' (any-')'){0,10}')'|'(Van Nostrand, New York' (any-')'){0,10}')'|'(Van Nostrand, Princeton' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Van Nostrand, Princeton' (any-')'){0,10}')'|'(W.A. Benjamin' (any-')'){0,10}')'|'(W.A. Benjamin, Inc., New York' (any-')'){0,10}')'|'(W.A.~Benjamin, New York' (any-')'){0,10}')'|'(Walter de Gruyter' (any-')'){0,10}')'|'(W.H. Freeman' (any-')'){0,10}')'|'(W.~H.~Freeman and Co.' (any-')'){0,10}')'|'(W. H. Freeman and Company' (any-')'){0,10}')'|'(Wiley, Chichester' (any-')'){0,10}')'|'(Wiley Interscience' (any-')'){0,10}')'|'(Wiley Interscience, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Wiley Interscience, New York' (any-')'){0,10}')'|'( Wiley, New York' (any-')'){0,10}')'|'(Wiley,New York' (any-')'){0,10}')'|'(Wiley: New York' (any-')'){0,10}')'|'(Wiley, New York, London' (any-')'){0,10}')'|'(World Sc.' (any-')'){0,10}')'|'(world Scientific' (any-')'){0,10}')'|'(World  Scientific' (any-')'){0,10}')'|'(World Scientific, 1993' (any-')'){0,10}')'|'(World Scientific Co, Singapore' (any-')'){0,10}')'|'(World Scientific Co., Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific Co., Singapore' (any-')'){0,10}')'|'(World Scientific Publ. Co., Singapore' (any-')'){0,10}')'|'(World Scientific, River Edge, NJ' (any-')'){0,10}')'|'(World  Scientific, Singapore' (any-')'){0,10}')'|'(World Scientific; Singapore' (any-')'){0,10}')'|'(World-Scientific, Singapore' (any-')'){0,10}')'|'(World Scientific, Singapour' (any-')'){0,10}')'|'(World Scientific, Singapoure' (any-')'){0,10}')'|'(World Scientific, Singapure' (any-')'){0,10}')'|'(World Scietific' (any-')'){0,10}')'|'(World Sci, Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Sci, Singapore' (any-')'){0,10}')'|'(World Sc.  Publ.  Co., Singapore' (any-')'){0,10}')'|'(W. Scientific, Singapore' (any-')'){0,10}')'|'(WSPC: Singapore' (any-')'){0,10}')'|'(WS, Singapore' (any-')'){0,10}')'|'(Yale University Press, New Haven' (any-')'){0,10}')'|'(Yale Univ Press' (any-')'){0,10}')'|'(Yale Univ. Press, New Haven' (any-')'){0,10}')'|'(Yeshiva University Press' (any-')'){0,10}')'|'(Yeshiva Univ., New York' (any-')'){0,10}')'|'(Yeshiva Univ., N.Y.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Yeshiva Univ., N.Y.' (any-')'){0,10}')'|'(Academic Press, Inc.' (any-')'){0,10}')'|'(Academic press, New York' (any-')'){0,10}')'|'(Academic Press, New York and London' (any-')'){0,10}')'|'(Addison Wesley, New York' (any-')'){0,10}')'|'(Addison-Wesley, Reading, Mass.' (any-')'){0,10}')'|'(Addison-Wesley, Redwood City, CA' (any-')'){0,10}')'|'(Amer. Math. Soc., Providence' (any-')'){0,10}')'|'(Atomizdat, Moscow' (any-')'){0,10}')'|'(Belfer Graduate School of Science, Yeshiva University' (any-')'){0,10}')'|'(Benjamin/Cummings, Reading' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin/Cummings, Reading' (any-')'){0,10}')'|'(Benjamin, Reading' (any-')'){0,10}')'|'(Benjamin, Reading, Mass.' (any-')'){0,10}')'|'(Berlin, Springer' (any-')'){0,10}')'|'(Berlin, Springer-Verlag' (any-')'){0,10}')'|'(Bibliopolis, Napoli' (any-')'){0,10}')'|'(Birkhauser, Basel' (any-')'){0,10}')'|'(Birkh{"a}user, Boston' (any-')'){0,10}')'|'(Cambridge, Cambridge/UK' (any-')'){0,10}')'|'(Cambridge, England' (any-')'){0,10}')'|'(Cambridge, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge, New York' (any-')'){0,10}')'|'(Cambridge, UK' (any-')'){0,10}')'|'(Cambridge University Press, England' (any-')'){0,10}')'|'(Cambridge Univ.~Press' (any-')'){0,10}')'|'(Cambridge Univ.Press' (any-')'){0,10}')'|'(Cambridge Univ.Press, Cambridge' (any-')'){0,10}')'|'(Chelsea, New York' (any-')'){0,10}')'|'(Clarendon press, Oxford' (any-')'){0,10}')'|'(Course of Theoretical Physics' (any-')'){0,10}')'|'(CRC Press' (any-')'){0,10}')'|'(CRC Press, Boca Raton' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(CRC Press, Boca Raton' (any-')'){0,10}')'|'(Dekker, New York' (any-')'){0,10}')'|'(Dordrecht, Boston' (any-')'){0,10}')'|'(Dover, New York, USA' (any-')'){0,10}')'|'(Dover, N.Y.' (any-')'){0,10}')'|'(Dover Publications Inc, New York' (any-')'){0,10}')'|'(Dover Pub., New York' (any-')'){0,10}')'|'(D. Reidel, Dordrecht' (any-')'){0,10}')'|'(Editions Fronti`eres, Gif-sur-Yvette' (any-')'){0,10}')'|'(Energoatomizdat, Moscow' (any-')'){0,10}')'|'(Engl. transl.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Engl. transl.' (any-')'){0,10}')'|'(Freeman, San Francisco' (any-')'){0,10}')'|'(Gauthier--Villars, Paris' (any-')'){0,10}')'|'(Gordon and Breach, NY' (any-')'){0,10}')'|'(Harper & Row, New York' (any-')'){0,10}')'|'(Harvard Univ. Press, Cambridge' (any-')'){0,10}')'|'(Harwood Academic' (any-')'){0,10}')'|'(ICTP, Trieste' (any-')'){0,10}')'|'(Imperial College Press' (any-')'){0,10}')'|'(Institute of Physics Publishing, Bristol' (any-')'){0,10}')'|'(Institute of Physics Publishing, Bristol and Philadelphia' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Institute of Physics Publishing, Bristol and Philadelphia' (any-')'){0,10}')'|'(International Press, Hong Kong' (any-')'){0,10}')'|'(Interscience, NY' (any-')'){0,10}')'|'(IOP, Bristol' (any-')'){0,10}')'|'(IOP Publishing Ltd, Bristol' (any-')'){0,10}')'|'({it McGraw Hill}, New York' (any-')'){0,10}')'|'({it Springer-Verlag}, Berlin' (any-')'){0,10}')'|'(Iwanami Shoten, Tokyo' (any-')'){0,10}')'|'(J. Wiley and Sons' (any-')'){0,10}')'|'(Kluwer Acad. Publ.' (any-')'){0,10}')'|'(Marcel Dekker' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Marcel Dekker' (any-')'){0,10}')'|'(Masson, Paris' (any-')'){0,10}')'|'(McGraw-Hill, London' (any-')'){0,10}')'|'(McGraw-Hill, NY' (any-')'){0,10}')'|'(McGraw-Hill, Singapore' (any-')'){0,10}')'|'(Moscow, Atomizdat' (any-')'){0,10}')'|'(Moscow: Mir' (any-')'){0,10}')'|'(Moscow. Nauka' (any-')'){0,10}')'|'( Nauka' (any-')'){0,10}')'|'(Nauka, Moskva' (any-')'){0,10}')'|'(New York: Plenum' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(New York: Plenum' (any-')'){0,10}')'|'(North--Holland, Amsterdam' (any-')'){0,10}')'|'(North-Holland Publ. Co., Amsterdam' (any-')'){0,10}')'|'(North-Holland Publishing Company, Amsterdam' (any-')'){0,10}')'|'(Oxford, Clarendon Press' (any-')'){0,10}')'|'(Oxford Science Publications, Oxford' (any-')'){0,10}')'|'(Oxford Univ. Press, London' (any-')'){0,10}')'|'(Oxford UP' (any-')'){0,10}')'|'(Pergamon, Oxford UK' (any-')'){0,10}')'|'(Physics of Atomic Nuclei' (any-')'){0,10}')'|'(Plenum, NY' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Plenum, NY' (any-')'){0,10}')'|'(Plenum Press, NY' (any-')'){0,10}')'|'(Princeton University' (any-')'){0,10}')'|'(Princeton University Press, New Jersey' (any-')'){0,10}')'|'(Princeton University Press, Princeton, New Jersey' (any-')'){0,10}')'|'(Princeton Univ. Press' (any-')'){0,10}')'|'(Princeton U. Press' (any-')'){0,10}')'|'(private communication' (any-')'){0,10}')'|'(Publish or Perish, Berkeley' (any-')'){0,10}')'|'(second edition' (any-')'){0,10}')'|'( Springer' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( Springer' (any-')'){0,10}')'|'(Springer, NY' (any-')'){0,10}')'|'( Springer Verlag' (any-')'){0,10}')'|'(Springer-Verlag,  Berlin' (any-')'){0,10}')'|'(Springer-Verlag, Berlin etc.' (any-')'){0,10}')'|'(Springer-Verlag, New York, Heidelberg, Berlin' (any-')'){0,10}')'|'(The University of Chicago Press, Chicago' (any-')'){0,10}')'|'(Univ. Chicago Press, Chicago' (any-')'){0,10}')'|'(Univ. Press' (any-')'){0,10}')'|'(Vieweg, Braunschweig' (any-')'){0,10}')'|'(W. A. Benjamin, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(W. A. Benjamin, New York' (any-')'){0,10}')'|'(Wiley, New-York' (any-')'){0,10}')'|'(Wiley, N.Y.' (any-')'){0,10}')'|'(Willey, New York' (any-')'){0,10}')'|'(World Scientific Pub. Co. ' (any-')'){0,10}')'|'(World Scientific, Sigapore' (any-')'){0,10}')'|'(World scientific, Singapore' (any-')'){0,10}')'|'(World Scientific,  Singapore' (any-')'){0,10}')'|'(Yeshiva University' (any-')'){0,10}')'|'(Yeshiva University Press, New York' (any-')'){0,10}')'|'(Academic Press Inc.' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Academic Press Inc.' (any-')'){0,10}')'|'( Academic Press, New York' (any-')'){0,10}')'|'(Academic Press, N. Y.' (any-')'){0,10}')'|'(Addison-Wesley, Menlo Park' (any-')'){0,10}')'|'(Addison-Wesley, Redwood' (any-')'){0,10}')'|'(Akademie-Verlag, Berlin' (any-')'){0,10}')'|'(American Mathematical Society, Providence, Rhode Island' (any-')'){0,10}')'|'(American Mathematical Society, Providence, RI' (any-')'){0,10}')'|'(Benjamin Cummings' (any-')'){0,10}')'|'(Benjamin/Cummings, London' (any-')'){0,10}')'|'(Benjamin/Cummings, Menlo Park' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin/Cummings, Menlo Park' (any-')'){0,10}')'|'(Cambridge, Cambridge University Press' (any-')'){0,10}')'|'(Cambridge: Cambridge Univ. Press' (any-')'){0,10}')'|'( Cambridge University Press' (any-')'){0,10}')'|'(Cambridge University Press,Cambridge' (any-')'){0,10}')'|'(Cambridge Univ.  Press' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambridge' (any-')'){0,10}')'|'(Cambridge U. P.' (any-')'){0,10}')'|'(Cambridge U. Press' (any-')'){0,10}')'|'(Cambridge U. Press, Cambridge' (any-')'){0,10}')'|'(Cambrige University Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambrige University Press' (any-')'){0,10}')'|'(C.U.P., Cambridge' (any-')'){0,10}')'|'(Dunod, Paris' (any-')'){0,10}')'|'(Gordon & Breach' (any-')'){0,10}')'|'(Harwood Academic Publishers' (any-')'){0,10}')'|'(Harwood, New York' (any-')'){0,10}')'|'(International Press, Boston' (any-')'){0,10}')'|'(Interscience Publishers, New York' (any-')'){0,10}')'|'(IOP Publishing, Bristol' (any-')'){0,10}')'|'(IOP Publishing, Bristol and Philadelphia' (any-')'){0,10}')'|'({it Academic Press}, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'({it Academic Press}, New York' (any-')'){0,10}')'|'({it World Scientific}, Singapore' (any-')'){0,10}')'|'(JINR, Dubna' (any-')'){0,10}')'|'(J. Wiley' (any-')'){0,10}')'|'(J. Wiley and Sons, New York' (any-')'){0,10}')'|'(Kinokuniya, Tokyo' (any-')'){0,10}')'|'(Kluwer Academic Publ.' (any-')'){0,10}')'|'(McGraw-Hill Book Co.' (any-')'){0,10}')'|'(McGraw-Hill Book Company' (any-')'){0,10}')'|'(Moscow: Atomizdat' (any-')'){0,10}')'|'(Nauka, Novosibirsk' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Nauka, Novosibirsk' (any-')'){0,10}')'|'( New York' (any-')'){0,10}')'|'(New York, Academic Press' (any-')'){0,10}')'|'(New York, N.Y.' (any-')'){0,10}')'|'(Nova Science' (any-')'){0,10}')'|'(Pergamon Press, London' (any-')'){0,10}')'|'(Plenum Publishing Corporation' (any-')'){0,10}')'|'(Prentice-Hall, Englewood Cliffs, New Jersey' (any-')'){0,10}')'|'(Princeton: Princeton University Press' (any-')'){0,10}')'|'(Reidel, Boston' (any-')'){0,10}')'|'(SIAM, Philadelphia' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(SIAM, Philadelphia' (any-')'){0,10}')'|'(Springer, Berlin-Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag, Berlin, Heidelberg' (any-')'){0,10}')'|'(Springer-Verlag, Heidelberg' (any-')'){0,10}')'|'(University of Chicago Press' (any-')'){0,10}')'|'(University of Chicago Press, Chicago' (any-')'){0,10}')'|'(Univ. of Chicago Press' (any-')'){0,10}')'|'(W.A. Benjamin, New York' (any-')'){0,10}')'|'(W.H. Freeman and Co.' (any-')'){0,10}')'|'(World Scient.' (any-')'){0,10}')'|'( World Scientific' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'( World Scientific' (any-')'){0,10}')'|'(World Scientific Publishing Co.' (any-')'){0,10}')'|'(World Scientific Publishing, Singapore' (any-')'){0,10}')'|'( World Scientific, Singapore' (any-')'){0,10}')'|'(Yeshiva University, New York' (any-')'){0,10}')'|'(Addison-Wesley, Redwood City' (any-')'){0,10}')'|'(Amer. Math. Soc.' (any-')'){0,10}')'|'(Cambridge: Cambridge University Press' (any-')'){0,10}')'|'(Cambridge University' (any-')'){0,10}')'|'(Cambridge University Press, London' (any-')'){0,10}')'|'(Cambridge U. P., Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge U. P., Cambridge' (any-')'){0,10}')'|'(Dover Publications' (any-')'){0,10}')'|'(Dover Publications, Inc., New York' (any-')'){0,10}')'|'(Gordon & Breach, New York' (any-')'){0,10}')'|'(Harwood, Chur, Switzerland' (any-')'){0,10}')'|'(Hilger, Bristol' (any-')'){0,10}')'|'(J. Wiley, New York' (any-')'){0,10}')'|'(Kluwer; Dordrecht' (any-')'){0,10}')'|'(Lecture Notes in Physics' (any-')'){0,10}')'|'(McGraw-Hill Book Company, New York' (any-')'){0,10}')'|'(Mc Graw-Hill, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mc Graw-Hill, New York' (any-')'){0,10}')'|'(McGraw--Hill, New York' (any-')'){0,10}')'|'(Nauka, Moskow' (any-')'){0,10}')'|'(North-Holland, New York' (any-')'){0,10}')'|'(Oxford University Press, London' (any-')'){0,10}')'|'(Pergamon Press, New York' (any-')'){0,10}')'|'(Plenum Press, N.Y.' (any-')'){0,10}')'|'(Springer-Verlag, Berlin-Heidelberg' (any-')'){0,10}')'|'(Wiley, NY' (any-')'){0,10}')'|'(World Scientific Pub. Co., Singapore' (any-')'){0,10}')'|'(World Scientific Publishing Co., Singapore' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific Publishing Co., Singapore' (any-')'){0,10}')'|'(Academic, London' (any-')'){0,10}')'|'(AIP, New York' (any-')'){0,10}')'|'(American Institute of Physics' (any-')'){0,10}')'|'(Berlin: Springer' (any-')'){0,10}')'|'(Harwood Academic Publishers, Chur' (any-')'){0,10}')'|'(Harwood, Chur' (any-')'){0,10}')'|'(Institute of Physics, Bristol' (any-')'){0,10}')'|'(International Press' (any-')'){0,10}')'|'(IOP Publishing' (any-')'){0,10}')'|'(John Wiley, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(John Wiley, New York' (any-')'){0,10}')'|'(Kluwer Academic Publishers, Dordrecht' (any-')'){0,10}')'|'(Les Houches' (any-')'){0,10}')'|'(Marcel Dekker, New York' (any-')'){0,10}')'|'(MIT Press' (any-')'){0,10}')'|'(Oxford University Press, New York' (any-')'){0,10}')'|'(Publish or Perish' (any-')'){0,10}')'|'(Singapore: World Scientific' (any-')'){0,10}')'|'(Springer-Verlag, Berlin Heidelberg' (any-')'){0,10}')'|'(Wiley-Interscience, New York' (any-')'){0,10}')'|'(World Scientific Publishing' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(World Scientific Publishing' (any-')'){0,10}')'|'(Academic Press, Boston' (any-')'){0,10}')'|'(Addison Wesley' (any-')'){0,10}')'|'(Addison-Wesley Publishing Company' (any-')'){0,10}')'|'(Addison-Wesley, Reading, Massachusetts' (any-')'){0,10}')'|'(American Mathematical Society, Providence' (any-')'){0,10}')'|'(Birkh"auser, Basel' (any-')'){0,10}')'|'(Cambridge Univ. Press, New York' (any-')'){0,10}')'|'(Cambridge U.P., Cambridge' (any-')'){0,10}')'|'(John Wiley and Sons, New York' (any-')'){0,10}')'|'(Mir, Moscow' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Mir, Moscow' (any-')'){0,10}')'|'(MIT Press, Cambridge' (any-')'){0,10}')'|'(Pergamon, London' (any-')'){0,10}')'|'(Singapore, World Scientific' (any-')'){0,10}')'|'(Springer-Verlag, N.Y.' (any-')'){0,10}')'|'(University Press, Cambridge' (any-')'){0,10}')'|'(World Sci., Singapore' (any-')'){0,10}')'|'(AMS, Providence' (any-')'){0,10}')'|'(Berlin, Heidelberg' (any-')'){0,10}')'|'(Birkh"auser, Boston' (any-')'){0,10}')'|'(Cambridge Univ. Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge Univ. Press' (any-')'){0,10}')'|'(Claredon Press, Oxford' (any-')'){0,10}')'|'(Gauthier-Villars, Paris' (any-')'){0,10}')'|'(Hermann, Paris' (any-')'){0,10}')'|'(John Wiley' (any-')'){0,10}')'|'(John Wiley and Sons' (any-')'){0,10}')'|'(McGraw Hill, New York' (any-')'){0,10}')'|'(Princeton University Press, Princeton, NJ' (any-')'){0,10}')'|'(Springer--Verlag, Berlin' (any-')'){0,10}')'|'(Adam Hilger, Bristol' (any-')'){0,10}')'|'(American Mathematical Society' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(American Mathematical Society' (any-')'){0,10}')'|'(Birkh"{a}user, Boston' (any-')'){0,10}')'|'(Dover Publications, New York' (any-')'){0,10}')'|'(Kluwer Academic Publishers' (any-')'){0,10}')'|'(Moscow: Nauka' (any-')'){0,10}')'|'(Oxford Univ. Press, Oxford' (any-')'){0,10}')'|'(Academic Press, NY' (any-')'){0,10}')'|'(Adam Hilger' (any-')'){0,10}')'|'(Birkhauser, Boston' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge, UK' (any-')'){0,10}')'|'(Cambridge UP' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Cambridge UP' (any-')'){0,10}')'|'(Pergamon, New York' (any-')'){0,10}')'|'(Academic Press, San Diego' (any-')'){0,10}')'|'(Addison-Wesley, Reading' (any-')'){0,10}')'|'(Elsevier, Amsterdam' (any-')'){0,10}')'|'(Reidel, Dordrecht' (any-')'){0,10}')'|'(World Scientific,Singapore' (any-')'){0,10}')'|'(Oxford Univ. Press' (any-')'){0,10}')'|'(World Sci.' (any-')'){0,10}')'|'(Addison-Wesley, New York' (any-')'){0,10}')'|'(Benjamin, New York' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Benjamin, New York' (any-')'){0,10}')'|'(Cambridge University Press, New York' (any-')'){0,10}')'|'(John Wiley & Sons, New York' (any-')'){0,10}')'|'(Kluwer, Dordrecht' (any-')'){0,10}')'|'(Princeton Univ. Press, Princeton' (any-')'){0,10}')'|'(Springer Verlag, New York' (any-')'){0,10}')'|'(CUP, Cambridge' (any-')'){0,10}')'|'(Interscience, New York' (any-')'){0,10}')'|'(Cambridge U.P.' (any-')'){0,10}')'|'(John Wiley & Sons' (any-')'){0,10}')'|'(Pergamon Press, Oxford' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Pergamon Press, Oxford' (any-')'){0,10}')'|'(Moscow, Nauka' (any-')'){0,10}')'|'(Springer, Heidelberg' (any-')'){0,10}')'|'(Clarendon Press' (any-')'){0,10}')'|'(Academic, New York' (any-')'){0,10}')'|'(North Holland, Amsterdam' (any-')'){0,10}')'|'(Princeton Univ. Press' (any-')'){0,10}')'|'(Academic Press, London' (any-')'){0,10}')'|'(Clarendon, Oxford' (any-')'){0,10}')'|'(Pergamon, Oxford' (any-')'){0,10}')'|'(Addison-Wesley, Reading, MA' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Addison-Wesley, Reading, MA' (any-')'){0,10}')'|'(Clarendon Press, Oxford' (any-')'){0,10}')'|'(Oxford University Press, Oxford' (any-')'){0,10}')'|'(Gordon and Breach, New York' (any-')'){0,10}')'|'(McGraw-Hill, New York' (any-')'){0,10}')'|'(Pergamon Press' (any-')'){0,10}')'|'(Princeton University Press, Princeton' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge, England' (any-')'){0,10}')'|'(Gordon and Breach' (any-')'){0,10}')'|'(Nauka, Moscow' (any-')'){0,10}')'|'(North Holland' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(North Holland' (any-')'){0,10}')'|'(Plenum Press, New York' (any-')'){0,10}')'|'(Oxford University Press' (any-')'){0,10}')'|'(Dover, New York' (any-')'){0,10}')'|'(Cambridge Univ. Press, Cambridge' (any-')'){0,10}')'|'(Springer, New York' (any-')'){0,10}')'|'(Plenum, New York' (any-')'){0,10}')'|'(Plenum Press' (any-')'){0,10}')'|'(Springer Verlag, Berlin' (any-')'){0,10}')'|'(Wiley, New York' (any-')'){0,10}')'|'(Springer Verlag' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+'(Springer Verlag' (any-')'){0,10}')'|'(Academic Press, New York' (any-')'){0,10}')'|'(North-Holland, Amsterdam' (any-')'){0,10}')'|'(Princeton University Press' (any-')'){0,10}')'|'(Springer-Verlag, New York' (any-')'){0,10}')'|'(Cambridge Univ. Press' (any-')'){0,10}')'|'(New York' (any-')'){0,10}')'|'(Springer, Berlin' (any-')'){0,10}')'|'(World Scientific, Singapore' (any-')'){0,10}')'|'(Springer-Verlag, Berlin' (any-')'){0,10}')'|'(Cambridge University Press, Cambridge' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+'(Cambridge University Press, Cambridge' (any-')'){0,10}')'|'(World Scientific' (any-')'){0,10}')'|'(Academic Press' (any-')'){0,10}')'|'(Cambridge University Press' (any-')'){0,10}')' => { printf("token: %sn", std::string(ts, te).c_str()); };
+
+
+
 'A. A. Abrikosov'|'A. A. Andrianov'|'A. Abada'|'A. Abdurrahman'|'A. Abel'|'A. A. Belavin'|'A. A. Bichl'|'A. A. Bogush'|'A. A. Borgardt'|'A. Abouelsaood'|'A. Abramovici' => { printf("token: %sn", std::string(ts, te).c_str()); };
 'A. Abramovici'|'A. Abrikosov'|'A. A. Bytsenko'|'A. Accardi'|'A. Ach'|'A. Achucarro'|'A. A. Coley'|'A. Actor'|'A. Adams'|'A. A. Deriglazov'|'A. A. Galperin' => { printf("token: %sn", std::string(ts, te).c_str()); };
 'A. A. Galperin'|'A. A. Gerasimov'|'A. Aghamohammadi'|'A. Agodi'|'A. A. Grib'|'A. Aharony'|'A. A. Johansen'|'A. A. Kehagias'|'A. A. Kirillov'|'A. A. Klyachko'|'A. Albrecht' => { printf("token: %sn", std::string(ts, te).c_str()); };

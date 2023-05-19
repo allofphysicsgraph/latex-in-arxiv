@@ -26,8 +26,6 @@ algorithm = CDLL("./algorithm.so")
 abstract = CDLL("./abstract.so")
 slm = CDLL("./slm.so")
 
-newcommand = CDLL("./newcommand.so")
-newcommand.test.restype = c_char_p
 
 center = CDLL("./center.so")
 center.test.restype = c_char_p
@@ -123,10 +121,6 @@ simple_newcommands = [x for x in simple_newcommands if len(x) == 2]
 s = c_char_p(str.encode(data))
 print("title")
 parsed_document["title"].append(title.test(s).decode())
-
-print(newcommand.test(s))
-for match in newcommand.test(s).decode().splitlines():
-    parsed_document["newcommand"].append(match)
 
 for match in author.test(s).decode().splitlines():
     parsed_document["author"].append(match)

@@ -13,6 +13,9 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 ### another option (that's free) is a few years of arxiv
 <https://www.cs.cornell.edu/projects/kddcup/datasets.html>
 
+### how to use
+tested in Debian 5.10.0-20-amd64, and 6.1.0-5-amd64  
+  
 cd /latex-in-arxiv/ragel_files/python  
 make  
 

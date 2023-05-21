@@ -18,8 +18,8 @@ from tqdm import tqdm
 
 import sentencepiece as spm
 
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
+nltk.download("stopwords")
+nltk.download("averaged_perceptron_tagger")
 
 ignore = ["\\begin{abstract}", "\\end{abstract}"]
 punkt_trainer_path = "/home/user/latex-in-arxiv/Punkt_LaTeX_SENT_Tokenizer.pickle"
@@ -195,6 +195,7 @@ for symbol in symbol_definitions.keys():
     resolved_symbols.add(symbol)
 
 from redis import Redis
+
 redis_client = Redis(decode_responses=True)
 print("resolved_symbols")
 print(resolved_symbols)
@@ -212,4 +213,4 @@ for k, v in concordance_dict.items():
     if k in unresolved:
         print(k, v)
 
-print(len(resolved_symbols)/(1.0*len(symbols)))
+print(len(resolved_symbols) / (1.0 * len(symbols)))

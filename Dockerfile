@@ -51,5 +51,5 @@ RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/rag
 WORKDIR python
 RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
 run xz -d Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
-
+run make
 

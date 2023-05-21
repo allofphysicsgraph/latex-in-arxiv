@@ -49,7 +49,7 @@ WORKDIR /opt/latex-in-arxiv/
 RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/ragel_files/python
 
 WORKDIR python
-RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/ragel_files/Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
+RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
 run xz -d Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
 
 

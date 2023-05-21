@@ -32,7 +32,8 @@ RUN apt-get update && \
         vim \
         virtualenv \
         wget \
-        zip 
+        xz-utils \
+	zip 
 
 WORKDIR /opt/
 
@@ -47,6 +48,8 @@ COPY .  /opt/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
 RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/ragel_files/python
 
+WORKDIR python
+RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/ragel_files/Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
+run xz -d Punkt_LaTeX_SENT_Tokenizer.pickle.xz 
 
 
-ENTRYPOINT [ "./entry.sh" ]

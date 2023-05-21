@@ -7,45 +7,45 @@ FROM phusion/baseimage:master
 
 RUN apt-get update && \
     apt-get install -y \
-	libcurl4-openssl-dev \
-	postgresql-server-dev-all \
-	sudo \
-	latexml \
-	 wget \
-         zip \
-         vim \
-         python3 \
-         python3-pip \
-         python3-dev \
-         texlive \
-         bison \
-	 autoconf  \
-	 flex  \
-	 automake \
-	 help2man \
-	 git \
-	 pkg-config \
-	 swig \
-	 libtool \
-	 build-essential \
-	 cmake \
-	libdeflate-dev \
-	doctest-dev \
-	libavformat-dev \
-	libavutil-dev \
-	libgpm-dev \
-	libncurses-dev \
-	libswscale-dev \
-	libunistring-dev \
-	pandoc \
-	python3-cffi \
-	python3-dev \
-	python3-pypandoc \
-	python3-setuptools \
-	libxslt1-dev \
-	libmagickcore-dev \
-	ragel \
-	virtualenv \
+        autoconf  \
+        automake \
+        bison \
+        build-essential \
+        cmake \
+        doctest-dev \
+        flex  \
+        git \
+        help2man \
+        latexml \
+        libavformat-dev \
+        libavutil-dev \
+        libcurl4-openssl-dev \
+        libdeflate-dev \
+        libgpm-dev \
+        libmagickcore-dev \
+        libncurses-dev \
+        libswscale-dev \
+        libtool \
+        libunistring-dev \
+        libxslt1-dev \
+        pandoc \
+        pkg-config \
+        postgresql-server-dev-all \
+        python3 \
+        python3-cffi \
+        python3-dev \
+        python3-dev \
+        python3-pip \
+        python3-pypandoc \
+        python3-setuptools \
+        ragel \
+        sudo \
+        swig \
+        texlive \
+        vim \
+        virtualenv \ 
+        wget \
+        zip 
 
 WORKDIR /opt/
 

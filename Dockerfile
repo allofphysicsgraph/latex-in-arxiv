@@ -15,21 +15,8 @@ RUN apt-get update && \
         doctest-dev \
         flex  \
         git \
-        help2man \
-        latexml \
-        libavformat-dev \
-        libavutil-dev \
-        libcurl4-openssl-dev \
-        libdeflate-dev \
-        libgpm-dev \
-        libmagickcore-dev \
-        libncurses-dev \
-        libswscale-dev \
-        libtool \
-        libunistring-dev \
-        libxslt1-dev \
-        pandoc \
-        pkg-config \
+        subversion \
+	pkg-config \
         postgresql-server-dev-all \
         python3 \
         python3-cffi \
@@ -52,15 +39,13 @@ WORKDIR /opt/
 RUN apt-get install -y build-essential flex bison
 
 RUN echo "alias python=python3" > /root/.bashrc
-RUN python3 -m nltk.downloader punkt
-RUN python3 -m nltk.downloader stopwords 
-RUN python3 -m nltk.downloader averaged_perceptron_tagger 
 
 WORKDIR /opt/
 
 WORKDIR /opt/
 COPY .  /opt/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
+RUN svn export https://github.com/allofphysicsgraph/latex-in-arxiv.git/trunk/ragel_files/python
 
 
 

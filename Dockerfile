@@ -43,7 +43,7 @@ RUN apt-get update && \
         swig \
         texlive \
         vim \
-        virtualenv \ 
+        virtualenv \
         wget \
         zip 
 

@@ -43,51 +43,25 @@ RUN apt-get update && \
 	python3-pypandoc \
 	python3-setuptools \
 	libxslt1-dev \
-	libmagickcore-dev
+	libmagickcore-dev \
+	ragel \
+	virtualenv \
 
 WORKDIR /opt/
 
 RUN apt-get install -y build-essential flex bison
 
 RUN echo "alias python=python3" > /root/.bashrc
-RUN echo "export PATH=$PATH:/usr/lib/postgresql/12/bin/ >> /root/.bashrc"
-#RUN /bin/bash -l /root/.bashrc
-
-#RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
-#RUN tar -xf hep-th-2003.tar.gz
-RUN apt-get install -y autoconf-archive
-
-COPY requirements.txt /opt/
-RUN pip3 install -r requirements.txt
-
 RUN python3 -m nltk.downloader punkt
+RUN python3 -m nltk.downloader stopwords 
 RUN python3 -m nltk.downloader averaged_perceptron_tagger 
 
 WORKDIR /opt/
 
 WORKDIR /opt/
-#RUN git clone https://github.com/allofphysicsgraph/latex-in-arxiv
 COPY .  /opt/latex-in-arxiv
 WORKDIR /opt/latex-in-arxiv/
-RUN make openssl
-RUN make Kore
-#RUN make sampledata
-RUN mkdir -p /dev/shm/db
-RUN tar -xf /opt/latex-in-arxiv/websocket/assets/html/2003.tar.xz
-#RUN chown postgres -R /dev/shm/db
-#RUN make install_libbloom
-#RUN make bloom
-#RUN ./bloom_filter sound1.tex
 
-#RUN git clone https://github.com/dankamongmen/notcurses
-#WORKDIR notcurses
-#RUN mkdir build
-#WORKDIR build
-#RUN cmake ..
-#RUN make
-#RUN make test
-#RUN make install
-#RUN ldconfig 
 
-EXPOSE 8888
+
 ENTRYPOINT [ "./entry.sh" ]

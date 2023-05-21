@@ -13,42 +13,42 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 ### another option (that's free) is a few years of arxiv
 <https://www.cs.cornell.edu/projects/kddcup/datasets.html>
 
-cd /latex-in-arxiv/ragel_files/python 
-make
+cd /latex-in-arxiv/ragel_files/python  
+make  
 
-source venv/bin/activate 
-python call_ragel.py TEX_file
-    the output is a dictionary of lists that includes 
-        abstract
-        affiliation
-        algorithm
-        author
-        bibitem
-        center
-        cite
-        definition
-        email
-        emph
-        eqnarray
-        equation
-        figure
-        itemize
-        keywords
-        label
-        paragraphs
-        ref
-        section
-        sents
-        slm
-        textbf
-        textit
-        thebibliography
-        title
-        url
-        usepackage
+source venv/bin/activate   
+python call_ragel.py TEX_file  
+    the output is a dictionary of lists that includes   
+        abstract  
+        affiliation   
+        algorithm  
+        author  
+        bibitem  
+        center  
+        cite  
+        definition   
+        email  
+        emph  
+        eqnarray 
+        equation  
+        figure   
+        itemize   
+        keywords   
+        label  
+        paragraphs  
+        ref  
+        section  
+        sents  
+        slm  
+        textbf  
+        textit  
+        thebibliography  
+        title  
+        url  
+        usepackage  
 
-    and some variable definitions: 
-        on average will match between 10-30% of variable definitions in the tex file
+    and some variable definitions:   
+        on average will match between 10-30% of variable definitions in the tex file  
 
 ```
 

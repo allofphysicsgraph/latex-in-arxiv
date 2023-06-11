@@ -1,15 +1,21 @@
 from collections import defaultdict
+from ctypes import *
 from nltk import pos_tag
 from nltk.tokenize import mwe
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import SExprTokenizer
 from nltk.tokenize import texttiling
 from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+from os import listdir
+from rank_bm25 import BM25Okapi
+from sklearn.feature_extraction.text import CountVectorizer
 from sys import argv
 from time import sleep
 from tqdm import tqdm
 import ahocorasick
 import configparser
+import hashlib
+import lzma
 import nltk
 import numpy
 import os
@@ -18,10 +24,23 @@ import re
 import rpyc
 import sentencepiece as spm
 import sys
-import lzma
-from os import listdir
-import hashlib
-from sklearn.feature_extraction.text import CountVectorizer
+from pygments.lexer import RegexLexer
+from pygments.token import *
+from pygments import highlight
+from pygments.formatters import Terminal256Formatter
+from pygments.style import Style
+
+token_list = []
+class QueryLexer(RegexLexer):
+    tokens = {
+            'root': token_list
+        }
+
+class MyStyle(Style):
+    styles = {
+            Token.Text:     'ansiblack bg:ansiblue',
+        }
+
 
 # Sentencepiece python module
 #!pip install sentencepiece
@@ -156,7 +175,7 @@ class MyService(rpyc.Service):
 
           all have differnt expressions that should be used for tokenization.
 
-        The purposed for maintining wordlists is for improved accuracy on word and phrase tokenization.
+        The purpose for maintining wordlists is for improved accuracy on word and phrase tokenization.
         """
         english_word_tokenizer = mwe.MWETokenizer(separator="")
         word_list = self.exposed_read_file(
@@ -166,6 +185,189 @@ class MyService(rpyc.Service):
         for word in word_list:
             english_word_tokenizer.add_mwe(r"{}".format(word))
         self.results["english_word_tokenizer"].append(english_word_tokenizer)
+
+    def exposed_get_abstract(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        abstract = CDLL("./abstract.so")
+        abstract.test.restype = c_char_p
+        if re.findall(r"\\begin{abstract}", data):
+            if save or print_results:
+                for match in abstract.test(s).decode().splitlines():
+                    if save:
+                        self.results["abstract"].append(match)
+                    if print_results:
+                        print(match)
+
+    def exposed_get_affiliation(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        affiliation = CDLL("./affiliation.so")
+        affiliation.test.restype = c_char_p
+        if save or print_results:
+            for match in affiliation.test(s).decode().splitlines():
+                if save:
+                    self.results["affiliation"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_author(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        author = CDLL("./author.so")
+        author.test.restype = c_char_p
+        if save or print_results:
+            for match in author.test(s).decode().splitlines():
+                if save:
+                    self.results["author"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_cite(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        cite = CDLL("./cite.so")
+        cite.test.restype = c_char_p
+        if save or print_results:
+            for match in cite.test(s).decode().splitlines():
+                if save:
+                    self.results["cite"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_title(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        title = CDLL("./title.so")
+        title.test.restype = c_char_p
+        if save or print_results:
+            for match in title.test(s).decode().splitlines():
+                if save:
+                    self.results["title"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_slm(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        slm = CDLL("./slm.so")
+        slm.test.restype = c_char_p
+        if save or print_results:
+            for match in slm.test(s).decode().splitlines():
+                if save:
+                    self.results["slm"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_section(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        section = CDLL("./section.so")
+        section.test.restype = c_char_p
+        if save or print_results:
+            for match in section.test(s).decode().splitlines():
+                if save:
+                    self.results["section"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_algorithm(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        algorithm = CDLL("./algorithm.so")
+        algorithm.test.restype = c_char_p
+        if save or print_results:
+            for match in algorithm.test(s).decode().splitlines():
+                if save:
+                    self.results["algorithm"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_ref(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        ref = CDLL("./ref.so")
+        ref.test.restype = c_char_p
+        if save or print_results:
+            for match in ref.test(s).decode().splitlines():
+                if save:
+                    self.results["ref"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_bibitem(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        bibitem = CDLL("./bibitem.so")
+        bibitem.test.restype = c_char_p
+        if save or print_results:
+            for match in bibitem.test(s).decode().splitlines():
+                if save:
+                    self.results["bibitem"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_emph(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        emph = CDLL("./emph.so")
+        emph.test.restype = c_char_p
+        if save or print_results:
+            for match in emph.test(s).decode().splitlines():
+                if save:
+                    self.results["emph"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_label(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        label = CDLL("./label.so")
+        label.test.restype = c_char_p
+        if save or print_results:
+            for match in label.test(s).decode().splitlines():
+                if save:
+                    self.results["label"].append(match)
+                if print_results:
+                    print(match)
+
+    def exposed_get_url(self, data=False, save=True, print_results=False):
+        if not data:
+            if len(self.results["file_data"]) == 1:
+                data = self.results["file_data"][0]
+        s = c_char_p(str.encode(data))
+        url = CDLL("./url.so")
+        url.test.restype = c_char_p
+        if save or print_results:
+            for match in url.test(s).decode().splitlines():
+                if save:
+                    self.results["url"].append(match)
+                if print_results:
+                    print(match)
 
     def exposed_symbols(self):
         symbols = set()
@@ -256,6 +458,38 @@ class MyService(rpyc.Service):
                                 symbol_definitions[symbol].add(DEF)
         # for definition in symbol_definitions:
         #    self.results['symbol_definitions'].append(definition)
+
+    def exposed_rank_bm25(self):
+        tokenized_corpus = []
+        tokenizer = self.results["english_word_tokenizer"]
+        if len(tokenizer) == 1:
+            tokenizer = tokenizer[0]
+        for sentence in self.results["sentences"]:
+                tokens = tokenizer.tokenize(sentence)
+                tokens = [x.strip() for x in tokens if len(x.strip())>1 and x.strip()]
+                tokenized_corpus.append(tokens)
+        bm25 = BM25Okapi(tokenized_corpus)
+        self.results['bm25'].append(bm25)
+
+    def exposed_query_rank_bm25(self,query_string):
+        bm25 = self.results['bm25'][0]
+        tokenizer = self.results["english_word_tokenizer"]
+        if len(tokenizer) == 1:
+            tokenizer = tokenizer[0]
+        tokenized_query= tokenizer.tokenize(query_string)
+        doc_scores = bm25.get_scores(tokenized_query)
+        resp = bm25.get_top_n(tokenized_query, self.results['sentences'], n=5)
+
+
+        tokens = [x.strip() for x in tokenized_query if len(x.strip())>1 and x.strip()]
+        for word in tokens:
+            token_list.append((r'{}'.format(word), Text))
+        x = QueryLexer()
+
+
+        for match in resp:
+            print(match,'*'*50,'\n')
+            print(highlight(match,x,Terminal256Formatter(style=MyStyle)))
 
     def exposed_resolved_symbols(self):
         resolved_symbols = set()

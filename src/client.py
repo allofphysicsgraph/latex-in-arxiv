@@ -16,7 +16,7 @@ c.root.get_abstract(print_results=True)
 c.root.get_affiliation(print_results=True)
 c.root.get_algorithm(print_results=True)
 c.root.get_author(print_results=True)
-#c.root.get_bibitem(print_results=True)
+# c.root.get_bibitem(print_results=True)
 # c.root.get_bibliography(print_results=True)
 # c.root.get_center(print_results=True)
 c.root.get_cite(print_results=True)
@@ -34,7 +34,7 @@ c.root.get_title(print_results=True)
 c.root.get_url(print_results=True)
 
 
-#depends on english_word_tokenizer
-#depends on sentences
+# depends on english_word_tokenizer
+# depends on sentences
 c.root.rank_bm25()
 c.root.query_rank_bm25("fundamental constants")

@@ -31,15 +31,16 @@ from pygments.formatters import Terminal256Formatter
 from pygments.style import Style
 
 token_list = []
+
+
 class QueryLexer(RegexLexer):
-    tokens = {
-            'root': token_list
-        }
+    tokens = {"root": token_list}
+
 
 class MyStyle(Style):
     styles = {
-            Token.Text:     'ansiblack bg:ansiblue',
-        }
+        Token.Text: "ansiblack bg:ansiblue",
+    }
 
 
 # Sentencepiece python module
@@ -465,31 +466,31 @@ class MyService(rpyc.Service):
         if len(tokenizer) == 1:
             tokenizer = tokenizer[0]
         for sentence in self.results["sentences"]:
-                tokens = tokenizer.tokenize(sentence)
-                tokens = [x.strip() for x in tokens if len(x.strip())>1 and x.strip()]
-                tokenized_corpus.append(tokens)
+            tokens = tokenizer.tokenize(sentence)
+            tokens = [x.strip() for x in tokens if len(x.strip()) > 1 and x.strip()]
+            tokenized_corpus.append(tokens)
         bm25 = BM25Okapi(tokenized_corpus)
-        self.results['bm25'].append(bm25)
+        self.results["bm25"].append(bm25)
 
-    def exposed_query_rank_bm25(self,query_string):
-        bm25 = self.results['bm25'][0]
+    def exposed_query_rank_bm25(self, query_string):
+        bm25 = self.results["bm25"][0]
         tokenizer = self.results["english_word_tokenizer"]
         if len(tokenizer) == 1:
             tokenizer = tokenizer[0]
-        tokenized_query= tokenizer.tokenize(query_string)
+        tokenized_query = tokenizer.tokenize(query_string)
         doc_scores = bm25.get_scores(tokenized_query)
-        resp = bm25.get_top_n(tokenized_query, self.results['sentences'], n=5)
+        resp = bm25.get_top_n(tokenized_query, self.results["sentences"], n=5)
 
-
-        tokens = [x.strip() for x in tokenized_query if len(x.strip())>1 and x.strip()]
+        tokens = [
+            x.strip() for x in tokenized_query if len(x.strip()) > 1 and x.strip()
+        ]
         for word in tokens:
-            token_list.append((r'{}'.format(word), Text))
+            token_list.append((r"{}".format(word), Text))
         x = QueryLexer()
 
-
         for match in resp:
-            print(match,'*'*50,'\n')
-            print(highlight(match,x,Terminal256Formatter(style=MyStyle)))
+            print(match, "*" * 50, "\n")
+            print(highlight(match, x, Terminal256Formatter(style=MyStyle)))
 
     def exposed_resolved_symbols(self):
         resolved_symbols = set()

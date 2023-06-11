@@ -3,8 +3,6 @@ then
         xz -d Punkt_LaTeX_SENT_Tokenizer.pickle.xz	
 fi
 
-ragel bibliography.rl
-gcc -fPIC -shared -o bibliography.so bibliography.c
 
 
 ragel author.rl

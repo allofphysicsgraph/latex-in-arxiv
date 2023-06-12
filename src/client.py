@@ -1,9 +1,14 @@
 import rpyc
 
 c = rpyc.connect("127.0.0.1", 18861)
+c.root.exposed_process_data_set()
+# c.root.paragraphs()
+# c.root.sentences()
+# c.root.get_abstract(print_results=True)
+
+
+exit(0)
 c.root.read_file("sound1.tex", "file_data")
-c.root.paragraphs()
-c.root.sentences()
 c.root.symbol_concordance()
 # c.root.resolved_symbols()
 # c.root.get_results()
@@ -12,7 +17,6 @@ c.root.symbol_concordance()
 c.root.build_word_tokenizers()
 c.root.print_tokenized_sentences()
 
-c.root.get_abstract(print_results=True)
 c.root.get_affiliation(print_results=True)
 c.root.get_algorithm(print_results=True)
 c.root.get_author(print_results=True)

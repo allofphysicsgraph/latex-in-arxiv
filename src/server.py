@@ -30,6 +30,8 @@ from pygments import highlight
 from pygments.formatters import Terminal256Formatter
 from pygments.style import Style
 
+# from redis import Redis
+
 token_list = []
 
 
@@ -81,7 +83,7 @@ sp = spm.SentencePieceProcessor()
 sp.load("HEP_TEX.model")
 
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
-    smoothing_width=100, smoothing_rounds=25000
+    w=20, k=6, smoothing_width=2, smoothing_rounds=5
 )
 
 
@@ -89,7 +91,8 @@ class MyService(rpyc.Service):
     def __init__(self):
         self.results = defaultdict(list)
         self.current_file = ""
-        self.current_file_key = ""
+        # self.redis_client = Redis(decode_responses=True)
+        self.data_set_path = "../2003/"
 
     def on_connect(self, conn):
         print(
@@ -118,51 +121,6 @@ class MyService(rpyc.Service):
             tok = tok[:-1]
         return tok
 
-    def exposed_read_file(self, f_name, key, save=True, return_data=False):
-        with open(f"{f_name}", "r", encoding="ISO-8859-1") as f:
-            data = f.read()
-        clean = [
-            x
-            for x in data.splitlines()
-            if not re.findall(
-                r"^\\(def|newcommand|documentclass|begin{document}|usepackage)", x
-            )
-        ]
-        data = "\n".join(clean)
-        if key not in self.results.keys():
-            if save:
-                self.results[key].append(data)
-            if "vocab" not in key:
-                self.current_file = f_name
-                self.current_file_key = key
-            if return_data:
-                return data
-        else:
-            print("key has already been used\n")
-
-    def concordance(self, symbol):
-        for sent in self.results["sentences"]:
-            if f"${symbol}$" in sent:
-                yield sent
-
-    def spe_sent_tokenizer(self, sent):
-        return [
-            x[1:] for x in sp.encode_as_pieces(sent) if "".join(x[1:]) not in ignore
-        ]
-
-    def exposed_paragraphs(self):
-        file_data = self.results["file_data"][0]
-        paragraphs = txttlng_tokenizer.tokenize(file_data)
-        for paragraph in paragraphs:
-            # print(paragraph)
-            self.results["paragraphs"].append(paragraph)
-
-    def exposed_sentences(self):
-        for paragraph in self.results["paragraphs"]:
-            sentences = tok_cls.sentences_from_text(paragraph)
-            for sentence in sentences:
-                self.results["sentences"].append(sentence)
-
     def exposed_build_word_tokenizers(self):
         """Tokenization seems difficult to get right, so every file with the extension of .vocab will be used in word tokenization.
          The process that has yielded the most success for me, is to break the tex documents into sections, and process them according
@@ -175,22 +133,80 @@ class MyService(rpyc.Service):
           and document body
 
           all have differnt expressions that should be used for tokenization.
-
         The purpose for maintining wordlists is for improved accuracy on word and phrase tokenization.
         """
         english_word_tokenizer = mwe.MWETokenizer(separator="")
-        word_list = self.exposed_read_file(
-            "english.vocab", "english_vocab", save=False, return_data=True
-        )
+        word_list = self.exposed_read_file("english.vocab")
         word_list = sorted(word_list.splitlines(), key=lambda x: -len(x))
         for word in word_list:
             english_word_tokenizer.add_mwe(r"{}".format(word))
         self.results["english_word_tokenizer"].append(english_word_tokenizer)
 
+    def exposed_read_file(self, f_name):
+        ignore_files = ["0301086.tex"]
+        if f_name.split("/")[-1].strip() in ignore_files:
+            return None
+        with open(f"{f_name}", "r", encoding="ISO-8859-1") as f:
+            data = f.read()
+        clean = [
+            x
+            for x in data.splitlines()
+            if not re.findall(
+                r"^\\(def|newcommand|documentclass|begin{document}|usepackage)", x
+            )
+        ]
+        data = "\n".join(clean)
+        # avoid including thebibliography in the TextTiling
+        matches = re.findall(
+            r"\\begin{thebibliography}.*?\\end{thebibliography}", data, re.DOTALL
+        )
+        if matches:
+            self.results[f"{f_name}_thebibliography"].append(*matches)
+            # print(matches)
+            print(len(data))
+            for match in matches:
+                data = data.replace(match, "")
+        print(len(data))
+        self.current_file = f_name
+        return data
+
+    def exposed_process_data_set(self):
+        path = self.data_set_path
+        file_names = listdir(path)
+        for f_name in tqdm(file_names):
+            print(f_name)
+            f_name_path = self.data_set_path + f_name
+            file_data = self.exposed_read_file(f_name_path)
+            # self.redis_client.set(f_name,file_data)
+            self.results[f_name].append(file_data)
+            self.current_file = f_name
+            # self.exposed_paragraphs()
+            self.exposed_sentences()
+
+    def exposed_paragraphs(self):
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        paragraphs = txttlng_tokenizer.tokenize(file_data)
+        for paragraph in paragraphs:
+            # print(paragraph)
+            self.results[f"{current_file}_paragraphs"].append(paragraph)
+
+    def exposed_sentences(self):
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        sentences = tok_cls.sentences_from_text(file_data)
+        # for paragraph in self.results[f"{current_file}_paragraphs"]:
+        for sentence in sentences:
+            print(sentence)
+            print("*" * 50)
+            self.results[f"{current_file}_sentences"].append(sentence)
+
     def exposed_get_abstract(self, data=False, save=True, print_results=False):
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         abstract = CDLL("./abstract.so")
         abstract.test.restype = c_char_p
@@ -198,42 +214,43 @@ class MyService(rpyc.Service):
             if save or print_results:
                 for match in abstract.test(s).decode().splitlines():
                     if save:
-                        self.results["abstract"].append(match)
+                        print(match)
+                        self.results[f"{current_file}_abstract"].append(match)
                     if print_results:
                         print(match)
 
     def exposed_get_affiliation(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}_affiliation"]) == 1:
+                data = self.results[f"{current_file}_"][0]
         s = c_char_p(str.encode(data))
         affiliation = CDLL("./affiliation.so")
         affiliation.test.restype = c_char_p
         if save or print_results:
             for match in affiliation.test(s).decode().splitlines():
                 if save:
-                    self.results["affiliation"].append(match)
+                    self.results[f"{current_file}_affiliation"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_author(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         author = CDLL("./author.so")
         author.test.restype = c_char_p
         if save or print_results:
             for match in author.test(s).decode().splitlines():
                 if save:
-                    self.results["author"].append(match)
+                    self.results[f"{current_file}_author"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_cite(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}_cite"][0]
         s = c_char_p(str.encode(data))
         cite = CDLL("./cite.so")
         cite.test.restype = c_char_p
@@ -246,8 +263,8 @@ class MyService(rpyc.Service):
 
     def exposed_get_title(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}_"][0]
         s = c_char_p(str.encode(data))
         title = CDLL("./title.so")
         title.test.restype = c_char_p
@@ -260,8 +277,8 @@ class MyService(rpyc.Service):
 
     def exposed_get_slm(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         slm = CDLL("./slm.so")
         slm.test.restype = c_char_p
@@ -274,64 +291,64 @@ class MyService(rpyc.Service):
 
     def exposed_get_section(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         section = CDLL("./section.so")
         section.test.restype = c_char_p
         if save or print_results:
             for match in section.test(s).decode().splitlines():
                 if save:
-                    self.results["section"].append(match)
+                    self.results[f"{current_file}_section"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_algorithm(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         algorithm = CDLL("./algorithm.so")
         algorithm.test.restype = c_char_p
         if save or print_results:
             for match in algorithm.test(s).decode().splitlines():
                 if save:
-                    self.results["algorithm"].append(match)
+                    self.results[f"{current_file}_algorithm"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_ref(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         ref = CDLL("./ref.so")
         ref.test.restype = c_char_p
         if save or print_results:
             for match in ref.test(s).decode().splitlines():
                 if save:
-                    self.results["ref"].append(match)
+                    self.results[f"{current_file}_ref"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_bibitem(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         bibitem = CDLL("./bibitem.so")
         bibitem.test.restype = c_char_p
         if save or print_results:
             for match in bibitem.test(s).decode().splitlines():
                 if save:
-                    self.results["bibitem"].append(match)
+                    self.results[f"{current_file}_bibitem"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_emph(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         emph = CDLL("./emph.so")
         emph.test.restype = c_char_p
@@ -344,29 +361,29 @@ class MyService(rpyc.Service):
 
     def exposed_get_label(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         label = CDLL("./label.so")
         label.test.restype = c_char_p
         if save or print_results:
             for match in label.test(s).decode().splitlines():
                 if save:
-                    self.results["label"].append(match)
+                    self.results[f"{current_file}_label"].append(match)
                 if print_results:
                     print(match)
 
     def exposed_get_url(self, data=False, save=True, print_results=False):
         if not data:
-            if len(self.results["file_data"]) == 1:
-                data = self.results["file_data"][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
         s = c_char_p(str.encode(data))
         url = CDLL("./url.so")
         url.test.restype = c_char_p
         if save or print_results:
             for match in url.test(s).decode().splitlines():
                 if save:
-                    self.results["url"].append(match)
+                    self.results[f"{current_file}_url"].append(match)
                 if print_results:
                     print(match)
 

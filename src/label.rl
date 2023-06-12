@@ -12,13 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <unistd.h>
+
+
 
 int n;
-char results[10000];
+#define MAX_LEN 10000
+char results[MAX_LEN];
 int idx;
+
 struct state_chart
 {
 	int cs;
@@ -89,6 +90,13 @@ struct state_chart
 }%%
 
 %% write data;
+
+
+void init(){
+	idx = 0;
+	int n = 0;
+	memset(results,'\0',MAX_LEN);
+}
 
 void state_chart_init( struct state_chart *fsm )
 {

@@ -16,11 +16,12 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define RES_MAX_LEN 500000
-char results[RES_MAX_LEN];
+#define MAX_LEN 700000
+char results[MAX_LEN];
 int n;
 const char* pattern="\\section";
 int idx;
+
 struct state_chart
 {
 	int cs;
@@ -94,6 +95,12 @@ struct state_chart
 }%%
 
 %% write data;
+
+void init(){
+	idx = 0;
+	int n = 0;
+	memset(results,'\0',MAX_LEN);
+}
 
 void state_chart_init( struct state_chart *fsm )
 {

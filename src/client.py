@@ -1,5 +1,22 @@
 import rpyc
+from os import remove 
+from redis import Redis
+client = Redis(decode_responses=True)
 
+ignore =['0301052.tex','0301053.tex','0301055.tex','0301056.tex','0301066.tex','0301071.tex','0301078.tex','0301077_cleaned.tex','0301062.tex','0301037.tex','0301042.tex','0301043.tex','0301046.tex','0301050.tex','0301050.tex',
+         '0301082.tex',
+'0301083.tex','0301088.tex','0301093.tex','0301094.tex','0301097.tex',
+"0301067_cleaned.tex",
+"0301069_cleaned.tex",
+         ]
+#for f_name in client.lrange('wont_import',0,-1):
+#    ignore.append(f_name)
+for entry in ignore:
+    try:
+        pass
+        #remove(f'../2003/{entry}')
+    except:
+        pass
 c = rpyc.connect("127.0.0.1", 18861)
 c.root.exposed_process_data_set()
 # c.root.paragraphs()
@@ -42,3 +59,4 @@ c.root.get_url(print_results=True)
 # depends on sentences
 c.root.rank_bm25()
 c.root.query_rank_bm25("fundamental constants")
+"0301079.tex",

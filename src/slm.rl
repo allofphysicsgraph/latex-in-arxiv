@@ -18,11 +18,13 @@
 
 #define FN_MAX_LEN 1024
 #define RES_MAX_LEN 10000
+#define MAX_LEN 100
 char filename[FN_MAX_LEN];
-char results[RES_MAX_LEN];
+char results[MAX_LEN];
 int results_idx;
-char output[500000];
+char output[RES_MAX_LEN];
 int n;
+
 
 struct state_chart
 {
@@ -35,7 +37,7 @@ struct state_chart
 
 	
 	action init_results {
-		memset(results,'\0',RES_MAX_LEN);
+		memset(results,'\0',MAX_LEN);
 		results_idx=0;	
 	}
 	
@@ -72,6 +74,12 @@ struct state_chart
 }%%
 
 %% write data;
+
+void init(){
+	memset (results,'\0',MAX_LEN);
+	memset (output,'\0',RES_MAX_LEN);
+	results_idx = 0;
+}
 
 void state_chart_init( struct state_chart *fsm )
 {

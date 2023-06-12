@@ -11,8 +11,8 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
-char results[100000];
+#define MAX_LEN 100000
+char results[MAX_LEN];
 int idx;
 %%{
 	machine foo;
@@ -45,6 +45,11 @@ int idx;
 }%%
 
 %% write data noerror;
+
+void init(){
+	idx = 0;
+	memset(results,'\0',MAX_LEN);
+}
 
 char* test( const char *str )
 {

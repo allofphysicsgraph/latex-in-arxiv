@@ -29,7 +29,8 @@ from pygments.token import *
 from pygments import highlight
 from pygments.formatters import Terminal256Formatter
 from pygments.style import Style
-#from redis import Redis
+
+# from redis import Redis
 
 token_list = []
 
@@ -75,7 +76,7 @@ sentence_piece_model_path = "HEP_TEX.model"
 punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 sp = spm.SentencePieceProcessor()
-#sp.load("HEP_TEX.model")
+# sp.load("HEP_TEX.model")
 
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
     w=20, k=6, smoothing_width=2, smoothing_rounds=5
@@ -86,7 +87,7 @@ class MyService(rpyc.Service):
     def __init__(self):
         self.results = defaultdict(list)
         self.current_file = ""
-        #self.redis_client = Redis(decode_responses=True)
+        # self.redis_client = Redis(decode_responses=True)
         self.data_set_path = "test/"
 
     def on_connect(self, conn):
@@ -137,15 +138,15 @@ class MyService(rpyc.Service):
             english_word_tokenizer.add_mwe(r"{}".format(word))
         self.results["english_word_tokenizer"].append(english_word_tokenizer)
 
-    def exposed_get_comments(self,data):
-        comments = re.findall('%.*',data)
+    def exposed_get_comments(self, data):
+        comments = re.findall("%.*", data)
         return comments
 
     def exposed_read_file(self, f_name):
         with open(f"{f_name}", "r", encoding="utf-8") as f:
-            #from redis import Redis
-            #client = Redis()
-            #client.set('current_file',f_name)
+            # from redis import Redis
+            # client = Redis()
+            # client.set('current_file',f_name)
             data = f.read()
         clean = [
             x
@@ -161,15 +162,15 @@ class MyService(rpyc.Service):
         )
         if matches:
             for match in matches:
-                #print(match)
+                # print(match)
                 self.results[f"{f_name}_thebibliography"].append(match)
-                #print(len(data))
+                # print(len(data))
                 data = data.replace(match, "")
-        #print(len(data))
+        # print(len(data))
 
         comments = self.exposed_get_comments(data)
         for comment in comments:
-            data.replace(comment,"")
+            data.replace(comment, "")
 
         self.current_file = f_name
         return data
@@ -196,7 +197,6 @@ class MyService(rpyc.Service):
             self.exposed_get_label()
             self.exposed_get_url()
 
-
     def exposed_paragraphs(self):
         current_file = self.current_file
         file_data = self.results[current_file][0]
@@ -211,8 +211,8 @@ class MyService(rpyc.Service):
         sentences = tok_cls.sentences_from_text(file_data)
         # for paragraph in self.results[f"{current_file}_paragraphs"]:
         for sentence in sentences:
-            #print(sentence)
-            #print("*" * 50)
+            # print(sentence)
+            # print("*" * 50)
             self.results[f"{current_file}_sentences"].append(sentence)
 
     def exposed_get_abstract(self, data=False, save=True, print_results=False):
@@ -230,12 +230,12 @@ class MyService(rpyc.Service):
                     abstract.init()
                     for match in abstract.test(s).decode().splitlines():
                         if save:
-                            #print(match)
+                            # print(match)
                             self.results[f"{current_file}_abstract"].append(match)
                         if print_results:
                             print(match)
                 except:
-                    print('error on {)'.format(self.current_file))
+                    print("error on {)".format(self.current_file))
 
     def exposed_get_affiliation(self, data=False, save=True, print_results=False):
         current_file = self.current_file
@@ -355,7 +355,6 @@ class MyService(rpyc.Service):
                     self.results[f"{current_file}_ref"].append(match)
                 if print_results:
                     print(match)
-
 
     def exposed_get_emph(self, data=False, save=True, print_results=False):
         current_file = self.current_file

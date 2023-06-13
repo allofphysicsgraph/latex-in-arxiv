@@ -11,7 +11,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#define MAX_LEN 10000
+#define MAX_LEN 10000 
 char results[MAX_LEN];
 int idx;
 %%{
@@ -60,7 +60,7 @@ char* test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("OK\n");
+		printf("ALIGN OK\n");
 	else
 		printf(" FAILED\n");
 	return results;

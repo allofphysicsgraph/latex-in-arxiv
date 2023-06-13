@@ -17,7 +17,7 @@
 #include <unistd.h>
 
 int n;
-#define MAX_LEN 10000
+#define MAX_LEN 1000
 char results[MAX_LEN];
 int idx;
 struct state_chart

@@ -11,7 +11,8 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#define MAX_LEN 10000
+//most abstracts are less than 5000 characters
+#define MAX_LEN 7500 
 char results[MAX_LEN];
 int idx;
 %%{
@@ -22,6 +23,7 @@ int idx;
 	action balanced { c == 0}
 	action print_fc {
 		if (fc != '\n'){
+
 			results[idx]=fc;
 			idx++;
 		}
@@ -47,6 +49,7 @@ int idx;
 %% write data noerror;
 
 void init(){
+	c = 0;
 	idx = 0;
 	memset(results,'\0',MAX_LEN);
 }

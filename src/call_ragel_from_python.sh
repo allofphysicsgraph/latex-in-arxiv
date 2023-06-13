@@ -77,3 +77,108 @@ gcc -fPIC -shared -o keywords.so keywords.c
 
 ragel center.rl
 gcc -fPIC -shared -o center.so center.c
+
+ragel align.rl
+gcc -fPIC -shared -o align.so align.c
+
+ragel aligned.rl
+gcc -fPIC -shared -o aligned.so aligned.c
+
+ragel cases.rl
+gcc -fPIC -shared -o cases.so cases.c
+
+ragel description.rl
+gcc -fPIC -shared -o description.so description.c
+
+ragel displaymath.rl
+gcc -fPIC -shared -o displaymath.so displaymath.c
+
+ragel enumerate.rl
+gcc -fPIC -shared -o enumerate.so enumerate.c
+
+ragel flushleft.rl
+gcc -fPIC -shared -o flushleft.so flushleft.c
+
+ragel flushright.rl
+gcc -fPIC -shared -o flushright.so flushright.c
+
+ragel fmfgraph.rl
+gcc -fPIC -shared -o fmfgraph.so fmfgraph.c
+
+ragel gather.rl
+gcc -fPIC -shared -o gather.so gather.c
+
+ragel lemma.rl
+gcc -fPIC -shared -o lemma.so lemma.c
+
+ragel list.rl
+gcc -fPIC -shared -o list.so list.c
+
+ragel lstcode.rl
+gcc -fPIC -shared -o lstcode.so lstcode.c
+
+ragel lstlisting.rl
+gcc -fPIC -shared -o lstlisting.so lstlisting.c
+
+ragel mathletters.rl
+gcc -fPIC -shared -o mathletters.so mathletters.c
+
+ragel matrix.rl
+gcc -fPIC -shared -o matrix.so matrix.c
+
+ragel minipage.rl
+gcc -fPIC -shared -o minipage.so minipage.c
+
+ragel minted.rl
+gcc -fPIC -shared -o minted.so minted.c
+
+ragel multline.rl
+gcc -fPIC -shared -o multline.so multline.c
+
+ragel picture.rl
+gcc -fPIC -shared -o picture.so picture.c
+
+ragel pmatrix.rl
+gcc -fPIC -shared -o pmatrix.so pmatrix.c
+
+ragel proof.rl
+gcc -fPIC -shared -o proof.so proof.c
+
+ragel prop.rl
+gcc -fPIC -shared -o prop.so prop.c
+
+ragel proposition.rl
+gcc -fPIC -shared -o proposition.so proposition.c
+
+ragel quotation.rl
+gcc -fPIC -shared -o quotation.so quotation.c
+
+ragel quote.rl
+gcc -fPIC -shared -o quote.so quote.c
+
+ragel references.rl
+gcc -fPIC -shared -o references.so references.c
+
+ragel scope.rl
+gcc -fPIC -shared -o scope.so scope.c
+
+ragel split.rl
+gcc -fPIC -shared -o split.so split.c
+
+ragel subequations.rl
+gcc -fPIC -shared -o subequations.so subequations.c
+
+ragel table.rl
+gcc -fPIC -shared -o table.so table.c
+
+ragel tabular.rl
+gcc -fPIC -shared -o tabular.so tabular.c
+
+ragel theorem.rl
+gcc -fPIC -shared -o theorem.so theorem.c
+
+ragel titlepage.rl
+gcc -fPIC -shared -o titlepage.so titlepage.c
+
+ragel verbatim.rl
+gcc -fPIC -shared -o verbatim.so verbatim.c

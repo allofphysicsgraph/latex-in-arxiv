@@ -186,16 +186,57 @@ class MyService(rpyc.Service):
             self.results[f_name].append(file_data)
             self.current_file = f_name
             self.exposed_sentences()
+
             self.exposed_get_abstract()
-            self.exposed_get_author()
             self.exposed_get_affiliation()
+            #self.exposed_get_align()
+            #self.exposed_get_aligned()
+            self.exposed_get_author()
+            #self.exposed_get_cases()
             self.exposed_get_cite()
-            self.exposed_get_title()
-            self.exposed_get_section()
-            self.exposed_get_ref()
+            #self.exposed_get_description()
+            self.exposed_get_displaymath()
             self.exposed_get_emph()
+            #self.exposed_get_enumerate()
+            #self.exposed_get_flushleft()
+            #self.exposed_get_flushright()
+            #self.exposed_get_fmfgraph()
+            #self.exposed_get_gather()
             self.exposed_get_label()
+            self.exposed_get_lemma()
+            #list needs work
+            #self.exposed_get_list()
+            self.exposed_get_lstcode()
+            self.exposed_get_lstlisting()
+            self.exposed_get_mathletters()
+            
+            self.exposed_get_matrix()
+            self.exposed_get_minipage()
+            self.exposed_get_minted()
+            #self.exposed_get_multline()
+            #self.exposed_get_picture()
+            #self.exposed_get_pmatrix()
+            #self.exposed_get_proof()
+            #self.exposed_get_prop()
+            self.exposed_get_proposition()
+            #self.exposed_get_quotation()
+            #self.exposed_get_quote()
+            self.exposed_get_ref()
+            #self.exposed_get_references()
+            #self.exposed_get_scope()
+            
+            #self.exposed_get_section()
+            #self.exposed_get_split()
+            #self.exposed_get_subequations()
+            
+            #self.exposed_get_table()
+            #self.exposed_get_tabular()
+            self.exposed_get_theorem()
+            
+            self.exposed_get_title()
+            #self.exposed_get_titlepage()
             self.exposed_get_url()
+            #self.exposed_get_verbatim()
 
     def exposed_paragraphs(self):
         current_file = self.current_file
@@ -214,6 +255,747 @@ class MyService(rpyc.Service):
             # print(sentence)
             # print("*" * 50)
             self.results[f"{current_file}_sentences"].append(sentence)
+
+    def exposed_get_align(self, data=False, save=True, print_results=False):
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        s = c_char_p(str.encode(data))
+        align = CDLL("./align.so")
+        align.test.restype = c_char_p
+        if re.findall(r"\\begin{align}", data):
+            if save or print_results:
+                try:
+                    align.init()
+                    for match in align.test(s).decode().splitlines():
+                        if save:
+                            # print(match)
+                            self.results[f"{current_file}_align"].append(match)
+                        if print_results:
+                            print(match)
+                except:
+                    print("error on {)".format(self.current_file))
+
+    def exposed_get_aligned(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            aligned = CDLL("./aligned.so")
+            aligned.test.restype = c_char_p
+            if re.findall(r"\\begin{aligned}", data):
+                if save or print_results:
+                    try:
+                        aligned.init()
+                        for match in aligned.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_aligned"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_cases(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            cases = CDLL("./cases.so")
+            cases.test.restype = c_char_p
+            if re.findall(r"\\begin{cases}", data):
+                if save or print_results:
+                    try:
+                        cases.init()
+                        for match in cases.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_cases"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_description(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            description = CDLL("./description.so")
+            description.test.restype = c_char_p
+            if re.findall(r"\\begin{description}", data):
+                if save or print_results:
+                    try:
+                        description.init()
+                        for match in description.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_description"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_displaymath(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            displaymath = CDLL("./displaymath.so")
+            displaymath.test.restype = c_char_p
+            if re.findall(r"\\begin{displaymath}", data):
+                if save or print_results:
+                    try:
+                        displaymath.init()
+                        for match in displaymath.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_displaymath"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_enumerate(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            enumerate = CDLL("./enumerate.so")
+            enumerate.test.restype = c_char_p
+            if re.findall(r"\\begin{enumerate}", data):
+                if save or print_results:
+                    try:
+                        enumerate.init()
+                        for match in enumerate.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_enumerate"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_flushleft(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            flushleft = CDLL("./flushleft.so")
+            flushleft.test.restype = c_char_p
+            if re.findall(r"\\begin{flushleft}", data):
+                if save or print_results:
+                    try:
+                        flushleft.init()
+                        for match in flushleft.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_flushleft"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_flushright(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            flushright = CDLL("./flushright.so")
+            flushright.test.restype = c_char_p
+            if re.findall(r"\\begin{flushright}", data):
+                if save or print_results:
+                    try:
+                        flushright.init()
+                        for match in flushright.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_flushright"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_fmfgraph(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            fmfgraph = CDLL("./fmfgraph.so")
+            fmfgraph.test.restype = c_char_p
+            if re.findall(r"\\begin{fmfgraph}", data):
+                if save or print_results:
+                    try:
+                        fmfgraph.init()
+                        for match in fmfgraph.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_fmfgraph"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_gather(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            gather = CDLL("./gather.so")
+            gather.test.restype = c_char_p
+            if re.findall(r"\\begin{gather}", data):
+                if save or print_results:
+                    try:
+                        gather.init()
+                        for match in gather.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_gather"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_lemma(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            lemma = CDLL("./lemma.so")
+            lemma.test.restype = c_char_p
+            if re.findall(r"\\begin{lemma}", data):
+                if save or print_results:
+                    try:
+                        lemma.init()
+                        for match in lemma.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_lemma"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_list(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            list = CDLL("./list.so")
+            list.test.restype = c_char_p
+            if re.findall(r"\\begin{list}", data):
+                if save or print_results:
+                    try:
+                        list.init()
+                        for match in list.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_list"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_lstcode(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            lstcode = CDLL("./lstcode.so")
+            lstcode.test.restype = c_char_p
+            if re.findall(r"\\begin{lstcode}", data):
+                if save or print_results:
+                    try:
+                        lstcode.init()
+                        for match in lstcode.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_lstcode"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_lstlisting(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            lstlisting = CDLL("./lstlisting.so")
+            lstlisting.test.restype = c_char_p
+            if re.findall(r"\\begin{lstlisting}", data):
+                if save or print_results:
+                    try:
+                        lstlisting.init()
+                        for match in lstlisting.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_lstlisting"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_mathletters(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            mathletters = CDLL("./mathletters.so")
+            mathletters.test.restype = c_char_p
+            if re.findall(r"\\begin{mathletters}", data):
+                if save or print_results:
+                    try:
+                        mathletters.init()
+                        for match in mathletters.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_mathletters"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_matrix(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            matrix = CDLL("./matrix.so")
+            matrix.test.restype = c_char_p
+            if re.findall(r"\\begin{matrix}", data):
+                if save or print_results:
+                    try:
+                        matrix.init()
+                        for match in matrix.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_matrix"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_minipage(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            minipage = CDLL("./minipage.so")
+            minipage.test.restype = c_char_p
+            if re.findall(r"\\begin{minipage}", data):
+                if save or print_results:
+                    try:
+                        minipage.init()
+                        for match in minipage.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_minipage"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_minted(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            minted = CDLL("./minted.so")
+            minted.test.restype = c_char_p
+            if re.findall(r"\\begin{minted}", data):
+                if save or print_results:
+                    try:
+                        minted.init()
+                        for match in minted.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_minted"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_multline(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            multline = CDLL("./multline.so")
+            multline.test.restype = c_char_p
+            if re.findall(r"\\begin{multline}", data):
+                if save or print_results:
+                    try:
+                        multline.init()
+                        for match in multline.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_multline"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_picture(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            picture = CDLL("./picture.so")
+            picture.test.restype = c_char_p
+            if re.findall(r"\\begin{picture}", data):
+                if save or print_results:
+                    try:
+                        picture.init()
+                        for match in picture.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_picture"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_pmatrix(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            pmatrix = CDLL("./pmatrix.so")
+            pmatrix.test.restype = c_char_p
+            if re.findall(r"\\begin{pmatrix}", data):
+                if save or print_results:
+                    try:
+                        pmatrix.init()
+                        for match in pmatrix.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_pmatrix"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_proof(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            proof = CDLL("./proof.so")
+            proof.test.restype = c_char_p
+            if re.findall(r"\\begin{proof}", data):
+                if save or print_results:
+                    try:
+                        proof.init()
+                        for match in proof.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_proof"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_prop(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            prop = CDLL("./prop.so")
+            prop.test.restype = c_char_p
+            if re.findall(r"\\begin{prop}", data):
+                if save or print_results:
+                    try:
+                        prop.init()
+                        for match in prop.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_prop"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_proposition(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            proposition = CDLL("./proposition.so")
+            proposition.test.restype = c_char_p
+            if re.findall(r"\\begin{proposition}", data):
+                if save or print_results:
+                    try:
+                        proposition.init()
+                        for match in proposition.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_proposition"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_quotation(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            quotation = CDLL("./quotation.so")
+            quotation.test.restype = c_char_p
+            if re.findall(r"\\begin{quotation}", data):
+                if save or print_results:
+                    try:
+                        quotation.init()
+                        for match in quotation.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_quotation"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_quote(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            quote = CDLL("./quote.so")
+            quote.test.restype = c_char_p
+            if re.findall(r"\\begin{quote}", data):
+                if save or print_results:
+                    try:
+                        quote.init()
+                        for match in quote.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_quote"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_references(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            references = CDLL("./references.so")
+            references.test.restype = c_char_p
+            if re.findall(r"\\begin{references}", data):
+                if save or print_results:
+                    try:
+                        references.init()
+                        for match in references.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_references"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_scope(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            scope = CDLL("./scope.so")
+            scope.test.restype = c_char_p
+            if re.findall(r"\\begin{scope}", data):
+                if save or print_results:
+                    try:
+                        scope.init()
+                        for match in scope.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_scope"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_split(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            split = CDLL("./split.so")
+            split.test.restype = c_char_p
+            if re.findall(r"\\begin{split}", data):
+                if save or print_results:
+                    try:
+                        split.init()
+                        for match in split.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_split"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_subequations(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            subequations = CDLL("./subequations.so")
+            subequations.test.restype = c_char_p
+            if re.findall(r"\\begin{subequations}", data):
+                if save or print_results:
+                    try:
+                        subequations.init()
+                        for match in subequations.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_subequations"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_table(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            table = CDLL("./table.so")
+            table.test.restype = c_char_p
+            if re.findall(r"\\begin{table}", data):
+                if save or print_results:
+                    try:
+                        table.init()
+                        for match in table.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_table"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_tabular(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            tabular = CDLL("./tabular.so")
+            tabular.test.restype = c_char_p
+            if re.findall(r"\\begin{tabular}", data):
+                if save or print_results:
+                    try:
+                        tabular.init()
+                        for match in tabular.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_tabular"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+    def exposed_get_theorem(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            theorem = CDLL("./theorem.so")
+            theorem.test.restype = c_char_p
+            if re.findall(r"\\begin{theorem}", data):
+                if save or print_results:
+                    try:
+                        theorem.init()
+                        for match in theorem.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_theorem"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+
+    def exposed_get_titlepage(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            titlepage = CDLL("./titlepage.so")
+            titlepage.test.restype = c_char_p
+            if re.findall(r"\\begin{titlepage}", data):
+                if save or print_results:
+                    try:
+                        titlepage.init()
+                        for match in titlepage.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_titlepage"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+
+    def exposed_get_verbatim(self, data=False, save=True, print_results=False):
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if not data:
+                if len(self.results[f"{current_file}"]) == 1:
+                    data = self.results[f"{current_file}"][0]
+            s = c_char_p(str.encode(data))
+            verbatim = CDLL("./verbatim.so")
+            verbatim.test.restype = c_char_p
+            if re.findall(r"\\begin{verbatim}", data):
+                if save or print_results:
+                    try:
+                        verbatim.init()
+                        for match in verbatim.test(s).decode().splitlines():
+                            if save:
+                                # print(match)
+                                self.results[f"{current_file}_verbatim"].append(match)
+                            if print_results:
+                                print(match)
+                    except:
+                        print("error on {)".format(self.current_file))
+
+
 
     def exposed_get_abstract(self, data=False, save=True, print_results=False):
         current_file = self.current_file

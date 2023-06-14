@@ -1,6 +1,9 @@
 import rpyc
 from os import remove
 from redis import Redis
+import yaml
+with open('config.yaml','r') as f:
+          config = yaml.safe_load(f)
 
 client = Redis(decode_responses=True)
 c = rpyc.connect("127.0.0.1", 18861)

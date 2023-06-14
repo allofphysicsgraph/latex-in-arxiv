@@ -49,7 +49,6 @@ int idx;
 %% write data noerror;
 
 void init(){
-	c = 0;
 	idx = 0;
 	memset(results,'\0',MAX_LEN);
 }

@@ -31,8 +31,11 @@ from pygments.formatters import Terminal256Formatter
 from pygments.style import Style
 from random import shuffle
 import inspect
+from psycopg2 import connect
+import yaml
 
-# from redis import Redis
+with open("config.yaml", "r") as f:
+    config = yaml.safe_load(f)
 
 token_list = []
 
@@ -95,6 +98,7 @@ class MyService(rpyc.Service):
         self.data_set_path = "test/"
         self.return_length = []
         self.debug = True
+        self.postgres = True
 
     def on_connect(self, conn):
         print(
@@ -122,6 +126,17 @@ class MyService(rpyc.Service):
         if tok[-1] == "$":
             tok = tok[:-1]
         return tok
+
+    def db_cursor(self):
+        conn = connect(
+            dbname=config["dbname"],
+            user=config["user"],
+            password=config["password"],
+            host=config["host"],
+            port=config["port"],
+        )
+        cursor = conn.cursor()
+        return conn, cursor
 
     def exposed_build_word_tokenizers(self):
         """Tokenization seems difficult to get right, so every file with the extension of .vocab will be used in word tokenization.
@@ -194,7 +209,6 @@ class MyService(rpyc.Service):
             self.current_file = f_name
             self.exposed_sentences()
 
-
             self.exposed_get_abstract()
             self.exposed_get_affiliation()
             self.exposed_get_align()
@@ -240,6 +254,7 @@ class MyService(rpyc.Service):
             self.exposed_get_titlepage()
             self.exposed_get_url()
             self.exposed_get_verbatim()
+
     def exposed_print_length(self):
         print(
             max(self.return_length),
@@ -263,7 +278,7 @@ class MyService(rpyc.Service):
             # print(sentence)
             # print("*" * 50)
             self.results[f"{current_file}_sentences"].append(sentence)
-     
+
     def exposed_get_cite(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -273,7 +288,7 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for cite_match in re.findall(r"\\cite{.{,1000}",data):
+        for cite_match in re.findall(r"\\cite{.{,1000}", data):
             s = c_char_p(str.encode(cite_match))
             cite = CDLL("./cite.so")
             cite.test.restype = c_char_p
@@ -284,6 +299,7 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_cite"].append(match)
                     if print_results:
                         print(match)
+
     def exposed_get_ref(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -293,7 +309,7 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for ref_match in re.findall(r"\\ref{.{,1000}",data):
+        for ref_match in re.findall(r"\\ref{.{,1000}", data):
             s = c_char_p(str.encode(ref_match))
             ref = CDLL("./ref.so")
             ref.test.restype = c_char_p
@@ -304,6 +320,7 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_ref"].append(match)
                     if print_results:
                         print(match)
+
     def exposed_get_author(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -313,10 +330,12 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for author_match in re.findall(r"\\author{.{,1000}",data):
+        for author_match in re.findall(r"\\author{.{,1000}", data):
             s = c_char_p(str.encode(author_match))
             author = CDLL("./author.so")
             author.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
             if save or print_results:
                 author.init()
                 for match in author.test(s).decode().splitlines():
@@ -324,6 +343,14 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_author"].append(match)
                     if print_results:
                         print(match)
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
     def exposed_get_title(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -333,7 +360,7 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for title_match in re.findall(r"\\title{.{,1000}",data):
+        for title_match in re.findall(r"\\title{.{,1000}", data):
             s = c_char_p(str.encode(title_match))
             title = CDLL("./title.so")
             title.test.restype = c_char_p
@@ -344,6 +371,7 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_title"].append(match)
                     if print_results:
                         print(match)
+
     def exposed_get_affiliation(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -1608,8 +1636,6 @@ class MyService(rpyc.Service):
                 except:
                     print("error on {)".format(self.current_file))
 
-
-
     def exposed_get_slm(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -1649,7 +1675,6 @@ class MyService(rpyc.Service):
                     self.results[f"{current_file}_section"].append(match)
                 if print_results:
                     print(match)
-  
 
     def exposed_get_emph(self, data=False, save=True, print_results=False):
         if self.debug:
@@ -1660,7 +1685,7 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for emph_match in re.findall(r"\\emph{.{,1000}",data):
+        for emph_match in re.findall(r"\\emph{.{,1000}", data):
             s = c_char_p(str.encode(emph_match))
             emph = CDLL("./emph.so")
             emph.test.restype = c_char_p
@@ -1681,7 +1706,7 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for label_match in re.findall(r"\\label{.{,1000}",data):
+        for label_match in re.findall(r"\\label{.{,1000}", data):
             s = c_char_p(str.encode(label_match))
             label = CDLL("./label.so")
             label.test.restype = c_char_p

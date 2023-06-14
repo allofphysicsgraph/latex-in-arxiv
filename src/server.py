@@ -197,8 +197,9 @@ class MyService(rpyc.Service):
         self.current_file = f_name
         return data
 
-    def exposed_process_data_set(self):
-        path = self.data_set_path
+    def exposed_process_data_set(self, path=False):
+        if not path:
+            path = self.data_set_path
         file_names = listdir(path)
         for f_name in tqdm(file_names):
             print(f_name)
@@ -229,7 +230,7 @@ class MyService(rpyc.Service):
             self.exposed_get_list()
             self.exposed_get_lstcode()
             self.exposed_get_lstlisting()
-            self.exposed_get_mathletters()
+            # self.exposed_get_mathletters()
             self.exposed_get_matrix()
             self.exposed_get_minipage()
             self.exposed_get_minted()
@@ -1930,10 +1931,16 @@ class MyService(rpyc.Service):
 
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
+    from sys import argv
+
+    if len(sys.argv) == 2:
+        port = int(sys.argv[1])
+    else:
+        port = 18861
 
     t = ThreadedServer(
         MyService,
-        port=18861,
+        port=port,
         protocol_config={"allow_pickle": True, "allow_all_attrs": True},
     )
     print("Ready for rpyc clients \n")

@@ -2,14 +2,24 @@ import rpyc
 from os import remove
 from redis import Redis
 import yaml
+from sys import argv
+
+data_path = False
+if argv[1]:
+    data_path = argv[1]
 
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
 
 client = Redis(decode_responses=True)
-c = rpyc.connect("127.0.0.1", 18861)
+c = rpyc.connect("127.0.0.1", 18862)
 c._config["sync_request_timeout"] = None
-c.root.exposed_process_data_set()
+if data_path:
+    c.root.exposed_process_data_set(path=f"{data_path}/")
+else:
+    c.root.exposed_process_data_set(path="test/")
+
+
 # c.root.paragraphs()
 # c.root.sentences()
 # c.root.get_abstract(print_results=True)

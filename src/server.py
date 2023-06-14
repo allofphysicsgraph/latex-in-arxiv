@@ -33,6 +33,7 @@ from random import shuffle
 import inspect
 from psycopg2 import connect
 import yaml
+from redis import Redis
 
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
@@ -94,7 +95,7 @@ class MyService(rpyc.Service):
     def __init__(self):
         self.results = defaultdict(list)
         self.current_file = ""
-        # self.redis_client = Redis(decode_responses=True)
+        self.redis_client = Redis(decode_responses=True)
         self.data_set_path = "test/"
         self.return_length = []
         self.debug = True
@@ -197,14 +198,14 @@ class MyService(rpyc.Service):
         self.current_file = f_name
         return data
 
-    def exposed_process_data_set(self, path=False):
-        if not path:
-            path = self.data_set_path
-        file_names = listdir(path)
+    def exposed_process_data_set(self, path=False, file_names=[]):
+        # if not path:
+        #    path = self.data_set_path
+        # file_names = listdir(path)
         for f_name in tqdm(file_names):
             print(f_name)
-            f_name_path = self.data_set_path + f_name
-            file_data = self.exposed_read_file(f_name_path)
+            # f_name_path = self.data_set_path + f_name
+            file_data = self.exposed_read_file(f_name)
             # self.redis_client.set(f_name,file_data)
             self.results[f_name].append(file_data)
             self.current_file = f_name

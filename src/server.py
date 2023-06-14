@@ -97,7 +97,7 @@ class MyService(rpyc.Service):
         # self.redis_client = Redis(decode_responses=True)
         self.data_set_path = "test/"
         self.return_length = []
-        self.debug = False 
+        self.debug = False
         self.postgres = True
 
     def on_connect(self, conn):
@@ -244,7 +244,7 @@ class MyService(rpyc.Service):
             self.exposed_get_ref()
             self.exposed_get_references()
             self.exposed_get_scope()
-            #self.exposed_get_section()
+            # self.exposed_get_section()
             self.exposed_get_split()
             self.exposed_get_subequations()
             self.exposed_get_table()
@@ -308,6 +308,7 @@ class MyService(rpyc.Service):
                             f"insert into cite (filename,cite,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
     def exposed_get_ref(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -337,6 +338,7 @@ class MyService(rpyc.Service):
                             f"insert into ref (filename,ref,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
     def exposed_get_author(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -366,6 +368,7 @@ class MyService(rpyc.Service):
                             f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
     def exposed_get_title(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -395,6 +398,7 @@ class MyService(rpyc.Service):
                             f"insert into title (filename,title,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
     def exposed_get_emph(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -424,6 +428,7 @@ class MyService(rpyc.Service):
                             f"insert into emph (filename,emph,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
     def exposed_get_label(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -453,8 +458,6 @@ class MyService(rpyc.Service):
                             f"insert into label (filename,label,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-
-
 
     def exposed_get_abstract(self, data=False, save=True, print_results=False):
         if self.debug:
@@ -1720,7 +1723,6 @@ class MyService(rpyc.Service):
                 if print_results:
                     print(match)
 
-
     def exposed_get_url(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -1924,6 +1926,7 @@ class MyService(rpyc.Service):
                             f"insert into affiliation (filename,affiliation,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+
 
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer

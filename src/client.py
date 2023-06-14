@@ -8,6 +8,7 @@ with open("config.yaml", "r") as f:
 
 client = Redis(decode_responses=True)
 c = rpyc.connect("127.0.0.1", 18861)
+c._config["sync_request_timeout"] = None
 c.root.exposed_process_data_set()
 # c.root.paragraphs()
 # c.root.sentences()

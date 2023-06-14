@@ -97,7 +97,7 @@ class MyService(rpyc.Service):
         # self.redis_client = Redis(decode_responses=True)
         self.data_set_path = "test/"
         self.return_length = []
-        self.debug = False
+        self.debug = True
         self.postgres = True
 
     def on_connect(self, conn):
@@ -213,7 +213,7 @@ class MyService(rpyc.Service):
             self.exposed_get_affiliation()
             self.exposed_get_align()
             self.exposed_get_aligned()
-            self.exposed_get_author()
+            # self.exposed_get_author()
             self.exposed_get_cases()
             self.exposed_get_cite()
             self.exposed_get_description()
@@ -297,7 +297,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 cite.init()
                 for match in cite.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_cite"].append(match)
                     if print_results:
                         print(match)
@@ -327,7 +327,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 ref.init()
                 for match in ref.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_ref"].append(match)
                     if print_results:
                         print(match)
@@ -357,7 +357,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 author.init()
                 for match in author.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_author"].append(match)
                     if print_results:
                         print(match)
@@ -387,7 +387,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 title.init()
                 for match in title.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_title"].append(match)
                     if print_results:
                         print(match)
@@ -417,7 +417,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 emph.init()
                 for match in emph.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_emph"].append(match)
                     if print_results:
                         print(match)
@@ -447,7 +447,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 label.init()
                 for match in label.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_label"].append(match)
                     if print_results:
                         print(match)
@@ -480,7 +480,7 @@ class MyService(rpyc.Service):
                         abstract.test.restype = c_char_p
                         abstract.init()
                         for match in abstract.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_abstract"].append(match)
                             if print_results:
@@ -514,7 +514,7 @@ class MyService(rpyc.Service):
                         align.test.restype = c_char_p
                         align.init()
                         for match in align.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_align"].append(match)
                             if print_results:
@@ -548,7 +548,7 @@ class MyService(rpyc.Service):
                         aligned.test.restype = c_char_p
                         aligned.init()
                         for match in aligned.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_aligned"].append(match)
                             if print_results:
@@ -582,7 +582,7 @@ class MyService(rpyc.Service):
                         cases.test.restype = c_char_p
                         cases.init()
                         for match in cases.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_cases"].append(match)
                             if print_results:
@@ -618,7 +618,7 @@ class MyService(rpyc.Service):
                         description.test.restype = c_char_p
                         description.init()
                         for match in description.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_description"].append(
                                     match
@@ -656,7 +656,7 @@ class MyService(rpyc.Service):
                         displaymath.test.restype = c_char_p
                         displaymath.init()
                         for match in displaymath.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_displaymath"].append(
                                     match
@@ -692,7 +692,7 @@ class MyService(rpyc.Service):
                         enumerate.test.restype = c_char_p
                         enumerate.init()
                         for match in enumerate.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_enumerate"].append(match)
                             if print_results:
@@ -726,7 +726,7 @@ class MyService(rpyc.Service):
                         flushleft.test.restype = c_char_p
                         flushleft.init()
                         for match in flushleft.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_flushleft"].append(match)
                             if print_results:
@@ -760,7 +760,7 @@ class MyService(rpyc.Service):
                         flushright.test.restype = c_char_p
                         flushright.init()
                         for match in flushright.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_flushright"].append(match)
                             if print_results:
@@ -794,7 +794,7 @@ class MyService(rpyc.Service):
                         fmfgraph.test.restype = c_char_p
                         fmfgraph.init()
                         for match in fmfgraph.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_fmfgraph"].append(match)
                             if print_results:
@@ -828,7 +828,7 @@ class MyService(rpyc.Service):
                         gather.test.restype = c_char_p
                         gather.init()
                         for match in gather.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_gather"].append(match)
                             if print_results:
@@ -862,7 +862,7 @@ class MyService(rpyc.Service):
                         lemma.test.restype = c_char_p
                         lemma.init()
                         for match in lemma.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_lemma"].append(match)
                             if print_results:
@@ -896,7 +896,7 @@ class MyService(rpyc.Service):
                         list.test.restype = c_char_p
                         list.init()
                         for match in list.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_list"].append(match)
                             if print_results:
@@ -930,7 +930,7 @@ class MyService(rpyc.Service):
                         lstcode.test.restype = c_char_p
                         lstcode.init()
                         for match in lstcode.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_lstcode"].append(match)
                             if print_results:
@@ -964,7 +964,7 @@ class MyService(rpyc.Service):
                         lstlisting.test.restype = c_char_p
                         lstlisting.init()
                         for match in lstlisting.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_lstlisting"].append(match)
                             if print_results:
@@ -1000,7 +1000,7 @@ class MyService(rpyc.Service):
                         mathletters.test.restype = c_char_p
                         mathletters.init()
                         for match in mathletters.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_mathletters"].append(
                                     match
@@ -1036,7 +1036,7 @@ class MyService(rpyc.Service):
                         matrix.test.restype = c_char_p
                         matrix.init()
                         for match in matrix.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_matrix"].append(match)
                             if print_results:
@@ -1070,7 +1070,7 @@ class MyService(rpyc.Service):
                         minipage.test.restype = c_char_p
                         minipage.init()
                         for match in minipage.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_minipage"].append(match)
                             if print_results:
@@ -1104,7 +1104,7 @@ class MyService(rpyc.Service):
                         minted.test.restype = c_char_p
                         minted.init()
                         for match in minted.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_minted"].append(match)
                             if print_results:
@@ -1138,7 +1138,7 @@ class MyService(rpyc.Service):
                         multline.test.restype = c_char_p
                         multline.init()
                         for match in multline.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_multline"].append(match)
                             if print_results:
@@ -1172,7 +1172,7 @@ class MyService(rpyc.Service):
                         picture.test.restype = c_char_p
                         picture.init()
                         for match in picture.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_picture"].append(match)
                             if print_results:
@@ -1206,7 +1206,7 @@ class MyService(rpyc.Service):
                         pmatrix.test.restype = c_char_p
                         pmatrix.init()
                         for match in pmatrix.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_pmatrix"].append(match)
                             if print_results:
@@ -1240,7 +1240,7 @@ class MyService(rpyc.Service):
                         proof.test.restype = c_char_p
                         proof.init()
                         for match in proof.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_proof"].append(match)
                             if print_results:
@@ -1274,7 +1274,7 @@ class MyService(rpyc.Service):
                         prop.test.restype = c_char_p
                         prop.init()
                         for match in prop.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_prop"].append(match)
                             if print_results:
@@ -1310,7 +1310,7 @@ class MyService(rpyc.Service):
                         proposition.test.restype = c_char_p
                         proposition.init()
                         for match in proposition.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_proposition"].append(
                                     match
@@ -1346,7 +1346,7 @@ class MyService(rpyc.Service):
                         quotation.test.restype = c_char_p
                         quotation.init()
                         for match in quotation.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_quotation"].append(match)
                             if print_results:
@@ -1380,7 +1380,7 @@ class MyService(rpyc.Service):
                         quote.test.restype = c_char_p
                         quote.init()
                         for match in quote.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_quote"].append(match)
                             if print_results:
@@ -1414,7 +1414,7 @@ class MyService(rpyc.Service):
                         references.test.restype = c_char_p
                         references.init()
                         for match in references.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_references"].append(match)
                             if print_results:
@@ -1448,7 +1448,7 @@ class MyService(rpyc.Service):
                         scope.test.restype = c_char_p
                         scope.init()
                         for match in scope.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_scope"].append(match)
                             if print_results:
@@ -1482,7 +1482,7 @@ class MyService(rpyc.Service):
                         split.test.restype = c_char_p
                         split.init()
                         for match in split.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_split"].append(match)
                             if print_results:
@@ -1518,7 +1518,7 @@ class MyService(rpyc.Service):
                         subequations.test.restype = c_char_p
                         subequations.init()
                         for match in subequations.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_subequations"].append(
                                     match
@@ -1554,7 +1554,7 @@ class MyService(rpyc.Service):
                         table.test.restype = c_char_p
                         table.init()
                         for match in table.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_table"].append(match)
                             if print_results:
@@ -1588,7 +1588,7 @@ class MyService(rpyc.Service):
                         tabular.test.restype = c_char_p
                         tabular.init()
                         for match in tabular.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_tabular"].append(match)
                             if print_results:
@@ -1622,7 +1622,7 @@ class MyService(rpyc.Service):
                         theorem.test.restype = c_char_p
                         theorem.init()
                         for match in theorem.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_theorem"].append(match)
                             if print_results:
@@ -1656,7 +1656,7 @@ class MyService(rpyc.Service):
                         titlepage.test.restype = c_char_p
                         titlepage.init()
                         for match in titlepage.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_titlepage"].append(match)
                             if print_results:
@@ -1690,7 +1690,7 @@ class MyService(rpyc.Service):
                         verbatim.test.restype = c_char_p
                         verbatim.init()
                         for match in verbatim.test(s).decode().splitlines():
-                            if save:
+                            if not save:
                                 # print(match)
                                 self.results[f"{current_file}_verbatim"].append(match)
                             if print_results:
@@ -1718,7 +1718,7 @@ class MyService(rpyc.Service):
         if save or print_results:
             slm.init()
             for match in slm.test(s).decode().splitlines():
-                if save:
+                if not save:
                     self.results["slm"].append(match)
                 if print_results:
                     print(match)
@@ -1738,7 +1738,7 @@ class MyService(rpyc.Service):
         if save or print_results:
             url.init()
             for match in url.test(s).decode().splitlines():
-                if save:
+                if not save:
                     self.results[f"{current_file}_url"].append(match)
                 if print_results:
                     print(match)
@@ -1915,7 +1915,7 @@ class MyService(rpyc.Service):
             if save or print_results:
                 affiliation.init()
                 for match in affiliation.test(s).decode().splitlines():
-                    if save:
+                    if not save:
                         self.results[f"{current_file}_affiliation"].append(match)
                     if print_results:
                         print(match)

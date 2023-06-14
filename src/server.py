@@ -97,7 +97,7 @@ class MyService(rpyc.Service):
         # self.redis_client = Redis(decode_responses=True)
         self.data_set_path = "test/"
         self.return_length = []
-        self.debug = True
+        self.debug = False 
         self.postgres = True
 
     def on_connect(self, conn):
@@ -177,7 +177,7 @@ class MyService(rpyc.Service):
                 r"^\\(def|newcommand|documentclass|begin{document}|usepackage)", x
             )
         ]
-        data = "\n".join(clean)
+        data = " ".join(clean)
         # avoid including thebibliography in the TextTiling
         matches = re.findall(
             r"\\begin{thebibliography}.*?\\end{thebibliography}", data, re.DOTALL
@@ -244,7 +244,7 @@ class MyService(rpyc.Service):
             self.exposed_get_ref()
             self.exposed_get_references()
             self.exposed_get_scope()
-            self.exposed_get_section()
+            #self.exposed_get_section()
             self.exposed_get_split()
             self.exposed_get_subequations()
             self.exposed_get_table()
@@ -292,6 +292,8 @@ class MyService(rpyc.Service):
             s = c_char_p(str.encode(cite_match))
             cite = CDLL("./cite.so")
             cite.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
             if save or print_results:
                 cite.init()
                 for match in cite.test(s).decode().splitlines():
@@ -299,7 +301,13 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_cite"].append(match)
                     if print_results:
                         print(match)
-
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into cite (filename,cite,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
     def exposed_get_ref(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -313,6 +321,8 @@ class MyService(rpyc.Service):
             s = c_char_p(str.encode(ref_match))
             ref = CDLL("./ref.so")
             ref.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
             if save or print_results:
                 ref.init()
                 for match in ref.test(s).decode().splitlines():
@@ -320,7 +330,13 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_ref"].append(match)
                     if print_results:
                         print(match)
-
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into ref (filename,ref,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
     def exposed_get_author(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -350,7 +366,6 @@ class MyService(rpyc.Service):
                             f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-
     def exposed_get_title(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
@@ -364,6 +379,8 @@ class MyService(rpyc.Service):
             s = c_char_p(str.encode(title_match))
             title = CDLL("./title.so")
             title.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
             if save or print_results:
                 title.init()
                 for match in title.test(s).decode().splitlines():
@@ -371,8 +388,14 @@ class MyService(rpyc.Service):
                         self.results[f"{current_file}_title"].append(match)
                     if print_results:
                         print(match)
-
-    def exposed_get_affiliation(self, data=False, save=True, print_results=False):
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into title (filename,title,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+    def exposed_get_emph(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -381,16 +404,57 @@ class MyService(rpyc.Service):
         if not data:
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        s = c_char_p(str.encode(data))
-        affiliation = CDLL("./affiliation.so")
-        affiliation.test.restype = c_char_p
-        if save or print_results:
-            affiliation.init()
-            for match in affiliation.test(s).decode().splitlines():
-                if save:
-                    self.results[f"{current_file}_affiliation"].append(match)
-                if print_results:
-                    print(match)
+        for emph_match in re.findall(r"\\emph{.{,1000}", data):
+            s = c_char_p(str.encode(emph_match))
+            emph = CDLL("./emph.so")
+            emph.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                emph.init()
+                for match in emph.test(s).decode().splitlines():
+                    if save:
+                        self.results[f"{current_file}_emph"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into emph (filename,emph,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+    def exposed_get_label(self, data=False, save=True, print_results=False):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for label_match in re.findall(r"\\label{.{,1000}", data):
+            s = c_char_p(str.encode(label_match))
+            label = CDLL("./label.so")
+            label.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                label.init()
+                for match in label.test(s).decode().splitlines():
+                    if save:
+                        self.results[f"{current_file}_label"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into label (filename,label,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
+
 
     def exposed_get_abstract(self, data=False, save=True, print_results=False):
         if self.debug:
@@ -1656,67 +1720,6 @@ class MyService(rpyc.Service):
                 if print_results:
                     print(match)
 
-    def exposed_get_section(self, data=False, save=True, print_results=False):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        current_file = self.current_file
-        file_data = self.results[current_file][0]
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        s = c_char_p(str.encode(data))
-        section = CDLL("./section.so")
-        section.test.restype = c_char_p
-        if save or print_results:
-            section.init()
-            for match in section.test(s).decode().splitlines():
-                if save:
-                    self.results[f"{current_file}_section"].append(match)
-                if print_results:
-                    print(match)
-
-    def exposed_get_emph(self, data=False, save=True, print_results=False):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        current_file = self.current_file
-        file_data = self.results[current_file][0]
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        for emph_match in re.findall(r"\\emph{.{,1000}", data):
-            s = c_char_p(str.encode(emph_match))
-            emph = CDLL("./emph.so")
-            emph.test.restype = c_char_p
-            if save or print_results:
-                emph.init()
-                for match in emph.test(s).decode().splitlines():
-                    if save:
-                        self.results[f"{current_file}_emph"].append(match)
-                    if print_results:
-                        print(match)
-
-    def exposed_get_label(self, data=False, save=True, print_results=False):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        current_file = self.current_file
-        file_data = self.results[current_file][0]
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        for label_match in re.findall(r"\\label{.{,1000}", data):
-            s = c_char_p(str.encode(label_match))
-            label = CDLL("./label.so")
-            label.test.restype = c_char_p
-            if save or print_results:
-                label.init()
-                for match in label.test(s).decode().splitlines():
-                    if save:
-                        self.results[f"{current_file}_label"].append(match)
-                    if print_results:
-                        print(match)
 
     def exposed_get_url(self, data=False, save=True, print_results=False):
         if self.debug:
@@ -1892,6 +1895,35 @@ class MyService(rpyc.Service):
             for sentence in self.results["sentences"]:
                 print(tokenizer.tokenize(sentence))
 
+    def exposed_get_affiliation(self, data=False, save=True, print_results=False):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for affiliation_match in re.findall(r"\\affiliation{.{,1000}", data):
+            s = c_char_p(str.encode(affiliation_match))
+            affiliation = CDLL("./affiliation.so")
+            affiliation.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                affiliation.init()
+                for match in affiliation.test(s).decode().splitlines():
+                    if save:
+                        self.results[f"{current_file}_affiliation"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into affiliation (filename,affiliation,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
 
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer

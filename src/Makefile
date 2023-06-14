@@ -1,4 +1,5 @@
 all:
+	if test ! -d test ; then mkdir test ; fi
 	sudo apt install ragel
 	sudo apt install virtualenv
 
@@ -6,6 +7,11 @@ all:
 	virtualenv venv -p python3 
 	./venv/bin/pip install -r requirements.txt
 	./venv/bin/python call_ragel.py sound1.tex
+
+
+simplefields:
+	#make adjustments to simple_template
+	cat simple_fields|xargs -i sed "s/author/{}/g" simple_template >> server.py
 
 clean:
 	rm *.so

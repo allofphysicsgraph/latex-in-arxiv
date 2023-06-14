@@ -1,0 +1,29 @@
+    def exposed_get_author(self, data=False, save=True, print_results=False):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        current_file = self.current_file
+        file_data = self.results[current_file][0]
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for author_match in re.findall(r"\\author{.{,1000}", data):
+            s = c_char_p(str.encode(author_match))
+            author = CDLL("./author.so")
+            author.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                author.init()
+                for match in author.test(s).decode().splitlines():
+                    if save:
+                        self.results[f"{current_file}_author"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()

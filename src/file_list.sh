@@ -2,7 +2,7 @@ data_source='test/'
 files=($(find $data_source -type f))
 file_count=${#files[@]}
 files_per_session=50
-number_of_workers=10
+number_of_workers=15
 starting_port_number=18861
 
 create_jobs(){
@@ -30,5 +30,6 @@ do
 	
 	echo screen -d -m -S "${server_list[$i]}"_client python client.py ${job_list[$i]} ${server_list[$i]}
 	screen -d -m -S "${server_list[$i]}"_client python client.py ${job_list[$i]} ${server_list[$i]}
+	#echo ${job_list[$i]} | xargs -i redis-cli del "{}"
 done
 }

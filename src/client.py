@@ -3,6 +3,7 @@ from os import remove
 from redis import Redis
 import yaml
 from sys import argv
+from os import listdir
 
 # data_path = False
 # if argv[1]:
@@ -11,10 +12,17 @@ from sys import argv
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
 
+if 1 == 1:
+    client = Redis(decode_responses=True)
+    file_names = client.lrange(argv[1], 0, -1)
+    port_number = int(argv[2])
 
-client = Redis(decode_responses=True)
-file_names = client.lrange(argv[1], 0, -1)
-port_number = int(argv[2])
+if 1 == 2:
+    data_path = 'test/'
+    files = [data_path + x for x in listdir(data_path)]
+    file_names = files
+    port_number=18861
+
 c = rpyc.connect("127.0.0.1", port_number)
 c._config["sync_request_timeout"] = None
 # if data_path:

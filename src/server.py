@@ -279,8 +279,16 @@ class MyService(rpyc.Service):
         for sentence in sentences:
             # print(sentence)
             # print("*" * 50)
-            self.results[f"{current_file}_sentences"].append(sentence)
-
+            #self.results[f"{current_file}_sentences"].append(sentence)
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+                length = len(sentence)
+                sentence = sentence.replace("'", "''")
+                cursor.execute(
+                    f"insert into sentences (filename,sentence,len) values ('{current_file}','{sentence}',{length});"
+                )
+                conn.commit()
+    
     def exposed_get_cite(self, data=False, save=True, print_results=False):
         if self.debug:
             frame = inspect.currentframe()

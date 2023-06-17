@@ -18,10 +18,10 @@ if 1 == 1:
     port_number = int(argv[2])
 
 if 1 == 2:
-    data_path = 'test/'
+    data_path = "test/"
     files = [data_path + x for x in listdir(data_path)]
     file_names = files
-    port_number=18861
+    port_number = 18861
 
 c = rpyc.connect("127.0.0.1", port_number)
 c._config["sync_request_timeout"] = None

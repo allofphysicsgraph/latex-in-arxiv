@@ -5,6 +5,13 @@ files_per_session=50
 number_of_workers=15
 starting_port_number=18861
 
+#in order create_jobs, start_servers, start_clients 
+#you should see a list of 30 entries in screen -ls 15 servers, 15 clients
+#TODO start a new client when on job finished
+#     log status of success, fail, and if fail where
+#     validate the number of matches with grep, python and ragel
+
+
 create_jobs(){
 for i in `seq 0 $files_per_session $file_count`;
 do 

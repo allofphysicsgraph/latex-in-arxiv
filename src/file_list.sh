@@ -7,7 +7,7 @@ starting_port_number=18861
 
 #in order create_jobs, start_servers, start_clients 
 #you should see a list of 30 entries in screen -ls 15 servers, 15 clients
-#TODO start a new client when on job finished
+#TODO start a new client when a job is finished
 #     log status of success, fail, and if fail where
 #     validate the number of matches with grep, python and ragel
 

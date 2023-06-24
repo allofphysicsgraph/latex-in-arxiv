@@ -1,0 +1,37 @@
+    def exposed_get_subequations(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{subequations}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{subequations}.{,7500}\\end{subequations}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_subequations in data:
+                            s = c_char_p(str.encode(match_subequations))
+                            subequations = CDLL("./subequations.so")
+                            subequations.test.restype = c_char_p
+                            subequations.init()
+                            for match in subequations.test(s).decode().splitlines():
+                                print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into subequations (filename,subequations,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)

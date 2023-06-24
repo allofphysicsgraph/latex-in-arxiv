@@ -11,7 +11,7 @@ all:
 
 simplefields:
 	#make adjustments to simple_template
-	cat simple_fields|xargs -i sed "s/author/{}/g" simple_template >> server.py
+	cat simple_fields|xargs -i sed "s/cite/{}/g" simple_template >> ragel_simple.py
 
 clean:
 	rm *.so

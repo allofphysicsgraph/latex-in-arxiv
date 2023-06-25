@@ -73,7 +73,7 @@ class RagelBeginEnd:
                             equation.test.restype = c_char_p
                             equation.init()
                             for match in equation.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -111,7 +111,7 @@ class RagelBeginEnd:
                             comments.test.restype = c_char_p
                             comments.init()
                             for match in comments.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -149,7 +149,7 @@ class RagelBeginEnd:
                             abstract.test.restype = c_char_p
                             abstract.init()
                             for match in abstract.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -187,7 +187,7 @@ class RagelBeginEnd:
                             align.test.restype = c_char_p
                             align.init()
                             for match in align.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -225,7 +225,7 @@ class RagelBeginEnd:
                             aligned.test.restype = c_char_p
                             aligned.init()
                             for match in aligned.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -263,7 +263,7 @@ class RagelBeginEnd:
                             cases.test.restype = c_char_p
                             cases.init()
                             for match in cases.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -301,7 +301,7 @@ class RagelBeginEnd:
                             cite.test.restype = c_char_p
                             cite.init()
                             for match in cite.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -339,7 +339,7 @@ class RagelBeginEnd:
                             description.test.restype = c_char_p
                             description.init()
                             for match in description.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -377,7 +377,7 @@ class RagelBeginEnd:
                             displaymath.test.restype = c_char_p
                             displaymath.init()
                             for match in displaymath.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -415,7 +415,7 @@ class RagelBeginEnd:
                             emph.test.restype = c_char_p
                             emph.init()
                             for match in emph.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -453,7 +453,7 @@ class RagelBeginEnd:
                             enumerate.test.restype = c_char_p
                             enumerate.init()
                             for match in enumerate.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -491,7 +491,7 @@ class RagelBeginEnd:
                             flushleft.test.restype = c_char_p
                             flushleft.init()
                             for match in flushleft.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -529,7 +529,7 @@ class RagelBeginEnd:
                             flushright.test.restype = c_char_p
                             flushright.init()
                             for match in flushright.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -567,7 +567,7 @@ class RagelBeginEnd:
                             fmfgraph.test.restype = c_char_p
                             fmfgraph.init()
                             for match in fmfgraph.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -605,7 +605,7 @@ class RagelBeginEnd:
                             gather.test.restype = c_char_p
                             gather.init()
                             for match in gather.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -643,7 +643,7 @@ class RagelBeginEnd:
                             label.test.restype = c_char_p
                             label.init()
                             for match in label.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -681,7 +681,7 @@ class RagelBeginEnd:
                             lemma.test.restype = c_char_p
                             lemma.init()
                             for match in lemma.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -719,7 +719,7 @@ class RagelBeginEnd:
                             list.test.restype = c_char_p
                             list.init()
                             for match in list.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -757,7 +757,7 @@ class RagelBeginEnd:
                             lstcode.test.restype = c_char_p
                             lstcode.init()
                             for match in lstcode.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -795,7 +795,7 @@ class RagelBeginEnd:
                             lstlisting.test.restype = c_char_p
                             lstlisting.init()
                             for match in lstlisting.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -833,7 +833,7 @@ class RagelBeginEnd:
                             mathletters.test.restype = c_char_p
                             mathletters.init()
                             for match in mathletters.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -871,7 +871,7 @@ class RagelBeginEnd:
                             matrix.test.restype = c_char_p
                             matrix.init()
                             for match in matrix.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -909,7 +909,7 @@ class RagelBeginEnd:
                             minipage.test.restype = c_char_p
                             minipage.init()
                             for match in minipage.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -947,7 +947,7 @@ class RagelBeginEnd:
                             minted.test.restype = c_char_p
                             minted.init()
                             for match in minted.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -985,7 +985,7 @@ class RagelBeginEnd:
                             multline.test.restype = c_char_p
                             multline.init()
                             for match in multline.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1023,7 +1023,7 @@ class RagelBeginEnd:
                             picture.test.restype = c_char_p
                             picture.init()
                             for match in picture.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1061,7 +1061,7 @@ class RagelBeginEnd:
                             pmatrix.test.restype = c_char_p
                             pmatrix.init()
                             for match in pmatrix.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1099,7 +1099,7 @@ class RagelBeginEnd:
                             proof.test.restype = c_char_p
                             proof.init()
                             for match in proof.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1137,7 +1137,7 @@ class RagelBeginEnd:
                             prop.test.restype = c_char_p
                             prop.init()
                             for match in prop.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1175,7 +1175,7 @@ class RagelBeginEnd:
                             proposition.test.restype = c_char_p
                             proposition.init()
                             for match in proposition.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1213,7 +1213,7 @@ class RagelBeginEnd:
                             quotation.test.restype = c_char_p
                             quotation.init()
                             for match in quotation.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1251,7 +1251,7 @@ class RagelBeginEnd:
                             quote.test.restype = c_char_p
                             quote.init()
                             for match in quote.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1289,7 +1289,7 @@ class RagelBeginEnd:
                             ref.test.restype = c_char_p
                             ref.init()
                             for match in ref.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1327,7 +1327,7 @@ class RagelBeginEnd:
                             references.test.restype = c_char_p
                             references.init()
                             for match in references.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1365,7 +1365,7 @@ class RagelBeginEnd:
                             scope.test.restype = c_char_p
                             scope.init()
                             for match in scope.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1403,7 +1403,7 @@ class RagelBeginEnd:
                             figure.test.restype = c_char_p
                             figure.init()
                             for match in figure.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1441,7 +1441,7 @@ class RagelBeginEnd:
                             split.test.restype = c_char_p
                             split.init()
                             for match in split.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1479,7 +1479,7 @@ class RagelBeginEnd:
                             subequations.test.restype = c_char_p
                             subequations.init()
                             for match in subequations.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1517,7 +1517,7 @@ class RagelBeginEnd:
                             table.test.restype = c_char_p
                             table.init()
                             for match in table.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1555,7 +1555,7 @@ class RagelBeginEnd:
                             tabular.test.restype = c_char_p
                             tabular.init()
                             for match in tabular.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1593,7 +1593,7 @@ class RagelBeginEnd:
                             theorem.test.restype = c_char_p
                             theorem.init()
                             for match in theorem.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1631,7 +1631,7 @@ class RagelBeginEnd:
                             titlepage.test.restype = c_char_p
                             titlepage.init()
                             for match in titlepage.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1669,7 +1669,7 @@ class RagelBeginEnd:
                             url.test.restype = c_char_p
                             url.init()
                             for match in url.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file
@@ -1707,7 +1707,7 @@ class RagelBeginEnd:
                             verbatim.test.restype = c_char_p
                             verbatim.init()
                             for match in verbatim.test(s).decode().splitlines():
-                                print(match)
+                                # print(match)
                                 if self.postgres:
                                     if not current_file:
                                         current_file = self.current_file

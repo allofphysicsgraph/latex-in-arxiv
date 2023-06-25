@@ -68,7 +68,7 @@ class RagelSimple:
             if save or print_results:
                 affiliation.init()
                 for match in affiliation.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_affiliation"].append(match)
                     if print_results:
@@ -103,7 +103,7 @@ class RagelSimple:
             if save or print_results:
                 author.init()
                 for match in author.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_author"].append(match)
                     if print_results:
@@ -138,7 +138,7 @@ class RagelSimple:
             if save or print_results:
                 section.init()
                 for match in section.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_section"].append(match)
                     if print_results:
@@ -173,7 +173,7 @@ class RagelSimple:
             if save or print_results:
                 scalebox.init()
                 for match in scalebox.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_scalebox"].append(match)
                     if print_results:
@@ -208,7 +208,7 @@ class RagelSimple:
             if save or print_results:
                 caption.init()
                 for match in caption.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_caption"].append(match)
                     if print_results:
@@ -243,7 +243,7 @@ class RagelSimple:
             if save or print_results:
                 bibitem.init()
                 for match in bibitem.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_bibitem"].append(match)
                     if print_results:
@@ -278,7 +278,7 @@ class RagelSimple:
             if save or print_results:
                 usepackage.init()
                 for match in usepackage.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_usepackage"].append(match)
                     if print_results:
@@ -313,7 +313,7 @@ class RagelSimple:
             if save or print_results:
                 author.init()
                 for match in author.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_author"].append(match)
                     if print_results:
@@ -348,7 +348,7 @@ class RagelSimple:
             if save or print_results:
                 cite.init()
                 for match in cite.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_cite"].append(match)
                     if print_results:
@@ -383,7 +383,7 @@ class RagelSimple:
             if save or print_results:
                 ref.init()
                 for match in ref.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_ref"].append(match)
                     if print_results:
@@ -418,7 +418,7 @@ class RagelSimple:
             if save or print_results:
                 author.init()
                 for match in author.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_author"].append(match)
                     if print_results:
@@ -453,7 +453,7 @@ class RagelSimple:
             if save or print_results:
                 title.init()
                 for match in title.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_title"].append(match)
                     if print_results:
@@ -488,7 +488,7 @@ class RagelSimple:
             if save or print_results:
                 emph.init()
                 for match in emph.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_emph"].append(match)
                     if print_results:
@@ -523,7 +523,7 @@ class RagelSimple:
             if save or print_results:
                 label.init()
                 for match in label.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_label"].append(match)
                     if print_results:
@@ -558,7 +558,7 @@ class RagelSimple:
             if save or print_results:
                 affiliation.init()
                 for match in affiliation.test(s).decode().splitlines():
-                    print(match)
+                    # print(match)
                     if not save:
                         self.results[f"{current_file}_affiliation"].append(match)
                     if print_results:

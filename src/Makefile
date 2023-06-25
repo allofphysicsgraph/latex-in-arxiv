@@ -14,6 +14,7 @@ templates:
 	bash generate_simple_templates.sh
 	#make adjustments to simple_template
 	bash generate_begin_end_templates.sh
+	./venv/bin/black *.py
 
 
 clean:

@@ -12,7 +12,8 @@ import nltk
 import os
 import re
 import sys
-nltk.download('stopwords')
+
+nltk.download("stopwords")
 
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # from sklearn.metrics.pairwise import cosine_similarity
@@ -234,6 +235,6 @@ if 1 == 1:
         print(sent)
 
 symbols = set()
-[symbols.add(x) for x in re.findall('\$.*?\$',data)]
-symbols=sorted(list(symbols),key=lambda x:len(x))
+[symbols.add(x) for x in re.findall("\$.*?\$", data)]
+symbols = sorted(list(symbols), key=lambda x: len(x))
 print(symbols)

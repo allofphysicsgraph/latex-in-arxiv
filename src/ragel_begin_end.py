@@ -47,7 +47,6 @@ class RagelBeginEnd:
         )
         cursor = conn.cursor()
         return conn, cursor
-
     def exposed_get_equation(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -85,7 +84,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_comments(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -123,7 +121,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_abstract(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -161,45 +158,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
-    def exposed_get_affiliation(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{affiliation}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{affiliation}.{,7500}\\end{affiliation}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_affiliation in data:
-                            s = c_char_p(str.encode(match_affiliation))
-                            affiliation = CDLL("./affiliation.so")
-                            affiliation.test.restype = c_char_p
-                            affiliation.init()
-                            for match in affiliation.test(s).decode().splitlines():
-                                print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into affiliation (filename,affiliation,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
     def exposed_get_align(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -237,7 +195,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_aligned(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -275,45 +232,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
-    def exposed_get_author(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{author}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{author}.{,7500}\\end{author}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_author in data:
-                            s = c_char_p(str.encode(match_author))
-                            author = CDLL("./author.so")
-                            author.test.restype = c_char_p
-                            author.init()
-                            for match in author.test(s).decode().splitlines():
-                                print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
     def exposed_get_cases(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -351,7 +269,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_cite(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -389,7 +306,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_description(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -427,7 +343,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_displaymath(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -465,7 +380,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_emph(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -503,7 +417,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_enumerate(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -541,7 +454,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_flushleft(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -579,7 +491,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_flushright(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -617,7 +528,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_fmfgraph(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -655,7 +565,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_gather(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -693,7 +602,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_label(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -731,7 +639,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_lemma(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -769,7 +676,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_list(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -807,7 +713,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_lstcode(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -845,7 +750,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_lstlisting(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -883,7 +787,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_mathletters(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -921,7 +824,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_matrix(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -959,7 +861,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_minipage(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -997,7 +898,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_minted(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1035,7 +935,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_multline(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1073,7 +972,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_picture(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1111,7 +1009,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_pmatrix(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1149,7 +1046,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_proof(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1187,7 +1083,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_prop(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1225,7 +1120,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_proposition(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1263,7 +1157,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_quotation(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1301,7 +1194,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_quote(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1339,7 +1231,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_ref(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1377,7 +1268,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_references(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1415,7 +1305,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_scope(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1453,45 +1342,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
-    def exposed_get_section(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{section}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{section}.{,7500}\\end{section}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_section in data:
-                            s = c_char_p(str.encode(match_section))
-                            section = CDLL("./section.so")
-                            section.test.restype = c_char_p
-                            section.init()
-                            for match in section.test(s).decode().splitlines():
-                                print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into section (filename,section,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
     def exposed_get_split(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1529,7 +1379,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_subequations(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1567,7 +1416,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_table(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1605,7 +1453,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_tabular(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1643,7 +1490,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_theorem(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1681,45 +1527,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
-    def exposed_get_title(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{title}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{title}.{,7500}\\end{title}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_title in data:
-                            s = c_char_p(str.encode(match_title))
-                            title = CDLL("./title.so")
-                            title.test.restype = c_char_p
-                            title.init()
-                            for match in title.test(s).decode().splitlines():
-                                print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into title (filename,title,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
     def exposed_get_titlepage(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1757,7 +1564,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_url(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -1795,7 +1601,6 @@ class RagelBeginEnd:
                                     conn.commit()
                     except Exception as e:
                         print(e)
-
     def exposed_get_verbatim(
         self, data=False, current_file=False, save=True, print_results=False
     ):

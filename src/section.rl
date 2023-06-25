@@ -19,7 +19,7 @@
 #define MAX_LEN 700000
 char results[MAX_LEN];
 int n;
-const char* pattern="\\section";
+const char* pattern="\\section{";
 int idx;
 
 struct state_chart

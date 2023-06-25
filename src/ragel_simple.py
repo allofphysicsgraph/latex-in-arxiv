@@ -47,7 +47,10 @@ class RagelSimple:
         )
         cursor = conn.cursor()
         return conn, cursor
-    def exposed_get_affiliation(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_affiliation(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -79,7 +82,10 @@ class RagelSimple:
                             f"insert into affiliation (filename,affiliation,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_author(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_author(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -111,7 +117,10 @@ class RagelSimple:
                             f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_section(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_section(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -143,7 +152,150 @@ class RagelSimple:
                             f"insert into section (filename,section,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_author(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_scalebox(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for scalebox_match in re.findall(r"\\scalebox{.{,1000}", data):
+            s = c_char_p(str.encode(scalebox_match))
+            scalebox = CDLL("./scalebox.so")
+            scalebox.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                scalebox.init()
+                for match in scalebox.test(s).decode().splitlines():
+                    print(match)
+                    if not save:
+                        self.results[f"{current_file}_scalebox"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into scalebox (filename,scalebox,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
+    def exposed_get_caption(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for caption_match in re.findall(r"\\caption{.{,1000}", data):
+            s = c_char_p(str.encode(caption_match))
+            caption = CDLL("./caption.so")
+            caption.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                caption.init()
+                for match in caption.test(s).decode().splitlines():
+                    print(match)
+                    if not save:
+                        self.results[f"{current_file}_caption"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into caption (filename,caption,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
+    def exposed_get_bibitem(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for bibitem_match in re.findall(r"\\bibitem{.{,1000}", data):
+            s = c_char_p(str.encode(bibitem_match))
+            bibitem = CDLL("./bibitem.so")
+            bibitem.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                bibitem.init()
+                for match in bibitem.test(s).decode().splitlines():
+                    print(match)
+                    if not save:
+                        self.results[f"{current_file}_bibitem"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into bibitem (filename,bibitem,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
+    def exposed_get_usepackage(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        for usepackage_match in re.findall(r"\\usepackage{.{,1000}", data):
+            s = c_char_p(str.encode(usepackage_match))
+            usepackage = CDLL("./usepackage.so")
+            usepackage.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                usepackage.init()
+                for match in usepackage.test(s).decode().splitlines():
+                    print(match)
+                    if not save:
+                        self.results[f"{current_file}_usepackage"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into usepackage (filename,usepackage,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+
+    def exposed_get_author(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -175,7 +327,10 @@ class RagelSimple:
                             f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_cite(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_cite(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -207,7 +362,10 @@ class RagelSimple:
                             f"insert into cite (filename,cite,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_ref(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_ref(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -239,7 +397,10 @@ class RagelSimple:
                             f"insert into ref (filename,ref,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_author(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_author(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -271,7 +432,10 @@ class RagelSimple:
                             f"insert into author (filename,author,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_title(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_title(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -303,7 +467,10 @@ class RagelSimple:
                             f"insert into title (filename,title,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_emph(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_emph(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -335,7 +502,10 @@ class RagelSimple:
                             f"insert into emph (filename,emph,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_label(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_label(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -367,7 +537,10 @@ class RagelSimple:
                             f"insert into label (filename,label,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
-    def exposed_get_affiliation(self, data=False, current_file=False,save=True, print_results=False):
+
+    def exposed_get_affiliation(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)

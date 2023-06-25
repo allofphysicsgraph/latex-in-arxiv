@@ -9,11 +9,9 @@ all:
 	./venv/bin/python call_ragel.py sound1.tex
 
 
-simplefields:
+templates:
 	#make adjustments to simple_template
 	bash generate_simple_templates.sh
-
-begin_end_fields:
 	#make adjustments to simple_template
 	bash generate_begin_end_templates.sh
 

@@ -15,10 +15,12 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#define MAX_LEN 10000
+
 int n;
+#define MAX_LEN 10000
 char results[MAX_LEN];
 int idx;
+
 struct state_chart
 {
 	int cs;
@@ -28,10 +30,10 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action bibitem { n--; 
+	action caption { n--; 
 	if (idx > 0) {results[idx]='\n';idx++; };
-	strncat(results,"\\bibitem{",strlen("\\bibitem{")+1);
-	idx+=strlen("\\bibitem{");
+	strncat(results,"\\caption{",strlen("\\caption{")+1);
+	idx+=strlen("\\caption{");
 	}
 
 	action b { 
@@ -55,18 +57,18 @@ struct state_chart
 	action balanced { n == -1 }
 	action not_balanced {n != -1}	
 	
-	bibitem = '\\bibitem{' @bibitem;
+	caption = '\\caption{' @caption;
 
 	b = '}' @b;
 	ws = ' '+;
         c = '{' @c;
 	nl = '\n' @{printf(" ");};
-	ignore = (any+ - bibitem) ;
+	ignore = (any+ - caption) ;
 	inc = ([^\n] - b) @inc ;
  
 	mach = 
 		start: ( 
-			bibitem -> st1 |
+			caption -> st1 |
 			ignore -> start |
 			zlen -> final   
 		),
@@ -89,6 +91,12 @@ struct state_chart
 }%%
 
 %% write data;
+
+void init(){
+	idx = 0;
+	int n = 0;
+	memset(results,'\0',MAX_LEN);
+}
 
 void state_chart_init( struct state_chart *fsm )
 {
@@ -125,10 +133,4 @@ char* test( char *buf )
 
 
 
-
-void init(){
-	idx = 0;
-	int n = 0;
-	memset(results,'\0',MAX_LEN);
-}
 

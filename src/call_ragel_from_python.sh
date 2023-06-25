@@ -8,6 +8,12 @@ fi
 ragel author.rl
 gcc -fPIC -shared -o author.so author.c
 
+ragel usepackage.rl
+gcc -fPIC -shared -o usepackage.so usepackage.c
+
+ragel caption.rl
+gcc -fPIC -shared -o caption.so caption.c
+
 ragel abstract.rl
 gcc -fPIC -shared -o abstract.so abstract.c
 

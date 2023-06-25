@@ -1,8 +1,8 @@
 data_source='test/'
 files=($(find $data_source -type f))
 file_count=${#files[@]}
-files_per_session=50
-number_of_workers=15
+files_per_session=2
+number_of_workers=10
 starting_port_number=18861
 
 #in order create_jobs, start_servers, start_clients 

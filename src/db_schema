@@ -1,0 +1,785 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.3 (Debian 15.3-0+deb12u1)
+-- Dumped by pg_dump version 15.3 (Debian 15.3-0+deb12u1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: api; Type: SCHEMA; Schema: -; Owner: latexinarxiv
+--
+
+CREATE SCHEMA api;
+
+
+ALTER SCHEMA api OWNER TO latexinarxiv;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: abstract; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.abstract (
+    filename text,
+    abstract text,
+    len bigint
+);
+
+
+ALTER TABLE public.abstract OWNER TO latexinarxiv;
+
+--
+-- Name: affiliation; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.affiliation (
+    filename text,
+    affiliation text,
+    len bigint
+);
+
+
+ALTER TABLE public.affiliation OWNER TO latexinarxiv;
+
+--
+-- Name: align; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.align (
+    filename text,
+    align text,
+    len bigint
+);
+
+
+ALTER TABLE public.align OWNER TO latexinarxiv;
+
+--
+-- Name: aligned; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.aligned (
+    filename text,
+    aligned text,
+    len bigint
+);
+
+
+ALTER TABLE public.aligned OWNER TO latexinarxiv;
+
+--
+-- Name: author; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.author (
+    filename text,
+    author text,
+    len bigint
+);
+
+
+ALTER TABLE public.author OWNER TO latexinarxiv;
+
+--
+-- Name: bibitem; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.bibitem (
+    filename text,
+    bibitem text,
+    len integer
+);
+
+
+ALTER TABLE public.bibitem OWNER TO latexinarxiv;
+
+--
+-- Name: caption; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.caption (
+    filename text,
+    caption text,
+    len integer
+);
+
+
+ALTER TABLE public.caption OWNER TO latexinarxiv;
+
+--
+-- Name: cases; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.cases (
+    filename text,
+    cases text,
+    len bigint
+);
+
+
+ALTER TABLE public.cases OWNER TO latexinarxiv;
+
+--
+-- Name: cite; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.cite (
+    filename text,
+    cite text,
+    len bigint
+);
+
+
+ALTER TABLE public.cite OWNER TO latexinarxiv;
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.comments (
+    filename text,
+    comments text,
+    len bigint
+);
+
+
+ALTER TABLE public.comments OWNER TO latexinarxiv;
+
+--
+-- Name: description; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.description (
+    filename text,
+    description text,
+    len bigint
+);
+
+
+ALTER TABLE public.description OWNER TO latexinarxiv;
+
+--
+-- Name: displaymath; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.displaymath (
+    filename text,
+    displaymath text,
+    len bigint
+);
+
+
+ALTER TABLE public.displaymath OWNER TO latexinarxiv;
+
+--
+-- Name: emph; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.emph (
+    filename text,
+    emph text,
+    len bigint
+);
+
+
+ALTER TABLE public.emph OWNER TO latexinarxiv;
+
+--
+-- Name: enumerate; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.enumerate (
+    filename text,
+    enumerate text,
+    len bigint
+);
+
+
+ALTER TABLE public.enumerate OWNER TO latexinarxiv;
+
+--
+-- Name: equation; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.equation (
+    filename text,
+    equation text,
+    len integer
+);
+
+
+ALTER TABLE public.equation OWNER TO latexinarxiv;
+
+--
+-- Name: equation_bkf; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.equation_bkf (
+    filename text,
+    equation text
+);
+
+
+ALTER TABLE public.equation_bkf OWNER TO postgres;
+
+--
+-- Name: figure; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.figure (
+    filename text,
+    len integer,
+    figure text
+);
+
+
+ALTER TABLE public.figure OWNER TO latexinarxiv;
+
+--
+-- Name: flushleft; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.flushleft (
+    filename text,
+    flushleft text,
+    len bigint
+);
+
+
+ALTER TABLE public.flushleft OWNER TO latexinarxiv;
+
+--
+-- Name: flushright; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.flushright (
+    filename text,
+    flushright text,
+    len bigint
+);
+
+
+ALTER TABLE public.flushright OWNER TO latexinarxiv;
+
+--
+-- Name: fmfgraph; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.fmfgraph (
+    filename text,
+    fmfgraph text,
+    len bigint
+);
+
+
+ALTER TABLE public.fmfgraph OWNER TO latexinarxiv;
+
+--
+-- Name: gather; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.gather (
+    filename text,
+    gather text,
+    len bigint
+);
+
+
+ALTER TABLE public.gather OWNER TO latexinarxiv;
+
+--
+-- Name: label; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.label (
+    filename text,
+    label text,
+    len bigint
+);
+
+
+ALTER TABLE public.label OWNER TO latexinarxiv;
+
+--
+-- Name: lemma; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.lemma (
+    filename text,
+    lemma text,
+    len bigint
+);
+
+
+ALTER TABLE public.lemma OWNER TO latexinarxiv;
+
+--
+-- Name: list; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.list (
+    filename text,
+    list text,
+    len bigint
+);
+
+
+ALTER TABLE public.list OWNER TO latexinarxiv;
+
+--
+-- Name: lstcode; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.lstcode (
+    filename text,
+    lstcode text,
+    len bigint
+);
+
+
+ALTER TABLE public.lstcode OWNER TO latexinarxiv;
+
+--
+-- Name: lstlisting; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.lstlisting (
+    filename text,
+    lstlisting text,
+    len bigint
+);
+
+
+ALTER TABLE public.lstlisting OWNER TO latexinarxiv;
+
+--
+-- Name: mathletters; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.mathletters (
+    filename text,
+    mathletters text,
+    len bigint
+);
+
+
+ALTER TABLE public.mathletters OWNER TO latexinarxiv;
+
+--
+-- Name: matrix; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.matrix (
+    filename text,
+    matrix text,
+    len bigint
+);
+
+
+ALTER TABLE public.matrix OWNER TO latexinarxiv;
+
+--
+-- Name: minipage; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.minipage (
+    filename text,
+    minipage text,
+    len bigint
+);
+
+
+ALTER TABLE public.minipage OWNER TO latexinarxiv;
+
+--
+-- Name: minted; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.minted (
+    filename text,
+    minted text,
+    len bigint
+);
+
+
+ALTER TABLE public.minted OWNER TO latexinarxiv;
+
+--
+-- Name: multline; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.multline (
+    filename text,
+    multline text,
+    len bigint
+);
+
+
+ALTER TABLE public.multline OWNER TO latexinarxiv;
+
+--
+-- Name: params; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.params (
+    filename text,
+    params text,
+    len bigint
+);
+
+
+ALTER TABLE public.params OWNER TO latexinarxiv;
+
+--
+-- Name: picture; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.picture (
+    filename text,
+    picture text,
+    len bigint
+);
+
+
+ALTER TABLE public.picture OWNER TO latexinarxiv;
+
+--
+-- Name: pmatrix; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.pmatrix (
+    filename text,
+    pmatrix text,
+    len bigint
+);
+
+
+ALTER TABLE public.pmatrix OWNER TO latexinarxiv;
+
+--
+-- Name: proof; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.proof (
+    filename text,
+    proof text,
+    len bigint
+);
+
+
+ALTER TABLE public.proof OWNER TO latexinarxiv;
+
+--
+-- Name: prop; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.prop (
+    filename text,
+    prop text,
+    len bigint
+);
+
+
+ALTER TABLE public.prop OWNER TO latexinarxiv;
+
+--
+-- Name: proposition; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.proposition (
+    filename text,
+    proposition text,
+    len bigint
+);
+
+
+ALTER TABLE public.proposition OWNER TO latexinarxiv;
+
+--
+-- Name: quotation; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.quotation (
+    filename text,
+    quotation text,
+    len bigint
+);
+
+
+ALTER TABLE public.quotation OWNER TO latexinarxiv;
+
+--
+-- Name: quote; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.quote (
+    filename text,
+    quote text,
+    len bigint
+);
+
+
+ALTER TABLE public.quote OWNER TO latexinarxiv;
+
+--
+-- Name: ref; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.ref (
+    filename text,
+    ref text,
+    len bigint
+);
+
+
+ALTER TABLE public.ref OWNER TO latexinarxiv;
+
+--
+-- Name: results; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.results (
+    filename text,
+    results text,
+    len bigint
+);
+
+
+ALTER TABLE public.results OWNER TO latexinarxiv;
+
+--
+-- Name: scope; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.scope (
+    filename text,
+    scope text,
+    len bigint
+);
+
+
+ALTER TABLE public.scope OWNER TO latexinarxiv;
+
+--
+-- Name: scores; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.scores (
+    filename text,
+    scores text,
+    len bigint
+);
+
+
+ALTER TABLE public.scores OWNER TO latexinarxiv;
+
+--
+-- Name: section; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.section (
+    filename text,
+    section text,
+    len integer
+);
+
+
+ALTER TABLE public.section OWNER TO latexinarxiv;
+
+--
+-- Name: sentence; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sentence (
+    "0" text,
+    "1" bigint,
+    "2" text,
+    sentence_cleaned text,
+    regex text[]
+);
+
+
+ALTER TABLE public.sentence OWNER TO postgres;
+
+--
+-- Name: sentences; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.sentences (
+    sentence text,
+    filename text,
+    len bigint
+);
+
+
+ALTER TABLE public.sentences OWNER TO latexinarxiv;
+
+--
+-- Name: slm; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.slm (
+    filename text,
+    slm text,
+    len bigint
+);
+
+
+ALTER TABLE public.slm OWNER TO latexinarxiv;
+
+--
+-- Name: split; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.split (
+    filename text,
+    split text,
+    len bigint
+);
+
+
+ALTER TABLE public.split OWNER TO latexinarxiv;
+
+--
+-- Name: subequations; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.subequations (
+    filename text,
+    subequations text,
+    len bigint
+);
+
+
+ALTER TABLE public.subequations OWNER TO latexinarxiv;
+
+--
+-- Name: tabular; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.tabular (
+    filename text,
+    tabular text,
+    len bigint
+);
+
+
+ALTER TABLE public.tabular OWNER TO latexinarxiv;
+
+--
+-- Name: theorem; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.theorem (
+    filename text,
+    theorem text,
+    len bigint
+);
+
+
+ALTER TABLE public.theorem OWNER TO latexinarxiv;
+
+--
+-- Name: title; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.title (
+    filename text,
+    title text,
+    len bigint
+);
+
+
+ALTER TABLE public.title OWNER TO latexinarxiv;
+
+--
+-- Name: titlepage; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.titlepage (
+    filename text,
+    titlepage text,
+    len bigint
+);
+
+
+ALTER TABLE public.titlepage OWNER TO latexinarxiv;
+
+--
+-- Name: url; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.url (
+    filename text,
+    url text,
+    len bigint
+);
+
+
+ALTER TABLE public.url OWNER TO latexinarxiv;
+
+--
+-- Name: usepackage; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.usepackage (
+    filename text,
+    usepackage text,
+    len integer
+);
+
+
+ALTER TABLE public.usepackage OWNER TO latexinarxiv;
+
+--
+-- Name: verbatim; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.verbatim (
+    filename text,
+    verbatim text,
+    len bigint
+);
+
+
+ALTER TABLE public.verbatim OWNER TO latexinarxiv;
+
+--
+-- Name: SCHEMA api; Type: ACL; Schema: -; Owner: latexinarxiv
+--
+
+GRANT USAGE ON SCHEMA api TO web_anon;
+
+
+--
+-- Name: TABLE equation; Type: ACL; Schema: public; Owner: latexinarxiv
+--
+
+GRANT SELECT ON TABLE public.equation TO web_anon;
+
+
+--
+-- Name: TABLE title; Type: ACL; Schema: public; Owner: latexinarxiv
+--
+
+GRANT SELECT ON TABLE public.title TO web_anon;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

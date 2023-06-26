@@ -16,7 +16,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define MAX_LEN 700000
+#define MAX_LEN 60000
 char results[MAX_LEN];
 int n;
 const char* pattern="\\section{";

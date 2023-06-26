@@ -11,6 +11,9 @@ starting_port_number=18861
 #     log status of success, fail, and if fail where
 #     validate the number of matches with grep, python and ragel
 
+show_available_jobs(){
+	echo 'keys *'|redis-cli
+}
 
 create_jobs(){
 for i in `seq 0 $files_per_session $file_count`;

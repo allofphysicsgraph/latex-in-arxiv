@@ -60,7 +60,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for affiliation_match in re.findall(r"\\affiliation{.{,1000}", data):
+        # get affiliation_max_len if it exists in config.yaml else default to 1000 chars
+        affiliation_max_len = config.get("affiliation_max_len", 1000)
+        q = r"\\affiliation.{{0,{}}}".format(affiliation_max_len)
+        for affiliation_match in re.findall(q, data):
             s = c_char_p(str.encode(affiliation_match))
             affiliation = CDLL("./affiliation.so")
             affiliation.test.restype = c_char_p
@@ -98,7 +101,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for author_match in re.findall(r"\\author{.{,1000}", data):
+        # get author_max_len if it exists in config.yaml else default to 1000 chars
+        author_max_len = config.get("author_max_len", 1000)
+        q = r"\\author.{{0,{}}}".format(author_max_len)
+        for author_match in re.findall(q, data):
             s = c_char_p(str.encode(author_match))
             author = CDLL("./author.so")
             author.test.restype = c_char_p
@@ -136,7 +142,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for section_match in re.findall(r"\\section{.{,1000}", data):
+        # get section_max_len if it exists in config.yaml else default to 1000 chars
+        section_max_len = config.get("section_max_len", 1000)
+        q = r"\\section.{{0,{}}}".format(section_max_len)
+        for section_match in re.findall(q, data):
             s = c_char_p(str.encode(section_match))
             section = CDLL("./section.so")
             section.test.restype = c_char_p
@@ -174,7 +183,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for scalebox_match in re.findall(r"\\scalebox{.{,1000}", data):
+        # get scalebox_max_len if it exists in config.yaml else default to 1000 chars
+        scalebox_max_len = config.get("scalebox_max_len", 1000)
+        q = r"\\scalebox.{{0,{}}}".format(scalebox_max_len)
+        for scalebox_match in re.findall(q, data):
             s = c_char_p(str.encode(scalebox_match))
             scalebox = CDLL("./scalebox.so")
             scalebox.test.restype = c_char_p
@@ -212,7 +224,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for caption_match in re.findall(r"\\caption{.{,1000}", data):
+        # get caption_max_len if it exists in config.yaml else default to 1000 chars
+        caption_max_len = config.get("caption_max_len", 1000)
+        q = r"\\caption.{{0,{}}}".format(caption_max_len)
+        for caption_match in re.findall(q, data):
             s = c_char_p(str.encode(caption_match))
             caption = CDLL("./caption.so")
             caption.test.restype = c_char_p
@@ -250,7 +265,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for bibitem_match in re.findall(r"\\bibitem{.{,1000}", data):
+        # get bibitem_max_len if it exists in config.yaml else default to 1000 chars
+        bibitem_max_len = config.get("bibitem_max_len", 1000)
+        q = r"\\bibitem.{{0,{}}}".format(bibitem_max_len)
+        for bibitem_match in re.findall(q, data):
             s = c_char_p(str.encode(bibitem_match))
             bibitem = CDLL("./bibitem.so")
             bibitem.test.restype = c_char_p
@@ -288,7 +306,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for usepackage_match in re.findall(r"\\usepackage{.{,1000}", data):
+        # get usepackage_max_len if it exists in config.yaml else default to 1000 chars
+        usepackage_max_len = config.get("usepackage_max_len", 1000)
+        q = r"\\usepackage.{{0,{}}}".format(usepackage_max_len)
+        for usepackage_match in re.findall(q, data):
             s = c_char_p(str.encode(usepackage_match))
             usepackage = CDLL("./usepackage.so")
             usepackage.test.restype = c_char_p
@@ -326,7 +347,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for author_match in re.findall(r"\\author{.{,1000}", data):
+        # get author_max_len if it exists in config.yaml else default to 1000 chars
+        author_max_len = config.get("author_max_len", 1000)
+        q = r"\\author.{{0,{}}}".format(author_max_len)
+        for author_match in re.findall(q, data):
             s = c_char_p(str.encode(author_match))
             author = CDLL("./author.so")
             author.test.restype = c_char_p
@@ -364,7 +388,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for cite_match in re.findall(r"\\cite{.{,1000}", data):
+        # get cite_max_len if it exists in config.yaml else default to 1000 chars
+        cite_max_len = config.get("cite_max_len", 1000)
+        q = r"\\cite.{{0,{}}}".format(cite_max_len)
+        for cite_match in re.findall(q, data):
             s = c_char_p(str.encode(cite_match))
             cite = CDLL("./cite.so")
             cite.test.restype = c_char_p
@@ -402,7 +429,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for ref_match in re.findall(r"\\ref{.{,1000}", data):
+        # get ref_max_len if it exists in config.yaml else default to 1000 chars
+        ref_max_len = config.get("ref_max_len", 1000)
+        q = r"\\ref.{{0,{}}}".format(ref_max_len)
+        for ref_match in re.findall(q, data):
             s = c_char_p(str.encode(ref_match))
             ref = CDLL("./ref.so")
             ref.test.restype = c_char_p
@@ -440,7 +470,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for author_match in re.findall(r"\\author{.{,1000}", data):
+        # get author_max_len if it exists in config.yaml else default to 1000 chars
+        author_max_len = config.get("author_max_len", 1000)
+        q = r"\\author.{{0,{}}}".format(author_max_len)
+        for author_match in re.findall(q, data):
             s = c_char_p(str.encode(author_match))
             author = CDLL("./author.so")
             author.test.restype = c_char_p
@@ -478,7 +511,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for title_match in re.findall(r"\\title{.{,1000}", data):
+        # get title_max_len if it exists in config.yaml else default to 1000 chars
+        title_max_len = config.get("title_max_len", 1000)
+        q = r"\\title.{{0,{}}}".format(title_max_len)
+        for title_match in re.findall(q, data):
             s = c_char_p(str.encode(title_match))
             title = CDLL("./title.so")
             title.test.restype = c_char_p
@@ -516,7 +552,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for emph_match in re.findall(r"\\emph{.{,1000}", data):
+        # get emph_max_len if it exists in config.yaml else default to 1000 chars
+        emph_max_len = config.get("emph_max_len", 1000)
+        q = r"\\emph.{{0,{}}}".format(emph_max_len)
+        for emph_match in re.findall(q, data):
             s = c_char_p(str.encode(emph_match))
             emph = CDLL("./emph.so")
             emph.test.restype = c_char_p
@@ -554,7 +593,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for label_match in re.findall(r"\\label{.{,1000}", data):
+        # get label_max_len if it exists in config.yaml else default to 1000 chars
+        label_max_len = config.get("label_max_len", 1000)
+        q = r"\\label.{{0,{}}}".format(label_max_len)
+        for label_match in re.findall(q, data):
             s = c_char_p(str.encode(label_match))
             label = CDLL("./label.so")
             label.test.restype = c_char_p
@@ -592,7 +634,10 @@ class RagelSimple:
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for affiliation_match in re.findall(r"\\affiliation{.{,1000}", data):
+        # get affiliation_max_len if it exists in config.yaml else default to 1000 chars
+        affiliation_max_len = config.get("affiliation_max_len", 1000)
+        q = r"\\affiliation.{{0,{}}}".format(affiliation_max_len)
+        for affiliation_match in re.findall(q, data):
             s = c_char_p(str.encode(affiliation_match))
             affiliation = CDLL("./affiliation.so")
             affiliation.test.restype = c_char_p

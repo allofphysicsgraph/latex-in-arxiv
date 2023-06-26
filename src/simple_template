@@ -8,7 +8,10 @@
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        for cite_match in re.findall(r"\\cite{.{,1000}", data):
+        #get cite_max_len if it exists in config.yaml else default to 1000 chars
+        cite_max_len=config.get('cite_max_len',1000)
+        q = r'\\cite.{{0,{}}}'.format(cite_max_len)
+        for cite_match in re.findall(q, data):
             s = c_char_p(str.encode(cite_match))
             cite = CDLL("./cite.so")
             cite.test.restype = c_char_p

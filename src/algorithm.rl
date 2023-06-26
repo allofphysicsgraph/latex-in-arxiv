@@ -11,7 +11,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#define MAX_LEN 100000
+#define MAX_LEN 10000
 char results[MAX_LEN];
 int idx;
 %%{
@@ -46,11 +46,6 @@ int idx;
 
 %% write data noerror;
 
-void init(){
-	idx = 0;
-	memset(results,'\0',MAX_LEN);
-}
-
 char* test( const char *str )
 {
 	int cs = foo_start;
@@ -59,8 +54,13 @@ char* test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("ALGORITHM OK\n");
+		printf("EQUATION OK\n");
 	else
-		printf("ALGORITHM FAILED\n");
+		printf("EQUATION FAILED\n");
 	return results;
 }
+void init(){
+	idx = 0;
+	memset(results,'\0',MAX_LEN);
+}
+

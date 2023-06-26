@@ -48,82 +48,6 @@ class RagelBeginEnd:
         cursor = conn.cursor()
         return conn, cursor
 
-    def exposed_get_equation(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{equation}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{equation}.{,7500}\\end{equation}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_equation in data:
-                            s = c_char_p(str.encode(match_equation))
-                            equation = CDLL("./equation.so")
-                            equation.test.restype = c_char_p
-                            equation.init()
-                            for match in equation.test(s).decode().splitlines():
-                                # print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into equation (filename,equation,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
-    def exposed_get_comments(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{comments}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{comments}.{,7500}\\end{comments}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_comments in data:
-                            s = c_char_p(str.encode(match_comments))
-                            comments = CDLL("./comments.so")
-                            comments.test.restype = c_char_p
-                            comments.init()
-                            for match in comments.test(s).decode().splitlines():
-                                # print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into comments (filename,comments,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
     def exposed_get_abstract(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -157,6 +81,44 @@ class RagelBeginEnd:
                                     match = match.replace("'", "''")
                                     cursor.execute(
                                         f"insert into abstract (filename,abstract,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
+    def exposed_get_algorithm(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{algorithm}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{algorithm}.{,7500}\\end{algorithm}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_algorithm in data:
+                            s = c_char_p(str.encode(match_algorithm))
+                            algorithm = CDLL("./algorithm.so")
+                            algorithm.test.restype = c_char_p
+                            algorithm.init()
+                            for match in algorithm.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into algorithm (filename,algorithm,len) values ('{current_file}','{match}',{length});"
                                     )
                                     conn.commit()
                     except Exception as e:
@@ -314,6 +276,44 @@ class RagelBeginEnd:
                     except Exception as e:
                         print(e)
 
+    def exposed_get_comments(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{comments}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{comments}.{,7500}\\end{comments}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_comments in data:
+                            s = c_char_p(str.encode(match_comments))
+                            comments = CDLL("./comments.so")
+                            comments.test.restype = c_char_p
+                            comments.init()
+                            for match in comments.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into comments (filename,comments,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
     def exposed_get_description(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -461,6 +461,82 @@ class RagelBeginEnd:
                                     match = match.replace("'", "''")
                                     cursor.execute(
                                         f"insert into enumerate (filename,enumerate,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
+    def exposed_get_equation(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{equation}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{equation}.{,7500}\\end{equation}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_equation in data:
+                            s = c_char_p(str.encode(match_equation))
+                            equation = CDLL("./equation.so")
+                            equation.test.restype = c_char_p
+                            equation.init()
+                            for match in equation.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into equation (filename,equation,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
+    def exposed_get_figure(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{figure}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{figure}.{,7500}\\end{figure}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_figure in data:
+                            s = c_char_p(str.encode(match_figure))
+                            figure = CDLL("./figure.so")
+                            figure.test.restype = c_char_p
+                            figure.init()
+                            for match in figure.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into figure (filename,figure,len) values ('{current_file}','{match}',{length});"
                                     )
                                     conn.commit()
                     except Exception as e:
@@ -1373,44 +1449,6 @@ class RagelBeginEnd:
                                     match = match.replace("'", "''")
                                     cursor.execute(
                                         f"insert into scope (filename,scope,len) values ('{current_file}','{match}',{length});"
-                                    )
-                                    conn.commit()
-                    except Exception as e:
-                        print(e)
-
-    def exposed_get_figure(
-        self, data=False, current_file=False, save=True, print_results=False
-    ):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        if self.postgres:
-            conn, cursor = self.db_cursor()
-            if re.findall(r"\\begin{figure}", data):
-                if save or print_results:
-                    try:
-                        data = re.findall(
-                            r"\\begin{figure}.{,7500}\\end{figure}",
-                            data,
-                            re.DOTALL,
-                        )
-                        for match_figure in data:
-                            s = c_char_p(str.encode(match_figure))
-                            figure = CDLL("./figure.so")
-                            figure.test.restype = c_char_p
-                            figure.init()
-                            for match in figure.test(s).decode().splitlines():
-                                # print(match)
-                                if self.postgres:
-                                    if not current_file:
-                                        current_file = self.current_file
-                                    length = len(match)
-                                    match = match.replace("'", "''")
-                                    cursor.execute(
-                                        f"insert into figure (filename,figure,len) values ('{current_file}','{match}',{length});"
                                     )
                                     conn.commit()
                     except Exception as e:

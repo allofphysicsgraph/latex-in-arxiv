@@ -12,6 +12,8 @@ current_file = argv[1]
 x.exposed_get_abstract(data=data, current_file=current_file)
 x.exposed_get_equation(data=data, current_file=current_file)
 x.exposed_get_figure(data=data, current_file=current_file)
+x.exposed_get_algorithm(data=data, current_file=current_file)
+
 y.exposed_get_caption(data=data, current_file=current_file)
 y.exposed_get_bibitem(data=data, current_file=current_file)
 y.exposed_get_usepackage(data=data, current_file=current_file)

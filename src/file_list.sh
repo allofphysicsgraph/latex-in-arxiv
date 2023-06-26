@@ -15,11 +15,14 @@ show_available_jobs(){
 	echo 'keys *'|redis-cli
 }
 
+clear_redis(){
+	redis-cli flushall
+}
+
 create_jobs(){
-#echo $files_per_session
-#echo $file_count
-for i in `seq 0 $files_per_session $file_count`;
+for i in `seq 1 $files_per_session $file_count`;
 do 
+echo $i
 	echo ${files[@]} |tr ' ' '\n'| sed -n $i,$(($i+$files_per_session))p|xargs -i redis-cli lpush "$i"_queue "{}" 
 done
 }

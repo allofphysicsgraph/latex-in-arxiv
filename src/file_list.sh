@@ -1,7 +1,7 @@
 data_source='test/'
 files=($(find $data_source -type f))
 file_count=${#files[@]}
-files_per_session=1
+files_per_session=2
 number_of_workers=1
 starting_port_number=18861
 
@@ -16,9 +16,11 @@ show_available_jobs(){
 }
 
 create_jobs(){
+#echo $files_per_session
+#echo $file_count
 for i in `seq 0 $files_per_session $file_count`;
 do 
-	echo ${files[@]} |tr ' ' '\n'| sed -n $i,$(($i+50))p|xargs -i redis-cli lpush "$i"_queue "{}" 
+	echo ${files[@]} |tr ' ' '\n'| sed -n $i,$(($i+$files_per_session))p|xargs -i redis-cli lpush "$i"_queue "{}" 
 done
 }
 

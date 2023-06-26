@@ -190,3 +190,11 @@ ragel verbatim.rl
 gcc -fPIC -shared -o verbatim.so verbatim.c
 ragel texttt.rl
 gcc -fPIC -shared -o texttt.so texttt.c
+ragel texttt.rl
+gcc -fPIC -shared -o texttt.so texttt.c
+ragel url.rl
+gcc -fPIC -shared -o url.so url.c
+ragel subsection.rl
+gcc -fPIC -shared -o subsection.so subsection.c
+ragel caption.rl
+gcc -fPIC -shared -o caption.so caption.c

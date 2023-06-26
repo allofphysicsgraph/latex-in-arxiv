@@ -13,3 +13,4 @@ gcc -fPIC -shared -o "$1".so "$1".c >> call_ragel_from_python.sh
 sudo -u postgres -H -- psql -d latexinarxiv -c "create table "$1" (filename text,"$1" text,len int);"
 sudo -u postgres -H -- psql -d latexinarxiv -c "alter table "$1" owner to latexinarxiv;"
 
+make templates

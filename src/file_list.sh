@@ -1,8 +1,8 @@
 data_source='test/'
 files=($(find $data_source -type f))
 file_count=${#files[@]}
-files_per_session=2
-number_of_workers=5
+files_per_session=50
+number_of_workers=10
 starting_port_number=18861
 
 #in order create_jobs, start_servers, start_clients 
@@ -46,7 +46,7 @@ do
 	
 	echo screen -d -m -S "${server_list[$i]}"_client python client.py ${job_list[$i]} ${server_list[$i]}
 	screen -d -m -S "${server_list[$i]}"_client python client.py ${job_list[$i]} ${server_list[$i]}
-	sleep 3
+	sleep 1
 	#echo ${job_list[$i]} | xargs -i redis-cli del "{}"
 done
 screen -ls

@@ -200,6 +200,44 @@ class RagelBeginEnd:
                     except Exception as e:
                         print(e)
 
+    def exposed_get_axis(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{axis}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{axis}.{,7500}\\end{axis}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_axis in data:
+                            s = c_char_p(str.encode(match_axis))
+                            axis = CDLL("./axis.so")
+                            axis.test.restype = c_char_p
+                            axis.init()
+                            for match in axis.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into axis (filename,axis,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
     def exposed_get_cases(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -499,6 +537,44 @@ class RagelBeginEnd:
                                     match = match.replace("'", "''")
                                     cursor.execute(
                                         f"insert into enumerate (filename,enumerate,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
+    def exposed_get_eqnarray(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{eqnarray}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{eqnarray}.{,7500}\\end{eqnarray}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_eqnarray in data:
+                            s = c_char_p(str.encode(match_eqnarray))
+                            eqnarray = CDLL("./eqnarray.so")
+                            eqnarray.test.restype = c_char_p
+                            eqnarray.init()
+                            for match in eqnarray.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into eqnarray (filename,eqnarray,len) values ('{current_file}','{match}',{length});"
                                     )
                                     conn.commit()
                     except Exception as e:

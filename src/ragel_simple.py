@@ -12,6 +12,7 @@ import yaml
 from redis import Redis
 from collections import defaultdict
 import re
+import rpyc
 
 """
 >>> from ragel_simple import RagelSimple
@@ -27,7 +28,7 @@ with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
 
 
-class RagelSimple:
+class RagelSimple(rpyc.Service):
     def __init__(self):
         self.results = defaultdict(list)
         self.current_file = ""
@@ -785,3 +786,20 @@ class RagelSimple:
                         conn.commit()
         if conn:
             conn.close()
+
+if __name__ == "__main__":
+    from rpyc.utils.server import ThreadedServer
+    from sys import argv
+
+    if len(sys.argv) == 2:
+        port = int(sys.argv[1])
+    else:
+        port = 18861
+
+    t = ThreadedServer(
+        RagelSimple,
+        port=port,
+        protocol_config={"allow_pickle": True, "allow_all_attrs": True},
+    )
+    print("Ready for rpyc clients \n")
+    t.start()

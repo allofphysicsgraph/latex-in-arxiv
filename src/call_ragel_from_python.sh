@@ -143,3 +143,9 @@ ragel itemize.rl
 gcc -fPIC -shared -o itemize.so itemize.c
 ragel enumerate.rl
 gcc -fPIC -shared -o enumerate.so enumerate.c
+ragel scope.rl
+gcc -fPIC -shared -o scope.so scope.c
+ragel axis.rl
+gcc -fPIC -shared -o axis.so axis.c
+ragel eqnarray.rl
+gcc -fPIC -shared -o eqnarray.so eqnarray.c

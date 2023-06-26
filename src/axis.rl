@@ -28,20 +28,20 @@ int idx;
 	}
 	action init_c { c = 0;}
 	action done { printf(""); }
-	begin_scope = '\\begin{scope}' @inc  @{ 
-	strncat(results,"\\begin{scope}",strlen("\\begin{scope}")+1);
-	idx+=strlen("\\begin{scope}");
+	begin_axis = '\\begin{axis}' @inc  @{ 
+	strncat(results,"\\begin{axis}",strlen("\\begin{axis}")+1);
+	idx+=strlen("\\begin{axis}");
 	};
-	end_scope = '\\end{scope}'  @dec @{ 
+	end_axis = '\\end{axis}'  @dec @{ 
 	char matched_string[64];
 	memset(matched_string,'\0',64);
-	strcpy(matched_string,"\\end{scope}");
+	strcpy(matched_string,"\\end{axis}");
 	strncat(results,"}",2);
 	idx++;
 	if (idx > 0) {results[idx]='\n';idx++; };
 	};
 	newline = '\n' @{printf(" ");};
-	main :=  ( (any-begin_scope)* . begin_scope . (((any-newline) @print_fc)|newline)*  :>> end_scope  @done :> any* when balanced )+   ;
+	main :=  ( (any-begin_axis)* . begin_axis . (((any-newline) @print_fc)|newline)*  :>> end_axis  @done :> any* when balanced )+   ;
 }%%
 
 %% write data noerror;

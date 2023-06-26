@@ -188,3 +188,5 @@ gcc -fPIC -shared -o titlepage.so titlepage.c
 
 ragel verbatim.rl
 gcc -fPIC -shared -o verbatim.so verbatim.c
+ragel texttt.rl
+gcc -fPIC -shared -o texttt.so texttt.c

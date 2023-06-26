@@ -1,4 +1,5 @@
     def exposed_get_cite(self, data=False, current_file=False,save=True, print_results=False):
+        conn = False
         if self.debug:
             frame = inspect.currentframe()
             print(inspect.getframeinfo(frame).function)
@@ -30,3 +31,5 @@
                             f"insert into cite (filename,cite,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
+        if conn:
+                conn.close()

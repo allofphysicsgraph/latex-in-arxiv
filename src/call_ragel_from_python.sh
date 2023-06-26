@@ -129,3 +129,17 @@ gcc -fPIC -shared -o title.so title.c
 gcc -fPIC -shared -o url.so url.c
 gcc -fPIC -shared -o usepackage.so usepackage.c
 gcc -fPIC -shared -o verbatim.so verbatim.c
+ragel textit.rl
+gcc -fPIC -shared -o textit.so textit.c
+ragel algorithm.rl
+gcc -fPIC -shared -o algorithm.so algorithm.c
+ragel definition.rl
+gcc -fPIC -shared -o definition.so definition.c
+ragel pageref.rl
+gcc -fPIC -shared -o pageref.so pageref.c
+ragel date.rl
+gcc -fPIC -shared -o date.so date.c
+ragel itemize.rl
+gcc -fPIC -shared -o itemize.so itemize.c
+ragel enumerate.rl
+gcc -fPIC -shared -o enumerate.so enumerate.c

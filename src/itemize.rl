@@ -11,8 +11,8 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
-char results[200000];
+#define MAX_LEN 10000
+char results[MAX_LEN];
 int idx;
 %%{
 	machine foo;
@@ -54,8 +54,13 @@ char* test( const char *str )
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("ITEMIZE OK\n");
+		printf("EQUATION OK\n");
 	else
-		printf("%d,ITEMIZE FAILED\n",strlen(results));
+		printf("EQUATION FAILED\n");
 	return results;
 }
+void init(){
+	idx = 0;
+	memset(results,'\0',MAX_LEN);
+}
+

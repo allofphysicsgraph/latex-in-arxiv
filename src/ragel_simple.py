@@ -253,6 +253,47 @@ class RagelSimple:
         if conn:
             conn.close()
 
+    def exposed_get_date(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        conn = False
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        # get date_max_len if it exists in config.yaml else default to 1000 chars
+        date_max_len = config.get("date_max_len", 1000)
+        q = r"\\date.{{0,{}}}".format(date_max_len)
+        for date_match in re.findall(q, data):
+            s = c_char_p(str.encode(date_match))
+            date = CDLL("./date.so")
+            date.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                date.init()
+                for match in date.test(s).decode().splitlines():
+                    # print(match)
+                    if not save:
+                        self.results[f"{current_file}_date"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into date (filename,date,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+        if conn:
+            conn.close()
+
     def exposed_get_emph(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -330,6 +371,47 @@ class RagelSimple:
                         match = match.replace("'", "''")
                         cursor.execute(
                             f"insert into label (filename,label,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+        if conn:
+            conn.close()
+
+    def exposed_get_pageref(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        conn = False
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        # get pageref_max_len if it exists in config.yaml else default to 1000 chars
+        pageref_max_len = config.get("pageref_max_len", 1000)
+        q = r"\\pageref.{{0,{}}}".format(pageref_max_len)
+        for pageref_match in re.findall(q, data):
+            s = c_char_p(str.encode(pageref_match))
+            pageref = CDLL("./pageref.so")
+            pageref.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                pageref.init()
+                for match in pageref.test(s).decode().splitlines():
+                    # print(match)
+                    if not save:
+                        self.results[f"{current_file}_pageref"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into pageref (filename,pageref,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
         if conn:
@@ -494,6 +576,47 @@ class RagelSimple:
                         match = match.replace("'", "''")
                         cursor.execute(
                             f"insert into subsection (filename,subsection,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+        if conn:
+            conn.close()
+
+    def exposed_get_textit(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        conn = False
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        # get textit_max_len if it exists in config.yaml else default to 1000 chars
+        textit_max_len = config.get("textit_max_len", 1000)
+        q = r"\\textit.{{0,{}}}".format(textit_max_len)
+        for textit_match in re.findall(q, data):
+            s = c_char_p(str.encode(textit_match))
+            textit = CDLL("./textit.so")
+            textit.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                textit.init()
+                for match in textit.test(s).decode().splitlines():
+                    # print(match)
+                    if not save:
+                        self.results[f"{current_file}_textit"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into textit (filename,textit,len) values ('{current_file}','{match}',{length});"
                         )
                         conn.commit()
         if conn:

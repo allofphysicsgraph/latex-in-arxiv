@@ -30,10 +30,10 @@ struct state_chart
 	machine state_chart;
 	variable cs fsm->cs;
 
-	action textit { n--; 
+	action pageref { n--; 
 	if (idx > 0) {results[idx]='\n';idx++; };
-	strncat(results,"\\textit{",strlen("\\textit{")+1);
-	idx+=strlen("\\textit{");
+	strncat(results,"\\pageref{",strlen("\\pageref{")+1);
+	idx+=strlen("\\pageref{");
 	}
 
 	action b { 
@@ -57,18 +57,18 @@ struct state_chart
 	action balanced { n == -1 }
 	action not_balanced {n != -1}	
 	
-	textit = '\\textit{' @textit;
+	pageref = '\\pageref{' @pageref;
 
 	b = '}' @b;
 	ws = ' '+;
         c = '{' @c;
 	nl = '\n' @{printf(" ");};
-	ignore = (any+ - textit) ;
+	ignore = (any+ - pageref) ;
 	inc = ([^\n] - b) @inc ;
  
 	mach = 
 		start: ( 
-			textit -> st1 |
+			pageref -> st1 |
 			ignore -> start |
 			zlen -> final   
 		),

@@ -46,23 +46,21 @@ int idx;
 
 %% write data noerror;
 
-void init(){
-	idx = 0;
-	memset(results,'\0',MAX_LEN);
-}
-
 char* test( const char *str )
 {
-	
 	int cs = foo_start;
 	int c = 0;
 	const char *p = str;
 	const char *pe = str + strlen( str );
 	%% write exec;
 	if ( cs >= foo_first_final )
-		printf("ENUMERATE OK\n");
+		printf("EQUATION OK\n");
 	else
-		printf(" FAILED\n");
+		printf("EQUATION FAILED\n");
 	return results;
+}
+void init(){
+	idx = 0;
+	memset(results,'\0',MAX_LEN);
 }
 

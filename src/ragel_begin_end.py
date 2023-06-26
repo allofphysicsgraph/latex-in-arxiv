@@ -314,6 +314,44 @@ class RagelBeginEnd:
                     except Exception as e:
                         print(e)
 
+    def exposed_get_definition(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{definition}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{definition}.{,7500}\\end{definition}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_definition in data:
+                            s = c_char_p(str.encode(match_definition))
+                            definition = CDLL("./definition.so")
+                            definition.test.restype = c_char_p
+                            definition.init()
+                            for match in definition.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into definition (filename,definition,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
     def exposed_get_description(
         self, data=False, current_file=False, save=True, print_results=False
     ):
@@ -689,6 +727,44 @@ class RagelBeginEnd:
                                     match = match.replace("'", "''")
                                     cursor.execute(
                                         f"insert into gather (filename,gather,len) values ('{current_file}','{match}',{length});"
+                                    )
+                                    conn.commit()
+                    except Exception as e:
+                        print(e)
+
+    def exposed_get_itemize(
+        self, data=False, current_file=False, save=True, print_results=False
+    ):
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+            if re.findall(r"\\begin{itemize}", data):
+                if save or print_results:
+                    try:
+                        data = re.findall(
+                            r"\\begin{itemize}.{,7500}\\end{itemize}",
+                            data,
+                            re.DOTALL,
+                        )
+                        for match_itemize in data:
+                            s = c_char_p(str.encode(match_itemize))
+                            itemize = CDLL("./itemize.so")
+                            itemize.test.restype = c_char_p
+                            itemize.init()
+                            for match in itemize.test(s).decode().splitlines():
+                                # print(match)
+                                if self.postgres:
+                                    if not current_file:
+                                        current_file = self.current_file
+                                    length = len(match)
+                                    match = match.replace("'", "''")
+                                    cursor.execute(
+                                        f"insert into itemize (filename,itemize,len) values ('{current_file}','{match}',{length});"
                                     )
                                     conn.commit()
                     except Exception as e:

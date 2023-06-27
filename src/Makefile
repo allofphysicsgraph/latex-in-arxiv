@@ -7,7 +7,7 @@ all:
 	virtualenv venv -p python3 
 	./venv/bin/pip install -r requirements.txt
 	screen -d -m -S server ./venv/bin/python ragel_simple.py 
-	./venv/bin/python test.py sound1.tex
+	sleep 3 && ./venv/bin/python test.py sound1.tex
 
 keyword_search:
 	ragel keyword_search.rl

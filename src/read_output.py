@@ -25,41 +25,25 @@ for pair in pairs:
 df = pd.DataFrame(lst)
 df.sort_values(1, inplace=True)
 df["resolved"] = False
+df["type"] = df[0].apply(lambda x: "begin" if re.findall(r"\\begin{", x) else "end")
+df["word"] = df[0].apply(lambda x: re.findall(r"\\[a-z]+{(.*?)}", x)[0])
+test_dict = df.groupby("type").count()[0].to_dict()
+# print(test_dict["begin"], test_dict["end"])
+if test_dict["begin"] == test_dict["end"]:
+    print("counts ok")
 
 while len(df.index.tolist()) > 0:
-    df["type"] = df[0].apply(lambda x: "begin" if re.findall(r"\\begin{", x) else "end")
-    print(df)
-    test_dict = df.groupby("type").count()[0].to_dict()
-    print(test_dict["begin"], test_dict["end"])
-    if test_dict["begin"] == test_dict["end"]:
-        print("counts ok")
-
-    df["word"] = df[0].apply(lambda x: re.findall(r"\\[a-z]+{(.*?)}", x)[0])
     t1_idx, t2_idx = df.index.tolist()[:2]
-    # print(t1_idx,t2_idx)
-    X = df.itertuples()
-    new_pairs = []
-    while True:
-        try:
-            resp = next(X)[1:]
-            new_pairs.append(resp)
-        except StopIteration:
-            break
-    # print(new_pairs)
     t1 = df.loc[t1_idx]
     t2 = df.loc[t2_idx]
-    print(t1, t2)
 
     if t1.type == "begin" and t2.type == "end":
         if t1.word == t2.word:
-            if t2[1] > t1[2]:
+            if t2[1] > t1[2]:  # ensure that end starts before begin
                 result = file_data[t1[1] : t2[2]]
-                print(result)
                 # drop rows for the existing matches
                 keep_rows = [
                     x for x in df.index.tolist() if x != t1_idx and x != t2_idx
                 ]
                 df = df.loc[keep_rows]
                 df.reset_index(drop=True, inplace=True)
-                print(df.head())
-                sleep(1)

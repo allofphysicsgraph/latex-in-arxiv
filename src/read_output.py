@@ -6,10 +6,10 @@ import pandas as pd
 from pudb import set_trace
 
 # TODO handle pairs that do not get resolved
-#copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;
+# copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;
 # time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
 
-'''
+"""
  time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
 COPY 34
 
@@ -24,22 +24,18 @@ user    0m0.681s
 sys     0m1.146s
 
 
-'''
+"""
 
 
-
-
-
-
-#with open(argv[1], "r") as f:
+# with open(argv[1], "r") as f:
 #    file_data = f.read()
 
 # testing proper alignment for begin.*?end pairs
 # pairs is obtained from running keyword_search.out texfile > /dev/shm/pairs
 df = pd.read_csv("/dev/shm/pairs")
-#print(df.head())
+# print(df.head())
 exit(0)
-'''
+"""
 df.sort_values(1, inplace=True)
 df["resolved"] = False
 df["type"] = df[0].apply(lambda x: "begin" if re.findall(r"\\begin{", x) else "end")
@@ -67,4 +63,4 @@ while len(df.index.tolist()) > 0:
                 df.reset_index(drop=True, inplace=True)
     else:
         print('ERROR')
-        exit(1)'''
+        exit(1)"""

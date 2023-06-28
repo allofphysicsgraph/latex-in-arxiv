@@ -2,7 +2,10 @@ import re
 from collections import defaultdict
 from sys import argv
 from time import sleep
+import pandas as pd
+from pudb import set_trace
 
+# TODO handle pairs that do not get resolved
 
 with open(argv[1], "r") as f:
     file_data = f.read()
@@ -12,52 +15,51 @@ with open(argv[1], "r") as f:
 with open("/dev/shm/pairs", "r") as f:
     pairs = [x.strip() for x in f.readlines()]
 
+# exclude begin{document}..end{document}
 pairs = pairs[1:-1]
-if len(pairs) % 2 == 0:
-    new_pairs = list(zip(pairs[0::2], pairs[1::2]))
+lst = []
+for pair in pairs:
+    s, start, stop = pair.rsplit(":", maxsplit=2)
+    lst.append((s, int(start), int(stop)))
+
+df = pd.DataFrame(lst)
+df.sort_values(1, inplace=True)
+df["resolved"] = False
+
+while len(df.index.tolist()) > 0:
+    df["type"] = df[0].apply(lambda x: "begin" if re.findall(r"\\begin{", x) else "end")
+    print(df)
+    test_dict = df.groupby("type").count()[0].to_dict()
+    print(test_dict["begin"], test_dict["end"])
+    if test_dict["begin"] == test_dict["end"]:
+        print("counts ok")
+
+    df["word"] = df[0].apply(lambda x: re.findall(r"\\[a-z]+{(.*?)}", x)[0])
+    t1_idx, t2_idx = df.index.tolist()[:2]
+    # print(t1_idx,t2_idx)
+    X = df.itertuples()
+    new_pairs = []
+    while True:
+        try:
+            resp = next(X)[1:]
+            new_pairs.append(resp)
+        except StopIteration:
+            break
     # print(new_pairs)
-    for start, stop in new_pairs:
-        # print(start,stop)
-        start_pattern, stop_pattern = False, False
-        if "\\begin" in start:
-            if "\\end" in stop:
-                start_pattern = re.findall(r"\\begin{(.*?)}", start)
-                # print(start, stop)
-                if start_pattern:
-                    if len(start_pattern) == 1:
-                        start_pattern = start_pattern[0]
+    t1 = df.loc[t1_idx]
+    t2 = df.loc[t2_idx]
+    print(t1, t2)
 
-                stop_pattern = re.findall(r"\\end{(.*?)}", stop)
-                # print(stop,stop)
-                if stop_pattern:
-                    if len(stop_pattern) == 1:
-                        stop_pattern = stop_pattern[0]
-
-                if start_pattern and stop_pattern:
-                    # print(start_pattern,stop_pattern)
-                    print(start, stop)
-                    # key,start,stop = line.rsplit(':',maxsplit=2)
-
-exit(0)
-dct = defaultdict(list)
-for line in data:
-    key, start, stop = line.rsplit(":", maxsplit=2)
-    start, stop = int(start), int(stop)
-    dct[re.escape(key)].append(file_data[start:stop])
-print(dct)
-from time import sleep
-
-for k, v in dct.items():
-    if re.findall(r"\\begin|\\end", k):
-        resp = re.findall(r"\\begin{(.*?)}|\\end{(.*?)}", k)
-        print(resp)
-        exit(0)
-        match = [x for x in resp[0] if x]
-        if match:
-            match = match[0]
-            # print(match)
-            # print(dct.keys())
-            q = r"\\begin{{{}}}".format(match)
-            print(q)
-            if q not in dct.keys():
-                print(k)
+    if t1.type == "begin" and t2.type == "end":
+        if t1.word == t2.word:
+            if t2[1] > t1[2]:
+                result = file_data[t1[1] : t2[2]]
+                print(result)
+                # drop rows for the existing matches
+                keep_rows = [
+                    x for x in df.index.tolist() if x != t1_idx and x != t2_idx
+                ]
+                df = df.loc[keep_rows]
+                df.reset_index(drop=True, inplace=True)
+                print(df.head())
+                sleep(1)

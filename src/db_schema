@@ -56,6 +56,19 @@ CREATE TABLE public.affiliation (
 ALTER TABLE public.affiliation OWNER TO latexinarxiv;
 
 --
+-- Name: algorithm; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.algorithm (
+    filename text,
+    algorithm text,
+    len integer
+);
+
+
+ALTER TABLE public.algorithm OWNER TO latexinarxiv;
+
+--
 -- Name: align; Type: TABLE; Schema: public; Owner: latexinarxiv
 --
 
@@ -93,6 +106,19 @@ CREATE TABLE public.author (
 
 
 ALTER TABLE public.author OWNER TO latexinarxiv;
+
+--
+-- Name: axis; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.axis (
+    filename text,
+    axis text,
+    len integer
+);
+
+
+ALTER TABLE public.axis OWNER TO latexinarxiv;
 
 --
 -- Name: bibitem; Type: TABLE; Schema: public; Owner: latexinarxiv
@@ -160,6 +186,32 @@ CREATE TABLE public.comments (
 ALTER TABLE public.comments OWNER TO latexinarxiv;
 
 --
+-- Name: date; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.date (
+    filename text,
+    date text,
+    len integer
+);
+
+
+ALTER TABLE public.date OWNER TO latexinarxiv;
+
+--
+-- Name: definition; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.definition (
+    filename text,
+    definition text,
+    len integer
+);
+
+
+ALTER TABLE public.definition OWNER TO latexinarxiv;
+
+--
 -- Name: description; Type: TABLE; Schema: public; Owner: latexinarxiv
 --
 
@@ -186,6 +238,23 @@ CREATE TABLE public.displaymath (
 ALTER TABLE public.displaymath OWNER TO latexinarxiv;
 
 --
+-- Name: document; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.document (
+    document text,
+    start bigint,
+    stop bigint,
+    byte_count bigint,
+    type text,
+    word text,
+    resolved boolean DEFAULT false
+);
+
+
+ALTER TABLE public.document OWNER TO latexinarxiv;
+
+--
 -- Name: emph; Type: TABLE; Schema: public; Owner: latexinarxiv
 --
 
@@ -210,6 +279,19 @@ CREATE TABLE public.enumerate (
 
 
 ALTER TABLE public.enumerate OWNER TO latexinarxiv;
+
+--
+-- Name: eqnarray; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.eqnarray (
+    filename text,
+    eqnarray text,
+    len integer
+);
+
+
+ALTER TABLE public.eqnarray OWNER TO latexinarxiv;
 
 --
 -- Name: equation; Type: TABLE; Schema: public; Owner: latexinarxiv
@@ -300,6 +382,19 @@ CREATE TABLE public.gather (
 
 
 ALTER TABLE public.gather OWNER TO latexinarxiv;
+
+--
+-- Name: itemize; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.itemize (
+    filename text,
+    itemize text,
+    len integer
+);
+
+
+ALTER TABLE public.itemize OWNER TO latexinarxiv;
 
 --
 -- Name: label; Type: TABLE; Schema: public; Owner: latexinarxiv
@@ -432,6 +527,19 @@ CREATE TABLE public.multline (
 ALTER TABLE public.multline OWNER TO latexinarxiv;
 
 --
+-- Name: pageref; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.pageref (
+    filename text,
+    pageref text,
+    len integer
+);
+
+
+ALTER TABLE public.pageref OWNER TO latexinarxiv;
+
+--
 -- Name: params; Type: TABLE; Schema: public; Owner: latexinarxiv
 --
 
@@ -469,6 +577,20 @@ CREATE TABLE public.pmatrix (
 
 
 ALTER TABLE public.pmatrix OWNER TO latexinarxiv;
+
+--
+-- Name: postings; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.postings (
+    filename text,
+    term text,
+    start bigint,
+    stop bigint
+);
+
+
+ALTER TABLE public.postings OWNER TO latexinarxiv;
 
 --
 -- Name: proof; Type: TABLE; Schema: public; Owner: latexinarxiv
@@ -668,6 +790,19 @@ CREATE TABLE public.subequations (
 ALTER TABLE public.subequations OWNER TO latexinarxiv;
 
 --
+-- Name: subsection; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.subsection (
+    filename text,
+    subsection text,
+    len integer
+);
+
+
+ALTER TABLE public.subsection OWNER TO latexinarxiv;
+
+--
 -- Name: tabular; Type: TABLE; Schema: public; Owner: latexinarxiv
 --
 
@@ -679,6 +814,32 @@ CREATE TABLE public.tabular (
 
 
 ALTER TABLE public.tabular OWNER TO latexinarxiv;
+
+--
+-- Name: textit; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.textit (
+    filename text,
+    textit text,
+    len integer
+);
+
+
+ALTER TABLE public.textit OWNER TO latexinarxiv;
+
+--
+-- Name: texttt; Type: TABLE; Schema: public; Owner: latexinarxiv
+--
+
+CREATE TABLE public.texttt (
+    filename text,
+    texttt text,
+    len integer
+);
+
+
+ALTER TABLE public.texttt OWNER TO latexinarxiv;
 
 --
 -- Name: theorem; Type: TABLE; Schema: public; Owner: latexinarxiv

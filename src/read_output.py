@@ -6,23 +6,40 @@ import pandas as pd
 from pudb import set_trace
 
 # TODO handle pairs that do not get resolved
+#copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;
+# time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
 
-with open(argv[1], "r") as f:
-    file_data = f.read()
+'''
+ time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
+COPY 34
+
+real    0m0.035s
+user    0m0.017s
+sys     0m0.004s
+
+
+time python read_output.py
+real    0m0.413s
+user    0m0.681s
+sys     0m1.146s
+
+
+'''
+
+
+
+
+
+
+#with open(argv[1], "r") as f:
+#    file_data = f.read()
 
 # testing proper alignment for begin.*?end pairs
 # pairs is obtained from running keyword_search.out texfile > /dev/shm/pairs
-with open("/dev/shm/pairs", "r") as f:
-    pairs = [x.strip() for x in f.readlines()]
-
-# exclude begin{document}..end{document}
-pairs = pairs[1:-1]
-lst = []
-for pair in pairs:
-    s, start, stop = pair.rsplit(":", maxsplit=2)
-    lst.append((s, int(start), int(stop)))
-
-df = pd.DataFrame(lst)
+df = pd.read_csv("/dev/shm/pairs")
+#print(df.head())
+exit(0)
+'''
 df.sort_values(1, inplace=True)
 df["resolved"] = False
 df["type"] = df[0].apply(lambda x: "begin" if re.findall(r"\\begin{", x) else "end")
@@ -50,4 +67,4 @@ while len(df.index.tolist()) > 0:
                 df.reset_index(drop=True, inplace=True)
     else:
         print('ERROR')
-        exit(1)
+        exit(1)'''

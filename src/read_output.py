@@ -22,12 +22,12 @@ if len(pairs) % 2 == 0:
         if "\\begin" in start:
             if "\\end" in stop:
                 start_pattern = re.findall(r"\\begin{(.*?)}", start)
-                print(start, stop)
+                # print(start, stop)
                 if start_pattern:
                     if len(start_pattern) == 1:
                         start_pattern = start_pattern[0]
 
-                stop_pattern = re.findall(r"\\begin{(.*?)}", stop)
+                stop_pattern = re.findall(r"\\end{(.*?)}", stop)
                 # print(stop,stop)
                 if stop_pattern:
                     if len(stop_pattern) == 1:

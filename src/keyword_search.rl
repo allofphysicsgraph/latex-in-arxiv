@@ -1053,23 +1053,6 @@ int scan(const char *in);
 '\\end{xalignat}' => { printf("%s:%zd:%zd\n", "\\end{xalignat}",ts-in,te-in);};
 '\\end{xy}' => { printf("%s:%zd:%zd\n", "\\end{xy}",ts-in,te-in);};
 '\\end{young}' => { printf("%s:%zd:%zd\n", "\\end{young}",ts-in,te-in);};
-'\\affiliation{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\affiliation{",ts-in,te-in);};
-'\\author{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\author{",ts-in,te-in);};
-'\\bibitem{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\bibitem{",ts-in,te-in);};
-'\\caption{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\caption{",ts-in,te-in);};
-'\\cite{'(any-'}')+ '}' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\cite{",ts-in,te-in);};
-'\\end{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\end{",ts-in,te-in);};
-'\\frac{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\frac{",ts-in,te-in);};
-'\\includegraphics{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\includegraphics{",ts-in,te-in);};
-'\\label{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\label{",ts-in,te-in);};
-'\\mathbf{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\mathbf{",ts-in,te-in);};
-'\\omicron{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\omicron{",ts-in,te-in);};
-'\\ref{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\ref{",ts-in,te-in);};
-'\\scalebox{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\scalebox{",ts-in,te-in);};
-'\\section{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\section{",ts-in,te-in);};
-'\\sqrt{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\sqrt{",ts-in,te-in);};
-'\\title{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\title{",ts-in,te-in);};
-'\\usepackage{' (any-'}')+ '}' => { printf("%s:%zd:%zd\n", "\\usepackage{",ts-in,te-in);};
 
 any => {};
 

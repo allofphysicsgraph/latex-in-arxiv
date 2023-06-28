@@ -33,7 +33,8 @@ if test_dict["begin"] == test_dict["end"]:
     print("counts ok")
 
 while len(df.index.tolist()) > 0:
-    t1_idx, t2_idx = df.index.tolist()[:2]
+    df_idx_lst = df.index.tolist()
+    t1_idx, t2_idx = df_idx_lst[:2]
     t1 = df.loc[t1_idx]
     t2 = df.loc[t2_idx]
 
@@ -43,7 +44,7 @@ while len(df.index.tolist()) > 0:
                 result = file_data[t1[1] : t2[2]]
                 # drop rows for the existing matches
                 keep_rows = [
-                    x for x in df.index.tolist() if x != t1_idx and x != t2_idx
+                    x for x in df_idx_lst if x != t1_idx and x != t2_idx
                 ]
                 df = df.loc[keep_rows]
                 df.reset_index(drop=True, inplace=True)

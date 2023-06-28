@@ -48,3 +48,6 @@ while len(df.index.tolist()) > 0:
                 ]
                 df = df.loc[keep_rows]
                 df.reset_index(drop=True, inplace=True)
+    else:
+        print('ERROR')
+        exit(1)

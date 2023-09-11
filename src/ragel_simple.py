@@ -1,4 +1,5 @@
-from ctypes import *
+from ctypes import CDLL
+from ctypes import c_char_p
 import sys
 from pygments.lexer import RegexLexer
 from pygments.token import *
@@ -61,7 +62,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get affiliation_max_len if it exists in config.yaml else default to 1000 chars
+        # get affiliation_max_len if it exists in config.yaml else default to
+        # 1000 chars
         affiliation_max_len = config.get("affiliation_max_len", 1000)
         q = r"\\affiliation.{{0,{}}}".format(affiliation_max_len)
         for affiliation_match in re.findall(q, data):
@@ -102,7 +104,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get author_max_len if it exists in config.yaml else default to 1000 chars
+        # get author_max_len if it exists in config.yaml else default to 1000
+        # chars
         author_max_len = config.get("author_max_len", 1000)
         q = r"\\author.{{0,{}}}".format(author_max_len)
         for author_match in re.findall(q, data):
@@ -143,7 +146,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get bibitem_max_len if it exists in config.yaml else default to 1000 chars
+        # get bibitem_max_len if it exists in config.yaml else default to 1000
+        # chars
         bibitem_max_len = config.get("bibitem_max_len", 1000)
         q = r"\\bibitem.{{0,{}}}".format(bibitem_max_len)
         for bibitem_match in re.findall(q, data):
@@ -184,7 +188,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get caption_max_len if it exists in config.yaml else default to 1000 chars
+        # get caption_max_len if it exists in config.yaml else default to 1000
+        # chars
         caption_max_len = config.get("caption_max_len", 1000)
         q = r"\\caption.{{0,{}}}".format(caption_max_len)
         for caption_match in re.findall(q, data):
@@ -225,7 +230,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get cite_max_len if it exists in config.yaml else default to 1000 chars
+        # get cite_max_len if it exists in config.yaml else default to 1000
+        # chars
         cite_max_len = config.get("cite_max_len", 1000)
         q = r"\\cite.{{0,{}}}".format(cite_max_len)
         for cite_match in re.findall(q, data):
@@ -266,7 +272,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get date_max_len if it exists in config.yaml else default to 1000 chars
+        # get date_max_len if it exists in config.yaml else default to 1000
+        # chars
         date_max_len = config.get("date_max_len", 1000)
         q = r"\\date.{{0,{}}}".format(date_max_len)
         for date_match in re.findall(q, data):
@@ -307,7 +314,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get emph_max_len if it exists in config.yaml else default to 1000 chars
+        # get emph_max_len if it exists in config.yaml else default to 1000
+        # chars
         emph_max_len = config.get("emph_max_len", 1000)
         q = r"\\emph.{{0,{}}}".format(emph_max_len)
         for emph_match in re.findall(q, data):
@@ -348,7 +356,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get label_max_len if it exists in config.yaml else default to 1000 chars
+        # get label_max_len if it exists in config.yaml else default to 1000
+        # chars
         label_max_len = config.get("label_max_len", 1000)
         q = r"\\label.{{0,{}}}".format(label_max_len)
         for label_match in re.findall(q, data):
@@ -389,7 +398,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get pageref_max_len if it exists in config.yaml else default to 1000 chars
+        # get pageref_max_len if it exists in config.yaml else default to 1000
+        # chars
         pageref_max_len = config.get("pageref_max_len", 1000)
         q = r"\\pageref.{{0,{}}}".format(pageref_max_len)
         for pageref_match in re.findall(q, data):
@@ -430,7 +440,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get ref_max_len if it exists in config.yaml else default to 1000 chars
+        # get ref_max_len if it exists in config.yaml else default to 1000
+        # chars
         ref_max_len = config.get("ref_max_len", 1000)
         q = r"\\ref.{{0,{}}}".format(ref_max_len)
         for ref_match in re.findall(q, data):
@@ -471,7 +482,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get scalebox_max_len if it exists in config.yaml else default to 1000 chars
+        # get scalebox_max_len if it exists in config.yaml else default to 1000
+        # chars
         scalebox_max_len = config.get("scalebox_max_len", 1000)
         q = r"\\scalebox.{{0,{}}}".format(scalebox_max_len)
         for scalebox_match in re.findall(q, data):
@@ -512,7 +524,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get section_max_len if it exists in config.yaml else default to 1000 chars
+        # get section_max_len if it exists in config.yaml else default to 1000
+        # chars
         section_max_len = config.get("section_max_len", 1000)
         q = r"\\section.{{0,{}}}".format(section_max_len)
         for section_match in re.findall(q, data):
@@ -553,7 +566,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get subsection_max_len if it exists in config.yaml else default to 1000 chars
+        # get subsection_max_len if it exists in config.yaml else default to
+        # 1000 chars
         subsection_max_len = config.get("subsection_max_len", 1000)
         q = r"\\subsection.{{0,{}}}".format(subsection_max_len)
         for subsection_match in re.findall(q, data):
@@ -594,7 +608,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get textit_max_len if it exists in config.yaml else default to 1000 chars
+        # get textit_max_len if it exists in config.yaml else default to 1000
+        # chars
         textit_max_len = config.get("textit_max_len", 1000)
         q = r"\\textit.{{0,{}}}".format(textit_max_len)
         for textit_match in re.findall(q, data):
@@ -635,7 +650,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get texttt_max_len if it exists in config.yaml else default to 1000 chars
+        # get texttt_max_len if it exists in config.yaml else default to 1000
+        # chars
         texttt_max_len = config.get("texttt_max_len", 1000)
         q = r"\\texttt.{{0,{}}}".format(texttt_max_len)
         for texttt_match in re.findall(q, data):
@@ -676,7 +692,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get title_max_len if it exists in config.yaml else default to 1000 chars
+        # get title_max_len if it exists in config.yaml else default to 1000
+        # chars
         title_max_len = config.get("title_max_len", 1000)
         q = r"\\title.{{0,{}}}".format(title_max_len)
         for title_match in re.findall(q, data):
@@ -717,7 +734,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get url_max_len if it exists in config.yaml else default to 1000 chars
+        # get url_max_len if it exists in config.yaml else default to 1000
+        # chars
         url_max_len = config.get("url_max_len", 1000)
         q = r"\\url.{{0,{}}}".format(url_max_len)
         for url_match in re.findall(q, data):
@@ -758,7 +776,8 @@ class RagelSimple(rpyc.Service):
             file_data = self.results[current_file][0]
             if len(self.results[f"{current_file}"]) == 1:
                 data = self.results[f"{current_file}"][0]
-        # get usepackage_max_len if it exists in config.yaml else default to 1000 chars
+        # get usepackage_max_len if it exists in config.yaml else default to
+        # 1000 chars
         usepackage_max_len = config.get("usepackage_max_len", 1000)
         q = r"\\usepackage.{{0,{}}}".format(usepackage_max_len)
         for usepackage_match in re.findall(q, data):
@@ -787,9 +806,9 @@ class RagelSimple(rpyc.Service):
         if conn:
             conn.close()
 
+
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
-    from sys import argv
 
     if len(sys.argv) == 2:
         port = int(sys.argv[1])

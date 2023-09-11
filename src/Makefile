@@ -20,6 +20,7 @@ templates:
 	#make adjustments to simple_template
 	bash generate_begin_end_templates.sh
 	./venv/bin/black *.py
+	#autopep8 --in-place --aggressive --aggressive <filename>
 
 
 clean:

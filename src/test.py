@@ -19,16 +19,16 @@ simple.root.exposed_get_title(data=data, current_file=current_file)
 print(time()-start)
 
 start = time()
-simple.root.exposed_get_caption(data=data, current_file=current_file)
+#simple.root.exposed_get_caption(data=data, current_file=current_file)
 print(time()-start)
 
 
 start = time()
-simple.root.exposed_get_bibitem(data=data, current_file=current_file)
+#simple.root.exposed_get_bibitem(data=data, current_file=current_file)
 print(time()-start)
 
 start = time()
-simple.root.exposed_get_usepackage(data=data, current_file=current_file)
+#simple.root.exposed_get_usepackage(data=data, current_file=current_file)
 print(time()-start)
 
 start = time()
@@ -72,7 +72,7 @@ print(time()-start)
 
 
 start = time()
-simple.root.exposed_get_caption(data=data, current_file=current_file)
+#simple.root.exposed_get_caption(data=data, current_file=current_file)
 print(time()-start)
 
 

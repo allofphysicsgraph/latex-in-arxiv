@@ -16,6 +16,36 @@ int scan(const char *in);
 %%{
 	machine part_token;
 	main := |*
+'\\documentclass'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "\\documentclass",ts-in,te-in,(te-in)-(ts-in),"simple","documentclass");};
+
+'\\usepackage'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "\\usepackage",ts-in,te-in,(te-in)-(ts-in),"simple","usepackage");};
+
+'\\author'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "\\author",ts-in,te-in,(te-in)-(ts-in),"simple","author");};
+
+'\\affiliation'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "\\affiliation",ts-in,te-in,(te-in)-(ts-in),"simple","affiliation");};
+
+'('  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "(",ts-in,te-in,(te-in)-(ts-in),"simple","LPAREN");};
+
+')'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "(",ts-in,te-in,(te-in)-(ts-in),"simple","RPAREN");};
+
+
+'='  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "=",ts-in,te-in,(te-in)-(ts-in),"simple","EQUAL");};
+
+
+'{'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "{",ts-in,te-in,(te-in)-(ts-in),"simple","LBRACE");};
+
+'}'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "}",ts-in,te-in,(te-in)-(ts-in),"simple","RBRACE");};
+
+'['  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "[",ts-in,te-in,(te-in)-(ts-in),"simple","LBRACKET");};
+
+']'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "]",ts-in,te-in,(te-in)-(ts-in),"simple","RBRACKET");};
+
+'%'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "%",ts-in,te-in,(te-in)-(ts-in),"simple","COMMENT");};
+
+'$'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "$",ts-in,te-in,(te-in)-(ts-in),"simple","MATH");};
+
+
+'\n'  => { printf("%s,%zd,%zd,%zd,%s,%s\n", "nl",ts-in,te-in,(te-in)-(ts-in),"simple","NEWLINE");};
 
 
 '\\begin{abstract}' => { printf("%s,%zd,%zd,%zd,%s,%s\n", "\\begin{abstract}",ts-in,te-in,(te-in)-(ts-in),"begin","abstract");};

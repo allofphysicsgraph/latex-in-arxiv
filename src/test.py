@@ -14,81 +14,69 @@ current_file = argv[1]
 
 
 simple = rpyc.connect('127.0.0.1',18861)
+
+start = time()
+simple.root.exposed_get_usepackage(data=data, current_file=current_file)
+print('get_usepackage',time()-start)
+
 start = time()
 simple.root.exposed_get_title(data=data, current_file=current_file)
-print(time()-start)
+print('get_title',time()-start)
 
-start = time()
-#simple.root.exposed_get_caption(data=data, current_file=current_file)
-print(time()-start)
-
-
-start = time()
-#simple.root.exposed_get_bibitem(data=data, current_file=current_file)
-print(time()-start)
-
-start = time()
-#simple.root.exposed_get_usepackage(data=data, current_file=current_file)
-print(time()-start)
 
 start = time()
 simple.root.exposed_get_affiliation(data=data, current_file=current_file)
-print(time()-start)
+print('get_affiliation',time()-start)
 
 start = time()
 simple.root.exposed_get_author(data=data, current_file=current_file)
-print(time()-start)
+print('get_author',time()-start)
 
 start = time()
 simple.root.exposed_get_section(data=data, current_file=current_file)
-print(time()-start)
+print('get_section',time()-start)
 
 start = time()
 simple.root.exposed_get_label(data=data, current_file=current_file)
-print(time()-start)
+print('get_label',time()-start)
 
 
 start = time()
 simple.root.exposed_get_cite(data=data, current_file=current_file)
-print(time()-start)
+print('get_cite',time()-start)
 
 start = time()
 simple.root.exposed_get_emph(data=data, current_file=current_file)
-print(time()-start)
+print('get_emph',time()-start)
 
 start = time()
 simple.root.exposed_get_url(data=data, current_file=current_file)
-print(time()-start)
+print('get_url',time()-start)
 
 
 start = time()
 simple.root.exposed_get_texttt(data=data, current_file=current_file)
-print(time()-start)
+print('get_texttt',time()-start)
 
 
 start = time()
 simple.root.exposed_get_subsection(data=data, current_file=current_file)
-print(time()-start)
-
-
-start = time()
-#simple.root.exposed_get_caption(data=data, current_file=current_file)
-print(time()-start)
+print('get_subsection',time()-start)
 
 
 start = time()
 simple.root.exposed_get_textit(data=data, current_file=current_file)
-print(time()-start)
+print('get_textit',time()-start)
 
 
 start = time()
 simple.root.exposed_get_date(data=data, current_file=current_file)
-print(time()-start)
+print('get_date',time()-start)
 
 
 start = time()
 simple.root.exposed_get_ref(data=data, current_file=current_file)
-print(time()-start)
+print('get_ref',time()-start)
 
 #x.exposed_get_abstract(data=data, current_file=current_file)
 #x.exposed_get_equation(data=data, current_file=current_file)

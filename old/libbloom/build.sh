@@ -1,4 +1,4 @@
-
-gcc bloom_filter_test.c bloom.c  -Lbuild/libbloom.so murmur2/MurmurHash2.c -lm
-cp ../english.vocab .
-echo './a.out search_term'
+ragel -G2 keyword_search.rl
+gcc keyword_search.c bloom.c  -Lbuild/libbloom.so murmur2/MurmurHash2.c -lm
+cp ../../src/english.vocab .
+echo './a.out document'

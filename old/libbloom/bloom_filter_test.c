@@ -19,10 +19,10 @@ int main(int argc, char **argv)
 {
   struct bloom bloom; 
   int i = -1;
-  assert(bloom_init(&bloom, 100000, 0.000000001)==0); 
+  assert(bloom_init(&bloom, 1000000, 0.000000001)==0); 
 
   FILE	*fp;										/* input-file pointer */
-  char	*fp_file_name = "english_vocab";		/* input-file name    */
+  char	*fp_file_name = "english.vocab";		/* input-file name    */
 
   char  buffer[2056];
 

@@ -19,7 +19,7 @@
 #include "bloom.h"
 
 #define MAX_LEN 1024
-#define MAX_WORD_SIZE 128
+#define MAX_WORD_SIZE 32
 #
 char temp[MAX_WORD_SIZE];
 char *buff;
@@ -27,24 +27,22 @@ struct bloom bloom;
 
 int i;
 
-
-
-
 int scan(const char *in);
 %%{
 	machine part_token;
 	main := |*
-  [a-zA-Z]{1,127} => { 
+  [a-zA-Z]{1,20} => { 
   memset(temp,'\0',MAX_WORD_SIZE);
   strncpy(temp,&buff[ts-in],te-ts);
-  //printf("%s,",temp);
   if (bloom_check(&bloom, temp, te-ts)) {
   printf("%s,",temp);
-  printf("%zd,%zd\n",ts-in,te-ts);};
+  printf("%zd,%zd\n",ts-in,te-ts);
+  }
+
   };
   
 
-  any => {};
+  any ;
 	*|;
 }%%
 
@@ -72,7 +70,7 @@ int scan(const char *in)
 
 int main(int argc, char **argv) {
 i = -1;
-assert(bloom_init(&bloom, 1000000, 0.000000001)==0); 
+assert(bloom_init(&bloom, 100000, 0.00001)==0); 
 
   FILE	*fp;										/* input-file pointer */
   char	*fp_file_name = "english.vocab";		/* input-file name    */

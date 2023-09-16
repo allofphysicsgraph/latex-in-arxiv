@@ -20,10 +20,12 @@
 
 #define MAX_LEN 1024
 #define MAX_WORD_SIZE 32
-#
+//'$' (any - '$')* '$' => { 
+
 char temp[MAX_WORD_SIZE];
 char *buff;
 struct bloom bloom; 
+char filename[128];
 
 int i;
 
@@ -35,8 +37,7 @@ int scan(const char *in);
   memset(temp,'\0',MAX_WORD_SIZE);
   strncpy(temp,&buff[ts-in],te-ts);
   if (bloom_check(&bloom, temp, te-ts)) {
-  printf("%s,",temp);
-  printf("%zd,%zd\n",ts-in,te-ts);
+  printf("%s:%zd,%zd:%s\n",filename,ts-in,te-ts,temp);
   }
 
   };
@@ -69,6 +70,15 @@ int scan(const char *in)
 
 
 int main(int argc, char **argv) {
+if (argc != 2){
+  printf("input filename\n");
+  assert(strlen(argv[1])<128);
+}
+
+
+strcpy(filename,argv[1]);
+
+
 i = -1;
 assert(bloom_init(&bloom, 100000, 0.00001)==0); 
 
@@ -112,7 +122,7 @@ int cs, res = 0;
   /* PROT_READ disallows writing to buff: will segv */
   buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
   if (buff != (void *)-1) {
-    	scan((char*)buff);
+  scan((char*)buff);
 	munmap(buff, s.st_size);
   }
   close(fd);

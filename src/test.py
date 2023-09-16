@@ -1,9 +1,9 @@
-#from ragel_begin_end import RagelBeginEnd
+from ragel_begin_end import RagelBeginEnd
 #from ragel_simple import RagelSimple
 from sys import argv
 import rpyc 
 from time import time
-#x = RagelBeginEnd()
+x = RagelBeginEnd()
 #y = RagelSimple()
 
 with open(argv[1], "r") as f:
@@ -78,10 +78,10 @@ start = time()
 simple.root.exposed_get_ref(data=data, current_file=current_file)
 print('get_ref',time()-start)
 
-#x.exposed_get_abstract(data=data, current_file=current_file)
-#x.exposed_get_equation(data=data, current_file=current_file)
-#x.exposed_get_figure(data=data, current_file=current_file)
-#x.exposed_get_algorithm(data=data, current_file=current_file)
-#x.exposed_get_definition(data=data, current_file=current_file)
-#x.exposed_get_eqnarray(data=data, current_file=current_file)
+x.exposed_get_abstract(data=data, current_file=current_file)
+x.exposed_get_equation(data=data, current_file=current_file)
+x.exposed_get_figure(data=data, current_file=current_file)
+x.exposed_get_algorithm(data=data, current_file=current_file)
+x.exposed_get_definition(data=data, current_file=current_file)
+x.exposed_get_eqnarray(data=data, current_file=current_file)
 

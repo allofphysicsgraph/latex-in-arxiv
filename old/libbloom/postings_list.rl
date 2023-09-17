@@ -32,12 +32,13 @@ int i;
 int scan(const char *in);
 %%{
 	machine part_token;
+word = [a-zA-Z]{1,20};
 	main := |*
-  [a-zA-Z]{1,20} => { 
+  word => { 
   memset(temp,'\0',MAX_WORD_SIZE);
   strncpy(temp,&buff[ts-in],te-ts);
   if (bloom_check(&bloom, temp, te-ts)) {
-  printf("%s:%zd,%zd:%s\n",filename,ts-in,te-ts,temp);
+  printf("%s,%zd,%zd,%s\n",filename,ts-in,te-ts,temp);
   }
 
   };

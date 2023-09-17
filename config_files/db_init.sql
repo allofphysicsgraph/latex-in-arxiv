@@ -6,9 +6,10 @@ grant usage on schema api to web_anon;
 create role authenticator noinherit login password 'mysecretpassword';
 grant web_anon to authenticator;
 
+create table postings_list (filename text, offset_idx bigint, len bigint, word text, cnt bigint);
 create table figure (filename text, figure text, len bigint);
 create table usepackage (filename text, usepackage text, len bigint);
-create table abstract (filename text, abstract text, len bigint );
+create table abstract (filename text, abstract text, len bigint )
 create table equation (filename text, equation text, len bigint );
 create table affiliation (filename text, affiliation text, len bigint );
 create table aligned (filename text, aligned text, len bigint );
@@ -113,3 +114,4 @@ alter table usepackage owner to latexinarxiv;
 alter table verbatim owner to latexinarxiv;
 alter table equation owner to latexinarxiv;
 alter table figure owner to latexinarxiv;
+alter table postings_list owner to latexinarxiv;

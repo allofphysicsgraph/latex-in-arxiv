@@ -43,13 +43,14 @@ int line_no = 1;
 int col_number = 1;
 int char_offset = 0;
 
-void print_location(char *ID);
-
 /* define a linked list of words and types */
 struct word {
   char word_name[32];
+  int offset_idx;
+  int count;
   int word_type;
   struct word *next;
+  int offset[];
 };
 
 struct word *word_list; /* first element in word list */
@@ -60,12 +61,10 @@ int add_word(int type, char *word) {
   struct word *wp;
 
   if (lookup_word(word) != LOOKUP) {
-    // printf("!!! warning: word %s already defined \n", word);
-    return 0;
+    return -1;
   }
 
   /* word not there, allocate a new entry and link it on the list */
-  // printf("!!! new word \n", word);
   wp = (struct word *)malloc(sizeof(struct word));
 
   wp->next = word_list;
@@ -75,6 +74,8 @@ int add_word(int type, char *word) {
   strncpy(wp->word_name, word, strlen(word));
   wp->word_name[strnlen(word, MAX_WORD_SIZE) + 1] = '\0';
   wp->word_type = type;
+  wp->count = 1;
+  wp->offset_idx=0;
   word_list = wp;
   return 1; /* it worked */
 }
@@ -87,10 +88,33 @@ int lookup_word(char *word) {
     if (strcmp(wp->word_name, word) == 0)
       return wp->word_type;
   }
-
   return LOOKUP; /* not found */
 }
 
+void update_word(int type, char *word) {
+  struct word *wp = word_list;
+  /* search down the list looking for the word */
+  for (; wp; wp = wp->next) {
+    if (strcmp(wp->word_name, word) == 0)
+      {
+      //wp->offset_idx++;
+      //wp->offset[wp->offset_idx]=1;
+      wp->count++;
+      }
+  }
+}
+
+
+
+int print_word(char *word) {
+  struct word *wp = word_list;
+  /* search down the list looking for the word */
+  for (; wp; wp = wp->next) {
+    if (strcmp(wp->word_name, word) == 0)
+      printf("<%s>:<%d>", wp->word_name,wp->count);
+      }
+  return LOOKUP; /* not found */
+}
 void freeList(struct word *head) {
 
   struct word *n = head;
@@ -107,14 +131,19 @@ int scan(const char *in);
 word = [a-zA-Z]{1,20};
 	main := |*
   word => { 
-  memset(temp,'\0',MAX_WORD_SIZE);
-  strncpy(temp,&buff[ts-in],te-ts);
-  printf("%s",temp);
-  if (bloom_check(&bloom, temp, te-ts)) {
-  printf("%s,%zd,%zd,%s\n",filename,ts-in,te-ts,temp);
+memset(temp, '\0', MAX_WORD_SIZE);
+strncpy(temp, &buff[ts - in], te - ts);
+//printf("%s", temp);
+if (bloom_check(&bloom, temp, te - ts)) {
+  printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
   if (!lookup_word(temp)) {
-    add_word(1,temp);
-  }}};
+    add_word(1, temp);
+  } else {
+    update_word(1,temp);
+  }
+}
+}
+;
   
 
   any ;
@@ -193,6 +222,7 @@ strncpy(filename, argv[1],128);
   }
   close(fd);
   bloom_free(&bloom);
+  print_word("data");
   freeList(word_list);
   return 0;
 }

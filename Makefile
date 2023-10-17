@@ -21,6 +21,10 @@ help:
 	@echo "make sampledata"
 
 
+test:
+	cd config_files && bash db_init.sh
+	cd src && make
+
 # Docker on linux
 docker:
 	sudo service docker start

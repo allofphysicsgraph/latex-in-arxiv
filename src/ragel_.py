@@ -1467,25 +1467,6 @@ class Ragel:
                 except:
                     print("error on {)".format(self.current_file))
 
-    def exposed_get_slm(self, data=False, save=True, print_results=False):
-        if self.debug:
-            frame = inspect.currentframe()
-            print(inspect.getframeinfo(frame).function)
-        if not data:
-            current_file = self.current_file
-            file_data = self.results[current_file][0]
-            if len(self.results[f"{current_file}"]) == 1:
-                data = self.results[f"{current_file}"][0]
-        s = c_char_p(str.encode(data))
-        slm = CDLL("./slm.so")
-        slm.test.restype = c_char_p
-        if save or print_results:
-            slm.init()
-            for match in slm.test(s).decode().splitlines():
-                if not save:
-                    self.results["slm"].append(match)
-                if print_results:
-                    print(match)
 
     def exposed_get_url(self, data=False, save=True, print_results=False):
         if self.debug:

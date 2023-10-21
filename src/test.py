@@ -1,4 +1,5 @@
 from ragel_begin_end import RagelBeginEnd
+from ragel_ import Ragel
 #from ragel_simple import RagelSimple
 from sys import argv
 import rpyc 
@@ -14,6 +15,10 @@ current_file = argv[1]
 
 
 simple = rpyc.connect('127.0.0.1',18861)
+
+start = time()
+simple.root.exposed_get_slm(data=data, current_file=current_file)
+print('get_slm',time()-start)
 
 start = time()
 simple.root.exposed_get_usepackage(data=data, current_file=current_file)

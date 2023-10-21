@@ -763,6 +763,50 @@ class RagelSimple(rpyc.Service):
                         conn.commit()
         if conn:
             conn.close()
+    
+    def exposed_get_slm(self, data=False, current_file=False, save=True, print_results=False):
+        conn = False
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        # get url_max_len if it exists in config.yaml else default to 1000
+        # chars
+        slm_max_len = config.get("slm_max_len", 1000)
+        print(slm_max_len)
+        q = r"\$.{{1,{}}}\$".format(slm_max_len)
+        for slm_match in re.findall(q, data):
+            print(slm_match)
+            s = c_char_p(str.encode(slm_match))
+            slm = CDLL("./slm.so")
+            slm.test.restype = c_char_p
+            if self.postgres:
+                conn, cursor = self.db_cursor()
+            if save or print_results:
+                slm.init()
+                for match in slm.test(s).decode().splitlines():
+                    # print(match)
+                    if not save:
+                        self.results[f"{current_file}_slm"].append(match)
+                    if print_results:
+                        print(match)
+                    if self.postgres:
+                        if not current_file:
+                            current_file = self.current_file
+                        length = len(match)
+                        match = match.replace("'", "''")
+                        cursor.execute(
+                            f"insert into slm (filename,slm,len) values ('{current_file}','{match}',{length});"
+                        )
+                        conn.commit()
+        if conn:
+            conn.close()
+
+
 
     def exposed_get_usepackage(
         self, data=False, current_file=False, save=True, print_results=False
@@ -822,3 +866,4 @@ if __name__ == "__main__":
     )
     print("Ready for rpyc clients \n")
     t.start()
+

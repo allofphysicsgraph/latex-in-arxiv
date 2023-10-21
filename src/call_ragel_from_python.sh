@@ -5,6 +5,10 @@ fi
 
 
 
+
+
+ragel abstract.rl
+ragel abstract.rl
 ragel abstract.rl
 ragel affiliation.rl
 ragel algorithm.rl
@@ -53,6 +57,7 @@ ragel ref.rl
 ragel scope.rl
 ragel section.rl
 ragel slm.rl
+ragel mlm.rl
 ragel split.rl
 ragel subequations.rl
 ragel subsection.rl
@@ -115,6 +120,7 @@ gcc -fPIC -shared -o ref.so ref.c
 gcc -fPIC -shared -o scope.so scope.c
 gcc -fPIC -shared -o section.so section.c
 gcc -fPIC -shared -o slm.so slm.c
+gcc -fPIC -shared -o mlm.so mlm.c
 gcc -fPIC -shared -o split.so split.c
 gcc -fPIC -shared -o subequations.so subequations.c
 gcc -fPIC -shared -o subsection.so subsection.c

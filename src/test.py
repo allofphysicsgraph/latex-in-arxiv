@@ -15,7 +15,10 @@ current_file = argv[1]
 
 
 simple = rpyc.connect('127.0.0.1',18861)
-
+start = time()
+simple.root.exposed_get_mlm(data=data, current_file=current_file)
+print('get_mlm',time()-start)
+exit(0)
 start = time()
 simple.root.exposed_get_slm(data=data, current_file=current_file)
 print('get_slm',time()-start)

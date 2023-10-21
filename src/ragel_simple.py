@@ -806,6 +806,33 @@ class RagelSimple(rpyc.Service):
         if conn:
             conn.close()
 
+    def exposed_get_mlm(self, data=False, current_file=False, save=True, print_results=False):
+        conn = False
+        if self.debug:
+            frame = inspect.currentframe()
+            print(inspect.getframeinfo(frame).function)
+        if not data:
+            current_file = self.current_file
+            file_data = self.results[current_file][0]
+            if len(self.results[f"{current_file}"]) == 1:
+                data = self.results[f"{current_file}"][0]
+        # get url_max_len if it exists in config.yaml else default to 1000
+        # chars
+        if self.postgres:
+            conn, cursor = self.db_cursor()
+        mlm_max_len = config.get("mlm_max_len", 1000)
+        print(mlm_max_len)
+        q = r"\$\$.{{5,{}}}?\$\$".format(mlm_max_len)
+        for match in re.findall(q, data,re.DOTALL):
+            #print(mlm_match)
+            length = len(match)
+            match = match.replace("'", "''")
+            cursor.execute(
+                f"insert into mlm (filename,mlm,len) values ('{current_file}','{match}',{length});"
+            )
+            conn.commit()
+        if conn:
+            conn.close()
 
 
     def exposed_get_usepackage(

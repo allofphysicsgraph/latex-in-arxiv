@@ -1,0 +1,25 @@
+Generates a Postings List with a fixed vocabulary of words or phrases. 
+A posting list is a list of terms, along with their positions in the document. The postings list is used to efficiently retrieve documents that contain specific terms or phrases.
+
+with 50776 strings it takes rougly 6 min to compile the binary. 
+wc -l /dev/shm/postings_list
+4998674 /dev/shm/postings_list
+
+
+2003 $ time find . -type f |xargs -i -P10 strings "{}" >> /dev/shm/postings_list
+find . -type f  0.00s user 0.00s system 90% cpu 0.003 total
+xargs -i -P10 strings "{}" >> /dev/shm/postings_list  2.65s user 0.72s system 772% cpu 0.436 total
+
+
+sample output:
+  ./0304245_cleaned.tex,18606,9,coincides
+  ./0304245_cleaned.tex,18617,4,with
+  ./0304245_cleaned.tex,18622,5,Proca
+  ./0304245_cleaned.tex,18632,2,We
+  ./0304245_cleaned.tex,18635,5,shall
+  ./0304245_cleaned.tex,18641,7,discuss
+  ./0304245_cleaned.tex,18649,3,the
+  ./0304245_cleaned.tex,18653,8,physical
+  ./0304245_cleaned.tex,18662,9,relevance
+  ./0304245_cleaned.tex,18672,2,of
+  ./0304245_cleaned.tex,18675,12,Stueckelberg

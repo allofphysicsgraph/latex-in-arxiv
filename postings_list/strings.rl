@@ -45,11 +45,6 @@ int scan(const char *in);
 }%%
 
 
-%%{
-  machine strings;
-  include "vocab.rl";
-}%%
-
 %% write data;
 
 int scan(const char *in) {

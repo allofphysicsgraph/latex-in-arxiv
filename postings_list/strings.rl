@@ -16,6 +16,29 @@
 #define MAX_LEN 1024
 #define MAX_WORD_SIZE 1024
 
+#define MAX_VOCAB_SIZE 32000
+#define MAX_FILE_COUNT 10
+#define MAX_FILE_PATH_LEN 256
+
+int wordLookup(char *);
+int Test(char* token);
+int Insert(char* token);
+void printPostings();
+int updateWordFrequency(int idx);
+
+struct postingsList {
+  int DocID;
+  int WordID;
+  // # DocID,  Document file Path   
+  char DocPath[MAX_FILE_COUNT][MAX_FILE_PATH_LEN];
+  // #WordID Word
+  char Word[MAX_VOCAB_SIZE][MAX_WORD_SIZE];
+  //DocID WordID Count
+  int TokenFrequencies[MAX_FILE_COUNT][MAX_VOCAB_SIZE];
+  int DocumentTokenCount[MAX_FILE_COUNT];
+};
+
+struct postingsList mylist;
 char temp[MAX_WORD_SIZE];
 char *buff;
 char filename[128];
@@ -37,11 +60,12 @@ int scan(const char *in);
   word => { 
     memset(temp, '\0', MAX_WORD_SIZE);
     strncpy(temp, &buff[ts - in], te - ts);
+    Test(temp);
     printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
   };
   
   any ;
-	*|;
+  *|;
 }%%
 
 
@@ -67,10 +91,15 @@ int scan(const char *in) {
 
 
 int main(int argc, char **argv) {
+  mylist.WordID=0;
+  mylist.DocID=0;
+
   if (argc != 2) {
     printf("input filename\n");
     return -1;
   }
+
+strncpy(mylist.DocPath[mylist.DocID],argv[1],MAX_FILE_PATH_LEN);
 
 strncpy(filename, argv[1],128);
   char buffer[s.st_size];
@@ -88,5 +117,55 @@ strncpy(filename, argv[1],128);
     munmap(buff, s.st_size);
   }
   close(fd);
-  return 0;
+  printPostings();
+return 0;
 }
+
+
+int Lookup(char *){
+  for(int i = 0;i<mylist.WordID;i++){
+    if(strcmp(temp,mylist.Word[i])==0){
+        return i;
+      }
+    }
+    return -1;
+}
+
+int Test(char *token){
+    int match = Lookup(token);
+    if ( match == -1){
+      Insert(token);
+    } else {
+      updateWordFrequency(match);
+    }
+} 
+
+
+int Insert(char *token){
+  mylist.TokenFrequencies[mylist.DocID][mylist.WordID]++;
+  strncpy(mylist.Word[mylist.WordID],token,MAX_WORD_SIZE);
+  //printf("adding Token:<%s>",token);
+  mylist.DocumentTokenCount[mylist.DocID]++;
+  mylist.WordID++;
+}
+
+
+int updateWordFrequency(int idx){
+  mylist.TokenFrequencies[mylist.DocID][idx]++;
+  mylist.DocumentTokenCount[mylist.DocID]++;
+  //printf("update Token Count:<%d><%d>",idx,cnt);
+}
+
+void printPostings(){
+for(int i = 0; i <= mylist.DocID;i++){
+  int DocumentTokenCnt = mylist.DocumentTokenCount[mylist.DocID];
+for(int j = 0;j < mylist.WordID;j++){
+  int tokenFreq = mylist.TokenFrequencies[mylist.DocID][j];
+  printf("Term Frequency:<%s><%d><%d><%f>\n",mylist.Word[j],tokenFreq,DocumentTokenCnt,(1.0*tokenFreq/DocumentTokenCnt));
+  //mylist.DocumentTokenCount[mylist.DocID]);
+  }}
+
+  printf("document Token Count <%d>",mylist.DocumentTokenCount[mylist.DocID]);
+}
+
+

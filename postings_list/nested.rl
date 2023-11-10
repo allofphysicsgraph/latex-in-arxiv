@@ -61,7 +61,7 @@ int scan(const char *in);
     memset(temp, '\0', MAX_WORD_SIZE);
     strncpy(temp, &buff[ts - in], te - ts);
     Test(temp);
-    printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
+    //printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
   };
   
   any ;

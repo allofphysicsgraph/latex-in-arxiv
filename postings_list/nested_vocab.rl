@@ -1,12 +1,15 @@
 #include <stdio.h>
 
 %%{
-  machine strings;
+ machine strings;
 
 begin_abstract ='\\begin{abstract}' %{printf(" ");};
 end_abstract = '\\end{abstract}' %{printf(" "); };
-nested_abstract = begin_abstract:> (any*-(begin_abstract|end_abstract)) :> end_abstract;
-abstract = begin_abstract :> nested_abstract :>  end_abstract;
+abstract_body = any+ - (begin_abstract|end_abstract) ;
+
+
+nested_abstract = begin_abstract:> abstract_body :> end_abstract;
+abstract = begin_abstract   abstract_body   end_abstract;
 
 word =  abstract ;
 }%%

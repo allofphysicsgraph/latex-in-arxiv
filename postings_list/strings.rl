@@ -25,6 +25,7 @@ int Test(char* token);
 int Insert(char* token);
 void printPostings();
 int updateWordFrequency(int idx);
+int n;
 
 struct postingsList {
   int DocID;

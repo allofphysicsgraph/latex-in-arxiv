@@ -4,7 +4,7 @@
 left_brace = '{' @{n++; };
 right_brace = '}' @{n--; };
 brace_body = any - (left_brace|right_brace);
-braces = '{' @{n=0;} (left_brace|right_brace|brace_body)* :> '}' when{!n};
+braces = '{' @{n=0;} (left_brace|right_brace|brace_body){0,2000} :> '}' when{!n};
 
 left_bracket = '[' @{n++;};
 right_bracket = ']' @{n--; };
@@ -20,6 +20,8 @@ parens = '[' @{n=0;} (left_parens|right_parens|parens_body)* :> ']' when{!n};
 word = "1-loop" |
 "," |
 braces |
+"\\newcommand" braces braces{1,2} |
+"\\frac" braces braces | 
 "\\begin" braces |
 "\\end" braces |
 "\\label" braces |

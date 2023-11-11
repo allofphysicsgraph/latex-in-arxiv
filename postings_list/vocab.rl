@@ -20,6 +20,8 @@ parens = '[' @{n=0;} (left_parens|right_parens|parens_body)* :> ']' when{!n};
 word = "1-loop" |
 "," |
 braces |
+"\\begin" braces |
+"\\end" braces |
 "\\label" braces |
 "$" (any-"$"){1,80} "$" |
 [ ]{2,} |
@@ -30756,7 +30758,6 @@ braces |
 "Myths" |
 "\\mz" |
 "\\n" |
-"\n" | 
 "\\na" |
 "naab" |
 "\\nab" |

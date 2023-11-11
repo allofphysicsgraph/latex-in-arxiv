@@ -5,7 +5,7 @@
 #	./nested.out nested_test
 
 all:
-	ragel -V -Z -p -o strings.dot strings.rl
+	#ragel -V -Z -p -o strings.dot strings.rl
 	ragel   -m -G2 strings.rl
 	gcc  -g strings.c -o strings.out -lm
 	./strings.out sound1.tex

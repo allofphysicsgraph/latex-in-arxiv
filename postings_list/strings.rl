@@ -14,9 +14,9 @@
 #include <unistd.h>
 
 #define MAX_LEN 1024
-#define MAX_WORD_SIZE 1024
-
-#define MAX_VOCAB_SIZE 32000
+#define MAX_WORD_SIZE 2048
+#
+#define MAX_VOCAB_SIZE 48000
 #define MAX_FILE_COUNT 10
 #define MAX_FILE_PATH_LEN 256
 

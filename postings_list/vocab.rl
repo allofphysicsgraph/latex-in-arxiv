@@ -12,7 +12,7 @@ comment='%' (any{1,100}-'\n') '\n';
 left_brace = '{' @{n++; };
 right_brace = '}' @{n--; };
 brace_body = any - (left_brace|right_brace);
-braces = '{' @{n=0;} (left_brace|right_brace|brace_body{0,1000})* :> '}' when{!n};
+braces = '{' @{n=0;} (left_brace|right_brace|brace_body{1,1000})* :> '}' when{!n};
 
 
 left_bracket = '[' @{n++;};

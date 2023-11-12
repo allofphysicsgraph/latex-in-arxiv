@@ -254,7 +254,7 @@ brackets = '[' @{n=0;} (left_bracket|right_bracket|bracket_body)* :> ']' when{!n
 left_parens = '(' @{n++;};
 right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
-parens = '[' @{n=0;} (left_parens|right_parens|parens_body)* :> ']' when{!n};
+parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 word = "," |
 "$" (any-"$"){1,80} "$" |

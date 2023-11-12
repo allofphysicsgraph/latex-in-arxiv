@@ -12,7 +12,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-
+#include <math.h>
 #define MAX_LEN 1024
 #define MAX_WORD_SIZE 2048
 #
@@ -24,8 +24,11 @@ int wordLookup(char *);
 int Test(char* token);
 int Insert(char* token);
 void printPostings();
+int getTokenFreq(int WordID);
 int updateWordFrequency(int idx);
 int n;
+
+int TFIDF(int WordID);
 
 struct postingsList {
   int DocID;
@@ -39,10 +42,13 @@ struct postingsList {
   int DocumentTokenCount[MAX_FILE_COUNT];
 };
 
+
+
 struct postingsList mylist;
+
 char temp[MAX_WORD_SIZE];
 char *buff;
-char filename[128];
+char filename[MAX_FILE_PATH_LEN];
 struct stat s;
 
 int i;
@@ -95,19 +101,22 @@ int main(int argc, char **argv) {
   mylist.WordID=0;
   mylist.DocID=0;
 
-  if (argc != 2) {
+  if (argc < 2) {
     printf("input filename\n");
     return -1;
   }
 
-strncpy(mylist.DocPath[mylist.DocID],argv[1],MAX_FILE_PATH_LEN);
+for(int i = 0;i<argc-1;i++){
+mylist.DocID=i;
+//printf("\nDOCID:%d\n",mylist.DocID);
+strncpy(mylist.DocPath[mylist.DocID],argv[i+1],MAX_FILE_PATH_LEN);
 
-strncpy(filename, argv[1],128);
+  strncpy(filename, argv[i+1],MAX_FILE_PATH_LEN);
   char buffer[s.st_size];
   int cs, res = 0;
 
   int fd;
-  fd = open(argv[1], O_RDONLY);
+  fd = open(argv[i+1], O_RDONLY);
   if (fd < 0)
     return EXIT_FAILURE;
   fstat(fd, &s);
@@ -115,10 +124,14 @@ strncpy(filename, argv[1],128);
   buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
   if (buff != (void *)-1) {
     scan((char *)buff);
+    //printf("%s",buff);
     munmap(buff, s.st_size);
   }
   close(fd);
-  printPostings();
+  }
+
+  //print the tf-idf score for a word id
+  TFIDF(0);
 return 0;
 }
 
@@ -157,16 +170,55 @@ int updateWordFrequency(int idx){
   //printf("update Token Count:<%d><%d>",idx,cnt);
 }
 
-void printPostings(){
-for(int i = 0; i <= mylist.DocID;i++){
-  int DocumentTokenCnt = mylist.DocumentTokenCount[mylist.DocID];
-for(int j = 0;j < mylist.WordID;j++){
-  int tokenFreq = mylist.TokenFrequencies[mylist.DocID][j];
-  printf("Term Frequency:<%s><%d><%d><%f>\n",mylist.Word[j],tokenFreq,DocumentTokenCnt,(1.0*tokenFreq/DocumentTokenCnt));
-  //mylist.DocumentTokenCount[mylist.DocID]);
-  }}
 
-  printf("document Token Count <%d>",mylist.DocumentTokenCount[mylist.DocID]);
+struct tf_idf {
+  char *token[MAX_WORD_SIZE];
+  int token_count;
+  int dft;  //number of documents that contain token t
+  int documentCount; //Total number of documents
+};
+
+int getTokenFreq(int WordID){
+  int df=0;
+  for(i=0;i<=mylist.DocID;i++){
+    if(mylist.TokenFrequencies[i][WordID]>0){
+      df++;
+      //mylist.TokenFrequencies[i][WordID];
+    }
+  }
+  return df;
 }
+
+
+int TFIDF(int WordID){
+  struct tf_idf test;
+  test.token_count=0;
+  test.dft = 0;
+  test.documentCount = 0;
+
+  int df=0;
+  for(i=0;i<=mylist.DocID;i++){
+    int token_count = mylist.TokenFrequencies[i][WordID];
+    //printf("<<%d>>",token_count);
+    if(token_count > 0){
+
+      df++;
+      test.token_count+=token_count;
+      test.dft++;
+    }
+  }
+  test.documentCount = mylist.DocID+1;
+  float tf = 1+log10(test.token_count+1);
+  float idf =0.;
+  if(test.dft>0){
+    idf = log10(1.0*test.documentCount/test.dft);
+  } 
+  
+  float tfidf = tf*idf;
+
+  printf("%s count:%d docs:%d totalDocs:%d  tf:%f idf:%f tfidf:%f",mylist.Word[WordID],test.token_count, test.dft,test.documentCount,tf,idf,tfidf);
+  return df;
+}
+
 
 

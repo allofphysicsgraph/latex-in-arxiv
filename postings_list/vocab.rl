@@ -1,6 +1,9 @@
 %%{
   machine strings;
 
+comment='%' (any{1,100}-'\n') '\n';
+
+
 begin_equation = '\\begin{equation}' ;  
 end_equation = '\\end{equation}' ;
 equation_body = any+ - (begin_equation|end_equation);
@@ -25,7 +28,6 @@ parens_body = any - (left_parens|right_parens);
 parens = '[' @{n=0;} (left_parens|right_parens|parens_body)* :> ']' when{!n};
 
 word = 
-equation | 
 "," |
 "$" (any-"$"){1,80} "$" |
 "1-loop" |
@@ -2634,8 +2636,10 @@ equation |
 "\\araa" |
 "arabi" |
 "\\arabic" |
+"\\arabic"|
 "arabic" |
 "Arabic" |
+"\\arabic" braces |
 "arac" |
 "arad" |
 "arafat" |
@@ -3995,6 +3999,7 @@ equation |
 "baptized" |
 "baptizing" |
 "\\bar" |
+"\\bar"|
 "bara" |
 "barak" |
 "baral" |
@@ -4021,6 +4026,7 @@ equation |
 "Barbon" |
 "barbour" |
 "barbox" |
+"\\bar" braces |
 "barca" |
 "barcelona" |
 "Barcelona" |
@@ -4839,6 +4845,8 @@ equation |
 "\\bibit" |
 "bibit" |
 "\\bibitem" |
+"\\bibitem"|
+"\\bibitem" braces |
 "bible" |
 "biblical" |
 "bibliog" |
@@ -6800,6 +6808,7 @@ braces |
 "capsule" |
 "capsules" |
 "capt" |
+"\\caption"|
 "caption" |
 "CAPTION" |
 "\\caption" braces |
@@ -7263,7 +7272,9 @@ braces |
 "centering" |
 "centerless" |
 "\\centerline" |
+"\\centerline"|
 "centerline" |
+"\\centerline" braces |
 "center of gravity " |
 "centerofmass" |
 "centerpiece" |
@@ -8080,7 +8091,7 @@ braces |
 "CITATION" |
 "citations" |
 "\\cite" |
-"\\cite" braces |
+"\\cite"|
 "cite" |
 "\\citealp" |
 "\\citealt" |
@@ -8924,6 +8935,7 @@ braces |
 "commensuration" |
 "\\comment" |
 "comment" |
+comment  |
 "Comment" |
 "commentaries" |
 "commentary" |
@@ -11601,6 +11613,7 @@ braces |
 "datapoints" |
 "dataset" |
 "\\date" |
+"\\date" braces |
 "dated" |
 "dateline" |
 "dateness" |
@@ -13922,6 +13935,7 @@ braces |
 "Document" |
 "documentation" |
 "\\documentclass" |
+"\\documentclass" braces |
 "\\documentclass" brackets braces |
 "documented" |
 "documents" |
@@ -14107,8 +14121,10 @@ braces |
 "dossier" |
 "dosy" |
 "\\dot" |
+"\\dot"|
 "\\dotaccent" |
 "dotage" |
+"\\dot" braces |
 "dote" |
 "doted" |
 "\\doteq" |
@@ -15430,6 +15446,7 @@ braces |
 "E. Mottola" |
 "emperor" |
 "\\emph" |
+"\\emph"|
 "emphases" |
 "emphasis" |
 "emphasise" |
@@ -15442,6 +15459,7 @@ braces |
 "emphasizing" |
 "emphatic" |
 "emphatically" |
+"\\emph" braces |
 "empire" |
 "empiric" |
 "empirical" |
@@ -16046,11 +16064,13 @@ braces |
 "Epstein" |
 "E. P. Wigner" |
 "\\eq" |
+"\\eq"|
 "\\eqa" |
 "\\eqabegin" |
 "\\eqaend" |
 "\\eqalign" |
 "\\eqalignno" |
+"\\eq" braces |
 "\\eqdef" |
 "\\eqe" |
 "\\eql" |
@@ -16064,6 +16084,8 @@ braces |
 "\\eqnum" |
 "\\eqr" |
 "\\eqref" |
+"\\eqref"|
+"\\eqref" braces |
 "\\eqs" |
 "\\equ" |
 "equacoes" |
@@ -16098,6 +16120,7 @@ braces |
 "Equating" |
 "\\equation" |
 "equation" |
+equation | 
 "Equation" |
 "EQUATION" |
 "equation of continuity" |
@@ -17233,6 +17256,7 @@ braces |
 "ezer" |
 "ezra" |
 "\\f" |
+"\\f"|
 "\\fa" |
 "faber" |
 "Faber" |
@@ -17594,6 +17618,7 @@ braces |
 "\\fbar" |
 "F. Bigazzi" |
 "\\fbox" |
+"\\f" braces |
 "F. Brandt" |
 "\\fc" |
 "F. Cachazo" |
@@ -18446,9 +18471,13 @@ braces |
 "\\fm" |
 "F. Marchesano" |
 "\\fmf" |
+"\\fmf"|
+"\\fmf" braces |
 "\\fmfdot" |
 "\\fmffixed" |
 "\\fmfforce" |
+"\\fmfforce"|
+"\\fmfforce" braces |
 "\\fmffreeze" |
 "\\fmflabel" |
 "\\fmfleft" |
@@ -18581,7 +18610,9 @@ braces |
 "\\footline" |
 "footmark" |
 "\\footnote" |
+"\\footnote"|
 "footnote" |
+"\\footnote" braces |
 "\\footnotemark" |
 "footnotes" |
 "Footnotes" |
@@ -18928,6 +18959,7 @@ braces |
 "Frabetti" |
 "\\frac" |
 "\\frac" braces braces | 
+"\\frace" braces |
 "\\fracm" |
 "\\fracmm" |
 "\\fract" |
@@ -18973,10 +19005,11 @@ braces |
 "frame" |
 "Frame" |
 "\\framebox" |
+"\\frame" brackets braces |
 "framed" |
 "framers" |
 "frames" |
-"\\frametitle" |
+"\\frametitle" braces |
 "framework" |
 "Framework" |
 "FRAMEWORK" |
@@ -21683,8 +21716,10 @@ braces |
 "hastings" |
 "hasty" |
 "\\hat" |
+"\\hat"|
 "hata" |
 "hatbox" |
+"\\hat" braces |
 "hatch" |
 "hatched" |
 "hatcher" |
@@ -21780,6 +21815,8 @@ braces |
 "H. B. Nielsen" |
 "hbos" |
 "\\hbox" |
+"\\hbox"|
+"\\hbox" braces |
 "H. Brandenberger" |
 "\\hc" |
 "H. Chamseddine" |
@@ -22834,6 +22871,8 @@ braces |
 "\\hskip" |
 "\\hsp" |
 "\\hspace" |
+"\\hspace"|
+"\\hspace" braces |
 "H. S. Reall" |
 "\\hss" |
 "H. S. Sharatchandra" |
@@ -26478,8 +26517,10 @@ braces |
 "kesh" |
 "k-essence" |
 "\\ket" |
+"\\ket"|
 "ketal" |
 "\\ketbra" |
+"\\ket" braces |
 "ketch" |
 "ketchup" |
 "keth" |
@@ -27056,9 +27097,7 @@ braces |
 "label" |
 "\\label" braces |
 "labeled" |
-"\\labelenumi" |
 "labeling" |
-"\\labell" |
 "labelle" |
 "labelled" |
 "labelling" |
@@ -29766,11 +29805,17 @@ braces |
 "\\mathaccent" |
 "\\mathalpha" |
 "\\mathbb" |
+"\\mathbb"|
+"\\mathbb" braces |
 "\\mathbbm" |
 "\\mathbf" |
+"\\mathbf"|
+"\\mathbf" braces |
 "\\mathbin" |
 "\\mathbit" |
 "\\mathcal" |
+"\\mathcal"|
+"\\mathcal" braces |
 "\\mathchar" |
 "\\mathchardef" |
 "\\mathchoice" |
@@ -29808,6 +29853,8 @@ braces |
 "\\mathrel" |
 "\\mathring" |
 "\\mathrm" |
+"\\mathrm"|
+"\\mathrm" braces |
 "maths" |
 "\\mathscr" |
 "\\mathsf" |
@@ -29998,6 +30045,8 @@ braces |
 "M. Born" |
 "M. Botta" |
 "\\mbox" |
+"\\mbox"|
+"\\mbox" braces |
 "M. B. Pinto" |
 "M. B. Schulz" |
 "\\mc" |
@@ -32657,6 +32706,8 @@ braces |
 "newcomer" |
 "newcomers" |
 "\\newcommand" |
+"\\newcommand"|
+"\\newcommand" braces |
 "\\newcommand" braces braces{1,2} |
 "\\newcount" |
 "\\newcounter" |
@@ -35112,7 +35163,9 @@ braces |
 "overlie" |
 "overlies" |
 "\\overline" |
+"\\overline"|
 "overline" |
+"\\overline" braces |
 "overload" |
 "overloaded" |
 "overloading" |
@@ -36591,7 +36644,9 @@ braces |
 "phantastic" |
 "phantasy" |
 "\\phantom" |
+"\\phantom"|
 "phantom" |
+"\\phantom" braces |
 "phantoms" |
 "\\phantomsection" |
 "pharm" |
@@ -40754,9 +40809,10 @@ braces |
 "reexpressed" |
 "reexpression" |
 "\\ref" |
-"\\ref" braces |
+"\\ref"|
 "refactorization" |
 "\\refb" |
+"\\ref" braces |
 "\\refcite" |
 "\\refdef" |
 "\\refe" |
@@ -41359,6 +41415,8 @@ braces |
 "renew" |
 "renewal" |
 "\\renewcommand" |
+"\\renewcommand"|
+"\\renewcommand" braces |
 "renewed" |
 "renewing" |
 "renews" |
@@ -43826,6 +43884,7 @@ braces |
 "Sect" |
 "sectarian" |
 "\\section" |
+"\\section"|
 "section" |
 "Section" |
 "SECTION" |
@@ -44316,6 +44375,8 @@ braces |
 "setbacks" |
 "\\setbox" |
 "\\setcounter" |
+"\\setcounter"|
+"\\setcounter" braces |
 "setdash" |
 "sete" |
 "\\setfont" |
@@ -44326,6 +44387,8 @@ braces |
 "seti" |
 "seting" |
 "\\setlength" |
+"\\setlength"|
+"\\setlength" braces |
 "setlinecap" |
 "setlinejoin" |
 "setlinewidth" |
@@ -46506,6 +46569,8 @@ braces |
 "\\sqcup" |
 "\\sqr" |
 "\\sqrt" |
+"\\sqrt"|
+"\\sqrt" braces |
 "\\sqsubseteq" |
 "squad" |
 "squadra" |
@@ -46624,6 +46689,8 @@ braces |
 "stacked" |
 "stacking" |
 "\\stackrel" |
+"\\stackrel"|
+"\\stackrel" braces |
 "stacks" |
 "stacy" |
 "stad" |
@@ -47614,9 +47681,11 @@ braces |
 "\\subsec" |
 "\\subsecno" |
 "\\subsection" |
+"\\subsection"|
 "sub-section" |
 "subsection" |
 "Subsection" |
+"\\subsection" braces |
 "subsections" |
 "subsector" |
 "subsectors" |
@@ -49489,12 +49558,16 @@ braces |
 "texmf" |
 "\\texorpdfstring" |
 "\\text" |
+"\\text"|
 "text" |
 "Text" |
 "\\textbackslash" |
 "\\textbf" |
+"\\textbf"|
+"\\textbf" braces |
 "textbook" |
 "textbooks" |
+"\\text" braces |
 "\\textcite" |
 "\\textcolor" |
 "texte" |
@@ -49508,6 +49581,8 @@ braces |
 "textile" |
 "\\textindent" |
 "\\textit" |
+"\\textit"|
+"\\textit" braces |
 "\\textless" |
 "\\textmd" |
 "\\textnormal" |
@@ -49523,6 +49598,7 @@ braces |
 "\\textstyle" |
 "\\textsuperscript" |
 "\\texttt" |
+"\texttt" braces |
 "textual" |
 "\\textup" |
 "texture" |
@@ -50176,8 +50252,10 @@ braces |
 "tild" |
 "tilda" |
 "\\tilde" |
+"\\tilde"|
 "tilde" |
 "Tilde" |
+"\\tilde" braces |
 "tilded" |
 "tildes" |
 "tildy" |
@@ -52160,8 +52238,10 @@ braces |
 "underlie" |
 "underlies" |
 "\\underline" |
+"\\underline"|
 "underline" |
 "Underline" |
+"\\underline" braces |
 "underlined" |
 "underlines" |
 "underling" |
@@ -53140,6 +53220,7 @@ braces |
 "uselessness" |
 "usen" |
 "\\usepackage" |
+"\\usepackage"|
 "usepackage" |
 "\\usepackage" braces |
 "username" |
@@ -53487,7 +53568,9 @@ braces |
 "\\ve" |
 "veal" |
 "\\vec" |
+"\\vec"|
 "\\veca" |
+"\\vec" braces |
 "vecchia" |
 "vecchio" |
 "\\veck" |
@@ -54198,6 +54281,8 @@ braces |
 "\\vsp" |
 "VSP" |
 "\\vspace" |
+"\\vspace"|
+"\\vspace" braces |
 "\\vss" |
 "V. Suneeta" |
 "V. Suryanarayana" |
@@ -54810,6 +54895,8 @@ braces |
 "wide" |
 "\\widebar" |
 "\\widehat" |
+"\\widehat"|
+"\\widehat" braces |
 "widely" |
 "widen" |
 "widened" |
@@ -54820,6 +54907,8 @@ braces |
 "widespread" |
 "widest" |
 "\\widetilde" |
+"\\widetilde"|
+"\\widetilde" braces |
 "widgets" |
 "widing" |
 "widow" |

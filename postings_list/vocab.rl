@@ -3,17 +3,16 @@
 
 comment='%' (any{1,100}-'\n') '\n';
 
-
-begin_equation = '\\begin{equation}' ;  
-end_equation = '\\end{equation}' ;
-equation_body = any+ - (begin_equation|end_equation);
-equation =  begin_equation . equation_body :>> end_equation ;
+   equation_begin = '\\begin{equation}' @{n++; };
+   equation_end  = '\\end{equation}' @{n--; }; 
+	 equation_body = any+ - (equation_begin|equation_end);
+   equation = '\\begin{equation}' @{n=1;}  (equation_begin|equation_end|equation_body)*    equation_end  :> any when{!n};
 
 
 left_brace = '{' @{n++; };
 right_brace = '}' @{n--; };
 brace_body = any - (left_brace|right_brace);
-braces = '{' @{n=0;} (left_brace|right_brace|brace_body{0,1000}) :> '}' when{!n};
+braces = '{' @{n=0;} (left_brace|right_brace|brace_body{0,1000})* :> '}' when{!n};
 
 
 left_bracket = '[' @{n++;};
@@ -27,8 +26,7 @@ right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
 parens = '[' @{n=0;} (left_parens|right_parens|parens_body)* :> ']' when{!n};
 
-word = 
-"," |
+word = "," |
 "$" (any-"$"){1,80} "$" |
 "1-loop" |
 [ ]{2,} |
@@ -16121,6 +16119,7 @@ comment  |
 "\\equation" |
 "equation" |
 equation | 
+equation|
 "Equation" |
 "EQUATION" |
 "equation of continuity" |

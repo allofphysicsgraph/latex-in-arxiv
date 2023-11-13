@@ -15556,6 +15556,7 @@ displaymath |
 "\\em" |
 "emac" |
 "emacs" |
+"\\email" braces |
 "\\email" |
 "email" |
 "E-mail" |

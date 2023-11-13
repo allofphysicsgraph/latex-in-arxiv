@@ -2,6 +2,7 @@
   machine strings;
 
 comment='%' (any{1,100}-'\n') '\n';
+uri=[a-z]{3,7}"://"(any{1,100}-' ');
 
    equation_begin = '\\begin{equation}' @{n++; };
    equation_end  = '\\end{equation}' @{n--; }; 
@@ -258,6 +259,9 @@ parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 word = "," |
 "$" (any-"$"){1,80} "$" |
+'"' (any -'"'){1,100} '"' |
+"'" (any -"'"){1,100} "'" |
+uri |
 "1-loop" |
 [ ]{2,} |
 "2-category" |

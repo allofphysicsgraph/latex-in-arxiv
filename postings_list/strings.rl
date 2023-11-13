@@ -16,13 +16,12 @@
 
 #define MAX_FILE_COUNT 10
 #define MAX_FILE_PATH_LEN 256
-#define MAX_LEN 1024
 #define MAX_VOCAB_SIZE 32000
-#define MAX_WORD_SIZE 2048
+#define MAX_WORD_LEN  32768
 
 char *buff;
 char filename[MAX_FILE_PATH_LEN];
-char temp[MAX_WORD_SIZE];
+char temp[MAX_WORD_LEN];
 int getTokenFreq(int WordID);
 int Insert(char *token);
 int i, n;
@@ -36,7 +35,7 @@ void print_tfid(int WordID, int argc);
 void print_wordids();
 
 struct tf_idf {
-  char *token[MAX_WORD_SIZE];
+  char *token[MAX_WORD_LEN];
   int token_count;
   int dft;           // number of documents that contain token t
   int documentCount; // Total number of documents
@@ -49,7 +48,7 @@ struct postingsList {
   // # DocID,  Document file Path
   char DocPath[MAX_FILE_COUNT][MAX_FILE_PATH_LEN];
   // #WordID Word
-  char Word[MAX_VOCAB_SIZE][MAX_WORD_SIZE];
+  char Word[MAX_VOCAB_SIZE][MAX_WORD_LEN];
   // DocID WordID Count
   int TokenFrequencies[MAX_FILE_COUNT][MAX_VOCAB_SIZE];
   int DocumentTokenCount[MAX_FILE_COUNT];
@@ -64,7 +63,8 @@ int scan(const char *in);
   include strings "vocab.rl";
 	main := |*
   word => { 
-    memset(temp, '\0', MAX_WORD_SIZE);
+    memset(temp, '\0', MAX_WORD_LEN);
+    assert(te-ts< MAX_WORD_LEN);
     strncpy(temp, &buff[ts - in], te - ts);
     Test(temp);
     printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
@@ -78,7 +78,7 @@ int scan(const char *in);
 %% write data;
 
 int scan(const char *in) {
-  int cs = 0, act = 0;
+ int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + strlen(in);
   const char *ts = NULL, *te = NULL;
@@ -162,7 +162,7 @@ int Insert(char *token) {
   tfidf_array[mylist.WordID] = tmp_val;
 
   mylist.TokenFrequencies[mylist.DocID][mylist.WordID]++;
-  strncpy(mylist.Word[mylist.WordID], token, MAX_WORD_SIZE);
+  strncpy(mylist.Word[mylist.WordID], token, MAX_WORD_LEN);
   mylist.DocumentTokenCount[mylist.DocID]++;
   mylist.WordID++;
 }

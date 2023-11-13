@@ -64,10 +64,13 @@ int scan(const char *in);
 	main := |*
   word => { 
     memset(temp, '\0', MAX_WORD_LEN);
-    assert(te-ts< MAX_WORD_LEN);
+    if(te-ts< MAX_WORD_LEN){
     strncpy(temp, &buff[ts - in], te - ts);
     Test(temp);
+    } else {
+    strcpy(temp,"error on match length");
     printf("%s,%zd,%zd,%s\n", filename, ts - in, te - ts, temp);
+    }
   };
   
   any ;
@@ -127,10 +130,11 @@ int main(int argc, char **argv) {
       munmap(buff, s.st_size);
     }
     close(fd);
+    print_wordids();
   }
 
   print_docids();
-  print_wordids();
+  //print_wordids();
   print_tfid(1, argc);
   return 0;
 }

@@ -18,4 +18,4 @@ scanner:
 reader:
 	ragel -m -G2 reader.rl
 	gcc  -g reader.c -o reader.out -lm
-	./reader.out sound1.tex output
+	./reader.out output sound1.tex 

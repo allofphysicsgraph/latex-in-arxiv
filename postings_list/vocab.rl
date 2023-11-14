@@ -2,7 +2,6 @@
   machine strings;
 
 comment='%' (any{1,100}-'\n') '\n';
-uri=[a-z]{3,7}"://"(any{1,100}-' ');
 
    equation_begin = '\\begin{equation}' @{n++; };
    equation_end  = '\\end{equation}' @{n--; }; 
@@ -261,7 +260,6 @@ word = "," |
 "$" (any-"$"){1,80} "$" |
 '"' (any -'"'){1,100} '"' |
 "'" (any -"'"){1,100} "'" |
-uri |
 "1-loop" |
 [ ]{2,} |
 "2-category" |
@@ -5373,6 +5371,7 @@ array |
 "blackened" |
 "blackening" |
 "Blackett" |
+"black hole" |
 "black-hole" |
 "blackhole" |
 "Black Hole Entropy" |
@@ -5911,6 +5910,7 @@ bmatrix |
 "BOUNDARY" |
 "Boundary $S$ Matrix" |
 "Boundary bootstrap" |
+"boundary conditions" |
 "Boundary conditions" |
 "Boundary Conditions" |
 "boundaryless" |
@@ -7613,6 +7613,7 @@ center |
 "C-free" |
 "C. Fronsdal" |
 "\\cft" |
+"CFT correspondence" |
 "\\cg" |
 "cgans" |
 "C. G. Callan" |
@@ -8603,6 +8604,7 @@ center |
 "closed" |
 "Closed" |
 "closed-form" |
+"closed string" |
 "closed-string" |
 "\\closein" |
 "closely" |
@@ -9889,6 +9891,7 @@ comment  |
 "conformably" |
 "conformal" |
 "Conformal" |
+"conformal field theory" |
 "Conformal Field Theory" |
 "conformally" |
 "Conformally" |
@@ -10829,6 +10832,7 @@ corollary |
 "cosmological" |
 "Cosmological" |
 "COSMOLOGICAL" |
+"cosmological constant" |
 "Cosmological evolution of the Brane-Universe " |
 "Cosmological Field Equations" |
 "Cosmological implications" |
@@ -12356,6 +12360,7 @@ definition |
 "Degree" |
 "degrees" |
 "Degrees" |
+"degrees of freedom" |
 "degres" |
 "degs" |
 "degu" |
@@ -13463,6 +13468,7 @@ description |
 "dirac" |
 "Dirac" |
 "DIRAC" |
+"Dirac equation" |
 "Diracs" |
 "Dirac-type operators" |
 "dirait" |
@@ -15126,6 +15132,7 @@ displaymath |
 "Effective potential" |
 "Effective Potential" |
 "effectives" |
+"effective superpotential" |
 "effectivity" |
 "\\effects" |
 "effects" |
@@ -15262,6 +15269,7 @@ displaymath |
 "einst" |
 "einstein" |
 "Einstein" |
+"Einstein equations" |
 "EinsteinHilbert" |
 "einsteinian" |
 "Einstein's" |
@@ -15344,6 +15352,7 @@ displaymath |
 "electrical generators and motors" |
 "electrically" |
 "electrical power" |
+"electric field" |
 "electricity" |
 "Electricity" |
 "electrified" |
@@ -15560,13 +15569,13 @@ displaymath |
 "\\em" |
 "emac" |
 "emacs" |
-"\\email" braces |
 "\\email" |
 "email" |
 "E-mail" |
 "Email" |
 "e-mail address" |
 "E-mail address" |
+"\\email" braces |
 "emailing" |
 "emails" |
 "emanate" |
@@ -15918,6 +15927,7 @@ displaymath |
 "energy" |
 "Energy" |
 "ENERGY" |
+"energy density" |
 "energy interchange" |
 "energy-momentum" |
 "energymomentum" |
@@ -16372,6 +16382,7 @@ equation|
 "equations" |
 "Equations" |
 "EQUATIONS" |
+"equations of motion" |
 "Equations of motion" |
 "Equations of motion." |
 "Equations of Motion" |
@@ -17440,6 +17451,7 @@ example |
 "extractions" |
 "extracts" |
 "extradimensional" |
+"extra dimensions" |
 "extrados" |
 "extragalactic" |
 "extraneous" |
@@ -18138,12 +18150,16 @@ example |
 "Field" |
 "FIELD" |
 "fielden" |
+"field equations" |
 "Field equations" |
 "Field Equations" |
 "fields" |
 "Fields" |
 "FIELDS" |
+"field strength" |
 "fieldstrength" |
+"field theories" |
+"field theory" |
 "Field Theory" |
 "Field theory analysis" |
 "Field Theory Analysis" |
@@ -18453,6 +18469,7 @@ figure |
 "fixe" |
 "fixed" |
 "Fixed" |
+"fixed point" |
 "fixed-point" |
 "Fixed points" |
 "fixed-point set" |
@@ -19970,6 +19987,8 @@ gather |
 "Gauge Coupling Unification" |
 "gauged" |
 "Gauged" |
+"gauge field" |
+"gauge fields" |
 "Gauge fields" |
 "Gauge Fields" |
 "gauge-fixed" |
@@ -19977,15 +19996,21 @@ gather |
 "Gauge fixing" |
 "Gauge Fixing" |
 "Gauge fixing by canonical transformations" |
+"gauge group" |
 "Gauge invariance" |
 "Gauge Invariance" |
+"gauge invariant" |
 "gauge-invariant" |
 "Gauge-invariant variables" |
 "gauger" |
 "gauges" |
+"gauge symmetry" |
 "Gauge Symmetry" |
+"gauge theories" |
+"gauge theory" |
 "Gauge Theory" |
 "Gauge Theory Spectrum" |
+"gauge transformations" |
 "Gauge transformations" |
 "Gauge Transformations" |
 "gauging" |
@@ -22576,6 +22601,7 @@ gather |
 "hilbert" |
 "Hilbert" |
 "hilbert space" |
+"Hilbert space" |
 "Hilbert space representation" |
 "hilde" |
 "hildebrandt" |
@@ -23615,6 +23641,7 @@ gather |
 "ihren" |
 "ihrer" |
 "\\ii" |
+"IIB string theory" |
 "i.i.d" |
 "Iida" |
 "iiij" |
@@ -28327,6 +28354,7 @@ lemma |
 "lido" |
 "lids" |
 "\\lie" |
+"Lie algebra" |
 "lieb" |
 "lied" |
 "lieder" |
@@ -29361,6 +29389,7 @@ lstlisting |
 "MAGNETIC" |
 "magnetical" |
 "magnetically" |
+"magnetic field" |
 "magnetic fields" |
 "magnetic flux" |
 "magnetics" |
@@ -30156,6 +30185,8 @@ matrix |
 "Matrix" |
 "MATRIX" |
 "Matrix Ernst Potentials" |
+"matrix model" |
+"Matrix Model" |
 "matriz" |
 "matroid" |
 "mats" |
@@ -34782,6 +34813,8 @@ multline |
 "opens" |
 "open-string" |
 "Open string channel" |
+"open string field theory" |
+"open string theory" |
 "\\openup" |
 "oper" |
 "opera" |
@@ -36917,6 +36950,7 @@ multline |
 "phaser" |
 "phases" |
 "Phases" |
+"phase space" |
 "phase-space" |
 "phasespace" |
 "phat" |
@@ -39787,7 +39821,10 @@ proposition |
 "Quantum corrections" |
 "Quantum Corrections" |
 "Quantum Energies of Interfaces" |
+"quantum field" |
+"quantum field theory" |
 "Quantum field theory" |
+"Quantum Field Theory" |
 "quantum finite state automata" |
 "Quantum fluctuations" |
 "quantum grammar" |
@@ -39798,9 +39835,11 @@ proposition |
 "quantum-limited" |
 "quantum markov chain" |
 "quantum-mechanical" |
+"quantum mechanics" |
 "Quantum mechanics" |
 "Quantum Mechanics" |
 "quantum scale" |
+"quantum theory" |
 "Quantum theory" |
 "Quantum Theory" |
 "quantum walk" |
@@ -43651,7 +43690,9 @@ remark |
 "scalar" |
 "Scalar" |
 "SCALAR" |
+"scalar field" |
 "Scalar field" |
+"scalar fields" |
 "Scalar fields" |
 "scalarization" |
 "scalarize" |
@@ -45212,6 +45253,7 @@ remark |
 "\\sigma" |
 "sigma" |
 "Sigma" |
+"sigma model" |
 "sigma-model" |
 "sigmod" |
 "\\sign" |
@@ -45515,6 +45557,7 @@ remark |
 "sits" |
 "sitter" |
 "Sitter" |
+"Sitter space" |
 "sitting" |
 "situ" |
 "situate" |
@@ -47612,6 +47655,8 @@ split |
 "stringently" |
 "stringer" |
 "stringers" |
+"string field" |
+"string field theory" |
 "stringham" |
 "stringhe" |
 "stringily" |
@@ -47621,6 +47666,8 @@ split |
 "stringlike" |
 "strings" |
 "Strings" |
+"string theory" |
+"String theory" |
 "String Theory" |
 "stringwidth" |
 "stringy" |
@@ -48524,6 +48571,8 @@ subequations |
 "SUPERSYMMETRIC" |
 "Supersymmetric Chern--Simons theory" |
 "Supersymmetric D-branes" |
+"supersymmetric gauge theories" |
+"supersymmetric gauge theory" |
 "Supersymmetric quantum mechanics" |
 "supersymmetries" |
 "Supersymmetries" |
@@ -49112,6 +49161,7 @@ tabular |
 "tachyon" |
 "Tachyon" |
 "Tachyon Condensation" |
+"tachyon field" |
 "tachyonic" |
 "Tachyonic" |
 "tachyons" |
@@ -50076,6 +50126,7 @@ theorem |
 "theoretical computer science" |
 "theoretically" |
 "Theoretically" |
+"Theoretical Physics" |
 "Theoretical Predictions" |
 "theoretician" |
 "theoreticians" |
@@ -52060,6 +52111,8 @@ titlepage |
 "Type I" |
 "type-II" |
 "Type II" |
+"type IIA" |
+"type IIB" |
 "\\typeout" |
 "types" |
 "typescript" |
@@ -56065,3 +56118,4 @@ verbatim |
 "\\zz" |
 "Z. Zhang" ;
 }%%
+

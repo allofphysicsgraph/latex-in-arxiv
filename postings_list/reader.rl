@@ -19,24 +19,38 @@
 
 
 char temp[MAX_WORD_SIZE];
-char *buff;
+char *buff, *buff1;
+
 char filename[256];
 
-struct stat s;
-
+struct stat s, s1;
+int offset;
+int match_len;
 int i;
-
-int line_no = 1;
-int col_number = 1;
-int char_offset = 0;
-
-extern void *malloc();
 
 int scan(const char *in);
 %%{
 	machine strings;
 	main := |*
-  any ;
+  [0-9]+[ ]  => { 
+  char temp[te-ts];
+  memset(temp,'\0',te-ts);
+  strncpy(temp,&buff[ts-in],te-ts-1);
+  offset = atoi(temp);
+};
+
+  [0-9]+[ ]{2} => {
+
+  char temp[te-ts];
+  memset(temp,'\0',te-ts);
+  strncpy(temp,&buff[ts-in],te-ts-2);
+  match_len = atoi(temp);
+  char output[match_len+10];
+  memset(output,'\0',match_len+10);
+  strncpy(output,&buff1[offset],match_len);
+  //printf("<< %d %d>>\n",offset,match_len);
+  printf("%s▁ ",output);
+  }; 
 	*|;
 }%%
 
@@ -64,35 +78,26 @@ int scan(const char *in) {
 
 
 int main(int argc, char **argv) {
-  if (argc != 4) {
-    printf("input filename offset context\n");
-    return -1;
-  }
-
 strncpy(filename, argv[1],256);
-  char buffer[s.st_size];
   int cs, res = 0;
-
-  int fd;
+  int fd, fd1;
   fd = open(argv[1], O_RDONLY);
+  fd1 = open(argv[2], O_RDONLY);
+  
   if (fd < 0)
     return EXIT_FAILURE;
   fstat(fd, &s);
+  fstat(fd1, &s1);
+
   /* PROT_READ disallows writing to buff: will segv */
   buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  buff1 = mmap(NULL, s1.st_size, PROT_READ, MAP_PRIVATE, fd1, 0);
   if (buff != (void *)-1) {
-    //scan((char *)buff);
-    char temp[MAX_LEN];
-    memset(temp,'\0',MAX_LEN);
-    int lower,upper,x;
-    lower = MAX((atoi(argv[2])-atoi(argv[3])),0);
-    upper = MIN(atoi(argv[3])*3,s.st_size-atoi(argv[2]));
-
-    printf("%d %d\n",lower,upper);
-    strncpy(temp,&buff[lower],upper);
-    printf("%s",temp);
+    scan((char *)buff);
     munmap(buff, s.st_size);
-  }
+    munmap(buff1,s1.st_size);
+}
   close(fd);
+  close(fd1);
   return 0;
 }

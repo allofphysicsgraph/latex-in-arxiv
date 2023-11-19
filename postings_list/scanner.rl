@@ -19,8 +19,12 @@ int scan(const char *in);
 %%{
 	machine strings;
   include strings "vocab.rl";
+  include latex "latex.rl";
 	main := |*
   word => { 
+    printf("%zd %zd  ",ts - in, te - ts);
+  };
+  latex => { 
     printf("%zd %zd  ",ts - in, te - ts);
   };
   any ;

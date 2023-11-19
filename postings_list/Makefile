@@ -1,8 +1,5 @@
-#nested_expression_test:
-#	ragel -V -Z -p -o nested.dot nested.rl
-#	ragel   -m -G2 nested.rl
-#	gcc  -g nested.c -o nested.out -lm
-#	./nested.out nested_test
+install_ragel:
+	/bin/bash install_ragel.sh
 
 strings:
 	#ragel -V -Z -p -o strings.dot strings.rl

@@ -9,12 +9,13 @@ strings:
 
 scanner:
 	ragel -m -G2 scanner.rl
-	gcc  -g scanner.c -o scanner.out -lm
-	./scanner.out ../sound1.tex > output
+	gcc  -g scanner.c walk_dir.c main.c  -o scanner.out -lm
+	#./scanner.out ../sound1.tex > output
+
 reader:
 	ragel -m -G2 reader.rl
 	gcc   reader.c -o reader.out 
-	./reader.out output ../sound1.tex
+	#./reader.out output ../sound1.tex
 
 #python_reader:
 #	ragel -m -G2 reader.rl

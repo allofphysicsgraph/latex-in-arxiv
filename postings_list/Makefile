@@ -1,11 +1,7 @@
+CC=gcc
+
 install_ragel:
 	/bin/bash install_ragel.sh
-
-#strings:
-	#ragel -V -Z -p -o strings.dot strings.rl
-#	ragel   -m -G2 strings.rl
-#	gcc  -g strings.c -o strings.out -lm
-#	./strings.out sound1.tex
 
 scanner:
 	ragel -m -G2 scanner.rl
@@ -19,5 +15,4 @@ sampledata:
 	mkdir 2003_errors
 	$(CC) strip_non_ascii.c -o strip_non_ascii.out
 	bash pre-process-dataset.sh
-	#time find 2003 -type f -name "*.tex" |xargs -i -P12 latexml_tex2xml2html.sh "{}" 
 

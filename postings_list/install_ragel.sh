@@ -7,7 +7,7 @@ RAGEL7_VERSION=7.0.1
     cd colm-${COLM_VERSION}/ 
     ./configure --prefix=/usr/local/ragel7 
     make 
-    sudo make install
+    make install
     
     cd .. 
     curl https://www.colm.net/files/ragel/ragel-${RAGEL7_VERSION}.tar.gz -O 
@@ -15,4 +15,4 @@ RAGEL7_VERSION=7.0.1
     cd ragel-${RAGEL7_VERSION}/ 
     ./configure --prefix=/usr/local/ragel7 --with-colm=/usr/local/ragel7 --disable-manual 
     make 
-    sudo make install 
+    make install 

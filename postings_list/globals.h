@@ -5,4 +5,5 @@ typedef struct token {
 	int index;
 }Token;
 
-int scan(const char *in, Token * d);
+int scanner(const char *in, Token * d);
+int reader(const char *source, Token * offsets);

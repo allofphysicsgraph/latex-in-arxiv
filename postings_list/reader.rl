@@ -13,6 +13,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <sys/param.h>
+#include "globals.h"
 #
 #define MAX_LEN 1024
 #define MAX_WORD_SIZE 1024
@@ -26,7 +27,6 @@ char filename[256];
 struct stat s, s1;
 int offset;
 int match_len;
-int i;
 
 int scan(const char *in);
 %%{
@@ -50,7 +50,8 @@ int scan(const char *in);
   strncpy(output,&buff1[offset],match_len);
   //printf("<< %d %d>>\n",offset,match_len);
   printf("%s▁ ",output);
-  }; 
+  };
+	any => {printf("%c\n", fc);};
 	*|;
 }%%
 
@@ -77,27 +78,28 @@ int scan(const char *in) {
 }
 
 
-int main(int argc, char **argv) {
-strncpy(filename, argv[1],256);
+int reader(const char *source, Token * offsets) {
+	strncpy(filename, source,256);
   int cs, res = 0;
-  int fd, fd1;
-  fd = open(argv[1], O_RDONLY);
-  fd1 = open(argv[2], O_RDONLY);
-  
+  int fd;
+  fd = open(source, O_RDONLY);
   if (fd < 0)
     return EXIT_FAILURE;
   fstat(fd, &s);
-  fstat(fd1, &s1);
 
   /* PROT_READ disallows writing to buff: will segv */
   buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-  buff1 = mmap(NULL, s1.st_size, PROT_READ, MAP_PRIVATE, fd1, 0);
   if (buff != (void *)-1) {
-    scan((char *)buff);
+  for(int i = 0;i<offsets->index;i++){
+  //	printf("%zd %zd\n", offsets->offset[i],  offsets->length[i]);
+		int length =(offsets->length[i])+1;
+		char output[length];
+		memset(output, '\0', length);
+		strncpy(output,&buff[offsets->offset[i]], length-1);
+    printf("%s▁ ",output);
+	}
     munmap(buff, s.st_size);
-    munmap(buff1,s1.st_size);
 }
   close(fd);
-  close(fd1);
   return 0;
 }

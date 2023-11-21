@@ -9,7 +9,8 @@ strings:
 
 scanner:
 	ragel -m -G2 scanner.rl
-	gcc  -g scanner.c walk_dir.c main.c  -o scanner.out -lm
+	ragel -m -G2 reader.rl
+	gcc  -g scanner.c reader.c walk_dir.c main.c  -o scanner.out -lm
 	#./scanner.out ../sound1.tex > output
 
 reader:

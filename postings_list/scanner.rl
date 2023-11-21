@@ -3,6 +3,8 @@
 #include <string.h>
 #include "globals.h"
 #
+	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
+	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
 
 int n;
 %%{
@@ -17,14 +19,12 @@ int n;
 	int index = tok->index;
 	tok->offset[index]=ts-in;
 	tok->length[index]=te-ts;
-	printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
 	tok->index++;};
 
     latex => { 
 	int index = tok->index;
 	tok->offset[index]=ts-in;
 	tok->length[index]=te-ts;
-	printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
 	tok->index++;};
   
     any ;
@@ -34,7 +34,7 @@ int n;
 
 
 %% write data;
-int scan(const char *in, Token* ptr) {
+int scanner(const char *in, Token* ptr) {
   Token *tok= ptr;
  int cs = 0, act = 0;
   const char *p = in;

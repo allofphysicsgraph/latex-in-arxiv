@@ -69,5 +69,9 @@ To add new vocabulary such as new words or phrases edit `vocab.rl`
 It's ideal to keep the files around 10k or fewer lines. 
 If you need more, add a new vocab file and include it in the `scanner.rl`
 
+MAX_TOKEN_COUNT is defined in globals.h
+it is currently set to 10000 which is likely small for a large TeX file 
+
+
 
 

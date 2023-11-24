@@ -1,7 +1,8 @@
+#define MAX_TOKEN_COUNT 10000
 
 typedef struct token {
-	int offset[10000];
-	int length[10000];
+	int offset[MAX_TOKEN_COUNT];
+	int length[MAX_TOKEN_COUNT];
 	int index;
 }Token;
 int walk_dir(char *dname, char *pattern, int spec, char *array[],

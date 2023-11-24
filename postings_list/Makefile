@@ -5,7 +5,9 @@ scanner:
 	ragel -m -G2 scanner.rl
 	ragel -m -G2 reader.rl
 	gcc  -g scanner.c reader.c walk_dir.c main.c  -o scanner.out -lm
-	#./scanner.out ../sound1.tex > output
+	#./scanner.out .. 
+	#or
+	#./scanner.out .. sound1.tex	
 
 get_sample_data:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz --no-check-certificate

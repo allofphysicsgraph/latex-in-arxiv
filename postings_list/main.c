@@ -35,12 +35,24 @@ enum {
 #define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
 
 int main(int argc, char **argv) {
+  if( (argc!=2) & (argc!=3)){
+  	printf("options:1 or 2 arguments.\n1.\tdirectory of tex files.\n2.\tdirectory + filename.\n");
+  }
   char *Documents[MAX_FILE_COUNT];
   int i = 0;
   int doc_index = 0;
   memset(Documents, 0, sizeof(Documents));
-  int r = walk_dir(argv[1], "\\.tex$", WS_DEFAULT | WS_MATCHDIRS, Documents,
-                   doc_index);
+  int r;
+  switch ( argc ) {
+	  case 2:	
+  	r = walk_dir(argv[1], "\\.tex$", WS_DEFAULT | WS_MATCHDIRS, Documents,doc_index);
+		  break;
+
+	  case 3:	
+  		r = walk_dir(argv[1], argv[2], WS_DEFAULT | WS_MATCHDIRS, Documents,doc_index);
+		  break;
+
+  }				/* -----  end switch  ----- */
   switch (r) {
   case WALK_OK:
     break;
@@ -79,4 +91,3 @@ int main(int argc, char **argv) {
 
   return 0;
 }
-

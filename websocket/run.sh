@@ -1,2 +1,0 @@
-kodev build
-kodev run

@@ -1,5 +1,4 @@
-all:
-	ragel json_resp_2_struct.rl
-	gcc -g json_resp_2_struct.c main.c -lcurl
-	#valgrind -s ./a.out 
-	./a.out 
+variable_definitions:
+	flex variable_definitions.l
+	gcc -lfl lex.yy.c -o variable_definitions.out
+	#./variable_definitions.out  ../sound1.tex |grep '<:.*?:>' -oP

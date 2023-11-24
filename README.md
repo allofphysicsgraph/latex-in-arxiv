@@ -40,7 +40,7 @@ How can the expression and the variables be extracted?
 There are a few options for parsing Latex; see <https://github.com/allofphysicsgraph/latex-in-arxiv/issues/14>
 The options that are decent in terms of quality of results are also slow.
 
-This repo uses `ragel` to quickly parse Latex and find math. 
+This repo uses [`ragel`](https://www.colm.net/open-source/ragel/) to quickly parse Latex and find math. 
 
 ## get data
 

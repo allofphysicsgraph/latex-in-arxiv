@@ -3,7 +3,7 @@ _Goal_: extract math Latex from `.tex` content available from arXiv.
 
 _Caveat when cloning this repo_: Total download size is 640 MB. 
 
-## get started
+## quick start
 
 Read `latex-in-arxiv/postings_list/README.md`
 
@@ -17,6 +17,30 @@ To recompile the scanner, within the Docker image run
 cd latex-in-arxiv/postings_list/
 make scanner
 ```
+
+## so what?
+
+Suppose you have a `.tex` file that contains math, like
+```latex
+\documentclass{article}
+\title{test}
+\begin{document}
+\maketitle
+\section{Introduction}
+This is a great paper.
+\begin{equation}
+    a+b = c
+\end{equation}
+Where $c$ is some variable.
+\end{document}
+```
+There's an expression, `a+b=c` and an in-line variable `c`. 
+How can the expression and the variables be extracted? 
+
+There are a few options for parsing Latex; see <https://github.com/allofphysicsgraph/latex-in-arxiv/issues/14>
+The options that are decent in terms of quality of results are also slow.
+
+This repo uses `ragel` to quickly parse Latex and find math. 
 
 ## get data
 

@@ -26,17 +26,12 @@ RUN apt-get update && \
 
 WORKDIR /opt/
 COPY postings_list /opt/
-RUN make install_ragel
-RUN make sampledata
-#RUN make scanner
+RUN ./install_ragel.sh
+RUN make scanner
 
 RUN echo "alias python=python3" > /root/.bashrc
 RUN echo "export PATH=$PATH:/usr/local/ragel7/bin" >> /root/.bashrc
 
 #RUN /bin/bash -l /root/.bashrc
-
-#RUN wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz
-#RUN tar -xf hep-th-2003.tar.gz
-
 
 

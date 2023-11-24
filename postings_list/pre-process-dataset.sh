@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eux pipefail
+
 cd 2003 || exit
 while read f ;
 	do ../strip_non_ascii.out  "$f" > "$f"_cleaned ;

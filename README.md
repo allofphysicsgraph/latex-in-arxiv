@@ -1,6 +1,8 @@
 # latex-in-arxiv
 extract math latex from content in arxiv
 
+_Caveat when cloning this repo_: Total size of download is 640 MB. 
+
 ## get data
 
 ### one option is the full arxiv data available from an S3 bucket

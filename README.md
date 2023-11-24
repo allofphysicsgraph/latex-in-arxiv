@@ -1,6 +1,8 @@
 # latex-in-arxiv
 extract math latex from content in arxiv
 
+_Caveat when cloning this repo_: `notebooks/hep-th` is 2.1GB.
+
 ## get data
 
 ### one option is the full arxiv data available from an S3 bucket

@@ -1,4 +1,3 @@
-
 mytag=latexinarxiv
 CC=gcc
 CFLAGS = -Iopenssl/include -g
@@ -60,55 +59,15 @@ openssl:
 	tar -xf openssl-1.1.1p.tar.gz
 	cd openssl-1.1.1p && ./config && make && sudo make install && sudo ldconfig
 
-Kore:
-	# Kore is an easy to use web platform for writing scalable, concurrent APIs in C or Python.
-	wget https://kore.io/releases/kore-4.2.3.tar.gz --no-check-certificate
-	tar -xf kore-4.2.3.tar.gz
-	cd kore-4.2.3 && make TLS_BACKEND=none PGSQL=1 DEBUG=1 CURL=1 TASKS=1  &&  sudo make install
-
-
-
 newcommand:
 	$(CC) -Wall -Wunused -o newcommand utils/newcommand.c
 	/bin/bash utils/run_new_command.sh
 
-parse_docs:
-	# xargs -i either doesn't work on dragonfly bsd or does not have the same meaning
-	# adjust for the number of cores that you want to allocate.
-	# decompress if the file exists
-	find . -maxdepth 1 -type f -name "Punkt_LaTeX_SENT_Tokenizer.pickle.xz" -exec xz -d "{}" \;
-	#find 2003 -type f |xargs -i -P6  python new_lexer.py "{}"
-
-postgres:
-	sudo apt install -y  libreadline-dev
-	sudo apt install -y  postgresql-server-dev-all
-	sudo apt install -y  postgresql
-
-postgres_db_setup:
-	#REPLACE PASSWORD
-	#database test for latex-in-arxiv
-	sudo -u postgres -H -- psql -c "create user latexinarxiv with password '3e9f91486fa99d2fe94b2494baf5f2effe0791b6b040394cef4fbe1cefcada29'" 
-	sudo -u postgres -H -- psql -c 'create database latexinarxiv with owner latexinarxiv;' 
-	sudo -u postgres -H -- psql -d latexinarxiv -f db_init.sql 
-	sudo sed -i 's/5433/5432/g' /etc/postgresql/14/main/postgresql.conf	
-	sudo service postgresql restart
-
-
-postgrest:
-	# REST Api for postgres
-	wget https://github.com/PostgREST/postgrest/releases/download/v9.0.1/postgrest-v9.0.1-linux-static-x64.tar.xz
-	tar -xf postgrest-v9.0.1-linux-static-x64.tar.xz
-	sudo rsync -axr postgrest /usr/local/bin/
-	sudo rsync -axr config_files/api.conf /usr/local/bin/
-	cd /usr/local/bin/ && ./postgrest api.conf & 
 
 test_vocab:
 	python test.py |tr ',' '\n'|sed -r 's/^\s+//g'|grep -v '\\' |tr -d "'" |awk 'length($1)>3' |grep -v '=' |grep -v '[0-9]'|grep -v '^\-'
 	
 
-webapp:
-	cd websocket/assets && wget https://github.com/twbs/bootstrap/releases/download/v5.2.1/bootstrap-5.2.1-dist.zip && unzip bootstrap-5.2.1-dist.zip && cd ../../ &&  cp websocket/assets/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js websocket/assets/js && cp websocket/assets/bootstrap-5.2.1-dist/css/bootstrap.min.css websocket/assets/css/   
-	cd websocket/assets && tar -xf html/2003.tar.xz && rm -rf html/2003.tar.xz && rm -rf bootstrap-5.2.1-dist  && find . -type f -name "*.html"  -exec sed -i 's/<head>/<head>\n<link rel="icon" href="data:,">/g' "{}" \; &&  cd .. &&  mv assets/2003 assets/html/ && make
 	
 hiredis:
 	sudo apt install -y redis-server
@@ -120,14 +79,7 @@ RedisGraph:
 	git clone --recurse-submodules -j8 https://github.com/RedisGraph/RedisGraph.git
 	cd RedisGraph && make && sudo make install
 
-clean:
-	find . -maxdepth 1 -name "2003_*.csv" -exec rm "{}" \; 
-	find . -type f -name "*.out" -exec rm "{}" \; 
-	$(RM) *.o EVP_MD
-	$(RM) *.out
 
 katex:
 	wget https://github.com/katex/katex/releases/download/v0.16.2/katex.tar.gz
 
-ragel:
-	sudo apt install ragel

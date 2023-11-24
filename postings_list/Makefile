@@ -1,7 +1,5 @@
 CC=gcc
 
-install_ragel:
-	/bin/bash install_ragel.sh
 
 scanner:
 	ragel -m -G2 scanner.rl

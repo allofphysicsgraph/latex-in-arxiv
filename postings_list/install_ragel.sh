@@ -1,4 +1,8 @@
-#origin	https://github.com/influxdata/flux/Dockerfile
+#!/usr/bin/env bash
+
+# from https://github.com/influxdata/flux/Dockerfile
+
+# this shell script is called during the Docker build process to install ragel
 
 COLM_VERSION=0.14.2
 RAGEL7_VERSION=7.0.1

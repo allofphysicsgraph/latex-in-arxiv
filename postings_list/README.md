@@ -1,22 +1,24 @@
 Generates a Postings List with a fixed vocabulary of words or phrases. 
 A posting list is a list of terms, along with their positions in the document. The postings list is used to efficiently retrieve documents that contain specific terms or phrases.
 
-Docker instructions below
+See Docker instructions in the section below.
 
+
+Demo of scanning 1,019 files in 2.5 seconds: 
 ```bash
-make scanner
-make reader
-word delimiter '▁'
+ls 2003|wc -l
+1019
 
-time ./scanner.out /home/user/latex-in-arxiv/2003
+make scanner    # (using word delimiter '▁')
+
+time ./scanner.out 2003
 real	0m2.407s
 user	0m1.407s
 sys	0m0.855s
 
-ls /home/user/latex-in-arxiv/2003|wc -l
-1019
 ```
 
+And how much memory was that? 
 ```
 ==43506== HEAP SUMMARY:
 ==43506==     in use at exit: 0 bytes in 0 blocks
@@ -28,18 +30,24 @@ ls /home/user/latex-in-arxiv/2003|wc -l
 ==43506== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 
+# (OPTIONAL) download .tex data to parse
+
+You may already have `.tex` files to parse, in which case this step can be skipped.
+
+If you do want a bunch of `.tex` files, 
+```bash
+cd postings_list
+make get_sample_data
+```
+
 
 # Docker instructions 
 
-Start by running either `make docker` (for linux) or `make docmac` (for mac) in the latex-in-arxiv directory.
-
-After the docker container is running,
-run `make scanner` inside the docker container. This is required because it takes 3-4 minutes to compile. 
+Start by running either `make docker` (for linux) or `make docmac` (for Mac) in the latex-in-arxiv directory.
 
 
-run `make scanner` 
-then `scanner.out .`
-the `.`  can be any directory with tex files.
+Then, inside the container, run `scanner.out .`
+where `.`  can be any directory with `.tex` files.
 
 
 Should take roughly 3 seconds to process the 1019 files from the 2003 sample dataset.
@@ -50,10 +58,8 @@ This process previously took ~11 minutes and had far more errors related to matc
 
 If you are interested in the offsets and lengths instead of the 
 string uncomment  `//	printf("%zd %zd\n", offsets->offset[i],  offsets->length[i]);`
-in the `reader.rl` file 
-
-and comment `printf("%s▁ ",output);`
-a few lines below.
+in the `reader.rl` file, 
+and comment `printf("%s▁ ",output);` a few lines below.
 
 To add regex or new latex strings edit `latex.rl`
 

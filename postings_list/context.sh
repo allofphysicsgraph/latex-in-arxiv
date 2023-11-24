@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -eux pipefail
+
 filepath="$1"
 context=250
 while read f;

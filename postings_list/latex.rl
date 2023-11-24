@@ -899,7 +899,6 @@ latex = "," |
 "\\title" braces |
 "\\underline" braces |
 "\\url" braces |
-"\\usepackage" braces |
 "\\vec" braces |
 "\\vspace" braces |
 "\\widehat" braces |
@@ -923,7 +922,6 @@ enumerate  |
 eqnarray  |
 equation  |
 example  |
-figure  |
 flushleft  |
 flushright  |
 frame  |
@@ -949,7 +947,6 @@ split  |
 subequations  |
 table  |
 tabular  |
-thebibliography  |
 theorem  |
 thm  |
 tikzpicture  |

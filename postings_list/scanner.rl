@@ -12,8 +12,11 @@ int n;
   machine strings;
   	include strings "vocab.rl";
   	include latex "latex.rl";
-  
+	include ignore "ignore.rl";
+ 
   main := |*
+
+    ignore ;
 
     word => {
 	int index = tok->index;

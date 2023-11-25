@@ -18,7 +18,7 @@
 #define MAX_LEN 1024
 #define MAX_WORD_SIZE 1024
 
-
+int counter;
 char temp[MAX_WORD_SIZE];
 char *buff, *buff1;
 
@@ -49,7 +49,7 @@ int scan(const char *in);
   memset(output,'\0',match_len+10);
   strncpy(output,&buff1[offset],match_len);
   //printf("<< %d %d>>\n",offset,match_len);
-  printf("%s▁ ",output);
+   printf("%s▁ ",output);
   };
 	any => {printf("%c\n", fc);};
 	*|;
@@ -96,10 +96,12 @@ int reader(const char *source, Token * offsets) {
 		char output[length];
 		memset(output, '\0', length);
 		strncpy(output,&buff[offsets->offset[i]], length-1);
-    printf("%s▁ ",output);
+       counter++;
+       printf("%s\n",output);
 	}
     munmap(buff, s.st_size);
 }
   close(fd);
-  return 0;
+  printf("\n\tcounts:%d\n",counter);
+return 0;
 }

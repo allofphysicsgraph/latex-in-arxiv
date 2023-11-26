@@ -1,8 +1,8 @@
-virtualenv venv -p python3
-pip install -r requirements.txt
-python decompress_model.py
-python nltk_downloads.py  
-python get_symbol_defs.py
+virtualenv venv -p python3  
+pip install -r requirements.txt  
+python decompress_model.py  
+python nltk_downloads.py    
+python get_symbol_defs.py  
 
 Expected output 
 

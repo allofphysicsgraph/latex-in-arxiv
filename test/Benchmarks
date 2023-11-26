@@ -20,3 +20,14 @@ count
 real	0m1.053s
 user	0m1.032s
 sys	0m0.020s
+
+
+The time comparision isn't fair in this case, but need to compare the difference in output. Why are there 270 results vs 261. 
+latexml sound1.tex
+real	0m8.286s
+user	0m8.100s
+sys	0m0.184s
+
+grep '<Math mode="inline".*?>' output  -oP|sort|uniq|wc -l
+
+yields 270

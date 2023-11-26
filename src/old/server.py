@@ -35,11 +35,9 @@ import sentencepiece as spm
 import sys
 import yaml
 
-from ragel_begin_end import RagelBeginEnd
-from ragel_simple import RagelSimple
 
-with open("config.yaml", "r") as f:
-    config = yaml.safe_load(f)
+#with open("config.yaml", "r") as f:
+#    config = yaml.safe_load(f)
 
 token_list = []
 
@@ -54,44 +52,12 @@ class MyStyle(Style):
     }
 
 
-nltk.download("stopwords")
-nltk.download("averaged_perceptron_tagger")
-
-ignore = ["\\begin{abstract}", "\\end{abstract}"]
-files = [x for x in listdir(".")]
-shuffle(files)
-model_files = [x for x in files if x.endswith(".xz")]
-decompressed_model_files = ["Punkt_LaTeX_SENT_Tokenizer.pickle", "HEP_TEX.model"]
-verify_hash = {
-    "Punkt_LaTeX_SENT_Tokenizer.pickle": "a436f489188951661aa0d958ff44946389c0b545ec69fa06377123ad3aa5ceaa",
-    "HEP_TEX.model": "1a87d630bbee0c818fe9c723170b83d13dd1bedede8b9ab2a2faeeb5df864127",
-}
-for model in decompressed_model_files:
-    if model not in files:
-        print("###Extracting Models")
-        with lzma.open(f"{model}.xz") as f:
-            file_content = f.read()
-            h = hashlib.new("sha256")
-            h.update(file_content)
-            assert h.hexdigest() == verify_hash[model]
-
-        with open(f"{model}", "wb") as f:
-            f.write(file_content)
 
 
-punkt_trainer_path = "Punkt_LaTeX_SENT_Tokenizer.pickle"
-sentence_piece_model_path = "HEP_TEX.model"
 
-# training a sentence tokenizer on scientific LaTeX documents.
-punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
-tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
+
 sp = spm.SentencePieceProcessor()
 # sp.load("HEP_TEX.model")
-
-# the block comparisons are slow and need to be optimized
-txttlng_tokenizer = texttiling.TextTilingTokenizer(
-    w=20, k=6, smoothing_width=2, smoothing_rounds=5
-)
 
 
 class MyService(rpyc.Service):

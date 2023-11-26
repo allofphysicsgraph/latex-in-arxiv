@@ -26,6 +26,7 @@ RUN apt-get update && \
 
 WORKDIR /opt/
 COPY postings_list /opt/
+COPY src /opt/
 RUN ./install_ragel.sh
 # the scanner will need to be re-compiled when the user makes a change, 
 # but we'll compile it the first time so they can get started immediately.

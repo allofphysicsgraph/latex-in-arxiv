@@ -19,6 +19,6 @@ int resub(char *buffer, char *pattern) {
 
 int main(){
 
-	printf("%d\n",resub("hello","hello"));
+	printf("%d\n",resub("hello","a"));
 	return 0;
 }

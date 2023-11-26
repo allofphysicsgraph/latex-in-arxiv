@@ -58,9 +58,9 @@ void resplit(char *buffer, char *pattern, int *count,
 }
 
 int main() {
-  resplit("hello", "l", &count, dst);
+  resplit("xxlo \\frac{1}{2}this is hello hllo", "\\frac", &count, dst);
   for (int i = 0; i < count; i++) {
-    printf("%s:", dst[i]);
+    printf("<%s>", dst[i]);
   }
   return 0;
 }

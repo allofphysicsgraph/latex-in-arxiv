@@ -5,11 +5,12 @@ import nltk
 from os import listdir
 from read_file import read_file
 import re
-from time import sleep 
+from time import sleep
 from nltk.tokenize import mwe
 from nltk import pos_tag
 
 tokenizer = mwe.MWETokenizer(separator="")
+
 
 def add_new_token(string):
     tokenizer.add_mwe("{}".format(string))
@@ -26,7 +27,7 @@ def sentences_from_file(file_data):
 
 
 def sentences_from_paragraphs(paragraphs):
-    output=[]
+    output = []
     for paragraph in paragraphs:
         sentences = tok_cls.sentences_from_text(paragraph)
         for sentence in sentences:
@@ -100,26 +101,25 @@ def get_symbol_definition(concordance_dict):
     cp = nltk.chunk.RegexpParser(grammar)
     for symbol, sentences in concordance.items():
         for sent in sentences:
-            [add_new_token(x) for x in re.findall('\$.*?\$',sent)]
+            [add_new_token(x) for x in re.findall("\$.*?\$", sent)]
             resp = tokenizer.tokenize(sent)
             resp = [x for x in resp if x.strip()]
             test = [x for x in resp if "$" in x]
             if test:
                 output = cp.parse(pos_tag(resp))
-                for subtree in output.subtrees(
-                    filter=lambda t: t.label() in labels
-                ):
-                    #print(subtree)
+                for subtree in output.subtrees(filter=lambda t: t.label() in labels):
+                    # print(subtree)
                     DEF = " ".join([x[0] for x in subtree])
                     if re.findall("\$.*?\$", DEF):
                         if symbol in DEF:
                             symbol_definitions[symbol].add(DEF)
     return symbol_definitions
 
+
 if __name__ == "__main__":
     txttlng_tokenizer = texttiling.TextTilingTokenizer(
-    w=20, k=6, smoothing_width=2, smoothing_rounds=5
-)
+        w=20, k=6, smoothing_width=2, smoothing_rounds=5
+    )
     punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
     tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
     results = defaultdict(list)
@@ -136,20 +136,20 @@ if __name__ == "__main__":
     for sentence in sentences_from_file(file_data):
         results["sentences_file"].append(sentence)
 
-    sentences = results['sentences_from_paragraphs']
+    sentences = results["sentences_from_paragraphs"]
     concordance = symbol_concordance(sentences)
-    #using mwe tokenizer for now 
-    latex = read_file('../postings_list','latex.rl')
-    latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|',latex) if x.strip()]
-    latex = [x for x in latex if '\\' in x and not re.findall(':>|n--|n++|\[',x)]
+    # using mwe tokenizer for now
+    latex = read_file("../postings_list", "latex.rl")
+    latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|', latex) if x.strip()]
+    latex = [x for x in latex if "\\" in x and not re.findall(":>|n--|n++|\[", x)]
     latex = set(latex)
-    latex = sorted(latex,key=lambda x: -len(x))
-    latex = [x.replace('\\\\','\\') for x in latex]
+    latex = sorted(latex, key=lambda x: -len(x))
+    latex = [x.replace("\\\\", "\\") for x in latex]
 
-    vocab = read_file('../postings_list','vocab.rl')
-    vocab = [x for x in re.split('"|\n|\|',vocab) if x.strip()]
+    vocab = read_file("../postings_list", "vocab.rl")
+    vocab = [x for x in re.split('"|\n|\|', vocab) if x.strip()]
     vocab = set(vocab)
-    vocab = sorted(vocab,key=lambda x: -len(x))
+    vocab = sorted(vocab, key=lambda x: -len(x))
 
     for value in latex:
         add_new_token(value)
@@ -159,8 +159,7 @@ if __name__ == "__main__":
 
     file_data = read_file("..", "sound1.tex")
     tokens = tokenizer.tokenize(file_data)
-    #print(concordance)
+    # print(concordance)
     symbol_defs = get_symbol_definition(concordance)
-    for k,v in symbol_defs.items():
-        print(k,v)
-
+    for k, v in symbol_defs.items():
+        print(k, v)

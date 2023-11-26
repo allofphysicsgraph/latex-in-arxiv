@@ -1,5 +1,6 @@
 from os import listdir
-files = listdir('.')
+
+files = listdir(".")
 import lzma
 import hashlib
 
@@ -19,4 +20,3 @@ for model in decompressed_model_files:
 
         with open(f"{model}", "wb") as f:
             f.write(file_content)
-

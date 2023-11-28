@@ -1,9 +1,10 @@
+#include "globals.h"
 #include <assert.h>
 #include <ctype.h>
 #include <err.h>
 #include <errno.h>
-#include <math.h>
 #include <fcntl.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,7 +14,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-#include "globals.h"
 
 int i;
 
@@ -34,15 +34,27 @@ enum {
 #define WS_DOTFILES (1 << 2)   /* per unix convention, .file is hidden */
 #define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
 
-
-
 int main(int argc, char **argv) {
   char *Documents[MAX_FILE_COUNT];
   int i = 0;
   int doc_index = 0;
   memset(Documents, 0, sizeof(Documents));
-  int r = walk_dir(argv[1], "hello_word", WS_DEFAULT | WS_MATCHDIRS, Documents,
-                   doc_index);
+  int r;
+
+  switch (argc) {
+  case 2:
+    r = walk_dir(argv[1], "tex$", WS_DEFAULT | WS_MATCHDIRS, Documents,
+                     doc_index);
+    break;
+
+  case 3:
+    r = walk_dir(argv[1], argv[2], WS_DEFAULT | WS_MATCHDIRS, Documents,
+                     doc_index);
+    break;
+
+  default:
+    break;
+  } /* -----  end switch  ----- */
   switch (r) {
   case WALK_OK:
     break;
@@ -68,14 +80,23 @@ int main(int argc, char **argv) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-      //Token vocab;
-     // T2Hash thash;
-      //H2Indicies hidx; 
-     
-      //scanner((char *)buff,Documents[i]);
-      reader(Documents[i]);
+      // Token vocab;
+      // T2Hash thash;
+      // H2Indicies hidx;
+
+      switch (argc) {
+      case 2:
+        scanner((char *)buff, Documents[i]);
+        break;
+
+      case 3:
+        reader(Documents[i]);
+        break;
+
+      default:
+        break;
+      } /* -----  end switch  ----- */
       munmap(buff, s.st_size);
-      printf("asdf");
     }
     close(fd);
     free(Documents[i]);
@@ -84,4 +105,3 @@ int main(int argc, char **argv) {
 
   return 0;
 }
-

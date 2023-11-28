@@ -41,7 +41,7 @@ int scan(const char *in);
   printf("<filename:%s>\n",temp);
 };
 
-[a-f0-9]{16} => { 
+[a-f0-9]{15,16} => { 
   char temp[te-ts];
   memset(temp,'\0',te-ts);
   strncpy(temp,&buff[ts-in],te-ts-1);

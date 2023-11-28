@@ -34,35 +34,35 @@ int scan(const char *in);
 %%{
 	machine strings;
 	main := |*
-"./"(any-'\n'){4,80}'\n' =>{
-  char temp[te-ts];
-  memset(temp,'\0',te-ts);
+"./"(any-'\n')+'\n' =>{
+  char temp[te-ts+1];
+  memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts-1);
   printf("<filename:%s>\n",temp);
 };
 
-[a-f0-9]{15,16} => { 
-  char temp[te-ts];
-  memset(temp,'\0',te-ts);
-  strncpy(temp,&buff[ts-in],te-ts-1);
+[a-f0-9]{15,16} =>{
+  char temp[te-ts+1];
+  memset(temp,'\0',te-ts+1);
+  strncpy(temp,&buff[ts-in],te-ts);
   printf("<hash:%s>",temp);
-  };
-
-  [ ][0-9]+  => { 
-  char temp[te-ts];
-  memset(temp,'\0',te-ts);
-  strncpy(temp,&buff[(ts+1)-in],te-(ts+1));
-  offset = atoi(temp);
-  printf("<offset:%d>",offset);
 };
 
-  [ ]{2}[0-9]+'\n' => {
-  char temp[te-ts];
-  memset(temp,'\0',te-ts);
-  strncpy(temp,&buff[(ts+2)-in],te-(ts+2));
-  temp[(te-1)-(ts+2)]='\0';
+
+[ ][0-9]+[ ]{2}=>{
+  char temp[te-ts+1];
+  memset(temp,'\0',te-ts+1);
+  strncpy(temp,&buff[(ts+1)-in],te-ts-3);
+  printf("<offset:%s>",temp);
+};
+
+[0-9]+'\n'=>{
+  char temp[te-ts+1];
+  memset(temp,'\0',te-ts+1);
+  strncpy(temp,&buff[ts-in],te-ts-1);
   printf("<len:%s>\n",temp);
-  };
+};
+
 	any;
 	*|;
 }%%

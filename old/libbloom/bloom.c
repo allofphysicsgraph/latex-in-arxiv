@@ -27,11 +27,10 @@
 #define STRING(n) #n
 #define BLOOM_MAGIC "libbloom2"
 
-inline static int test_bit_set_bit(unsigned char * buf,
-                                   unsigned long int bit, int set_bit)
-{
+inline static int test_bit_set_bit(unsigned char *buf, unsigned long int bit,
+                                   int set_bit) {
   unsigned long int byte = bit >> 3;
-  unsigned char c = buf[byte];        // expensive memory access
+  unsigned char c = buf[byte]; // expensive memory access
   unsigned char mask = 1 << (bit % 8ul);
 
   if (c & mask) {
@@ -44,10 +43,8 @@ inline static int test_bit_set_bit(unsigned char * buf,
   }
 }
 
-
-static int bloom_check_add(struct bloom * bloom,
-                           const void * buffer, int len, int add)
-{
+static int bloom_check_add(struct bloom *bloom, const void *buffer, int len,
+                           int add) {
   if (bloom->ready == 0) {
     printf("bloom at %p not initialized!\n", (void *)bloom);
     return -1;
@@ -60,7 +57,7 @@ static int bloom_check_add(struct bloom * bloom,
   unsigned long int i;
 
   for (i = 0; i < bloom->hashes; i++) {
-    x = (a + b*i) % bloom->bits;
+    x = (a + b * i) % bloom->bits;
     if (test_bit_set_bit(bloom->bf, x, add)) {
       hits++;
     } else if (!add) {
@@ -70,22 +67,18 @@ static int bloom_check_add(struct bloom * bloom,
   }
 
   if (hits == bloom->hashes) {
-    return 1;                // 1 == element already in (or collision)
+    return 1; // 1 == element already in (or collision)
   }
 
   return 0;
 }
 
-
 // DEPRECATED - Please migrate to bloom_init2.
-int bloom_init(struct bloom * bloom, int entries, double error)
-{
+int bloom_init(struct bloom *bloom, int entries, double error) {
   return bloom_init2(bloom, (unsigned int)entries, error);
 }
 
-
-int bloom_init2(struct bloom * bloom, unsigned int entries, double error)
-{
+int bloom_init2(struct bloom *bloom, unsigned int entries, double error) {
   if (sizeof(unsigned long int) < 8) {
     printf("error: libbloom will not function correctly because\n");
     printf("sizeof(unsigned long int) == %ld\n", sizeof(unsigned long int));
@@ -118,9 +111,9 @@ int bloom_init2(struct bloom * bloom, unsigned int entries, double error)
   bloom->hashes = (unsigned char)ceil(0.693147180559945 * bloom->bpe); // ln(2)
 
   bloom->bf = (unsigned char *)calloc(bloom->bytes, sizeof(unsigned char));
-  if (bloom->bf == NULL) {                                   // LCOV_EXCL_START
+  if (bloom->bf == NULL) { // LCOV_EXCL_START
     return 1;
-  }                                                          // LCOV_EXCL_STOP
+  } // LCOV_EXCL_STOP
 
   bloom->ready = 1;
 
@@ -130,23 +123,19 @@ int bloom_init2(struct bloom * bloom, unsigned int entries, double error)
   return 0;
 }
 
-
-int bloom_check(struct bloom * bloom, const void * buffer, int len)
-{
+int bloom_check(struct bloom *bloom, const void *buffer, int len) {
   return bloom_check_add(bloom, buffer, len, 0);
 }
 
-
-int bloom_add(struct bloom * bloom, const void * buffer, int len)
-{
+int bloom_add(struct bloom *bloom, const void *buffer, int len) {
   return bloom_check_add(bloom, buffer, len, 1);
 }
 
-
-void bloom_print(struct bloom * bloom)
-{
+void bloom_print(struct bloom *bloom) {
   printf("bloom at %p\n", (void *)bloom);
-  if (!bloom->ready) { printf(" *** NOT READY ***\n"); }
+  if (!bloom->ready) {
+    printf(" *** NOT READY ***\n");
+  }
   printf(" ->version = %d.%d\n", bloom->major, bloom->minor);
   printf(" ->entries = %u\n", bloom->entries);
   printf(" ->error = %f\n", bloom->error);
@@ -159,26 +148,21 @@ void bloom_print(struct bloom * bloom)
   printf(" ->hash functions = %d\n", bloom->hashes);
 }
 
-
-void bloom_free(struct bloom * bloom)
-{
+void bloom_free(struct bloom *bloom) {
   if (bloom->ready) {
     free(bloom->bf);
   }
   bloom->ready = 0;
 }
 
-
-int bloom_reset(struct bloom * bloom)
-{
-  if (!bloom->ready) return 1;
+int bloom_reset(struct bloom *bloom) {
+  if (!bloom->ready)
+    return 1;
   memset(bloom->bf, 0, bloom->bytes);
   return 0;
 }
 
-
-int bloom_save(struct bloom * bloom, char * filename)
-{
+int bloom_save(struct bloom *bloom, char *filename) {
   if (filename == NULL || filename[0] == 0) {
     return 1;
   }
@@ -189,39 +173,51 @@ int bloom_save(struct bloom * bloom, char * filename)
   }
 
   ssize_t out = write(fd, BLOOM_MAGIC, strlen(BLOOM_MAGIC));
-  if (out != strlen(BLOOM_MAGIC)) { goto save_error; }       // LCOV_EXCL_LINE
+  if (out != strlen(BLOOM_MAGIC)) {
+    goto save_error;
+  } // LCOV_EXCL_LINE
 
   uint16_t size = sizeof(struct bloom);
   out = write(fd, &size, sizeof(uint16_t));
-  if (out != sizeof(uint16_t)) { goto save_error; }          // LCOV_EXCL_LINE
+  if (out != sizeof(uint16_t)) {
+    goto save_error;
+  } // LCOV_EXCL_LINE
 
   out = write(fd, bloom, sizeof(struct bloom));
-  if (out != sizeof(struct bloom)) { goto save_error; }      // LCOV_EXCL_LINE
+  if (out != sizeof(struct bloom)) {
+    goto save_error;
+  } // LCOV_EXCL_LINE
 
   out = write(fd, bloom->bf, bloom->bytes);
-  if (out != bloom->bytes) { goto save_error; }              // LCOV_EXCL_LINE
+  if (out != bloom->bytes) {
+    goto save_error;
+  } // LCOV_EXCL_LINE
 
   close(fd);
   return 0;
-                                                             // LCOV_EXCL_START
- save_error:
+  // LCOV_EXCL_START
+save_error:
   close(fd);
   return 1;
-                                                             // LCOV_EXCL_STOP
+  // LCOV_EXCL_STOP
 }
 
-
-int bloom_load(struct bloom * bloom, char * filename)
-{
+int bloom_load(struct bloom *bloom, char *filename) {
   int rv = 0;
 
-  if (filename == NULL || filename[0] == 0) { return 1; }
-  if (bloom == NULL) { return 2; }
+  if (filename == NULL || filename[0] == 0) {
+    return 1;
+  }
+  if (bloom == NULL) {
+    return 2;
+  }
 
   memset(bloom, 0, sizeof(struct bloom));
 
   int fd = open(filename, O_RDONLY);
-  if (fd < 0) { return 3; }
+  if (fd < 0) {
+    return 3;
+  }
 
   char line[30];
   memset(line, 0, 30);
@@ -262,7 +258,10 @@ int bloom_load(struct bloom * bloom, char * filename)
   }
 
   bloom->bf = (unsigned char *)malloc(bloom->bytes);
-  if (bloom->bf == NULL) { rv = 10; goto load_error; }       // LCOV_EXCL_LINE
+  if (bloom->bf == NULL) {
+    rv = 10;
+    goto load_error;
+  } // LCOV_EXCL_LINE
 
   in = read(fd, bloom->bf, bloom->bytes);
   if (in != bloom->bytes) {
@@ -275,15 +274,13 @@ int bloom_load(struct bloom * bloom, char * filename)
   close(fd);
   return rv;
 
- load_error:
+load_error:
   close(fd);
   bloom->ready = 0;
   return rv;
 }
 
-
-int bloom_merge(struct bloom * bloom_dest, struct bloom * bloom_src)
-{
+int bloom_merge(struct bloom *bloom_dest, struct bloom *bloom_src) {
   if (bloom_dest->ready == 0) {
     printf("bloom at %p not initialized!\n", (void *)bloom_dest);
     return -1;
@@ -313,7 +310,7 @@ int bloom_merge(struct bloom * bloom_dest, struct bloom * bloom_src)
   // Not really possible if properly used but check anyway to avoid the
   // possibility of buffer overruns.
   if (bloom_dest->bytes != bloom_src->bytes) {
-    return 1;                                                // LCOV_EXCL_LINE
+    return 1; // LCOV_EXCL_LINE
   }
 
   unsigned long int p;
@@ -324,8 +321,4 @@ int bloom_merge(struct bloom * bloom_dest, struct bloom * bloom_src)
   return 0;
 }
 
-
-const char * bloom_version()
-{
-  return MAKESTRING(BLOOM_VERSION);
-}
+const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }

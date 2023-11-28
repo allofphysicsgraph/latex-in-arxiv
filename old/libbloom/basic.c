@@ -22,7 +22,6 @@
 #include <time.h>
 #endif
 
-
 /** ***************************************************************************
  * A few simple tests to check if it works at all.
  *
@@ -30,8 +29,7 @@
  * executable using the static libbloom library to exercise it as well.
  *
  */
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   struct bloom bloom;
 
   printf("----- Basic tests with static library -----\n");

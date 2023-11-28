@@ -24,14 +24,11 @@
 #include <time.h>
 #endif
 
-
-
 /** ***************************************************************************
  * Sanity check bits & bytes
  *
  */
-static void bits()
-{
+static void bits() {
   struct bloom bloom;
   unsigned int entries;
   unsigned long long int bytes, bits, prevbytes = 0;
@@ -45,8 +42,8 @@ static void bits()
     bits = bloom.bits;
     bloom_free(&bloom);
 
-    printf("entries = %10u (bytes = %12llu, bits = %12llu)\n",
-           entries, bytes, bits);
+    printf("entries = %10u (bytes = %12llu, bits = %12llu)\n", entries, bytes,
+           bits);
 
     if (prevbytes > 0) {
       assert(bytes < prevbytes);
@@ -55,13 +52,11 @@ static void bits()
   }
 }
 
-
 /** ***************************************************************************
  * Test bloom_merge operation.
  *
  */
-static void merge_test(unsigned int entries, double error, int count)
-{
+static void merge_test(unsigned int entries, double error, int count) {
   struct bloom bloom_dest;
   struct bloom bloom_src;
 
@@ -96,8 +91,8 @@ static void merge_test(unsigned int entries, double error, int count)
   bloom_free(&bloom_dest);
   bloom_free(&bloom_src);
 
-  printf("Merging two filters with %u entries, %f error, %d count\n",
-         entries, error, count);
+  printf("Merging two filters with %u entries, %f error, %d count\n", entries,
+         error, count);
 
   assert(bloom_init2(&bloom_dest, entries, error) == 0);
   assert(bloom_init2(&bloom_src, entries, error) == 0);
@@ -140,14 +135,12 @@ static void merge_test(unsigned int entries, double error, int count)
   bloom_free(&bloom_src);
 }
 
-
 /** ***************************************************************************
  * Testing bloom_load with various failure cases.
  *
  */
-static void load_tests()
-{
-  char * filename = "/tmp/libbloom.test";
+static void load_tests() {
+  char *filename = "/tmp/libbloom.test";
   struct bloom bloom;
   struct bloom bloom2;
   uint64_t n;
@@ -207,13 +200,11 @@ static void load_tests()
   unlink(filename);
 }
 
-
 /** ***************************************************************************
  * A few simple tests to check if it works at all.
  *
  */
-static int basic()
-{
+static int basic() {
   printf("----- basic -----\n");
 
   struct bloom bloom;
@@ -267,29 +258,29 @@ static int basic()
   return 0;
 }
 
-
 /** ***************************************************************************
  * Create a bloom filter with given parameters and add 'count' random elements
  * into it to see if collision rates are within expectations.
  *
  */
-static int add_random(unsigned int entries, double error, int count,
-                      int quiet, int check_error, uint8_t elem_size, int validate)
-{
+static int add_random(unsigned int entries, double error, int count, int quiet,
+                      int check_error, uint8_t elem_size, int validate) {
   if (!quiet) {
-    printf("----- add_random(%u, %f, %d, %d, %d, %d, %d) -----\n",
-           entries, error, count, quiet, check_error, elem_size, validate);
+    printf("----- add_random(%u, %f, %d, %d, %d, %d, %d) -----\n", entries,
+           error, count, quiet, check_error, elem_size, validate);
   }
 
   struct bloom bloom;
   struct bloom bloom2;
   assert(bloom_init(&bloom, entries, error) == 0);
-  if (!quiet) { bloom_print(&bloom); }
+  if (!quiet) {
+    bloom_print(&bloom);
+  }
   assert(bloom_reset(&bloom) == 0);
 
   char block[elem_size];
-  uint8_t * saved = NULL;
-  uint8_t * savedp = NULL;
+  uint8_t *saved = NULL;
+  uint8_t *savedp = NULL;
   int collisions = 0;
   int n;
 
@@ -312,7 +303,9 @@ static int add_random(unsigned int entries, double error, int count,
     assert(read(fd, block, elem_size) == elem_size);
     memcpy(savedp, block, elem_size);
     savedp += elem_size;
-    if (bloom_add(&bloom, (void *)block, elem_size)) { collisions++; }
+    if (bloom_add(&bloom, (void *)block, elem_size)) {
+      collisions++;
+    }
   }
   close(fd);
 
@@ -323,8 +316,8 @@ static int add_random(unsigned int entries, double error, int count,
            "bytes: %lu\n",
            entries, error, count, collisions, er, bloom.bytes);
   } else {
-    printf("%u %f %d %d %f %lu\n",
-           entries, error, count, collisions, er, bloom.bytes);
+    printf("%u %f %d %d %f %lu\n", entries, error, count, collisions, er,
+           bloom.bytes);
   }
 
   if (check_error && er > error) {
@@ -346,17 +339,17 @@ static int add_random(unsigned int entries, double error, int count,
 
   bloom_free(&bloom);
   bloom_free(&bloom2);
-  if (saved) { free(saved); }
+  if (saved) {
+    free(saved);
+  }
   return 0;
 }
-
 
 /** ***************************************************************************
  * Simple loop to compare performance.
  *
  */
-static int perf_loop(int entries, int count)
-{
+static int perf_loop(int entries, int count) {
   printf("----- perf_loop -----\n");
 
   struct bloom bloom;
@@ -371,14 +364,16 @@ static int perf_loop(int entries, int count)
   long before = (tp.tv_sec * 1000L) + (tp.tv_usec / 1000L);
 
   for (i = 0; i < count; i++) {
-    if (bloom_add(&bloom, (void *)&i, sizeof(int))) { collisions++; }
+    if (bloom_add(&bloom, (void *)&i, sizeof(int))) {
+      collisions++;
+    }
   }
 
   gettimeofday(&tp, NULL);
   long after = (tp.tv_sec * 1000L) + (tp.tv_usec / 1000L);
 
-  printf("Added %d elements of size %d, took %d ms (collisions=%d)\n",
-         count, (int)sizeof(int), (int)(after - before), collisions);
+  printf("Added %d elements of size %d, took %d ms (collisions=%d)\n", count,
+         (int)sizeof(int), (int)(after - before), collisions);
 
   printf("%d,%lu,%ld\n", entries, bloom.bytes, after - before);
 
@@ -388,15 +383,13 @@ static int perf_loop(int entries, int count)
   return 0;
 }
 
-
 /** ***************************************************************************
  * Default set of basic tests.
  *
  * These should run reasonably quick so they can be run all the time.
  *
  */
-static int basic_tests()
-{
+static int basic_tests() {
   int rv = 0;
 
   rv += basic();
@@ -412,13 +405,11 @@ static int basic_tests()
   return 0;
 }
 
-
 /** ***************************************************************************
  * Some longer-running tests.
  *
  */
-static int larger_tests()
-{
+static int larger_tests() {
   int rv = 0;
   int e;
 
@@ -426,13 +417,12 @@ static int larger_tests()
   rv += add_random(10000000, 0.00001, 10000000, 0, 1, 32, 1);
 
   printf("\nChecking collision rates with filters from 100K to 1M (0.001)\n");
-  for (e = 100000; e <= 1000000; e+= 100) {
+  for (e = 100000; e <= 1000000; e += 100) {
     rv += add_random(e, 0.001, e, 1, 1, 8, 1);
   }
 
   return rv;
 }
-
 
 /** ***************************************************************************
  * With no options, runs brief default tests.
@@ -454,8 +444,7 @@ static int larger_tests()
  * bloom filter and 'COUNT' is the actual number of entries inserted.
  *
  */
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   // Calls return() instead of exit() just to make valgrind mark as
   // an error any reachable allocations. That makes them show up
   // when running the tests.
@@ -479,7 +468,7 @@ int main(int argc, char **argv)
       return 1;
     }
     int e;
-    for (e = atoi(argv[2]); e <= atoi(argv[3]); e+= atoi(argv[4])) {
+    for (e = atoi(argv[2]); e <= atoi(argv[3]); e += atoi(argv[4])) {
       rv += add_random(e, atof(argv[5]), e, 1, 0, 32, 1);
     }
     return rv;

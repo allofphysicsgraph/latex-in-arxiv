@@ -102,7 +102,8 @@ int main(int argc, char **argv) {
   int i = 0;
   int array_index = 0;
   memset(array, 0, sizeof(array));
-  int r = walk_dir(".", "\\.tex$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
+  int r =
+      walk_dir(".", "\\.tex$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
   switch (r) {
   case WALK_OK:
     break;

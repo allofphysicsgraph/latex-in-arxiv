@@ -31,7 +31,6 @@
 #include <limits.h>
 #include <math.h>
 #include <stdio.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -46,8 +45,7 @@
  * Generate an image from 'bloom' into 'filename'
  *
  */
-static void bloom2png(struct bloom * bloom, const char * filename)
-{
+static void bloom2png(struct bloom *bloom, const char *filename) {
   FILE *pngout;
   gdImagePtr image;
   int black;
@@ -99,11 +97,11 @@ static void bloom2png(struct bloom * bloom, const char * filename)
       nonzero++;
       x = n % sqrtt;
       y = n / sqrtt;
-      //printf("byte %lu maps to (%d,%d)\n", n, x, y);
+      // printf("byte %lu maps to (%d,%d)\n", n, x, y);
       if (scale) {
         x = (int)(((float)x) * scaling);
         y = (int)(((float)y) * scaling);
-        //printf("   byte %lu scaled to (%d,%d)\n", n, x, y);
+        // printf("   byte %lu scaled to (%d,%d)\n", n, x, y);
       }
       gdImageLine(image, x, y, x, y, black);
     }
@@ -116,13 +114,11 @@ static void bloom2png(struct bloom * bloom, const char * filename)
   gdImageDestroy(image);
 }
 
-
 /*
  * Add 'entries' random entries into 'bloom'
  *
  */
-static void add_random(struct bloom * bloom, unsigned int entries)
-{
+static void add_random(struct bloom *bloom, unsigned int entries) {
   uint64_t n;
   unsigned int c;
 
@@ -136,13 +132,11 @@ static void add_random(struct bloom * bloom, unsigned int entries)
   }
 }
 
-
 /*
  * Main. See usage below.
  *
  */
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   if (argc == 1) {
     printf("Usage:\n\n");
 
@@ -150,11 +144,14 @@ int main(int argc, char **argv)
     printf("  Generate an internally hardcoded set of images.\n\n");
 
     printf("visualize -c entries error elements imagefile\n");
-    printf("  Create a bloom filter with (entries, error) and insert 'elements' number\n");
-    printf("  of random entries into it, then generate the image into 'imagefile'.\n\n");
+    printf("  Create a bloom filter with (entries, error) and insert "
+           "'elements' number\n");
+    printf("  of random entries into it, then generate the image into "
+           "'imagefile'.\n\n");
 
     printf("visualize -l filename imagefile\n");
-    printf("  Load a bloom filter from 'filename' (with bloom_load) and generate the\n");
+    printf("  Load a bloom filter from 'filename' (with bloom_load) and "
+           "generate the\n");
     printf("  image into 'imagefile'.\n");
     exit(0);
   }
@@ -191,7 +188,7 @@ int main(int argc, char **argv)
     unsigned int entries = atoi(argv[2]);
     double error = atof(argv[3]);
     unsigned int elements = atoi(argv[4]);
-    char * imagefile = argv[5];
+    char *imagefile = argv[5];
 
     printf("bloom_init2(%u, %f)\n", entries, error);
     assert(bloom_init2(&bloom, entries, error) == 0);
@@ -210,8 +207,8 @@ int main(int argc, char **argv)
     }
 
     struct bloom bloom = NULL_BLOOM_FILTER;
-    char * inputfile = argv[2];
-    char * imagefile = argv[3];
+    char *inputfile = argv[2];
+    char *imagefile = argv[3];
 
     if (bloom_load(&bloom, inputfile) != 0) {
       printf("error: while loading file %s\n", inputfile);
@@ -221,5 +218,4 @@ int main(int argc, char **argv)
     bloom2png(&bloom, imagefile);
     exit(0);
   }
-
 }

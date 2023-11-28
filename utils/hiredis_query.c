@@ -50,7 +50,7 @@ void query(void) {
   redisFree(c);
 }
 
-int main(){
-	query();
-	return 0;
+int main() {
+  query();
+  return 0;
 }

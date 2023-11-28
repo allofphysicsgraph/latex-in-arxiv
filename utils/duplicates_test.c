@@ -9,22 +9,23 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-//Experimenting with searching large arrays of structs
-//memory grows exponentially beyond 10K lines
-//does not properly compile with O2 or O3 flags
+// Experimenting with searching large arrays of structs
+// memory grows exponentially beyond 10K lines
+// does not properly compile with O2 or O3 flags
 
-//real	0m1.372s
-//user	0m1.308s
-//sys	0m0.064s
+// real	0m1.372s
+// user	0m1.308s
+// sys	0m0.064s
 
 // valgrind running ./a.out 10K lines
-/*==72363== 
+/*==72363==
 ==72363== HEAP SUMMARY:
 ==72363==     in use at exit: 0 bytes in 0 blocks
-==72363==   total heap usage: 9,978 allocs, 9,978 frees, 17,240,975,368 bytes allocated
-==72363== 
+==72363==   total heap usage: 9,978 allocs, 9,978 frees, 17,240,975,368 bytes
+allocated
+==72363==
 ==72363== All heap blocks were freed -- no leaks are possible
-==72363== 
+==72363==
 ==72363== For lists of detected and suppressed errors, rerun with: -s
 ==72363== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 */

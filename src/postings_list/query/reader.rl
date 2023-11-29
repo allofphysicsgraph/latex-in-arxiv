@@ -27,6 +27,16 @@ char filename[256];
 struct stat s, s1;
 int offset;
 int match_len;
+int match;
+int lhs_context = 20;
+int rhs_context = 50;
+
+typedef struct output {
+  char filename[256];
+  XXH64_hash_t hash;
+  int offset;
+  int length;
+}OUTPUT;
 
 //filename hash offset and length 
 
@@ -35,36 +45,38 @@ int scan(const char *in);
 	machine strings;
 	main := |*
 "./"(any-'\n')+'\n' =>{
-  char temp[te-ts+1];
-  memset(temp,'\0',te-ts+1);
-  strncpy(temp,&buff[ts-in],te-ts-1);
-  printf("<filename:%s>\n",temp);
+  memset(test_data.filename,'\0',256);
+  strncpy(test_data.filename,&buff[ts-in],te-ts-1);
 };
 
 [a-f0-9]{16} =>{
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts);
-  if(!cmp_Canonical_XXH64(temp ,XXH64("physics", 7, 0) )){
-			printf("match");
-		} 
- printf("<hash:%s>",temp);
+  if(!cmp_Canonical_XXH64(temp ,XXH64("derivation", 10, 0) )){
+    match=1 ; 
+  } 
 };
 
 
 [ ][0-9]+[ ]{2}=>{
+  if(match){
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[(ts+1)-in],te-ts-3);
-  printf("<offset:%s>",temp);
-};
+  test_data.offset=atoi(temp);
+}};
 
 [0-9]+'\n'=>{
+if(match){
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts-1);
-  printf("<len:%s>\n",temp);
-};
+  atoi(temp);
+  printf("%d",test_data.offset);
+ print_context(test_data.filename,test_data.offset,lhs_context,rhs_context);
+  match=0;
+}};
 
 	any;
 	*|;
@@ -75,6 +87,7 @@ int scan(const char *in);
 %% write data;
 
 int scan(const char *in) {
+  OUTPUT test_data;
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + strlen(in);
@@ -94,7 +107,7 @@ int scan(const char *in) {
 
 
 int reader(const char *source) {
-	strncpy(filename, source,256);
+  strncpy(filename, source,256);
   int cs, res = 0;
   int fd;
   fd = open(source, O_RDONLY);

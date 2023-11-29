@@ -2,6 +2,6 @@
   machine strings;
 
 word =  "2-form" |
-"physics"|
+"derivation" |
 "3-form" ;
 }%%

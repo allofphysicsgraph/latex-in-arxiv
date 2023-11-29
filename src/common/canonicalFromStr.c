@@ -40,8 +40,6 @@ int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash) {
   return -1;
 }
 
-
-
 /*
 int main() {
   for (int i = 0; i < 9; i++) {

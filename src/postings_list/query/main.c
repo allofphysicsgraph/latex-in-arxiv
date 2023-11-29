@@ -44,12 +44,12 @@ int main(int argc, char **argv) {
   switch (argc) {
   case 2:
     r = walk_dir(argv[1], "tex$", WS_DEFAULT | WS_MATCHDIRS, Documents,
-                     doc_index);
+                 doc_index);
     break;
 
   case 3:
     r = walk_dir(argv[1], argv[2], WS_DEFAULT | WS_MATCHDIRS, Documents,
-                     doc_index);
+                 doc_index);
     break;
 
   default:

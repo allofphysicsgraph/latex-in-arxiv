@@ -96,4 +96,3 @@ int walk_dir(char *dname, char *pattern, int spec, char *array[],
   regfree(&r);
   return res;
 }
-

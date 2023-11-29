@@ -28,8 +28,8 @@ struct stat s, s1;
 int offset;
 int match_len;
 int match;
-int lhs_context = 20;
-int rhs_context = 50;
+int lhs_context = 5;
+int rhs_context = 5;
 
 typedef struct output {
   char filename[256];
@@ -55,7 +55,8 @@ int scan(const char *in);
   strncpy(temp,&buff[ts-in],te-ts);
   if(!cmp_Canonical_XXH64(temp ,XXH64("derivation", 10, 0) )){
     match=1 ; 
-  } 
+
+} 
 };
 
 
@@ -74,7 +75,7 @@ if(match){
   strncpy(temp,&buff[ts-in],te-ts-1);
   atoi(temp);
   printf("%d",test_data.offset);
- print_context(test_data.filename,test_data.offset,lhs_context,rhs_context);
+ print_context(test_data.filename,test_data.offset,10, lhs_context,rhs_context);
   match=0;
 }};
 

@@ -33,9 +33,8 @@ int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash) {
     dst[i] = (unsigned char)((h0 << 4) | h1);
   }
   XXH64_hash_t hashFromStr = XXH64_hashFromCanonical((XXH64_canonical_t *)dst);
-  // printf("<%llx>", XXH3_64bits("physics", 7));
   if (hashFromStr == hash) {
-    // printf("ok");
+    printf("ok");
     return 0;
   }
   return -1;

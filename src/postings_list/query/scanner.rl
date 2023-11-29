@@ -20,7 +20,7 @@ int n;
 		char temp[te-ts+1];
 		memset(temp,'\0',te-ts+1);
 		strncpy(temp,&in[ts-in],te-ts);
-		XXH64_hash_t test_hash = XXH3_64bits(temp,(te-ts+1));
+		XXH64_hash_t test_hash = XXH64(temp,(te-ts), 0);
 		XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
@@ -32,7 +32,7 @@ int n;
 		XXH64_canonical_t dst;
 		char temp[te-ts+1];
 		memset(temp,'\0',te-ts+1);
-		XXH64_hash_t test_hash = XXH3_64bits(temp,(te-ts+1));
+		XXH64_hash_t test_hash = XXH64(temp,(te-ts), 0);
 		XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);

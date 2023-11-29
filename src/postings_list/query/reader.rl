@@ -41,11 +41,14 @@ int scan(const char *in);
   printf("<filename:%s>\n",temp);
 };
 
-[a-f0-9]{15,16} =>{
+[a-f0-9]{16} =>{
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts);
-  printf("<hash:%s>",temp);
+  if(!cmp_Canonical_XXH64(temp ,XXH64("physics", 7, 0) )){
+			printf("match");
+		} 
+ printf("<hash:%s>",temp);
 };
 
 

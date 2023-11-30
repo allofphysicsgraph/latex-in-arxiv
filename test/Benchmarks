@@ -28,6 +28,16 @@ real	0m8.286s
 user	0m8.100s
 sys	0m0.184s
 
+The difference in counts 
+  Comments are parsed as a para in latexml. 
+  LaTeXML is has a wide variety of configurations available, so it is likely possible to tokenize the inline math found in comments.
+
+  Another issue related to the counts is in the figure. Seems like the inline math found in the figure starting on line 147 is represented twice in the xml document. 
+
 grep '<Math mode="inline".*?>' output  -oP|sort|uniq|wc -l
+
+
+
+
 
 yields 270

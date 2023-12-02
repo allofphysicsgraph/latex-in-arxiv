@@ -21,6 +21,8 @@ int n;
 		memset(temp,'\0',te-ts+1);
 		strncpy(temp,&in[ts-in],te-ts);
 		XXH64_hash_t test_hash = XXH64(temp,(te-ts), 0);
+    //printf("<%s>",temp);
+    add_token(test_hash,temp);
 		XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
@@ -32,8 +34,12 @@ int n;
 		XXH64_canonical_t dst;
 		char temp[te-ts+1];
 		memset(temp,'\0',te-ts+1);
+		strncpy(temp,&in[ts-in],te-ts);
 		XXH64_hash_t test_hash = XXH64(temp,(te-ts), 0);
-		XXH64_canonicalFromHash(&dst, test_hash);
+    if((te-ts)<1000){
+      add_token(test_hash,temp);
+    }
+    XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
     }
@@ -46,6 +52,7 @@ int n;
 
 %% write data;
  int scanner(const char *in, char* filename) {
+  struct my_struct *tokens=NULL;
   //Token *tok = ptr;
 	FILE	*hash_test;										/* output-file pointer */
 	char	*hash_test_file_name = "hello_word";		/* output-file name    */
@@ -59,9 +66,6 @@ int n;
 
 	fprintf(hash_test,"%s\n",filename);
 
-//T2Hash *t2hash =  t2hptr; 
-  //H2Indicies *h2idx = h2idxptr; 
- 
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + strlen(in);
@@ -81,5 +85,7 @@ int n;
 				hash_test_file_name, strerror(errno) );
 		exit (EXIT_FAILURE);
 	}
-  return EXIT_SUCCESS;
+print_tokens();
+delete_all();
+return EXIT_SUCCESS;
 }

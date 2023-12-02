@@ -53,6 +53,7 @@ int scan(const char *in);
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts);
+
   if(!cmp_Canonical_XXH64(temp ,XXH64("derivation", 10, 0) )){
     match=1 ; 
 
@@ -75,7 +76,7 @@ if(match){
   strncpy(temp,&buff[ts-in],te-ts-1);
   atoi(temp);
   printf("%d",test_data.offset);
- print_context(test_data.filename,test_data.offset,10, lhs_context,rhs_context);
+  //print_context(test_data.filename,test_data.offset,10, lhs_context,rhs_context);
   match=0;
 }};
 
@@ -123,6 +124,6 @@ int reader(const char *source) {
    munmap(buff, s.st_size);
    }
   close(fd);
-  //printf("\n\tcounts:%d\n",counter);
+//printf("\n\tcounts:%d\n",counter);
 return 0;
 }

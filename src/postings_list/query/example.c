@@ -1,10 +1,9 @@
+#include "globals.h"
 #include "uthash.h"
 #include "xxhash.h"
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
-#include "globals.h"
-
 
 struct my_struct *tokens = NULL;
 void add_token(XXH64_hash_t token_id, const char *token) {
@@ -14,7 +13,7 @@ void add_token(XXH64_hash_t token_id, const char *token) {
   if (s == NULL) {
     s = (struct my_struct *)malloc(sizeof *s);
     s->id = token_id;
-    s->count=1;
+    s->count = 1;
     HASH_ADD_INT(tokens, id, s); /* id is the key field */
   } else {
     s->count++;
@@ -45,7 +44,7 @@ void delete_all() {
 void print_tokens() {
   struct my_struct *s;
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-    printf("id:%llx: count:%d tok:%s\n", s->id, s->count,s->token);
+    printf("id:%llx: count:%d tok:%s\n", s->id, s->count, s->token);
   }
 }
 
@@ -61,12 +60,10 @@ int by_count(const struct my_struct *a, const struct my_struct *b) {
   return (a->count - b->count);
 }
 
-void srt(){
-  HASH_SORT(tokens,by_count);
-}
+void srt() { HASH_SORT(tokens, by_count); }
 
-void count(){
+void count() {
   int temp;
   temp = HASH_COUNT(tokens);
-  printf("%d",temp);
+  printf("%d", temp);
 }

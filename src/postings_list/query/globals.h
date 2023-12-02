@@ -22,16 +22,18 @@ int reader(const char *source);
 struct my_struct {
   XXH64_hash_t id; /* key */
   char token[MAX_TOKEN_LENGTH];
+  int count;
   UT_hash_handle hh; /* makes this structure hashable */
 };
 
-//struct my_struct *tokens = NULL;
+
+
+void srt();
 void add_token(XXH64_hash_t token_id, const char *token);
 struct my_struct *find_token(XXH64_hash_t token_id);
-void delete_token(struct my_struct *token);
 void delete_all();
 void print_tokens();
 int by_token(const struct my_struct *a, const struct my_struct *b);
 int by_id(const struct my_struct *a, const struct my_struct *b);
-//const char *getl(const char *prompt); 
+//const char *getl(const char *prompt);
 

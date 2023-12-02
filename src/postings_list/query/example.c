@@ -5,8 +5,8 @@
 #include <string.h> /* strcpy */
 #include "globals.h"
 
-struct my_struct *tokens = NULL;
 
+struct my_struct *tokens = NULL;
 void add_token(XXH64_hash_t token_id, const char *token) {
   struct my_struct *s;
 
@@ -14,19 +14,21 @@ void add_token(XXH64_hash_t token_id, const char *token) {
   if (s == NULL) {
     s = (struct my_struct *)malloc(sizeof *s);
     s->id = token_id;
+    s->count=1;
     HASH_ADD_INT(tokens, id, s); /* id is the key field */
+  } else {
+    s->count++;
   }
   strcpy(s->token, token);
 }
 
 struct my_struct *find_token(XXH64_hash_t token_id) {
   struct my_struct *s;
-
   HASH_FIND_INT(tokens, &token_id, s); /* s: output pointer */
   return s;
 }
 
-void delete_token(struct my_struct *token) {
+void delete_token(struct my_struct *token, struct my_struct *tokens) {
   HASH_DEL(tokens, token); /* token: pointer to deletee */
   free(token);
 }
@@ -34,7 +36,6 @@ void delete_token(struct my_struct *token) {
 void delete_all() {
   struct my_struct *current_token;
   struct my_struct *tmp;
-
   HASH_ITER(hh, tokens, current_token, tmp) {
     HASH_DEL(tokens, current_token); /* delete it (tokens advances to next) */
     free(current_token);             /* free it */
@@ -43,9 +44,8 @@ void delete_all() {
 
 void print_tokens() {
   struct my_struct *s;
-
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-    printf("token id %llx: token %s\n", s->id, s->token);
+    printf("id:%llx: count:%d tok:%s\n", s->id, s->count,s->token);
   }
 }
 
@@ -57,17 +57,16 @@ int by_id(const struct my_struct *a, const struct my_struct *b) {
   return (a->id - b->id);
 }
 
-const char *getl(const char *prompt) {
-  static char buf[21];
-  char *p;
-  printf("%s? ", prompt);
-  fflush(stdout);
-  p = fgets(buf, sizeof(buf), stdin);
-  if (p == NULL || (p = strchr(buf, '\n')) == NULL) {
-    puts("Invalid input!");
-    exit(EXIT_FAILURE);
-  }
-  *p = '\0';
-  return buf;
+int by_count(const struct my_struct *a, const struct my_struct *b) {
+  return (a->count - b->count);
 }
 
+void srt(){
+  HASH_SORT(tokens,by_count);
+}
+
+void count(){
+  int temp;
+  temp = HASH_COUNT(tokens);
+  printf("%d",temp);
+}

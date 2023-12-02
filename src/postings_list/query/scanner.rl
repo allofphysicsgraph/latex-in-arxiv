@@ -52,8 +52,6 @@ int n;
 
 %% write data;
  int scanner(const char *in, char* filename) {
-  struct my_struct *tokens=NULL;
-  //Token *tok = ptr;
 	FILE	*hash_test;										/* output-file pointer */
 	char	*hash_test_file_name = "hello_word";		/* output-file name    */
 
@@ -85,7 +83,9 @@ int n;
 				hash_test_file_name, strerror(errno) );
 		exit (EXIT_FAILURE);
 	}
+srt();
 print_tokens();
 delete_all();
+count();
 return EXIT_SUCCESS;
 }

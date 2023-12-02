@@ -25,3 +25,5 @@ remove_ascii:
 	$(CC) strip_non_ascii.c -o strip_non_ascii.out
 	/bin/bash pre-process-dataset.sh
 
+files_with_errors:
+	find . -type f -name "*.tex" -exec chktex "{}" \; | grep 'Warning 15'|grep tex|cut -d ' ' -f4|grep tex |sort|uniq > /tmp/files_with_errors

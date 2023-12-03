@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
   default:
     printf("options:1 or 2 arguments.\n1.\tdirectory of tex ./scanner.out ../ "
-           "files.\n2.\tdirectory + filename. ./scanner .. sound1.tex\n");
+           "files.\n2.\tdirectory + filename. ./scanner .. offsets_file\n");
     return -1;
     break;
   } /* -----  end switch  ----- */

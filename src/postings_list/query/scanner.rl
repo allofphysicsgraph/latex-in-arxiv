@@ -44,7 +44,7 @@ int n;
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
     }
-		fprintf(hash_test," %zd  %zd\n",offset,length);
+		fprintf(hash_test," %d  %d\n",offset,length);
 	};
     any ;
   	*|;

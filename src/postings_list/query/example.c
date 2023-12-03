@@ -69,7 +69,7 @@ void print_tokens() {
   struct my_struct *s;
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
    // if((s->count>1) && s->doc_count>1){
-    printf("id:%llx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,s->doc_count, s->tf_idf,s->token);
+    printf("id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,s->doc_count, s->tf_idf,s->token);
   //}
   }
 }

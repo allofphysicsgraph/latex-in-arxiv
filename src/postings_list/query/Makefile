@@ -9,14 +9,6 @@ scanner:
 	#./scanner . 
 	#/scanner . hello_world
 
-inline:
-	ragel -m -G2 inline_counts.rl
-	ragel -m -G2 reader.rl
-	gcc  -g inline_counts.c reader.c walk_dir.c main.c  -o inline_counts.out -lm
-	#./inline.out .. 
-	#or
-	#./inline.out .. sound1.tex	
-
 get_sample_data:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz --no-check-certificate
 	tar -xf hep-th-2003.tar.gz

@@ -256,5 +256,8 @@ right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
-counter = "$" (any-"$"){1,80} "$" ;
+inline_math_open = "\\(" ; 
+inline_math_close = "\\)";
+counter = "$" (any-"$"){1,80} "$" |
+inline_math_open (any+ - inline_math_close) :> inline_math_close;
 }%%

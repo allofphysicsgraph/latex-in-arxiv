@@ -77,8 +77,10 @@ int main(int argc, char **argv) {
     int fd;
     struct stat s;
     fd = open(Documents[i], O_RDONLY);
-    if (fd < 0)
+    if (fd < 0){
+      printf("EXIT FAILURE");
       return EXIT_FAILURE;
+    }
     fstat(fd, &s);
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);

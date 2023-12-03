@@ -56,7 +56,7 @@ int n;
 %% write data;
  int scanner(const char *in, char* filename) {
 	FILE	*hash_test;										/* output-file pointer */
-	char	*hash_test_file_name = "hello_word";		/* output-file name    */
+	char	*hash_test_file_name = "offsets";		/* output-file name    */
 
 	hash_test	= fopen( hash_test_file_name, "a+" );
 	if ( hash_test == NULL ) {

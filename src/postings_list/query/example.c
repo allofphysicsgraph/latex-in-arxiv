@@ -15,14 +15,14 @@ void add_token(XXH64_hash_t token_id, const char *token,int tok_len,int offset) 
     s->id = token_id;
     s->count = 1;
     s->length = tok_len;
-    s->index=0;
-    s->offsets[s->index]=offset;
-    s->index++;
+    //s->index=0;
+   // s->offsets[s->index]=offset;
+    //s->index++;
     HASH_ADD_INT(tokens, id, s); /* id is the key field */
   } else {
     s->count++;
     //s->offsets[s->index]=offset;
-    s->index++;
+    //s->index++;
   }
   strcpy(s->token, token);
 }

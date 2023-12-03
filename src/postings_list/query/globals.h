@@ -25,8 +25,8 @@ struct my_struct {
   int count;
   int length;
 
-  int offsets[MAX_OFFSETS];
-  int index;
+  //int offsets[MAX_OFFSETS];
+  //int index;
   
   int doc_count;
   char token[MAX_TOKEN_LENGTH];

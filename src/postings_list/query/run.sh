@@ -1,4 +1,4 @@
 make scanner
-rm hello_word
+rm offsets
 ./scanner.out . 
-./scanner.out . hello_word
+./scanner.out . offsets

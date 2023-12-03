@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
     int fd;
     struct stat s;
     fd = open(Documents[i], O_RDONLY);
-    if (fd < 0){
+    if (fd < 0) {
       printf("EXIT FAILURE");
       return EXIT_FAILURE;
     }
@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
     i++;
   }
 
-  update_tf_idf(i); //i is total_doc_count
+  update_tf_idf(i); // i is total_doc_count
   srt();
   print_tokens();
   delete_all();

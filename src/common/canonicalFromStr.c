@@ -34,7 +34,6 @@ int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash) {
   }
   XXH64_hash_t hashFromStr = XXH64_hashFromCanonical((XXH64_canonical_t *)dst);
   if (hashFromStr == hash) {
-    printf("ok");
     return 0;
   }
   return -1;

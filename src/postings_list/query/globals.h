@@ -9,6 +9,7 @@
 
 #define MAX_TOKEN_COUNT 100000
 #define MAX_TOKEN_LENGTH 10000
+#define MAX_OFFSETS 750
 
 void print_context(char *filename,int offset, int match_len, int lhs_context, int rhs_context);
 int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash);
@@ -21,15 +22,20 @@ int reader(const char *source);
 
 struct my_struct {
   XXH64_hash_t id; /* key */
-  char token[MAX_TOKEN_LENGTH];
   int count;
+  int length;
+
+  int offsets[MAX_OFFSETS];
+  int index;
+  
+  int doc_count;
+  char token[MAX_TOKEN_LENGTH];
   UT_hash_handle hh; /* makes this structure hashable */
 };
 
 
-
 void srt();
-void add_token(XXH64_hash_t token_id, const char *token);
+void add_token(XXH64_hash_t token_id, const char *token,int length,int tok_offset);
 struct my_struct *find_token(XXH64_hash_t token_id);
 void delete_all();
 void print_tokens();

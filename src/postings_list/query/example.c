@@ -6,7 +6,7 @@
 #include <string.h> /* strcpy */
 
 struct my_struct *tokens = NULL;
-void add_token(XXH64_hash_t token_id, const char *token) {
+void add_token(XXH64_hash_t token_id, const char *token,int tok_len,int offset) {
   struct my_struct *s;
 
   HASH_FIND_INT(tokens, &token_id, s); /* id already in the hash? */
@@ -14,9 +14,15 @@ void add_token(XXH64_hash_t token_id, const char *token) {
     s = (struct my_struct *)malloc(sizeof *s);
     s->id = token_id;
     s->count = 1;
+    s->length = tok_len;
+    s->index=0;
+    s->offsets[s->index]=offset;
+    s->index++;
     HASH_ADD_INT(tokens, id, s); /* id is the key field */
   } else {
     s->count++;
+    //s->offsets[s->index]=offset;
+    s->index++;
   }
   strcpy(s->token, token);
 }

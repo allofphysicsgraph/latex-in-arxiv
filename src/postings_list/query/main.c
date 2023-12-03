@@ -103,8 +103,8 @@ int main(int argc, char **argv) {
     i++;
   }
 
-srt();
-print_tokens();
-delete_all();
+  srt();
+  print_tokens();
+  delete_all();
   return 0;
 }

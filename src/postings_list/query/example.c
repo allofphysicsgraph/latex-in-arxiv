@@ -1,13 +1,15 @@
 #include "globals.h"
 #include "uthash.h"
 #include "xxhash.h"
+#include <math.h>
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
 
 struct my_struct *tokens = NULL;
+
 void add_token(XXH64_hash_t token_id, const char *token, int tok_len,
-               int offset) {
+               char filename[256]) {
   struct my_struct *s;
 
   HASH_FIND_INT(tokens, &token_id, s); /* id already in the hash? */
@@ -16,14 +18,17 @@ void add_token(XXH64_hash_t token_id, const char *token, int tok_len,
     s->id = token_id;
     s->count = 1;
     s->length = tok_len;
-    // s->index=0;
-    // s->offsets[s->index]=offset;
-    // s->index++;
+    s->doc_count=1;
+    s->tf_idf=0.0;
+    memset(s->current_file,'\0',256);
+    strncpy(s->current_file,filename,256);
     HASH_ADD_INT(tokens, id, s); /* id is the key field */
   } else {
     s->count++;
-    // s->offsets[s->index]=offset;
-    // s->index++;
+    if(strncmp(s->current_file,filename,256)!=0){
+          s->doc_count++;
+          strncpy(s->current_file,filename,256);
+    }
   }
   strcpy(s->token, token);
 }
@@ -31,6 +36,9 @@ void add_token(XXH64_hash_t token_id, const char *token, int tok_len,
 struct my_struct *find_token(XXH64_hash_t token_id) {
   struct my_struct *s;
   HASH_FIND_INT(tokens, &token_id, s); /* s: output pointer */
+  if(s!=NULL){
+    printf("%s",s->token);
+  }
   return s;
 }
 
@@ -48,11 +56,21 @@ void delete_all() {
   }
 }
 
+void update_tf_idf(int total_doc_count){
+  struct my_struct *s;
+  for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
+    float tf= 1+log10(s->count+1);
+    float idf = log10(total_doc_count/s->doc_count);
+    float tf_idf = tf*idf;
+    s->tf_idf = tf_idf;
+  }}
+
 void print_tokens() {
   struct my_struct *s;
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-    printf("id:%llx: count:%d tok:%s\n", s->id, s->count, s->token);
-  }
+    if((s->count>1) && s->doc_count>1){
+    printf("id:%llx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,s->doc_count, s->tf_idf,s->token);
+  }}
 }
 
 int by_token(const struct my_struct *a, const struct my_struct *b) {
@@ -63,11 +81,15 @@ int by_id(const struct my_struct *a, const struct my_struct *b) {
   return (a->id - b->id);
 }
 
+int by_tf_idf(const struct my_struct *a, const struct my_struct *b) {
+  return ( (int)(100*(a->tf_idf)) - (int)(100*(b->tf_idf)));
+}
+
 int by_count(const struct my_struct *a, const struct my_struct *b) {
   return (a->count - b->count);
 }
 
-void srt() { HASH_SORT(tokens, by_count); }
+void srt() { HASH_SORT(tokens, by_tf_idf); }
 
 void count() {
   int temp;

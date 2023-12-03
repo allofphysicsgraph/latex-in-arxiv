@@ -24,22 +24,22 @@ struct my_struct {
   XXH64_hash_t id; /* key */
   int count;
   int length;
-
-  //int offsets[MAX_OFFSETS];
-  //int index;
-  
-  int doc_count;
+ 
+  char current_file[256];
+  int doc_count; /* number of docs that contains this token */
+  float tf_idf;
   char token[MAX_TOKEN_LENGTH];
   UT_hash_handle hh; /* makes this structure hashable */
 };
 
 
-void srt();
-void add_token(XXH64_hash_t token_id, const char *token,int length,int tok_offset);
-struct my_struct *find_token(XXH64_hash_t token_id);
-void delete_all();
-void print_tokens();
-int by_token(const struct my_struct *a, const struct my_struct *b);
 int by_id(const struct my_struct *a, const struct my_struct *b);
+int by_token(const struct my_struct *a, const struct my_struct *b);
+struct my_struct *find_token(XXH64_hash_t token_id);
+void add_token(XXH64_hash_t token_id, const char *token,int length,char filename[256]);
+void delete_all();
+void update_tf_idf(int total_doc_count);
+void print_tokens();
+void srt();
 //const char *getl(const char *prompt);
 

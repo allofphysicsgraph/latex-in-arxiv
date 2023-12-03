@@ -80,10 +80,6 @@ int main(int argc, char **argv) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-      // Token vocab;
-      // T2Hash thash;
-      // H2Indicies hidx;
-
       switch (argc) {
       case 2:
         scanner((char *)buff, Documents[i]);
@@ -103,6 +99,7 @@ int main(int argc, char **argv) {
     i++;
   }
 
+  update_tf_idf(i); //i is total_doc_count
   srt();
   print_tokens();
   delete_all();

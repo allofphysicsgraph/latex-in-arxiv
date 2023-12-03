@@ -3,8 +3,6 @@
 #include <errno.h>
 #include <string.h>
 #include "globals.h"
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
 
 int n;
 %%{
@@ -23,7 +21,7 @@ int n;
     int length = te-ts;
 		strncpy(temp,&in[offset],length);
 		XXH64_hash_t test_hash = XXH64(temp,length, 0);
-    add_token(test_hash,temp,length,offset);
+    add_token(test_hash,temp,length,filename);
 		XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
@@ -40,7 +38,7 @@ int n;
 		strncpy(temp,&in[offset],length);
 		XXH64_hash_t test_hash = XXH64(temp,length, 0);
     if((te-ts)<1000){
-      add_token(test_hash,temp,length,offset);
+      add_token(test_hash,temp,length,filename);
     }
     XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){

@@ -22,15 +22,17 @@ RUN apt-get update && \
     vim \
     wget \
     zip \
-  libtool
+    chktex \
+ libtool
 
 WORKDIR /opt/
-COPY postings_list /opt/
 COPY src /opt/
-RUN ./install_ragel.sh
+RUN ./common/install_ragel.sh
+
 # the scanner will need to be re-compiled when the user makes a change, 
 # but we'll compile it the first time so they can get started immediately.
 ENV PATH="${PATH}:/usr/local/ragel7/bin"
+WORKDIR /opt/postings_list/query
 RUN make scanner
 
 RUN echo "alias python=python3" > /root/.bashrc

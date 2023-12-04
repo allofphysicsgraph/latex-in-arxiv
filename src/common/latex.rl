@@ -234,11 +234,30 @@ eqnarray_begin = '\\begin{eqnarray}' @{n++; };
 	 frame_body = any+ - (frame_begin|frame_end);
    frame = '\\begin{frame}' @{n=1;}  (frame_begin|frame_end|frame_body)*    frame_end  :> any when{!n};
 
+   quotation_begin = '\\begin{quotation}' @{n++; };
+   quotation_end  = '\\end{quotation}' @{n--; };
+	 quotation_body = any+ - (quotation_begin|quotation_end);
+   quotation = '\\begin{quotation}' @{n=1;}  (quotation_begin|quotation_end|quotation_body)*    quotation_end  :> any when{!n};
+   
+   verse_begin = '\\begin{verse}' @{n++; };
+   verse_end  = '\\end{verse}' @{n--; };
+	 verse_body = any+ - (verse_begin|verse_end);
+   verse = '\\begin{verse}' @{n=1;}  (verse_begin|verse_end|verse_body)*    verse_end  :> any when{!n};
+   
+   tabbing_begin = '\\begin{tabbing}' @{n++; };
+   tabbing_end  = '\\end{tabbing}' @{n--; };
+	 tabbing_body = any+ - (tabbing_begin|tabbing_end);
+   tabbing = '\\begin{tabbing}' @{n=1;}  (tabbing_begin|tabbing_end|tabbing_body)*    tabbing_end  :> any when{!n};
    matrix_begin = '\\begin{matrix}' @{n++; };
    matrix_end  = '\\end{matrix}' @{n--; };
 	 matrix_body = any+ - (matrix_begin|matrix_end);
    matrix = '\\begin{matrix}' @{n=1;}  (matrix_begin|matrix_end|matrix_body)*    matrix_end  :> any when{!n};
 
+   list_begin = '\\begin{list}' @{n++; };
+   list_end  = '\\end{list}' @{n--; };
+	 list_body = any+ - (list_begin|list_end);
+   list = '\\begin{list}' @{n=1;}  (list_begin|list_end|list_body)*    list_end  :> any when{!n};
+   
    rem_begin = '\\begin{rem}' @{n++; };
    rem_end  = '\\end{rem}' @{n--; };
 	 rem_body = any+ - (rem_begin|rem_end);
@@ -269,10 +288,15 @@ parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 latex = "," |
 math |
 "$" (any-"$"){1,80} "$" |
+"\\ " |
+"\\!" |
+"\\" |
+"\\"" |
 "\\#" |
 "\\%" |
 "\\&" |
 "\\'" |
+"\\(" |
 "\\)" |
 "\\*" |
 "\\+" |
@@ -285,7 +309,18 @@ math |
 "\\<" |
 "\\=" |
 "\\>" |
+"\\?" |
 "\\@" |
+"\\[" |
+"\]" |
+"\^" |
+"\_" |
+"\`" |
+"\{" |
+"\|" |
+"\}" |
+"\~" |
+"\$" |
 "\\acute" |
 "\\addcontentsline" |
 "\\address" |
@@ -314,7 +349,6 @@ math |
 "\\ast" |
 "\\asymp" |
 "\\author" |
-"\\b" |
 "\\backslash" |
 "\\bar" |
 "\\baselineskip" |
@@ -352,7 +386,6 @@ math |
 "\\Box" |
 "\\breve" |
 "\\bullet" |
-"\\c" |
 "\\cal" |
 "\\cap" |
 "\\caption" |
@@ -467,7 +500,6 @@ math |
 "\\glossary" |
 "\\glossaryentry" |
 "\\grave" |
-"\\H" |
 "\\hat" |
 "\\hbar" |
 "\\headheight" |
@@ -484,7 +516,6 @@ math |
 "\\huge" |
 "\\Huge" |
 "\\hyphenation" |
-"\\i" |
 "\\iff" |
 "\\Im" |
 "\\imath" |
@@ -505,14 +536,11 @@ math |
 "\\itemindent" |
 "\\itemsep" |
 "\\item[text]" |
-"\\j" |
 "\\jmath" |
 "\\Join" |
 "\\kappa" |
 "\\ker" |
 "\\kill" |
-"\\l" |
-"\\L" |
 "\\label" |
 "\\labelsep" |
 "\\labelwidth" |
@@ -552,6 +580,7 @@ math |
 "\\linebreak[n]" |
 "\\linethickness" |
 "\\linewidth" |
+list |
 "\\listoffigures" |
 "\\listoftables" |
 "\\listparindent" |
@@ -597,7 +626,6 @@ math |
 "\\natural" |
 "\\ne" |
 "\\nearrow" |
-"\\pdfoutput=1" |
 "\\neg" |
 "\\neq" |
 "\\newcommand" |
@@ -658,6 +686,7 @@ math |
 "\\partial" |
 "\\partopsep" |
 "\\part[toctitle]" |
+"\\pdfoutput=1" |
 "\\perp" |
 "\\phi" |
 "\\Phi" |

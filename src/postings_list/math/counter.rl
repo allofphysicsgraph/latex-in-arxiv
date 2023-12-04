@@ -229,6 +229,11 @@ eqnarray_begin = '\\begin{eqnarray}' @{n++; };
 	 matrix_body = any+ - (matrix_begin|matrix_end);
    matrix = '\\begin{matrix}' @{n=1;}  (matrix_begin|matrix_end|matrix_body)*    matrix_end  :> any when{!n};
 
+   math_begin = '\\begin{math}' @{n++; };
+   math_end  = '\\end{math}' @{n--; };
+	 math_body = any+ - (math_begin|math_end);
+   math = '\\begin{math}' @{n=1;}  (math_begin|math_end|math_body)*    math_end  :> any when{!n};
+   
    rem_begin = '\\begin{rem}' @{n++; };
    rem_end  = '\\end{rem}' @{n--; };
 	 rem_body = any+ - (rem_begin|rem_end);
@@ -259,5 +264,6 @@ parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 inline_math_open = "\\(" ; 
 inline_math_close = "\\)";
 counter = "$" (any-"$"){1,80} "$" |
-inline_math_open (any+ - inline_math_close) :> inline_math_close;
+inline_math_open (any+ - inline_math_close) :> inline_math_close|
+math;
 }%%

@@ -8,6 +8,11 @@
 
 comment='%' (any{1,100}-'\n') '\n';
 
+math_begin = '\\begin{math}' @{n++; };
+   math_end  = '\\end{math}' @{n--; };
+	 math_body = any+ - (math_begin|math_end);
+   math = '\\begin{math}' @{n=1;}  (math_begin|math_end|math_body)*    math_end  :> any when{!n};
+
    equation_begin = '\\begin{equation}' @{n++; };
    equation_end  = '\\end{equation}' @{n--; }; 
 	 equation_body = any+ - (equation_begin|equation_end);
@@ -262,6 +267,7 @@ parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 latex = "," |
+math |
 "$" (any-"$"){1,80} "$" |
 "\\#" |
 "\\%" |

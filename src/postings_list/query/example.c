@@ -82,13 +82,13 @@ float avg_tfidf() {
 
 void print_tokens() {
   struct my_struct *s;
-  for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-    // if((s->count>1) && s->doc_count>1){
     if (avg_tfidf() > .05) {
+  for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
       // don't print tf_idf where the scores are all 0 ie a single document.
       printf("id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,
              s->doc_count, s->tf_idf, s->token);
-    } else {
+  }} else {
+  for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
       printf("id:%lx: count:%d docs:%d tok:%s\n", s->id, s->count, s->doc_count,
              s->token);
     }

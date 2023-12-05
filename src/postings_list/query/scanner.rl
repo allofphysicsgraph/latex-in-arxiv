@@ -4,6 +4,8 @@
 #include <string.h>
 #include "globals.h"
 
+
+
 int n;
 %%{
   
@@ -13,21 +15,7 @@ int n;
   
   main := |*
 
-    word => {
-		XXH64_canonical_t dst;
-		char temp[te-ts+1];
-		memset(temp,'\0',te-ts+1);
-    int offset = ts-in;
-    int length = te-ts;
-		strncpy(temp,&in[offset],length);
-		XXH64_hash_t test_hash = XXH64(temp,length, 0);
-    add_token(test_hash,temp,length,filename);
-		XXH64_canonicalFromHash(&dst, test_hash);
-		for(size_t i=0;i<8;i++){
-			fprintf(hash_test,"%02x", dst.digest[i]);
-    }
-		fprintf(hash_test," %zd  %zd\n",(ts-in),(te-ts));
-	};
+    word ;
 
     latex => { 
 		XXH64_canonical_t dst;

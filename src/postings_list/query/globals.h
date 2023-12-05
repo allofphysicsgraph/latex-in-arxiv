@@ -4,7 +4,7 @@
 #include "uthash.h"
 #include "xxhash.h"
 
-#define MAX_DOCUMENT_COUNT 250
+#define MAX_DOCUMENT_COUNT 1250
 #define MAX_FILE_PATH_LENGTH 256
 
 #define MAX_TOKEN_COUNT 100000

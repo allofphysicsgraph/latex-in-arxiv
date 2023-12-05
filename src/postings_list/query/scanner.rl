@@ -18,6 +18,7 @@ int n;
     word ;
 
     latex => { 
+    if((te-ts)<1000){
 		XXH64_canonical_t dst;
 		char temp[te-ts+1];
 		memset(temp,'\0',te-ts+1);
@@ -25,15 +26,13 @@ int n;
     int length = te-ts;
 		strncpy(temp,&in[offset],length);
 		XXH64_hash_t test_hash = XXH64(temp,length, 0);
-    if((te-ts)<1000){
       add_token(test_hash,temp,length,filename);
-    }
     XXH64_canonicalFromHash(&dst, test_hash);
 		for(size_t i=0;i<8;i++){
 			fprintf(hash_test,"%02x", dst.digest[i]);
     }
 		fprintf(hash_test," %d  %d\n",offset,length);
-	};
+	}};
     any ;
   	*|;
 }%%

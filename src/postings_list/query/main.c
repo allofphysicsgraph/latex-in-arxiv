@@ -17,8 +17,7 @@
 
 int i;
 
-#define MAX_FILE_COUNT 1000
-
+#define MAX_FILE_COUNT 1500
 enum {
   LOOKUP = 0, /* default - looking rather than defining. */
   WALK_OK = 0,

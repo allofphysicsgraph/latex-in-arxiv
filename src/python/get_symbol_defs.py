@@ -123,7 +123,7 @@ if __name__ == "__main__":
     punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
     tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
     results = defaultdict(list)
-    file_data = read_file("..", "sound1.tex")
+    file_data = read_file("../common/sound1.tex")
     for paragraph in get_paragraphs(file_data):
         results["paragraphs"].append(paragraph)
 
@@ -139,14 +139,14 @@ if __name__ == "__main__":
     sentences = results["sentences_from_paragraphs"]
     concordance = symbol_concordance(sentences)
     # using mwe tokenizer for now
-    latex = read_file("../postings_list", "latex.rl")
+    latex = read_file("../common/latex.rl")
     latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|', latex) if x.strip()]
     latex = [x for x in latex if "\\" in x and not re.findall(":>|n--|n++|\[", x)]
     latex = set(latex)
     latex = sorted(latex, key=lambda x: -len(x))
     latex = [x.replace("\\\\", "\\") for x in latex]
 
-    vocab = read_file("../postings_list", "vocab.rl")
+    vocab = read_file("../postings_list/query/vocab.rl")
     vocab = [x for x in re.split('"|\n|\|', vocab) if x.strip()]
     vocab = set(vocab)
     vocab = sorted(vocab, key=lambda x: -len(x))
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     for value in vocab:
         add_new_token(value)
 
-    file_data = read_file("..", "sound1.tex")
+    file_data = read_file("../common/sound1.tex")
     tokens = tokenizer.tokenize(file_data)
     # print(concordance)
     symbol_defs = get_symbol_definition(concordance)

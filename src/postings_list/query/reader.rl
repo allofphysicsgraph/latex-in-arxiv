@@ -54,7 +54,7 @@ int scan(const char *in);
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts);
 
-  if(!cmp_Canonical_XXH64(temp ,XXH64("derivation", 10, 0) )){
+  if(!cmp_Canonical_XXH64(temp ,XXH64("$gl(n)$", 7, 0) )){
     match=1 ; 
 
 } 

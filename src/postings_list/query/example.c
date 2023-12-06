@@ -76,8 +76,9 @@ float avg_tfidf() {
     total += s->tf_idf;
     counter++;
   }
-  assert(counter > 0);
+  if(counter > 0){
   return total / counter;
+  } else {return 0;}
 }
 
 void print_tokens() {

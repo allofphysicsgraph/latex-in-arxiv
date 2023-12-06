@@ -123,7 +123,8 @@ if __name__ == "__main__":
     punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
     tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
     results = defaultdict(list)
-    file_data = read_file("../common/sound1.tex")
+    from sys import argv
+    file_data = read_file(argv[1])
     for paragraph in get_paragraphs(file_data):
         results["paragraphs"].append(paragraph)
 
@@ -156,8 +157,6 @@ if __name__ == "__main__":
 
     for value in vocab:
         add_new_token(value)
-
-    file_data = read_file("../common/sound1.tex")
     tokens = tokenizer.tokenize(file_data)
     # print(concordance)
     symbol_defs = get_symbol_definition(concordance)

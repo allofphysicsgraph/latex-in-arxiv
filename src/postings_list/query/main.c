@@ -102,10 +102,30 @@ int main(int argc, char **argv) {
     free(Documents[i]);
     i++;
   }
-
   update_tf_idf(i); // i is total_doc_count
-  srt();
-  print_tokens();
+  int running = 0;
+  while (running) {
+    printf(" 1. print_tokens\n");
+    printf(" 2. print tf_idf\n");
+    printf(" 3. sort by tf_idf if 0 then by counts\n");
+    printf(" 4. quit\n");
+    switch (atoi(getl("Command"))) {
+    case 1:
+      print_tokens();
+      break;
+    case 2:
+      print_tf_idf();
+      break;
+    case 3:
+      srt();
+      break;
+    case 4:
+      running = 0;
+      delete_all();
+      break;
+    }
+  }
+
   delete_all();
   return 0;
 }

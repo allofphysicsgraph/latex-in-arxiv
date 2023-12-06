@@ -76,12 +76,14 @@ float avg_tfidf() {
     total += s->tf_idf;
     counter++;
   }
-  if(counter > 0){
-  return total / counter;
-  } else {return 0;}
+  if (counter > 0) {
+    return total / counter;
+  } else {
+    return 0;
+  }
 }
 
-void print_tokens() {
+void print_tf_idf() {
   struct my_struct *s;
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
@@ -94,6 +96,12 @@ void print_tokens() {
       printf("id:%lx: count:%d docs:%d tok:%s\n", s->id, s->count, s->doc_count,
              s->token);
     }
+  }
+}
+void print_tokens() {
+  struct my_struct *s;
+  for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
+    printf("tok:%s▁\n", s->token);
   }
 }
 
@@ -119,6 +127,19 @@ void srt() {
   } else {
     HASH_SORT(tokens, by_count);
   }
+}
+const char *getl(const char *prompt) {
+  static char buf[21];
+  char *p;
+  printf("%s? ", prompt);
+  fflush(stdout);
+  p = fgets(buf, sizeof(buf), stdin);
+  if (p == NULL || (p = strchr(buf, '\n')) == NULL) {
+    puts("Invalid input!");
+    exit(EXIT_FAILURE);
+  }
+  *p = '\0';
+  return buf;
 }
 
 void count() {

@@ -40,6 +40,7 @@ void add_token(XXH64_hash_t token_id, const char *token,int length,char filename
 void delete_all();
 void update_tf_idf(int total_doc_count);
 void print_tokens();
+void print_tf_idf();
 void srt();
-//const char *getl(const char *prompt);
+const char *getl(const char *prompt);
 

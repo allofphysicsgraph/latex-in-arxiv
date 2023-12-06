@@ -122,10 +122,14 @@ int main(int argc, char **argv) {
     case 4:
       running = 0;
       delete_all();
+      return 0;
       break;
     }
   }
 
-  delete_all();
+
+  srt();
+  print_tokens();
+  print_tf_idf();
   return 0;
 }

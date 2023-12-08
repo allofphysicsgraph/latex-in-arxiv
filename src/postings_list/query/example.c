@@ -69,8 +69,7 @@ void update_tf_idf(int total_doc_count) {
 
 float avg_tfidf() {
   struct my_struct *s;
-  float avg;
-  float total;
+  float total = 0;
   int counter = 0;
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
     total += s->tf_idf;

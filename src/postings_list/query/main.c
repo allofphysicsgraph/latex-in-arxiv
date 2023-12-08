@@ -103,33 +103,35 @@ int main(int argc, char **argv) {
     i++;
   }
   update_tf_idf(i); // i is total_doc_count
-  int running = 0;
-  while (running) {
-    printf(" 1. print_tokens\n");
-    printf(" 2. print tf_idf\n");
-    printf(" 3. sort by tf_idf if 0 then by counts\n");
-    printf(" 4. quit\n");
-    switch (atoi(getl("Command"))) {
-    case 1:
-      print_tokens();
-      break;
-    case 2:
-      print_tf_idf();
-      break;
-    case 3:
-      srt();
-      break;
-    case 4:
-      running = 0;
-      delete_all();
-      return 0;
-      break;
-    }
-  }
-
+                    /*
+                      int running = 0;
+                      while (running) {
+                        printf(" 1. print_tokens\n");
+                        printf(" 2. print tf_idf\n");
+                        printf(" 3. sort by tf_idf if 0 then by counts\n");
+                        printf(" 4. quit\n");
+                        switch (atoi(getl("Command"))) {
+                        case 1:
+                          print_tokens();
+                          break;
+                        case 2:
+                          print_tf_idf();
+                          break;
+                        case 3:
+                          srt();
+                          break;
+                        case 4:
+                          running = 0;
+                          delete_all();
+                          return 0;
+                          break;
+                        }
+                      }
+                    */
 
   srt();
   print_tokens();
   print_tf_idf();
+  delete_all();
   return 0;
 }

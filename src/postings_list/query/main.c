@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
   i = 0;
   while (Documents[i] != NULL) {
     printf("%s\n", Documents[i]);
-    int cs, res = 0;
+    int res = 0;
     int fd;
     struct stat s;
     fd = open(Documents[i], O_RDONLY);
@@ -130,8 +130,9 @@ int main(int argc, char **argv) {
                     */
 
   srt();
-  print_tokens();
-  print_tf_idf();
+  //print_tokens();
+  //print_tf_idf();
+  write_tf_idf();
   delete_all();
   return 0;
 }

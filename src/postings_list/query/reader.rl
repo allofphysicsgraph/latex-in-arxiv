@@ -74,7 +74,6 @@ if(match){
   char temp[te-ts+1];
   memset(temp,'\0',te-ts+1);
   strncpy(temp,&buff[ts-in],te-ts-1);
-  atoi(temp);
   printf("%d",test_data.offset);
   print_context(test_data.filename,test_data.offset,10, lhs_context,rhs_context);
   match=0;

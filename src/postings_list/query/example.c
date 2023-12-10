@@ -6,6 +6,7 @@
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
+#include <errno.h>
 
 struct my_struct *tokens = NULL;
 
@@ -82,6 +83,31 @@ float avg_tfidf() {
   }
 }
 
+void write_tf_idf() {
+  FILE *tf_idf;                      /* output-file pointer */
+  char *tf_idf_file_name = "tf_idf"; /* output-file name    */
+
+  tf_idf = fopen(tf_idf_file_name, "a+");
+  if (tf_idf == NULL) {
+    fprintf(stderr, "couldn't open file '%s'; %s\n", tf_idf_file_name,
+            strerror(errno));
+    exit(EXIT_FAILURE);
+  }
+  struct my_struct *s;
+  if (avg_tfidf() > .05) {
+    for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
+      // don't print tf_idf where the scores are all 0 ie a single document.
+      fprintf(tf_idf, "id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id,
+              s->count, s->doc_count, s->tf_idf, s->token);
+    }
+  } else {
+    for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
+      fprintf(tf_idf, "id:%lx: count:%d docs:%d tok:%s\n", s->id, s->count,
+              s->doc_count, s->token);
+    }
+  }
+}
+
 void print_tf_idf() {
   struct my_struct *s;
   if (avg_tfidf() > .05) {
@@ -97,6 +123,7 @@ void print_tf_idf() {
     }
   }
 }
+
 void print_tokens() {
   struct my_struct *s;
   for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {

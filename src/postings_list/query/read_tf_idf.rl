@@ -39,38 +39,34 @@ int scan(const char *in);
 "id:" xdigit{16} => {
   char temp[te-ts+1];
   memset(temp, '\0', te-ts+1);
-  strncpy(temp, &in[ts-in], te-ts);
+  strncpy(temp, &in[ts-in+3], te-ts-3);
   printf("<%s>", temp);
 };
 
 ":"[ ]+"count:" digit{1,10} =>{
 	char temp[te - ts + 1];
 	memset(temp, '\0', te-ts);
-	strncpy(temp, &in[ts-in+2], te-ts-2);
+	strncpy(temp, &in[ts-in+2+6], te-ts-2-6);
 	printf("<%s>", temp);
 };
 
 [ ]+"docs:" digit{1,6} =>{
 	char temp[te-ts+1];
 	memset(temp, '\0', te - ts + 1);
-	strncpy(temp, &in[ts - in+1], te - ts-1);
+	strncpy(temp, &in[ts - in+1+5], te - ts-1-5);
 	printf("<%s>", temp);
 };
 
 [ ]+"tf_idf:" digit{1}"."digit{6} =>{
 	char temp[te-ts+1];
 	memset(temp, '\0', te-ts+1);
-	strncpy(temp, &in[ts-in+1], te-ts-1);
+	strncpy(temp, &in[ts-in+1+7], te-ts-1-7);
 	printf("<%s>", temp);
 };
 
-[ ]+"tok:"(any-'\n')+"\n" =>{
-char temp[te - ts + 1];
-memset(temp, '\0', te - ts + 1);
-strncpy(temp, &in[ts - in+1], te - ts - 2);
-printf("<%s>\n", temp);
+any => {
+printf("%c", fc);
 };
-	any;
 	*|;
 }%%
 

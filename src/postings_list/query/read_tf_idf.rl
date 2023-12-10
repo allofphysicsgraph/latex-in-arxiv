@@ -45,29 +45,29 @@ int scan(const char *in);
 
 ":"[ ]+"count:" digit{1,10} =>{
 	char temp[te - ts + 1];
-	memset(temp, '\0', te-ts+1);
-	strncpy(temp, &in[ts-in], te-ts);
+	memset(temp, '\0', te-ts);
+	strncpy(temp, &in[ts-in+2], te-ts-2);
 	printf("<%s>", temp);
 };
 
 [ ]+"docs:" digit{1,6} =>{
 	char temp[te-ts+1];
 	memset(temp, '\0', te - ts + 1);
-	strncpy(temp, &in[ts - in], te - ts);
+	strncpy(temp, &in[ts - in+1], te - ts-1);
 	printf("<%s>", temp);
 };
 
 [ ]+"tf_idf:" digit{1}"."digit{6} =>{
 	char temp[te-ts+1];
 	memset(temp, '\0', te-ts+1);
-	strncpy(temp, &in[ts-in], te-ts);
+	strncpy(temp, &in[ts-in+1], te-ts-1);
 	printf("<%s>", temp);
 };
 
 [ ]+"tok:"(any-'\n')+"\n" =>{
 char temp[te - ts + 1];
 memset(temp, '\0', te - ts + 1);
-strncpy(temp, &in[ts - in], te - ts - 1);
+strncpy(temp, &in[ts - in+1], te - ts - 2);
 printf("<%s>\n", temp);
 };
 	any;

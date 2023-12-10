@@ -35,33 +35,33 @@ typedef struct output {
 int scan(const char *in);
 %%{
 	machine strings;
-	main := |*
-"id:" xdigit{16} = > {
-  char temp[te - ts + 1];
-  memset(temp, '\0', te - ts + 1);
-  strncpy(temp, &in[ts - in], te - ts);
+	main:=|*
+"id:" xdigit{16} => {
+  char temp[te-ts+1];
+  memset(temp, '\0', te-ts+1);
+  strncpy(temp, &in[ts-in], te-ts);
   printf("<%s>", temp);
 };
 
 ":"[ ]+"count:" digit{1,10} =>{
-char temp[te - ts + 1];
-memset(temp, '\0', te - ts + 1);
-strncpy(temp, &in[ts - in], te - ts);
-printf("<%s>", temp);
+	char temp[te - ts + 1];
+	memset(temp, '\0', te-ts+1);
+	strncpy(temp, &in[ts-in], te-ts);
+	printf("<%s>", temp);
 };
 
 [ ]+"docs:" digit{1,6} =>{
-char temp[te - ts + 1];
-memset(temp, '\0', te - ts + 1);
-strncpy(temp, &in[ts - in], te - ts);
-printf("<%s>", temp);
+	char temp[te-ts+1];
+	memset(temp, '\0', te - ts + 1);
+	strncpy(temp, &in[ts - in], te - ts);
+	printf("<%s>", temp);
 };
 
 [ ]+"tf_idf:" digit{1}"."digit{6} =>{
-char temp[te - ts + 1];
-memset(temp, '\0', te - ts + 1);
-strncpy(temp, &in[ts - in], te - ts);
-printf("<%s>", temp);
+	char temp[te-ts+1];
+	memset(temp, '\0', te-ts+1);
+	strncpy(temp, &in[ts-in], te-ts);
+	printf("<%s>", temp);
 };
 
 [ ]+"tok:"(any-'\n')+"\n" =>{
@@ -91,9 +91,8 @@ const char *eof = pe;
 
 if (cs == strings_error)
   printf("Error near %zd\n", p - in);
-else if (ts)
+else if(ts)
   printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
-
 return EXIT_SUCCESS;
 }
 

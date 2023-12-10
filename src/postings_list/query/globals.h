@@ -8,7 +8,7 @@
 #define MAX_FILE_PATH_LENGTH 256
 
 #define MAX_TOKEN_COUNT 100000
-#define MAX_TOKEN_LENGTH 10000
+#define MAX_TOKEN_LENGTH 2000
 #define MAX_OFFSETS 750
 
 void print_context(char *filename, int offset, int match_len, int lhs_context,

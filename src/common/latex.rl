@@ -18,6 +18,10 @@ math_begin = '\\begin{math}' @{n++; };
 	 equation_body = any+ - (equation_begin|equation_end);
    equation = '\\begin{equation}' @{n=1;}  (equation_begin|equation_end|equation_body)*    equation_end  :> any when{!n};
 
+   eq_begin = '\\begin{eq}' @{n++; };
+   eq_end  = '\\end{eq}' @{n--; }; 
+	 eq_body = any+ - (eq_begin|eq_end);
+   eq = '\\begin{eq}' @{n=1;}  (eq_begin|eq_end|eq_body)*    eq_end  :> any when{!n};
 
 eqnarray_begin = '\\begin{eqnarray}' @{n++; };
    eqnarray_end  = '\\end{eqnarray}' @{n--; };
@@ -286,6 +290,7 @@ parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 latex = "," |
+eq | 
 math |
 "$" (any-"$"){1,80} "$" |
 "\\ " |

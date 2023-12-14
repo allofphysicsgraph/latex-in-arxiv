@@ -9,10 +9,9 @@ int n;
   machine strings;
   include counter "counter.rl";
 
-main:
-  = | *
+main := |*
 
-    counter = > {
+    counter => {
     int index = tok->index;
     tok->offset[index] = ts - in;
     tok->length[index] = te - ts;
@@ -20,7 +19,7 @@ main:
   };
   any;
 
-  * | ;
+  *| ;
 }%%
 
     %% write data;

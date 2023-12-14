@@ -28,7 +28,7 @@
       "Acharya" | "ache" | "achievable" | "achieve" | "achieved" |
       "achievement" | "achievements" | "achieves" | "achieving" |
       "acknowledge" | "acknowledged" | "acknowledgement" | "Acknowledgement" |
-      "Acknowledgement:" | "Acknowledgement}" | "acknowledgements" |
+      "Acknowledgement:" |  "acknowledgements" |
       "Acknowledgements " | "Acknowledgements" | "Acknowledgements." |
       "Acknowledgements:" | 
       "ACKNOWLEDGEMENTS" | "acknowledges" | "Acknowledgment" |
@@ -2352,7 +2352,7 @@
       "sugra" | "SUGRA" | "suitable" | "suitably" | "suited" | "sum" | "summ" |
       "summands" | "summaries" | "summarise" | "summarize" | "summarized" |
       "summarizes" | "summarizing" | "Summarizing" | "summary" | "Summary " |
-      "Summary" | "Summary}" | "SUMMARY" | "summation" | "Summation" |
+      "Summary" | "SUMMARY" | "summation" | "Summation" |
       "summations" | "summed" | "summer" | "Summer" | "summing" | "Summing" |
       "sums" | "Sundrum" | "sung" | "Sungkyunkwan" | "sunny" | "sunset" |
       "super" | "Super" | "superalgebra" | "superalgebras" | "supercharge" |

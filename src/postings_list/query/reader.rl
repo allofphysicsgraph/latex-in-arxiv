@@ -50,17 +50,17 @@ main	:= |*
     strncpy(test_data.filename, &buff[ts - in], te - ts - 1);
   };
 
-  [a-f0-9]{16} => {
+  xdigit{16} => {
     char temp[te - ts + 1];
     memset(temp, '\0', te - ts + 1);
     strncpy(temp, &buff[ts - in], te - ts);
 
-    if (!cmp_Canonical_XXH64(temp, XXH64("$gl(n)$", 7, 0))) {
+    if (!cmp_Canonical_XXH64(temp, XXH64("derivation", 10, 0))) {
       match = 1;
     }
   };
 
-  []digit+[]{2} => {
+  [ ]digit+[ ]{2} => {
     if (match) {
       char temp[te - ts + 1];
       memset(temp, '\0', te - ts + 1);
@@ -109,8 +109,8 @@ int scan(const char *in) {
 
 int reader(const char *source) {
   strncpy(filename, source, 256);
-  /* int cs; */
-  /* int res = 0; */
+   int cs; 
+   int res = 0; 
   int fd;
   fd = open(source, O_RDONLY);
   if (fd < 0)

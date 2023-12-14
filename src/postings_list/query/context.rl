@@ -1,4 +1,3 @@
-%%{
-derivation = "derivation" |
-"Derivation";
+%%{ 
+	derivation = "derivation" | "Derivation"; 
 }%%

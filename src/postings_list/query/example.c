@@ -2,11 +2,11 @@
 #include "uthash.h"
 #include "xxhash.h"
 #include <assert.h>
+#include <errno.h>
 #include <math.h>
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
-#include <errno.h>
 
 struct my_struct *tokens = NULL;
 
@@ -96,7 +96,8 @@ void write_tf_idf() {
   struct my_struct *s;
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-      // don't print tf_idf where the scores are all 0 ie a single document.
+      /*   don't print tf_idf where the scores are all 0 ie a single document.
+       */
       fprintf(tf_idf, "id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id,
               s->count, s->doc_count, s->tf_idf, s->token);
     }
@@ -112,7 +113,7 @@ void print_tf_idf() {
   struct my_struct *s;
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-      // don't print tf_idf where the scores are all 0 ie a single document.
+      /* don't print tf_idf where the scores are all 0 ie a single document. */
       printf("id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,
              s->doc_count, s->tf_idf, s->token);
     }

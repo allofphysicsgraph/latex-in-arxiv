@@ -1,39 +1,32 @@
+#include "globals.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "globals.h"
-#
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
-  	//include latex "latex.rl";
-  	//include strings "vocab.rl";
-  	//include ignore "ignore.rl";
 
 int n;
 %%{
-  
+
   machine strings;
-	include counter "counter.rl"; 
+  include counter "counter.rl";
 
+main:
+  = | *
 
-  main := |*
+    counter = > {
+    int index = tok->index;
+    tok->offset[index] = ts - in;
+    tok->length[index] = te - ts;
+    tok->index++;
+  };
+  any;
 
-
-    counter => { 
-	int index = tok->index;
-	tok->offset[index]=ts-in;
-	tok->length[index]=te-ts;
-	tok->index++;};
-    any ;
-
-  	*|;
+  * | ;
 }%%
 
-
-%% write data;
-int scanner(const char *in, Token* ptr) {
-  Token *tok= ptr;
- int cs = 0, act = 0;
+    %% write data;
+int scanner(const char *in, Token *ptr) {
+  Token *tok = ptr;
+  int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + strlen(in);
   const char *ts = NULL, *te = NULL;

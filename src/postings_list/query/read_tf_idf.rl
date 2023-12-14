@@ -25,73 +25,67 @@ int rhs_context = 50;
 
 typedef struct output {
   char filename[256];
-  // XXH64_hash_t hash;
   int offset;
   int length;
 } OUTPUT;
 
-// filename hash offset and length
 
 int scan(const char *in);
 %%{
-	machine strings;
-	main:=|*
-"id:" xdigit{16} => {
-  char temp[te-ts+1];
-  memset(temp, '\0', te-ts+1);
-  strncpy(temp, &in[ts-in+3], te-ts-3);
-  printf("<%s>", temp);
-};
+  machine strings;
+main:
+  = | *"id:" xdigit{16} = > {
+    char temp[te - ts + 1];
+    memset(temp, '\0', te - ts + 1);
+    strncpy(temp, &in[ts - in + 3], te - ts - 3);
+    printf("<%s>", temp);
+  };
 
-":"[ ]+"count:" digit{1,10} =>{
-	char temp[te - ts + 1];
-	memset(temp, '\0', te-ts);
-	strncpy(temp, &in[ts-in+2+6], te-ts-2-6);
-	printf("<%s>", temp);
-};
+  ":"[] + "count:" digit{1, 10} = > {
+    char temp[te - ts + 1];
+    memset(temp, '\0', te - ts);
+    strncpy(temp, &in[ts - in + 2 + 6], te - ts - 2 - 6);
+    printf("<%s>", temp);
+  };
 
-[ ]+"docs:" digit{1,6} =>{
-	char temp[te-ts+1];
-	memset(temp, '\0', te - ts + 1);
-	strncpy(temp, &in[ts - in+1+5], te - ts-1-5);
-	printf("<%s>", temp);
-};
+  [] + "docs:" digit{1, 6} = > {
+    char temp[te - ts + 1];
+    memset(temp, '\0', te - ts + 1);
+    strncpy(temp, &in[ts - in + 1 + 5], te - ts - 1 - 5);
+    printf("<%s>", temp);
+  };
 
-[ ]+"tf_idf:" digit{1}"."digit{6} =>{
-	char temp[te-ts+1];
-	memset(temp, '\0', te-ts+1);
-	strncpy(temp, &in[ts-in+1+7], te-ts-1-7);
-	printf("<%s>", temp);
-};
+  [] + "tf_idf:" digit { 1 }
+  "." digit{6} = > {
+    char temp[te - ts + 1];
+    memset(temp, '\0', te - ts + 1);
+    strncpy(temp, &in[ts - in + 1 + 7], te - ts - 1 - 7);
+    printf("<%s>", temp);
+  };
 
-any => {
-printf("%c", fc);
-};
-	*|;
+  any = > { printf("%c", fc); };
+  * | ;
 }%%
 
-
-
-%% write data;
+    %% write data;
 
 int scan(const char *in) {
-OUTPUT test_data;
-int cs = 0, act = 0;
-const char *p = in;
-const char *pe = in + strlen(in);
-const char *ts = NULL, *te = NULL;
-const char *eof = pe;
+  OUTPUT test_data;
+  int cs = 0, act = 0;
+  const char *p = in;
+  const char *pe = in + strlen(in);
+  const char *ts = NULL, *te = NULL;
+  const char *eof = pe;
 
   %% write init;
-  %% write exec;
+  % % write exec;
 
-if (cs == strings_error)
-  printf("Error near %zd\n", p - in);
-else if(ts)
-  printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
-return EXIT_SUCCESS;
+  if (cs == strings_error)
+    printf("Error near %zd\n", p - in);
+  else if (ts)
+    printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
+  return EXIT_SUCCESS;
 }
-
 
 int main(int argc, const char **argv) {
   int cs, res = 0;

@@ -26,7 +26,7 @@ enum {
 #define WS_DOTFILES (1 << 2)   /* per unix convention, .file is hidden */
 #define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
 
-// https://rosettacode.org/wiki/Walk_a_directory/Recursively#C
+/* https://rosettacode.org/wiki/Walk_a_directory/Recursively#C */
 int walk_recur(char *dname, regex_t *reg, int spec, char *array[],
                int array_index) {
   struct dirent *dent;

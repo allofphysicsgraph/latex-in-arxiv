@@ -18,7 +18,7 @@
 
 void print_context(char *filename, int offset, int match_len, int lhs_context,
                    int rhs_context) {
-  // printf("opening filename %s:",filename);
+  /* printf("opening filename %s:",filename); */
   int fd;
   struct stat s;
 

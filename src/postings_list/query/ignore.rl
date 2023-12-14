@@ -1,7 +1,5 @@
 %%{
   machine ignore;
 
-ignore = thebibliography |
-figure |
-"\\usepackage" braces;
+  ignore = thebibliography | figure | "\\usepackage" braces;
 }%%

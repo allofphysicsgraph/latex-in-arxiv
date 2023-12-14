@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
   i = 0;
   while (Documents[i] != NULL) {
     printf("%s\n", Documents[i]);
-    int res = 0;
+    /*   int res = 0; */
     int fd;
     struct stat s;
     fd = open(Documents[i], O_RDONLY);
@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
     free(Documents[i]);
     i++;
   }
-  update_tf_idf(i); // i is total_doc_count
+  update_tf_idf(i); /* i is total_doc_count */
                     /*
                       int running = 0;
                       while (running) {
@@ -132,7 +132,7 @@ int main(int argc, char **argv) {
   printf("sorting structs\n");
   srt();
   print_tokens();
-  // print_tf_idf();
+  /* print_tf_idf(); */
   printf("writing tf_idf scores to tf_idf\n");
   write_tf_idf();
   delete_all();

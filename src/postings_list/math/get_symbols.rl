@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "globals.h"
-#
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
-	//printf("index:%zd offset:%zd len:%zd\n",tok->index,ts-in,te-ts);
-  	//include latex "latex.rl";
-  	//include strings "vocab.rl";
-  	//include ignore "ignore.rl";
 
 int n;
 %%{

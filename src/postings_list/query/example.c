@@ -93,34 +93,62 @@ void write_tf_idf() {
             strerror(errno));
     exit(EXIT_FAILURE);
   }
+
   struct my_struct *s;
+  XXH64_canonical_t dst;
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
       /*   don't print tf_idf where the scores are all 0 ie a single document.
        */
-      fprintf(tf_idf, "id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id,
-              s->count, s->doc_count, s->tf_idf, s->token);
+      size_t i;
+      XXH64_canonicalFromHash(&dst, s->id);
+      fprintf(tf_idf, "id:");
+      for (i = 0; i < 8; i++) {
+        fprintf(tf_idf, "%02x", dst.digest[i]);
+      }
+      fprintf(tf_idf, ": count:%d docs:%d tf_idf:%f tok:%s\n", s->count,
+              s->doc_count, s->tf_idf, s->token);
     }
   } else {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-      fprintf(tf_idf, "id:%lx: count:%d docs:%d tok:%s\n", s->id, s->count,
-              s->doc_count, s->token);
+      size_t i;
+      XXH64_canonicalFromHash(&dst, s->id);
+      fprintf(tf_idf, "id:");
+      for (i = 0; i < 8; i++) {
+        fprintf(tf_idf, "%02x", dst.digest[i]);
+      }
+      fprintf(tf_idf, ": count:%d docs:%d tok:%s\n", s->count, s->doc_count,
+              s->token);
     }
   }
 }
 
 void print_tf_idf() {
   struct my_struct *s;
+  XXH64_canonical_t dst;
+  XXH64_canonicalFromHash(&dst, s->id);
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-      /* don't print tf_idf where the scores are all 0 ie a single document. */
-      printf("id:%lx: count:%d docs:%d tf_idf:%f tok:%s\n", s->id, s->count,
-             s->doc_count, s->tf_idf, s->token);
+      /*   don't print tf_idf where the scores are all 0 ie a single document.
+       */
+      size_t i;
+      XXH64_canonicalFromHash(&dst, s->id);
+      printf("id:");
+      for (i = 0; i < 8; i++) {
+        printf("%02x", dst.digest[i]);
+      }
+      printf(": count:%d docs:%d tf_idf:%f tok:%s\n", s->count, s->doc_count,
+             s->tf_idf, s->token);
     }
   } else {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
-      printf("id:%lx: count:%d docs:%d tok:%s\n", s->id, s->count, s->doc_count,
-             s->token);
+      size_t i;
+      XXH64_canonicalFromHash(&dst, s->id);
+      printf("id:");
+      for (i = 0; i < 8; i++) {
+        printf("%02x", dst.digest[i]);
+      }
+      printf(": count:%d docs:%d tok:%s\n", s->count, s->doc_count, s->token);
     }
   }
 }

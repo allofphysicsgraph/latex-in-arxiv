@@ -41,15 +41,16 @@ typedef struct output {
 /* filename hash offset and length */
 
 int scan(const char *in);
-% % {
+%%{
   machine strings;
-main:
-  = | *"./"(any - '\n') + '\n' = > {
+main	:= |* 
+	
+"./"(any - '\n') + '\n' => {
     memset(test_data.filename, '\0', 256);
     strncpy(test_data.filename, &buff[ts - in], te - ts - 1);
   };
 
-  [a - f0 - 9] { 16 } = > {
+  [a-f0-9]{16} => {
     char temp[te - ts + 1];
     memset(temp, '\0', te - ts + 1);
     strncpy(temp, &buff[ts - in], te - ts);
@@ -59,7 +60,7 @@ main:
     }
   };
 
-  [][0 - 9] + [] { 2 } = > {
+  []digit+[]{2} => {
     if (match) {
       char temp[te - ts + 1];
       memset(temp, '\0', te - ts + 1);
@@ -68,7 +69,7 @@ main:
     }
   };
 
-  [0 - 9] + '\n' = > {
+  digit+'\n' => {
     if (match) {
       char temp[te - ts + 1];
       memset(temp, '\0', te - ts + 1);
@@ -81,23 +82,22 @@ main:
   };
 
   any;
-  * | ;
-}
-% %
+  *| ;
+}%%
 
-    % % write data;
+    %% write data;
 
 int scan(const char *in) {
   OUTPUT test_data;
   int cs = 0;
-  /* act = 0; */
+  int act = 0;
   const char *p = in;
   const char *pe = in + strlen(in);
   const char *ts = NULL, *te = NULL;
   const char *eof = pe;
 
-  % % write init;
-  % % write exec;
+  %% write init;
+  %% write exec;
 
   if (cs == strings_error)
     printf("Error near %zd\n", p - in);

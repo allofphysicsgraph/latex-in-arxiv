@@ -27,8 +27,7 @@ int in_size = 0;
   include latex "latex.rl";
   include context "context.rl";
 
-main:
-  = | *
+main :=|*
 
     derivation => {
     if ((te - ts) < 1000) {
@@ -90,7 +89,7 @@ main:
     }
   };
   any;
-  * | ;
+  *| ;
 }%%
 
     %% write data;

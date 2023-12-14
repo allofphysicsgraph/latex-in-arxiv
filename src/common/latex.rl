@@ -286,7 +286,7 @@ parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 latex = "," |
 eq | 
 math |
-"$" (any-"$"){1,80} "$" |
+"\\keywords" braces |
 "\\ " |
 "\\!" |
 "\\" |

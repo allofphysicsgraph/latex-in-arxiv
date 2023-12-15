@@ -126,7 +126,6 @@ void write_tf_idf() {
 void print_tf_idf() {
   struct my_struct *s;
   XXH64_canonical_t dst;
-  XXH64_canonicalFromHash(&dst, s->id);
   if (avg_tfidf() > .05) {
     for (s = tokens; s != NULL; s = (struct my_struct *)(s->hh.next)) {
       /*   don't print tf_idf where the scores are all 0 ie a single document.

@@ -15,7 +15,11 @@ To run the application, within the Docker image run `/opt/scanner.out .`
 To recompile the scanner, within the Docker image run
 ```bash
 cd latex-in-arxiv/postings_list/
-make scanner
+make scanner 
+make read_tf_idf   
+./scanner.out .   
+./scanner.out . offsets  
+./read_tf_idf.out tf_idf    
 ```
 
 ## so what?

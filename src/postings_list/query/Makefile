@@ -2,8 +2,7 @@
 #CFLAGS=-g -fsanitize=undefined -fno-sanitize-recover=all
 
 CC=gcc
-CFLAGS=-g 
-
+CFLAGS=-g -Wall
 scanner:
 	cp ../../common/sound1.tex .
 	ragel -I../../common -m -G2 scanner.rl

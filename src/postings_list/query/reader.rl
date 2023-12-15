@@ -90,7 +90,7 @@ main	:= |*
 int scan(const char *in) {
   OUTPUT test_data;
   int cs = 0;
-  int act = 0;
+  /* int act = 0; */
   const char *p = in;
   const char *pe = in + strlen(in);
   const char *ts = NULL, *te = NULL;
@@ -109,8 +109,6 @@ int scan(const char *in) {
 
 int reader(const char *source) {
   strncpy(filename, source, 256);
-   int cs; 
-   int res = 0; 
   int fd;
   fd = open(source, O_RDONLY);
   if (fd < 0)

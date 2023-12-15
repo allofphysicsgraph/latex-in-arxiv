@@ -41,7 +41,8 @@ main :=|*
       int rhs =
           MIN(offset + rhs_ctxt,
               in_size); /* in_size is the input length passed to the scanner. */
-      int context_len = te - ts + 1 + lhs_ctxt + rhs_ctxt;
+      int context_len = te - ts + 1 + rhs-lhs;
+      printf("<<<%d>>>",context_len);
       char context[context_len];
       memset(context, '\0', context_len);
       memcpy(context, &in[lhs], context_len - 1);
@@ -86,7 +87,7 @@ main :=|*
       int rhs =
           MIN(offset + rhs_ctxt,
               in_size); /* in_size is the input length passed to the scanner. */
-      int context_len = te - ts + 1 + lhs_ctxt + rhs_ctxt;
+      int context_len = te - ts + 1 + rhs-lhs;
       char context[context_len];
       memset(context, '\0', context_len);
       memcpy(context, &in[lhs], context_len - 1);

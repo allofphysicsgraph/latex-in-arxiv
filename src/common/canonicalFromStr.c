@@ -22,10 +22,10 @@ static int charToHex(char c) {
 /* CanonicalFromString in cli/xxhsum.c */
 int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash) {
   unsigned char dst[16];
-  int dstSize = 8;
+  size_t dstSize = 8;
   int h0, h1;
-	size_t i = 0;
-  for ( i = 0; i < dstSize; ++i) {
+  size_t i = 0;
+  for (i = 0; i < dstSize; ++i) {
     h0 = charToHex(hashStr[i * 2 + 0]);
     /* printf("<h0>%x\n",h0); */
     h1 = charToHex(hashStr[i * 2 + 1]);

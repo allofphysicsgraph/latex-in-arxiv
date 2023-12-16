@@ -24,6 +24,7 @@ int in_size = 0;
   include strings "vocab.rl";
   include latex "latex.rl";
   include context "context.rl";
+  include transformations "transformations.rl";
 
 main :=|*
     inline => {

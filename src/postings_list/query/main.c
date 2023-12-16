@@ -62,10 +62,13 @@ int main(int argc, char **argv) {
     break;
   case WALK_BADIO:
     printf("IO error");
+    break;
   case WALK_BADPATTERN:
     printf("Bad pattern");
+    break;
   case WALK_NAMETOOLONG:
     printf("Filename too long");
+    break;
   default:
     printf("Unknown error?");
   }

@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define MAX_FILE_COUNT 100000
+#define MAX_FILE_COUNT 50000
 
 enum {
   LOOKUP = 0, /* default - looking rather than defining. */

@@ -17,7 +17,6 @@
 
 int i;
 
-#define MAX_FILE_COUNT 1500
 enum {
   LOOKUP = 0, /* default - looking rather than defining. */
   WALK_OK = 0,
@@ -34,7 +33,7 @@ enum {
 #define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
 
 int main(int argc, char **argv) {
-  char *Documents[MAX_FILE_COUNT];
+  char *Documents[MAX_DOCUMENT_COUNT];
   int i = 0;
   int doc_index = 0;
   memset(Documents, 0, sizeof(Documents));

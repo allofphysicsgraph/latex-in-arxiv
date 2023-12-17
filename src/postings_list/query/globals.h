@@ -4,11 +4,11 @@
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
 
-#define MAX_DOCUMENT_COUNT 10250
+#define MAX_DOCUMENT_COUNT 100000
 #define MAX_FILE_PATH_LENGTH 256
 
 #define MAX_TOKEN_COUNT 100000
-#define MAX_TOKEN_LENGTH 2000
+#define MAX_TOKEN_LENGTH 1200
 
 void print_context(char *filename, int offset, int match_len, int lhs_context,
                    int rhs_context);

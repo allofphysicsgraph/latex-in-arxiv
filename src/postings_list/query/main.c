@@ -133,7 +133,7 @@ int main(int argc, char **argv) {
 
   printf("sorting structs\n");
   srt();
-  print_tokens();
+  /* print_tokens(); */
   /* print_tf_idf(); */
   printf("writing tf_idf scores to tf_idf\n");
   write_tf_idf();

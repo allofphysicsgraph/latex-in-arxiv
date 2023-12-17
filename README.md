@@ -16,7 +16,7 @@ To recompile the scanner, within the Docker image run
 ```bash
 cd latex-in-arxiv/src/postings_list/query
 make scanner 
-make read_tf_idf   
+make read_tf_idf   # the vocabulary for TF-IDF uses the tokens from parsed Latex
 ./scanner.out .   
 ./scanner.out . offsets  
 ./read_tf_idf.out tf_idf    

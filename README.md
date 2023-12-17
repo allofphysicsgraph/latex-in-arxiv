@@ -20,6 +20,7 @@ make read_tf_idf
 ./scanner.out .   
 ./scanner.out . offsets  
 ./read_tf_idf.out tf_idf    # the vocabulary for TF-IDF uses the tokens from parsed Latex
+                            # TF-IDF is for identify the most relevant variable to find the definition for in a paper
 ```
 
 ## so what?

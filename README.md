@@ -14,7 +14,7 @@ To run the application, within the Docker image run `/opt/scanner.out .`
 
 To recompile the scanner, within the Docker image run
 ```bash
-cd latex-in-arxiv/postings_list/
+cd latex-in-arxiv/src/postings_list/query
 make scanner 
 make read_tf_idf   
 ./scanner.out .   

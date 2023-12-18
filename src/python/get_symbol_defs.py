@@ -142,7 +142,7 @@ if __name__ == "__main__":
     # using mwe tokenizer for now
     latex = read_file("../common/latex.rl")
     latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|', latex) if x.strip()]
-    latex = [x for x in latex if "\\" in x and not re.findall(":>|n--|n++|\[", x)]
+    latex = [x for x in latex if "\\" in x ]
     latex = set(latex)
     latex = sorted(latex, key=lambda x: -len(x))
     latex = [x.replace("\\\\", "\\") for x in latex]

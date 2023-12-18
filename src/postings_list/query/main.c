@@ -15,7 +15,6 @@
 #include <time.h>
 #include <unistd.h>
 
-int i;
 
 enum {
   LOOKUP = 0, /* default - looking rather than defining. */

@@ -2,7 +2,7 @@
 #CFLAGS=-g -fsanitize=undefined -fno-sanitize-recover=all
 
 CC=gcc
-CFLAGS=-g -Wall -Wextra
+CFLAGS=-g -Wall -Wextra 
 scanner:
 	cp ../../common/sound1.tex .
 	ragel -I../../common -m -G2 scanner.rl

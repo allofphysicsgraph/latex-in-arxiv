@@ -32,7 +32,7 @@ void add_token(XXH64_hash_t token_id, const char *token, int tok_len,
       strncpy(s->current_file, filename, 256);
     }
   }
-  strcpy(s->token, token);
+  strncpy(s->token, token,MAX_TOKEN_LENGTH);
 }
 
 struct my_struct *find_token(XXH64_hash_t token_id) {

@@ -22,7 +22,7 @@ enum {
 #define WS_NONE 0
 #define WS_RECURSIVE (1 << 0)
 #define WS_DEFAULT WS_RECURSIVE
-#define WS_FOLLOWLINK (1 << 1) /* follow symlinks */
+//#define WS_FOLLOWLINK (1 << 1) /* follow symlinks */
 #define WS_DOTFILES (1 << 2)   /* per unix convention, .file is hidden */
 #define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
 
@@ -61,8 +61,8 @@ int walk_recur(char *dname, regex_t *reg, int spec, char *array[],
     }
 
     /* don't follow symlink unless told so */
-    if (S_ISLNK(st.st_mode) && !(spec & WS_FOLLOWLINK))
-      continue;
+    //if (S_ISLNK(st.st_mode) && !(spec & WS_FOLLOWLINK))
+      //continue;
 
     /* will be false for symlinked dirs */
     if (S_ISDIR(st.st_mode)) {

@@ -34,7 +34,7 @@ RUN ./common/install_ragel.sh
 ENV PATH="${PATH}:/usr/local/ragel7/bin"
 WORKDIR /opt/postings_list/query
 RUN make scanner
-RUN  make read_tf_idf
+#RUN  make read_tf_idf
 
 
 RUN echo "alias python=python3" > /root/.bashrc

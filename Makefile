@@ -3,7 +3,7 @@ CC=gcc
 CFLAGS = -Iopenssl/include -g
 LDFLAGS = -Lopenssl/
 LDLIBS = -lcrypto
-INSTALL="sudo apt install -y"
+INSTALL="apt install -y"
 
 
 help:
@@ -26,9 +26,9 @@ test:
 
 # Docker on linux
 docker:
-	sudo service docker start
-	sudo docker build -t $(mytag) .
-	sudo docker run -it  --rm $(mytag) /bin/bash
+	service docker start
+	docker build -t $(mytag) .
+	docker run -it  --rm $(mytag) /bin/bash
 
 # Docker on Mac
 docmac: dockermac_build dockermac_run

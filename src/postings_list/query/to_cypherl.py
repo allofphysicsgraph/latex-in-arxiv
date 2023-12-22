@@ -2,7 +2,7 @@
 #will be used to generate cypherl file
 import pandas as pd
 
-df = pd.read_csv("offsets", sep="\s+", header=None)
+df = pd.read_csv("offsets", skiprows=1, sep="\s+", header=None)
 zf = pd.read_csv(
     "tf_idf", sep="id:|: count:| docs:| tok:", engine="python", header=None
 )

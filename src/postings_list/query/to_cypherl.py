@@ -1,30 +1,52 @@
 # coding: utf-8
-#will be used to generate cypherl file
+# will be used to generate cypherl file
+from collections import defaultdict
+from time import sleep
 import pandas as pd
-
-df = pd.read_csv("offsets", skiprows=1, sep="\s+", header=None)
-zf = pd.read_csv(
-    "tf_idf", sep="id:|: count:| docs:| tok:", engine="python", header=None
-)
-zf = zf.loc[:, [1, 2, 4]]
-zf.set_index(1, inplace=True)
 import re
 
-zf.columns = ["count", "token"]
-zf = zf[
-    zf.token.apply(lambda x: True if re.findall("\$|\\|derivation", str(x)) else False)
-]
-print(zf)
-"""
-zf.columns = [0,1]
-pd.concat(df,zf)
-pd.concat([df,zf])
-nf = len(df)
-df = pd.merge(df,zf,left_on=0,right_on=0)
-df.columns = [1,2]
-df.loc[:,[0,1,2]]
-df.loc[:,[0,1,2]].to_csv('graph_test.csv',index=False,sep='\t')
-df.columns=['Source','Label','Target']
-df.columns=['Target','Label','Source']
-df.to_csv('/home/user/Desktop/graph_test2.csv',index=False,sep='\t')
-"""
+with open("offsets", "r") as f:
+    offsets = re.split("(\.\/.*?tex)\n", f.read())
+
+offsets = [x for x in offsets if x.strip()]
+filenames = offsets[::2]
+rows = offsets[1::2]
+
+
+files_to_offsets = defaultdict(pd.DataFrame)
+for ix, fileData in enumerate(rows):
+    tuples = []
+    for row in rows[ix].splitlines():
+        tuples.append(re.split("\s+", row))
+    tmp_df = pd.DataFrame(tuples)
+    tmp_df.columns = ["id", "offset", "length"]
+    files_to_offsets[filenames[ix]] = tmp_df
+
+with open("tf_idf", "r") as f:
+    data = f.read()
+    data = data.replace("\\n", "\\\\n")
+lines = re.split("\\nid:|^id:", data)
+tf_idf_out = []
+for ix in range(len(lines)):  # len(lines)):
+    resp = re.split(": count:| docs:| tf_idf:| tok:", lines[ix])
+    if len(resp) == 5:
+        tf_idf_out.append(resp)
+
+tf_idf_df = pd.DataFrame(tf_idf_out)
+df = pd.DataFrame()
+sm = 0
+for k, v in files_to_offsets.items():
+    temp_df = v
+    v["filename"] = k
+    if len(df) == 0:
+        df = v
+        sm += len(v)
+    else:
+        df = pd.concat([df, v])
+        sm += len(v)
+
+tf_idf_df.columns = ["id", "count", "doc_count", "tf_idf", "token"]
+zf = pd.merge(df, tf_idf_df, left_on="id", right_on="id")
+
+len(zf)
+print(zf.head())

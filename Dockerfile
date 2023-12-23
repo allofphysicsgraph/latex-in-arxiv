@@ -40,6 +40,7 @@ RUN make scanner
 RUN echo "alias python=python3" > /root/.bashrc
 RUN echo "export PATH=$PATH:/usr/local/ragel7/bin" >> /root/.bashrc
 
+RUN pip3 install pandas
 #RUN /bin/bash -l /root/.bashrc
 
 

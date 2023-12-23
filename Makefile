@@ -16,7 +16,6 @@ help:
 	@echo "== inside the container =="
 	@echo "make openssl"
 	@echo "make curl"
-	@echo "make Kore"
 	@echo "make sampledata"
 
 

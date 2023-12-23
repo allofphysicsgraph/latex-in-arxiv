@@ -47,6 +47,9 @@ for k, v in files_to_offsets.items():
 
 tf_idf_df.columns = ["id", "count", "doc_count", "tf_idf", "token"]
 zf = pd.merge(df, tf_idf_df, left_on="id", right_on="id")
+zf['length'] = zf['length'].apply(lambda x: int(x))
+zf = zf[zf['length']>1] 
+zf = zf[zf.token.apply(lambda x: True if re.findall('\$.*?\$',x) else False)] 
 
-len(zf)
+print(len(zf))
 print(zf.head())

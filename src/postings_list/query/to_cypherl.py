@@ -73,11 +73,11 @@ with open("draft.cypherl", "a+") as f_out:
             token = resp[7].replace("\\", "\\\\")
             # resp)
             f_out.write(f"CREATE (f:File {{path:'{file_name}'}})")
-            
+
             f_out.write(
                 f", (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset},token:'{token}'}})"
             )
-            f_out.write('\n')
+            f_out.write("\n")
             f_out.write("Create (f)-[r:file_has_token]->(t);")
             f_out.write("\n")
 

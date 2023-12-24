@@ -54,12 +54,29 @@ zf = zf[zf.token.apply(lambda x: True if re.findall('\$.*?\$',x) else False)]
 zf = zf[zf.token.apply(lambda x: False if re.findall('abstract',x) else True)] 
 print(len(zf))
 print(zf.head())
-#from pudb import set_trace
+from pudb import set_trace
+#file_paths = set(zf.filename.tolist())
+X = zf.itertuples()
 #set_trace()
-file_paths = set(zf.filename.tolist())
 with open('draft.cypherl','a+') as f_out:
-    for fp in file_paths:
-        f_out.write(f"CREATE (f:File {{path:'{fp}'}});")
-        f_out.write('\n')
+    while True:
+        try:
+            resp = next(X)[1:]
+            token_id = resp[0]
+            offset = resp[1]
+            length = resp[2]
+            file_name = resp[3]
+            token_count = resp[4]
+            docs_count = resp[5]
+            tf_idf = resp[6]
+            token = resp[7].replace('\\','\\\\')
+            #resp)
+            f_out.write(f"CREATE (f:File {{path:'{file_name}'}});")
+            f_out.write('\n')
+            f_out.write(f"CREATE (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset},token:'{token}'}});")
+            f_out.write('\n')
+
+        except StopIteration:
+            break
 
 

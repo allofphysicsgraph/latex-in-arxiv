@@ -70,15 +70,20 @@ with open("draft.cypherl", "a+") as f_out:
             token_count = resp[4]
             docs_count = resp[5]
             tf_idf = resp[6]
-            token = resp[7].replace("\\", "\\\\")
+            # token = resp[7].replace("\\", "\\\\")
+            # token = resp[7].replace('{','\\\\{')
+            # token = resp[7].replace('\n','\\n')
+
             # resp)
             f_out.write(f"CREATE (f:File {{path:'{file_name}'}})")
 
             f_out.write(
-                f", (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset},token:'{token}'}})"
+                f", (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset}}})"
             )
-            f_out.write("\n")
-            f_out.write("Create (f)-[r:file_has_token]->(t);")
+            # f_out.write("\n")
+            f_out.write(" Create (f)-[r:file_has_token]->(t);")
+            # f_out.write("\n")
+            # f_out.write("RETURN f, t ,t;")
             f_out.write("\n")
 
         except StopIteration:

@@ -54,3 +54,12 @@ zf = zf[zf.token.apply(lambda x: True if re.findall('\$.*?\$',x) else False)]
 zf = zf[zf.token.apply(lambda x: False if re.findall('abstract',x) else True)] 
 print(len(zf))
 print(zf.head())
+#from pudb import set_trace
+#set_trace()
+file_paths = set(zf.filename.tolist())
+with open('draft.cypherl','a+') as f_out:
+    for fp in file_paths:
+        f_out.write(f"CREATE (f:File {{path:'{fp}'}});")
+        f_out.write('\n')
+
+

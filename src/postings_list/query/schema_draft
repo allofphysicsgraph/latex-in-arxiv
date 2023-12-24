@@ -1,0 +1,19 @@
+#bp
+node:file
+  properties:
+  - file path
+  - hash of the file
+
+node:token
+  properties:
+  - token length
+  - hash of the token
+  - token offset in file
+  - latex type: environment/math/display text/macros/comment
+
+directed edge:file_has_token
+
+************************************************
+queries for the property graph:
+- return the number of tokens in file
+- return the number of documents with token

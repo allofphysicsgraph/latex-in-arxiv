@@ -48,17 +48,18 @@ for k, v in files_to_offsets.items():
 
 tf_idf_df.columns = ["id", "count", "doc_count", "tf_idf", "token"]
 zf = pd.merge(df, tf_idf_df, left_on="id", right_on="id")
-zf['length'] = zf['length'].apply(lambda x: int(x))
-zf = zf[zf['length']>1] 
-zf = zf[zf.token.apply(lambda x: True if re.findall('\$.*?\$',x) else False)] 
-zf = zf[zf.token.apply(lambda x: False if re.findall('abstract',x) else True)] 
+zf["length"] = zf["length"].apply(lambda x: int(x))
+zf = zf[zf["length"] > 1]
+zf = zf[zf.token.apply(lambda x: True if re.findall("\$.*?\$", x) else False)]
+zf = zf[zf.token.apply(lambda x: False if re.findall("abstract", x) else True)]
 print(len(zf))
 print(zf.head())
 from pudb import set_trace
-#file_paths = set(zf.filename.tolist())
+
+# file_paths = set(zf.filename.tolist())
 X = zf.itertuples()
-#set_trace()
-with open('draft.cypherl','a+') as f_out:
+# set_trace()
+with open("draft.cypherl", "a+") as f_out:
     while True:
         try:
             resp = next(X)[1:]
@@ -69,14 +70,16 @@ with open('draft.cypherl','a+') as f_out:
             token_count = resp[4]
             docs_count = resp[5]
             tf_idf = resp[6]
-            token = resp[7].replace('\\','\\\\')
-            #resp)
-            f_out.write(f"CREATE (f:File {{path:'{file_name}'}});")
+            token = resp[7].replace("\\", "\\\\")
+            # resp)
+            f_out.write(f"CREATE (f:File {{path:'{file_name}'}})")
+            
+            f_out.write(
+                f", (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset},token:'{token}'}})"
+            )
             f_out.write('\n')
-            f_out.write(f"CREATE (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset},token:'{token}'}});")
-            f_out.write('\n')
+            f_out.write("Create (f)-[r:file_has_token]->(t);")
+            f_out.write("\n")
 
         except StopIteration:
             break
-
-

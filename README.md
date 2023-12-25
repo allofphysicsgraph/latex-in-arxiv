@@ -56,8 +56,12 @@ In the directory `latex-in-arxiv/get_sample_data` use
 ```bash
 make get_sample_data
 ```
+### ArXiV API calls
+```
+# curl http://export.arxiv.org/api/query?search_query=all:rigorous%20derivation  
+```
 
-### another option is the full arxiv data available from an S3 bucket
+### bulk processing: another option is the full arxiv data available from an S3 bucket
 for details, see <https://arxiv.org/help/bulk_data_s3>
 ```bash
 # s3cmd get s3://arxiv/src/arXiv_src_manifest.xml . --requester-pays  

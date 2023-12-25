@@ -15,7 +15,6 @@
 #include <time.h>
 #include <unistd.h>
 
-
 enum {
   LOOKUP = 0, /* default - looking rather than defining. */
   WALK_OK = 0,
@@ -85,8 +84,37 @@ int main(int argc, char **argv) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
+
+      FILE *fname;                          /* input-file pointer */
+      char *fname_file_name = "file_xxh64"; /* input-file name    */
+
+      fname = fopen(fname_file_name, "a+");
+      if (fname == NULL) {
+        fprintf(stderr, "couldn't open file '%s'; %s\n", fname_file_name,
+                strerror(errno));
+        exit(EXIT_FAILURE);
+      }
+      {
+        fprintf(fname, "%s  ", Documents[i]);
+
+        XXH64_hash_t test_hash = XXH64(buff, s.st_size, 0);
+        size_t i = 0;
+        XXH64_canonical_t dst;
+        XXH64_canonicalFromHash(&dst, test_hash);
+        for (i = 0; i < 8; i++) {
+          fprintf(fname, "%02x", dst.digest[i]);
+        }
+        fprintf(fname, "%s", "\n");
+      }
+      if (fclose(fname) == EOF) { /* close input file   */
+        fprintf(stderr, "couldn't close file '%s'; %s\n", fname_file_name,
+                strerror(errno));
+        exit(EXIT_FAILURE);
+      }
+
       switch (argc) {
       case 2:
+
         scanner((char *)buff, Documents[i]);
         break;
 

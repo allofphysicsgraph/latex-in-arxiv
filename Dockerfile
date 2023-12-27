@@ -3,7 +3,7 @@
 # docker run -it --rm -v `pwd`:/scratch latex:latest /bin/bash
 
 # https://hub.docker.com/r/phusion/baseimage/tags
-FROM phusion/baseimage:18.04-1.0.0
+FROM phusion/baseimage:jammy-1.0.1
 
 RUN apt-get update && \
     apt-get install -y \

@@ -75,7 +75,7 @@ with open("draft.cypherl", "a+") as f_out:
             # token = resp[7].replace('\n','\\n')
 
             # resp)
-            f_out.write(f"CREATE (f:File {{path:'{file_name}'}})")
+            f_out.write(f"MERGE (f:File {{path:'{file_name}'}})")
 
             f_out.write(
                 f", (t:Token {{length:{length},token_count:{token_count},docs_count:{docs_count},tf_idf:{tf_idf},hash:'{token_id}',offset:{offset}}})"

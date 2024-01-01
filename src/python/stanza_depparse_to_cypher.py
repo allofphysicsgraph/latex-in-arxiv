@@ -13,6 +13,9 @@ from nltk.tokenize import mwe
 from nltk import pos_tag
 
 
+print("RUN make in ../postings_list/tok_to_id/ to generate sample_data")
+
+
 #!pip install stanza
 def read_file(f_name):
     with open("{}".format(f_name), "r", encoding="ISO-8859-1") as f:
@@ -90,7 +93,7 @@ if 1 == 1:
     results = defaultdict(list)
     from sys import argv
 
-    file_data = read_file("../common/sound1.tex")
+    file_data = read_file("/tmp/sample_data")
     for paragraph in get_paragraphs(file_data):
         results["paragraphs"].append(paragraph)
 
@@ -130,25 +133,21 @@ if 1 == 1:
         print(k, v)
 
 
-data = read_file("../postings_list/query/tf_idf")
-
 tf_idf_tokens = [
-    x.strip()
-    for x in re.split("id:[a-f0-9]{16}: count:\d+\sdocs:\d+\s+tok:", data)
-    if x.strip()
+    x.strip() for x in re.findall("<[0-9a-f]{16}>", file_data) if x.strip()
 ]
-
-tf_idf_tokens
 seen = set()
 tok_lst = []
 keep = []
 for sent in sentences:
-    match = 0
+    match = False
     for tok in set(tf_idf_tokens):
-        if re.findall(r"{}".format(re.escape(tok)), sent):
+        if re.findall(tok, sent):
+            match = True
             sent = sent.replace(tok, "LTX{}".format(tf_idf_tokens.index(tok)))
-    # keep.append(tok)
-    keep.append(sent)
+    if match:
+        keep.append(sent)
+        match = False
 
 for s in keep:
     print(s)

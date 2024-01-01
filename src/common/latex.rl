@@ -284,6 +284,7 @@ parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 latex = eq | 
+ "$" (any-"$"){1,80} "$"  | 
 math |
 "\\keywords" braces |
 "\\acute" |

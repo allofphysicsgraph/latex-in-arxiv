@@ -29,8 +29,8 @@ int in_size = 0;
 main :=|*
     inline => {
 		
-		int lhs_ctxt = 50;
-		int rhs_ctxt = 75;
+		int lhs_ctxt = 0;
+		int rhs_ctxt = 0;
     
 		if ((te - ts) < 1000) {
       XXH64_canonical_t dst;
@@ -62,6 +62,7 @@ main :=|*
       fprintf(hash_test, " %d  %d\n", offset, length);
 
       /* hash token + context for post-processing */
+      if((lhs_ctxt>0) | (rhs_ctxt>0))
       test_hash = XXH64(context, context_len, 0);
       add_token(test_hash, context, context_len, filename);
       i = 0;
@@ -73,50 +74,6 @@ main :=|*
     }
   };
 
-    derivation => {
-		
-		int lhs_ctxt = 50;
-		int rhs_ctxt = 75;
-    
-		if ((te - ts) < 1000) {
-      XXH64_canonical_t dst;
-      char temp[te - ts + 1];
-      memset(temp, '\0', te - ts + 1);
-      int offset = ts - in;
-      int length = te - ts;
-      int lhs = MAX(offset - lhs_ctxt, 0);
-      int rhs =
-          MIN(offset + rhs_ctxt,
-              in_size); /* in_size is the input length passed to the scanner. */
-      int context_len = te - ts + 1 + rhs-lhs;
-      char context[context_len];
-      memset(context, '\0', context_len);
-      memcpy(context, &in[lhs], context_len - 1);
-      /* printf("<<<context:%s>>>\n", context); */
-
-      /* hash original token */
-      strncpy(temp, &in[offset], length);
-      XXH64_hash_t test_hash = XXH64(temp, length, 0);
-      add_token(test_hash, temp, length, filename);
-
-      size_t i = 0;
-      XXH64_canonicalFromHash(&dst, test_hash);
-      for (i = 0; i < 8; i++) {
-        fprintf(hash_test, "%02x", dst.digest[i]);
-      }
-      fprintf(hash_test, " %d  %d\n", offset, length);
-
-      /* hash token + context for post-processing */
-      test_hash = XXH64(context, context_len, 0);
-      add_token(test_hash, context, context_len, filename);
-      i = 0;
-      XXH64_canonicalFromHash(&dst, test_hash);
-      for (i = 0; i < 8; i++) {
-        fprintf(hash_test, "%02x", dst.digest[i]);
-      }
-      fprintf(hash_test, " %d  %d\n", offset, length);
-    }
-  };
 
   latex  => {
     if ((te - ts) < 1000) {

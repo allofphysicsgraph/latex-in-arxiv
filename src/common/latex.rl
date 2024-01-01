@@ -283,43 +283,9 @@ right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
-latex = "," |
-eq | 
+latex = eq | 
 math |
 "\\keywords" braces |
-"\\ " |
-"\\!" |
-"\\" |
-'\\"' |
-"\\#" |
-"\\%" |
-"\\&" |
-"\\'" |
-"\\(" |
-"\\)" |
-"\\*" |
-"\\+" |
-"\\," |
-"\\-" |
-"\\." |
-"\\/" |
-"\\:" |
-"\\;" |
-"\\<" |
-"\\=" |
-"\\>" |
-"\\?" |
-"\\@" |
-"\\[" |
-"\]" |
-"\^" |
-"\_" |
-"\`" |
-"\{" |
-"\|" |
-"\}" |
-"\~" |
-"\$" |
 "\\acute" |
 "\\addcontentsline" |
 "\\address" |

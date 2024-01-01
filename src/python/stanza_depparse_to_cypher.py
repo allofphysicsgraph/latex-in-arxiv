@@ -2,6 +2,158 @@
 import stanza
 import pandas as pd
 
+from collections import defaultdict
+from nltk.tokenize import texttiling
+from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
+import nltk
+from os import listdir
+import re
+from time import sleep
+from nltk.tokenize import mwe
+from nltk import pos_tag
+
+
+#!pip install stanza
+def read_file(f_name):
+    with open("{}".format(f_name), "r", encoding="ISO-8859-1") as f:
+        data = f.read()
+    return data
+
+
+tokenizer = mwe.MWETokenizer(separator="")
+
+
+def add_new_token(string):
+    tokenizer.add_mwe("{}".format(string))
+
+
+def get_paragraphs(file_data):
+    paragraphs = txttlng_tokenizer.tokenize(file_data)
+    return paragraphs
+
+
+def sentences_from_file(file_data):
+    sentences = tok_cls.sentences_from_text(file_data)
+    return sentences
+
+
+def sentences_from_paragraphs(paragraphs):
+    output = []
+    for paragraph in paragraphs:
+        sentences = tok_cls.sentences_from_text(paragraph)
+        for sentence in sentences:
+            output.append(sentence)
+    return output
+
+
+def symbol_concordance(sentences):
+    concordance_dict = defaultdict(list)
+    for sentence in sentences:
+        maybe_definition = re.findall("\$.*?\$", sentence)
+        if maybe_definition:
+            for match in maybe_definition:
+                concordance_dict[match].append(sentence)
+    return concordance_dict
+
+
+def get_symbol_definition(concordance_dict):
+    symbol_definitions = defaultdict(set)
+    labels = [f"DEF{x}" for x in range(100)]
+    grammar = r"""
+        DEF0: {<DT><JJ><NN><JJ><NN>}
+
+    """
+    cp = nltk.chunk.RegexpParser(grammar)
+    for symbol, sentences in concordance.items():
+        for sent in sentences:
+            [add_new_token(x) for x in re.findall("\$.*?\$", sent)]
+            resp = tokenizer.tokenize(sent)
+            resp = [x for x in resp if x.strip()]
+            test = [x for x in resp if "$" in x]
+            if test:
+                output = cp.parse(pos_tag(resp))
+                for subtree in output.subtrees(filter=lambda t: t.label() in labels):
+                    # print(subtree)
+                    DEF = " ".join([x[0] for x in subtree])
+                    if re.findall("\$.*?\$", DEF):
+                        if symbol in DEF:
+                            symbol_definitions[symbol].add(DEF)
+    return symbol_definitions
+
+
+if 1 == 1:
+    txttlng_tokenizer = texttiling.TextTilingTokenizer(
+        w=20, k=6, smoothing_width=2, smoothing_rounds=5
+    )
+    punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
+    tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
+    results = defaultdict(list)
+    from sys import argv
+
+    file_data = read_file("../common/sound1.tex")
+    for paragraph in get_paragraphs(file_data):
+        results["paragraphs"].append(paragraph)
+
+    for sentence in sentences_from_paragraphs(results["paragraphs"]):
+        results["sentences_from_paragraphs"].append(sentence)
+
+    # there are cases where extracting the paragraphs fail is too slow
+    # or may not be of interest
+
+    for sentence in sentences_from_file(file_data):
+        results["sentences_file"].append(sentence)
+
+    sentences = results["sentences_from_paragraphs"]
+    concordance = symbol_concordance(sentences)
+    # using mwe tokenizer for now
+    latex = read_file("../common/latex.rl")
+    latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|', latex) if x.strip()]
+    latex = [x for x in latex if "\\" in x]
+    latex = set(latex)
+    latex = sorted(latex, key=lambda x: -len(x))
+    latex = [x.replace("\\\\", "\\") for x in latex]
+
+    vocab = read_file("../postings_list/query/vocab.rl")
+    vocab = [x for x in re.split('"|\n|\|', vocab) if x.strip()]
+    vocab = set(vocab)
+    vocab = sorted(vocab, key=lambda x: -len(x))
+
+    for value in latex:
+        add_new_token(value)
+
+    for value in vocab:
+        add_new_token(value)
+    tokens = tokenizer.tokenize(file_data)
+    # print(concordance)
+    symbol_defs = get_symbol_definition(concordance)
+    for k, v in symbol_defs.items():
+        print(k, v)
+
+
+data = read_file("../postings_list/query/tf_idf")
+
+tf_idf_tokens = [
+    x.strip()
+    for x in re.split("id:[a-f0-9]{16}: count:\d+\sdocs:\d+\s+tok:", data)
+    if x.strip()
+]
+
+tf_idf_tokens
+seen = set()
+tok_lst = []
+keep = []
+for sent in sentences:
+    match = 0
+    for tok in set(tf_idf_tokens):
+        if re.findall(r"{}".format(re.escape(tok)), sent):
+            sent = sent.replace(tok, "LTX{}".format(tf_idf_tokens.index(tok)))
+    # keep.append(tok)
+    keep.append(sent)
+
+for s in keep:
+    print(s)
+    print("\n", "*" * 50)
+
 nlp = stanza.Pipeline("en", processors="tokenize,mwt,pos,lemma,depparse")
 doc = nlp(
     "Two dimensionless fundamental physical constants, the fine structure constant X."

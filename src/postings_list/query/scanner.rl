@@ -98,7 +98,7 @@ main :=|*
 }%%
 
     %% write data;
-int scanner(const char *in, char *filename) {
+int scanner(const char *in, char *filename,int length) {
   in_size = strlen(in);
   FILE *hash_test;                       /* output-file pointer */
   char *hash_test_file_name = "offsets"; /* output-file name    */
@@ -114,7 +114,7 @@ int scanner(const char *in, char *filename) {
 
   int cs = 0, act = 0;
   const char *p = in;
-  const char *pe = in + strlen(in);
+  const char *pe = in + length;
   const char *ts = NULL, *te = NULL;
   const char *eof = pe;
 

@@ -115,7 +115,7 @@ int main(int argc, char **argv) {
       switch (argc) {
       case 2:
 
-        scanner((char *)buff, Documents[i]);
+        scanner((char *)buff, Documents[i],s.st_size);
         break;
 
       case 3:

@@ -99,7 +99,7 @@ main :=|*
 
     %% write data;
 int scanner(const char *in, char *filename,int length) {
-  in_size = strlen(in);
+  in_size = length;
   FILE *hash_test;                       /* output-file pointer */
   char *hash_test_file_name = "offsets"; /* output-file name    */
 

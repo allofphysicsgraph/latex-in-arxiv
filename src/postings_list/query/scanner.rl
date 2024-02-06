@@ -34,10 +34,7 @@ int write_to_file(const char *filename, const char *format, ...);
   include transformations "transformations.rl";
 
 main :=|*
-
-    inline => {
-int lhs_ctxt = 0;
-int rhs_ctxt = 0;
+equation => {
 
 if ((te - ts) < 1000) {
   XXH64_canonical_t dst;
@@ -45,14 +42,6 @@ if ((te - ts) < 1000) {
   memset(temp, '\0', te - ts + 1);
   int offset = ts - in;
   int length = te - ts;
-  int lhs = MAX(offset - lhs_ctxt, 0);
-  int rhs =
-      MIN(offset + rhs_ctxt,
-          in_size); /* in_size is the input length passed to the scanner. */
-  int context_len = te - ts + 1 + rhs - lhs;
-  char context[context_len];
-  memset(context, '\0', context_len);
-  memcpy(context, &in[lhs], context_len - 1);
   /* hash original token */
   strncpy(temp, &in[offset], length);
   XXH64_hash_t test_hash = XXH64(temp, length, 0);
@@ -63,18 +52,13 @@ if ((te - ts) < 1000) {
         write_to_file("offsets","%02x",dst.digest[i]);
       }
         write_to_file("offsets", " %d  %d\n", offset, length);
-  /* hash token + context for post-processing */
-  if ((lhs_ctxt > 0) | (rhs_ctxt > 0))
-    test_hash = XXH64(context, context_len, 0);
-  add_token(test_hash, context, context_len, filename);
-      i = 0;
-      XXH64_canonicalFromHash(&dst, test_hash);
-      for (i = 0; i < 8; i++) {
-        write_to_file("offsets","%02x",dst.digest[i]);
-      }
-        write_to_file("offsets", " %d  %d\n", offset, length);
-    }
-  };
+memset(temp_buffer,'\0',10024);
+strncpy(temp_buffer,&in[ts-in+2],te-ts-1);
+scanner(temp_buffer,filename,te-ts-1);
+}
+
+
+};
 
 
   latex  => {
@@ -102,7 +86,7 @@ if ((te - ts) < 1000) {
     %% write data;
 int scanner(const char *in, char *filename,int length) {
   in_size = length;
-  write_to_file("offsets","%s",filename);
+  write_to_file("offsets","%s\n",filename);
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + length;

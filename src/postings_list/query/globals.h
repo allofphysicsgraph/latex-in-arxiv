@@ -16,7 +16,8 @@ int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash);
 int walk_dir(char *dname, char *pattern, int spec, char *array[],
              int array_index);
 
-int scanner(const char *in, char *filename, int length);
+int scanner(const char *in, FILE* hash_test,int length,char *filename);
+//int scanner(const char *in, char *filename, int length);
 int reader(const char *source);
 
 struct my_struct {

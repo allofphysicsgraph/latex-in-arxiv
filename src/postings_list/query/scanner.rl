@@ -19,12 +19,16 @@
 #include <unistd.h>
 #include "globals.h"
 
-
+char temp_buffer[10024];
 int n;
 int in_size = 0;
-char temp_buffer[10024];
 
-int write_to_file(const char *filename, const char *format, ...);
+size_t len;
+va_list args;
+
+
+
+//int ////write_to_file(const char *filename, const char *format, ...);
 %%{
 
   machine strings;
@@ -49,12 +53,12 @@ if ((te - ts) < 1000) {
       size_t i = 0;
       XXH64_canonicalFromHash(&dst, test_hash);
       for (i = 0; i < 8; i++) {
-        write_to_file("offsets","%02x",dst.digest[i]);
+        ////write_to_file("offsets","%02x",dst.digest[i]);
       }
-        write_to_file("offsets", " %d  %d\n", offset, length);
+        ////write_to_file("offsets", " %d  %d\n", offset, length);
 memset(temp_buffer,'\0',10024);
 strncpy(temp_buffer,&in[ts-in+2],te-ts-1);
-scanner(temp_buffer,filename,te-ts-1);
+scanner(temp_buffer,hash_test,te-ts-1,filename);
 }
 
 
@@ -74,9 +78,9 @@ scanner(temp_buffer,filename,te-ts-1);
       XXH64_canonicalFromHash(&dst, test_hash);
       size_t i;
       for (i = 0; i < 8; i++) {
-        write_to_file("offsets","%02x",dst.digest[i]);
+        fprintf(hash_test,"%02x",dst.digest[i]);
       }
-        write_to_file("offsets", " %d  %d\n", offset, length);
+        fprintf(hash_test, " %d  %d\n", offset, length);
     }
   };
   any;
@@ -84,9 +88,8 @@ scanner(temp_buffer,filename,te-ts-1);
 }%%
 
     %% write data;
-int scanner(const char *in, char *filename,int length) {
+int scanner(const char *in, FILE* hash_test,int length,char* filename) {
   in_size = length;
-  write_to_file("offsets","%s\n",filename);
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + length;
@@ -102,22 +105,5 @@ int scanner(const char *in, char *filename,int length) {
     printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
 
   return EXIT_SUCCESS;
-}
-
-
-
-int write_to_file(const char *filename, const char *format, ...) {
-    FILE *file;
-    int result;
-    file = fopen(filename, "a+");
-    if (file == NULL) {
-        return -1; // error opening file
-    }
-    va_list args;
-    va_start(args, format);
-    result = vfprintf(file, format, args);
-    va_end(args);
-    fclose(file);
-    return result;
 }
 

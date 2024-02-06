@@ -113,10 +113,22 @@ int main(int argc, char **argv) {
       }
 
       switch (argc) {
-      case 2:
-
-        scanner((char *)buff, Documents[i],s.st_size);
-        break;
+	case 2:
+		FILE *hash_test;
+		hash_test = fopen("offsets", "a+");
+		if (hash_test == NULL) {
+		  fprintf(stderr, "couldn't open file '%s'; %s\n", "offsets",
+			  strerror(errno));
+		  exit(EXIT_FAILURE);
+		}
+		fprintf(hash_test,"%s\n",Documents[i]);
+		scanner((char *)buff, hash_test, s.st_size,Documents[i]);
+		  if (fclose(hash_test) == EOF) { /* close output file   */
+    fprintf(stderr, "couldn't close file '%s'; %s\n", "offsets",
+            strerror(errno));
+    exit(EXIT_FAILURE);
+  }
+	break;
 
       case 3:
         reader(Documents[i]);

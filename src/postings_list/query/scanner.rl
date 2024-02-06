@@ -16,10 +16,10 @@
 #include <unistd.h>
 #include "globals.h"
 
-void print_results(const char *in,int stop);
 
 int n;
 int in_size = 0;
+char temp_buffer[10024];
 %%{
 
   machine strings;
@@ -98,16 +98,16 @@ if ((te - ts) < 1000) {
     %% write data;
 int scanner(const char *in, char *filename,int length) {
   in_size = length;
+
   FILE *hash_test;                       /* output-file pointer */
   char *hash_test_file_name = "offsets"; /* output-file name    */
-
+  
   hash_test = fopen(hash_test_file_name, "a+");
   if (hash_test == NULL) {
     fprintf(stderr, "couldn't open file '%s'; %s\n", hash_test_file_name,
             strerror(errno));
     exit(EXIT_FAILURE);
   }
-
   fprintf(hash_test, "%s\n", filename);
 
   int cs = 0, act = 0;
@@ -130,13 +130,5 @@ int scanner(const char *in, char *filename,int length) {
     exit(EXIT_FAILURE);
   }
   return EXIT_SUCCESS;
-}
-void print_results(const char *in, int stop) {
-  int i = 0;
-  i = 1;
-  for (i; i < stop; i++) {
-    printf("%c", in[i]);
-  }
-  printf(",");
 }
 

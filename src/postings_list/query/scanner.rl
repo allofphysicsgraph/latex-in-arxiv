@@ -1,9 +1,12 @@
+#include <stdbool.h>
+#include <stdarg.h>
 #include <assert.h>
 #include <ctype.h>
 #include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <math.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,6 +23,8 @@
 int n;
 int in_size = 0;
 char temp_buffer[10024];
+
+int write_to_file(const char *filename, const char *format, ...);
 %%{
 
   machine strings;
@@ -54,10 +59,10 @@ if ((te - ts) < 1000) {
   add_token(test_hash, temp, length, filename);
       size_t i = 0;
       XXH64_canonicalFromHash(&dst, test_hash);
-      for (i = 0; i < 8; i++) {
-        fprintf(hash_test, "%02x", dst.digest[i]);
-      }
-      fprintf(hash_test, " %d  %d\n", offset, length);
+      //for (i = 0; i < 8; i++) {
+        //fprintf(hash_test, "%02x", dst.digest[i]);
+      //}
+      //fprintf(hash_test, " %d  %d\n", offset, length);
 
   /* hash token + context for post-processing */
   if ((lhs_ctxt > 0) | (rhs_ctxt > 0))
@@ -66,9 +71,9 @@ if ((te - ts) < 1000) {
       i = 0;
       XXH64_canonicalFromHash(&dst, test_hash);
       for (i = 0; i < 8; i++) {
-        fprintf(hash_test, "%02x", dst.digest[i]);
+        //fprintf(hash_test, "%02x", dst.digest[i]);
       }
-      fprintf(hash_test, " %d  %d\n", offset, length);
+      //fprintf(hash_test, " %d  %d\n", offset, length);
     }
   };
 
@@ -86,9 +91,10 @@ if ((te - ts) < 1000) {
       XXH64_canonicalFromHash(&dst, test_hash);
       size_t i;
       for (i = 0; i < 8; i++) {
-        fprintf(hash_test, "%02x", dst.digest[i]);
+        //fprintf(hash_test, "%02x", dst.digest[i]);
+        //write_to_file("offsets","%02x",dst.digest[i]);
       }
-      fprintf(hash_test, " %d  %d\n", offset, length);
+      //fprintf(hash_test, " %d  %d\n", offset, length);
     }
   };
   any;
@@ -98,18 +104,7 @@ if ((te - ts) < 1000) {
     %% write data;
 int scanner(const char *in, char *filename,int length) {
   in_size = length;
-
-  FILE *hash_test;                       /* output-file pointer */
-  char *hash_test_file_name = "offsets"; /* output-file name    */
-  
-  hash_test = fopen(hash_test_file_name, "a+");
-  if (hash_test == NULL) {
-    fprintf(stderr, "couldn't open file '%s'; %s\n", hash_test_file_name,
-            strerror(errno));
-    exit(EXIT_FAILURE);
-  }
-  fprintf(hash_test, "%s\n", filename);
-
+  write_to_file("offsets","%s",filename);
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + length;
@@ -124,11 +119,23 @@ int scanner(const char *in, char *filename,int length) {
   else if (ts)
     printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
 
-  if (fclose(hash_test) == EOF) { /* close output file   */
-    fprintf(stderr, "couldn't close file '%s'; %s\n", hash_test_file_name,
-            strerror(errno));
-    exit(EXIT_FAILURE);
-  }
   return EXIT_SUCCESS;
+}
+
+
+
+int write_to_file(const char *filename, const char *format, ...) {
+    FILE *file;
+    int result;
+    file = fopen(filename, "a+");
+    if (file == NULL) {
+        return -1; // error opening file
+    }
+    va_list args;
+    va_start(args, format);
+    result = vfprintf(file, format, args);
+    va_end(args);
+    fclose(file);
+    return result;
 }
 

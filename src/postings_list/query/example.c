@@ -121,6 +121,7 @@ void write_tf_idf() {
               s->token);
     }
   }
+fclose(tf_idf);
 }
 
 void print_tf_idf() {

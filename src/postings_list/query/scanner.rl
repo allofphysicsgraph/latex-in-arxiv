@@ -59,11 +59,10 @@ if ((te - ts) < 1000) {
   add_token(test_hash, temp, length, filename);
       size_t i = 0;
       XXH64_canonicalFromHash(&dst, test_hash);
-      //for (i = 0; i < 8; i++) {
-        //fprintf(hash_test, "%02x", dst.digest[i]);
-      //}
-      //fprintf(hash_test, " %d  %d\n", offset, length);
-
+      for (i = 0; i < 8; i++) {
+        write_to_file("offsets","%02x",dst.digest[i]);
+      }
+        write_to_file("offsets", " %d  %d\n", offset, length);
   /* hash token + context for post-processing */
   if ((lhs_ctxt > 0) | (rhs_ctxt > 0))
     test_hash = XXH64(context, context_len, 0);
@@ -71,9 +70,9 @@ if ((te - ts) < 1000) {
       i = 0;
       XXH64_canonicalFromHash(&dst, test_hash);
       for (i = 0; i < 8; i++) {
-        //fprintf(hash_test, "%02x", dst.digest[i]);
+        write_to_file("offsets","%02x",dst.digest[i]);
       }
-      //fprintf(hash_test, " %d  %d\n", offset, length);
+        write_to_file("offsets", " %d  %d\n", offset, length);
     }
   };
 
@@ -91,10 +90,9 @@ if ((te - ts) < 1000) {
       XXH64_canonicalFromHash(&dst, test_hash);
       size_t i;
       for (i = 0; i < 8; i++) {
-        //fprintf(hash_test, "%02x", dst.digest[i]);
-        //write_to_file("offsets","%02x",dst.digest[i]);
+        write_to_file("offsets","%02x",dst.digest[i]);
       }
-      //fprintf(hash_test, " %d  %d\n", offset, length);
+        write_to_file("offsets", " %d  %d\n", offset, length);
     }
   };
   any;

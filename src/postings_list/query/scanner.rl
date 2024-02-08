@@ -26,18 +26,18 @@ int in_size = 0;
 size_t len;
 va_list args;
 
-
-
-//int ////write_to_file(const char *filename, const char *format, ...);
 %%{
 
   machine strings;
   include strings "vocab.rl";
   include latex "latex.rl";
+  include ignore "ignore.rl";
   include context "context.rl";
   include transformations "transformations.rl";
 
 main :=|*
+ignore => {};
+
 equation => {
 
 if ((te - ts) < 1000) {

@@ -1,5 +1,6 @@
 %%{
   machine ignore;
 
-  ignore = thebibliography | figure | "\\usepackage" braces;
+  ignore = thebibliography | figure | '\\raisebox' braces 
+| "\\usepackage" braces | '\\hspace' '*'? braces | '\\vspace' '*' braces |  '{' '-' digit? '.'?  digit ('em}'|'ex}') ;
 }%%

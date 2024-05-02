@@ -90,7 +90,7 @@ main	:= |*
 int scan(const char *in) {
   OUTPUT test_data;
   int cs = 0;
-  /* int act = 0; */
+  int act = 0; 
   const char *p = in;
   const char *pe = in + strlen(in);
   const char *ts = NULL, *te = NULL;

@@ -45,7 +45,7 @@ for k, v in files_to_offsets.items():
         df = pd.concat([df, v])
         sm += len(v)
 
-
+#print(tf_idf_df)
 tf_idf_df.columns = ["id", "count", "doc_count", "tf_idf", "token"]
 zf = pd.merge(df, tf_idf_df, left_on="id", right_on="id")
 zf["length"] = zf["length"].apply(lambda x: int(x))
@@ -54,7 +54,7 @@ zf = zf[zf.token.apply(lambda x: True if re.findall("\$.*?\$", x) else False)]
 zf = zf[zf.token.apply(lambda x: False if re.findall("abstract", x) else True)]
 print(len(zf))
 print(zf.head())
-from pudb import set_trace
+#from pudb import set_trace
 
 # file_paths = set(zf.filename.tolist())
 X = zf.itertuples()

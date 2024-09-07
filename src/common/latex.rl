@@ -285,9 +285,11 @@ parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 
 latex = eq | 
- "$" (any-"$"){1,80} "$"  | 
-math |
-"\\keywords" braces |
+"="  |
+"[]" |
+"^" |
+"{}" |
+abstract  |
 "\\acute" |
 "\\addcontentsline" |
 "\\address" |
@@ -296,7 +298,10 @@ math |
 "\\addtolength" |
 "\\ae" |
 "\\AE" |
+"\\affiliation" braces |
 "\\aleph" |
+align  |
+aligned  |
 "\\alph" |
 "\\Alph" |
 "\\alpha" |
@@ -306,27 +311,32 @@ math |
 "\\appendix" |
 "\\approx" |
 "\\arabic" |
+"\\arabic" braces |
 "\\arccos" |
 "\\arcsin" |
 "\\arctan" |
 "\\arg" |
+array  |
 "\\arraycolsep" |
 "\\arrayrulewidth" |
 "\\arraystretch" |
 "\\ast" |
 "\\asymp" |
 "\\author" |
+"\\author" braces |
+"\\autoref" braces |
+"(b)" |
 "\\backslash" |
 "\\bar" |
+"\\bar" braces |
 "\\baselineskip" |
 "\\baselinestretch" |
 "\\Bbb" |
-"\\begin" |
-"\\begin{" |
-"\\begin[pos]" |
+"\\begin" braces |
 "\\beta" |
 "\\bf" |
 "\\bibitem" |
+"\\bibitem" braces |
 "\\bibitem text" |
 "\\bibliography" |
 "\\bibliographystyle" |
@@ -345,22 +355,30 @@ math |
 "\\bigvee" |
 "\\bigwedge" |
 "\\binname" |
+bmatrix  |
 "\\bmod" |
 "\\boldmath" |
 "\\bot" |
 "\\bottomfraction" |
 "\\bowtie" |
 "\\Box" |
+braces  |
+brackets  |
 "\\breve" |
 "\\bullet" |
+"(c)" |
 "\\cal" |
 "\\cap" |
 "\\caption" |
+"\\caption" braces |
 "\\caption[loftitle]" |
+cases  |
 "\\cc" |
 "\\cdot" |
 "\\cdots" |
+center  |
 "\\centering" |
+"\\centerline" braces |
 "\\chapter" |
 "\\chapter*" |
 "\\chapter[toctitle]" |
@@ -369,6 +387,7 @@ math |
 "\\circ" |
 "\\circle" |
 "\\circle*" |
+"\\cite" braces |
 "\\cite[subcit]" |
 "\\cleardoublepage" |
 "\\clearpage" |
@@ -378,10 +397,12 @@ math |
 "\\columnsep" |
 "\\columnseprule" |
 "\\columnwidth" |
+comment |
 "\\cong" |
 "\\contentsline" |
 "\\coprod" |
 "\\copyright" |
+corollary  |
 "\\cos" |
 "\\cosh" |
 "\\cot" |
@@ -395,6 +416,7 @@ math |
 "\\dashbox" |
 "\\dashv" |
 "\\date" |
+"\\date" braces |
 "\\day" |
 "\\dblfloatpagefraction" |
 "\\dblfloatsep" |
@@ -404,19 +426,25 @@ math |
 "\\ddagger" |
 "\\ddot" |
 "\\ddots" |
+definition  |
 "\\deg" |
 "\\delta" |
 "\\Delta" |
+description  |
 "\\det" |
 "\\diamond" |
 "\\Diamond" |
 "\\diamondsuit" |
 "\\dim" |
+displaymath  |
 "\\displaystyle" |
 "\\div" |
+"\\documentclass" braces |
+"\\documentclass" brackets braces |
 "\\documentstyle" |
 "\\documentstyle[substy]" |
 "\\dot" |
+"\\dot" braces |
 "\\doteq" |
 "\\dotfill" |
 "\\doublerulesep" |
@@ -424,27 +452,40 @@ math |
 "\\Downarrow" |
 "\\ell" |
 "\\em" |
+"\\email" braces |
+"embraces" |
+"\\emph" braces |
 "\\emptyset" |
 "\\encl" |
-"\\end" |
-"\\end{" |
+enumerate  |
 "\\epsilon" |
+"\\eq" braces |
+eqnarray  |
+"\\eqref" braces |
 "\\equiv" |
 "\\eta" |
 "\\evensidemargin" |
+example  |
 "\\exists" |
 "\\exp" |
 "\\fbox" |
 "\\fboxrule" |
 "\\fboxsep" |
+"\\f" braces |
+figure  |
 "\\fill" |
 "\\flat" |
 "\\floatpagefraction" |
 "\\floatsep" |
 "\\flushbottom" |
+flushleft  |
+flushright  |
+"\\fmf" braces |
+"\\fmfforce" braces |
 "\\fnsymbol" |
 "\\footheight" |
 "\\footnote" |
+"\\footnote" braces |
 "\\footnotemark" |
 "\\footnotesep" |
 "\\footnotesize" |
@@ -452,13 +493,19 @@ math |
 "\\footskip" |
 "\\forall" |
 "\\frac" |
+"\\frac" braces braces | 
+"\\frace" braces |
 "\\frame" |
+frame  |
 "\\framebox" |
 "\\framebox[size][pos]" |
+"\\frame" brackets braces |
+"\\frametitle" braces |
 "\\frown" |
 "\\fussy" |
 "\\gamma" |
 "\\Gamma" |
+gather  |
 "\\gcd" |
 "\\ge" |
 "\\geq" |
@@ -468,7 +515,9 @@ math |
 "\\glossaryentry" |
 "\\grave" |
 "\\hat" |
+"\\hat" braces |
 "\\hbar" |
+"\\hbox" braces |
 "\\headheight" |
 "\\headsep" |
 "\\heartsuit" |
@@ -480,6 +529,7 @@ math |
 "\\hrulefill" |
 "\\hspace" |
 "\\hspace*" |
+"\\hspace" braces |
 "\\huge" |
 "\\Huge" |
 "\\hyphenation" |
@@ -500,15 +550,21 @@ math |
 "\\iota" |
 "\\it" |
 "\\item" |
+itemdecl  |
+itemdescr  |
 "\\itemindent" |
+itemize  |
 "\\itemsep" |
 "\\item[text]" |
 "\\jmath" |
 "\\Join" |
 "\\kappa" |
 "\\ker" |
+"\\ket" braces |
+"\\keywords" braces |
 "\\kill" |
 "\\label" |
+"\\label" braces |
 "\\labelsep" |
 "\\labelwidth" |
 "\\lambda" |
@@ -525,6 +581,7 @@ math |
 "\\ldots" |
 "\\le" |
 "\\leadsto" |
+"\\left" |
 "\\left*" |
 "\\leftarrow" |
 "\\Leftarrow" |
@@ -536,6 +593,7 @@ math |
 "\\leftmarginvi" |
 "\\leftrightarrow" |
 "\\Leftrightarrow" |
+lemma  |
 "\\leq" |
 "\\lfloor" |
 "\\lg" |
@@ -564,6 +622,7 @@ list |
 "\\Longrightarrow" |
 "\\lor" |
 "\\lq" |
+lstlisting  |
 "\\makebox" |
 "\\makebox[size][pos]" |
 "\\makeglossary" |
@@ -576,19 +635,28 @@ list |
 "\\marginparwidth" |
 "\\markboth" |
 "\\markright" |
+math |
+"\\mathbb" braces |
+"\\mathbf" braces |
+"\\mathcal" braces |
+"\\mathrm" braces |
+matrix  |
 "\\max" |
 "\\mbox" |
+"\\mbox" braces |
 "\\medskip" |
 "\\medskipamount" |
 "\\mho" |
 "\\mid" |
 "\\min" |
+minipage  |
 "\\mit" |
 "\\models" |
 "\\month" |
 "\\mp" |
 "\\mu" |
 "\\multicolumn" |
+multline  |
 "\\nabla" |
 "\\natural" |
 "\\ne" |
@@ -596,15 +664,12 @@ list |
 "\\neg" |
 "\\neq" |
 "\\newcommand" |
-"\\newcounter[name]" |
-"\\newenvironment" |
 "\\newfont" |
 "\\newlength" |
 "\\newline" |
 "\\newpage" |
 "\\newsavebox" |
 "\\newtheorem" |
-"\\newtheorem[sectyp]" |
 "\\ni" |
 "\\nl" |
 "\\nofiles" |
@@ -636,6 +701,7 @@ list |
 "\\oslash" |
 "\\otimes" |
 "\\overline" |
+"\\overline" braces |
 "\\owns" |
 "\\P" |
 "\\pagebreak[n]" |
@@ -646,6 +712,7 @@ list |
 "\\paragraph[toctitle]" |
 "\\parallel" |
 "\\parbox[pos]" |
+parens  |
 "\\parindent" |
 "\\parsep" |
 "\\parskip" |
@@ -655,11 +722,14 @@ list |
 "\\part[toctitle]" |
 "\\pdfoutput=1" |
 "\\perp" |
+"\\phantom" braces |
 "\\phi" |
 "\\Phi" |
 "\\pi" |
 "\\Pi" |
+picture  |
 "\\pm" |
+pmatrix  |
 "\\pmod" |
 "\\poptabs" |
 "\\pounds" |
@@ -668,6 +738,9 @@ list |
 "\\preceq" |
 "\\prime" |
 "\\prod" |
+proof  |
+prop  |
+proposition  |
 "\\propto" |
 "\\protect" |
 "\\ps" |
@@ -675,6 +748,7 @@ list |
 "\\Psi" |
 "\\pushtabs" |
 "\\put" |
+quote  |
 "\\raggedbottom" |
 "\\raggedleft" |
 "\\raggedright" |
@@ -685,13 +759,18 @@ list |
 "\\rceil" |
 "\\Re" |
 "\\ref" |
+"\\ref" braces |
+rem  |
+remark  |
 "\\renewcommand" |
+"\\renewcommand" braces |
 "\\renewenvironment" |
 "\\restorecr" |
 "\\reversemarginpar" |
 "\\rfloor" |
 "\\rhd" |
 "\\rho" |
+"\\right" | 
 "\\right*" |
 "\\rightarrow" |
 "\\Rightarrow" |
@@ -704,6 +783,7 @@ list |
 "\\Roman" |
 "\\rq" |
 "\\rule[height]" |
+"(s)" |
 "\\S" |
 "\\savebox" |
 "\\sbox" |
@@ -714,9 +794,12 @@ list |
 "\\searrow" |
 "\\sec" |
 "\\section*" |
+"\\section" braces |
 "\\section[toctitle]" |
 "\\setcounter" |
+"\\setcounter" braces |
 "\\setlength" |
+"\\setlength" braces |
 "\\setminus" |
 "\\settowidth" |
 "\\sf" |
@@ -737,20 +820,25 @@ list |
 "\\smallskipamount" |
 "\\smile" |
 "\\spadesuit" |
+split  |
 "\\sqcap" |
 "\\sqcup" |
 "\\sqrt[3]" |
+"\\sqrt" braces |
 "\\sqsubset" |
 "\\sqsubseteq" |
 "\\sqsupset" |
 "\\sqsupseteq" |
 "\\ss" |
 "\\stackrel" |
+"\\stackrel" braces |
 "\\star" |
 "\\stop" |
+subequations  |
 "\\subparagraph*" |
 "\\subparagraph[toctitle]" |
 "\\subsection*" |
+"\\subsection" braces |
 "\\subsection[toctitle]" |
 "\\subset" |
 "\\subseteq" |
@@ -765,31 +853,45 @@ list |
 "\\surd" |
 "\\swarrow" |
 "\\symbol" |
+"(t)" |
 "\\t" |
 "\\tabbing" |
 "\\tabbingsep" |
 "\\tabcolsep" |
+table  |
 "\\tableofcontents" |
+tabular  |
 "\\tan" |
 "\\tanh" |
 "\\tau" |
 "\\TeX" |
+"\\textbf" braces |
+"\\text" braces |
 "\\textfloatsep" |
 "\\textfraction" |
 "\\textheight" |
+"\\textit" braces |
 "\\textstyle" |
+"\texttt" braces |
 "\\textwidth" |
 "\\thanks" |
+thebibliography  |
+theorem  |
 "\\theta" |
 "\\Theta" |
 "\\thicklines" |
 "\\thinlines" |
 "\\thinspace" |
 "\\thispagestyle" |
+thm  |
+tikzpicture  |
 "\\tilde" |
+"\\tilde" braces |
 "\\times" |
 "\\tiny" |
 "\\title" |
+"\\title" braces |
+titlepage  |
 "\\to" |
 "\\today" |
 "\\top" |
@@ -809,6 +911,7 @@ list |
 "\\unboldmath" |
 "\\underbrace" |
 "\\underline" |
+"\\underline" braces |
 "\\unitlength" |
 "\\unlhd" |
 "\\unrhd" |
@@ -819,8 +922,10 @@ list |
 "\\uplus" |
 "\\upsilon" |
 "\\Upsilon" |
+"\\url" braces |
 "\\usebox" |
 "\\usecounter" |
+"\\usepackage" braces |
 "\\v" |
 "\\value" |
 "\\varepsilon" |
@@ -832,383 +937,26 @@ list |
 "\\vdash" |
 "\\vdots" |
 "\\vec" |
+"\\vec" braces |
 "\\vee" |
+verbatim  |
 "\\vert" |
 "\\Vert" |
 "\\vfill" |
 "\\vline" |
 "\\vspace" |
 "\\vspace*" |
+"\\vspace" braces |
 "\\wedge" |
 "\\widehat" |
+"\\widehat" braces |
 "\\widetilde" |
+"\\widetilde" braces | 
 "\\wp" |
 "\\wr" |
+"(x)" |
 "\\xi" |
 "\\Xi" |
 "\\year" |
-"\\zeta" |
-
-"\\affiliation" braces |
-"\\arabic" braces |
-"\\author" braces |
-"\\autoref" braces |
-"\\bar" braces |
-"\\begin" braces |
-"\\bibitem" braces |
-"\\caption" braces |
-"\\centerline" braces |
-"\\cite" braces |
-"\\date" braces |
-"\\documentclass" braces |
-"\\documentclass" brackets braces |
-"\\dot" braces |
-"\\email" braces |
-"embraces" |
-"\\emph" braces |
-"\\end" braces |
-"\\eq" braces |
-"\\eqref" braces |
-"\\f" braces |
-"\\fmf" braces |
-"\\fmfforce" braces |
-"\\footnote" braces |
-"\\frac" braces braces | 
-"\\frace" braces |
-"\\frame" brackets braces |
-"\\frametitle" braces |
-"\\hat" braces |
-"\\hbox" braces |
-"\\hspace" braces |
-"\\ket" braces |
-"\\label" braces |
-"\\mathbb" braces |
-"\\mathbf" braces |
-"\\mathcal" braces |
-"\\mathrm" braces |
-"\\mbox" braces |
-"\\newcommand" braces |
-"\\newcommand" braces braces{1,2} |
-"\\overline" braces |
-"\\phantom" braces |
-"\\ref" braces |
-"\\renewcommand" braces |
-"\\section" braces |
-"\\setcounter" braces |
-"\\setlength" braces |
-"\\sqrt" braces |
-"\\stackrel" braces |
-"\\subsection" braces |
-"\\textbf" braces |
-"\\text" braces |
-"\\textit" braces |
-"\texttt" braces |
-"\\tilde" braces |
-"\\title" braces |
-"\\underline" braces |
-"\\url" braces |
-"\\usepackage" braces |
-"\\vec" braces |
-"\\vspace" braces |
-"\\widehat" braces |
-"\\widetilde" braces | 
-
-abstract  |
-align  |
-aligned  |
-array  |
-bmatrix  |
-braces  |
-brackets  |
-cases  |
-center  |
-comment |
-corollary  |
-definition  |
-description  |
-displaymath  |
-enumerate  |
-eqnarray  |
-example  |
-figure  |
-flushleft  |
-flushright  |
-frame  |
-gather  |
-itemdecl  |
-itemdescr  |
-itemize  |
-lemma  |
-lstlisting  |
-matrix  |
-minipage  |
-multline  |
-parens  |
-picture  |
-pmatrix  |
-proof  |
-prop  |
-proposition  |
-quote  |
-rem  |
-remark  |
-split  |
-subequations  |
-table  |
-tabular  |
-thebibliography  |
-theorem  |
-thm  |
-tikzpicture  |
-titlepage  |
-verbatim  |
-'\\end{document}' |
-'\\maketitle' |
-'\\begin{document}' |
-'\\le' |
-'{equation}' |
-'\\end{equation}' |
-'\\d' |
-'\\section{Introduction}' |
-'\\t' |
-'\\int' |
-'\\sum' |
-'\\u' |
-'[1]' |
-'$n$' |
-'\\delta' |
-'$i$' |
-'\\section*' |
-'$\\mu$' |
-'$x$' |
-'\\end{figure}' |
-'\\equiv' |
-'{1}' |
-'$k$' |
-'$\\alpha$' |
-'{-1}' |
-'\\sigma' |
-'$N$' |
-'\\alpha' |
-'\\in' |
-'{2}' |
-'\\noindent' |
-'\\v' |
-'(1)' |
-'\\mu' |
-'{}' |
-'$a$' |
-'(b)' |
-'$\\sigma$' |
-'$z$' |
-'$m$' |
-'$t$' |
-'(a)' |
-'\\date{\\today}' |
-'\\address' |
-'$B$' |
-'$M$' |
-'$T$' |
-'\\exp' |
-'$p$' |
-'$A$' |
-'\\times' |
-'\\pi' |
-'\\Delta' |
-'\\frac' |
-'{0}' |
-'\\lambda' |
-'\\gamma' |
-'\\o' |
-'\\rho' |
-'(2)' |
-'\\section{Conclusions}' |
-'$1$' |
-'\\end{abstract}' |
-'\\langle' |
-'\\bibliographystyle' |
-'\\phi' |
-'$d$' |
-'$\\lambda$' |
-'$r$' |
-'$R$' |
-'$L$' |
-'$\\beta$' |
-'\\newpage' |
-'$ and $' |
-'\\rangle' |
-'$\\gamma$' |
-'\\frac{1}{2}' |
-'\\end{thebibliography}' |
-'\\nu' |
-'\\include' |
-'\\beta' |
-'\\eta' |
-'\\cdot' |
-'$c$' |
-'\\theta' |
-'$g$' |
-'$s$' |
-'$b$' |
-'$V$' |
-'$\\phi$' |
-'\\sim' |
-'(x)' |
-'\\title' |
-'\\bibliography' |
-'$j$' |
-'(i)' |
-'$f$' |
-'[2]' |
-'\\documentstyle' |
-'{Lemma}' |
-'\\nonumber' |
-'\\tau' |
-'$S$' |
-'$y$' |
-'\\epsilon' |
-'\\omega' |
-'$\\tau$' |
-'\\approx' |
-'$C$' |
-'(ii)' |
-'$\\rho$' |
-'\\S' |
-'{Corollary}' |
-'$H$' |
-'$q$' |
-'$0$' |
-'(3)' |
-'{Theorem}' |
-'(2000)' |
-'\\end{center}' |
-'\\textwidth' |
-'\\infty' |
-'\\textheight' |
-'{Definition}' |
-'$K$' |
-'$D$' |
-'\\psi' |
-'{Proposition}' |
-'\\appendix' |
-'\\pm' |
-'$E$' |
-'\\lim' |
-'$\\theta$' |
-'\\Gamma' |
-'(1998)' |
-'(1999)' |
-'$\\delta$' |
-'(2001)' |
-'\\author' |
-'(1996)' |
-'(1997)' |
-'\\rightarrow' |
-'(t)' |
-'$\\eta$' |
-'{Acknowledgments}' |
-'\\Omega' |
-'\\end' |
-'\\section{Conclusion}' |
-'(c)' |
-'\\topmargin' |
-'{3}' |
-'\\newtheorem' |
-'\\to' |
-'{ij}' |
-'\\sin' |
-'\\cos' |
-'\\oddsidemargin' |
-'{Remark}' |
-'\\chi' |
-'$P$' |
-'$\\omega$' |
-'{lemma}' |
-'$h$' |
-'\\Phi' |
-'{i=1}' |
-'$X$' |
-'(2002)' |
-'$2$' |
-'$, $' |
-'$\\Delta$' |
-'(1995)' |
-'(0)' |
-'$Q$' |
-'{definition}' |
-'{\\end{equation}}' |
-'{\\end{eqnarray}}' |
-'\\end{figure*}' |
-'$\\Lambda$' |
-'$W$' |
-'$U$' |
-'$\\epsilon$' |
-'{\\begin{eqnarray}}' |
-'\\partial' |
-'\\end{acknowledgments}' |
-'$\\sim$' |
-'$^{-1}$' |
-'$u$' |
-'\\section{Discussion}' |
-'$F$' |
-'\\xi' |
-'{i}' |
-'\\newcommand{\\ee}{\\end{equation}}' |
-'{1/2}' |
-'{theorem}' |
-'{a}' |
-'{\\begin{equation}}' |
-'{corollary}' |
-'{Acknowledgements}' |
-'(1994)' |
-'\\input' |
-'$\\pi$' |
-'$v$' |
-'\\leq' |
-'{\\infty}' |
-'(2003)' |
-'[]' |
-'$l$' |
-'(iii)' |
-'\\newcommand{\\be}{\\begin{equation}}' |
-'{Example}' |
-'\\begin{figure*}' |
-'{\\alpha}' |
-'$Z$' |
-'\\ln' |
-'(1993)' |
-'{n}' |
-'(s)' |
-'\\pagestyle' |
-'$I$' |
-'\\simeq' |
-'{remark}' |
-'$G$' |
-'{proposition}' |
-'$\\Gamma$' |
-'\\propto' |
-'(1992)' |
-'\\begin{acknowledgments}' |
-'\\end{references}' |
-'\\Lambda' |
-'\\evensidemargin' |
-'\\newcommand{\\eea}{\\end{eqnarray}}' |
-'$\\nu$' |
-'{4}' |
-'(1990)' |
-'(4)' |
-'{article}' |
-'\\documentclass[12pt]{article}' |
-'\\newcommand{\\bea}{\\begin{eqnarray}}' |
-'\\geq' |
-'\\section{Results}' |
-'\\setlength{\\textheight}' |
-'$^2$' |
-'\\P' |
-'(1991)' |
-'\\begin{references}' |
-'\\kappa' |
-'$\\xi$' |
-'\\date{}' |
-'\\prod' |
-'\\setlength{\\textwidth}' ;}%%
+"\\zeta" ; 
+}%%

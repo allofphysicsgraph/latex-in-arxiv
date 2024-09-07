@@ -32,8 +32,6 @@ va_list args;
   include strings "vocab.rl";
   include latex "latex.rl";
   include ignore "ignore.rl";
-  include context "context.rl";
-  include transformations "transformations.rl";
 
 main :=|*
 ignore => {};

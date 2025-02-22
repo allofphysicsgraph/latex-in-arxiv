@@ -1,6 +1,6 @@
 #!/bin/bash
  while read f; 
- do dir_name=$(echo $f|cut -d '.' -f1-2);
+ do dir_name=$(echo $f|sed 's/.gz//g');
 	 mkdir $dir_name; 
 	 mv $f $dir_name/ ;
  	cd $dir_name;

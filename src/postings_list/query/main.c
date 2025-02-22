@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
   switch (argc) {
   case 2:
-    r = walk_dir(argv[1], "tex$", WS_DEFAULT | WS_MATCHDIRS, Documents,
+    r = walk_dir(argv[1], "tex$|tex_cleaned$", WS_DEFAULT | WS_MATCHDIRS, Documents,
                  doc_index);
     break;
 

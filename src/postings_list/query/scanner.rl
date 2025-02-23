@@ -36,33 +36,6 @@ va_list args;
 main :=|*
 ignore => {};
 
-equation => {
-
-if ((te - ts) < 1000) {
-  XXH64_canonical_t dst;
-  char temp[te - ts + 1];
-  memset(temp, '\0', te - ts + 1);
-  int offset = ts - in;
-  int length = te - ts;
-  /* hash original token */
-  strncpy(temp, &in[offset], length);
-  XXH64_hash_t test_hash = XXH64(temp, length, 0);
-  add_token(test_hash, temp, length, filename);
-      size_t i = 0;
-      XXH64_canonicalFromHash(&dst, test_hash);
-      for (i = 0; i < 8; i++) {
-        ////write_to_file("offsets","%02x",dst.digest[i]);
-      }
-        ////write_to_file("offsets", " %d  %d\n", offset, length);
-memset(temp_buffer,'\0',10024);
-strncpy(temp_buffer,&in[ts-in+2],te-ts-1);
-scanner(temp_buffer,hash_test,te-ts-1,filename);
-}
-
-
-};
-
-
   latex  => {
     if ((te - ts) < 1000) {
       XXH64_canonical_t dst;

@@ -1,3 +1,11 @@
+echo 'all tex files should be saved in 2003 folder'
+mkdir 2003
+
+mkdir 2003_errors
+bash 0_pre-process.sh 
+bash pre-process-dataset.sh  
+ls 2003_errors |wc -l 
+rm -rf 2003_errors
 rm offsets
 rm tf_idf
 make scanner

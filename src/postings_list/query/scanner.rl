@@ -37,7 +37,7 @@ main :=|*
 ignore => {};
 
   latex  => {
-    if ((te - ts) < 1000) {
+    if ((te - ts) < 2000) {
       XXH64_canonical_t dst;
       char temp[te - ts + 1];
       memset(temp, '\0', te - ts + 1);

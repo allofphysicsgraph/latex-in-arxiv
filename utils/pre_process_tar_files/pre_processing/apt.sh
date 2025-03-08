@@ -1,1 +1,1 @@
-sudo apt install ssdeep cloc rsync
+sudo apt install ssdeep cloc

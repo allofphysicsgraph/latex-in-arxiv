@@ -18,6 +18,7 @@ read_tf_idf:
 get_sample_data:
 	wget https://www.cs.cornell.edu/projects/kddcup/download/hep-th-2003.tar.gz --no-check-certificate
 	tar -xf hep-th-2003.tar.gz
+	cd 2003 && find . -type f |grep -v tex$ |xargs -i mv "{}" "{}".tex 
 
 remove_ascii:
 	$(CC) strip_non_ascii.c -o strip_non_ascii.out

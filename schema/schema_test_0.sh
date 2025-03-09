@@ -21,7 +21,7 @@ verify_vertex() {
   local property="$2"
   local value="$3"
   echo "Verifying $label with $property = $value..."
-  RESPONSE=$(curl -s -X GET "$HUGEGRAPH_URL/graphs/$GRAPH_NAME/graph/vertices?label=$label&$property=$value")
+  RESPONSE=$(curl -s -X GET "$HUGEGRAPH_URL/graphs/$GRAPH_NAME/graph/vertices?label=$label&$property=$value"|gunzip)
   if echo "$RESPONSE" | grep -q "\"vertices\": \[]"; then
     echo "ERROR: $label vertex not found!"
     echo "Response from HugeGraph:"

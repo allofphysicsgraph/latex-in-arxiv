@@ -1,0 +1,531 @@
+{
+  "schema": {
+    "vertexLabel": [
+      {
+        "name": "document",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["document_hash"],
+        "properties": [
+          "document_hash",
+          "document_path",
+          "document_size",
+          "document_type",
+          "title",
+          "abstract"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      },
+      {
+        "name": "element",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["element_hash"],
+        "properties": [
+          "element_hash",
+          "element_type",
+          "element_name",
+          "element_content",
+          "math_type",
+          "equation_number",
+          "symbol_type",
+          "operator_type"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      },
+      {
+        "name": "package",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["package_hash"],
+        "properties": [
+          "package_hash",
+          "package_name",
+          "package_version",
+          "package_description"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      },
+      {
+        "name": "macro",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["macro_hash"],
+        "properties": [
+          "macro_hash",
+          "macro_name",
+          "macro_definition",
+          "macro_description"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      },
+      {
+        "name": "author",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["author_hash"],
+        "properties": [
+          "author_hash",
+          "author_name",
+          "author_affiliation",
+          "author_email"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      },
+      {
+        "name": "reference",
+        "idStrategy": "PRIMARY_KEY",
+        "primaryKeys": ["reference_hash"],
+        "properties": [
+          "reference_hash",
+          "reference_id",
+          "reference_type",
+          "reference_title",
+          "reference_authors",
+          "reference_journal",
+          "reference_year",
+          "reference_volume",
+          "reference_pages",
+          "reference_doi"
+        ],
+        "nullableKeys": [],
+        "enableLabelIndex": true,
+        "userDefinedIdStrategy": "CUSTOMIZE_STRING"
+      }
+    ],
+    "edgeLabel": [
+      {
+        "name": "contains",
+        "sourceLabel": "document",
+        "targetLabel": "element",
+        "relation": "OUT",
+        "properties": ["element_order", "element_line_number", "element_char_offset"],
+        "sortKeys": ["element_order"],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "includes",
+        "sourceLabel": "element",
+        "targetLabel": "element",
+        "relation": "OUT",
+        "properties": ["nesting_level", "child_order", "child_line_number", "child_char_offset"],
+        "sortKeys": ["nesting_level", "child_order"],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "uses_package",
+        "sourceLabel": "document",
+        "targetLabel": "package",
+        "relation": "OUT",
+        "properties": [],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+       {
+        "name": "defines_macro",
+        "sourceLabel": "document",
+        "targetLabel": "macro",
+        "relation": "OUT",
+        "properties": [],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "calls_macro",
+        "sourceLabel": "element",
+        "targetLabel": "macro",
+        "relation": "OUT",
+        "properties": [],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "authored_by",
+        "sourceLabel": "document",
+        "targetLabel": "author",
+        "relation": "OUT",
+        "properties": [],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "cites",
+        "sourceLabel": "element",
+        "targetLabel": "reference",
+        "relation": "OUT",
+        "properties": [
+            "citation_text"
+        ],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      },
+      {
+        "name": "in_bibliography",
+        "sourceLabel": "document",
+        "targetLabel": "reference",
+        "relation": "OUT",
+        "properties": [
+            "bib_entry_order"
+        ],
+        "sortKeys": [],
+        "nullableKeys": [],
+        "enableLabelIndex": true
+      }
+    ],
+    "propertyKey": [
+      {
+        "name": "document_path",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "document_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "document_size",
+        "dataType": "LONG",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "document_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+        {
+        "name": "title",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "abstract",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_id",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_name",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_content",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+       {
+        "name": "math_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "equation_number",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "symbol_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+       {
+        "name": "operator_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "package_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "package_name",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "package_version",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "package_description",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+        {
+        "name": "macro_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+        {
+        "name": "macro_name",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "macro_definition",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "macro_description",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_order",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "nesting_level",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+       {
+        "name": "child_order",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "author_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "author_name",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "author_affiliation",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "author_email",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+        {
+        "name": "reference_hash",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_id",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_type",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_title",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_authors",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_journal",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_year",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_volume",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_pages",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "reference_doi",
+        "dataType": "TEXT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+         "name": "citation_text",
+         "dataType": "TEXT",
+         "cardinality": "SINGLE",
+         "aggregateType": "NONE"
+      },
+      {
+         "name": "bib_entry_order",
+         "dataType": "INT",
+         "cardinality": "SINGLE",
+         "aggregateType": "NONE"
+      },
+       {
+        "name": "element_line_number",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "element_char_offset",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+       {
+        "name": "child_line_number",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      },
+      {
+        "name": "child_char_offset",
+        "dataType": "INT",
+        "cardinality": "SINGLE",
+        "aggregateType": "NONE"
+      }
+    ],
+    "indexLabel": [
+      {
+        "name": "document_hash_index",
+        "indexType": "RANGE",
+        "indexFields": ["document_hash"],
+        "fieldKeys": ["document_hash"],
+        "labelName": "document"
+      },
+      {
+        "name": "element_type_index",
+        "indexType": "SECONDARY",
+        "indexFields": ["element_type"],
+        "fieldKeys": ["element_type"],
+        "labelName": "element"
+      },
+      {
+        "name": "package_hash_index",
+        "indexType": "RANGE",
+        "indexFields": ["package_hash"],
+        "fieldKeys": ["package_hash"],
+        "labelName": "package"
+      },
+      {
+        "name": "macro_hash_index",
+        "indexType": "RANGE",
+        "indexFields": ["macro_hash"],
+        "fieldKeys": ["macro_hash"],
+        "labelName": "macro"
+      },
+      {
+        "name": "author_hash_index",
+        "indexType": "RANGE",
+        "indexFields": ["author_hash"],
+        "fieldKeys": ["author_hash"],
+        "labelName": "author"
+      },
+      {
+        "name": "reference_hash_index",
+        "indexType": "RANGE",
+        "indexFields": ["reference_hash"],
+        "fieldKeys": ["reference_hash"],
+        "labelName": "reference"
+      },
+       {
+        "name": "math_type_index",
+        "indexType": "SECONDARY",
+        "indexFields": ["math_type"],
+        "fieldKeys": ["math_type"],
+        "labelName": "element"
+      },
+      {
+        "name": "operator_type_index",
+        "indexType": "SECONDARY",
+        "indexFields": ["operator_type"],
+        "fieldKeys": ["operator_type"],
+        "labelName": "element"
+      },
+      {
+        "name": "symbol_type_index",
+        "indexType": "SECONDARY",
+        "indexFields": ["symbol_type"],
+        "fieldKeys": ["symbol_type"],
+        "labelName": "element"
+      }
+    ]
+  }
+}

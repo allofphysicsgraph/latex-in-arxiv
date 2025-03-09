@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
 			  strerror(errno));
 		  exit(EXIT_FAILURE);
 		}
-		fprintf(hash_test,"%s\n",Documents[i]);
+		//fprintf(hash_test,"%s\n",Documents[i]);
 		scanner((char *)buff, hash_test, s.st_size,Documents[i]);
 		  if (fclose(hash_test) == EOF) { /* close output file   */
     fprintf(stderr, "couldn't close file '%s'; %s\n", "offsets",

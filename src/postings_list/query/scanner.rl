@@ -47,6 +47,7 @@ ignore => {};
       XXH64_hash_t test_hash = XXH64(temp, length, 0);
       add_token(test_hash, temp, length, filename);
       XXH64_canonicalFromHash(&dst, test_hash);
+      fprintf(hash_test,"%s ", filename);
       size_t i;
       for (i = 0; i < 8; i++) {
         fprintf(hash_test,"%02x",dst.digest[i]);

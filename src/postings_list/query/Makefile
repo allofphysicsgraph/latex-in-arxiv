@@ -26,3 +26,10 @@ remove_ascii:
 
 files_with_errors:
 	find . -type f -name "*.tex" -exec chktex "{}" \; | grep 'Warning 15'|grep tex|cut -d ' ' -f4|grep tex |sort|uniq > /tmp/files_with_errors
+
+hugegraph_filenames:
+	find 2003/| xargs -i bash filenames.sh "{}"
+
+hugegraph_tokens:
+	cat offsets |grep -v './'|awk '{print($1,$3)}'|xargs -l -P10  bash hugegraph_tokens.sh $1 $2
+

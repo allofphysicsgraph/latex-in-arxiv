@@ -15,7 +15,5 @@ rm -rf sound1.tex
 ./scanner.out . 
 ./scanner.out . offsets
 ./read_tf_idf.out tf_idf
-#mv offsets "$1"_offsets
-#mv tf_idf "$1"_tf_idf
-#python fix_offsets.py "$1"_offsets
-#mv offsets_cleaned "$1"_offsets
+mv offsets "$1"_offsets
+mv tf_idf "$1"_tf_idf

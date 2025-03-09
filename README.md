@@ -68,10 +68,4 @@ for details, see <https://arxiv.org/help/bulk_data_s3>
 # s3cmd get s3://arxiv/src/arXiv_src_9912_001.tar . --requester-pays  
 ```
 
-##  Experimenting with hugegraph
-# https://hugegraph.apache.org/docs/download/download/
-# (Optional)
-# 1. add "-e PASSWORD=xxx" to enable the auth system
-# 2. add "-e PRELOAD="true" to auto-load a sample graph
-# docker run -itd --name=graph -p 8080:8080 hugegraph/hugegraph:1.5.0
 

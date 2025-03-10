@@ -1,4 +1,12 @@
+#define _XOPEN_SOURCE 500 // Required for nftw in some systems
+#include <ftw.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <regex.h>
+#include <errno.h>
 #include "globals.h"
+
 #include <assert.h>
 #include <ctype.h>
 #include <err.h>
@@ -15,79 +23,121 @@
 #include <time.h>
 #include <unistd.h>
 
-enum {
-  LOOKUP = 0, /* default - looking rather than defining. */
-  WALK_OK = 0,
-  WALK_BADPATTERN,
-  WALK_NAMETOOLONG,
-  WALK_BADIO,
+
+
+#define PATH_MAX 4096 // Standard PATH_MAX, adjust if needed
+#define INITIAL_ARRAY_SIZE 1048576 // Initial size for the file path array
+#define ARRAY_RESIZE_FACTOR 2 // Factor to resize the array by
+
+// Structure to hold the array of matching file paths
+struct MatchingFiles {
+    char **filepaths;
+    int count;
+    int capacity;
 };
 
-#define WS_NONE 0
-#define WS_RECURSIVE (1 << 0)
-#define WS_DEFAULT WS_RECURSIVE
-#define WS_FOLLOWLINK (1 << 1) /* follow symlinks */
-#define WS_DOTFILES (1 << 2)   /* per unix convention, .file is hidden */
-#define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
+struct MatchingFiles matching_files;
+regex_t regex; // Compiled regex
 
-int main(int argc, char **argv) {
-  char *Documents[MAX_DOCUMENT_COUNT];
-  int i = 0;
-  int doc_index = 0;
-  memset(Documents, 0, sizeof(Documents));
-  int r;
-
-  switch (argc) {
-  case 2:
-    r = walk_dir(argv[1], "tex$|tex_cleaned$", WS_DEFAULT | WS_MATCHDIRS, Documents,
-                 doc_index);
-    break;
-
-  case 3:
-    r = walk_dir(argv[1], argv[2], WS_DEFAULT | WS_MATCHDIRS, Documents,
-                 doc_index);
-    break;
-
-  default:
-    printf("options:1 or 2 arguments.\n1.\tdirectory of tex ./scanner.out ../ "
-           "files.\n2.\tdirectory + filename. ./scanner .. offsets_file\n");
-    return -1;
-    break;
-  } /* -----  end switch  ----- */
-  switch (r) {
-  case WALK_OK:
-    break;
-  case WALK_BADIO:
-    printf("IO error");
-    break;
-  case WALK_BADPATTERN:
-    printf("Bad pattern");
-    break;
-  case WALK_NAMETOOLONG:
-    printf("Filename too long");
-    break;
-  default:
-    printf("Unknown error?");
-  }
-  i = 0;
-  while (Documents[i] != NULL) {
-    printf("%s\n", Documents[i]);
-    /*   int res = 0; */
-    int fd;
-    struct stat s;
-    fd = open(Documents[i], O_RDONLY);
-    if (fd < 0) {
-      printf("EXIT FAILURE");
-      return EXIT_FAILURE;
+// Function called by nftw for each file/directory
+int process_path(const char *filepath, const struct stat *sb, int typeflag, struct FTW *ftwbuf) {
+    if (typeflag == FTW_F) { // Only process regular files
+        if (regexec(&regex, filepath, 0, NULL, 0) == 0) { // Regex match found
+            if (matching_files.count >= matching_files.capacity) {
+                matching_files.capacity *= ARRAY_RESIZE_FACTOR;
+                matching_files.filepaths = realloc(matching_files.filepaths, matching_files.capacity * sizeof(char*));
+                if (!matching_files.filepaths) {
+                    perror("Memory allocation error");
+                    exit(EXIT_FAILURE);
+                }
+            }
+            matching_files.filepaths[matching_files.count] = strdup(filepath);
+            if (!matching_files.filepaths[matching_files.count]) {
+                perror("Memory allocation error");
+                exit(EXIT_FAILURE);
+            }
+            matching_files.count++;
+        }
     }
+    return 0; // Continue traversal
+}
+
+// Function to free memory used by the matching files array
+void free_matching_files_array() {
+    for (int i = 0; i < matching_files.count; i++) {
+        free(matching_files.filepaths[i]);
+    }
+    free(matching_files.filepaths);
+    matching_files.filepaths = NULL;
+    matching_files.count = 0;
+    matching_files.capacity = 0;
+}
+
+// Function to print the array of matching files
+void print_matching_files() {
+    printf("Matching files:\n");
+    for (int i = 0; i < matching_files.count; i++) {
+        printf("%s\n", matching_files.filepaths[i]);
+    }
+    printf("Total matching files: %d\n", matching_files.count);
+}
+
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <directory> <regex_pattern>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    char *dir_path = argv[1];
+    char *regex_pattern = argv[2];
+    int regex_comp_result;
+
+    // Compile regex pattern
+    regex_comp_result = regcomp(&regex, regex_pattern, REG_EXTENDED);
+    if (regex_comp_result) {
+        char error_buffer[512];
+        regerror(regex_comp_result, &regex, error_buffer, sizeof(error_buffer));
+        fprintf(stderr, "Regex compilation error: %s\n", error_buffer);
+        return EXIT_FAILURE;
+    }
+
+    // Initialize matching_files structure
+    matching_files.capacity = INITIAL_ARRAY_SIZE;
+    matching_files.count = 0;
+    matching_files.filepaths = malloc(matching_files.capacity * sizeof(char*));
+    if (!matching_files.filepaths) {
+        perror("Memory allocation error");
+        regfree(&regex); // Free regex resources before exiting
+        return EXIT_FAILURE;
+    }
+
+
+    if (nftw(dir_path, process_path, 20, FTW_PHYS) == -1) {
+        perror("nftw");
+        regfree(&regex); // Free regex resources before exiting
+        free_matching_files_array(); // Free allocated array memory
+        return EXIT_FAILURE;
+    }
+
+    //print_matching_files();
+    
+    for (int i = 0; i < matching_files.count; i++) {
+        //printf("%s\n", matching_files.filepaths[i]);
+        int fd;
+        struct stat s;
+        fd = open(matching_files.filepaths[i], O_RDONLY);
+        if (fd < 0) {
+        printf("EXIT FAILURE");
+        return EXIT_FAILURE;
+        }
     fstat(fd, &s);
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-
+        //printf("%s",buff);
       FILE *fname;                          /* input-file pointer */
       char *fname_file_name = "file_xxh64"; /* input-file name    */
-
       fname = fopen(fname_file_name, "a+");
       if (fname == NULL) {
         fprintf(stderr, "couldn't open file '%s'; %s\n", fname_file_name,
@@ -95,7 +145,7 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
       }
       {
-        fprintf(fname, "%s  ", Documents[i]);
+        fprintf(fname, "%s  ", matching_files.filepaths[i]);
 
         XXH64_hash_t test_hash = XXH64(buff, s.st_size, 0);
         size_t i = 0;
@@ -112,8 +162,6 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
       }
 
-      switch (argc) {
-	case 2:
 		FILE *hash_test;
 		hash_test = fopen("offsets", "a+");
 		if (hash_test == NULL) {
@@ -121,55 +169,14 @@ int main(int argc, char **argv) {
 			  strerror(errno));
 		  exit(EXIT_FAILURE);
 		}
-		//fprintf(hash_test,"%s\n",Documents[i]);
-		scanner((char *)buff, hash_test, s.st_size,Documents[i]);
+		fprintf(hash_test,"%s\n",matching_files.filepaths[i]);
+		scanner((char *)buff, hash_test, s.st_size,matching_files.filepaths[i]);
 		  if (fclose(hash_test) == EOF) { /* close output file   */
     fprintf(stderr, "couldn't close file '%s'; %s\n", "offsets",
             strerror(errno));
     exit(EXIT_FAILURE);
-  }
-	break;
-
-      case 3:
-        reader(Documents[i]);
-        break;
-
-      default:
-        break;
-      } /* -----  end switch  ----- */
-      munmap(buff, s.st_size);
-    }
-    close(fd);
-    free(Documents[i]);
-    i++;
-  }
-  update_tf_idf(i); /* i is total_doc_count */
-                    /*
-                      int running = 0;
-                      while (running) {
-                        printf(" 1. print_tokens\n");
-                        printf(" 2. print tf_idf\n");
-                        printf(" 3. sort by tf_idf if 0 then by counts\n");
-                        printf(" 4. quit\n");
-                        switch (atoi(getl("Command"))) {
-                        case 1:
-                          print_tokens();
-                          break;
-                        case 2:
-                          print_tf_idf();
-                          break;
-                        case 3:
-                          srt();
-                          break;
-                        case 4:
-                          running = 0;
-                          delete_all();
-                          return 0;
-                          break;
-                        }
-                      }
-                    */
-
+  }}}
+  update_tf_idf(matching_files.count); 
   printf("sorting structs\n");
   srt();
   /* print_tokens(); */
@@ -177,5 +184,11 @@ int main(int argc, char **argv) {
   printf("writing tf_idf scores to tf_idf\n");
   write_tf_idf();
   delete_all();
-  return 0;
-}
+
+    free_matching_files_array(); // Clean up array memory
+    regfree(&regex); // Free regex resources
+
+    return EXIT_SUCCESS;
+    }
+
+

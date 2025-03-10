@@ -3,8 +3,16 @@
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
+#include <ftw.h>
 
-#define MAX_DOCUMENT_COUNT 600000
+#define _XOPEN_SOURCE 500 // Required for nftw in some systems
+#include <ftw.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <regex.h>
+#include <errno.h>
+#define MAX_DOCUMENT_COUNT 5000000
 #define MAX_FILE_PATH_LENGTH 128
 
 #define MAX_TOKEN_COUNT 256
@@ -13,8 +21,6 @@
 void print_context(char *filename, int offset, int match_len, int lhs_context,
                    int rhs_context);
 int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash);
-int walk_dir(char *dname, char *pattern, int spec, char *array[],
-             int array_index);
 
 int scanner(const char *in, FILE* hash_test,int length,char *filename);
 //int scanner(const char *in, char *filename, int length);

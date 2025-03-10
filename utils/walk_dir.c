@@ -7,7 +7,7 @@
 #include <errno.h>
 
 #define PATH_MAX 4096 // Standard PATH_MAX, adjust if needed
-#define INITIAL_ARRAY_SIZE 128 // Initial size for the file path array
+#define INITIAL_ARRAY_SIZE 1048576 // Initial size for the file path array
 #define ARRAY_RESIZE_FACTOR 2 // Factor to resize the array by
 
 // Structure to hold the array of matching file paths

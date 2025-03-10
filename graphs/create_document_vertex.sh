@@ -1,4 +1,3 @@
-
 # Replace 'http://localhost:8080' with your HugeGraph server address
 HUGEGRAPH_URL="http://localhost:8080"
 GRAPH_NAME="hugegraph"
@@ -22,7 +21,7 @@ verify_vertex() {
   local value="$3"
   echo "Verifying $label with $property = $value..."
   RESPONSE=$(curl -s -X GET "$HUGEGRAPH_URL/graphs/$GRAPH_NAME/graph/vertices?label=$label&property=$value"|gunzip)
-  echo $RESPONSE
+  #echo $RESPONSE
 
   if echo "$RESPONSE" | grep -q "\"vertices\": \[]"; then
     echo "ERROR: $label vertex not found!"
@@ -38,7 +37,11 @@ DOCUMENT_PATH="$1"
 DOCUMENT_CONTENT=$(cat $1)
 DOCUMENT_HASH=$(cat $1 | xxh64sum | awk '{print $1}')
 DOCUMENT_SIZE=$(echo -n "$DOCUMENT_CONTENT" | wc -c)
-
+DOCUMENT_NAME=$(echo $DOCUMENT_PATH|rev|cut -d '/' -f1|rev)
+DOCUMENT_PATH_PREFIX=$(echo $DOCUMENT_PATH|rev|cut -d '/' -f2-|rev)
+bash get_abstract.sh $DOCUMENT_PATH_PREFIX $DOCUMENT_NAME
+DOCUMENT_ABSTRACT=$(cat tf_idf)
+echo $DOCUMENT_ABSTRACT
 DOCUMENT_PAYLOAD='{
   "label": "document",
   "properties": {
@@ -47,7 +50,7 @@ DOCUMENT_PAYLOAD='{
     "document_size": '"$DOCUMENT_SIZE"',
     "document_type": "article",
     "title": "Test Paper",
-    "abstract": "This is an abstract."
+    "abstract": "'"$DOCUMENT_ABSTRACT"'"
   }
 }'
 create_vertex "$DOCUMENT_PAYLOAD" "document vertex"

@@ -98,7 +98,8 @@ int reader(const char *source, Token * offsets) {
 		strncpy(output,&buff[offsets->offset[i]], length-1);
        counter++;
        printf("%s\n",output);
-	}
+	   printf("**********************************************\n");
+    }
     munmap(buff, s.st_size);
 }
   close(fd);

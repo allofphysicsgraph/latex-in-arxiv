@@ -12,8 +12,8 @@ rm tf_idf
 make scanner
 make read_tf_idf
 rm -rf sound1.tex
-./scanner.out . 
-./scanner.out . offsets
+./scanner.out . tex$
 ./read_tf_idf.out tf_idf
 mv offsets "$1"_offsets
 mv tf_idf "$1"_tf_idf
+mv scanner.out "$1".out

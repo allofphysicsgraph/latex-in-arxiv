@@ -15,8 +15,8 @@ int n;
 
     counter => { 
 	int index = tok->index;
-	tok->offset[index]=(ts+1)-in;
-	tok->length[index]=te-ts-2;
+	tok->offset[index]=(ts)-in;
+	tok->length[index]=te-ts;
 	tok->index++;};
     any ;
 

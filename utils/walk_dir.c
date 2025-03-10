@@ -1,126 +1,110 @@
-#include <dirent.h>
-#include <err.h>
-#include <errno.h>
-#include <regex.h>
+#define _XOPEN_SOURCE 500 // Required for nftw in some systems
+#include <ftw.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include <regex.h>
+#include <errno.h>
 
-#define MAX_FILE_COUNT 100000
+#define PATH_MAX 4096 // Standard PATH_MAX, adjust if needed
+#define INITIAL_ARRAY_SIZE 128 // Initial size for the file path array
+#define ARRAY_RESIZE_FACTOR 2 // Factor to resize the array by
 
-enum {
-  LOOKUP = 0, /* default - looking rather than defining. */
-  WALK_OK = 0,
-  WALK_BADPATTERN,
-  WALK_NAMETOOLONG,
-  WALK_BADIO,
+// Structure to hold the array of matching file paths
+struct MatchingFiles {
+    char **filepaths;
+    int count;
+    int capacity;
 };
 
-#define WS_NONE 0
-#define WS_RECURSIVE (1 << 0)
-#define WS_DEFAULT WS_RECURSIVE
-#define WS_FOLLOWLINK (1 << 1) /* follow symlinks */
-#define WS_DOTFILES (1 << 2)   /* per unix convention, .file is hidden */
-#define WS_MATCHDIRS (1 << 3)  /* if pattern is used on dir names too */
+struct MatchingFiles matching_files;
+regex_t regex; // Compiled regex
 
-// https://rosettacode.org/wiki/Walk_a_directory/Recursively#C
-int walk_recur(char *dname, regex_t *reg, int spec, char *array[],
-               int array_index) {
-  struct dirent *dent;
-  DIR *dir;
-  struct stat st;
-  char fn[FILENAME_MAX];
-  int res = WALK_OK;
-  int len = strlen(dname);
-  if (len >= FILENAME_MAX - 1)
-    return WALK_NAMETOOLONG;
-
-  strcpy(fn, dname);
-  fn[len++] = '/';
-
-  if (!(dir = opendir(dname))) {
-    warn("can't open %s", dname);
-    return WALK_BADIO;
-  }
-
-  errno = 0;
-  while ((dent = readdir(dir))) {
-    if (!(spec & WS_DOTFILES) && dent->d_name[0] == '.')
-      continue;
-    if (!strcmp(dent->d_name, ".") || !strcmp(dent->d_name, ".."))
-      continue;
-
-    strncpy(fn + len, dent->d_name, FILENAME_MAX - len);
-    if (lstat(fn, &st) == -1) {
-      warn("Can't stat %s", fn);
-      res = WALK_BADIO;
-      continue;
+// Function called by nftw for each file/directory
+int process_path(const char *filepath, const struct stat *sb, int typeflag, struct FTW *ftwbuf) {
+    if (typeflag == FTW_F) { // Only process regular files
+        if (regexec(&regex, filepath, 0, NULL, 0) == 0) { // Regex match found
+            if (matching_files.count >= matching_files.capacity) {
+                matching_files.capacity *= ARRAY_RESIZE_FACTOR;
+                matching_files.filepaths = realloc(matching_files.filepaths, matching_files.capacity * sizeof(char*));
+                if (!matching_files.filepaths) {
+                    perror("Memory allocation error");
+                    exit(EXIT_FAILURE);
+                }
+            }
+            matching_files.filepaths[matching_files.count] = strdup(filepath);
+            if (!matching_files.filepaths[matching_files.count]) {
+                perror("Memory allocation error");
+                exit(EXIT_FAILURE);
+            }
+            matching_files.count++;
+        }
     }
-
-    /* don't follow symlink unless told so */
-    if (S_ISLNK(st.st_mode) && !(spec & WS_FOLLOWLINK))
-      continue;
-
-    /* will be false for symlinked dirs */
-    if (S_ISDIR(st.st_mode)) {
-      /* recursively follow dirs */
-      if ((spec & WS_RECURSIVE))
-        walk_recur(fn, reg, spec, array, array_index);
-
-      if (!(spec & WS_MATCHDIRS))
-        continue;
-    }
-
-    /* pattern match */
-    if (!regexec(reg, fn, 0, 0, 0)) {
-      array[array_index] = strdup(fn);
-      array_index++;
-    }
-  }
-
-  if (dir)
-    closedir(dir);
-  return res ? res : errno ? WALK_BADIO : WALK_OK;
+    return 0; // Continue traversal
 }
 
-int walk_dir(char *dname, char *pattern, int spec, char *array[],
-             int array_index) {
-  regex_t r;
-  int res;
-  if (regcomp(&r, pattern, REG_EXTENDED | REG_NOSUB))
-    return WALK_BADPATTERN;
-  res = walk_recur(dname, &r, spec, array, array_index);
-  regfree(&r);
-  return res;
+// Function to free memory used by the matching files array
+void free_matching_files_array() {
+    for (int i = 0; i < matching_files.count; i++) {
+        free(matching_files.filepaths[i]);
+    }
+    free(matching_files.filepaths);
+    matching_files.filepaths = NULL;
+    matching_files.count = 0;
+    matching_files.capacity = 0;
 }
 
-int main(int argc, char **argv) {
-  char *array[MAX_FILE_COUNT];
-  int i = 0;
-  int array_index = 0;
-  memset(array, 0, sizeof(array));
-  int r =
-      walk_dir(".", "\\.tex$", WS_DEFAULT | WS_MATCHDIRS, array, array_index);
-  switch (r) {
-  case WALK_OK:
-    break;
-  case WALK_BADIO:
-    printf("IO error");
-  case WALK_BADPATTERN:
-    printf("Bad pattern");
-  case WALK_NAMETOOLONG:
-    printf("Filename too long");
-  default:
-    printf("Unknown error?");
-  }
-  i = 0;
-  while (array[i] != NULL) {
-    printf("%s\n", array[i]);
-    free(array[i]);
-    i++;
-  }
-  return 0;
+// Function to print the array of matching files
+void print_matching_files() {
+    printf("Matching files:\n");
+    for (int i = 0; i < matching_files.count; i++) {
+        printf("%s\n", matching_files.filepaths[i]);
+    }
+    printf("Total matching files: %d\n", matching_files.count);
 }
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s <directory> <regex_pattern>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    char *dir_path = argv[1];
+    char *regex_pattern = argv[2];
+    int regex_comp_result;
+
+    // Compile regex pattern
+    regex_comp_result = regcomp(&regex, regex_pattern, REG_EXTENDED);
+    if (regex_comp_result) {
+        char error_buffer[512];
+        regerror(regex_comp_result, &regex, error_buffer, sizeof(error_buffer));
+        fprintf(stderr, "Regex compilation error: %s\n", error_buffer);
+        return EXIT_FAILURE;
+    }
+
+    // Initialize matching_files structure
+    matching_files.capacity = INITIAL_ARRAY_SIZE;
+    matching_files.count = 0;
+    matching_files.filepaths = malloc(matching_files.capacity * sizeof(char*));
+    if (!matching_files.filepaths) {
+        perror("Memory allocation error");
+        regfree(&regex); // Free regex resources before exiting
+        return EXIT_FAILURE;
+    }
+
+
+    if (nftw(dir_path, process_path, 20, FTW_PHYS) == -1) {
+        perror("nftw");
+        regfree(&regex); // Free regex resources before exiting
+        free_matching_files_array(); // Free allocated array memory
+        return EXIT_FAILURE;
+    }
+
+    print_matching_files();
+    free_matching_files_array(); // Clean up array memory
+    regfree(&regex); // Free regex resources
+
+    return EXIT_SUCCESS;
+}
+
+

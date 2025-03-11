@@ -1,26 +1,90 @@
-s/\\frac{1}{2}//g
-s/\\times/ /g
-s/\\approx/ /g
-s/\\propto/ /g
-s/=/ /g
-s/\\left(/ /g
-s/\\right)/ /g
-s/\\frac{1}/ /g
-s/$\\log$/ /g
-s/^\s\s\s*//g
-s/\\sqrt/ /g
-s/{[0-9]}/ /g
-s/\\pi^[0-9]/ /g
-s/e^[0-9]/ /g
-s/^[0-9]/ /g
-s/{\s*}/ /g
-s/\s\s*\$$/$/g
-s/[0-9]\\pi//g
-s/\^[0-9]/ /g
-s/\^ / /g
-s/ }/}/g
-s/\\frac{[0-9]*}//g
-s/\^}/}/g
-s/\\frac / /g
-s/\^\$$/$/g
-s/\s\s*$/$/g
+# Remove LaTeX formatting and isolate variables
+
+# 1. Remove common LaTeX commands:
+s/\\documentclass\[[^]]*\]{[^}]*}/ /g # Remove document class definition
+s/\\usepackage{[^}]*}/ /g           # Remove package inclusions
+s/\\newcommand\\.*//g           #remove commands
+s/\\begin{[^}]*}/ /g              # Remove begin environments
+s/\\end{[^}]*}/ /g                # Remove end environments
+s/\\title{[^}]*}/ /g              # Remove title
+s/\\author{[^}]*}/ /g             # Remove author
+s/\\affiliation{[^}]*}/ /g        # Remove affiliation
+s/\\date{[^}]*}/ /g                # Remove date
+s/\\maketitle/ /g                  # Remove maketitle
+s/\\section{[^}]*}/ /g             # Remove section titles
+s/\\subsection{[^}]*}/ /g          # Remove subsection titles
+s/\\subsubsection{[^}]*}/ /g       # Remove subsubsection titles
+s/\\raggedbottom/ /g              # Remove raggedbottom
+s/\\pdfoutput=1/ /g                # Remove pdfoutput
+s/\\def\\.*//g                   #remove definitions
+
+# 2. Remove math delimiters and functions, keeping variables:
+s/\\label{[^}]*}/ /g               # Remove labels
+s/\\cite{[^}]*}/ /g                # Remove citations
+s/\\ref{[^}]*}/ /g                 # Remove references
+s/\\left/ /g                       # Remove left delimiters
+s/\\right/ /g                      # Remove right delimiters
+s/\\rm/ /g                         # Remove roman font
+
+# 3. Remove math functions (trig, log, etc.)
+s/\\sin\b//g        # Remove \sin
+s/\\cos\b//g        # Remove \cos
+s/\\tan\b//g        # Remove \tan
+s/\\cot\b//g        # Remove \cot
+s/\\sec\b//g        # Remove \sec
+s/\\csc\b//g        # Remove \csc
+s/\\arcsin\b//g     # Remove \arcsin
+s/\\arccos\b//g     # Remove \arccos
+s/\\arctan\b//g     # Remove \arctan
+s/\\sinh\b//g     # Remove \sinh
+s/\\cosh\b//g     # Remove \cosh
+s/\\tanh\b//g     # Remove \tanh
+s/\\coth\b//g     # Remove \coth
+s/\\exp\b//g       # Remove \exp
+s/\\log\b//g       # Remove \log
+s/\\ln\b//g        # Remove \ln
+s/\\det\b//g       # Remove \det
+s/\\arg\b//g       # Remove \arg
+s/\\lim\b//g       # Remove \lim
+s/\\sup\b//g       # Remove \sup
+s/\\inf\b//g       # Remove \inf
+s/\\max\b//g       # Remove \max
+s/\\min\b//g       # Remove \min
+
+# 4.  Simplify Fractions and Roots (attempt more robust removal of fractions)
+s/\\frac{[^}]*}/ /g # Removes fractions,  leaves content within curly braces
+
+# 5. Remove simple superscript/subscript formatting that might remain
+#s/\^\{[^}]*\}//g      # Remove ^{...} superscripts
+#s/\_\{\[^}]*\}//g      # Remove _{...} subscripts
+
+# 6. Remove integers and floats
+#s/-?[0-9]+\.?[0-9]*//g  # Remove integers and floats (including negative numbers)
+
+# 7. Remove carets (^)
+s/\^//g
+
+# 8. Deal with spacing issues and relational operators
+s/[><=]//g                       # Remove relational operators
+s/\s+/ /g                         # Compress multiple spaces
+s/^\s+//g                        # Remove leading spaces
+s/\s+$//g                        # Remove trailing spaces
+
+# Clean up the math mode delimiters while retaining variables
+s/\$//g                           # Remove all remaining dollar signs
+s/\\/ /g                          # Remove all backslashes.
+#s/\{//g                          # Remove all curly braces.
+#s/\}//g                          # Remove all curly braces.
+
+#9 general cleaning to remove the remains of latex,
+s/\s+/ /g                         # Compress multiple spaces
+s/^\s+//g                        # Remove leading spaces
+s/\s+$//g                        # Remove trailing spaces
+
+# 8. Remove  propto, approx, and mathbf
+s/propto//g
+s/approx//g
+s/mathbf//g
+s/times//g
+s/pi//g
+s/sqrt//g

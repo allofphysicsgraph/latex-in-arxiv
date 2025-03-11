@@ -1,6 +1,6 @@
 rm tf_idf
 rm offsets
-abstract.out "$1" "$2"
+title.out "$1" "$2"
 sed -ri 's/id:[a-f0-9]+: count:1 docs:1 tok://g' tf_idf
 sed -ri 's/\\/\\\\/g' tf_idf
 cat tf_idf | tr -d '\n' >  tf_idf_0

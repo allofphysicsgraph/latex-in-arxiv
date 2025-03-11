@@ -40,8 +40,11 @@ DOCUMENT_SIZE=$(echo -n "$DOCUMENT_CONTENT" | wc -c)
 DOCUMENT_NAME=$(echo $DOCUMENT_PATH|rev|cut -d '/' -f1|rev)
 DOCUMENT_PATH_PREFIX=$(echo $DOCUMENT_PATH|rev|cut -d '/' -f2-|rev)
 bash get_abstract.sh $DOCUMENT_PATH_PREFIX $DOCUMENT_NAME
-DOCUMENT_ABSTRACT=$(cat tf_idf)
-echo $DOCUMENT_ABSTRACT
+mv tf_idf abstract_tf_idf
+bash get_title.sh $DOCUMENT_PATH_PREFIX $DOCUMENT_NAME
+DOCUMENT_ABSTRACT=$(cat abstract_tf_idf)
+DOCUMENT_TITLE=$(cat tf_idf)
+echo $DOCUMENT_TITLE
 DOCUMENT_PAYLOAD='{
   "label": "document",
   "properties": {
@@ -49,7 +52,7 @@ DOCUMENT_PAYLOAD='{
     "document_path": "'"$DOCUMENT_PATH"'",
     "document_size": '"$DOCUMENT_SIZE"',
     "document_type": "article",
-    "title": "Test Paper",
+    "title": "'"$DOCUMENT_TITLE"'",
     "abstract": "'"$DOCUMENT_ABSTRACT"'"
   }
 }'

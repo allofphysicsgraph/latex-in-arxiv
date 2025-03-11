@@ -3,7 +3,7 @@
 # Script to pre-process a text file for UTF-8 compliance and null character removal.
 
 # Input file (modify if needed)
-INPUT_FILE="latex_data.txt"
+INPUT_FILE="$1"
 
 # Output file (modify if needed) - It's good practice to create a new file
 OUTPUT_FILE="latex_data_utf8_cleaned.txt"
@@ -41,4 +41,5 @@ iconv -f UTF-8 -t UTF-8 -c "$INPUT_FILE" -o "$OUTPUT_FILE"
 
 echo "UTF-8 and null character cleanup complete."
 echo "Cleaned file saved to: $OUTPUT_FILE"
+mv $OUTPUT_FILE $1
 exit 0

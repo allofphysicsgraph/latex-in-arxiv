@@ -600,7 +600,7 @@ scriptsize = '\\begin{scriptsize}' @{n=1;}  (scriptsize_begin|scriptsize_end|scr
 section_begin = '\\begin{section}' @{n++; };
 section_end  = '\\end{section}' @{n--; };
 section_body = any+ - (section_begin|section_end);
-section = '\\begin{section}' @{n=1;}  (section_begin|section_end|section_body)*    section_end  :> any when{!n};
+section_2 = '\\begin{section}' @{n=1;}  (section_begin|section_end|section_body)*    section_end  :> any when{!n};
 sideways_begin = '\\begin{sideways}' @{n++; };
 sideways_end  = '\\end{sideways}' @{n--; };
 sideways_body = any+ - (sideways_begin|sideways_end);
@@ -648,7 +648,7 @@ subfigure = '\\begin{subfigure}' @{n=1;}  (subfigure_begin|subfigure_end|subfigu
 subsection_begin = '\\begin{subsection}' @{n++; };
 subsection_end  = '\\end{subsection}' @{n--; };
 subsection_body = any+ - (subsection_begin|subsection_end);
-subsection = '\\begin{subsection}' @{n=1;}  (subsection_begin|subsection_end|subsection_body)*    subsection_end  :> any when{!n};
+subsection_2 = '\\begin{subsection}' @{n=1;}  (subsection_begin|subsection_end|subsection_body)*    subsection_end  :> any when{!n};
 subtable_begin = '\\begin{subtable}' @{n++; };
 subtable_end  = '\\end{subtable}' @{n--; };
 subtable_body = any+ - (subtable_begin|subtable_end);
@@ -779,5 +779,14 @@ commas = '(' @{n=0;} (left_comma|right_comma|comma_body)* :> ')' when{!n};
 cite = '\\cite' braces ;
 ref = '\\ref' braces;
 bibitem = '\\bibitem' braces ; 
+url = '\\url' braces | '\\href' braces;
+affiliation = '\\affiliation' braces; 
+usepackage = '\\usepackage' braces; 
+author = '\\author' braces;
+section = '\\section' braces;
+label = '\\label' braces;
+emph = '\\emph' braces;
+bibinfo = '\\bibinfo' braces;
 
-latex = abstract | equation | cite | ref | bibitem;
+
+latex =  abstract | affiliation | author | bibinfo | bibitem | cite | comment| emph | equation | ref | section | url | usepackage ;

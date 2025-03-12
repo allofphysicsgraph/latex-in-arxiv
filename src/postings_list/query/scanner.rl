@@ -36,7 +36,7 @@ va_list args;
 main :=|*
 ignore => {};
 
-  latex  => {
+latex  => {
     if ((te - ts) < 2000) {
       XXH64_canonical_t dst;
       char temp[te - ts + 1];
@@ -52,7 +52,7 @@ ignore => {};
       for (i = 0; i < 8; i++) {
         fprintf(hash_test,"%02x",dst.digest[i]);
       }
-        fprintf(hash_test, " %d  %d\n", offset, length);
+        fprintf(hash_test, " %d  %d %d\n", offset, length,fcurs);
     }
   };
   any;

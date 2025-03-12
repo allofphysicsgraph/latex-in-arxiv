@@ -1,8 +1,6 @@
 %%{
   machine latex;
 comment='%' (any{1,100}-'\n') '\n';
-
-
 abstract_begin = '\\begin{abstract}' @{n++; };
 abstract_end  = '\\end{abstract}' @{n--; };
 abstract_body = any+ - (abstract_begin|abstract_end);
@@ -691,6 +689,9 @@ thebibliography_begin = '\\begin{thebibliography}' @{n++; };
 thebibliography_end  = '\\end{thebibliography}' @{n--; };
 thebibliography_body = any+ - (thebibliography_begin|thebibliography_end);
 thebibliography = '\\begin{thebibliography}' @{n=1;}  (thebibliography_begin|thebibliography_end|thebibliography_body)*    thebibliography_end  :> any when{!n};
+
+
+
 theo_begin = '\\begin{theo}' @{n++; };
 theo_end  = '\\end{theo}' @{n--; };
 theo_body = any+ - (theo_begin|theo_end);
@@ -771,4 +772,12 @@ right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
 parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
-latex = '\\title' braces;
+left_comma = '(' @{n++;};
+right_comma = ')' @{n--; };
+comma_body = any - (left_comma|right_comma);
+commas = '(' @{n=0;} (left_comma|right_comma|comma_body)* :> ')' when{!n};
+cite = '\\cite' braces ;
+ref = '\\ref' braces;
+bibitem = '\\bibitem' braces ; 
+
+latex = abstract | equation | cite | ref | bibitem;

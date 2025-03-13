@@ -1,7 +1,7 @@
 echo 'all tex files should be saved in 2003 folder'
 mkdir 2003
 #echo "input search pattern such as bibitem,title,ref,cite,equation "
-#bash update_search_pattern.sh "$1"
+bash update_search_pattern.sh "$1"
 mkdir 2003_errors
 #time bash 0_pre-process.sh 
 #time bash pre-process-dataset.sh  

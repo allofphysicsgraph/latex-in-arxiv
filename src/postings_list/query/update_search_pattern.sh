@@ -8,11 +8,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-if [[ " ${array1[*]} " == *" $1 "* ]]; then
-    echo "Argument '$1' found in array1. Running command1...";
-    sed -i -r "s/^latex =.*/latex = '\\\\\\\\$1' braces;/g"  ../../common/latex.rl ; 
-    exit
-fi
 
 if [[ " ${array2[*]} " == *" $1 "* ]]; then
 

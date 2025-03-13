@@ -1,4 +1,3 @@
-
 words = """ALNUM
 ALPHA
 BLANK

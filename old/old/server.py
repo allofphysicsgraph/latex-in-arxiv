@@ -36,7 +36,7 @@ import sys
 import yaml
 
 
-#with open("config.yaml", "r") as f:
+# with open("config.yaml", "r") as f:
 #    config = yaml.safe_load(f)
 
 token_list = []
@@ -50,10 +50,6 @@ class MyStyle(Style):
     styles = {
         Token.Text: "ansiblack bg:ansiblue",
     }
-
-
-
-
 
 
 sp = spm.SentencePieceProcessor()
@@ -179,7 +175,6 @@ class MyService(rpyc.Service):
             self.results[f_name].append(file_data)
             self.current_file = f_name
             self.exposed_sentences()
-
 
     def exposed_print_length(self):
         print(

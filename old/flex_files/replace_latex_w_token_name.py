@@ -29,8 +29,8 @@ import re
 
 pd.set_option("display.max_columns", 50)
 
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
+nltk.download("stopwords")
+nltk.download("averaged_perceptron_tagger")
 
 # store document as a list of logical groupings, basically paragraphs
 txttlng_tokenizer = texttiling.TextTilingTokenizer(
@@ -145,9 +145,7 @@ for sent in sentences:
     # print('*'*50)
     words = punkt_trainer.__dict__["_lang_vars"].word_tokenize(sent)
     tags = nltk.pos_tag(words)
-    test = balanced_test_tokenizer.tokenize(
-        sent
-    )  
+    test = balanced_test_tokenizer.tokenize(sent)
     if len(test) > 1:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
         math_expressions = regexpTokenizer.tokenize(sent)
@@ -182,16 +180,16 @@ for sent in sentences:
         # print(set(words).difference(set(mwe_words)))
         # print(set(mwe_words).difference(set(words)))
         print("*" * 50, "\n")
-        #sleep(3)
+        # sleep(3)
     # result = cp.parse(tags)
     # print(result)
     # inp = input()
 
 
 words = {k: v for k, v in sorted(word_frequency_dist.items(), key=lambda x: -x[1])}
-f = open('frequency_dist','w')
-for k,v in words.items():
-    f.write(f'{k}:{v}\n')
+f = open("frequency_dist", "w")
+for k, v in words.items():
+    f.write(f"{k}:{v}\n")
 print("frequency dist written to frequency_dist")
 exit(0)
 # exit(0)
@@ -468,11 +466,13 @@ if __name__ == "__main__":
                 # verify the keys are valid to avoid some invalid matches
                 df = df[
                     df.loc[:, k].apply(
-                        lambda x: True
-                        if re.findall(k + "{", str(x)[:20])
-                        and str(x).count("{") == str(x).count("}")
-                        and (str(x).count("{") + str(x).count("}")) % 2 == 0
-                        else False
+                        lambda x: (
+                            True
+                            if re.findall(k + "{", str(x)[:20])
+                            and str(x).count("{") == str(x).count("}")
+                            and (str(x).count("{") + str(x).count("}")) % 2 == 0
+                            else False
+                        )
                     )
                 ]
                 df.to_sql(k, engine, if_exists="append")

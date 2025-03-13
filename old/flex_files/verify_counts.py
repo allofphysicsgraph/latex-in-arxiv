@@ -3,11 +3,12 @@
 from sys import argv
 import re
 
+
 def read_file(f_name):
     """
-        >>> python verify_counts.py author sound1.tex
-        arg 1, tex cntrl sequence name such as abstract,
-        arg 2, tex filename
+    >>> python verify_counts.py author sound1.tex
+    arg 1, tex cntrl sequence name such as abstract,
+    arg 2, tex filename
     """
     with open(f"{f_name}", "r", encoding="ISO-8859-1") as f:
         data = f.read()
@@ -17,4 +18,6 @@ def read_file(f_name):
 
 
 data = read_file(argv[2])
-print(len(re.findall(r'\\{}(\s{{0,5}}|\n){{'.format(re.escape(argv[1])),data,re.DOTALL)))
+print(
+    len(re.findall(r"\\{}(\s{{0,5}}|\n){{".format(re.escape(argv[1])), data, re.DOTALL))
+)

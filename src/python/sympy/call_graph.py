@@ -466,9 +466,11 @@ def df_query(query_string, df):
 
     df[
         df.apply(
-            lambda row: True
-            if re.findall(query_string, str(row.astype(str)), re.IGNORECASE)
-            else False,
+            lambda row: (
+                True
+                if re.findall(query_string, str(row.astype(str)), re.IGNORECASE)
+                else False
+            ),
             axis=1,
         )
     ]

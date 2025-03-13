@@ -48,7 +48,6 @@ c.root.build_word_tokenizers()
 c.root.print_tokenized_sentences()
 
 
-
 # depends on english_word_tokenizer
 # depends on sentences
 c.root.rank_bm25()

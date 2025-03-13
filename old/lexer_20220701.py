@@ -31,7 +31,7 @@ txttlng_tokenizer = texttiling.TextTilingTokenizer(
 # training a sentence tokenizer on scientific LaTeX documents.
 punkt_trainer = nltk.data.load("Punkt_LaTeX_SENT_Tokenizer.pickle")
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
-balanced_test_tokenizer=SExprTokenizer(parens='$$',strict=True)
+balanced_test_tokenizer = SExprTokenizer(parens="$$", strict=True)
 
 
 """
@@ -117,21 +117,22 @@ def document_summary(document, reduction_percentage):
             dct[tag] += 1
     return dct
 
-#f=open("sentences__1","w")
-#storage = defaultdict(list)
-#testing a process for replacing math latex in the sentences temporarily for the purposing of tagging
-#and then to get the structure the the phrases which define the variables in the tex files.
-#steps should include extract all math, equations, etc, determine where the variables are 
-#then find their definitions and properties. 
+
+# f=open("sentences__1","w")
+# storage = defaultdict(list)
+# testing a process for replacing math latex in the sentences temporarily for the purposing of tagging
+# and then to get the structure the the phrases which define the variables in the tex files.
+# steps should include extract all math, equations, etc, determine where the variables are
+# then find their definitions and properties.
 
 
 grammar = "NP: {<DT>?<JJ>*<NN>{1,2}}"
 cp = nltk.RegexpParser(grammar)
 data = read_file(".", "sentences__1")
-sentences = re.split('\*'*50,data)
+sentences = re.split("\*" * 50, data)
 for sent in sentences:
 
-    words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+    words = punkt_trainer.__dict__["_lang_vars"].word_tokenize(sent)
     tags = nltk.pos_tag(words)
     print(sent)
     test = balanced_test_tokenizer.tokenize(sent)
@@ -139,48 +140,49 @@ for sent in sentences:
         regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
         math_expressions = regexpTokenizer.tokenize(sent)
         for tex in math_expressions:
-            sent = sent.replace(tex,"TEX_MATH")
-        if '$$' in sent:
+            sent = sent.replace(tex, "TEX_MATH")
+        if "$$" in sent:
             regexpTokenizer = nltk.RegexpTokenizer("\$\$.*?\$\$")
             multiline_math_expressions = regexpTokenizer.tokenize(sent)
             for tex in multiline_math_expressions:
-                sent = sent.replace(tex,"MULTILINE_TEX_MATH")
+                sent = sent.replace(tex, "MULTILINE_TEX_MATH")
 
         print(sent)
         sleep(3)
-    #result = cp.parse(tags)
-    #print(result)
-    #inp = input()
+    # result = cp.parse(tags)
+    # print(result)
+    # inp = input()
 
 
 exit(0)
 
-for ix in range(0,len(data),1000000):
-    d = data[ix:ix+1000000]
+for ix in range(0, len(data), 1000000):
+    d = data[ix : ix + 1000000]
     groups = txttlng_tokenizer.tokenize(d)
     sentences = []
     from tqdm import tqdm
+
     for group in tqdm(groups):
         sentences = tok_cls.sentences_from_text(group)
         for sent in sentences:
             f.write(sent)
-            #words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
-            f.write('\n')
-            #print(words)
+            # words = punkt_trainer.__dict__['_lang_vars'].word_tokenize(sent)
+            f.write("\n")
+            # print(words)
             f.write("*" * 50)
-            #print("\n\n")
-            #sleep(3)
-            f.write('\n')
+            # print("\n\n")
+            # sleep(3)
+            f.write("\n")
 f.close()
 
 exit(0)
-#set_trace()
-#set_trace()
-trainer.__dict__['_lang_vars'].word_tokenizetrainer.__dict__['_lang_vars'].word_tokenize
-#words = document_summary(data, 0.10)
-#words = sorted(words.items(), key=lambda x: -x[1])
-#print(words)
-#exit(0)
+# set_trace()
+# set_trace()
+trainer.__dict__["_lang_vars"].word_tokenizetrainer.__dict__["_lang_vars"].word_tokenize
+# words = document_summary(data, 0.10)
+# words = sorted(words.items(), key=lambda x: -x[1])
+# print(words)
+# exit(0)
 
 
 class Tokenizer:
@@ -500,11 +502,13 @@ if __name__ == "__main__":
                 # verify the keys are valid to avoid some invalid matches
                 df = df[
                     df.loc[:, k].apply(
-                        lambda x: True
-                        if re.findall(k + "{", str(x)[:20])
-                        and str(x).count("{") == str(x).count("}")
-                        and (str(x).count("{") + str(x).count("}")) % 2 == 0
-                        else False
+                        lambda x: (
+                            True
+                            if re.findall(k + "{", str(x)[:20])
+                            and str(x).count("{") == str(x).count("}")
+                            and (str(x).count("{") + str(x).count("}")) % 2 == 0
+                            else False
+                        )
                     )
                 ]
                 df.to_sql(k, engine, if_exists="append")

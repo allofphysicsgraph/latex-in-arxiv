@@ -26,8 +26,10 @@ RUN apk update && apk add --no-cache \
 
 WORKDIR /opt/
 COPY src /opt/
+COPY utils /opt/
 
-#RUN ./common/install_ragel.sh  # Replace install_ragel.sh contents as needed.
+RUN gcc strip_non_ascii.c -o  strip_non_ascii.out
+RUN mv strip_non_ascii.out /usr/bin/
 
 # the scanner will need to be re-compiled when the user makes a change,
 # but we'll compile it the first time so they can get started immediately.
@@ -62,4 +64,4 @@ RUN make scanner
 #RUN  make read_tf_idf
 
 # Set default command (optional - adjust based on your actual application)
-CMD ["/bin/bash"] i
+CMD ["/bin/bash"] 

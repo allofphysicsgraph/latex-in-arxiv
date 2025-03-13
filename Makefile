@@ -25,7 +25,7 @@ test:
 
 # Docker on linux
 docker:
-	service docker start
+	#service docker start
 	docker build -t $(mytag) .
 	docker run -it  --rm $(mytag) /bin/bash
 

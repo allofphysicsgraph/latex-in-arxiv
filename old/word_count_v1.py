@@ -84,7 +84,6 @@ for ix in sorted(notseen.items(), key=lambda x: -x[1]):
             if ix[1] > 15:
                 print(ix[0].strip())
 
-"""
 tokenizer.tokenize('\\frac{2}{3}')
 
 def tokenize_sentences(text):
@@ -115,9 +114,9 @@ def tokenize_words(text):
         if valid_token(word)
     ]
 
-for ix in set(latex_tokens):
-    if len(ix) > 4:
-        resp = r"{}".format(ix)
-        print(resp)
-        add_new_token(resp)
-"""
+#for ix in set(latex_tokens):
+#    if len(ix) > 4:
+#        resp = r"{}".format(ix)
+#        print(resp)
+#        add_new_token(resp)
+

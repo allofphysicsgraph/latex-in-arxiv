@@ -8,15 +8,16 @@ from tqdm import tqdm
 
 nltk.download("punkt")
 nltk.download("stopwords")
-path = "/media/"
+path = "."
 notseen = defaultdict(int)  # default starts at 0
 notseen_latex = defaultdict(int)
 notseen_names = defaultdict(int)
-files = listdir(path)
+files = [x for x in listdir(path) if "." in x]
+print(files)
 
 
-def read_file(path, f_name):
-    with open("{}/{}".format(path, f_name), "r", encoding="ISO-8859-1") as f:
+def read_file(f_name):
+    with open("{}".format(f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
     return data
 
@@ -36,7 +37,7 @@ tokenizer = mwe.MWETokenizer(separator="")
 TOKEN_MIN_LENGTH = 3
 seen = []
 
-with open("WORDS/arvix_vocab_1.txt", "r") as f:
+with open("./WORDS/arxiv_vocab_1.txt", "r") as f:
     data = f.read()
     arxiv_words = set(data.splitlines())
 
@@ -66,7 +67,7 @@ for word in regular_words:
     add_new_token(word)
 
 for f_name in tqdm(files[:5]):
-    data = read_file(path, f_name)
+    data = read_file(f_name)
     word_list = tokenizer.tokenize(data)
     # print(word_list)
     for word in word_list:

@@ -787,6 +787,6 @@ section = '\\section' braces;
 label = '\\label' braces;
 emph = '\\emph' braces;
 bibinfo = '\\bibinfo' braces;
+title = '\\title' braces;
 
-
-latex =  abstract | affiliation | author | bibinfo | bibitem | cite | comment| emph | equation | ref | section | url | usepackage ;
+latex = title ;

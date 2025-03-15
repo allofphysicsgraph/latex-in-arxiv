@@ -30,7 +30,3 @@ echo $DOCUMENT_PAYLOAD > test.json
 if [[ $(jsonlint-php test.json |grep '^Valid JSON'  -c) -eq 1 ]];  then echo ok; mv test.json valid.json;
 cat valid.json |bash client.sh --host http://127.0.0.1:8080 create8 graph=hugegraph --content-type json -
 fi
-#create_vertex "$DOCUMENT_PAYLOAD" "document vertex"
-#verify_vertex "document" "document_hash" "$DOCUMENT_HASH"
-
-#if [[ $(jsonlint-php valid.json |grep '^Valid JSON'  -c) -eq 1 ]];  then echo ok;fi

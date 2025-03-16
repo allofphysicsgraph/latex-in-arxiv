@@ -781,16 +781,15 @@ ref = '\\ref' braces;
 bibitem = '\\bibitem' braces ; 
 url = '\\url' braces | '\\href' braces;
 affiliation = '\\affiliation' braces; 
-usepackage = 'usepackage' braces; 
+usepackage = '\\usepackage' ( braces | brackets braces ); 
 author = '\\author' braces;
 section = '\\section' braces;
 label = '\\label' braces;
 emph = '\\emph' braces;
 bibinfo = '\\bibinfo' braces;
 title = '\\title' braces;
-
+newcommand = '\\newcommand' braces ;
 frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | digit digit);
+inline_math =  "$" (any-"$"){1,80} "$" ;
 
-
-
-latex = frac;
+latex =   abstract |affiliation | align | author | bibitem | center |cite | equation | inline_math | itemize | newcommand | ref| title | url ;

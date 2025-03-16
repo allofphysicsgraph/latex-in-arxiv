@@ -27,7 +27,24 @@ tok_cls.sentences_from_text(data)
 sentences = tok_cls.sentences_from_text(data)
 from time import sleep
 
+
+from nltk import mwe
+from sys import argv
+import re
+
+with open("vocab.rl", "r") as f:
+    data = f.read()
+    english_vocab = re.findall(r'"(.*?)"', data)
+
+english_word_tokenizer = mwe.MWETokenizer(separator="")
+word_list = sorted(english_vocab, key=lambda x: -len(x))
+for word in word_list:
+    # print(word)
+    english_word_tokenizer.add_mwe(word)
+
 for ix in range(len(sentences)):
-    print(sentences[ix])
-    print("*" * 50)
-    sleep(2)
+    sent = sentences[ix]
+    print(sent)
+    resp = english_word_tokenizer.tokenize(sent)
+    print([x for x in resp if x.strip()])
+#    sleep(2)

@@ -1,4 +1,5 @@
 bash run.sh affiliation
+bash run.sh thebibliography
 bash run.sh author
 bash run.sh bibitem
 bash run.sh cite

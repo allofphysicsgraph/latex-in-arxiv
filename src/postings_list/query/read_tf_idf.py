@@ -1,8 +1,7 @@
-from collections import defaultdict
-from time import sleep
+from sqlalchemy import create_engine
+from sys import argv
 import pandas as pd
 import re
-from sys import argv
 
 with open(argv[1], "r") as f:
     data = f.read()
@@ -16,4 +15,12 @@ for k, v in zip(tokens[1::2], tokens[2::2]):
 
 df = pd.DataFrame(output)
 df.columns = ["xxh", "count", "docs", "tf_idf", "token"]
-print(df.head())
+
+table_name = [x for x in re.split("_tf_idf", argv[1]) if x.strip()]
+print(table_name)
+if table_name:
+    table_name = table_name[0]
+
+
+engine = create_engine("postgresql://arxiv:795e3522169@localhost:5433/latex_in_arxiv")
+df.to_sql(table_name, engine, if_exists="append", index=False)

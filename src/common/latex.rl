@@ -793,4 +793,4 @@ newcommand = '\\newcommand' (braces braces | braces brackets brackets braces);
 frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | digit digit);
 inline_math =  "$" (any-"$"){1,80} "$" ;
 
-latex =   parens|brackets|braces|comment|table |abstract |affiliation | align | author | bibitem | center |cite|comment | equation | inline_math | itemize | newcommand | ref| title | section | subsection | url ; 
+latex =   parens|brackets|braces|comment|table |abstract |affiliation | align | author | bibitem | center |cite|comment | equation | inline_math | itemize | newcommand | ref| title | section | subsection | url |usepackage; 

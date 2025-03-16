@@ -17,10 +17,9 @@ df = pd.DataFrame(output)
 df.columns = ["xxh", "count", "docs", "tf_idf", "token"]
 
 table_name = [x for x in re.split("_tf_idf", argv[1]) if x.strip()]
-print(table_name)
 if table_name:
-    table_name = table_name[0]
-
+    table_name = table_name[0].replace('./','')
+    print(table_name)
 
 engine = create_engine("postgresql://arxiv:795e3522169@localhost:5433/latex_in_arxiv")
 df.to_sql(table_name, engine, if_exists="append", index=False)

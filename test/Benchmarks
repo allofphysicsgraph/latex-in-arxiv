@@ -1,3 +1,26 @@
+Sun Mar 16 05:45:54 PM UTC 2025
+user@debian:/mnt/100k$ find . -type f -name "*.tex" |wc -l 
+190347
+
+user@debian:/mnt/100k$ du -sch . 
+6.6G	.
+6.6G	total
+
+user@debian:/mnt/100k$ time equation.out . tex$ 
+sorting structs
+writing tf_idf scores to tf_idf
+
+real	0m5.871s
+user	0m4.081s
+sys	0m1.776s
+
+user@debian:/mnt/100k$ cat offsets |sort|uniq |wc -l 
+476398
+1 line per equation 
+*****************************************************************************************
+
+
+
 counting Inline expressions
 Correct count is 261
 

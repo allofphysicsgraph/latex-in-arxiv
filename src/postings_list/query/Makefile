@@ -10,6 +10,9 @@ scanner:
 	$(CC)  $(CFLAGS)  -O2 -I../../common/ scanner.c  example.c reader.c  main.c  ../../common/xxhash.c funcs.c ../../common/canonicalFromStr.c -o scanner.out -lm
 	#./scanner.out . 
 	#/scanner.out . offsets
+clean :
+	rm tf_idf
+	rm offsets
 
 read_tf_idf:
 	ragel read_tf_idf.rl -m -G2

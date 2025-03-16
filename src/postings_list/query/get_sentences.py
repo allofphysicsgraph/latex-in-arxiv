@@ -15,7 +15,12 @@ from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
 tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
 with open(argv[1], "r") as f:
     data = f.read()
-    re.sub(r"\\begin{thebibliography}.*?\\end{thebibliography}", "", data, re.DOTALL)
+    match = re.findall(
+        r"\\begin{thebibliography}.*?\\end{thebibliography}", data, re.DOTALL
+    )
+    if match:
+        match = match[0]
+        data = data.replace(match, "")
     print(data)
 
 tok_cls.sentences_from_text(data)

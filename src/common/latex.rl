@@ -781,7 +781,7 @@ ref = '\\ref' braces;
 bibitem = '\\bibitem' braces ; 
 url = '\\url' braces | '\\href' braces;
 affiliation = '\\affiliation' braces; 
-usepackage = '\\usepackage' braces; 
+usepackage = 'usepackage' braces; 
 author = '\\author' braces;
 section = '\\section' braces;
 label = '\\label' braces;
@@ -789,4 +789,8 @@ emph = '\\emph' braces;
 bibinfo = '\\bibinfo' braces;
 title = '\\title' braces;
 
-latex = title ;
+frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | digit digit);
+
+
+
+latex = frac;

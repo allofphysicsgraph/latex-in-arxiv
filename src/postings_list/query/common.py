@@ -1,7 +1,19 @@
+import re
 def read_file(f_name):
     with open("{}".format(f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
-    return data
+        match = re.findall(
+            r"\\begin{thebibliography}.*?\\end{thebibliography}", data, re.DOTALL
+        )
+        if match:
+            match = match[0]
+            data = data.replace(match, "")
+        results = []
+        for line in data.splitlines():
+            if not re.findall(r'^\\newcommand|^%%%%%%%%%%%|^\\usepackage|^\\renew|^\\vspace',line):
+                if len(line.strip())>1:
+                    results.append(line)
+    return '\n'.join(results)
 
 def get_sentences(data):
     from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer
@@ -28,7 +40,7 @@ def get_sentences(data):
             match = match[0]
             data = data.replace(match, "")
         print(data)
-
+        print(len(data))
     tok_cls.sentences_from_text(data)
     sentences = tok_cls.sentences_from_text(data)
     return sentences

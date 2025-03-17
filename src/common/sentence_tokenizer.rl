@@ -1,0 +1,6 @@
+%%{
+  machine latex;
+  s= 'We focus on the training pe'|'To measure the performanc'|'Thus, proving its necessity.'|'In our experiments, we made'|'In this paper, we study'|'\\n%We believe (as also im'|'To track the alignment of '|'It is straightforward to e'|'However, it is not ne'|'% CVPR 2024 Paper Templat'|'In both the cases, the '|'To track the alignment of'|'Under the SSBM distrib'|'Nonetheless, we prove the '|'Thus, we show the necessi'|'As a direction for fu'|'Additionally, since $'|'layer_nc1_H_N_1000_C_2_p_0.00'|'In this appendix, we analys'|'It is straightforward'|'Additionally, we perform s'|'\\n% hyperref with opti'|'Now, by multiplying the f'|'However, for an intuitiv'|'\\nNext, to provide reasonin'|'Papyan, Han, and Donoho \\n'|'\\nMost of the properties'|'\\nTo gain insights int'|'Then, we theoretically study '|'In this paper, we foc'|'To this end, the increas'|'Finally, we present a st'|'In both the cases, the S'|'Finally, by ignoring the ex'|'In this context, a red'|'Now, to account for '|'Thus, we show the necess'|'Focusing on the regulariza'|'The empirical and theoretical'|'Using the MSE loss fo'|'There are two commands\\n% used'|'First, note that as th'|'Now, by dropping the '|'This implies that for '|'In essence, we take an N'|'I guess that there are be';
+latex = s ;
+
+}%%

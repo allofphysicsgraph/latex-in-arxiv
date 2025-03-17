@@ -60,14 +60,15 @@ ENV VIRTUAL_ENV=/opt/postings_list/query/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install pandas in virtualenv
-RUN pip3 install --no-cache-dir pandas
 RUN pip3 install --no-cache-dir gensim
-RUN pip3 install --no-cache-dir spacy
-RUN pip3 install --no-cache-dir stanza
 RUN pip3 install --no-cache-dir nltk
+RUN pip3 install --no-cache-dir pandas
 RUN pip3 install --no-cache-dir psycopg2-binary
+RUN pip3 install --no-cache-dir spacy
 RUN pip3 install --no-cache-dir sqlalchemy
-
+RUN pip3 install --no-cache-dir stanza
+RUN pip3 install --no-cache-dir sumy
+RUN pip3 install --no-cache-dir yake
 # Build the scanner
 RUN make scanner
 #RUN  make read_tf_idf

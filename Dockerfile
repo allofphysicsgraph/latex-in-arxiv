@@ -64,6 +64,7 @@ RUN pip3 install --no-cache-dir gensim
 RUN pip3 install --no-cache-dir nltk
 RUN pip3 install --no-cache-dir pandas
 RUN pip3 install --no-cache-dir psycopg2-binary
+RUN pip3 install --no-cache-dir sentencepiece
 RUN pip3 install --no-cache-dir spacy
 RUN pip3 install --no-cache-dir sqlalchemy
 RUN pip3 install --no-cache-dir stanza

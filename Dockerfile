@@ -60,7 +60,7 @@ ENV VIRTUAL_ENV=/opt/postings_list/query/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install pandas in virtualenv
-RUN pip3 install --no-cache-dir gensim
+#RUN pip3 install --no-cache-dir gensim
 RUN pip3 install --no-cache-dir nltk
 RUN pip3 install --no-cache-dir pandas
 RUN pip3 install --no-cache-dir psycopg2-binary

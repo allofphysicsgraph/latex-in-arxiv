@@ -13,7 +13,8 @@ RUN apk update && apk add --no-cache \
     python3-dev \
     py3-pip \
     swig \
-    texlive \
+    texlive-full \
+    cmake \
     vim \
     wget \
     zip \
@@ -64,6 +65,8 @@ RUN pip3 install --no-cache-dir gensim
 RUN pip3 install --no-cache-dir spacy
 RUN pip3 install --no-cache-dir stanza
 RUN pip3 install --no-cache-dir nltk
+RUN pip3 install --no-cache-dir psycopg2-binary
+RUN pip3 install --no-cache-dir sqlalchemy
 
 # Build the scanner
 RUN make scanner

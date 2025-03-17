@@ -31,6 +31,8 @@ COPY utils /opt/
 RUN gcc strip_non_ascii.c -o  strip_non_ascii.out
 RUN mv strip_non_ascii.out /usr/bin/
 
+RUN gcc newcommand.c -o  newcommand.out
+RUN mv newcommand.out /usr/bin/
 # the scanner will need to be re-compiled when the user makes a change,
 # but we'll compile it the first time so they can get started immediately.
 ENV PATH="${PATH}:/usr/local/bin"
@@ -58,6 +60,10 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install pandas in virtualenv
 RUN pip3 install --no-cache-dir pandas
+RUN pip3 install --no-cache-dir gensim
+RUN pip3 install --no-cache-dir spacy
+RUN pip3 install --no-cache-dir stanza
+RUN pip3 install --no-cache-dir nltk
 
 # Build the scanner
 RUN make scanner

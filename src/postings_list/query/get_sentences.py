@@ -18,7 +18,7 @@ files = [x for x in listdir('.') if re.findall('tex$',x)]
 sos = []
 eos = []
 
-for f_name in tqdm(files[2:8]):
+for f_name in tqdm(files):
     data = read_file(f_name)
     doc = nlp(data)
     output = []
@@ -43,7 +43,9 @@ print(lss/ls)
 print(len(eos),len(set(eos)))
 from random import shuffle
 shuffle(sos)
-sos = [x for x in list(set(sos))[:550] if not re.findall(r'\\',str(x))]
+sos = [x for x in list(set(sos)) if not re.findall(r'\\',str(x))]
 sos = list(set(sos))
+sos = sorted(sos,key=lambda x: -len(x))
+sos = [x.strip() for x in sos if len(x) >=20]
 print(sos)
 #print(list(set(eos))[:40])

@@ -14,7 +14,7 @@
 #include <errno.h>
 
 #define MAX_FILE_PATH_LENGTH 128
-#define MAX_TOKEN_COUNT 256
+#define MAX_TOKEN_COUNT 2560
 #define MAX_TOKEN_LENGTH 2500
 
 void print_context(char *filename, int offset, int match_len, int lhs_context,

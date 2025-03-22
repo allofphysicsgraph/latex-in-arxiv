@@ -87,7 +87,15 @@ latex  => {
         fprintf(hash_test, " %d  %d %d\n", offset, length,fcurs);
     }
   };
-  any;
+  any => {
+
+      char temp[te - ts + 1];
+      memset(temp, '\0', te - ts + 1);
+      int offset = ts - in;
+      int length = te - ts;
+      strncpy(temp, &in[offset], length);
+      printf("%s",temp);
+  };
   *| ;
 }%%
 

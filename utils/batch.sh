@@ -24,3 +24,15 @@
 
 
 #find tex_sentences/ -type f -name "*.tex.out" |xargs -i  -P20 sed -ri 's/CharacterOffsetBegin=|CharacterOffsetEnd=//g' "{}"
+
+#Remove the tokens from CoreNLP
+#find tex_sentences/ -type f -name "*.tex.out" |xargs -i -P30  sed -i 's/^\[Text=.*//g' "{}" 
+
+#delete duplicate blank lines
+#find tex_sentences -type f -name "*.tex.out"  |xargs -i -P30 sed -i '/^$/N;/\n$/D' "{}"
+
+
+
+#get a list of symbols from equations to ensure proper coverage in the tokenizer
+#ls|grep tex$|xargs -i cat  "{}" |sed -f sed_file |tr '{} []()[0-9]_,|+-:=^' '\n'|sort|uniq -c |sort -n |grep '\\' |awk '$1>150'|sed -r 's/^\s\s*//g'|cut -d ' ' -f2- |awk 'length($0)>3'|xargs -i echo -e s/\\\\\\\\{}//g >> sed_file
+

@@ -795,6 +795,8 @@ inline_math =  "$" (any-"$"){1,80} "$" ;
 underscore = '_';
 caret = '^';
 sum ='\\sum' underscore braces caret braces;  
-integral ='\\int' underscore braces caret braces;  
+int ='\\int' underscore braces caret braces;  
+lim ='\\lim' underscore braces;  
+prod ='\\prod' underscore braces caret braces;  
 
 latex = sum ;

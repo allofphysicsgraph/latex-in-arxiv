@@ -1,4 +1,6 @@
 import re
+
+
 def read_file(f_name):
     with open("{}".format(f_name), "r", encoding="ISO-8859-1") as f:
         data = f.read()
@@ -10,10 +12,13 @@ def read_file(f_name):
             data = data.replace(match, "")
         results = []
         for line in data.splitlines():
-            if not re.findall(r'^\\newcommand|^%%%%%%%%%%%|^\\usepackage|^\\renew|^\\vspace',line):
-                if len(line.strip())>1:
+            if not re.findall(
+                r"^\\newcommand|^%%%%%%%%%%%|^\\usepackage|^\\renew|^\\vspace", line
+            ):
+                if len(line.strip()) > 1:
                     results.append(line)
-    return '\n'.join(results)
+    return "\n".join(results)
+
 
 def get_sentences(data):
     from nltk.tokenize.punkt import PunktTrainer, PunktSentenceTokenizer

@@ -96,7 +96,9 @@ latex  => {
       strncpy(temp, &in[offset], length);
       printf("%s",temp);
   };
-  *| ;
+
+('\\left'|'\\right'|'\\qquad') ;
+*| ;
 }%%
 
     %% write data;

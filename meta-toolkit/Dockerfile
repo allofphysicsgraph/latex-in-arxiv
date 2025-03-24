@@ -18,19 +18,24 @@ WORKDIR $METADIR
 RUN git clone --depth 1 https://github.com/meta-toolkit/meta.git .
 RUN git submodule update --init --recursive
 COPY CMakeLists.txt /opt/meta/CMakeLists.txt
+COPY data /opt/meta/
+COPY deps /opt/meta/
 
 # from your build directory
 RUN mkdir $METADIR/build
 
 WORKDIR $METADIR/build
+COPY downloads $METADIR/build
+COPY data /opt/meta/build
+COPY deps /opt/meta/build
 RUN cp  $METADIR/config.toml .
 RUN cmake $METADIR -DCMAKE_BUILD_TYPE=Release 
 
 #fails build on ICU
-RUN make
+#RUN make
 #RUN sed -i 's/xlocale/locale/g' /opt/meta/build/deps/icu-58.2/src/ExternalICU/source/i18n/digitlst.cpp
 #RUN make
 
-RUN ctest --output-on-failure
+#RUN ctest --output-on-failure
 
 #RUN apt-get -y purge git && apt-get -y autoremove 

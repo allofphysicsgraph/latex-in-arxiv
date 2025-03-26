@@ -30,4 +30,14 @@ from offsets_dataframe import offsets_dataframe
 zf = offsets_dataframe()
 print(zf.head())
 df = pd.merge(df, zf, left_on="xxh", right_on="xxh")
-print(df.head())
+df.sort_values('docs',ascending=False,inplace=True)
+print(df.head(50))
+#df.to_csv('cite_trace.csv',index=False)
+#df.docs =  df.docs.apply(int)
+#df = df[df.docs>1]
+#filenames = df[df.token=='$Y$'].filename.head()
+#zf = df.query('filename in @filenames')
+#var = r'\\cite'
+#zf= zf.query('token.str.contains(@var)').loc[:,['token','filename']]
+#zf.drop_duplicates(inplace=True)
+#print(zf)

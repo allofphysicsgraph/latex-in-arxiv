@@ -28,6 +28,8 @@
 #Remove the tokens from CoreNLP
 #find tex_sentences/ -type f -name "*.tex.out" |xargs -i -P30  sed -i 's/^\[Text=.*//g' "{}" 
 
+# find tex_sentences -type f -name "*.tex.out"  |xargs -i -P30 sed -i 's/^Tokens:$//g' "{}"
+
 #delete duplicate blank lines
 #find tex_sentences -type f -name "*.tex.out"  |xargs -i -P30 sed -i '/^$/N;/\n$/D' "{}"
 

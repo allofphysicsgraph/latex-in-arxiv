@@ -757,6 +757,18 @@ xy_end  = '\\end{xy}' @{n--; };
 xy_body = any+ - (xy_begin|xy_end);
 xy = '\\begin{xy}' @{n=1;}  (xy_begin|xy_end|xy_body)*    xy_end  :> any when{!n};
 
+gem_code_begin = '```' @{n++; };
+gem_code_end  = '```' @{n--; };
+gem_code_body = any+ - (gem_code_begin|gem_code_end);
+gem_code = '```' @{n=0;}  (gem_code_begin|gem_code_end|gem_code_body)*    gem_code_end  :> any when{!n};
+
+
+gem_fname_begin = '**' @{n++; };
+gem_fname_end  = '**' @{n--; };
+gem_fname_body = any+ - (gem_fname_begin|gem_fname_end);
+gem_fname = '**' @{n=0;}  (gem_fname_begin|gem_fname_end|gem_fname_body)*    gem_fname_end  :> any when{!n};
+
+
 left_brace = '{' @{n++; };
 right_brace = '}' @{n--; };
 brace_body = any - (left_brace|right_brace);
@@ -799,4 +811,4 @@ int ='\\int' underscore braces caret braces;
 lim ='\\lim' underscore braces;  
 prod ='\\prod' underscore braces caret braces;  
 
-latex = sum ;
+latex = gem_fname gem_code;

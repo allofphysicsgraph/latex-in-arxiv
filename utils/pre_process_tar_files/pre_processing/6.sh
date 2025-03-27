@@ -1,1 +1,0 @@
-find $(find . -maxdepth 1 -type d |grep '/' |grep -v move|grep -v pre_proce|grep '[0-9]{4}' -E)  -type f |rev |cut -d '.' -f1|rev |sort|uniq -c |sort -n |awk '$1>10{print $2}'|grep -v sh$ > move_to_filetypes/common_file_extensions 

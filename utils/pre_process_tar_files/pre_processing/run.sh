@@ -62,7 +62,7 @@ decompress
 checksum_files
 CLOC
 file_similarity
-cp move_to_filetypes/common_file_extensions ~/
+cp ../common_file_extensions ~/
 common_file_extensions
 copy_logs
 group_by_filetype

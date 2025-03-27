@@ -1,1 +1,1 @@
-for i in `seq 501 502`;do mkdir ARXIV_FILE_TYPES_$i ; mkdir ARXIV_LOGS_$i ; mkdir ARXIV_PROCESSING_$i;cp pre_processing/* -r ARXIV_PROCESSING_$i/ ;bash run_processing.sh ARXIV_PROCESSING_$i;screen -ls;sleep 60;done
+for i in `seq 0 1`;do mkdir ARXIV_FILE_TYPES_$i ; mkdir ARXIV_LOGS_$i ; mkdir ARXIV_PROCESSING_$i;cp pre_processing/* -r ARXIV_PROCESSING_$i/ ;bash run_processing.sh ARXIV_PROCESSING_$i;screen -ls;sleep 60;done

@@ -1,0 +1,72 @@
+
+upstream backend {
+    # Define the upstream server address and port
+    server localhost:6070;
+}
+
+server {
+    # Listen on port 80 for HTTP requests
+    listen 80;
+    server_name localhost; # You can change this to your domain name
+
+    location ~* /$ {
+	    allow all;
+	    # Proxy all requests to the backend upstream
+        proxy_pass http://backend;
+
+        # Preserve the original Host header
+        proxy_set_header Host $host;
+        # Forward the original client IP address
+        proxy_set_header X-Real-IP $remote_addr;
+        # Forward additional proxy information
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Preserve the original protocol (HTTP or HTTPS)
+        proxy_set_header X-Forwarded-Proto $scheme;
+	}
+
+
+    location ~* /search {
+	    allow all;
+        # Proxy all requests to the backend upstream
+        proxy_pass http://backend;
+
+        # Preserve the original Host header
+        proxy_set_header Host $host;
+        # Forward the original client IP address
+        proxy_set_header X-Real-IP $remote_addr;
+        # Forward additional proxy information
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Preserve the original protocol (HTTP or HTTPS)
+        proxy_set_header X-Forwarded-Proto $scheme;
+	}
+
+    location ~* /about {
+	    allow all;
+        # Proxy all requests to the backend upstream
+        proxy_pass http://backend;
+
+        # Preserve the original Host header
+        proxy_set_header Host $host;
+        # Forward the original client IP address
+        proxy_set_header X-Real-IP $remote_addr;
+        # Forward additional proxy information
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Preserve the original protocol (HTTP or HTTPS)
+        proxy_set_header X-Forwarded-Proto $scheme;
+	}
+    location ~* /print {
+	    allow all;
+        # Proxy all requests to the backend upstream
+        proxy_pass http://backend;
+
+        # Preserve the original Host header
+        proxy_set_header Host $host;
+        # Forward the original client IP address
+        proxy_set_header X-Real-IP $remote_addr;
+        # Forward additional proxy information
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Preserve the original protocol (HTTP or HTTPS)
+        proxy_set_header X-Forwarded-Proto $scheme;
+	}
+	deny all;
+}

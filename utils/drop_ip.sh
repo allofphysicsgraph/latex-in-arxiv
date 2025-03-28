@@ -1,5 +1,5 @@
 #https://unix.stackexchange.com/questions/158564/how-to-use-defined-function-with-xargs
-
+#cat /var/log/nginx/access.log|grep ' 403' |cut -d ' ' -f1|sort |uniq -c |sort -n| awk '$1>5 {print $2}'|xargs -i bash drop_ip.sh "{}"
 get_ip_list() {
 grep -v search /var/log/nginx/access.log|grep -vP '/ '|cut -d ' ' -f1|sort|uniq -c |sort -n |awk '{print $2}'
 

@@ -17,13 +17,7 @@
 #define MAX_TOKEN_COUNT 2560
 #define MAX_TOKEN_LENGTH 2500
 
-void print_context(char *filename, int offset, int match_len, int lhs_context,
-                   int rhs_context);
-int cmp_Canonical_XXH64(const char *hashStr, XXH64_hash_t hash);
-
 int scanner(const char *in, FILE* hash_test,int length,char *filename);
-//int scanner(const char *in, char *filename, int length);
-int reader(const char *source);
 
 struct my_struct {
   XXH64_hash_t id; /* key */
@@ -38,14 +32,7 @@ struct my_struct {
 };
 
 void write_tf_idf();
-int by_id(const struct my_struct *a, const struct my_struct *b);
-int by_token(const struct my_struct *a, const struct my_struct *b);
-struct my_struct *find_token(XXH64_hash_t token_id);
 void add_token(XXH64_hash_t token_id, const char *token, int length,
                char filename[256]);
 void delete_all();
-void update_tf_idf(int total_doc_count);
-void print_tokens();
-void print_tf_idf();
 void srt();
-const char *getl(const char *prompt);

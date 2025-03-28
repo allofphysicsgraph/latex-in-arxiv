@@ -37,12 +37,9 @@ void byte_to_hex(uint8_t byte, char hex_str[3]) {
 %%{
 
   machine strings;
-  include strings "vocab.rl";
   include latex "latex.rl";
-  include ignore "ignore.rl";
 
 main :=|*
-ignore => {};
 
 latex  => {
     if ((te - ts) < 2000) {

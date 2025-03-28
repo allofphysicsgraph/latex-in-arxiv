@@ -14,7 +14,7 @@ fi
 if [[ " ${array2[*]} " == *" $1 "* ]]; then
 
     echo "Argument '$1' found in array2. Running command2..." ; 
-    sed -i -r "s/^latex =.*/latex = $1 ;/g"  ../../common/latex.rl ; 
+    sed -i -r "s/^latex =.*/latex = $1 ;/g"  latex.rl ; 
     exit
 fi
     echo "Argument '$1' not found in either array." ;

@@ -1,8 +1,0 @@
-%%{
-  machine ignore;
-
-
-ignore =  '\\newcommand' ;
-
-
-}%%

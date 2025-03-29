@@ -5,7 +5,7 @@ _Caveat when cloning this repo_: Total download size is 640 MB.
 
 ## quick start
 
-Read `latex-in-arxiv/postings_list/README.md`
+Read `latex-in-arxiv/src/postings_list/query/README.md`
 
 Everything is containerized, so in this repo (`latex-in-arxiv/`) use
 either `make docker` (for linux) or `make docmac` (for Mac). 

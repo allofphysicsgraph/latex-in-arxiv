@@ -19,7 +19,7 @@ df = pd.DataFrame(output)
 print(df.head())
 # engine = create_engine("postgresql://arxiv:795e3522169@localhost:5433/latex_in_arxiv")
 # df.to_sql('arxiv_src_manifest',engine,index=False)
-
+print(len(df))
 """
   <file>
     <content_md5sum>cacbfede21d5dfef26f367ec99384546</content_md5sum>

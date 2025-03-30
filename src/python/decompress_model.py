@@ -1,8 +1,8 @@
+import hashlib
+import lzma
 from os import listdir
 
 files = listdir(".")
-import lzma
-import hashlib
 
 model_files = [x for x in files if x.endswith(".xz")]
 decompressed_model_files = ["Punkt_LaTeX_SENT_Tokenizer.pickle"]

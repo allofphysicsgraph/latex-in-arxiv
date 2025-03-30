@@ -44,14 +44,14 @@ for WORD in words:
 {{{WORD}}}+	{{
 	if(yyleng==1){{
 		if(search_print_struct("WORD")){{
-			printf("%s",yytext);	
-        }} else {{ 
+			printf("%s",yytext);
+        }} else {{
 			printf("{{{WORD}}}");
 		}}
 	}} else {{
 		if(search_print_struct("WORD")){{
-			printf("%s",yytext);	
-		}} else {{	
+			printf("%s",yytext);
+		}} else {{
 			printf("{{{WORD}}}{{%d}}",yyleng);
 		}}
 	}}

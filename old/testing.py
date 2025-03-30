@@ -27,7 +27,7 @@ class Tokenizer:
         self.file_data = read_file(".", file_name)
 
         self.mwe = mwe.MWETokenizer(separator="")
-        self.regexp = RegexpTokenizer("\$.*?\$")
+        self.regexp = RegexpTokenizer("\\$.*?\\$")
 
         self.latex_tokens = [
             x.strip() for x in read_file(".", "latex_vocab").splitlines()

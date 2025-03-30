@@ -147,7 +147,8 @@ def balanced(start, s, left_symbol=r"{", right_symbol=r"}"):
     matched = []
     # the pattern should include one instance of the left symbol so that balanced=-1
     # if left == right then +- counting fails
-    # begin syntax handled automatically, so there is no need to include left_right symbols
+    # begin syntax handled automatically, so there is no need to include
+    # left_right symbols
     s = re.sub(r"\\newcommand.*", "", file_data)
     if "\\begin" in start:
         match = re.findall(r"\\begin{(.*?)}", start)

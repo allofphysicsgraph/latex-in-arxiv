@@ -1,3 +1,4 @@
+from offsets_dataframe import offsets_dataframe
 from sqlalchemy import create_engine
 from sys import argv
 import pandas as pd
@@ -5,11 +6,15 @@ import re
 
 with open(argv[1], "r") as f:
     data = f.read()
-    tokens = re.split("(id:[a-f0-9]+: count:\d+ docs:\d+ tf_idf:\d+\.\d+ tok:)", data)
+    tokens = re.split(
+        "(id:[a-f0-9]+: count:\\d+ docs:\\d+ tf_idf:\\d+\\.\\d+ tok:)", data
+    )
 output = []
 for k, v in zip(tokens[1::2], tokens[2::2]):
     # print(k,v)
-    k = re.findall("id:([a-f0-9]+): count:(\d+) docs:(\d+) tf_idf:(\d+.\d+) tok:", k)
+    k = re.findall(
+        "id:([a-f0-9]+): count:(\\d+) docs:(\\d+) tf_idf:(\\d+.\\d+) tok:", k
+    )
     idx, count, docs, tf_idf = k[0]
     output.append([idx, count, docs, tf_idf, v.strip()])
 
@@ -25,20 +30,19 @@ engine = create_engine("postgresql://arxiv:795e3522169@localhost:5433/latex_in_a
 print(df)
 print(df.loc[:, ["xxh", "token"]])
 # df.to_sql(table_name, engine, if_exists="append", index=False)
-from offsets_dataframe import offsets_dataframe
 
 zf = offsets_dataframe()
 print(zf.head())
 df = pd.merge(df, zf, left_on="xxh", right_on="xxh")
 df.offset = df.offset.apply(int)
-df.sort_values('offset',ascending=True,inplace=True)
+df.sort_values("offset", ascending=True, inplace=True)
 print(df.head(50))
-#df.to_csv('cite_trace.csv',index=False)
-#df.docs =  df.docs.apply(int)
-#df = df[df.docs>1]
-#filenames = df[df.token=='$Y$'].filename.head()
-#zf = df.query('filename in @filenames')
-#var = r'\\cite'
-#zf= zf.query('token.str.contains(@var)').loc[:,['token','filename']]
-#zf.drop_duplicates(inplace=True)
-#print(zf)
+# df.to_csv('cite_trace.csv',index=False)
+# df.docs =  df.docs.apply(int)
+# df = df[df.docs>1]
+# filenames = df[df.token=='$Y$'].filename.head()
+# zf = df.query('filename in @filenames')
+# var = r'\\cite'
+# zf= zf.query('token.str.contains(@var)').loc[:,['token','filename']]
+# zf.drop_duplicates(inplace=True)
+# print(zf)

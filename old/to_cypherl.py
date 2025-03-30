@@ -6,7 +6,7 @@ import pandas as pd
 import re
 
 with open("offsets", "r") as f:
-    offsets = re.split("(\.\/.*?tex)\n", f.read())
+    offsets = re.split("(\\.\\/.*?tex)\n", f.read())
 
 
 offsets = [x for x in offsets if x.strip()]
@@ -17,7 +17,7 @@ files_to_offsets = defaultdict(pd.DataFrame)
 for ix, fileData in enumerate(rows):
     tuples = []
     for row in rows[ix].splitlines():
-        tuples.append(re.split("\s+", row))
+        tuples.append(re.split("\\s+", row))
     tmp_df = pd.DataFrame(tuples)
     tmp_df.columns = ["id", "offset", "length"]
     files_to_offsets[filenames[ix]] = tmp_df

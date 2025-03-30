@@ -4,7 +4,8 @@ from transformers import (
 )  # For a basic BERT tokenizer (replace with yours)
 import random
 
-# 1. Define a Very Simple Vocabulary (Illustrative - Replace with your vocab.txt)
+# 1. Define a Very Simple Vocabulary (Illustrative - Replace with your
+# vocab.txt)
 vocab_list = [
     "[PAD]",
     "[UNK]",
@@ -36,7 +37,8 @@ with open(vocab_file, "w", encoding="utf-8") as f:
 
 tokenizer = BertTokenizerFast(vocab_file=vocab_file)
 
-# 2. Simple LaTeX Document Example (String - Replace with reading from your LaTeX files)
+# 2. Simple LaTeX Document Example (String - Replace with reading from
+# your LaTeX files)
 latex_document = r"""
 \documentclass{article}
 \usepackage{graphicx}
@@ -75,7 +77,8 @@ for index, token_id in enumerate(input_ids):
         # 80% of the time, replace with [MASK] token
         if random.random() < 0.8:
             output_input_ids[index] = tokenizer.mask_token_id
-        # 10% of the time, replace with a random token (from vocab - excluding special tokens for simplicity here)
+        # 10% of the time, replace with a random token (from vocab - excluding
+        # special tokens for simplicity here)
         elif random.random() < 0.5:  # 0.1 probability in total (10% of 80% + 10% + 10%)
             random_token_id = random.choice(
                 [
@@ -85,7 +88,8 @@ for index, token_id in enumerate(input_ids):
                 ]
             )
             output_input_ids[index] = random_token_id
-        # 10% of the time, keep original token (no replacement - effectively 10% of 15% = ~1.5% of tokens kept original when masked)
+        # 10% of the time, keep original token (no replacement - effectively
+        # 10% of 15% = ~1.5% of tokens kept original when masked)
         else:
             pass  # Keep original token
 
@@ -97,7 +101,8 @@ input_ids_padded = output_input_ids[:max_seq_length] + [tokenizer.pad_token_id] 
 attention_mask = [1] * min(len(output_input_ids), max_seq_length) + [0] * (
     max_seq_length - min(len(output_input_ids), max_seq_length)
 )
-token_type_ids = [0] * max_seq_length  # All 0s for single document pre-training
+# All 0s for single document pre-training
+token_type_ids = [0] * max_seq_length
 
 # Masked LM positions and labels also need padding
 masked_lm_positions_padded = masked_lm_positions[:max_predictions_per_seq] + [0] * (

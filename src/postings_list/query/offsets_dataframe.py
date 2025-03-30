@@ -5,7 +5,7 @@ def offsets_dataframe():
 
     data = read_file("offsets")
     data = data.splitlines()
-    data = [re.split("\t|\s+", x) for x in data]
+    data = [re.split("\t|\\s+", x) for x in data]
     df = pd.DataFrame(data)
     df.columns = ["filename", "xxh", "offset", "length", "token_type"]
     df.dropna(subset="xxh", inplace=True)

@@ -7,7 +7,8 @@ from pudb import set_trace
 
 # TODO handle pairs that do not get resolved
 # copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;
-# time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
+# time psql -d latexinarxiv -c "copy document
+# (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"
 
 """
  time psql -d latexinarxiv -c "copy document (document,start,stop,byte_count,type,word) from '/dev/shm/pairs' CSV;"

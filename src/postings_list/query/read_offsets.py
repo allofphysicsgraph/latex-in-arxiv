@@ -6,7 +6,7 @@ import re
 output = []
 with open(argv[1], "r") as f:
     data = f.read()
-    for match in re.findall("(.*?)\t([a-f0-9]+) (\d+)  (\d+) (\d+)", data):
+    for match in re.findall("(.*?)\t([a-f0-9]+) (\\d+)  (\\d+) (\\d+)", data):
         if len(match) == 5:
             file_path, xxh, offset, length, data_type_id = match
             output.append((file_path, xxh, offset, length, data_type_id))

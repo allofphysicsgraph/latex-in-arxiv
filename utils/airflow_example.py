@@ -6,6 +6,7 @@ from airflow.models.dag import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 
+
 def extract_data():
     """
     Simulates extracting data from a source.  In a real-world scenario,
@@ -13,6 +14,7 @@ def extract_data():
     """
     data = ["data1", "data2", "data3"]  # Replace with your actual data extraction
     return data
+
 
 def transform_data(data):
     """
@@ -22,6 +24,7 @@ def transform_data(data):
     transformed_data = [item.upper() for item in data]  # Example transformation
     return transformed_data
 
+
 def load_data(transformed_data):
     """
     Simulates loading the transformed data into a destination.  This might
@@ -29,9 +32,11 @@ def load_data(transformed_data):
     """
     print(f"Loading data: {transformed_data}")  # Replace with your actual loading logic
 
+
 with DAG(
     dag_id="simple_etl_dag",
-    schedule="* * * * *",  # Use a cron expression (e.g., "0 0 * * *") or a timedelta for scheduling
+    # Use a cron expression (e.g., "0 0 * * *") or a timedelta for scheduling
+    schedule="* * * * *",
     start_date=pendulum.datetime(2025, 3, 12, tz="UTC"),
     catchup=False,
     tags=["etl", "example"],
@@ -44,13 +49,15 @@ with DAG(
     transform = PythonOperator(
         task_id="transform_data",
         python_callable=transform_data,
-        op_kwargs={"data": extract.output},  # Pass the output of the extract task as an argument
+        op_kwargs={"data": extract.output},
+        # Pass the output of the extract task as an argument
     )
 
     load = PythonOperator(
         task_id="load_data",
         python_callable=load_data,
-        op_kwargs={"transformed_data": transform.output},  # Pass the output of the transform task as an argument
+        op_kwargs={"transformed_data": transform.output},
+        # Pass the output of the transform task as an argument
     )
 
     # Optional Bash Operator to represent loading a file

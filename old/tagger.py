@@ -25,7 +25,7 @@ english_tokens = [x.strip() for x in read_file(".", "english_vocab").splitlines(
 file_data = read_file(".", "sound1.tex")
 
 tokens = []
-regexp_tokenizer = RegexpTokenizer("\$.*?\$")
+regexp_tokenizer = RegexpTokenizer("\\$.*?\\$")
 regexp_tokens = regexp_tokenizer.tokenize(file_data)
 tokens.extend(list(set(regexp_tokens)))
 tokens.extend(list(set(latex_tokens)))

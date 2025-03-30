@@ -38,7 +38,7 @@ def sentences_from_paragraphs(paragraphs):
 def symbol_concordance(sentences):
     concordance_dict = defaultdict(list)
     for sentence in sentences:
-        maybe_definition = re.findall("\$.*?\$", sentence)
+        maybe_definition = re.findall("\\$.*?\\$", sentence)
         if maybe_definition:
             for match in maybe_definition:
                 concordance_dict[match].append(sentence)
@@ -101,7 +101,7 @@ def get_symbol_definition(concordance_dict):
     cp = nltk.chunk.RegexpParser(grammar)
     for symbol, sentences in concordance.items():
         for sent in sentences:
-            [add_new_token(x) for x in re.findall("\$.*?\$", sent)]
+            [add_new_token(x) for x in re.findall("\\$.*?\\$", sent)]
             resp = tokenizer.tokenize(sent)
             resp = [x for x in resp if x.strip()]
             test = [x for x in resp if "$" in x]
@@ -110,7 +110,7 @@ def get_symbol_definition(concordance_dict):
                 for subtree in output.subtrees(filter=lambda t: t.label() in labels):
                     # print(subtree)
                     DEF = " ".join([x[0] for x in subtree])
-                    if re.findall("\$.*?\$", DEF):
+                    if re.findall("\\$.*?\\$", DEF):
                         if symbol in DEF:
                             symbol_definitions[symbol].add(DEF)
     return symbol_definitions
@@ -142,14 +142,14 @@ if __name__ == "__main__":
     concordance = symbol_concordance(sentences)
     # using mwe tokenizer for now
     latex = read_file("../common/latex.rl")
-    latex = [x for x in re.split('"\s+[a-z]+\s+\||\n|\s+\|', latex) if x.strip()]
+    latex = [x for x in re.split('"\\s+[a-z]+\\s+\\||\n|\\s+\\|', latex) if x.strip()]
     latex = [x for x in latex if "\\" in x]
     latex = set(latex)
     latex = sorted(latex, key=lambda x: -len(x))
     latex = [x.replace("\\\\", "\\") for x in latex]
 
     vocab = read_file("../postings_list/query/vocab.rl")
-    vocab = [x for x in re.split('"|\n|\|', vocab) if x.strip()]
+    vocab = [x for x in re.split('"|\n|\\|', vocab) if x.strip()]
     vocab = set(vocab)
     vocab = sorted(vocab, key=lambda x: -len(x))
 

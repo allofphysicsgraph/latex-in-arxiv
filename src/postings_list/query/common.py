@@ -29,7 +29,8 @@ def get_sentences(data):
     # depends on nltk 3.8 which has a CVE
     # also depends on 285M file punkt_html_trainer.
     # send an email or post an issue if you want a copy of the pickled punkt model.
-    # I find that it is performs better than the default sentence punkt english model.
+    # I find that it is performs better than the default sentence punkt
+    # english model.
 
     punkt_trainer = nltk.data.load("punkt_html_trainer", format="pickle")
     tok_cls = PunktSentenceTokenizer(punkt_trainer.get_params())
@@ -87,7 +88,7 @@ def get_paragraphs(file_data):
 def symbol_concordance(sentences):
     concordance_dict = defaultdict(list)
     for sentence in sentences:
-        maybe_definition = re.findall("\$.*?\$", sentence)
+        maybe_definition = re.findall("\\$.*?\\$", sentence)
         if maybe_definition:
             for match in maybe_definition:
                 concordance_dict[match].append(sentence)
@@ -152,7 +153,7 @@ def get_symbol_definition(concordance_dict):
     cp = nltk.chunk.RegexpParser(grammar)
     for symbol, sentences in concordance.items():
         for sent in sentences:
-            [add_new_token(x) for x in re.findall("\$.*?\$", sent)]
+            [add_new_token(x) for x in re.findall("\\$.*?\\$", sent)]
             resp = tokenizer.tokenize(sent)
             resp = [x for x in resp if x.strip()]
             test = [x for x in resp if "$" in x]
@@ -161,7 +162,7 @@ def get_symbol_definition(concordance_dict):
                 for subtree in output.subtrees(filter=lambda t: t.label() in labels):
                     # print(subtree)
                     DEF = " ".join([x[0] for x in subtree])
-                    if re.findall("\$.*?\$", DEF):
+                    if re.findall("\\$.*?\\$", DEF):
                         if symbol in DEF:
                             symbol_definitions[symbol].add(DEF)
     return symbol_definitions

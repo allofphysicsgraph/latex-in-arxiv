@@ -1,4 +1,7 @@
 # python -m spacy download en_core_web_trf
+from random import shuffle
+from tqdm import tqdm
+from nltk import RegexpTokenizer
 import re
 import spacy
 from common import read_file
@@ -10,11 +13,9 @@ from os import listdir
 
 nlp = spacy.load("en_core_web_trf")
 
-from nltk import RegexpTokenizer
 
 reg = RegexpTokenizer(r"\\frac{.*?}{.*?}")
 
-from tqdm import tqdm
 
 files = [x for x in listdir(".") if re.findall("tex$", x)]
 # files = [argv[1]]
@@ -44,7 +45,6 @@ ls = len(sos)
 lss = len(set(sos))
 print(lss / ls)
 print(len(eos), len(set(eos)))
-from random import shuffle
 
 shuffle(sos)
 sos = [x for x in list(set(sos)) if not re.findall(r"\\", str(x))]

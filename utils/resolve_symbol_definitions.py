@@ -1,3 +1,4 @@
+from redis import Redis
 import sys
 import re
 import os
@@ -105,7 +106,7 @@ def strip_tokens(tok):
 
 
 symbols = set()
-[symbols.add(x) for x in re.findall("\$.*?\$", data)]
+[symbols.add(x) for x in re.findall("\\$.*?\\$", data)]
 symbols = sorted(list(symbols), key=lambda x: len(x))
 symbols = [strip_tokens(tok) for tok in symbols]
 # symbols = [tok for tok in symbols]
@@ -117,7 +118,7 @@ for symbol in symbols:
 
 concordance_dict = defaultdict(list)
 for sent in sents:
-    maybe_definition = re.findall("\$.*?\$", sent)
+    maybe_definition = re.findall("\\$.*?\\$", sent)
     if maybe_definition:
         for match in maybe_definition:
             concordance_dict[match].append(sent)
@@ -185,7 +186,7 @@ for symbol, sentences in concordance_dict.items():
             for subtree in output.subtrees(filter=lambda t: t.label() in labels):
                 # print(subtree)
                 DEF = " ".join([x[0] for x in subtree])
-                if re.findall("\$.*?\$", DEF):
+                if re.findall("\\$.*?\\$", DEF):
                     if symbol in DEF:
                         symbol_definitions[symbol].add(DEF)
 
@@ -194,7 +195,6 @@ resolved_symbols = set()
 for symbol in symbol_definitions.keys():
     resolved_symbols.add(symbol)
 
-from redis import Redis
 
 redis_client = Redis(decode_responses=True)
 print("resolved_symbols")

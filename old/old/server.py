@@ -211,7 +211,7 @@ class MyService(rpyc.Service):
     def exposed_symbol_concordance(self):
         concordance_dict = defaultdict(list)
         for sentence in self.results["sentences"]:
-            maybe_definition = re.findall("\$.*?\$", sentence)
+            maybe_definition = re.findall("\\$.*?\\$", sentence)
             if maybe_definition:
                 for match in maybe_definition:
                     concordance_dict[match].append(sentence)
@@ -283,7 +283,7 @@ class MyService(rpyc.Service):
                     ):
                         # print(subtree)
                         DEF = " ".join([x[0] for x in subtree])
-                        if re.findall("\$.*?\$", DEF):
+                        if re.findall("\\$.*?\\$", DEF):
                             if symbol in DEF:
                                 symbol_definitions[symbol].add(DEF)
         # for definition in symbol_definitions:

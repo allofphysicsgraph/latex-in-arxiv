@@ -43,7 +43,7 @@ In [18]: for f_name in tqdm(files):
     ...:             count+=1
     ...:     except Exception as e:
     ...:         print(e)
-    ...: 
+    ...:
 100%|█████████████████████████████████████████████████████████████████████████████████████████| 1019/1019 [00:01<00:00, 875.45it/s]
 
 In [19]: count
@@ -129,7 +129,7 @@ def document_summary(document, reduction_percentage):
 grammar = "NP: {<DT>?<JJ>*<NN>{1,2}}"
 cp = nltk.RegexpParser(grammar)
 data = read_file(".", "sentences__1")
-sentences = re.split("\*" * 50, data)
+sentences = re.split("\\*" * 50, data)
 for sent in sentences:
 
     words = punkt_trainer.__dict__["_lang_vars"].word_tokenize(sent)
@@ -137,12 +137,12 @@ for sent in sentences:
     print(sent)
     test = balanced_test_tokenizer.tokenize(sent)
     if len(test) > 1:
-        regexpTokenizer = nltk.RegexpTokenizer("\$.*?\$")
+        regexpTokenizer = nltk.RegexpTokenizer("\\$.*?\\$")
         math_expressions = regexpTokenizer.tokenize(sent)
         for tex in math_expressions:
             sent = sent.replace(tex, "TEX_MATH")
         if "$$" in sent:
-            regexpTokenizer = nltk.RegexpTokenizer("\$\$.*?\$\$")
+            regexpTokenizer = nltk.RegexpTokenizer("\\$\\$.*?\\$\\$")
             multiline_math_expressions = regexpTokenizer.tokenize(sent)
             for tex in multiline_math_expressions:
                 sent = sent.replace(tex, "MULTILINE_TEX_MATH")
@@ -339,9 +339,10 @@ class Tokenizer:
         self.mwe = mwe.MWETokenizer(separator="")
 
         # TODO error checking on what is matched
-        self.regexp = RegexpTokenizer("\$.*?\$")  # to split the latex document
+        # to split the latex document
+        self.regexp = RegexpTokenizer("\\$.*?\\$")
         self.regexp_math = RegexpTokenizer(
-            "\$(.*?)\$"
+            "\\$(.*?)\\$"
         )  # for tokenizing equations, arrays etc
         self.regexp_fractions = RegexpTokenizer(r"\\frac{.*?}{.*?}")
         self.regexp_fraction_tokens = self.regexp_fractions.tokenize(self.file_data)
@@ -401,7 +402,9 @@ if __name__ == "__main__":
     import shutil
 
     to_csv = False
-    manual_iteration = False  # set to true to review each sentence of each file where there is a regexp_token
+    # set to true to review each sentence of each file where there is a
+    # regexp_token
+    manual_iteration = False
     file_dct = {}
     path = ""
     files = []
@@ -438,7 +441,8 @@ if __name__ == "__main__":
                         sys.exit(0)  # quit application
 
                     if inp == "print":
-                        # print current sentence as a pandas dataframe append second line of pos tags
+                        # print current sentence as a pandas dataframe append
+                        # second line of pos tags
                         words = [
                             x[0] for x in tokenizer.tagged_sentences[ix] if x[0].strip()
                         ]
@@ -471,7 +475,8 @@ if __name__ == "__main__":
                                 index=False,
                             )
                     if inp == "parse":
-                        # parse LaTeX document into the defaultdict(list) named dct
+                        # parse LaTeX document into the defaultdict(list) named
+                        # dct
                         print(tokenizer.parse_document())
 
                     if inp == "trace":

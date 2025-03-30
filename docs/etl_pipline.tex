@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\title{ETL Pipeline for arXiv Data}
+\author{Your Name}
+\date{\today}
+
+% Customize the listing style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=bash
+}
+
+\lstset{style=mystyle}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This document outlines the ETL (Extract, Transform, Load) pipeline designed for processing the arXiv dataset. The goal is to extract data from the arXiv source, transform it into a usable format, and load it into a graph database (HugeGraph) for analysis. The pipeline is currently under development and will be expanded as each step is thoroughly tested and refined. This version focuses on the initial data acquisition and preparation stages.  The end goal is to facilitate research into parsing math. 
+
+\section{Infrastructure}
+
+The pipeline utilizes two servers from ioflood:
+
+\begin{itemize}
+    \item \textbf{Processing Server:} 72 cores, 512 GB RAM, 2 x 3.4TB NVMe SSDs. This server is responsible for the computationally intensive tasks of downloading, extracting, and initially processing the arXiv data.
+    \item \textbf{Storage Server:} 8 cores, 3 x 14TB SATA HDDs.  This server will serve as the primary storage location for the raw and processed data.
+    \item \textbf{Estimated Cost:} The estimated cost for downloading the entire arXiv dataset is approximately \$450.  This is primarily due to S3 requester pays costs.
+\end{itemize}
+
+With proper planning and optimization, it is theoretically possible to execute this pipeline on a laptop with sufficient storage. However, the processing time would be significantly longer.
+
+\section{Software Dependencies}
+
+The following software components are required for the pipeline:
+
+\begin{itemize}
+    \item \textbf{Linux:} The underlying operating system.
+    \item \textbf{Nginx:} Web server (potentially for serving processed data or API endpoints).
+    \item \textbf{PostgreSQL:} Relational database (potentially for metadata storage).
+    \item \textbf{Ragel:} State machine compiler (potentially for parsing and processing text data).
+    \item \textbf{HugeGraph:} Graph database for storing and querying relationships within the data.
+    \item \textbf{S3cmd:} Command-line tool for interacting with Amazon S3.
+    \item \textbf{Zoekt:} Fast, typo-tolerant code search engine (potentially for indexing and searching the extracted source code).
+    \item \textbf{CoreNLP:} Stanford CoreNLP for Natural Language Processing tasks.
+\end{itemize}
+
+\section{Security Configuration}
+
+Before starting the ETL process, it is crucial to harden the servers with the following security measures:
+
+\subsection{SSH Hardening}
+
+\begin{itemize}
+    \item Disable password-based SSH login.  Use key-based authentication instead.
+\end{itemize}
+
+\subsection{Firewall Configuration (iptables)}
+
+\begin{itemize}
+    \item Disable IPv6.
+    \item Block all incoming traffic except for ports 80 (HTTP), and 22 (SSH).
+    \item Block all outgoing traffic except for ports 80 (HTTP), 22 (SSH), 53 (DNS), and 443 (HTTPS).
+\end{itemize}
+
+\section{ETL Pipeline Stages}
+
+\subsection{1. Extraction: Downloading arXiv Data}
+
+This stage involves downloading the arXiv source files from Amazon S3 using `s3cmd`.
+
+\subsubsection{1.1. S3cmd Configuration}
+
+First, configure `s3cmd` with the appropriate access key and secret key:
+
+\begin{lstlisting}
+s3cmd --configure
+\end{lstlisting}
+
+\subsubsection{1.2. Generating the Download List}
+
+The arXiv provides a manifest file $arXiv_src_manifest.xml$ containing a list of all source files.  We extract the filenames from this manifest.
+
+\begin{lstlisting}
+cat arXiv_src_manifest.xml |grep filename|cut -d '/' -f2|tr -d '<' > jobs
+split -n 500 jobs
+\end{lstlisting}
+
+The `split` command divides the list of filenames into smaller chunks, with 500 filenames per file,  making parallel processing easier.
+
+\subsubsection{1.3. Parallel Download}
+
+The downloaded files are downloaded from ARXIV\_BACKUP.  A simple rsync bash statement.
+
+\begin{lstlisting}
+cat ../xaa | xargs -i -P10 rsync -axr -e 'ssh -p 1022' root@$SERVER_IP:/ARXIV_BACKUP/"{}".xz . --progress
+\end{lstlisting}
+
+
+\subsubsection{1.4. Handling Missing Files}
+
+After the download, we verify that all files listed in the manifest are present. Any missing files are downloaded directly from S3.  This is a crucial step to ensure data completeness.
+
+\begin{lstlisting}
+grep -vf <(ls) < <(cat ../xaa )|xargs -i s3cmd get s3://arxiv/src/"{}" . --requester-pays
+\end{lstlisting}
+
+The `--requester-pays` flag is necessary because the arXiv data is stored in an S3 bucket that requires the requester to pay for data transfer.
+
+\subsubsection{1.5. Verification}
+
+Confirm that the first 500 files have been downloaded by checking the number of files in the directory.
+
+\begin{lstlisting}
+ls|wc -l
+\end{lstlisting}
+
+\subsection{2. Transformation: Data Validation and Preparation}
+
+Before further processing, it's essential to validate the integrity of the downloaded files.
+
+\subsubsection{2.1. Checksum Verification}
+
+We generate MD5 checksums for each downloaded file and compare them with the checksums listed in the arXiv manifest.
+
+\begin{lstlisting}
+time ls|grep tar$|xargs -i -P30 md5sum "{}" >> arxiv.md5
+grep -cf <(cat arxiv.md5 |cut -d ' ' -f1) ../arXiv_src_manifest.xml 
+\end{lstlisting}
+
+A mismatch indicates a corrupted file that needs to be re-downloaded.
+
+\subsubsection{2.2. Unpacking Archives}
+
+The downloaded files are in `.tar.gz` or `.tar.xz` format. They need to be extracted.
+
+\begin{lstlisting}
+# Example: Extracting tar.gz files
+find . -name "*.tar.gz" -print0 | xargs -0 -n1 -P8 tar -xzf
+
+# Example: Extracting tar.xz files
+find . -name "*.tar.xz" -print0 | xargs -0 -n1 -P8 tar -xJf
+\end{lstlisting}
+
+\subsection{3.  Further Transformation and Loading (To be expanded)}
+
+The subsequent stages of the pipeline involve:
+
+\begin{itemize}
+    \item \textbf{LaTeX Parsing:} Extracting LaTeX code from the source files. This will involve parsing the TeX files.
+    \item \textbf{Dependency Resolution:}  Analyzing the LaTeX code to identify dependencies between files (e.g., included files, packages).
+    \item \textbf{Text Extraction:**}  Extracting the human readable text from the tex files for NLP related task.
+    \item \textbf{Graph Database Loading:} Loading the extracted information into HugeGraph, representing papers as nodes and relationships (citations, co-authorship, dependency relations) as edges.
+    \item \textbf{NLP Processing:}  Utilizing CoreNLP for various NLP tasks on the extracted text, such as Named Entity Recognition (NER), Part-of-Speech (POS) tagging, and dependency parsing.  This information can be used to enrich the graph database with semantic information.
+\end{itemize}
+
+\section{Code Repository}
+Code for this project can be found here:
+
+\begin{itemize}
+    \item \href{https://github.com/allofphysicsgraph/latex-in-arxiv}{https://github.com/allofphysicsgraph/latex-in-arxiv}
+\end{itemize}
+
+\section{Initial Setup Scripts}
+Some starter scripts include setting up proper directories and file syncing.
+\begin{lstlisting}
+mkdir /home/user/ARXIV_FILES
+	tar files are assumed to be in this folder
+
+mkdir /home/user/ARXIV_BACKUP
+
+time bash mkdirs.sh 
+\end{lstlisting}
+
+\section{Future Work}
+
+\begin{itemize}
+    \item Implement robust error handling and logging.
+    \item Optimize the pipeline for performance and scalability.
+    \item Develop a web interface for querying and visualizing the data in HugeGraph.
+    \item Integrate with other data sources (e.g., citation databases) to enrich the graph.
+\end{itemize}
+
+\end{document}

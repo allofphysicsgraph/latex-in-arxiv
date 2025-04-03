@@ -1,4 +1,4 @@
-//gcc -O2 find_duplicate_files.c -lssl -lcrypto -lpthread
+//gcc -O2 find_duplicate_files.c -lssl -lcrypto
 #define _XOPEN_SOURCE 500 // Required for nftw in some systems
 #include <ftw.h>
 #include <stdio.h>

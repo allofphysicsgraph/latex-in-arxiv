@@ -22,8 +22,10 @@
 
 char temp_buffer[10024];
 int n;
+int prefix_length = 0;
+int suffix_length = 0;
 int in_size = 0;
-
+int replace_prefix_suffix = 0;
 size_t len;
 va_list args;
 // Function to convert a byte to its hexadecimal representation (two characters)
@@ -34,26 +36,7 @@ void byte_to_hex(uint8_t byte, char hex_str[3]) {
     hex_str[2] = '\0';                            // Null terminator
 }
 
-%%{
-
-  machine strings;
-  include latex "latex.rl";
-
-main :=|*
-
-latex  => {
-    if ((te - ts) < 2000) {
-      XXH64_canonical_t dst;
-      char temp[te - ts + 1];
-      memset(temp, '\0', te - ts + 1);
-      int offset = ts - in;
-      int length = te - ts;
-      strncpy(temp, &in[offset], length);
-      XXH64_hash_t test_hash = XXH64(temp, length, 0);
-      add_token(test_hash, temp, length, filename);
-      XXH64_canonicalFromHash(&dst, test_hash);
-      size_t i;
-
+int match_to_file(XXH64_canonical_t dst, char* temp){
     // Create filename string
     char filename2[21]; // 8 bytes * 2 hex chars per byte + null terminator
     filename2[0] = '\0'; // Initialize as empty string
@@ -76,6 +59,31 @@ latex  => {
     // Close the file
     fclose(fp);
     //printf("File '%s' created successfully.\n", filename2);
+    return EXIT_SUCCESS;
+    }
+
+%%{
+
+  machine strings;
+  include latex "latex.rl";
+
+main :=|*
+equation  => {
+    if ((te - ts) < 2000) {
+      XXH64_canonical_t dst;
+      char temp[te - ts + 1];
+      memset(temp, '\0', te - ts + 1);
+        int offset = ts - in + prefix_length;
+        int length = te - ts -(prefix_length+suffix_length);
+        strcat(temp,"<s>");
+        strncat(temp, &in[offset], length);
+        strcat(temp,"</s>");
+      XXH64_hash_t test_hash = XXH64(temp, length, 0);
+      add_token(test_hash, temp, length, filename);
+      XXH64_canonicalFromHash(&dst, test_hash);
+      size_t i;
+      
+      match_to_file(dst,temp);
 
       fprintf(hash_test,"%s\t",filename);
       for (i = 0; i < 8; i++) {

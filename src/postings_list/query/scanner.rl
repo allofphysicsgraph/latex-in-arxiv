@@ -19,7 +19,6 @@
 #include <unistd.h>
 #include <inttypes.h> // For PRIu64 etc. (though not directly used for filename here, helpful for printing digests)
 #include "globals.h"
-
 char temp_buffer[10024];
 int n;
 int prefix_length = 0;
@@ -92,29 +91,51 @@ equation  => {
         fprintf(hash_test, " %d  %d %d\n", offset, length,fcurs);
     }
   };
-  any => {
+frac  => {
+    if (in_size<2000) {
+        strncat(output_buffer," FRAC ",7);
+  }};
 
-      char temp[te - ts + 1];
-      memset(temp, '\0', te - ts + 1);
+sum  => {
+    if (in_size<2000) {
+        strncat(output_buffer," SUM ",6);
+  }};
+lim  => {
+    if (in_size<2000) {
+        strncat(output_buffer," LIM ",6);
+  }};
+int  => {
+    if (in_size<2000) {
+        strncat(output_buffer," INTEGRAL ",11);
+  }};
+prod  => {
+    if (in_size<2000) {
+        strncat(output_buffer," PROD ",7);
+  }};
+
+label => {};
+
+any => {
       int offset = ts - in;
       int length = te - ts;
-      strncpy(temp, &in[offset], length);
-      printf("%s",temp);
+      strncat(output_buffer, &in[offset], length);
   };
 
-('\\left'|'\\right'|'\\qquad') ;
+('\\left'|'\\right'|'\\qquad'|'\\quad') ;
 *| ;
 }%%
 
     %% write data;
 int scanner(const char *in, FILE* hash_test,int length,char* filename) {
   in_size = length;
+  char output_buffer[in_size+1];
   int cs = 0, act = 0;
   const char *p = in;
   const char *pe = in + length;
   const char *ts = NULL, *te = NULL;
   const char *eof = pe;
 
+  memset(output_buffer,'\0',in_size+1);
   %% write init;
   %% write exec;
 
@@ -122,7 +143,13 @@ int scanner(const char *in, FILE* hash_test,int length,char* filename) {
     printf("Error near %zd\n", p - in);
   else if (ts)
     printf("offsets: ts %zd te: %zd pe: %zd\n", ts - in, te - in, pe - in);
-
+      XXH64_canonical_t dst;
+      XXH64_hash_t test_hash = XXH64(output_buffer, in_size, 0);
+      add_token(test_hash, output_buffer, in_size, filename);
+      XXH64_canonicalFromHash(&dst, test_hash);
+      size_t i;
+      match_to_file(dst,output_buffer);
+      fprintf(hash_test,"%s\t",filename);
   return EXIT_SUCCESS;
 }
 

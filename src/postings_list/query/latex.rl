@@ -802,7 +802,7 @@ bibinfo = '\\bibinfo' (braces|brackets braces);
 title = '\\title' braces;
 subsection = '\\subsection' braces;
 newcommand = '\\newcommand' (braces braces | braces brackets brackets braces);
-frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | digit digit);
+frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | [ ]? digit digit);
 inline_math =  "$" (any-"$"){1,80} "$" ;
 underscore = '_';
 caret = '^';
@@ -810,4 +810,8 @@ sum ='\\sum' underscore braces caret braces;
 int ='\\int' underscore braces caret braces;  
 lim ='\\lim' underscore braces;  
 prod ='\\prod' underscore braces caret braces;  
+
+
+symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\chi'|'\\cos'|'\\d'|'\\dag'|'\\dagger'|'\\delta'|'\\Delta'|'\\dot'|'\\dots'|'\\epsilon'|'\\equiv'|'\\eta'|'\\exp'|'\\frac'|'\\gamma'|'\\Gamma'|'\\hat'|'\\hspace'|'\\in'|'\\infty'|'\\int'|'\\it'|'\\kappa'|'\\lambda'|'\\Lambda'|'\\langle'|'\\ldots'|'\\leq'|'\\limits'|'\\ln'|'\\log'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\nabla'|'\\nu'|'\\omega'|'\\Omega'|'\\over'|'\\overline'|'\\partial'|'\\phi'|'\\Phi'|'\\pi'|'\\Pi'|'\\pm'|'\\prime'|'\\psi'|'\\Psi'|'\\rangle'|'\\ref'|'\\rho'|'\\rm'|'\\rvec'|'\\sigma'|'\\Sigma'|'\\sim'|'\\sin'|'\\sqrt'|'\\star'|'\\sum'|'\\tau'|'\\text'|'\\theta'|'\\tilde'|'\\times'|'\\to'|'\\varepsilon'|'\\varphi'|'\\vec'|'\\wedge'|'\\widetilde'|'\\xi'|'\\ze'|'\\zeta';
+
 }%%

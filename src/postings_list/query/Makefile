@@ -7,6 +7,9 @@ scanner:
 	ragel -m -G2 scanner.rl
 	$(CC)  -O2  scanner.c main.c xxhash.c -o scanner.out -lm
 
+rewrite_rules:
+	ragel -m -G2 rewrite_rules.rl
+	$(CC)  -O2  rewrite_rules.c main.c xxhash.c -o rewrite_rules.out -lm
 clean :
 	rm tf_idf
 	rm offsets

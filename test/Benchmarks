@@ -1,3 +1,27 @@
+user@iof3164:~/equations$ find tex_files/ -type f -name "*.tex" |wc -l 
+327644
+
+user@iof3164:~/equations$ du -sch tex_files/
+11G	tex_files/
+11G	total
+
+user@iof3164:~/equations$ ulimit -n 900000
+user@iof3164:~/equations$ time ./equation.out tex_files tex$ 
+sorting structs
+writing tf_idf scores to tf_idf
+
+real	0m34.468s
+user	0m8.272s
+sys	0m22.364s
+
+output 349K equations in 35s
+user@iof3164:~/equations$ ls|grep tex$|wc -l 
+349435
+
+
+
+
+
 For sentences
 wc -l filelist.txt 
 311360 filelist.txt

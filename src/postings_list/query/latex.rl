@@ -811,6 +811,7 @@ int ='\\int' underscore braces caret braces;
 lim ='\\lim' underscore braces;  
 prod ='\\prod' underscore braces caret braces;  
 
+URL='\\'('anchor'|'anchorfoot'|'anchorparen'|'arxiv'|'arxivprefix'|'bibitem'|'biburl'|'blueurl'|'burl'|'cite'|'citealt'|'citep'|'citet'|'code'|'doi'|'doilink'|'doiurl'|'emph'|'eprint'|'footnote'|'footnotetext'|'furl'|'gitbook'|'githubicon'|'gitlab'|'homepage'|'href'|'hrefgrad'|'hreflink'|'hyperlink'|'hyperref'|'isalink'|'it'|'myhref'|'myurl'|'neturl'|'newurl'|'niceurl'|'nolinkurl'|'orcidlink'|'ref'|'regexp'|'rm'|'setfloatlink'|'small'|'sphinxhref'|'str'|'swurl'|'textbf'|'textit'|'textsl'|'texttt'|'tiny'|'tt'|'underline'|'urladdr'|'urlalt'|'urlfont'|'urlwofont'|'urlx'|'usenixhref')[  ]* '{' ('http'|'https') '://' (any-'}')* '}' ;
 
 symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\chi'|'\\cos'|'\\d'|'\\dag'|'\\dagger'|'\\delta'|'\\Delta'|'\\dot'|'\\dots'|'\\epsilon'|'\\equiv'|'\\eta'|'\\exp'|'\\frac'|'\\gamma'|'\\Gamma'|'\\hat'|'\\in'|'\\infty'|'\\int'|'\\it'|'\\kappa'|'\\lambda'|'\\Lambda'|'\\langle'|'\\ldots'|'\\leq'|'\\limits'|'\\ln'|'\\log'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\nabla'|'\\nu'|'\\omega'|'\\Omega'|'\\over'|'\\overline'|'\\partial'|'\\phi'|'\\Phi'|'\\pi'|'\\Pi'|'\\pm'|'\\prime'|'\\psi'|'\\Psi'|'\\rangle'|'\\ref'|'\\rho'|'\\rm'|'\\rvec'|'\\sigma'|'\\Sigma'|'\\sim'|'\\sin'|'\\sqrt'|'\\star'|'\\sum'|'\\tau'|'\\text'|'\\theta'|'\\tilde'|'\\times'|'\\to'|'\\varepsilon'|'\\varphi'|'\\vec'|'\\wedge'|'\\widetilde'|'\\xi'|'\\ze'|'\\zeta';
 

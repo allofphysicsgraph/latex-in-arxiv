@@ -67,16 +67,14 @@ int match_to_file(XXH64_canonical_t dst, char* temp){
   include latex "latex.rl";
 
 main :=|*
-equation  => {
+inline_math  => {
     if ((te - ts) < 2000) {
       XXH64_canonical_t dst;
       char temp[te - ts + 1];
       memset(temp, '\0', te - ts + 1);
-        int offset = ts - in + prefix_length;
-        int length = te - ts -(prefix_length+suffix_length);
-        strcat(temp,"<s>");
+        int offset = ts - in ;
+        int length = te - ts ;
         strncat(temp, &in[offset], length);
-        strcat(temp,"</s>");
       XXH64_hash_t test_hash = XXH64(temp, length, 0);
       add_token(test_hash, temp, length, filename);
       XXH64_canonicalFromHash(&dst, test_hash);
@@ -91,34 +89,8 @@ equation  => {
         fprintf(hash_test, " %d  %d %d\n", offset, length,fcurs);
     }
   };
-frac  => {
-    if (in_size<2000) {
-        strncat(output_buffer," FRAC ",7);
-  }};
-
-sum  => {
-    if (in_size<2000) {
-        strncat(output_buffer," SUM ",6);
-  }};
-lim  => {
-    if (in_size<2000) {
-        strncat(output_buffer," LIM ",6);
-  }};
-int  => {
-    if (in_size<2000) {
-        strncat(output_buffer," INTEGRAL ",11);
-  }};
-prod  => {
-    if (in_size<2000) {
-        strncat(output_buffer," PROD ",7);
-  }};
-
-label => {};
 
 any => {
-      int offset = ts - in;
-      int length = te - ts;
-      strncat(output_buffer, &in[offset], length);
   };
 
 ('\\left'|'\\right'|'\\qquad'|'\\quad') ;

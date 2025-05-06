@@ -44,7 +44,6 @@ sampledata:
 	mkdir 2003_errors
 	$(CC) utils/strip_non_ascii.c -o strip_non_ascii.out
 	bash utils/pre-process-dataset.sh
-	#time find 2003 -type f -name "*.tex" |xargs -i -P12 latexml_tex2xml2html.sh "{}" 
 
 curl:
 	# Dependency for Kore, I prefer to build from source as a learning tool.

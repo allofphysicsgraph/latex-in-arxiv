@@ -228,7 +228,7 @@ equ = '\\begin{equ}' @{n=1;}  (equ_begin|equ_end|equ_body)*    equ_end  :> any w
 equation_begin = '\\begin{equation}' @{n++; };
 equation_end  = '\\end{equation}' @{n--; };
 equation_body = any+ - (equation_begin|equation_end);
-equation = '\\begin{equation}' @{n=1; prefix_length=17;}  (equation_begin|equation_end|equation_body)*    equation_end @{suffix_length=13;} :> any when{!n};
+equation = '\\begin{equation}' @{n=1; }  (equation_begin|equation_end|equation_body)*    equation_end  :> any when{!n};
 equs_begin = '\\begin{equs}' @{n++; };
 equs_end  = '\\end{equs}' @{n--; };
 equs_body = any+ - (equs_begin|equs_end);

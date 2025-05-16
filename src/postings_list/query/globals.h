@@ -1,5 +1,4 @@
 #include "uthash.h"
-#include "xxhash.h"
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* atoi, malloc */
 #include <string.h> /* strcpy */
@@ -17,10 +16,10 @@
 #define MAX_TOKEN_COUNT 2560
 #define MAX_TOKEN_LENGTH 2500
 
-int scanner(const char *in, FILE* hash_test,int length,char *filename);
+int scanner(const char *in, int length);
 
 struct my_struct {
-  XXH64_hash_t id; /* key */
+  uint32_t id;
   int count;
   int length;
 
@@ -32,7 +31,7 @@ struct my_struct {
 };
 
 void write_tf_idf();
-void add_token(XXH64_hash_t token_id, const char *token, int length,
+void add_token(uint32_t token_id, const char *token, int length,
                char filename[256]);
 void delete_all();
 void srt();

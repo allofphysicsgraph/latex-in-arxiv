@@ -5,7 +5,7 @@ CC=gcc
 CFLAGS=-g 
 scanner:
 	ragel -m -G2 scanner.rl
-	$(CC)  -O2  scanner.c main.c -o scanner.out -lm
+	$(CC)  -O2  scanner.c main.c murmur3.c -I../../include -o scanner.out -lm
 
 rewrite_rules:
 	ragel -m -G2 rewrite_rules.rl

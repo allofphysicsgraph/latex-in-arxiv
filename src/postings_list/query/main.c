@@ -75,7 +75,9 @@ void free_matching_files_array() {
 }
 
 int main(int argc, char *argv[]) {
-  if (argc != 3) {
+    murmur3_seeded_v2(0, "hello", 5);
+
+    if (argc != 3) {
     fprintf(stderr, "Usage: %s <directory> <regex_pattern>\n", argv[0]);
     return EXIT_FAILURE;
   }
@@ -125,9 +127,7 @@ int main(int argc, char *argv[]) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-      //fprintf(offsets, "%s\n", matching_files.filepaths[i]);
       scanner((char *)buff, s.st_size);
-      // matching_files.filepaths[i]);
     }
   }
   free_matching_files_array(); // Clean up array memory

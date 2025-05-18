@@ -1,11 +1,15 @@
 #include "globals.h"
 int n;
+uint32_t seed0 = 0;
+
 %%{
   machine strings;
   include latex "latex.rl";
 main :=|*
- equation  => {
-    printf("%.*s",te-ts,&in[ts-in]);
+ (equation|inline_math)  => {
+   uint32_t test = murmur3_seeded_v2(0, &in[ts-in], te-ts);
+
+    printf("{id:%lu,length:%d,tok:%.*s}\n",(unsigned long)test,te-ts,te-ts,&in[ts-in]);
 };
 
 any ;

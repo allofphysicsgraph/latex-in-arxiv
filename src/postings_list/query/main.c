@@ -112,8 +112,7 @@ int main(int argc, char *argv[]) {
 
   // process files with scanner
   for (size_t i = 0; i < matching_files.count; i++) {
-
-    printf("%s\n", matching_files.filepaths[i]);
+    //printf("%s\n", matching_files.filepaths[i]);
     int fd;
     struct stat s;
     fd = open(matching_files.filepaths[i], O_RDONLY);
@@ -125,7 +124,7 @@ int main(int argc, char *argv[]) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-      scanner((char *)buff, s.st_size);
+      scanner((char *)buff, s.st_size,matching_files.filepaths[i]);
     }
   }
   free_matching_files_array(); // Clean up array memory

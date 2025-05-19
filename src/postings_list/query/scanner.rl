@@ -8,11 +8,11 @@ uint32_t seed0 = 0;
 main :=|*
  equation  => {
    uint32_t test = murmur3_seeded_v2(seed0, &in[ts-in], te-ts);
-    printf("{id:%lu,offset:%d,length:%d,type:%s,tok:%.*s}\n",(unsigned long)test,ts-in,te-ts,"equation",te-ts,&in[ts-in]);
+    printf("{<filepath:%s>,id:%lu,offset:%d,length:%d,type:%s,<tok:%.*s>}\n",filename,(unsigned long)test,ts-in,te-ts,"equation",te-ts,&in[ts-in]);
 };
  inline_math  => {
    uint32_t test = murmur3_seeded_v2(seed0, &in[ts-in], te-ts);
-    printf("{id:%lu,offset:%d,length:%d,type:%s,tok:%.*s}\n",(unsigned long)test,ts-in,te-ts,"inline_math",te-ts,&in[ts-in]);
+    printf("{<filepath:%s>,id:%lu,offset:%d,length:%d,type:%s,<tok:%.*s>}\n",filename,(unsigned long)test,ts-in,te-ts,"inline_math",te-ts,&in[ts-in]);
 };
 
 any ;
@@ -20,7 +20,7 @@ any ;
 }%%
 
     %% write data;
-int scanner(const char *in,int length) {
+int scanner(const char *in,int length,char filename[]) {
   int in_size = length;
   int cs = 0, act = 0;
   const char *p = in;

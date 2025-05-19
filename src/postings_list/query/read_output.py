@@ -1,4 +1,5 @@
 from sys import argv
+import pandas as pd
 import re
 
 
@@ -14,15 +15,9 @@ resp = re.findall(
     data,
     re.DOTALL,
 )
-# print(data[:1000])
-from time import sleep
-
 output = []
 for ix in range(len(resp)):
     output.append([x for x in resp[ix] if x.strip()])
-
-import pandas as pd
-
 df = pd.DataFrame(output)
 df.columns = ["filepath", "id", "offset", "length", "type", "token"]
 print(df.head())

@@ -26,7 +26,7 @@
 
 //#define PATH_MAX 4096              // Standard PATH_MAX, adjust if needed
 #define INITIAL_ARRAY_SIZE 1024 // Initial size for the file path array
-#define ARRAY_RESIZE_FACTOR 2      // Factor to resize the array by
+#define ARRAY_RESIZE_FACTOR 2   // Factor to resize the array by
 
 // Structure to hold the array of matching file paths
 struct MatchingFiles {
@@ -75,9 +75,7 @@ void free_matching_files_array() {
 }
 
 int main(int argc, char *argv[]) {
-    murmur3_seeded_v2(0, "hello", 5);
-
-    if (argc != 3) {
+  if (argc != 3) {
     fprintf(stderr, "Usage: %s <directory> <regex_pattern>\n", argv[0]);
     return EXIT_FAILURE;
   }

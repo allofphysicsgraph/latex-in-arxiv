@@ -11,7 +11,7 @@ def read_file(f_name):
 
 data = read_file(argv[1])
 resp = re.findall(
-    "(^|\n){<filepath:(.*?)>,id:(\d+),offset:(\d+),length:(\d+),type:([a-z_]+),<tok:(.*?)>}",
+    "(^|\n){<filepath:(.*?)>,filepath_id:(\d+),id:(\d+),offset:(\d+),length:(\d+),type:([a-z_]+),<tok:(.*?)>}",
     data,
     re.DOTALL,
 )
@@ -19,5 +19,5 @@ output = []
 for ix in range(len(resp)):
     output.append([x for x in resp[ix] if x.strip()])
 df = pd.DataFrame(output)
-df.columns = ["filepath", "id", "offset", "length", "type", "token"]
+df.columns = ["filepath", "filepath_id", "id", "offset", "length", "type", "token"]
 print(df.head())

@@ -815,4 +815,6 @@ URL='\\'('anchor'|'anchorfoot'|'anchorparen'|'arxiv'|'arxivprefix'|'bibitem'|'bi
 
 symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\chi'|'\\cos'|'\\d'|'\\dag'|'\\dagger'|'\\delta'|'\\Delta'|'\\dot'|'\\dots'|'\\epsilon'|'\\equiv'|'\\eta'|'\\exp'|'\\frac'|'\\gamma'|'\\Gamma'|'\\hat'|'\\in'|'\\infty'|'\\int'|'\\it'|'\\kappa'|'\\lambda'|'\\Lambda'|'\\langle'|'\\ldots'|'\\leq'|'\\limits'|'\\ln'|'\\log'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\nabla'|'\\nu'|'\\omega'|'\\Omega'|'\\over'|'\\overline'|'\\partial'|'\\phi'|'\\Phi'|'\\pi'|'\\Pi'|'\\pm'|'\\prime'|'\\psi'|'\\Psi'|'\\rangle'|'\\ref'|'\\rho'|'\\rm'|'\\rvec'|'\\sigma'|'\\Sigma'|'\\sim'|'\\sin'|'\\sqrt'|'\\star'|'\\sum'|'\\tau'|'\\text'|'\\theta'|'\\tilde'|'\\times'|'\\to'|'\\varepsilon'|'\\varphi'|'\\vec'|'\\wedge'|'\\widetilde'|'\\xi'|'\\ze'|'\\zeta';
 
+integer = '0'|[1-9][0-9]*;
+
 }%%

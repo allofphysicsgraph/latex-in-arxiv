@@ -35,5 +35,4 @@ df["offset"] = df.apply(
     ),
     axis=1,
 )
-# print(df[(df.parent_id != df.filepath_id)].offset.apply())
-print(df.head(50))
+df.to_csv("output.csv", index=False)

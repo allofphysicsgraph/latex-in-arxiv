@@ -124,7 +124,8 @@ int main(int argc, char *argv[]) {
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {
-      scanner((char *)buff, s.st_size,matching_files.filepaths[i]);
+        uint32_t filepath_id = murmur3_seeded_v2(0, matching_files.filepaths[i], strlen(matching_files.filepaths[i]));
+        scanner((char *)buff, s.st_size,matching_files.filepaths[i],filepath_id,filepath_id); //filepath_id is used as parent id on initial scan.
     }
   }
   free_matching_files_array(); // Clean up array memory

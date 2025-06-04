@@ -29,10 +29,4 @@ df.columns = [
     "type",
     "token",
 ]
-df["offset"] = df.apply(
-    lambda x: (
-        int(x["offset"]) + 1 if (x["filepath_id"] != x["parent_id"]) else x["offset"]
-    ),
-    axis=1,
-)
 df.to_csv("output.csv", index=False)

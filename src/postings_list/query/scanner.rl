@@ -27,11 +27,48 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        filename, (unsigned long)filepath_id, (unsigned long)token_id,
        (unsigned long)parent_id, prefix_len + ts - in, te - ts, "frac",
        te - ts, &in[ts - in]);
-int prefix_len = 6;
+int prefix_len = 5;
 int suffix_len = 0;
 scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
         filename, filepath_id, token_id, prefix_len, suffix_len);
 };
+parens  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "parens",
+       te - ts, &in[ts - in]);
+int prefix_len = 1;
+int suffix_len = 1;
+scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
+        filename, filepath_id, token_id, prefix_len, suffix_len);
+};
+
+
+braces  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "braces",
+       te - ts, &in[ts - in]);
+int prefix_len = 1;
+int suffix_len = 1;
+scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
+        filename, filepath_id, token_id, prefix_len, suffix_len);
+};
+
+integer  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "integer",
+       te - ts, &in[ts - in]);
+};
+
+
 any ;
 thebibliography ;
 *| ;

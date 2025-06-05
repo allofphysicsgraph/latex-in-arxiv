@@ -3,8 +3,8 @@ from __future__ import annotations
 import pendulum
 
 from airflow.models.dag import DAG
-from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
+from airflow.providers.standard.operators.python import PythonOperator
+from airflow.providers.standard.operators.bash import BashOperator
 
 
 def extract_data():

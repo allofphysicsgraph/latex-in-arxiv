@@ -1,6 +1,6 @@
 %%{
   machine latex;
-s = 'A consequence of'
+start = 'A consequence of'
 |'Additional data relat'
 |'Additional data relate'
 |'Additional data related'
@@ -1060,7 +1060,8 @@ s = 'A consequence of'
 |'We will calculate'
 |'With regard to liquid'
 |'Yet, the interplay between'
-|'Yet, the presence of'
+|'Yet, the presence of';
+
 
 latex = s ;
 

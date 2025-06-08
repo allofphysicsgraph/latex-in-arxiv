@@ -7,7 +7,6 @@ from tqdm import tqdm
 
 tokenizer = mwe.MWETokenizer(separator="")
 
-
 with open(argv[1], "r") as f:
     corpus = f.read()
 corpus = corpus.replace(" ", "_")

@@ -1,0 +1,9 @@
+<HTML>
+    <table>
+        {% for item in names %}
+            {% for x in  item.LineMatches   %} 
+                <tr><td> {{ x.Line | b64decode  }} </td></tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+</HTML>

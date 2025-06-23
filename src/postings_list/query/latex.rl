@@ -809,7 +809,13 @@ frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces 
 inline_math =  "$" (any-"$"){1,80} "$" ;
 underscore = '_';
 caret = '^';
-sum ='\\sum' underscore braces caret braces;  
+
+
+sum_underscore ='\\sum' underscore (braces caret braces|'a'|'c'|'i'|'j'|'k'|'m'|'n'|'p'|'t'|'x');
+sum_caret = '\\sum' caret (braces |'\\infty');
+sum_limits = '\\sum\\limits' (underscore braces caret (braces|alpha) | caret (braces |alpha) underscore braces);
+sum = sum_limits | sum_caret | sum_underscore;
+ 
 int ='\\int' underscore braces caret braces;  
 lim ='\\lim' underscore braces;  
 prod ='\\prod' underscore braces caret braces;  

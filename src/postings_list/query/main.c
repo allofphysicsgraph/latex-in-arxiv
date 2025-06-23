@@ -126,7 +126,9 @@ int main(int argc, char *argv[]) {
     if (buff != (void *)-1) {
         uint32_t filepath_id = murmur3_seeded_v2(0, matching_files.filepaths[i], strlen(matching_files.filepaths[i]));
         scanner((char *)buff, s.st_size,matching_files.filepaths[i],filepath_id,filepath_id,0,0); //filepath_id is used as parent id on initial scan.
+    close(fd);
     }
+  
   }
   free_matching_files_array(); // Clean up array memory
   regfree(&regex);             // Free regex resources

@@ -29,4 +29,12 @@ df.columns = [
     "type",
     "token",
 ]
-df.to_csv("output.csv", index=False)
+import re
+
+# df = df[df.type =='sum']
+# print(df.head())
+df = df.loc[:, "token"].apply(lambda x: re.sub(r"\n", r"\\\\", x))
+df = set(df.tolist())
+for ix in df:
+    print(ix)
+# df.to_csv("output.csv", index=False)

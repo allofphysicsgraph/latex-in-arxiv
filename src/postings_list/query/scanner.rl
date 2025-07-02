@@ -19,6 +19,8 @@ scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
         filename, filepath_id, token_id, prefix_len, suffix_len);
 };
 
+hspace ; 
+
 frac  => {
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
 printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
@@ -112,8 +114,24 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        te - ts, &in[ts - in]);
 };
 
+eta  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "eta",
+       te - ts, &in[ts - in]);
+};
 
-hspace ; 
+sqrt  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "sqrt",
+       te - ts, &in[ts - in]);
+};
+
 any ;
 thebibliography ;
 *| ;

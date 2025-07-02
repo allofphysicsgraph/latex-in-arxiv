@@ -1,7 +1,7 @@
 %%{
   machine latex;
 
-PDG_vocab= '\\addExprXtoExprY'|'\\addition'|'\\addXtobothsides'|'\\addXtoBothSides'|'\\addZerotoLHS'|'\\addZerotoRHS'|'\\alpha'|'\\appendix'|'\\applyDivergence'|'\\applyGradientToScalarFunction'|'\\applyOperatorToBra'|'\\applyOperatorToKet'|'\\approx'|'\\arctan'|'\\ArgEight'|'\\ArgFive'|'\\ArgFour'|'\\ArgNine'|'\\ArgOne'|'\\ArgSeven'|'\\ArgSix'|'\\ArgThree'|'\\ArgTwo'|'\\AssumeNdimensions'|'\\author'|'\\backepsilon'|'\\bb'|'\\begin'|'\\beta'|'\\bhover'|'\\bibliography'|'\\bibliographystyle'|'\\big'|'\\bigg'|'\\boldmath'|'\\boldsymbol'|'\\bothsidescrossX'|'\\bothsidesdotX'|'\\boundaryCondition'|'\\bra'|'\\braket'|'\\bsortable'|'\\bsortbottom'|'\\bsorttable'|'\\cal'|'\\calH'|'\\caption'|'\\cdot'|'\\cf'|'\\circ'|'\\cite'|'\\claim'|'\\claimExprXequalsExprY'|'\\claimLHSequalsRHS'|'\\color'|'\\combineLikeTerms'|'\\conjugateBothSides'|'\\conjugateFunctionX'|'\\conjugateTransposeBothSides'|'\\cos'|'\\cosh'|'\\cosine'|'\\cross'|'\\curl'|'\\cvval'|'\\dagger'|'\\date'|'\\ddot'|'\\de'|'\\declareAssumption'|'\\declareFinalExpr'|'\\declareFinalExpression'|'\\declareGuessSolution'|'\\declareIdentity'|'\\declareInitialExpr'|'\\declareInitialExpression'|'\\def'|'\\definecolor'|'\\del'|'\\delta'|'\\Delta'|'\\Desktop'|'\\differentiateWRT'|'\\distributeConjugateToFactors'|'\\distributeConjugateTransposeToFactors'|'\\dividebothsidesby'|'\\divisionFrac'|'\\divisionOneLine'|'\\divisionSameLine'|'\\DOC'|'\\documentclass'|'\\Documents'|'\\dot'|'\\dotproduct'|'\\eg'|'\\elementwiseAddition'|'\\end'|'\\ensuremath'|'\\EOF'|'\\epsilon'|'\\eqn'|'\\eqref'|'\\equals'|'\\equiv'|'\\eta'|'\\EvaluateDefiniteIntegral'|'\\exists'|'\\exp'|'\\expandIntegrand'|'\\expandLHS'|'\\expandMagnitudeToConjugate'|'\\expandRHS'|'\\ExprXisTrueUnderconditionExprY'|'\\factorOutX'|'\\factorOutXfromLHS'|'\\factorOutXfromRHS'|'\\fi'|'\\footnote'|'\\forall'|'\\frac'|'\\function'|'\\functionIsEven'|'\\functionIsOdd'|'\\gamma'|'\\geq'|'\\giacinputmath'|'\\hat'|'\\hbar'|'\\hline'|'\\href'|'\\huge'|'\\Huge'|'\\ie'|'\\iffalse'|'\\in'|'\\include'|'\\includegraphics'|'\\indefIntegration'|'\\indefIntLHSOver'|'\\indefIntOver'|'\\indefIntRHSOver'|'\\inf'|'\\infint'|'\\infty'|'\\input'|'\\int'|'\\integer'|'\\integralDefinite'|'\\integralIndefinite'|'\\IntOverFromTo'|'\\it'|'\\kappa'|'\\ket'|'\\label'|'\\lamba'|'\\lambda'|'\\Lambda'|'\\langle'|'\\LaTeX'|'\\ldots'|'\\left'|'\\leq'|'\\LHSofExprXeqLHSofExprY'|'\\limits'|'\\ln'|'\\log'|'\\lt'|'\\makeExprPower'|'\\maketitle'|'\\mathbb'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\multbothsidesby'|'\\multExprXbyExprY'|'\\multicolinterrupt'|'\\multiplication'|'\\multLHSbyUnity'|'\\multRHSbyUnity'|'\\na'|'\\nabla'|'\\named'|'\\nChoice'|'\\nchoose'|'\\ncoarse'|'\\nconnections'|'\\ncontent'|'\\ne'|'\\nEnter'|'\\neq'|'\\nequation'|'\\nEquation'|'\\nequations'|'\\nerror'|'\\newcommand'|'\\newpage'|'\\nexisting'|'\\nexpression'|'\\nExtracted'|'\\nfeed'|'\\nfield'|'\\nfor'|'\\ngas'|'\\nhttps'|'\\nIf'|'\\nin'|'\\nIn'|'\\ninference'|'\\ninput'|'\\nIP'|'\\njust'|'\\nLaw'|'\\nLaws'|'\\nm'|'\\nmechanics'|'\\nMust'|'\\nof'|'\\nop'|'\\normalizationCondition'|'\\noscillator'|'\\nouput'|'\\nphysics'|'\\nPress'|'\\nprint'|'\\nprompt'|'\\nr'|'\\nrelation'|'\\nrequires'|'\\nResulting'|'\\nRHS'|'\\nSavart'|'\\nsecond'|'\\nselected'|'\\nselection'|'\\nstep'|'\\nStep'|'\\nsummary'|'\\nsymbol'|'\\nthird'|'\\nu'|'\\nwhich'|'\\ny'|'\\oddsidemargin'|'\\Ohm'|'\\oint'|'\\olegalex'|'\\omega'|'\\Omega'|'\\op'|'\\operator'|'\\over'|'\\pagecolor'|'\\pagestyle'|'\\partial'|'\\partialDiffWRT'|'\\pdg'|'\\pfrac'|'\\phi'|'\\Phi'|'\\pi'|'\\pm'|'\\PreviewEnvironment'|'\\propto'|'\\psi'|'\\Psi'|'\\qquad'|'\\quad'|'\\raiseBothSidesToPower'|'\\rangle'|'\\Re'|'\\rEarth'|'\\ref'|'\\relation'|'\\ReplaceCurlWithLeviCevitaSummationContravariant'|'\\replaceScalarWithVector'|'\\ReplaceSummationNotationWithVectorNotation'|'\\rho'|'\\RHSofExprXeqRHSofExprY'|'\\right'|'\\rightarrow'|'\\rm'|'\\rowContravariantColumnCovariant'|'\\rowCovariantColumnContravariant'|'\\rvert'|'\\section'|'\\selectImagParts'|'\\selectRealParts'|'\\setlength'|'\\si'|'\\sigma'|'\\simplify'|'\\sin'|'\\sine'|'\\sinh'|'\\solveForX'|'\\spatialVectorDifferential'|'\\sqrt'|'\\subLHSofExprXintoExprY'|'\\subRHSofExprXintoExprY'|'\\subsection'|'\\subtraction'|'\\subtractXfromBothSides'|'\\subXforY'|'\\sum'|'\\sumExponents'|'\\sumExponentsLHS'|'\\sumExponentsRHS'|'\\summation'|'\\swapLHSwithRHS'|'\\symbol'|'\\tableofcontents'|'\\takeCurlofBothSides'|'\\tan'|'\\tanh'|'\\text'|'\\textbar'|'\\textheight'|'\\textit'|'\\texttt'|'\\textwidth'|'\\tfrac'|'\\theta'|'\\Theta'|'\\thispagestyle'|'\\times'|'\\title'|'\\to'|'\\today'|'\\topmargin'|'\\uAD'|'\\uC'|'\\uD'|'\\uEFEF'|'\\uFF'|'\\uFFFF'|'\\usepackage'|'\\varepsilon'|'\\vdots'|'\\vec'|'\\verbatiminput'|'\\vert'|'\\when'|'\\xA'|'\\xb'|'\\Xcrossbothsidesby'|'\\Xdotbothsides'|'\\xi';
+PDG_vocab= '\\addExprXtoExprY'|'\\addition'|'\\addXtobothsides'|'\\addXtoBothSides'|'\\addZerotoLHS'|'\\addZerotoRHS'|'\\alpha'|'\\appendix'|'\\applyDivergence'|'\\applyGradientToScalarFunction'|'\\applyOperatorToBra'|'\\applyOperatorToKet'|'\\approx'|'\\arctan'|'\\ArgEight'|'\\ArgFive'|'\\ArgFour'|'\\ArgNine'|'\\ArgOne'|'\\ArgSeven'|'\\ArgSix'|'\\ArgThree'|'\\ArgTwo'|'\\AssumeNdimensions'|'\\author'|'\\backepsilon'|'\\bb'|'\\begin'|'\\beta'|'\\bhover'|'\\bibliography'|'\\bibliographystyle'|'\\big'|'\\bigg'|'\\boldmath'|'\\boldsymbol'|'\\bothsidescrossX'|'\\bothsidesdotX'|'\\boundaryCondition'|'\\bra'|'\\braket'|'\\bsortable'|'\\bsortbottom'|'\\bsorttable'|'\\cal'|'\\calH'|'\\caption'|'\\cdot'|'\\cf'|'\\circ'|'\\cite'|'\\claim'|'\\claimExprXequalsExprY'|'\\claimLHSequalsRHS'|'\\color'|'\\combineLikeTerms'|'\\conjugateBothSides'|'\\conjugateFunctionX'|'\\conjugateTransposeBothSides'|'\\cos'|'\\cosh'|'\\cosine'|'\\cross'|'\\curl'|'\\cvval'|'\\dagger'|'\\date'|'\\ddot'|'\\de'|'\\declareAssumption'|'\\declareFinalExpr'|'\\declareFinalExpression'|'\\declareGuessSolution'|'\\declareIdentity'|'\\declareInitialExpr'|'\\declareInitialExpression'|'\\def'|'\\definecolor'|'\\del'|'\\delta'|'\\Delta'|'\\Desktop'|'\\differentiateWRT'|'\\distributeConjugateToFactors'|'\\distributeConjugateTransposeToFactors'|'\\dividebothsidesby'|'\\divisionFrac'|'\\divisionOneLine'|'\\divisionSameLine'|'\\DOC'|'\\documentclass'|'\\Documents'|'\\dot'|'\\dotproduct'|'\\eg'|'\\elementwiseAddition'|'\\end'|'\\ensuremath'|'\\EOF'|'\\epsilon'|'\\eqn'|'\\eqref'|'\\equals'|'\\equiv'|'\\eta'|'\\EvaluateDefiniteIntegral'|'\\exists'|'\\expandIntegrand'|'\\expandLHS'|'\\expandMagnitudeToConjugate'|'\\expandRHS'|'\\ExprXisTrueUnderconditionExprY'|'\\factorOutX'|'\\factorOutXfromLHS'|'\\factorOutXfromRHS'|'\\fi'|'\\footnote'|'\\forall'|'\\frac'|'\\function'|'\\functionIsEven'|'\\functionIsOdd'|'\\gamma'|'\\geq'|'\\giacinputmath'|'\\hbar'|'\\hline'|'\\href'|'\\huge'|'\\Huge'|'\\ie'|'\\iffalse'|'\\in'|'\\include'|'\\includegraphics'|'\\indefIntegration'|'\\indefIntLHSOver'|'\\indefIntOver'|'\\indefIntRHSOver'|'\\inf'|'\\infint'|'\\infty'|'\\input'|'\\int'|'\\integer'|'\\integralDefinite'|'\\integralIndefinite'|'\\IntOverFromTo'|'\\it'|'\\kappa'|'\\ket'|'\\label'|'\\lamba'|'\\lambda'|'\\Lambda'|'\\langle'|'\\LaTeX'|'\\ldots'|'\\left'|'\\leq'|'\\LHSofExprXeqLHSofExprY'|'\\limits'|'\\ln'|'\\log'|'\\lt'|'\\makeExprPower'|'\\maketitle'|'\\mathbb'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\multbothsidesby'|'\\multExprXbyExprY'|'\\multicolinterrupt'|'\\multiplication'|'\\multLHSbyUnity'|'\\multRHSbyUnity'|'\\na'|'\\nabla'|'\\named'|'\\nChoice'|'\\nchoose'|'\\ncoarse'|'\\nconnections'|'\\ncontent'|'\\ne'|'\\nEnter'|'\\neq'|'\\nequation'|'\\nEquation'|'\\nequations'|'\\nerror'|'\\newcommand'|'\\newpage'|'\\nexisting'|'\\nexpression'|'\\nExtracted'|'\\nfeed'|'\\nfield'|'\\nfor'|'\\ngas'|'\\nhttps'|'\\nIf'|'\\nin'|'\\nIn'|'\\ninference'|'\\ninput'|'\\nIP'|'\\njust'|'\\nLaw'|'\\nLaws'|'\\nm'|'\\nmechanics'|'\\nMust'|'\\nof'|'\\nop'|'\\normalizationCondition'|'\\noscillator'|'\\nouput'|'\\nphysics'|'\\nPress'|'\\nprint'|'\\nprompt'|'\\nr'|'\\nrelation'|'\\nrequires'|'\\nResulting'|'\\nRHS'|'\\nSavart'|'\\nsecond'|'\\nselected'|'\\nselection'|'\\nstep'|'\\nStep'|'\\nsummary'|'\\nsymbol'|'\\nthird'|'\\nu'|'\\nwhich'|'\\ny'|'\\oddsidemargin'|'\\Ohm'|'\\oint'|'\\olegalex'|'\\omega'|'\\Omega'|'\\op'|'\\operator'|'\\over'|'\\pagecolor'|'\\pagestyle'|'\\partial'|'\\partialDiffWRT'|'\\pdg'|'\\pfrac'|'\\phi'|'\\Phi'|'\\pi'|'\\pm'|'\\PreviewEnvironment'|'\\propto'|'\\psi'|'\\Psi'|'\\qquad'|'\\quad'|'\\raiseBothSidesToPower'|'\\rangle'|'\\Re'|'\\rEarth'|'\\ref'|'\\relation'|'\\ReplaceCurlWithLeviCevitaSummationContravariant'|'\\replaceScalarWithVector'|'\\ReplaceSummationNotationWithVectorNotation'|'\\rho'|'\\RHSofExprXeqRHSofExprY'|'\\right'|'\\rightarrow'|'\\rm'|'\\rowContravariantColumnCovariant'|'\\rowCovariantColumnContravariant'|'\\rvert'|'\\section'|'\\selectImagParts'|'\\selectRealParts'|'\\setlength'|'\\si'|'\\sigma'|'\\simplify'|'\\sin'|'\\sine'|'\\sinh'|'\\solveForX'|'\\spatialVectorDifferential'|'\\subLHSofExprXintoExprY'|'\\subRHSofExprXintoExprY'|'\\subsection'|'\\subtraction'|'\\subtractXfromBothSides'|'\\subXforY'|'\\sum'|'\\sumExponents'|'\\sumExponentsLHS'|'\\sumExponentsRHS'|'\\summation'|'\\swapLHSwithRHS'|'\\symbol'|'\\tableofcontents'|'\\takeCurlofBothSides'|'\\tan'|'\\tanh'|'\\text'|'\\textbar'|'\\textheight'|'\\textit'|'\\texttt'|'\\textwidth'|'\\tfrac'|'\\theta'|'\\Theta'|'\\thispagestyle'|'\\times'|'\\title'|'\\to'|'\\today'|'\\topmargin'|'\\uAD'|'\\uC'|'\\uD'|'\\uEFEF'|'\\uFF'|'\\uFFFF'|'\\usepackage'|'\\varepsilon'|'\\vdots'|'\\vec'|'\\verbatiminput'|'\\vert'|'\\when'|'\\xA'|'\\xb'|'\\Xcrossbothsidesby'|'\\Xdotbothsides'|'\\xi';
 
 comment='%' (any{1,100}-'\n') '\n';
 abstract_begin = '\\begin{abstract}' @{n++; };
@@ -780,7 +780,7 @@ braces = '{' @{n=0;} (left_brace|right_brace|brace_body)* :> '}' when{!n};
 left_bracket = '[' @{n++;};
 right_bracket = ']' @{n--; };
 bracket_body = any - (left_bracket|right_bracket);
-brackets = '[' @{n=0;} (left_bracket|right_bracket|bracket_body)* :> ']' when{!n};
+brackets = ('\\left['|'[') @{n=0;} (left_bracket|right_bracket|bracket_body)* :> ']' when{!n};
 
 left_parens = '(' @{n++;};
 right_parens = ')' @{n--; };
@@ -805,7 +805,7 @@ bibinfo = '\\bibinfo' (braces|brackets braces);
 title = '\\title' braces;
 subsection = '\\subsection' braces;
 newcommand = '\\newcommand' (braces braces | braces brackets brackets braces);
-frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | digit braces | braces digit | [ ]? digit digit);
+frac = ('\\frac'|'\\tfrac'|'\\dfrac') .  (braces braces | braces '\n' [ ]+ braces | digit braces | braces digit | [ ]? digit digit);
 inline_math =  "$" (any-"$"){1,80} "$" ;
 underscore = '_';
 caret = '^';
@@ -815,20 +815,37 @@ sum_underscore ='\\sum' underscore (braces caret braces| alpha caret braces | al
 sum_caret = '\\sum' caret (braces |'\\infty'|'n'|'N'|'\\'|'m'|'T'|'K'|'3'|'M'|'k'|'d'|'2'|'L'|'4'|'t'|'p'|'r'|'J'|'*'|'s'|'l');
 
 sum_limits = '\\sum\\limits' (underscore braces caret (braces|alpha) | caret (braces |alpha) underscore braces);
-sum_x = sum_limits | sum_caret|sum_underscore;
- 
-sum = '\\sum' ; 
+sum = sum_limits | sum_caret|sum_underscore;
 
-int ='\\int' underscore braces caret braces;  
-lim ='\\lim' underscore braces;  
-prod ='\\prod' underscore braces caret braces;  
+
+prod_underscore ='\\prod' underscore (braces caret braces| alpha caret braces | alpha | '0' | '1' | ' '| '\\' );
+
+prod_caret = '\\prod' caret (braces |'\\infty'|'n'|'N'|'\\'|'m'|'T'|'K'|'3'|'M'|'k'|'d'|'2'|'L'|'4'|'t'|'p'|'r'|'J'|'*'|'s'|'l');
+
+prod_limits = '\\prod\\limits' (underscore braces caret (braces|alpha) | caret (braces |alpha) underscore braces);
+prod = prod_limits | prod_caret|prod_underscore;
+
+
+lim_underscore ='\\lim' underscore (braces caret braces| alpha caret braces | alpha | '0' | '1' | ' '| '\\' |braces);
+
+lim_caret = '\\lim' caret (braces |'\\infty'|'n'|'N'|'\\'|'m'|'T'|'K'|'3'|'M'|'k'|'d'|'2'|'L'|'4'|'t'|'p'|'r'|'J'|'*'|'s'|'l');
+
+lim_limits = '\\lim\\limits' (underscore braces caret (braces|alpha) | caret (braces |alpha) underscore braces);
+lim = lim_limits | lim_caret|lim_underscore;
+
+
+int = '\\int' underscore (digit caret braces|braces caret braces) (([ ]+ 'd') alpha [ ])?;
+
 
 URL='\\'('anchor'|'anchorfoot'|'anchorparen'|'arxiv'|'arxivprefix'|'bibitem'|'biburl'|'blueurl'|'burl'|'cite'|'citealt'|'citep'|'citet'|'code'|'doi'|'doilink'|'doiurl'|'emph'|'eprint'|'footnote'|'footnotetext'|'furl'|'gitbook'|'githubicon'|'gitlab'|'homepage'|'href'|'hrefgrad'|'hreflink'|'hyperlink'|'hyperref'|'isalink'|'it'|'myhref'|'myurl'|'neturl'|'newurl'|'niceurl'|'nolinkurl'|'orcidlink'|'ref'|'regexp'|'rm'|'setfloatlink'|'small'|'sphinxhref'|'str'|'swurl'|'textbf'|'textit'|'textsl'|'texttt'|'tiny'|'tt'|'underline'|'urladdr'|'urlalt'|'urlfont'|'urlwofont'|'urlx'|'usenixhref')[  ]* '{' ('http'|'https') '://' (any-'}')* '}' ;
 
-symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\chi'|'\\cos'|'\\d'|'\\dag'|'\\dagger'|'\\delta'|'\\Delta'|'\\dot'|'\\dots'|'\\epsilon'|'\\equiv'|'\\eta'|'\\exp'|'\\frac'|'\\gamma'|'\\Gamma'|'\\hat'|'\\in'|'\\infty'|'\\int'|'\\it'|'\\kappa'|'\\lambda'|'\\Lambda'|'\\langle'|'\\ldots'|'\\leq'|'\\limits'|'\\ln'|'\\log'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\nabla'|'\\nu'|'\\omega'|'\\Omega'|'\\over'|'\\overline'|'\\partial'|'\\phi'|'\\Phi'|'\\pi'|'\\Pi'|'\\pm'|'\\prime'|'\\psi'|'\\Psi'|'\\rangle'|'\\ref'|'\\rho'|'\\rm'|'\\rvec'|'\\sigma'|'\\Sigma'|'\\sim'|'\\sin'|'\\sqrt'|'\\star'|'\\sum'|'\\tau'|'\\text'|'\\theta'|'\\tilde'|'\\times'|'\\to'|'\\varepsilon'|'\\varphi'|'\\vec'|'\\wedge'|'\\widetilde'|'\\xi'|'\\ze'|'\\zeta';
-
+symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\chi'|'\\cos'|'\\d'|'\\dag'|'\\dagger'|'\\delta'|'\\Delta'|'\\dot'|'\\dots'|'\\epsilon'|'\\equiv'|'\\eta'|'\\exp'|'\\frac'|'\\gamma'|'\\Gamma'|'\\in'|'\\infty'|'\\int'|'\\it'|'\\kappa'|'\\lambda'|'\\Lambda'|'\\langle'|'\\ldots'|'\\leq'|'\\limits'|'\\ln'|'\\log'|'\\mathbf'|'\\mathcal'|'\\mathrm'|'\\mu'|'\\nabla'|'\\nu'|'\\omega'|'\\Omega'|'\\over'|'\\overline'|'\\partial'|'\\phi'|'\\Phi'|'\\pi'|'\\Pi'|'\\pm'|'\\prime'|'\\psi'|'\\Psi'|'\\rangle'|'\\ref'|'\\rho'|'\\rm'|'\\rvec'|'\\sigma'|'\\Sigma'|'\\sim'|'\\sin'|'\\star'|'\\sum'|'\\tau'|'\\text'|'\\theta'|'\\tilde'|'\\times'|'\\to'|'\\varepsilon'|'\\varphi'|'\\vec'|'\\wedge'|'\\widetilde'|'\\xi'|'\\ze'|'\\zeta';
 integer = '0'|[1-9][0-9]*;
-
+hat = '\\hat' (braces parens|braces brackets|braces underscore braces brackets|braces);
+vec = '\\vec' (braces parens|braces brackets|braces);
+sqrt = '\\sqrt' braces;
+hspace = '\\hspace' braces;
+e = [ ]+'e' caret braces; 
 
 word='\\'alpha{1,15};
 context = word (any{0,40}-word);

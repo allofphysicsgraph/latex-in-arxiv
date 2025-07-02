@@ -23,7 +23,7 @@ tokens = set()
 for token in vocab:
     tokens.add(r"{}".format(token))
 
-print(tokens)
+#print(tokens)
 resp = re.findall(
     "(^|\n){<filepath:(.*?)>,filepath_id:(\d+),token_id:(\d+),parent_id:(\d+),offset:(\d+),length:(\d+),type:([a-z_]+),<tok:(.*?)>}",
     data,
@@ -47,8 +47,6 @@ df.columns = [
 zf = df.loc[:, ["type", "token"]]
 equations = zf[zf.type == "equation"]
 equations = set(equations.token.tolist())
-# braces = zf[zf.type=='braces']
-# braces = set(braces.token.tolist())
 types = [x for x in set(zf.type.tolist()) if x != "equation"]
 for eq in equations:
     for typ in types:
@@ -67,8 +65,6 @@ for token in tokens:
 zf = zf[zf.type == "equation"]
 zf.drop_duplicates(inplace=True)
 zf.to_csv("output.csv", sep="\t", index=False)
-
-from time import sleep
 
 for eq in equations:
     print(eq)

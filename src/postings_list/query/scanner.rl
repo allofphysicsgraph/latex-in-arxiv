@@ -76,7 +76,44 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        te - ts, &in[ts - in]);
 };
 
+hat  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, ts - in, te - ts, "hat",
+       te - ts, &in[ts - in]);
+};
 
+lim  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, ts - in, te - ts, "lim",
+       te - ts, &in[ts - in]);
+};
+
+int  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "int",
+       te - ts, &in[ts - in]);
+};
+
+e  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "e",
+       te - ts, &in[ts - in]);
+};
+
+
+hspace ; 
 any ;
 thebibliography ;
 *| ;

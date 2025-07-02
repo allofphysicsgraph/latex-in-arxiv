@@ -117,10 +117,10 @@ int main(int argc, char *argv[]) {
     struct stat s;
     fd = open(matching_files.filepaths[i], O_RDONLY);
     if (fd < 0) {
-      printf("EXIT FAILURE");
+      printf("EXIT FAILURE %s",matching_files.filepaths[i]);
       return EXIT_FAILURE;
     }
-    fstat(fd, &s);
+	    fstat(fd, &s);
     /* PROT_READ disallows writing to buff: will segv */
     char *buff = mmap(NULL, s.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (buff != (void *)-1) {

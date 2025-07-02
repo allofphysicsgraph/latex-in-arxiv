@@ -50,8 +50,9 @@ def run():
     return tokenizer
 
 
-for k in tqdm(range(5000)):
+for k in tqdm(range(60)):
     tokenizer = run()
 output = [x for x in tokenizer.tokenize(corpus) if len(x) > 4]
 for x in output:
     print(x)
+    #print('*'*50)

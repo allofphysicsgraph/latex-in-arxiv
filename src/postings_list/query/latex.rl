@@ -785,7 +785,7 @@ brackets = '[' @{n=0;} (left_bracket|right_bracket|bracket_body)* :> ']' when{!n
 left_parens = '(' @{n++;};
 right_parens = ')' @{n--; };
 parens_body = any - (left_parens|right_parens);
-parens = '(' @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
+parens = ('\\left('|'(') @{n=0;} (left_parens|right_parens|parens_body)* :> ')' when{!n};
 
 left_comma = '(' @{n++;};
 right_comma = ')' @{n--; };
@@ -810,12 +810,15 @@ inline_math =  "$" (any-"$"){1,80} "$" ;
 underscore = '_';
 caret = '^';
 
+sum_underscore ='\\sum' underscore (braces caret braces| alpha caret braces | alpha | '0' | '1' | ' '| '\\' );
 
-sum_underscore ='\\sum' underscore (braces caret braces|'a'|'c'|'i'|'j'|'k'|'m'|'n'|'p'|'t'|'x');
-sum_caret = '\\sum' caret (braces |'\\infty');
+sum_caret = '\\sum' caret (braces |'\\infty'|'n'|'N'|'\\'|'m'|'T'|'K'|'3'|'M'|'k'|'d'|'2'|'L'|'4'|'t'|'p'|'r'|'J'|'*'|'s'|'l');
+
 sum_limits = '\\sum\\limits' (underscore braces caret (braces|alpha) | caret (braces |alpha) underscore braces);
-sum = sum_limits | sum_caret | sum_underscore;
+sum_x = sum_limits | sum_caret|sum_underscore;
  
+sum = '\\sum' ; 
+
 int ='\\int' underscore braces caret braces;  
 lim ='\\lim' underscore braces;  
 prod ='\\prod' underscore braces caret braces;  
@@ -826,4 +829,7 @@ symbols = '\\alpha'|'\\approx'|'\\ast'|'\\beta'|'\\cal'|'\\cdot'|'\\cdots'|'\\ch
 
 integer = '0'|[1-9][0-9]*;
 
+
+word='\\'alpha{1,15};
+context = word (any{0,40}-word);
 }%%

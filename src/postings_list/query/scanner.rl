@@ -15,7 +15,6 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        te - ts, &in[ts - in]);
 int prefix_len = 16;
 int suffix_len = 14;
-
 scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
         filename, filepath_id, token_id, prefix_len, suffix_len);
 };
@@ -27,10 +26,6 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        filename, (unsigned long)filepath_id, (unsigned long)token_id,
        (unsigned long)parent_id, prefix_len + ts - in, te - ts, "frac",
        te - ts, &in[ts - in]);
-int prefix_len = 5;
-int suffix_len = 0;
-scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
-        filename, filepath_id, token_id, prefix_len, suffix_len);
 };
 parens  => {
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
@@ -39,14 +34,29 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        filename, (unsigned long)filepath_id, (unsigned long)token_id,
        (unsigned long)parent_id, prefix_len + ts - in, te - ts, "parens",
        te - ts, &in[ts - in]);
-int prefix_len = 1;
-int suffix_len = 1;
-scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
-        filename, filepath_id, token_id, prefix_len, suffix_len);
+};
+inline_math  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "inline",
+       te - ts, &in[ts - in]);
 };
 
+label  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "label",
+       te - ts, &in[ts - in]);
+int prefix_len = 1;
+int suffix_len = 1;
+};
 
 braces  => {
+if ((te-ts)<100){
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
 printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        "length:%d,type:%s,<tok:%.*s>}\n",
@@ -55,16 +65,14 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        te - ts, &in[ts - in]);
 int prefix_len = 1;
 int suffix_len = 1;
-scanner(&in[ts + prefix_len - in], te - (prefix_len + suffix_len) - ts,
-        filename, filepath_id, token_id, prefix_len, suffix_len);
-};
+}};
 
-integer  => {
+brackets  => {
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
 printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        "length:%d,type:%s,<tok:%.*s>}\n",
        filename, (unsigned long)filepath_id, (unsigned long)token_id,
-       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "integer",
+       (unsigned long)parent_id, prefix_len + ts - in, te - ts, "brackets",
        te - ts, &in[ts - in]);
 };
 

@@ -851,6 +851,10 @@ hspace = '\\hspace' braces;
 e = 'e' caret braces; 
 eta = '\\eta' underscore braces;
 
+
+subexpr = ('\\alpha'| '\\argmax'| '\\argmin'| '\\ast'| '\\bbeta'| '\\beta'| '\\bfx'| '\\bigcap'| '\\bigcup'| '\\bigoplus'| '\\bigotimes'| '\\bigwedge'| '\\bSigma'| '\\btheta'| '\\chi'| '\\circ'| '\\cup'| '\\dag'| '\\dagger'| '\\dashint'| '\\del'| '\\delta'| '\\Delta'| '\\dim'| '\\dsum'| '\\ell'| '\\epsilon'| '\\eta'| '\\exp'| '\\gamma'| '\\Gamma'| '\\grad'| '\\iint'| '\\infty'| '\\iota'| '\\kappa'| '\\lambda' '\\Lambda'| '\\liminf'| '\\limits'| '\\limsup'| '\\log'| '\\max'| '\\min'| '\\mu'| '\\nabla'| '\\nolimits'| '\\nu'| '\\oint'| '\\omega'| '\\Omega'| '\\oplus'| '\\oslash'| '\\otimes'| '\\partial'| '\\perp'| '\\phi'| '\\Phi'| '\\pi'| '\\Pi'| '\\prime'| '\\prod'| '\\psi'| '\\Psi'| '\\rangle'| '\\rho'| '\\rvert'| '\\rVert'| '\\sigma'| '\\Sigma'| '\\star'| '\\state'| '\\sup'| '\\tau'| '\\theta'| '\\Theta'| '\\times'| '\\upsilon'| '\\Upsilon'| '\\varepsilon'| '\\varphi'| '\\varpi'| '\\varrho'| '\\varsigma'| '\\vartheta'| '\\vert'| '\\Vert'| '\\vol'| '\\xi'| '\\Xi'| '\\zeta') underscore (braces | alnum |'!'|'*'|'+'|'-');
+
+
 word='\\'alpha{1,15};
 context = word (any{0,40}-word);
 }%%

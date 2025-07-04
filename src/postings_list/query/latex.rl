@@ -228,10 +228,22 @@ equ_begin = '\\begin{equ}' @{n++; };
 equ_end  = '\\end{equ}' @{n--; };
 equ_body = any+ - (equ_begin|equ_end);
 equ = '\\begin{equ}' @{n=1;}  (equ_begin|equ_end|equ_body)*    equ_end  :> any when{!n};
-equation_begin = '\\begin{equation}' @{n++; };
-equation_end  = '\\end{equation}' @{n--; };
+
+equation_begin_idx = '\\begin{equation}' @{n++; };
+equation_end_idx  = '\\end{equation}' @{n--; };
+equation_body_idx = any+ - (equation_begin_idx|equation_end_idx);
+equation_idx = '\\begin{equation}' @{n=1; }  (equation_begin_idx|equation_end_idx|equation_body_idx)*    equation_end_idx  :> any when{!n};
+
+
+equation_begin = '\\begin{equation*}' @{n++; };
+equation_end  = '\\end{equation*}' @{n--; };
 equation_body = any+ - (equation_begin|equation_end);
-equation = '\\begin{equation}' @{n=1; }  (equation_begin|equation_end|equation_body)*    equation_end  :> any when{!n};
+equation_ = '\\begin{equation*}' @{n=1; }  (equation_begin|equation_end|equation_body)*    equation_end  :> any when{!n};
+
+equation = equation_ | equation_idx;
+
+
+
 equs_begin = '\\begin{equs}' @{n++; };
 equs_end  = '\\end{equs}' @{n--; };
 equs_body = any+ - (equs_begin|equs_end);
@@ -852,7 +864,7 @@ e = 'e' caret braces;
 eta = '\\eta' underscore braces;
 
 
-subexpr = ('\\alpha'| '\\argmax'| '\\argmin'| '\\ast'| '\\bbeta'| '\\beta'| '\\bfx'| '\\bigcap'| '\\bigcup'| '\\bigoplus'| '\\bigotimes'| '\\bigwedge'| '\\bSigma'| '\\btheta'| '\\chi'| '\\circ'| '\\cup'| '\\dag'| '\\dagger'| '\\dashint'| '\\del'| '\\delta'| '\\Delta'| '\\dim'| '\\dsum'| '\\ell'| '\\epsilon'| '\\eta'| '\\exp'| '\\gamma'| '\\Gamma'| '\\grad'| '\\iint'| '\\infty'| '\\iota'| '\\kappa'| '\\lambda' '\\Lambda'| '\\liminf'| '\\limits'| '\\limsup'| '\\log'| '\\max'| '\\min'| '\\mu'| '\\nabla'| '\\nolimits'| '\\nu'| '\\oint'| '\\omega'| '\\Omega'| '\\oplus'| '\\oslash'| '\\otimes'| '\\partial'| '\\perp'| '\\phi'| '\\Phi'| '\\pi'| '\\Pi'| '\\prime'| '\\prod'| '\\psi'| '\\Psi'| '\\rangle'| '\\rho'| '\\rvert'| '\\rVert'| '\\sigma'| '\\Sigma'| '\\star'| '\\state'| '\\sup'| '\\tau'| '\\theta'| '\\Theta'| '\\times'| '\\upsilon'| '\\Upsilon'| '\\varepsilon'| '\\varphi'| '\\varpi'| '\\varrho'| '\\varsigma'| '\\vartheta'| '\\vert'| '\\Vert'| '\\vol'| '\\xi'| '\\Xi'| '\\zeta') underscore (braces | alnum |'!'|'*'|'+'|'-');
+subexpr = (parens | '\\alpha'| '\\argmax'| '\\argmin'| '\\ast'| '\\bbeta'| '\\beta'| '\\bfx'| '\\bigcap'| '\\bigcup'| '\\bigoplus'| '\\bigotimes'| '\\bigwedge'| '\\bSigma'| '\\btheta'| '\\chi'| '\\circ'| '\\cup'| '\\dag'| '\\dagger'| '\\dashint'| '\\del'| '\\delta'| '\\Delta'| '\\dim'| '\\dsum'| '\\ell'| '\\epsilon'| '\\eta'| '\\exp'| '\\gamma'| '\\Gamma'| '\\grad'| '\\iint'| '\\infty'| '\\iota'| '\\kappa'| '\\lambda' '\\Lambda'| '\\liminf'| '\\limits'| '\\limsup'| '\\log'| '\\max'| '\\min'| '\\mu'| '\\nabla'| '\\nolimits'| '\\nu'| '\\oint'| '\\omega'| '\\Omega'| '\\oplus'| '\\oslash'| '\\otimes'| '\\partial'| '\\perp'| '\\phi'| '\\Phi'| '\\pi'| '\\Pi'| '\\prime'| '\\prod'| '\\psi'| '\\Psi'| '\\rangle'| '\\rho'| '\\rvert'| '\\rVert'| '\\sigma'| '\\Sigma'| '\\star'| '\\state'| '\\sup'| '\\tau'| '\\theta'| '\\Theta'| '\\times'| '\\upsilon'| '\\Upsilon'| '\\varepsilon'| '\\varphi'| '\\varpi'| '\\varrho'| '\\varsigma'| '\\vartheta'| '\\vert'| '\\Vert'| '\\vol'| '\\xi'| '\\Xi'| '\\zeta') underscore (braces | alnum |'!'|'*'|'+'|'-');
 
 
 word='\\'alpha{1,15};

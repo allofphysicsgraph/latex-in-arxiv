@@ -5,6 +5,7 @@ from sys import argv
 from tqdm import tqdm
 import pandas as pd
 import re
+import numpy as np
 
 tokenizer = mwe.MWETokenizer(separator="")
 
@@ -23,7 +24,7 @@ tokens = set()
 for token in vocab:
     tokens.add(r"{}".format(token))
 
-#print(tokens)
+# print(tokens)
 resp = re.findall(
     "(^|\n){<filepath:(.*?)>,filepath_id:(\d+),token_id:(\d+),parent_id:(\d+),offset:(\d+),length:(\d+),type:([a-z_]+),<tok:(.*?)>}",
     data,
@@ -47,10 +48,17 @@ df.columns = [
 zf = df.loc[:, ["type", "token"]]
 equations = zf[zf.type == "equation"]
 equations = set(equations.token.tolist())
-types = [x for x in set(zf.type.tolist()) if x != "equation"]
+f = open("equation_output", "a+")
 for eq in equations:
+    f.write(eq)
+    f.write("\n")
+f.close()
+
+
+types = [x for x in set(zf.type.tolist()) if x != "equation"]
+for eq in tqdm(np.array(list(equations))):
     for typ in types:
-        lst = zf[zf.type == typ].token.tolist()
+        lst = set(zf[zf.type == typ].token.tolist())
         for xs in lst:
             if typ == "inline":
                 xs = xs[1:-1]
@@ -64,6 +72,7 @@ for token in tokens:
 
 zf = zf[zf.type == "equation"]
 zf.drop_duplicates(inplace=True)
+zf = zf.loc[:, "token"].apply(lambda x: re.sub(r"\n", r"\\\\", x))
 zf.to_csv("output.csv", sep="\t", index=False)
 
 for eq in equations:

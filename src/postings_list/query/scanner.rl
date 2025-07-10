@@ -139,9 +139,95 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        (unsigned long)parent_id,  ts - in, te - ts, "sqrt",
        te - ts, &in[ts - in]);
 };
+newcommand  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "newcommand",
+       te - ts, &in[ts - in]);
+};
+author  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "author",
+       te - ts, &in[ts - in]);
+};
+abstract  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "abstract",
+       te - ts, &in[ts - in]);
+};
+
+section  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "section",
+       te - ts, &in[ts - in]);
+};
+
+title  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "title",
+       te - ts, &in[ts - in]);
+};
+affiliation  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "affiliation",
+       te - ts, &in[ts - in]);
+};
+cite  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "cite",
+       te - ts, &in[ts - in]);
+};
+ref  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "ref",
+       te - ts, &in[ts - in]);
+};
+bibitem  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "bibitem",
+       te - ts, &in[ts - in]);
+};
+comment  => {
+       char test[2];
+       memset(test,'\0',2);
+       if((ts-in-1)>0){
+       strncpy(test,&in[ts-in-1],1);
+       if(strcmp("\\",test)!=0){
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te-1 - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in,te-1 - ts, "comment",
+       te-1 - ts, &in[ts - in]);
+}}};
 
 any ;
-thebibliography ;
 *| ;
 }%%
 

@@ -29,6 +29,30 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        (unsigned long)parent_id,  ts - in, te - ts, "subexpr",
        te - ts, &in[ts - in]);
 };
+eqnarray  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "eqnarray",
+       te - ts, &in[ts - in]);
+};
+enumerate  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "enumerate",
+       te - ts, &in[ts - in]);
+};
+itemize  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "itemize",
+       te - ts, &in[ts - in]);
+};
 
 frac  => {
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
@@ -228,6 +252,175 @@ printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
        te-1 - ts, &in[ts - in]);
 }}};
 
+
+align  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "align",
+       te - ts, &in[ts - in]);
+};
+alignat  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "alignat",
+       te - ts, &in[ts - in]);
+};
+aligned  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "aligned",
+       te - ts, &in[ts - in]);
+};
+array  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "array",
+       te - ts, &in[ts - in]);
+};
+cases  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "cases",
+       te - ts, &in[ts - in]);
+};
+center  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "center",
+       te - ts, &in[ts - in]);
+};
+displaymath  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "displaymath",
+       te - ts, &in[ts - in]);
+};
+enumerate  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "enumerate",
+       te - ts, &in[ts - in]);
+};
+figure  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "figure",
+       te - ts, &in[ts - in]);
+};
+gather  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "gather",
+       te - ts, &in[ts - in]);
+};
+itemize  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "itemize",
+       te - ts, &in[ts - in]);
+};
+matrix  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "matrix",
+       te - ts, &in[ts - in]);
+};
+minipage  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "minipage",
+       te - ts, &in[ts - in]);
+};
+multline  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "multline",
+       te - ts, &in[ts - in]);
+};
+pmatrix  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "pmatrix",
+       te - ts, &in[ts - in]);
+};
+proof  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "proof",
+       te - ts, &in[ts - in]);
+};
+split  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "split",
+       te - ts, &in[ts - in]);
+};
+subequations  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "subequations",
+       te - ts, &in[ts - in]);
+};
+table  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "table",
+       te - ts, &in[ts - in]);
+};
+tabular  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "tabular",
+       te - ts, &in[ts - in]);
+};
+widetext  => {
+uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
+       "length:%d,type:%s,<tok:%.*s>}\n",
+       filename, (unsigned long)filepath_id, (unsigned long)token_id,
+       (unsigned long)parent_id,  ts - in, te - ts, "widetext",
+       te - ts, &in[ts - in]);
+};
 any ;
 *| ;
 }%%

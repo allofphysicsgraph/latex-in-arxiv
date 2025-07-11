@@ -5,6 +5,7 @@ uint32_t seed0 = 0;
 %%{
   machine strings;
   include latex "latex.rl";
+
 main :=|*
  equation  => {
 uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);

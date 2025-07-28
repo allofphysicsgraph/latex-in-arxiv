@@ -43,6 +43,10 @@ The options that are decent in terms of quality of results are also slow.
 
 This repo uses [`ragel`](https://www.colm.net/open-source/ragel/) to quickly parse Latex and find math. 
 
+Depends on 
+Ragel State Machine Compiler version 7.0.4 February 2021
+
+
 ## get data
 
 ### an option that's free is a few years of arxiv data

@@ -21,7 +21,7 @@ main := |*
 
 equation => {
 if (csv != 0) {
-  token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
+  uint32_t token_id = murmur3_seeded_v2(seed0, &in[ts - in], te - ts);
   printf("{<filepath:%s>,filepath_id:%lu,token_id:%lu,parent_id:%lu,offset:%d,"
          "length:%d,type:%s,<tok:%.*s>}\n",
          filename, (unsigned long)filepath_id, (unsigned long)token_id,

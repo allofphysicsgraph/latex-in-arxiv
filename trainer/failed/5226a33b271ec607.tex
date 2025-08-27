@@ -1,0 +1,281 @@
+\begin{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+
+\newcommand{\Eps}{\Epsilon}
+\newcommand{\gM}{\mathcal{M}}
+\newcommand{\dD}{\mathcal{D}}
+\newcommand{\gG}{\mathcal{G}}
+\newcommand{\pa}{\partial}
+\newcommand{\eps}{\epsilon}
+\newcommand{\La}{\Lambda}
+\newcommand{\De}{\Delta}
+\newcommand{\nonu}{\nonumber}
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eeq}{\end{eqnarray}}
+\newcommand{\ka}{\kappa}
+\newcommand{\an}{\ensuremath{\alpha_0}}
+\newcommand{\bn}{\ensuremath{\beta_0}}
+\newcommand{\dn}{\ensuremath{\delta_0}}
+\newcommand{\al}{\alpha}
+\newcommand{\bm}{\begin{multline}}
+\newcommand{\fm}{\end{multline}}
+\newcommand{\de}{\delta}
+
+
+
+%\input title
+\begin{titlepage} 
+%\begin{flushright}
+%version1\\
+%\today
+%\end{flushright}
+\vspace*{0.5cm}
+\begin{center}
+{\Large\bf TBA equations for excited states in the Sine-Gordon model}
+\end{center}
+%
+\vspace{2.5cm}
+\begin{center}
+{\large J\'anos Balog and \'Arp\'ad Heged\H us}
+\end{center}
+\bigskip
+\begin{center}
+Research Institute for Particle and Nuclear Physics,\\
+Hungarian Academy of Sciences,\\
+H-1525 Budapest 114, P.O.B. 49, Hungary\\ 
+\end{center}
+%
+\vspace{3.2cm}
+\begin{abstract}
+We propose TBA integral equations for multiparticle soliton (fermion)
+states in the Sine-Gordon (massive Thirring) model. 
+This is based on T-system and Y-system
+equations, which follow from the Bethe Ansatz solution in the light-cone 
+lattice formulation of the model. Even and odd charge sectors are
+treated on an equal footing, corresponding to periodic and twisted
+boundary conditions, respectively. The analytic properties of the Y-system  
+functions are conjectured on the basis of the large volume solution of
+the system, which we find explicitly. A simple relation between the TBA
+Y-functions and the counting function variable of the alternative
+non-linear integral equation (Destri-deVega equation) description
+of the model is given. At the special value $\beta^2=6\pi$ of the
+Sine-Gordon coupling exact expressions for energy and momentum
+eigenvalues of one-particle states are found.
+\end{abstract}
+
+
+\end{titlepage}
+
+
+
+
+\section{Introduction}
+%\input intro
+
+A better theoretical understanding of finite size (FS) effects
+is one of the most important problems in Quantum Field Theory (QFT).
+The study of FS effects is a useful method of analysing the structure
+of QFT models and it is an indispensable tool in the numerical
+simulation of lattice field theories. 
+
+L\"uscher \cite{Luscher}
+derived a general formula for the FS corrections to particle masses
+in the large volume limit. This formula, which is generally applicable for
+any QFT model in any dimension, expresses the FS mass corrections in 
+terms of an integral containing the forward scattering amplitude
+analytically continued to unphysical (complex) energy. It is most
+useful in $1+1$ dimensional integrable models \cite{KM1}, where the
+scattering data are available explicitly.
+
+The usefulness of the study of the mass gap in finite volume is 
+demonstrated~\cite{LWW} by the introduction of the L\"uscher-Weisz-Wolff 
+running coupling that enables the interpolation between the
+large volume (non-perturbative) and the small volume (perturbative)
+regions in both two-dimensional sigma models and QCD.
+
+An important tool in the study of two-dimensional integrable field
+theories is the Thermodynamic Bethe Ansatz (TBA).
+This thermodynamical method was initiated by Yang and Yang \cite{YY} and  
+allows the calculation of the free energy of the particle system.
+The calculation was applied to the XXZ model by Takahashi and
+Suzuki~\cite{TS} who derived the TBA integral equations for
+the free energy starting from the Bethe Ansatz solution
+of the system and using the \lq\lq string hypothesis'' describing
+the distribution of Bethe roots. The form of the resulting TBA
+equations strongly depends on whether the anisotropy parameter $p_0$ (see
+Section 2) is an integer, rational or irrational number.
+
+The TBA equations also determine FS effects
+in relativistic (Euclidean) invariant two-dimensional field theory
+models where the free energy is related to the ground state energy in finite
+volume by a modular transformation interchanging spatial extension
+and (inverse) temperature. Zamolodchikov \cite{Zamo90} initiated
+the study of TBA equations for two-dimensional integrable models by
+pointing out that TBA equations can also be derived starting from the 
+(dressed) Bethe Ansatz equations formulated directly in terms of the
+(infinite volume) scattering phase shifts of the particles.
+In this approach the FS dependence of the ground state energy 
+has been studied \cite{TBAlist} in many integrable models, 
+mainly those formulated as perturbations of minimal conformal models.
+
+TBA methods have been developed also in lattice statistical physics
+\cite{KP}. Actually the basic functional relations, Y-system equations,
+TBA integral equations and also other techniques playing important role
+in the TBA analysis of continuum models have been originally
+introduced here. TBA equations describing the FS energy of excited
+states were proposed for some models. Also non-linear integral equations, 
+similar to the Destri-deVega equations, appeared here first. 
+An important model, the tricritical Ising model perturbed 
+by its $\phi_{1,3}$ operator, has been studied in detail~\cite{PCA}.
+The TBA equations describing all excited states are worked out
+in this example, both for the massive and the massless perturbed models.
+
+The TBA description of excited states is less systematic in continuum
+models. The excited state TBA systems first studied \cite{Fendley,Martins}
+are not describing particle states, they correspond to ground states
+in charged sectors of the model. An interesting suggestion is to
+obtain excited state TBA systems by analytically continuing~\cite{Martins}
+those corresponding to the ground state energy. TBA equations
+for scattering states were suggested for perturbed field theory models
+by the analytic continuation method \cite{DT}. Excited state TBA
+equations were also suggested for scattering multi-particle states
+for the Sine-Gordon model at its $N=2$ supersymmetric point \cite{Fendley2}.
+
+The BLZ program \cite{BLZ} has been initiated to derive functional
+relations, Y-systems, and TBA integral equations, both for the ground state
+and for excited states, directly in the continuum. The construction 
+is complete for the conformal field theory limit of the models only
+although some examples in massive perturbed models are also worked out.
+The original construction is based on the $R$-matrix corresponding to 
+the quantum deformed loop algebra $U_q(A^{(1)}_1)$ and can be applied to 
+minimal models perturbed by their $\phi_{1,3}$ field but it works also 
+in the $U_q(A^{(2)}_2)$ case~\cite{BE}, which is relevant to the
+$\phi_{1,2}$ and $\phi_{2,1}$ perturbations. In this family the TBA
+equations for the first two excited states in the non-unitary perturbed
+${\cal M}_{3,5}$ model are worked out explicitly.
+
+An alternative to the TBA equations is provided by the Destri-deVega (DdV)
+non-linear integral equations. They were originally suggested~\cite{DdV0}
+for the ground state of the Sine-Gordon (SG) or the closely
+related massive Thirring (MT) model, but can be systematically
+generalized to describe excited states as well; the (common)
+even charge sector of the SG/MT model~\cite{DdV2}, the odd charge
+sector in both SG and MT \cite{DdV1} and even the states of perturbed 
+minimal models,
+which can be represented as restrictions of the SG model \cite{DdVres}. 
+The advantage of this non-linear integral equation approach is that
+when available (SG/MT model and restrictions), it gives a systematic
+description of all excited states. The method has been generalized to
+higher rank imaginary coupling affine Toda models~\cite{ZJ}.
+
+Meanwhile an alternative derivation of the TBA equations, 
+which is independent of the validity of the string hypothesis 
+has been found in the lattice approach for the generalized Hubbard
+model \cite{JKS} and also for the XXZ model \cite{Kuniba}. Both models
+are solvable on the lattice by the Bethe Ansatz method and the new
+derivation of the TBA equations proceeds via the introduction of
+T-system and Y-system functions satisfying functional relations
+which can be transformed into TBA-type integral equations. Instead of 
+the string hypothesis used in the original derivation \cite{TS}, here
+the basic assumption is about the analytic structure of the Y-system
+functions (distribution of their zeroes) and the validity of these
+assumptions can be convincingly demonstrated numerically, at least
+for small lattices, by starting from the numerical solution of the 
+Bethe Ansatz equations. The Takahashi-Suzuki results for the ground
+state energy are reproduced and new TBA equations for the excited states
+are found in this way. Actually for the excited state problem the TBA
+equations are supplemented by quantization conditions restricting
+the allowed values of particle momenta, which is natural for particles
+confined in a box.
+
+In this paper we borrow the ideas of the lattice approach and
+apply them to the continuum QFT case. Following the steps of the
+lattice construction, we systematically build the T-system and Y-system
+functions for all multi-soliton (multi-fermion) states of the SG (MT)
+model. We find the appropriate continuum TBA equations and
+quantization conditions and a link between the TBA and the DdV
+equations.  
+
+Our starting point is the light-cone lattice
+regularization \cite{LC} of the SG/MT model and the Bethe Ansatz solution, 
+which we briefly recall in Section 2. We use twisted boundary
+conditions on the lattice and show that by changing the value of the parameter
+characterizing the boundary conditions we can describe both the even
+and the odd sectors of the model on an equal footing. (Previously only
+the even sector was treated in the light-cone lattice formulation
+and the properties of the states belonging to the odd sector were
+conjectured by postulating the corresponding DdV equation in the
+continuum limit \cite{DdV1}.) In Section 3 we introduce
+the T-system and Y-system functions and establish the link between
+the TBA Y-system and the \lq\lq counting function'' of the DdV
+approach. This link is explicitly given by (\ref{FY}), which is one of our main
+results. In Section 4 simple properties of the counting function
+are recalled. In Section 5 we write down the light-cone lattice
+TBA equations together with the quantization conditions. In section 6
+we take the (finite volume) continuum limit of the equations. 
+Multi-particle energy and momentum expressions are given in Section 7.
+In Section 8 we discuss a special case ($p_0=4$) where we can find
+exact expressions for the one-particle energies and momenta.
+In section 9 we discuss the DdV equation and its analytic continuation
+to the entire complex rapidity plane. In Section 10, using the link
+between the DdV equation and the TBA Y-system, we find the explicit 
+solution of the infinite volume limit of the TBA problem. 
+
+To transform the Y-system equations into TBA integral equations (and
+quantization conditions) we need to know the analytic properties
+of the Y-system functions, in particular the distribution of their zeroes. 
+From the explicit solution found in Section 10 we know this
+distribution in the infinite volume limit.
+Our main assumption in this paper is that the qualitative properties
+of this distribution remain the same for finite volume.
+Using this conjecture we can write down the complete set of equations
+determining multi-particle momenta and energies in the TBA approach.
+The ground state (no particles), one-particle, and two-particle
+problems are discussed in detail in Sections 11, 12, and 13, 
+respectively. We have verified the validity of our main assumption by 
+numerically comparing the results of the TBA approach with those
+obtained using the DdV equations. This is briefly described in Section~14 
+and finally our conclusions are summarized in Section 15.
+The technical details of the transformation of 
+Y-system type functional relations into
+TBA type integral equations is discussed in the Appendix.
+
+For simplicity, in this paper we restrict attention to the
+repulsive case $p_0>2$ of the SG coupling and consider integer $p_0$ only. 
+Moreover, we consider multi-soliton states only and no states
+containing both solitons and anti-solitons at the same time. We believe
+that appropriate TBA systems can be found also for more general
+couplings and more general states but the special cases we are
+considering in this paper are sufficient to present the main ideas and
+assumptions. Finally we note that although in the SG/MT case the
+excited state TBA description is \lq\lq superfluous'' since we already
+have the DdV equations to study FS physics, one can hope that the
+simple pattern of the excited state TBA systems we find here means 
+that similar systems can be found also in other systems, where no DdV
+type alternative is available.
+
+
+
+
+%\newpage
+
+\section{Light-cone approach to twisted SG model}
+%\input LC
+Our starting point is the Bethe Ansatz solution of the integrable lattice
+regularization of the Sine-Gordon field theory \cite{LC}. Here we briefly
+summarize the results of this approach \cite{DdV0,DdV2,DdV1} 
+to the Sine-Gordon (and
+massive Thirring) model. The fields of the regularized theory
+are defined at sites (\lq\lq events") of a light-cone lattice and the
+dynamics of the system is defined by 
+translations in the left and right lightcone directions. These are given by
+transfer matrices of the six-vertex model with anisotropy $\gamma$ and
+alternating inhomogeneities. This approach is particularly useful for
+calculating the finite size dependence of physical quantities.
+We take $N$ points ($N$ even) in the spatial direction and use twisted periodic
+boundary conditions. The lattice spacing is related to $L$, the
+(dimensionful) size of the system:
+\be
+a=\frac{L}{N}.
+\end{equation}
+

@@ -1,0 +1,11 @@
+\begin{equation}}
+\renewcommand{\)}{end{equation} \vspace{-.05in}\linebreak}
+\newcommand{\numeq}{\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}}
+\newcommand{\nonumeq}{\renewcommand{\theequation}{}}
+\newcounter{saveeqn}
+\newcounter{savealpheqn}
+\newcounter{savesection}
+\newcommand{\alpheqn}{\setcounter{saveeqn}{\value{equation}}%
+ \stepcounter{saveeqn}\setcounter{equation}{0}%
+ \renewcommand{\theequation}{\mbox{\arabic{section}.\arabic{saveeqn}\alph{equation}}}
+ \renewcommand{\)}{\end{equation}}

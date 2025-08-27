@@ -1,0 +1,181 @@
+\begin{equation}}
+\def\bc             {boundary condition}
+\def\cala          {{\mathcal A}}
+\def\calc          {{\mathcal C}}
+\def\calg          {{\mathcal G}}
+\def\calh          {{\mathcal H}}
+\def\call          {{\mathcal L}}
+\def\calm          {{\mathcal M}}
+\def\calv          {{\mathcal V}}
+\def\complex       {{\mathbb C}}
+\def\eE            {{\rm e}}
+\def\End           {{\rm End}}
+\def\eps           {\varepsilon}
+\def\eq            {\,{=}\,}
+\newcommand\erf[1] {(\ref{#1})}
+\def\F             {{\mathbb F}}
+\newcommand\Frac[2]{\mbox{\large$\frac{#1}{#2}$}}
+\def\Hom           {{\rm Hom}}
+\newcommand\hsp[1] {\mbox{\hspace{#1 em}}}
+\def\id            {{\rm id}}
+\def\ii            {{\rm i}}
+\def\iN            {\,{\in}\,}
+\newcommand\labl[1]{\label{#1}}
+\def\Lie           {{\rm Lie}\,}
+\newcommand\nxt[1] {\\\raisebox{.12em}{\rule{.35em}{.35em}}\hsp{.6}#1}
+\def\one           {{\bf 1}}
+\def\oti           {\,{\otimes}\,}
+\def\reals         {{\mathbb R}}
+\def\RI            {Riemann}
+\def\rmd           {{\rm d}}
+\def\scs           {\scriptstyle }
+\def\twodim        {two-dimensional}
+\def\U             {{\rm U}}
+\def\zet           {{\mathbb Z}}
+% End of own macros 
+
+\begin{document}
+
+\begin{flushright} \mbox{$\,$}\\[-13mm]
+                             {\tt HU-EP-03/02}\\[1mm] {\tt hep-th/0301181}
+\\[22mm]{\,}\end{flushright}
+
+\title [Lie algebras, Fuchsian differential equations and CFT correlators]
+       {Lie algebras, Fuchsian differential equations
+       \\ and CFT correlation functions}
+
+\author{J\"urgen Fuchs}
+\address{Avdelning fysik, Karlstads universitet,
+Universitetsgatan 5, S\,--\,651\,88\, Karlstad}
+\email{jfuchs@fuchs.tekn.kau.se}
+\author{Ingo Runkel}
+\address{ Institut f\"ur Physik, HU Berlin,
+Invalidenstr.\ 110, \,D\,--\,10115 Berlin}
+\email{ingo@physik.hu-berlin.de}
+\author{Christoph Schweigert}
+\address{Institut f\"ur theor.\ Physik,
+RWTH Aachen, Sommerfeldstr.\ 14, D\,--\,52074\, Aachen}
+\email{schweige@physik.rwth-aachen.de}
+
+\subjclass[2000]{81R10,81T40,33C80,18D10}
+\date{December 31, 2002}
+\dedicatory{}
+
+\keywords{Hypergeometric functions, conformal blocks, (modular) tensor 
+categories, conformal field theory, WZW theories}
+
+\begin{abstract}
+Affine Kac-Moody algebras give rise to interesting systems of differential 
+equations, so-called
+Knizhnik-Zamolodchikov equations. The monodromy properties of their solutions
+can be encoded in the structure of a mo\-du\-lar tensor category on 
+(a subcategory
+of) the representation category of the affine Lie algebra. We discuss the 
+relation between these solutions and physical correlation functions
+in two-dimensional conformal field theory.
+In particular we report on a proof for the existence of the latter on 
+world sheets of arbitrary topology. 
+\end{abstract}
+
+\maketitle 
+
+
+\section{Some venerable differential equations}
+
+One of the surprises in the theory of Kac-Moody algebras is the observation
+that they give a new and powerful handle on problems that, a priori, do not
+have an algebraic flavor, including such which are not even genuinely 
+infinite-dimensional. In this contribution we discuss one such application of
+structures related to affine Kac-Moody algebras: properties of solutions to 
+differential equations.
+
+\medskip
+
+In the middle of the 18th century Euler, Cauchy and other analysts, 
+the successors of the founding fathers like 
+Newton, Leibniz, and Johann and Jakob Bernoulli, developped 
+a strong interest in ``special functions'' and series. Arguably, the 
+simplest non-trivial series one can think of is the geometric series
+  $$ f(z) = 1+z + z^2 +\ldots  $$
+It obeys the ordinary differential equation
+  $$ z\,(1\,{-}\,z)\, f'' + (1\,{-}\,3z)\, f' - f = 0 \, . $$
+To be of interest in complex analysis, a generalization of the geometric series 
+should, of course, possess a non-zero radius of convergence. Furthermore,
+a useful guiding principle is that it should also obey a simple differential 
+equation that allows one to determine its main properties. Around the year 
+1750, such considerations lead Euler to the {\em hypergeometric series}
+  $$ F(\alpha,\beta,\gamma;z):= 
+  1 + \sum_{n=1}^\infty  \frac {\alpha(\alpha{+}1)\cdots (\alpha{+}n{-}1)
+  \,\beta(\beta{+}1)\cdots(\beta{+}n{-}1)} {n!\, \gamma(\gamma{+}1)\cdots
+  \,(\gamma{+}n{-}1)}\, z^n \,.$$
+It obeys the hypergeometric differential equation
+  \begin{equation}
+  z(z\,{-}\,1)\, w'' + [(\alpha\,{+}\,\beta\,{+}\,1)\,z -\gamma]\,w' 
+  +\alpha\beta\, w = 0 \,. \labl{dg} \end{equation}
+This linear differential equation is Fuchsian \cite{fuch},
+i.e.\ enjoys the particularly nice property that
+all three singular points that the coefficient functions acquire upon 
+division by $z(z{-}1)$ (namely 0, 1, and $\infty$) are regular singularities.
+This means that when one approaches
+such a point in a wedge region of opening angle less than $\pi/2$ the 
+solutions will not diverge stronger than polynomially.
+
+It is quite remarkable that Euler's interest in this series did {\em not\/} 
+arise from concrete applications. Indeed, in his famous 1857 paper \cite{riem}
+Riemann calls Euler's motivation a ``theoretisches Interesse'', while
+he points out there are ``numerous applications in physical and astronomic
+investigations''. (This makes a strong point in favour of
+pure science that is motivated by internal questions.)
+
+Differential equations of the type \erf{dg} and their solutions are
+indeed ubiquitous in mathematical physics. They include
+\nxt Legendre polynomials, introduced by Legendre around 1800 in his
+     study of gravitational potentials:
+  $$ \frac1{\sqrt{1-2\rho z + \rho^2}} = \sum_{n=0}^\infty \rho^n P_n(z)
+  \,; $$
+\nxt Bessel functions, describing the radial part of the wave function of
+     a free particle in quantum mechanics;
+\nxt Laguerre polynomials, the radial part of the hydrogen atom wave
+     functions.
+\\
+The last two classes of functions are {\em confluent\/} hypergeometric
+functions; they are defined by the limit
+  $$ \Phi(\alpha,\gamma;z ) = \lim_{\beta\to\infty} 
+  F(\alpha,\beta,\gamma;\Frac z\beta) \, . $$
+
+So far there is clearly not much algebra in the game. A first hint on the
+possible relevance of algebra comes from the observation that
+a deeper understanding of many special functions is afforded by relating 
+them to representation functions of suitable
+Lie groups. For example, Bessel functions are related to representation
+functions of irreducible unitary representations of the group of
+motions of the Euclidean plane. (For a review of the relation 
+between special functions and Lie groups, see e.g.\ \cite{HElg,DIeu}.)
+
+In this contribution, we consider interesting generalizations of
+hypergeometric differential equations that have their origin in 
+representation-theoretic structures, involving in particular the 
+representation theory of (classes of) Kac-Moody algebras. 
+They are largely motivated by models of conformal quantum field theory.
+
+In Section 2 we introduce a system
+of differential equations. In section 3 properties of their solutions
+are discussed, in particular the asymptotic behaviour
+and monodromies. These properties possess a convenient interpretation
+in terms of tensor categories. In section 4 we finally give 
+the underlying motivation from theoretical physics and present
+a theorem about correlation functions in conformal field theories.
+
+\section{The Kniznik-Zamolodchikov equation}
+
+Let us select a real compact Lie group $G$. It admits a bi-invariant metric
+that allows us to introduce dual bases $\{a_l\}$ and $\{a^l\}$ of the Lie
+algebra $\Lie G$ of $G$. The element
+  $$ \Omega := \sum_{l=1}^{\dim\,G} a_l \oti a^l \,\in \Lie G \oti \Lie G $$ 
+does not depend on the choice of bases.
+Moreover, its action on the tensor product $V_1\oti V_2$ of two 
+finite-dimensional $G$-modules $V_1$ and $V_2$ is diagonalizable.
+
+We are interested in functions 
+  \be f: \quad \calm_N \to V_1\otimes \cdots \otimes V_N  \labl7
+  \end{equation} 

@@ -29,7 +29,11 @@ if (csv != 0) {
          te - ts, &in[ts - in]);
 } else {
   printf("%.*s", te - ts, &in[ts - in]);
-}};
+}
+for(int i = 0;i<50;i++)printf("*");
+printf("\n");
+
+};
 
 any;
 *|;
